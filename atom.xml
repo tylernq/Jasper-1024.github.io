@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-21T06:00:47.392Z</updated>
+  <updated>2016-06-21T06:02:19.030Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,14 +20,12 @@
     <link href="http://yoursite.com/2016/06/21/%E5%BC%80%E7%AB%AF/"/>
     <id>http://yoursite.com/2016/06/21/开端/</id>
     <published>2016-06-21T05:52:11.000Z</published>
-    <updated>2016-06-21T06:00:47.392Z</updated>
+    <updated>2016-06-21T06:02:19.030Z</updated>
     
     <content type="html">&lt;ul&gt;
 &lt;li&gt;总算是博客搭建完了，依附在github上，自己的域名什么的先不买了。&lt;/li&gt;
-&lt;li&gt;评论系统、RSS、留言、统计、访问量 基本有个独立博客的样子了。之前一直以为独立博客要花很长时间才可以完成，其实也就那些东西，真正厉害的是造轮子的人。&lt;ul&gt;
+&lt;li&gt;评论系统、RSS、留言、统计、访问量 基本有个独立博客的样子了。之前一直以为独立博客要花很长时间才可以完成，其实也就那些东西，真正厉害的是造轮子的人。&lt;/li&gt;
 &lt;li&gt;马上大四了，反而找到了自己的兴趣，不知道是高兴还是悲伤，做了三年的单片机最后发现最喜欢的是软件，造化弄人吧。 开始更新自己的经历和心情，基本不用担心审查和备案，反正服务器又不在国内。只能说走一步再走一步了用好剩下的时间。前路和期许很难，但是就这么熬着，总有意外的一天。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
 &lt;/ul&gt;
 </content>
     
@@ -35,8 +33,8 @@
     
       &lt;ul&gt;
 &lt;li&gt;总算是博客搭建完了，依附在github上，自己的域名什么的先不买了。&lt;/li&gt;
-&lt;li&gt;评论系统、RSS、留言、统计、访问量 基本有个独立博客的样子了。之前一直以为独立博客要花很长时间才可以完成，其实也就那些东西，真正厉害的是造轮子的人。&lt;ul&gt;
-&lt;li&gt;马上大
+&lt;li&gt;评论系统、RSS、留言、统计、访问量 基本有个独立博客的样子了。之前一直以为独立博客要花很长时间才可以完成，其实也就那些东西，真正厉害的是造轮子的人。&lt;/li&gt;
+&lt;li&gt;马上
     
     </summary>
     
