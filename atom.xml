@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-21T06:16:22.026Z</updated>
+  <updated>2016-06-21T06:24:17.770Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/06/21/%E5%BC%80%E7%AB%AF/"/>
     <id>http://yoursite.com/2016/06/21/开端/</id>
     <published>2016-06-21T05:52:11.000Z</published>
-    <updated>2016-06-21T06:16:22.026Z</updated>
+    <updated>2016-06-21T06:24:17.770Z</updated>
     
     <content type="html">&lt;ul&gt;
 &lt;li&gt;总算是博客搭建完了，依附在github上，自己的域名什么的先不买了。&lt;/li&gt;
@@ -44,11 +44,79 @@
   </entry>
   
   <entry>
+    <title>初入树莓派1安装系统+进入SSH</title>
+    <link href="http://yoursite.com/2016/06/21/%E5%88%9D%E5%85%A5%E6%A0%91%E8%8E%93%E6%B4%BE1----%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F+%E8%BF%9B%E5%85%A5SSH/"/>
+    <id>http://yoursite.com/2016/06/21/初入树莓派1----安装系统+进入SSH/</id>
+    <published>2016-06-21T02:17:11.000Z</published>
+    <updated>2016-06-21T06:32:23.545Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;del&gt;&lt;strong&gt;为了更好的从事程序员事业、填坑linux、为学弟打下第一手资料、留下linux培训教材……&lt;/strong&gt;&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;实际就是为了搭个路由器，玩玩&lt;/em&gt;&lt;br&gt;入了树莓派3b +电源+外壳+sd卡—300大洋——–&lt;em&gt;肉疼&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;树莓派3b的耗电量还是挺大的==推荐买个2A以上的电源==&lt;/p&gt;
+&lt;h3 id=&quot;树莓派系统安装-进入命令行&quot;&gt;&lt;a href=&quot;#树莓派系统安装-进入命令行&quot; class=&quot;headerlink&quot; title=&quot;树莓派系统安装+进入命令行&quot;&gt;&lt;/a&gt;树莓派系统安装+进入命令行&lt;/h3&gt;&lt;p&gt;树莓派支持 数十款操作系统&lt;br&gt;一般新手推荐的是树莓派官方支持的&lt;strong&gt;raspbian&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://vx2-downloads.raspberrypi.org/raspbian/images/raspbian-2016-05-13/2016-05-10-raspbian-jessie.zip&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Raspbian系统镜像地址&lt;/a&gt;(最好在FQ下，否则会很慢的。你要用IDM当我没说)&lt;/p&gt;
+&lt;p&gt;所要用到的工具是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1.多功能读卡器一个&lt;/li&gt;
+&lt;li&gt;2.TF卡一张（8G以上）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;烧写器官方推荐是&lt;strong&gt;win32diskimager&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;但是有个很严重的缺点-文件路径不支持中文。&lt;/p&gt;
+&lt;p&gt;个人推荐 &lt;strong&gt;USB Image Tool&lt;/strong&gt;&lt;br&gt;故障率最低的是1.7版本。&lt;/p&gt;
+&lt;h3 id=&quot;插上读卡器，烧写系统开始！&quot;&gt;&lt;a href=&quot;#插上读卡器，烧写系统开始！&quot; class=&quot;headerlink&quot; title=&quot;插上读卡器，烧写系统开始！&quot;&gt;&lt;/a&gt;插上读卡器，烧写系统开始！&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;烧写系统&lt;/strong&gt;&lt;br&gt;打开USB Image Tool&lt;br&gt;&lt;strong&gt;注意左上角是Device Mode，不是Volume Mode！&lt;/strong&gt;&lt;br&gt;&lt;a href=&quot;http://snapgr.am/image/Livb&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://cdn2.snapgram.co/imgs/2016/06/20/1.png&quot; alt=&quot;1.png&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1.Rescan 选择下载后解压的img文件&lt;/li&gt;
+&lt;li&gt;2.写入等待进度条完成即可。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;错误原因&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1.USB Image Tool 在win7以上系统中必须要以管理员权限运行&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2.USB Image Tool运行需要.net环境 直接使用系统默认加载的即可。&lt;/p&gt;
+&lt;p&gt;插入写入完成的SD卡，插上电源。&lt;/p&gt;
+&lt;h3 id=&quot;进入SSH管理（没有显示设备时）&quot;&gt;&lt;a href=&quot;#进入SSH管理（没有显示设备时）&quot; class=&quot;headerlink&quot; title=&quot;进入SSH管理（没有显示设备时）&quot;&gt;&lt;/a&gt;进入SSH管理（没有显示设备时）&lt;/h3&gt;&lt;p&gt;第一次进入系统时直接利用网线接入路由器，将电脑接入同一个wifi下。&lt;br&gt;在路由器管理界面查找树莓派对应得IP地址。&lt;br&gt;进不去路由？也可以扫描一下局域网设备中开启22端口的设备，八九不离十！&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1.使用SSH管理工具，这里以putty为例。打开软件，填入树莓派ip地址。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;打开软件，填入树莓派ip地址。&lt;br&gt;&lt;em&gt;默认登陆界面&lt;/em&gt;&lt;br&gt;&lt;a href=&quot;http://snapgr.am/image/Liv4&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://cdn4.snapgram.co/images/2016/06/20/2.png&quot; alt=&quot;2.png&quot;&gt;&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;pi 密码raspberry。&lt;br&gt;&lt;a href=&quot;http://snapgr.am/image/LivJ&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://cdn2.snapgram.co/imgs/2016/06/20/3.png&quot; alt=&quot;3.png&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;登陆成功&lt;br&gt;&lt;img src=&quot;http://cdn1.snapgram.co/imgs/2016/06/20/4.png&quot; alt=&quot;4.png&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+参考&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/longerzone/article/details/36034619&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/longerzone/article/details/36034619&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;del&gt;&lt;strong&gt;为了更好的从事程序员事业、填坑linux、为学弟打下第一手资料、留下linux培训教材……&lt;/strong&gt;&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;实际就是为了搭个路由器，玩玩&lt;/em&gt;&lt;br&gt;入了树莓派3b +电源+外壳+sd卡—300大洋——–&lt;e
+    
+    </summary>
+    
+      <category term="树莓派折腾" scheme="http://yoursite.com/categories/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
     <link href="http://yoursite.com/2016/06/18/hello-world/"/>
     <id>http://yoursite.com/2016/06/18/hello-world/</id>
     <published>2016-06-18T02:10:11.000Z</published>
-    <updated>2016-06-21T06:15:50.421Z</updated>
+    <updated>2016-06-21T06:29:45.778Z</updated>
     
     <content type="html">&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
@@ -66,15 +134,7 @@
     
     </summary>
     
-      <category term="Android记录" scheme="http://yoursite.com/categories/Android%E8%AE%B0%E5%BD%95/"/>
-    
-      <category term="树莓派折腾" scheme="http://yoursite.com/categories/Android%E8%AE%B0%E5%BD%95/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE/"/>
-    
-      <category term="电子记录" scheme="http://yoursite.com/categories/Android%E8%AE%B0%E5%BD%95/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE/%E7%94%B5%E5%AD%90%E8%AE%B0%E5%BD%95/"/>
-    
-      <category term="科学上网" scheme="http://yoursite.com/categories/Android%E8%AE%B0%E5%BD%95/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE/%E7%94%B5%E5%AD%90%E8%AE%B0%E5%BD%95/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
-    
-      <category term="随" scheme="http://yoursite.com/categories/Android%E8%AE%B0%E5%BD%95/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE/%E7%94%B5%E5%AD%90%E8%AE%B0%E5%BD%95/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/%E9%9A%8F/"/>
+      <category term="随" scheme="http://yoursite.com/categories/%E9%9A%8F/"/>
     
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
