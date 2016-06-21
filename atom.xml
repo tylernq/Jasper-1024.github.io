@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-21T04:19:08.261Z</updated>
+  <updated>2016-06-21T05:59:33.550Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>开端，起始。</title>
+    <link href="http://yoursite.com/2016/06/21/%E5%BC%80%E7%AB%AF/"/>
+    <id>http://yoursite.com/2016/06/21/开端/</id>
+    <published>2016-06-21T05:52:11.000Z</published>
+    <updated>2016-06-21T05:59:33.550Z</updated>
+    
+    <content type="html">&lt;ul&gt;
+&lt;li&gt;总算是博客搭建完了，依附在github上，自己的域名什么的先不买了。&lt;/li&gt;
+&lt;li&gt;评论系统、RSS、留言、统计、访问量 基本有个独立博客的样子了。之前一直以为独立博客要花很长时间才可以完成，其实也就那些东西，真正厉害的是造轮子的人。&lt;ul&gt;
+&lt;li&gt;马上大四了，反而找到了自己的兴趣，不知道是高兴还是悲伤，做了三年的单片机最后发现最喜欢的是软件，造化弄人吧。 开始更新自己的经历和心情，基本不用担心审查和备案，反正服务器又不在国内。只能说走一步再走一步了用好剩下的时间。前路和期许很难，但是就这么熬着，总有意外的一天。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;总算是博客搭建完了，依附在github上，自己的域名什么的先不买了。&lt;/li&gt;
+&lt;li&gt;评论系统、RSS、留言、统计、访问量 基本有个独立博客的样子了。之前一直以为独立博客要花很长时间才可以完成，其实也就那些东西，真正厉害的是造轮子的人。&lt;ul&gt;
+&lt;li&gt;马上大
+    
+    </summary>
+    
+      <category term="随" scheme="http://yoursite.com/categories/%E9%9A%8F/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>初入树莓派1----安装系统+进入SSH</title>
@@ -87,8 +117,8 @@
     <title>Hello World</title>
     <link href="http://yoursite.com/2016/06/18/hello-world/"/>
     <id>http://yoursite.com/2016/06/18/hello-world/</id>
-    <published>2016-06-18T15:54:04.936Z</published>
-    <updated>2016-06-20T13:55:24.991Z</updated>
+    <published>2016-06-18T02:10:11.000Z</published>
+    <updated>2016-06-21T05:47:40.704Z</updated>
     
     <content type="html">&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
