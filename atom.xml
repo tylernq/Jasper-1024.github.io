@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-22T16:20:52.716Z</updated>
+  <updated>2016-06-22T16:25:03.065Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/06/22/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%97/"/>
     <id>http://yoursite.com/2016/06/22/VPS科学上网教程系列/</id>
     <published>2016-06-22T14:16:15.000Z</published>
-    <updated>2016-06-22T16:20:52.716Z</updated>
+    <updated>2016-06-22T16:25:03.065Z</updated>
     
     <content type="html">&lt;h3 id=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;a href=&quot;#基本从0开始的教程，当作自己的备份了。&quot; class=&quot;headerlink&quot; title=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;/a&gt;基本从0开始的教程，当作自己的备份了。&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;吐槽&lt;/strong&gt;&lt;br&gt;作为一个伪程序员，每次最苦恼的就是Android SDK的更新，当初安装Android Studio时候就因为防火墙折腾了整整2周，简直就是把自学Android的那点耐心都磨没了。各种的搜索文档，离了google效率下降70%！科学上网简直成了程序员的必备生存技能了。&lt;/li&gt;
@@ -40,10 +40,8 @@
 &lt;p&gt; 选择VPS的一般要注意的几点&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;自己的具体网络环境&lt;ul&gt;
-&lt;li&gt;简单来说，一般联通的国际出口稳定性大于电信、移动的国际出口看心情有的地区甩电信联通几条街，坏的时候根本没速度。电信网路比较特殊，国际出口充足，但是限速的TM不能忍，不挤的时候嗖嗖的，高峰期渣到爆炸。&lt;ul&gt;
+&lt;li&gt;简单来说，一般联通的国际出口稳定性大于电信、移动的国际出口看心情有的地区甩电信联通几条街，坏的时候根本没速度。电信网路比较特殊，国际出口充足，但是限速的TM不能忍，不挤的时候嗖嗖的，高峰期渣到爆炸。&lt;/li&gt;
 &lt;li&gt;移动网络具体情况不太清楚。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -55,14 +53,13 @@
 &lt;li&gt;新加坡节点，在靠近南方地区，可以ping在100以内稳定！youtube 4k不卡。但在偏北一些地区ping不稳定。&lt;/li&gt;
 &lt;li&gt;香港VPS，这个比较特殊，香港的VPS ping值可以低到20几，但是香港本身的国际出口就小，VPS价格也偏高，另外香港毕竟也在政府的直接管辖内，隐私方面风险比其他地区节点要大一些。建议土豪级别的游戏玩家使用。&lt;/li&gt;
 &lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;VPS虚拟化架构。具体解释请自行google，只说明对科学上网的影响。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;VPS虚拟化架构&lt;br&gt;具体解释请自行google，只说明对科学上网的影响。&lt;ul&gt;
 &lt;li&gt;OpenVZ（简称OVZ） 便宜！但是没法进行修改内核、加锐速之类的优化操作。访问速度基本取决于你的本地网络环境优化的可能性。（不是没有可以加速的手段，就是在基本相同情况下，不如其他架构的vps可以榨干VPS的传输性能）。加速手段：Finaspeed（已停止更新） 和net-speeder。&lt;/li&gt;
 &lt;li&gt;Xen性能较好，实际用的不多，不做更多评论&lt;/li&gt;
-&lt;li&gt;3、Hyper-VH完美支持Windows系统，Hyper-V同样可以超售内存和硬盘，如果服务商超卖较多可能会有性能问题，Linux操作系统性能较低。&lt;/li&gt;
+&lt;li&gt;Hyper-VH完美支持Windows系统，Hyper-V同样可以超售内存和硬盘，如果服务商超卖较多可能会有性能问题，Linux操作系统性能较低。&lt;/li&gt;
 &lt;li&gt;KVM全功能虚拟化架构，可上传ISO手动安装系统。KVM VPS相对其它架构的VPS较为自由。虚拟化性能比Xen略低。可以使用TCP优化和锐速，价格比一半OVZ的要高一些。（本教程以KVM为例）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
