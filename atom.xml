@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-22T16:29:14.033Z</updated>
+  <updated>2016-06-23T09:51:50.824Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,21 +16,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>科学上网教程（一）——VPS上搭建SSR</title>
     <link href="http://yoursite.com/2016/06/22/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%97/"/>
     <id>http://yoursite.com/2016/06/22/VPS科学上网教程系列/</id>
-    <published>2016-06-22T14:24:43.333Z</published>
-    <updated>2016-06-22T16:29:14.033Z</updated>
+    <published>2016-06-22T14:16:15.000Z</published>
+    <updated>2016-06-23T09:51:50.824Z</updated>
     
-    <content type="html">&lt;hr&gt;
-&lt;p&gt;title: 科学上网教程（一）——VPS上搭建SSR&lt;br&gt;date: 2016-06-22 22:16:15&lt;br&gt;categories:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;科学上网&lt;br&gt;tags:&lt;/li&gt;
-&lt;li&gt;Linux&lt;/li&gt;
-&lt;li&gt;VPS&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h3 id=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;a href=&quot;#基本从0开始的教程，当作自己的备份了。&quot; class=&quot;headerlink&quot; title=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;/a&gt;基本从0开始的教程，当作自己的备份了。&lt;/h3&gt;&lt;ul&gt;
+    <content type="html">&lt;h2 id=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;a href=&quot;#基本从0开始的教程，当作自己的备份了。&quot; class=&quot;headerlink&quot; title=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;/a&gt;基本从0开始的教程，当作自己的备份了。&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;吐槽&lt;/strong&gt;&lt;br&gt;作为一个伪程序员，每次最苦恼的就是Android SDK的更新，当初安装Android Studio时候就因为防火墙折腾了整整2周，简直就是把自学Android的那点耐心都磨没了。各种的搜索文档，离了google效率下降70%！科学上网简直成了程序员的必备生存技能了。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
@@ -76,16 +68,17 @@
     
     <summary type="html">
     
-      &lt;hr&gt;
-&lt;p&gt;title: 科学上网教程（一）——VPS上搭建SSR&lt;br&gt;date: 2016-06-22 22:16:15&lt;br&gt;categories:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;科学上网&lt;br&gt;tags:&lt;/li&gt;
-&lt;li&gt;Linux&lt;/li&gt;
-&lt;li&gt;VPS&lt;/li&gt;
+      &lt;h2 id=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;a href=&quot;#基本从0开始的教程，当作自己的备份了。&quot; class=&quot;headerlink&quot; title=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;/a&gt;基本从0开始的教程，当作自己的备份了。&lt;/h2&gt;&lt;ul&gt;
 
     
     </summary>
     
+      <category term="科学上网" scheme="http://yoursite.com/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
     
   </entry>
   
@@ -211,17 +204,17 @@
       <category term="随" scheme="http://yoursite.com/categories/%E9%9A%8F/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
+      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
+    
       <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="单片机" scheme="http://yoursite.com/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
     
       <category term="开源" scheme="http://yoursite.com/tags/%E5%BC%80%E6%BA%90/"/>
-    
-      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
     
   </entry>
   
