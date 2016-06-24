@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-23T09:51:50.824Z</updated>
+  <updated>2016-06-24T08:47:07.989Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/06/22/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%97/"/>
     <id>http://yoursite.com/2016/06/22/VPS科学上网教程系列/</id>
     <published>2016-06-22T14:16:15.000Z</published>
-    <updated>2016-06-23T09:51:50.824Z</updated>
+    <updated>2016-06-24T08:47:07.989Z</updated>
     
     <content type="html">&lt;h2 id=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;a href=&quot;#基本从0开始的教程，当作自己的备份了。&quot; class=&quot;headerlink&quot; title=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;/a&gt;基本从0开始的教程，当作自己的备份了。&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;吐槽&lt;/strong&gt;&lt;br&gt;作为一个伪程序员，每次最苦恼的就是Android SDK的更新，当初安装Android Studio时候就因为防火墙折腾了整整2周，简直就是把自学Android的那点耐心都磨没了。各种的搜索文档，离了google效率下降70%！科学上网简直成了程序员的必备生存技能了。&lt;/li&gt;
@@ -30,13 +30,9 @@
 &lt;li&gt;只是翻墙简单浏览网页，就不必要再单独花费人民币了，蓝灯、和各个网站的免费ss账户，是你的主菜。&lt;/li&gt;
 &lt;li&gt;偶尔看看视频、不想画太多精力在寻找免费资源上。可以直接购买现成的ss/vpn账户，在G+相应的社区可以找到很多比较靠谱的提供商。&lt;/li&gt;
 &lt;li&gt;常年泡视频网站有受不了国内的乱七八糟、24h使用google服务、对稳定性和流量有一定要求、愿意使用一点时间来折腾VPS。比较适合单独购买VPS来科学上网。VPS选择如下会提及。&lt;/li&gt;
-&lt;li&gt;&lt;del&gt;搜索文档，更新软件源、折腾个人网站又不想备案的、折腾开源的  &lt;code&gt;*这部分大神谁会来看这个啊，早自己分分钟写个轮子了*&lt;/code&gt;&lt;/del&gt;&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;搜索文档，更新软件源、折腾个人网站又不想备案的、折腾开源的  &lt;code&gt;这部分大神谁会来看这个啊，早自己分分钟写个轮子了&lt;/code&gt;&lt;/del&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&quot;VPS选择&quot;&gt;&lt;a href=&quot;#VPS选择&quot; class=&quot;headerlink&quot; title=&quot;VPS选择&quot;&gt;&lt;/a&gt;VPS选择&lt;/h2&gt;&lt;p&gt;参考&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.laozuo.org/myvps&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.laozuo.org/myvps&lt;/a&gt;&lt;br&gt; &lt;a href=&quot;http://www.aiirony.com/1398.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.aiirony.com/1398.html&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;选择VPS看那几点&lt;br&gt; &lt;strong&gt;一定要根据自己的具体使用场景和网络环境来选择VPS服务。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;VPS选择&quot;&gt;&lt;a href=&quot;#VPS选择&quot; class=&quot;headerlink&quot; title=&quot;VPS选择&quot;&gt;&lt;/a&gt;VPS选择&lt;/h2&gt;&lt;p&gt;选择VPS看那几点&lt;br&gt; &lt;strong&gt;一定要根据自己的具体使用场景和网络环境来选择VPS服务。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt; 选择VPS的一般要注意的几点&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;自己的具体网络环境&lt;ul&gt;
@@ -60,10 +56,58 @@
 &lt;li&gt;OpenVZ（简称OVZ） 便宜！但是没法进行修改内核、加锐速之类的优化操作。访问速度基本取决于你的本地网络环境优化的可能性。（不是没有可以加速的手段，就是在基本相同情况下，不如其他架构的vps可以榨干VPS的传输性能）。加速手段：Finaspeed（已停止更新） 和net-speeder。&lt;/li&gt;
 &lt;li&gt;Xen性能较好，实际用的不多，不做更多评论&lt;/li&gt;
 &lt;li&gt;Hyper-VH完美支持Windows系统，Hyper-V同样可以超售内存和硬盘，如果服务商超卖较多可能会有性能问题，Linux操作系统性能较低。&lt;/li&gt;
-&lt;li&gt;KVM全功能虚拟化架构，可上传ISO手动安装系统。KVM VPS相对其它架构的VPS较为自由。虚拟化性能比Xen略低。可以使用TCP优化和锐速，价格比一半OVZ的要高一些。（本教程以KVM为例）&lt;/li&gt;
+&lt;li&gt;KVM全功能虚拟化架构，可上传ISO手动安装系统。KVM VPS相对其它架构的VPS较为自由。虚拟化性能比Xen略低。可以使用TCP优化和锐速，价格比一半OVZ的要高一些。（&lt;code&gt;本教程以KVM为例&lt;/code&gt;）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;VPS提供商&lt;ul&gt;
+&lt;li&gt;这个就比较多了，尽量选择购买人较多的，而且一般支持支付宝的服务商被国人玩半残居多（比如搬瓦工。。超售严重），所以&lt;code&gt;购买不支持支付宝的vps提供商&lt;/code&gt;要靠谱一点。注册&lt;a href=&quot;https://www.paypal.com/c2/cgi-bin/webscr?cmd=_registration-run&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;paypal国际版&lt;/a&gt;（&lt;strong&gt;注：是国际版paypal 不是国内的贝宝！&lt;/strong&gt;）一般的vps提供商都支持paypal付款。与使用信用卡相比，具体的优惠政策不同，详情请自行google。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;推荐一个VPS的评测网站，相对更新很快。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.laozuo.org/myvps&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.laozuo.org/myvps&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;vps部署&quot;&gt;&lt;a href=&quot;#vps部署&quot; class=&quot;headerlink&quot; title=&quot;vps部署&quot;&gt;&lt;/a&gt;vps部署&lt;/h2&gt;&lt;p&gt;我选择的是&lt;code&gt;Vultr VPS&lt;/code&gt;。5刀/月，1T流量 怎么折腾都够了。&lt;br&gt;以下内容转载自&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://mpc2008cn.github.io/2015/10/22/vps/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://mpc2008cn.github.io/2015/10/22/vps/&lt;/a&gt;&lt;br&gt;就是从这开始折腾的，有删减和修改。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;服务器选择&quot;&gt;&lt;a href=&quot;#服务器选择&quot; class=&quot;headerlink&quot; title=&quot;服务器选择&quot;&gt;&lt;/a&gt;服务器选择&lt;/h3&gt;&lt;p&gt;选择&lt;code&gt;东京或者美国西海岸&lt;/code&gt;的服务器,速度相对比较快&lt;br&gt;&lt;img src=&quot;./images/1466746772630.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;操作系统&quot;&gt;&lt;a href=&quot;#操作系统&quot; class=&quot;headerlink&quot; title=&quot;操作系统&quot;&gt;&lt;/a&gt;操作系统&lt;/h3&gt;&lt;p&gt;选择Debian 7 x64/Debian 8 x64,centos跟ubuntu都不能完美开启锐速。&lt;br&gt; &lt;img src=&quot;./images/1466746772626.jpg&quot; alt=&quot; &quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;选择硬件&quot;&gt;&lt;a href=&quot;#选择硬件&quot; class=&quot;headerlink&quot; title=&quot;选择硬件&quot;&gt;&lt;/a&gt;选择硬件&lt;/h3&gt;&lt;p&gt;一个月可以免费用$5的配置,科学上网就够了，建站等需求需要更大的。&lt;br&gt;&lt;img src=&quot;./images/1466757891385.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;创建vps 等待完成。&lt;br&gt;&lt;a href=&quot;http://snapgr.am/image/LOsE&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://cdn2.snapgram.co/imgs/2016/06/24/981aa04579703c60.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;配置securecrt&quot;&gt;&lt;a href=&quot;#配置securecrt&quot; class=&quot;headerlink&quot; title=&quot;配置securecrt&quot;&gt;&lt;/a&gt;配置securecrt&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;下载&lt;a href=&quot;https://drive.google.com/open?id=0ByuNnrUBU_n3ZkRMZGhpeXlFYVU&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;securecrt&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;复制服务器的IP地址,初始用户名,初始密码&lt;br&gt;&lt;img src=&quot;http://cdn1.snapgram.co/imgs/2016/06/24/4ecb6e.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;a href=&quot;http://snapgr.am/image/LOsI&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://cdn3.snapgram.co/imgs/2016/06/24/6.jpg&quot; alt=&quot;6.jpg&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;securecrt连接vps&lt;br&gt;解压下载的secure crt,双击\SecureCRT_EN\SecureCRT\中的SecureCRT.exe&lt;/p&gt;
+&lt;p&gt;输入IP地址,用户名,点击connect&lt;br&gt;&lt;img src=&quot;./images/1466757889660.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;弹出框点击Accept&amp;amp;Save&lt;br&gt;&lt;img src=&quot;./images/1466757889650.jpg&quot; alt=&quot;&quot;&gt; &lt;/p&gt;
+&lt;p&gt;输入密码,勾选save password,OK&lt;br&gt;&lt;img src=&quot;./images/1466757889655.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;出现如图所示,标签变绿就说明连接成功啦.&lt;br&gt;  &lt;img src=&quot;./images/1466757889660.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;部署shadowsocksR&quot;&gt;&lt;a href=&quot;#部署shadowsocksR&quot; class=&quot;headerlink&quot; title=&quot;部署shadowsocksR&quot;&gt;&lt;/a&gt;部署shadowsocksR&lt;/h2&gt;&lt;p&gt;关于shadowsocksR的相关争论在以下网址中，至于我来说，现在ssr开源，一定的网络环境下比原版的ss稳定就够了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.librehat.com/about-shadowsocks-r-and-the-security-of-shadowsocks/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.librehat.com/about-shadowsocks-r-and-the-security-of-shadowsocks/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;现在SSR客户端更新主页在ZeroNet中&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://127.0.0.1:43110/shadowsocksr.bit&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://127.0.0.1:43110/shadowsocksr.bit&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;ZeroNet简介和接入&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.williamlong.info/archives/4574.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.williamlong.info/archives/4574.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;用到的一键安装脚本@秋水逸冰&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://shadowsocks.be/9.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://shadowsocks.be/9.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh
+chmod +x shadowsocksR.sh
+./shadowsocksR.sh 2&amp;gt;&amp;amp;1 | tee shadowsocksR.log&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 </content>
     
     <summary type="html">
@@ -208,9 +252,9 @@
     
       <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
     
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
     
       <category term="单片机" scheme="http://yoursite.com/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
     
