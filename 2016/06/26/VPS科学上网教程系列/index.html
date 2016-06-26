@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Linux,VPS," />
 
 
 
@@ -59,15 +59,56 @@
 
 
 
-<meta name="description" content="程序员 微尘 V">
-<meta property="og:type" content="website">
-<meta property="og:title" content="默">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="基本从0开始的教程，当作自己的备份了。
+吐槽作为一个伪程序员，每次最苦恼的就是Android SDK的更新，当初安装Android Studio时候就因为防火墙折腾了整整2周，简直就是把自学Android的那点耐心都磨没了。各种的搜索文档，离了google效率下降70%！科学上网简直成了程序员的必备生存技能了。
+
+
+谁比较需要单独购买VPS科学上网？
+只是翻墙简单浏览网页，就不必要再单独花费人民币">
+<meta property="og:type" content="article">
+<meta property="og:title" content="科学上网教程（一）——VPS上搭建SSR">
+<meta property="og:url" content="http://yoursite.com/2016/06/26/VPS科学上网教程系列/index.html">
 <meta property="og:site_name" content="默">
-<meta property="og:description" content="程序员 微尘 V">
+<meta property="og:description" content="基本从0开始的教程，当作自己的备份了。
+吐槽作为一个伪程序员，每次最苦恼的就是Android SDK的更新，当初安装Android Studio时候就因为防火墙折腾了整整2周，简直就是把自学Android的那点耐心都磨没了。各种的搜索文档，离了google效率下降70%！科学上网简直成了程序员的必备生存技能了。
+
+
+谁比较需要单独购买VPS科学上网？
+只是翻墙简单浏览网页，就不必要再单独花费人民币">
+<meta property="og:image" content="http://cdn1.snapgram.co/imgs/2016/06/24/1.jpg">
+<meta property="og:image" content="http://cdn3.snapgram.co/imgs/2016/06/24/2cef26.jpg">
+<meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/06/24/981aa04579703c60.jpg">
+<meta property="og:image" content="http://cdn1.snapgram.co/imgs/2016/06/24/4ecb6e.jpg">
+<meta property="og:image" content="http://cdn3.snapgram.co/imgs/2016/06/24/6.jpg">
+<meta property="og:image" content="http://cdn3.snapgram.co/imgs/2016/06/24/crt1.png">
+<meta property="og:image" content="http://cdn4.snapgram.co/images/2016/06/24/crt2.png">
+<meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/06/24/crt3.png">
+<meta property="og:image" content="http://cdn1.snapgram.co/imgs/2016/06/24/crt4.png">
+<meta property="og:image" content="http://cdn3.snapgram.co/imgs/2016/06/24/1189971.jpg">
+<meta property="og:image" content="http://cdn4.snapgram.co/images/2016/06/24/12.jpg">
+<meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/06/24/13.jpg">
+<meta property="og:image" content="http://cdn1.snapgram.co/imgs/2016/06/24/14.jpg">
+<meta property="og:image" content="http://cdn3.snapgram.co/imgs/2016/06/24/15.jpg">
+<meta property="og:image" content="http://cdn4.snapgram.co/images/2016/06/25/21.jpg">
+<meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/06/25/22.jpg">
+<meta property="og:image" content="http://cdn1.snapgram.co/imgs/2016/06/25/23.jpg">
+<meta property="og:image" content="http://cdn3.snapgram.co/imgs/2016/06/25/24.jpg">
+<meta property="og:image" content="http://cdn3.snapgram.co/imgs/2016/06/25/25.jpg">
+<meta property="og:image" content="http://cdn4.snapgram.co/images/2016/06/25/31.jpg">
+<meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/06/25/3220191.jpg">
+<meta property="og:image" content="http://cdn1.snapgram.co/imgs/2016/06/25/334344b.jpg">
+<meta property="og:image" content="http://cdn3.snapgram.co/imgs/2016/06/25/342622e.jpg">
+<meta property="og:image" content="http://cdn4.snapgram.co/images/2016/06/25/36.jpg">
+<meta property="og:updated_time" content="2016-06-26T06:55:15.887Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="默">
-<meta name="twitter:description" content="程序员 微尘 V">
+<meta name="twitter:title" content="科学上网教程（一）——VPS上搭建SSR">
+<meta name="twitter:description" content="基本从0开始的教程，当作自己的备份了。
+吐槽作为一个伪程序员，每次最苦恼的就是Android SDK的更新，当初安装Android Studio时候就因为防火墙折腾了整整2周，简直就是把自学Android的那点耐心都磨没了。各种的搜索文档，离了google效率下降70%！科学上网简直成了程序员的必备生存技能了。
+
+
+谁比较需要单独购买VPS科学上网？
+只是翻墙简单浏览网页，就不必要再单独花费人民币">
+<meta name="twitter:image" content="http://cdn1.snapgram.co/imgs/2016/06/24/1.jpg">
 
 
 
@@ -85,7 +126,7 @@
   };
 </script>
 
-  <title> 默 </title>
+  <title> 科学上网教程（一）——VPS上搭建SSR | 默 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -115,9 +156,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -224,9 +263,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -246,10 +285,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/06/26/VPS科学上网教程系列/" itemprop="url">
-                  科学上网教程（一）——VPS上搭建SSR
-                </a>
+                科学上网教程（一）——VPS上搭建SSR
               
             
           </h1>
@@ -323,9 +359,7 @@
       
 
       
-        
-          
-            <h2 id="基本从0开始的教程，当作自己的备份了。"><a href="#基本从0开始的教程，当作自己的备份了。" class="headerlink" title="基本从0开始的教程，当作自己的备份了。"></a>基本从0开始的教程，当作自己的备份了。</h2><ul>
+        <h2 id="基本从0开始的教程，当作自己的备份了。"><a href="#基本从0开始的教程，当作自己的备份了。" class="headerlink" title="基本从0开始的教程，当作自己的备份了。"></a>基本从0开始的教程，当作自己的备份了。</h2><ul>
 <li><strong>吐槽</strong><br>作为一个伪程序员，每次最苦恼的就是Android SDK的更新，当初安装Android Studio时候就因为防火墙折腾了整整2周，简直就是把自学Android的那点耐心都磨没了。各种的搜索文档，离了google效率下降70%！科学上网简直成了程序员的必备生存技能了。</li>
 </ul>
 <hr>
@@ -493,457 +527,53 @@
 <hr>
 <h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line">2016.6.26  与SSR有关部分基本完成。</span><br></pre></td></tr></table></figure>
 
-          
-        
       
     </div>
 
     <div>
       
+        
+      
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/21/开端/" itemprop="url">
-                  开端，起始。
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-21T13:52:11+08:00" content="2016-06-21">
-              2016-06-21
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/随/" itemprop="url" rel="index">
-                    <span itemprop="name">随</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
+            <a href="/tags/Linux/" rel="tag">#Linux</a>
           
-
+            <a href="/tags/VPS/" rel="tag">#VPS</a>
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/21/开端/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/21/开端/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/06/21/开端/" class="leancloud_visitors" data-flag-title="开端，起始。">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <ul>
-<li>总算是博客搭建完了，依附在github上，自己的域名什么的先不买了。</li>
-<li>评论系统、RSS、留言、统计、访问量 基本有个独立博客的样子了。之前一直以为独立博客要花很长时间才可以完成，其实也就那些东西，真正厉害的是造轮子的人。</li>
-<li>马上大四了，反而找到了自己的兴趣，不知道是高兴还是悲伤，做了三年的单片机最后发现最喜欢的是软件，造化弄人吧。 开始更新自己的经历和心情，基本不用担心审查和备案，反正服务器又不在国内。只能说走一步再走一步了用好剩下的时间。前路和期许很难，但是就这么熬着，总有意外的一天。</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/06/21/开端/" rel="next" title="开端，起始。">
+                <i class="fa fa-chevron-left"></i> 开端，起始。
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/06/21/初入树莓派1----安装系统+进入SSH/" itemprop="url">
-                  初入树莓派1安装系统+进入SSH
-                </a>
-              
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-21T10:17:11+08:00" content="2016-06-21">
-              2016-06-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/树莓派折腾/" itemprop="url" rel="index">
-                    <span itemprop="name">树莓派折腾</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/21/初入树莓派1----安装系统+进入SSH/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/21/初入树莓派1----安装系统+进入SSH/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/06/21/初入树莓派1----安装系统+进入SSH/" class="leancloud_visitors" data-flag-title="初入树莓派1安装系统+进入SSH">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p><del><strong>为了更好的从事程序员事业、填坑linux、为学弟打下第一手资料、留下linux培训教材……</strong></del></p>
-<p><em>实际就是为了搭个路由器，玩玩</em><br>入了树莓派3b +电源+外壳+sd卡—300大洋——–<em>肉疼</em></p>
-<p>树莓派3b的耗电量还是挺大的==推荐买个2A以上的电源==</p>
-<h3 id="树莓派系统安装-进入命令行"><a href="#树莓派系统安装-进入命令行" class="headerlink" title="树莓派系统安装+进入命令行"></a>树莓派系统安装+进入命令行</h3><p>树莓派支持 数十款操作系统<br>一般新手推荐的是树莓派官方支持的<strong>raspbian</strong></p>
-<p><a href="http://vx2-downloads.raspberrypi.org/raspbian/images/raspbian-2016-05-13/2016-05-10-raspbian-jessie.zip" target="_blank" rel="external">Raspbian系统镜像地址</a>(最好在FQ下，否则会很慢的。你要用IDM当我没说)</p>
-<p>所要用到的工具是：</p>
-<ul>
-<li>1.多功能读卡器一个</li>
-<li>2.TF卡一张（8G以上）</li>
-</ul>
-<p>烧写器官方推荐是<strong>win32diskimager</strong></p>
-<p>但是有个很严重的缺点<strong>文件路径不支持中文</strong>。</p>
-<p>个人推荐 <strong>USB Image Tool</strong><br>故障率最低的是1.7版本。</p>
-<h3 id="插上读卡器，烧写系统开始！"><a href="#插上读卡器，烧写系统开始！" class="headerlink" title="插上读卡器，烧写系统开始！"></a>插上读卡器，烧写系统开始！</h3><ul>
-<li><p><strong>烧写系统</strong><br>打开USB Image Tool<br><strong>注意左上角是Device Mode，不是Volume Mode！</strong><br><a href="http://snapgr.am/image/Livb" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/06/20/1.png" alt="1.png"></a></p>
-<ul>
-<li>1.Rescan 选择下载后解压的img文件</li>
-<li>2.写入等待进度条完成即可。</li>
-</ul>
-</li>
-<li><p><strong>错误原因</strong></p>
-<ul>
-<li>1.USB Image Tool 在win7以上系统中必须要以管理员权限运行</li>
-<li>2.USB Image Tool运行需要.net环境 直接使用系统默认加载的即可。</li>
-</ul>
-<p>烧写完成后接入电源</p>
-</li>
-</ul>
-<h3 id="进入SSH管理（没有显示设备时）"><a href="#进入SSH管理（没有显示设备时）" class="headerlink" title="进入SSH管理（没有显示设备时）"></a>进入SSH管理（没有显示设备时）</h3><p>第一次进入系统时直接利用网线接入路由器，将电脑接入同一个wifi下。<br>在路由器管理界面查找树莓派对应得IP地址。<br>进不去路由？也可以扫描一下局域网设备中开启22端口的设备，八九不离十！</p>
-<ul>
-<li><strong>使用SSH管理工具，这里以putty为例。打开软件，填入树莓派ip地址。</strong><ul>
-<li><strong>打开软件，填入树莓派ip地址。</strong><br><em>默认登陆界面</em><br><a href="http://snapgr.am/image/Liv4" target="_blank" rel="external"><img src="http://cdn4.snapgram.co/images/2016/06/20/2.png" alt="2.png"></a><ul>
-<li><strong>默认用户名pi 密码raspberry。</strong><br><a href="http://snapgr.am/image/LivJ" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/06/20/3.png" alt="3.png"></a></li>
-<li><strong>登陆成功！</strong><br><img src="http://cdn1.snapgram.co/imgs/2016/06/20/4.png" alt="4.png"></li>
-</ul>
-<hr>
-参考<blockquote>
-<p><a href="http://blog.csdn.net/longerzone/article/details/36034619" target="_blank" rel="external">http://blog.csdn.net/longerzone/article/details/36034619</a></p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/18/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-18T10:10:11+08:00" content="2016-06-18">
-              2016-06-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/随/" itemprop="url" rel="index">
-                    <span itemprop="name">随</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/18/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/18/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/06/18/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -951,6 +581,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/26/VPS科学上网教程系列/"
+           data-title="科学上网教程（一）——VPS上搭建SSR" data-url="http://yoursite.com/2016/06/26/VPS科学上网教程系列/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -970,8 +608,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/v.png"
@@ -1030,6 +677,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本从0开始的教程，当作自己的备份了。"><span class="nav-number">1.</span> <span class="nav-text">基本从0开始的教程，当作自己的备份了。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#谁比较需要单独购买VPS科学上网？"><span class="nav-number">2.</span> <span class="nav-text">谁比较需要单独购买VPS科学上网？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VPS选择"><span class="nav-number">3.</span> <span class="nav-text">VPS选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vps部署"><span class="nav-number">4.</span> <span class="nav-text">vps部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器选择"><span class="nav-number">4.1.</span> <span class="nav-text">服务器选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作系统"><span class="nav-number">4.2.</span> <span class="nav-text">操作系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择硬件"><span class="nav-number">4.3.</span> <span class="nav-text">选择硬件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置securecrt-不必在意ip地址"><span class="nav-number">4.4.</span> <span class="nav-text">配置securecrt(不必在意ip地址)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署ShadowSocksR"><span class="nav-number">5.</span> <span class="nav-text">部署ShadowSocksR</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装SSR"><span class="nav-number">5.1.</span> <span class="nav-text">安装SSR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改shadowsocks-json配置文件"><span class="nav-number">5.2.</span> <span class="nav-text">修改shadowsocks.json配置文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shadowsocksR客户端配置"><span class="nav-number">6.</span> <span class="nav-text">shadowsocksR客户端配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结束"><span class="nav-number">7.</span> <span class="nav-text">结束</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1114,6 +772,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
 
   
 

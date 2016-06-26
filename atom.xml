@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-21T06:24:17.770Z</updated>
+  <updated>2016-06-26T06:55:15.887Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,198 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>科学上网教程（一）——VPS上搭建SSR</title>
+    <link href="http://yoursite.com/2016/06/26/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%97/"/>
+    <id>http://yoursite.com/2016/06/26/VPS科学上网教程系列/</id>
+    <published>2016-06-26T04:16:15.000Z</published>
+    <updated>2016-06-26T06:55:15.887Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;a href=&quot;#基本从0开始的教程，当作自己的备份了。&quot; class=&quot;headerlink&quot; title=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;/a&gt;基本从0开始的教程，当作自己的备份了。&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;吐槽&lt;/strong&gt;&lt;br&gt;作为一个伪程序员，每次最苦恼的就是Android SDK的更新，当初安装Android Studio时候就因为防火墙折腾了整整2周，简直就是把自学Android的那点耐心都磨没了。各种的搜索文档，离了google效率下降70%！科学上网简直成了程序员的必备生存技能了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;谁比较需要单独购买VPS科学上网？&quot;&gt;&lt;a href=&quot;#谁比较需要单独购买VPS科学上网？&quot; class=&quot;headerlink&quot; title=&quot;谁比较需要单独购买VPS科学上网？&quot;&gt;&lt;/a&gt;谁比较需要单独购买VPS科学上网？&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;只是翻墙简单浏览网页，就不必要再单独花费人民币了，蓝灯、和各个网站的免费ss账户，是你的主菜。&lt;/li&gt;
+&lt;li&gt;偶尔看看视频、不想画太多精力在寻找免费资源上。可以直接购买现成的ss/vpn账户，在G+相应的社区可以找到很多比较靠谱的提供商。&lt;/li&gt;
+&lt;li&gt;常年泡视频网站又受不了国内视频网站乱七八糟、24h使用google服务、对稳定性和流量有一定要求、愿意使用一点时间来折腾VPS。比较适合单独购买VPS来科学上网。VPS选择如下会提及。&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;搜索文档，更新软件源、折腾个人网站又不想备案的、折腾开源的  &lt;code&gt;这部分大神谁会来看这个啊，早自己分分钟写个轮子了&lt;/code&gt;&lt;/del&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;VPS选择&quot;&gt;&lt;a href=&quot;#VPS选择&quot; class=&quot;headerlink&quot; title=&quot;VPS选择&quot;&gt;&lt;/a&gt;VPS选择&lt;/h2&gt;&lt;p&gt;选择VPS看那几点&lt;br&gt; &lt;strong&gt;一定要根据自己的具体使用场景和网络环境来选择VPS服务。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt; 选择VPS的一般要注意的几点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;自己的具体网络环境&lt;ul&gt;
+&lt;li&gt;简单来说，一般联通的国际出口稳定性大于电信、移动的国际出口看心情有的地区甩电信联通几条街，坏的时候根本没速度。电信网路比较特殊，国际出口充足，但是限速到不能忍，不挤的时候嗖嗖的，高峰期渣到爆炸。&lt;/li&gt;
+&lt;li&gt;移动网络具体情况不太清楚。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;VPS地点。&lt;ul&gt;
+&lt;li&gt;日本VPS电信网络访问要绕道美国，ping一半在200到300了，联通直连日本，ping在100上下！&lt;/li&gt;
+&lt;li&gt;美国的VPS联通/电信访问延迟基本相当。一般选择靠近美国西海岸节点旧金山、洛杉矶、纽约等地点。&lt;/li&gt;
+&lt;li&gt;新加坡节点，在靠近南方地区，可以ping在100以内稳定！youtube 4k不卡。但在偏北一些地区ping不稳定。&lt;/li&gt;
+&lt;li&gt;香港VPS，这个比较特殊，香港的VPS ping值可以低到20几，但是香港本身的国际出口就小，VPS价格也偏高，另外香港毕竟也在政府的直接管辖内，隐私方面风险比其他地区节点要大一些。建议土豪级别的游戏玩家使用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;VPS虚拟化架构。具体解释请自行google，只说明对科学上网的影响。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;OpenVZ（简称OVZ） 便宜！但是没法进行修改内核、加锐速之类的优化操作。访问速度基本取决于你的本地网络环境优化的可能性。（不是没有可以加速的手段，就是在基本相同情况下，不如其他架构的vps可以榨干VPS的传输性能）。加速手段：Finaspeed（已停止更新） 和net-speeder。&lt;/li&gt;
+&lt;li&gt;Xen性能较好，实际用的不多，不做更多评论&lt;/li&gt;
+&lt;li&gt;Hyper-VH完美支持Windows系统，Hyper-V同样可以超售内存和硬盘，如果服务商超卖较多可能会有性能问题，Linux操作系统性能较低。&lt;/li&gt;
+&lt;li&gt;KVM全功能虚拟化架构，可上传ISO手动安装系统。KVM VPS相对其它架构的VPS较为自由。虚拟化性能比Xen略低。可以使用TCP优化和锐速，价格比一半OVZ的要高一些。（&lt;code&gt;本教程以KVM为例&lt;/code&gt;）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;VPS提供商&lt;ul&gt;
+&lt;li&gt;这个就比较多了，尽量选择购买人较多的，而且一般支持支付宝的服务商被国人玩半残居多（比如搬瓦工。。超售严重），所以&lt;code&gt;购买不支持支付宝的vps提供商&lt;/code&gt;要靠谱一点。注册&lt;a href=&quot;https://www.paypal.com/c2/cgi-bin/webscr?cmd=_registration-run&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;paypal国际版&lt;/a&gt;（&lt;strong&gt;注：是国际版paypal 不是国内的贝宝！&lt;/strong&gt;）一般的vps提供商都支持paypal付款。与使用信用卡相比，具体的优惠政策不同，详情请自行google。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;推荐一个VPS的评测网站，相对更新很快。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.laozuo.org/myvps&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.laozuo.org/myvps&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;vps部署&quot;&gt;&lt;a href=&quot;#vps部署&quot; class=&quot;headerlink&quot; title=&quot;vps部署&quot;&gt;&lt;/a&gt;vps部署&lt;/h2&gt;&lt;p&gt;我选择的是&lt;code&gt;Vultr VPS&lt;/code&gt;。5刀/月，1T流量 怎么折腾都够了。&lt;br&gt;本节内容转载自&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://mpc2008cn.github.io/2015/10/22/vps/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://mpc2008cn.github.io/2015/10/22/vps/&lt;/a&gt;&lt;br&gt;就是从这开始折腾的，有删减和修改。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;服务器选择&quot;&gt;&lt;a href=&quot;#服务器选择&quot; class=&quot;headerlink&quot; title=&quot;服务器选择&quot;&gt;&lt;/a&gt;服务器选择&lt;/h3&gt;&lt;p&gt;选择&lt;code&gt;东京或者美国西海岸&lt;/code&gt;的服务器,速度相对比较快&lt;br&gt;&lt;a href=&quot;http://snapgr.am/image/LOQ3&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://cdn1.snapgram.co/imgs/2016/06/24/1.jpg&quot; alt=&quot;1.jpg&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;操作系统&quot;&gt;&lt;a href=&quot;#操作系统&quot; class=&quot;headerlink&quot; title=&quot;操作系统&quot;&gt;&lt;/a&gt;操作系统&lt;/h3&gt;&lt;p&gt;选择Debian 7 x64/Debian 8 x64,centos跟ubuntu都不能完美开启锐速。&lt;br&gt;&lt;img src=&quot;http://cdn3.snapgram.co/imgs/2016/06/24/2cef26.jpg&quot; alt=&quot;2cef26.jpg&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;选择硬件&quot;&gt;&lt;a href=&quot;#选择硬件&quot; class=&quot;headerlink&quot; title=&quot;选择硬件&quot;&gt;&lt;/a&gt;选择硬件&lt;/h3&gt;&lt;p&gt;一个月可以免费用$5的配置,科学上网就够了，建站等需求需要更大的。&lt;/p&gt;
+&lt;p&gt;创建vps 等待完成。&lt;br&gt;&lt;a href=&quot;http://snapgr.am/image/LOsE&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://cdn2.snapgram.co/imgs/2016/06/24/981aa04579703c60.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;配置securecrt-不必在意ip地址&quot;&gt;&lt;a href=&quot;#配置securecrt-不必在意ip地址&quot; class=&quot;headerlink&quot; title=&quot;配置securecrt(不必在意ip地址)&quot;&gt;&lt;/a&gt;配置securecrt(不必在意ip地址)&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;下载&lt;a href=&quot;https://drive.google.com/open?id=0ByuNnrUBU_n3ZkRMZGhpeXlFYVU&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;securecrt&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;复制服务器的IP地址,初始用户名,初始密码&lt;br&gt;&lt;img src=&quot;http://cdn1.snapgram.co/imgs/2016/06/24/4ecb6e.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;a href=&quot;http://snapgr.am/image/LOsI&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://cdn3.snapgram.co/imgs/2016/06/24/6.jpg&quot; alt=&quot;6.jpg&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;securecrt连接vps&lt;br&gt;解压下载的secure crt,双击\SecureCRT_EN\SecureCRT\中的SecureCRT.exe&lt;/p&gt;
+&lt;p&gt;输入IP地址,用户名,点击connect&lt;br&gt;&lt;img src=&quot;http://cdn3.snapgram.co/imgs/2016/06/24/crt1.png&quot; alt=&quot;crt1.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;弹出框点击Accept&amp;amp;Save&lt;br&gt;&lt;img src=&quot;http://cdn4.snapgram.co/images/2016/06/24/crt2.png&quot; alt=&quot;crt2.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;输入密码,勾选save password,OK&lt;br&gt;&lt;img src=&quot;http://cdn2.snapgram.co/imgs/2016/06/24/crt3.png&quot; alt=&quot;crt3.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;出现如图所示,标签变绿就说明连接成功啦.&lt;br&gt;&lt;img src=&quot;http://cdn1.snapgram.co/imgs/2016/06/24/crt4.png&quot; alt=&quot;crt4.png&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;部署ShadowSocksR&quot;&gt;&lt;a href=&quot;#部署ShadowSocksR&quot; class=&quot;headerlink&quot; title=&quot;部署ShadowSocksR&quot;&gt;&lt;/a&gt;部署ShadowSocksR&lt;/h2&gt;&lt;p&gt;为什么选择SSR而不是原版的SS&lt;br&gt;主要原因如下&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;可以直接启用chacha20加密，在移动设备上比较好使&lt;/li&gt;
+&lt;li&gt;TFO(TCP Fast Open)直接自带，减少握手次数。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;二次混淆和抗重放等附加功能（关于这个有争议）关于shadowsocksR的相关争论在以下网址中，至于我来说，现在ssr开源，一定的网络环境下比原版的ss稳定就够了。&lt;/p&gt;
+&lt;p&gt;一些争议如下&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.librehat.com/about-shadowsocks-r-and-the-security-of-shadowsocks/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.librehat.com/about-shadowsocks-r-and-the-security-of-shadowsocks/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;现在SSR客户端更新主页在ZeroNet中&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://127.0.0.1:43110/shadowsocksr.bit&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://127.0.0.1:43110/shadowsocksr.bit&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;ZeroNet简介和接入&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.williamlong.info/archives/4574.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.williamlong.info/archives/4574.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;用到的一键安装脚本@秋水逸冰&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://shadowsocks.be/9.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://shadowsocks.be/9.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;安装SSR&quot;&gt;&lt;a href=&quot;#安装SSR&quot; class=&quot;headerlink&quot; title=&quot;安装SSR&quot;&gt;&lt;/a&gt;安装SSR&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;复制以下代码到登陆成功的securecrt&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;chmod +x shadowsocksR.sh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;./shadowsocksR.sh 2&amp;gt;&amp;amp;1 | tee shadowsocksR.log&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如图，回车。&lt;br&gt;&lt;img src=&quot;http://cdn3.snapgram.co/imgs/2016/06/24/1189971.jpg&quot; alt=&quot;1189971.jpg&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;输入设定初始密码，也可以直接回车。&lt;br&gt;&lt;img src=&quot;http://cdn4.snapgram.co/images/2016/06/24/12.jpg&quot; alt=&quot;12.jpg&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;输入初始端口，也直接回车&lt;br&gt;&lt;img src=&quot;http://cdn2.snapgram.co/imgs/2016/06/24/13.jpg&quot; alt=&quot;13.jpg&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;嗯，回车&lt;br&gt;&lt;img src=&quot;http://cdn1.snapgram.co/imgs/2016/06/24/14.jpg&quot; alt=&quot;14.jpg&quot;&gt; &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;最后会提示——成功&lt;br&gt;&lt;img src=&quot;http://cdn3.snapgram.co/imgs/2016/06/24/15.jpg&quot; alt=&quot;15.jpg&quot;&gt;  &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;修改shadowsocks-json配置文件&quot;&gt;&lt;a href=&quot;#修改shadowsocks-json配置文件&quot; class=&quot;headerlink&quot; title=&quot;修改shadowsocks.json配置文件&quot;&gt;&lt;/a&gt;修改shadowsocks.json配置文件&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;WinSCP 是一个 Windows 环境下使用的 SSH 的开源图形化 SFTP 客户端。同时支持 SCP 协议。它的主要功能是在本地与远程计算机间安全地复制文件，并且可以直接编辑文件.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;下载&lt;a href=&quot;http://www.3xiazai.com/view/soft_199.html#dnl&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;WinSCP&lt;/a&gt;绿色中文版。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;解压缩打开winscp，保持默认配置不变，输入VPS的ip地址、用户名、密码。点击登陆。&lt;br&gt;  &lt;a href=&quot;http://snapgr.am/image/LORO&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://cdn4.snapgram.co/images/2016/06/25/21.jpg&quot; alt=&quot;21.jpg&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;默认在/root文件夹下，要进入/etc文件夹下找到shadowsocks.json&lt;br&gt; &lt;a href=&quot;http://snapgr.am/image/LORT&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://cdn2.snapgram.co/imgs/2016/06/25/22.jpg&quot; alt=&quot;22.jpg&quot;&gt;&lt;/a&gt;&lt;br&gt; &lt;img src=&quot;http://cdn1.snapgram.co/imgs/2016/06/25/23.jpg&quot; alt=&quot;23.jpg&quot;&gt;&lt;br&gt; &lt;img src=&quot;http://cdn3.snapgram.co/imgs/2016/06/25/24.jpg&quot; alt=&quot;24.jpg&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;正式开始编辑shadowsocks.json文件&lt;br&gt;因为SSR的android端暂时无人接手更新，所以我们配置两个端口来满足手机端和PC端应用。同理，如果是合租VPS下，可以配置多个端口提供给不同用户。&lt;br&gt;下面是一个shadowsocks.json的模板 &lt;code&gt;不加注释的版本&lt;/code&gt;可以直接复制粘贴,覆盖原始的shadowsocks.json文件。&lt;br&gt;参考资料网址&lt;br&gt;shadowsocks.json文件各项配置说明&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/breakwa11/shadowsocks-rss/wiki/Server-Setup&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/breakwa11/shadowsocks-rss/wiki/Server-Setup&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;混淆插件说明&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/breakwa11/shadowsocks-rss/wiki/obfs&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/breakwa11/shadowsocks-rss/wiki/obfs&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;注释版本&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;#所有代码高亮部分均可修改&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;server&amp;quot;:&amp;quot;0.0.0.0&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;server_ipv6&amp;quot;:&amp;quot;::&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;local_address&amp;quot;:&amp;quot;127.0.0.1&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;local_port&amp;quot;:1080,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;port_password&amp;quot;:&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      #手机端端口443 密码为123456.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &amp;quot;&amp;gt;&amp;gt;==443==&amp;lt;&amp;lt;&amp;quot;:&amp;quot;&amp;gt;&amp;gt;**&amp;gt;&amp;gt;==123456==&amp;lt;&amp;lt;**&amp;lt;&amp;lt;&amp;quot;, &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     #第二个端口3389，密码123456 ，protocol选择auth_sha1_v2。obfs选择tls1.2_ticket_auth，具体插件的介绍如下参考资料中&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &amp;quot;&amp;gt;&amp;gt;==3389==&amp;lt;&amp;lt;&amp;quot;:&amp;#123;&amp;quot;protocol&amp;quot;:&amp;quot;&amp;gt;&amp;gt;==auth_sha1_v2==&amp;lt;&amp;lt;&amp;quot;, &amp;quot;password&amp;quot;:&amp;quot;&amp;gt;&amp;gt;==123456==&amp;lt;&amp;lt;&amp;quot;, &amp;quot;obfs&amp;quot;:&amp;quot;&amp;gt;&amp;gt;==tls1.2_ticket_auth==&amp;lt;&amp;lt;&amp;quot;, &amp;quot;obfs_param&amp;quot;:&amp;quot;&amp;quot;&amp;#125;,   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    #注意无论怎么变化，最后一个端口设置，不带逗号！&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &amp;quot;&amp;gt;&amp;gt;==25==&amp;lt;&amp;lt;&amp;quot;:&amp;#123;&amp;quot;protocol&amp;quot;:&amp;quot;&amp;gt;&amp;gt;==auth_sha1_v2==&amp;lt;&amp;lt;&amp;quot;, &amp;quot;password&amp;quot;:&amp;quot;&amp;gt;&amp;gt;==123456==&amp;lt;&amp;lt;&amp;quot;, &amp;quot;obfs&amp;quot;:&amp;quot;&amp;gt;&amp;gt;==tls1.2_ticket_auth==&amp;lt;&amp;lt;&amp;quot;, &amp;quot;obfs_param&amp;quot;:&amp;quot;&amp;quot;&amp;#125;&amp;gt;&amp;gt;==#此处没有逗号！==&amp;lt;&amp;lt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;timeout&amp;quot;:400,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    #默认全局的加密方式，即上边各个端口的默认加密方式。一般为aes-256-cfb，		此处，选择为chacha20，移动设备性能较好。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;method&amp;quot;:&amp;quot;&amp;gt;&amp;gt;==chacha20==&amp;lt;&amp;lt;&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    #protocol.协议定义插件的默认值，origin即使用原版SS协议，不混淆。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;protocol&amp;quot;: &amp;quot;&amp;gt;&amp;gt;==origin==&amp;lt;&amp;lt;&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;protocol_param&amp;quot;: &amp;quot;&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     #protocol.协议定义插件的默认值，plain即使用原协议，不混淆。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;obfs&amp;quot;: &amp;quot;&amp;gt;&amp;gt;==plain==&amp;lt;&amp;lt;&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;obfs_param&amp;quot;: &amp;quot;&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;redirect&amp;quot;: &amp;quot;&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;dns_ipv6&amp;quot;: false,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   #TCP FAST OPEN ，打开&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;fast_open&amp;quot;: &amp;gt;&amp;gt;==true==&amp;lt;&amp;lt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;quot;workers&amp;quot;: 1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;无注释版本，可以复制粘贴覆盖原始文件&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;server&amp;quot;:&amp;quot;0.0.0.0&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;server_ipv6&amp;quot;:&amp;quot;::&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;local_address&amp;quot;:&amp;quot;127.0.0.1&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;local_port&amp;quot;:1080,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;port_password&amp;quot;:&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;quot;443&amp;quot;:&amp;quot;123456&amp;quot;, &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;quot;3389&amp;quot;:&amp;#123;&amp;quot;protocol&amp;quot;:&amp;quot;auth_sha1_v2&amp;quot;, &amp;quot;password&amp;quot;:&amp;quot;123456&amp;quot;, &amp;quot;obfs&amp;quot;:&amp;quot;tls1.2_ticket_auth&amp;quot;, &amp;quot;obfs_param&amp;quot;:&amp;quot;&amp;quot;&amp;#125;,   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;quot;25&amp;quot;:&amp;#123;&amp;quot;protocol&amp;quot;:&amp;quot;auth_sha1_v2&amp;quot;, &amp;quot;password&amp;quot;:&amp;quot;123456&amp;quot;, &amp;quot;obfs&amp;quot;:&amp;quot;tls1.2_ticket_auth&amp;quot;, &amp;quot;obfs_param&amp;quot;:&amp;quot;&amp;quot;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;timeout&amp;quot;:400,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;method&amp;quot;:&amp;quot;chacha20&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;protocol&amp;quot;: &amp;quot;origin&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;protocol_param&amp;quot;: &amp;quot;&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;obfs&amp;quot;: &amp;quot;plain&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;obfs_param&amp;quot;: &amp;quot;&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;redirect&amp;quot;: &amp;quot;&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;dns_ipv6&amp;quot;: false,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;fast_open&amp;quot;: true,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;workers&amp;quot;: 1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;配置完成后，重启SSR,以root账户登陆securecrt，复制以下代码，重启ssr。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/etc/init.d/shadowsocks restart&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;会提示shadowsocksr重启成功。（如图）&lt;br&gt;&lt;img src=&quot;http://cdn3.snapgram.co/imgs/2016/06/25/25.jpg&quot; alt=&quot;25.jpg&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;shadowsocksR客户端配置&quot;&gt;&lt;a href=&quot;#shadowsocksR客户端配置&quot; class=&quot;headerlink&quot; title=&quot;shadowsocksR客户端配置&quot;&gt;&lt;/a&gt;shadowsocksR客户端配置&lt;/h2&gt;&lt;p&gt;现在SSR最新的更新在0网中，直接访问不便。&lt;br&gt;给出个ssr的客户端集合&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://userscloud.com/go/embed/iss72k58dh2l/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://userscloud.com/go/embed/iss72k58dh2l/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;下载如图所示3个，ssr客户端，ss手机端/扫描插件。解压ssr客户端，并进入。&lt;br&gt;&lt;img src=&quot;http://cdn4.snapgram.co/images/2016/06/25/31.jpg&quot; alt=&quot;31.jpg&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;解压ShadowsocksR-win-3.8.2e.7z（以具体客户端版本为准），打开。&lt;br&gt;&lt;img src=&quot;http://cdn2.snapgram.co/imgs/2016/06/25/3220191.jpg&quot; alt=&quot;3220191.jpg&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;对应上文中SSR服务端配置&lt;br&gt;输入对应端口配置，ip地址，密码等。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;443端口&lt;br&gt;&lt;img src=&quot;http://cdn1.snapgram.co/imgs/2016/06/25/334344b.jpg&quot; alt=&quot;334344b.jpg&quot;&gt;&lt;/li&gt;
+&lt;li&gt;3389端口&lt;br&gt;&lt;img src=&quot;http://cdn3.snapgram.co/imgs/2016/06/25/342622e.jpg&quot; alt=&quot;342622e.jpg&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;右键shadowsocks快捷图标,选择启用系统代理&lt;br&gt;&lt;img src=&quot;http://cdn4.snapgram.co/images/2016/06/25/36.jpg&quot; alt=&quot;36.jpg&quot;&gt;&lt;br&gt;现在应该可以访问 谷歌了:)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用Chrome+SwitchyOmega&lt;br&gt;Chrome下插件SwitchyOmega可以根据要访问的网址判断是否需要经过代理，做到智能的科学上网。并且现在这个插件的配置可以云同步，再也不用本地保存了！具体教程如下&lt;br&gt;SwitchyOmega使用ss代理&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.ihacksoft.com/chrome-switchyomega.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.ihacksoft.com/chrome-switchyomega.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;配合gfwlist&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/FelisCatus/SwitchyOmega/wiki/GFWList&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/FelisCatus/SwitchyOmega/wiki/GFWList&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.jianshu.com/p/37ef0b9ecc08&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jianshu.com/p/37ef0b9ecc08&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;结束&quot;&gt;&lt;a href=&quot;#结束&quot; class=&quot;headerlink&quot; title=&quot;结束&quot;&gt;&lt;/a&gt;结束&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.6.26  与SSR有关部分基本完成。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;a href=&quot;#基本从0开始的教程，当作自己的备份了。&quot; class=&quot;headerlink&quot; title=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;/a&gt;基本从0开始的教程，当作自己的备份了。&lt;/h2&gt;&lt;ul&gt;
+
+    
+    </summary>
+    
+      <category term="科学上网" scheme="http://yoursite.com/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
+    
+  </entry>
   
   <entry>
     <title>开端，起始。</title>
