@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-26T07:17:17.834Z</updated>
+  <updated>2016-06-26T07:19:59.860Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <title>科学上网教程（一）——VPS上搭建SSR</title>
     <link href="http://yoursite.com/2016/06/26/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%97/"/>
     <id>http://yoursite.com/2016/06/26/VPS科学上网教程系列/</id>
-    <published>2016-06-26T04:16:15.000Z</published>
-    <updated>2016-06-26T07:17:17.834Z</updated>
+    <published>2016-06-26T04:16:16.000Z</published>
+    <updated>2016-06-26T07:19:59.860Z</updated>
     
     <content type="html">&lt;h2 id=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;a href=&quot;#基本从0开始的教程，当作自己的备份了。&quot; class=&quot;headerlink&quot; title=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;/a&gt;基本从0开始的教程，当作自己的备份了。&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;吐槽&lt;/strong&gt;&lt;br&gt;作为一个伪程序员，每次最苦恼的就是Android SDK的更新，当初安装Android Studio时候就因为防火墙折腾了整整2周，简直就是把自学Android的那点耐心都磨没了。各种的搜索文档，离了google效率下降70%！科学上网简直成了程序员的必备生存技能了。&lt;/li&gt;
@@ -35,17 +35,19 @@
 &lt;h2 id=&quot;VPS选择&quot;&gt;&lt;a href=&quot;#VPS选择&quot; class=&quot;headerlink&quot; title=&quot;VPS选择&quot;&gt;&lt;/a&gt;VPS选择&lt;/h2&gt;&lt;p&gt;选择VPS看那几点&lt;br&gt; &lt;strong&gt;一定要根据自己的具体使用场景和网络环境来选择VPS服务。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt; 选择VPS的一般要注意的几点&lt;/p&gt;
 &lt;h3 id=&quot;自己的具体网络环境&quot;&gt;&lt;a href=&quot;#自己的具体网络环境&quot; class=&quot;headerlink&quot; title=&quot;自己的具体网络环境&quot;&gt;&lt;/a&gt;自己的具体网络环境&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;简单来说，一般联通的国际出口稳定性大于电信、移动的国际出口看心情有的地区甩电信联通几条街，坏的时候根本没速度。电信网路比较特殊，国际出口充足，但是限速到不能忍，不挤的时候嗖嗖的，高峰期渣到爆炸。&lt;ul&gt;
-&lt;li&gt;移动网络具体情况不太清楚。&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;简单来说，一般联通的国际出口稳定性大于电信、移动的国际出口看心情有的地区甩电信联通几条街，坏的时候根本没速度。电信网路比较特殊，国际出口充足，但是限速到不能忍，不挤的时候嗖嗖的，高峰期渣到爆炸。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;移动网络具体情况不太清楚。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;VPS地点。&quot;&gt;&lt;a href=&quot;#VPS地点。&quot; class=&quot;headerlink&quot; title=&quot;VPS地点。&quot;&gt;&lt;/a&gt;VPS地点。&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;日本VPS电信网络访问要绕道美国，ping一半在200到300了，联通直连日本，ping在100上下！&lt;ul&gt;
-&lt;li&gt;美国的VPS联通/电信访问延迟基本相当。一般选择靠近美国西海岸节点旧金山、洛杉矶、纽约等地点。&lt;/li&gt;
-&lt;li&gt;新加坡节点，在靠近南方地区，可以ping在100以内稳定！youtube 4k不卡。但在偏北一些地区ping不稳定。&lt;/li&gt;
-&lt;li&gt;香港VPS，这个比较特殊，香港的VPS ping值可以低到20几，但是香港本身的国际出口就小，VPS价格也偏高，另外香港毕竟也在政府的直接管辖内，隐私方面风险比其他地区节点要大一些。建议土豪级别的游戏玩家使用。&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;日本VPS电信网络访问要绕道美国，ping一半在200到300了，联通直连日本，ping在100上下！&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;美国的VPS联通/电信访问延迟基本相当。一般选择靠近美国西海岸节点旧金山、洛杉矶、纽约等地点。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;新加坡节点，在靠近南方地区，可以ping在100以内稳定！youtube 4k不卡。但在偏北一些地区ping不稳定。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;香港VPS，这个比较特殊，香港的VPS ping值可以低到20几，但是香港本身的国际出口就小，VPS价格也偏高，另外香港毕竟也在政府的直接管辖内，隐私方面风险比其他地区节点要大一些。建议土豪级别的游戏玩家使用。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;VPS虚拟化架构。具体解释请自行google，只说明对科学上网的影响。&quot;&gt;&lt;a href=&quot;#VPS虚拟化架构。具体解释请自行google，只说明对科学上网的影响。&quot; class=&quot;headerlink&quot; title=&quot;VPS虚拟化架构。具体解释请自行google，只说明对科学上网的影响。&quot;&gt;&lt;/a&gt;VPS虚拟化架构。具体解释请自行google，只说明对科学上网的影响。&lt;/h3&gt;&lt;ul&gt;
@@ -322,17 +324,17 @@
       <category term="随" scheme="http://yoursite.com/categories/%E9%9A%8F/"/>
     
     
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
       <category term="python" scheme="http://yoursite.com/tags/python/"/>
     
       <category term="单片机" scheme="http://yoursite.com/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
     
       <category term="开源" scheme="http://yoursite.com/tags/%E5%BC%80%E6%BA%90/"/>
+    
+      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
     
   </entry>
   
