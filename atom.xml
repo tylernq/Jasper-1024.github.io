@@ -328,9 +328,9 @@
     
       <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
     
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
     
       <category term="单片机" scheme="http://yoursite.com/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
     
