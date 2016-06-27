@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-26T08:08:46.000Z</updated>
+  <updated>2016-06-27T09:47:15.795Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,56 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>科学上网教程（二）——VPS优化加速</title>
+    <link href="http://yoursite.com/2016/06/26/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%972/"/>
+    <id>http://yoursite.com/2016/06/26/VPS科学上网教程系列2/</id>
+    <published>2016-06-26T04:16:16.000Z</published>
+    <updated>2016-06-27T09:47:15.795Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;TCP优化&quot;&gt;&lt;a href=&quot;#TCP优化&quot; class=&quot;headerlink&quot; title=&quot;TCP优化&quot;&gt;&lt;/a&gt;TCP优化&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;适用场景：高延迟搞丢包线路。&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;增加TCP连接数量&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nano /etc/security/limits.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;   添加两行：&lt;/p&gt;
+  &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;   * soft nofile 51200&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   * hard nofile 51200&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ```    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	保存(Ctrl + X —— y ——回车)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- 设置ulimit：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      ulimit -n 51200&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- 修改内核参数&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	适合的还是hybla（高延迟高丢包率环境）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    首先看一下VPS现有算法：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      sysctl net.ipv4.tcp_available_congestion_control&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    没有hybla时，加载hybla算法。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      /sbin/modprobe tcp_hybla&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    开始修改&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      nano /etc/sysctl.conf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    复制代码：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ```json&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      #TCP配置优化(不然你自己根本不知道你在干什么)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      fs.file-max = 51200&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      #提高整个系统的文件限制&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      net.core.rmem_max = 67108864&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      net.core.wmem_max = 67108864&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      net.core.netdev_max_backlog = 250000&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      net.core.somaxconn = 4096&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      net.ipv4.tcp_syncookies = 1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      net.ipv4.tcp_tw_reuse = 1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      net.ipv4.tcp_tw_recycle = 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      net.ipv4.tcp_fin_timeout = 30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      net.ipv4.tcp_keepalive_time = 1200&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      net.ipv4.ip_local_port_range = 10000 65000&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      net.ipv4.tcp_max_syn_backlog = 8192&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      net.ipv4.tcp_max_tw_buckets = 5000&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      net.ipv4.tcp_fastopen = 3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      net.ipv4.tcp_mem = 25600 51200 102400&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      net.ipv4.tcp_rmem = 4096 87380 67108864&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      net.ipv4.tcp_wmem = 4096 65536 67108864&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      net.ipv4.tcp_mtu_probing = 1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      net.ipv4.tcp_congestion_control = hybla&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      #END OF LINE&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;保存(Ctrl + X —— y ——回车)
+
+应用
+
+   sysctl -p
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;重启SSR&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/etc/init.d/shadowsocks restart   
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;锐速&quot;&gt;&lt;a href=&quot;#锐速&quot; class=&quot;headerlink&quot; title=&quot;锐速&quot;&gt;&lt;/a&gt;锐速&lt;/h2&gt;&lt;h2 id=&quot;FinalSpeed&quot;&gt;&lt;a href=&quot;#FinalSpeed&quot; class=&quot;headerlink&quot; title=&quot;FinalSpeed&quot;&gt;&lt;/a&gt;FinalSpeed&lt;/h2&gt;&lt;h2 id=&quot;gfw-press大杀器&quot;&gt;&lt;a href=&quot;#gfw-press大杀器&quot; class=&quot;headerlink&quot; title=&quot;gfw.press大杀器&quot;&gt;&lt;/a&gt;gfw.press大杀器&lt;/h2&gt;&lt;h2 id=&quot;结束&quot;&gt;&lt;a href=&quot;#结束&quot; class=&quot;headerlink&quot; title=&quot;结束&quot;&gt;&lt;/a&gt;结束&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.6.26  与SSR有关部分基本完成。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;TCP优化&quot;&gt;&lt;a href=&quot;#TCP优化&quot; class=&quot;headerlink&quot; title=&quot;TCP优化&quot;&gt;&lt;/a&gt;TCP优化&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;适用场景：高延迟搞丢包线路。&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;增加TCP连接数量&lt;
+    
+    </summary>
+    
+      <category term="科学上网" scheme="http://yoursite.com/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>科学上网教程（一）——VPS上搭建SSR</title>
     <link href="http://yoursite.com/2016/06/26/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%97/"/>
     <id>http://yoursite.com/2016/06/26/VPS科学上网教程系列/</id>
     <published>2016-06-26T04:16:16.000Z</published>
-    <updated>2016-06-26T08:08:46.000Z</updated>
+    <updated>2016-06-26T08:38:07.243Z</updated>
     
     <content type="html">&lt;h2 id=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;a href=&quot;#基本从0开始的教程，当作自己的备份了。&quot; class=&quot;headerlink&quot; title=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;/a&gt;基本从0开始的教程，当作自己的备份了。&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;吐槽&lt;/strong&gt;&lt;br&gt;作为一个伪程序员，每次最苦恼的就是Android SDK的更新，当初安装Android Studio时候就因为防火墙折腾了整整2周，简直就是把自学Android的那点耐心都磨没了。各种的搜索文档，离了google效率下降70%！科学上网简直成了程序员的必备生存技能了。&lt;/li&gt;
