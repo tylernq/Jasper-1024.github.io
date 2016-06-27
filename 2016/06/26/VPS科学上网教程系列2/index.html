@@ -62,9 +62,11 @@
 <meta name="description" content="TCP优化适用场景：高延迟搞丢包线路。
 
 增加TCP连接数量
-nano /etc/security/limits.conf
+  1nano /etc/security/limits.conf
    添加两行：
-  1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950   * soft nofile 51200   * hard nofi">
+  1234567   * soft nofile 51200   * hard nofile 51200    ```    	保存(Ctrl + X —— y ——回车)    - 设置ulimit：
+ulimit -n 51200
+  1234-">
 <meta property="og:type" content="article">
 <meta property="og:title" content="科学上网教程（二）——VPS优化加速">
 <meta property="og:url" content="http://yoursite.com/2016/06/26/VPS科学上网教程系列2/index.html">
@@ -72,18 +74,22 @@ nano /etc/security/limits.conf
 <meta property="og:description" content="TCP优化适用场景：高延迟搞丢包线路。
 
 增加TCP连接数量
-nano /etc/security/limits.conf
+  1nano /etc/security/limits.conf
    添加两行：
-  1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950   * soft nofile 51200   * hard nofi">
-<meta property="og:updated_time" content="2016-06-27T09:47:15.795Z">
+  1234567   * soft nofile 51200   * hard nofile 51200    ```    	保存(Ctrl + X —— y ——回车)    - 设置ulimit：
+ulimit -n 51200
+  1234-">
+<meta property="og:updated_time" content="2016-06-27T09:50:35.846Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="科学上网教程（二）——VPS优化加速">
 <meta name="twitter:description" content="TCP优化适用场景：高延迟搞丢包线路。
 
 增加TCP连接数量
-nano /etc/security/limits.conf
+  1nano /etc/security/limits.conf
    添加两行：
-  1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950   * soft nofile 51200   * hard nofi">
+  1234567   * soft nofile 51200   * hard nofile 51200    ```    	保存(Ctrl + X —— y ——回车)    - 设置ulimit：
+ulimit -n 51200
+  1234-">
 
 
 
@@ -337,20 +343,26 @@ nano /etc/security/limits.conf
         <h2 id="TCP优化"><a href="#TCP优化" class="headerlink" title="TCP优化"></a>TCP优化</h2><p><strong>适用场景：高延迟搞丢包线路。</strong></p>
 <ul>
 <li><p>增加TCP连接数量</p>
-<pre><code>nano /etc/security/limits.conf
-</code></pre><p>   添加两行：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">   * soft nofile 51200</span><br><span class="line">   * hard nofile 51200</span><br><span class="line">    ```    </span><br><span class="line"></span><br><span class="line">	保存(Ctrl + X —— y ——回车)</span><br><span class="line">    </span><br><span class="line">- 设置ulimit：</span><br><span class="line"> </span><br><span class="line">      ulimit -n 51200</span><br><span class="line">  </span><br><span class="line">- 修改内核参数</span><br><span class="line">	适合的还是hybla（高延迟高丢包率环境）</span><br><span class="line">    </span><br><span class="line">    首先看一下VPS现有算法：</span><br><span class="line">    </span><br><span class="line">      sysctl net.ipv4.tcp_available_congestion_control</span><br><span class="line"></span><br><span class="line">    没有hybla时，加载hybla算法。</span><br><span class="line">    </span><br><span class="line">      /sbin/modprobe tcp_hybla</span><br><span class="line">    </span><br><span class="line">    开始修改</span><br><span class="line">    </span><br><span class="line">      nano /etc/sysctl.conf</span><br><span class="line">    </span><br><span class="line">    复制代码：</span><br><span class="line">    ```json</span><br><span class="line">      #TCP配置优化(不然你自己根本不知道你在干什么)</span><br><span class="line">      fs.file-max = 51200</span><br><span class="line">      #提高整个系统的文件限制</span><br><span class="line">      net.core.rmem_max = 67108864</span><br><span class="line">      net.core.wmem_max = 67108864</span><br><span class="line">      net.core.netdev_max_backlog = 250000</span><br><span class="line">      net.core.somaxconn = 4096</span><br><span class="line"></span><br><span class="line">      net.ipv4.tcp_syncookies = 1</span><br><span class="line">      net.ipv4.tcp_tw_reuse = 1</span><br><span class="line">      net.ipv4.tcp_tw_recycle = 0</span><br><span class="line">      net.ipv4.tcp_fin_timeout = 30</span><br><span class="line">      net.ipv4.tcp_keepalive_time = 1200</span><br><span class="line">      net.ipv4.ip_local_port_range = 10000 65000</span><br><span class="line">      net.ipv4.tcp_max_syn_backlog = 8192</span><br><span class="line">      net.ipv4.tcp_max_tw_buckets = 5000</span><br><span class="line">      net.ipv4.tcp_fastopen = 3</span><br><span class="line">      net.ipv4.tcp_mem = 25600 51200 102400</span><br><span class="line">      net.ipv4.tcp_rmem = 4096 87380 67108864</span><br><span class="line">      net.ipv4.tcp_wmem = 4096 65536 67108864</span><br><span class="line">      net.ipv4.tcp_mtu_probing = 1</span><br><span class="line">      net.ipv4.tcp_congestion_control = hybla</span><br><span class="line">      #END OF LINE</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/security/limits.conf</span><br></pre></td></tr></table></figure>
+<p>   添加两行：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   * soft nofile 51200</span><br><span class="line">   * hard nofile 51200</span><br><span class="line">    ```    </span><br><span class="line"></span><br><span class="line">	保存(Ctrl + X —— y ——回车)</span><br><span class="line">    </span><br><span class="line">- 设置ulimit：</span><br></pre></td></tr></table></figure>
+<pre><code>ulimit -n 51200
+</code></pre>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 修改内核参数</span><br><span class="line">	适合的还是hybla（高延迟高丢包率环境）</span><br><span class="line">    </span><br><span class="line">    首先看一下VPS现有算法：</span><br></pre></td></tr></table></figure>
+<pre><code>sysctl net.ipv4.tcp_available_congestion_control
+</code></pre>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">没有hybla时，加载hybla算法。</span><br></pre></td></tr></table></figure>
+<pre><code>/sbin/modprobe tcp_hybla
+</code></pre>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">开始修改</span><br></pre></td></tr></table></figure>
+<pre><code>nano /etc/sysctl.conf
+</code></pre>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">复制代码：</span><br><span class="line">```json</span><br><span class="line">  #TCP配置优化(不然你自己根本不知道你在干什么)</span><br><span class="line">  fs.file-max = 51200</span><br><span class="line">  #提高整个系统的文件限制</span><br><span class="line">  net.core.rmem_max = 67108864</span><br><span class="line">  net.core.wmem_max = 67108864</span><br><span class="line">  net.core.netdev_max_backlog = 250000</span><br><span class="line">  net.core.somaxconn = 4096</span><br><span class="line"></span><br><span class="line">  net.ipv4.tcp_syncookies = 1</span><br><span class="line">  net.ipv4.tcp_tw_reuse = 1</span><br><span class="line">  net.ipv4.tcp_tw_recycle = 0</span><br><span class="line">  net.ipv4.tcp_fin_timeout = 30</span><br><span class="line">  net.ipv4.tcp_keepalive_time = 1200</span><br><span class="line">  net.ipv4.ip_local_port_range = 10000 65000</span><br><span class="line">  net.ipv4.tcp_max_syn_backlog = 8192</span><br><span class="line">  net.ipv4.tcp_max_tw_buckets = 5000</span><br><span class="line">  net.ipv4.tcp_fastopen = 3</span><br><span class="line">  net.ipv4.tcp_mem = 25600 51200 102400</span><br><span class="line">  net.ipv4.tcp_rmem = 4096 87380 67108864</span><br><span class="line">  net.ipv4.tcp_wmem = 4096 65536 67108864</span><br><span class="line">  net.ipv4.tcp_mtu_probing = 1</span><br><span class="line">  net.ipv4.tcp_congestion_control = hybla</span><br><span class="line">  #END OF LINE</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <pre><code>保存(Ctrl + X —— y ——回车)
 
 应用
-
-   sysctl -p
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
 </code></pre><ul>
-<li><p>重启SSR</p>
-<pre><code>/etc/init.d/shadowsocks restart   
-</code></pre></li>
+<li>重启SSR  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/shadowsocks restart</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <h2 id="锐速"><a href="#锐速" class="headerlink" title="锐速"></a>锐速</h2><h2 id="FinalSpeed"><a href="#FinalSpeed" class="headerlink" title="FinalSpeed"></a>FinalSpeed</h2><h2 id="gfw-press大杀器"><a href="#gfw-press大杀器" class="headerlink" title="gfw.press大杀器"></a>gfw.press大杀器</h2><h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line">2016.6.26  与SSR有关部分基本完成。</span><br></pre></td></tr></table></figure>
 
@@ -378,13 +390,17 @@ nano /etc/security/limits.conf
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/26/VPS科学上网教程系列/" rel="next" title="科学上网教程（一）——VPS上搭建SSR">
-                <i class="fa fa-chevron-left"></i> 科学上网教程（一）——VPS上搭建SSR
+              <a href="/2016/06/21/开端/" rel="next" title="开端，起始。">
+                <i class="fa fa-chevron-left"></i> 开端，起始。
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/26/VPS科学上网教程系列/" rel="prev" title="科学上网教程（一）——VPS上搭建SSR">
+                科学上网教程（一）——VPS上搭建SSR <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
