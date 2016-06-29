@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-28T16:08:27.878Z</updated>
+  <updated>2016-06-29T14:36:10.490Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/06/27/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%972/"/>
     <id>http://yoursite.com/2016/06/27/VPS科学上网教程系列2/</id>
     <published>2016-06-27T09:52:16.000Z</published>
-    <updated>2016-06-28T16:08:27.878Z</updated>
+    <updated>2016-06-29T14:36:10.490Z</updated>
     
     <content type="html">&lt;h2 id=&quot;TCP优化&quot;&gt;&lt;a href=&quot;#TCP优化&quot; class=&quot;headerlink&quot; title=&quot;TCP优化&quot;&gt;&lt;/a&gt;TCP优化&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;适用场景：高延迟搞丢包线路。&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -49,14 +49,20 @@
  &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/etc/init.d/shadowsocks restart&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&quot;锐速&quot;&gt;&lt;a href=&quot;#锐速&quot; class=&quot;headerlink&quot; title=&quot;锐速&quot;&gt;&lt;/a&gt;锐速&lt;/h2&gt;&lt;hr&gt;
+&lt;h2 id=&quot;锐速&quot;&gt;&lt;a href=&quot;#锐速&quot; class=&quot;headerlink&quot; title=&quot;锐速&quot;&gt;&lt;/a&gt;锐速&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;介绍&lt;br&gt;锐速（ServerSpeeder）加速软件是一种基于ZETATCP加速引擎的软件，只需单边部署就可以起到 显著加速效果的 TCP 加速技术。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;应用场景及限制&lt;br&gt;单边加速，无需添加本地服务，但对linux内核有要求。（&lt;strong&gt;OVZ虚拟化不支持！&lt;/strong&gt;）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
 &lt;ul&gt;
 &lt;li&gt;锐速目前已经停止了免费用户20M的提供，商业化提供破解属于侵权行为。&lt;/li&gt;
 &lt;li&gt;以下提供的破解版安装方式，收集自网络。仅供个人实验使用，请支持正版。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;p&gt;提供两种安装方式&lt;/p&gt;
-&lt;h3 id=&quot;锐速破解版一键自动安装包&quot;&gt;&lt;a href=&quot;#锐速破解版一键自动安装包&quot; class=&quot;headerlink&quot; title=&quot;锐速破解版一键自动安装包&quot;&gt;&lt;/a&gt;锐速破解版一键自动安装包&lt;/h3&gt;&lt;p&gt;参考地址&lt;/p&gt;
+&lt;h3 id=&quot;锐速一键安装包&quot;&gt;&lt;a href=&quot;#锐速一键安装包&quot; class=&quot;headerlink&quot; title=&quot;锐速一键安装包&quot;&gt;&lt;/a&gt;锐速一键安装包&lt;/h3&gt;&lt;p&gt;参考地址&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.91yun.org/archives/683&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.91yun.org/archives/683&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.bandwagong.com/vultrvps/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.bandwagong.com/vultrvps/&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -64,13 +70,11 @@
 &lt;li&gt;&lt;p&gt;脚本自行匹配相同或相近内核，自动安装完成。&lt;/p&gt;
 &lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;wget -&lt;span class=&quot;keyword&quot;&gt;N&lt;/span&gt; --&lt;span class=&quot;keyword&quot;&gt;no&lt;/span&gt;-check-certificate http&lt;span class=&quot;variable&quot;&gt;s:&lt;/span&gt;//raw.githubusercontent.&lt;span class=&quot;keyword&quot;&gt;com&lt;/span&gt;/&lt;span class=&quot;number&quot;&gt;91&lt;/span&gt;yun/serverspeeder/master/serverspe eder-&lt;span class=&quot;keyword&quot;&gt;all&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; &amp;amp;&amp;amp; bash serverspeeder-&lt;span class=&quot;keyword&quot;&gt;all&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;根据屏幕提示输入 serverSpeederInstaller 其他信息默认，遇到Y或者N的地方，全部选Y.&lt;br&gt;&lt;img src=&quot;http://cdn2.snapgram.co/imgs/2016/06/28/QQ.jpg&quot; alt=&quot;QQ.jpg&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;如果你安装没有效果，编辑一下命令&lt;/p&gt;
-&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;vi&lt;/span&gt; /serverspeeder/etc/config&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;然后rsc和maxmode设置参数修改为1.然后在进行重启&lt;/p&gt;
-&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/serverspeeder/bin/serverSpeeder.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; restart&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;如果你安装没有效果，编辑一下命令&lt;/p&gt;
+  &lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;vi&lt;/span&gt; /serverspeeder/etc/config&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;  然后rsc和maxmode设置参数修改为1.然后在进行重启&lt;/p&gt;
+  &lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/serverspeeder/bin/serverSpeeder.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; restart&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;卸载&lt;/p&gt;
 &lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;chattr -i /serverspeeder/etc/apx* &amp;amp;&amp;amp; /serverspeeder/bin/serverSpeeder.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; uninstall -&lt;span class=&quot;keyword&quot;&gt;f&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -92,7 +96,118 @@
 &lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;service serverSpeeder status&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&quot;FinalSpeed&quot;&gt;&lt;a href=&quot;#FinalSpeed&quot; class=&quot;headerlink&quot; title=&quot;FinalSpeed&quot;&gt;&lt;/a&gt;FinalSpeed&lt;/h2&gt;&lt;h2 id=&quot;gfw-press大杀器&quot;&gt;&lt;a href=&quot;#gfw-press大杀器&quot; class=&quot;headerlink&quot; title=&quot;gfw.press大杀器&quot;&gt;&lt;/a&gt;gfw.press大杀器&lt;/h2&gt;&lt;h2 id=&quot;结束&quot;&gt;&lt;a href=&quot;#结束&quot; class=&quot;headerlink&quot; title=&quot;结束&quot;&gt;&lt;/a&gt;结束&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.6&lt;/span&gt;.26  与SSR有关部分基本完成。 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.6&lt;/span&gt;.28  TCP优化部分完成&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;重启锐速 &lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/serverspeeder/bin/serverSpeeder.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; restart&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;FinalSpeed&quot;&gt;&lt;a href=&quot;#FinalSpeed&quot; class=&quot;headerlink&quot; title=&quot;FinalSpeed&quot;&gt;&lt;/a&gt;FinalSpeed&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;介绍&lt;br&gt;FinalSpeed是高速双边加速软件,可加速所有基于tcp协议的网络服务,在高丢包和高延迟环境下,仍可达到90%的物理带宽利用率,即使高峰时段也能轻松跑满带宽。&lt;strong&gt;可以与锐速共存&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;应用场景及限制&lt;br&gt;双边加速，本地需要安装相应服务端。FinalSpeed本身只有加速功能，如需混淆、匿名等功能自行安装相应代理服务。在&lt;strong&gt;OVZ虚拟化&lt;/strong&gt;的vps上&lt;strong&gt;只可用udp模式&lt;/strong&gt;，udp在国内被封杀较严重，导致链接中断等。测试结果来看：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;单纯加速ss——不稳定，掉线严重。（与本地网络环境有很大关系）&lt;/li&gt;
+&lt;li&gt;ssr特定模式无法加速。&lt;/li&gt;
+&lt;li&gt;其他代理服务较为稳定，基本跑满本地带宽。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;FinalSpeed现在已停止更新&lt;/strong&gt;，官方移除了安装方法，以下安装方式来自github备份。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;安装命令:&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;rm -f install_fs.sh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;wget  https:&lt;span class=&quot;comment&quot;&gt;//github.com/dupontjoy/customization/raw/master/Rules/Shadowsocks/Finalspeed/install_fs.sh&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;chmod +x install_fs.sh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;./install_fs.sh &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&amp;gt;&amp;amp;&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; | tee install.log&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一键安装完成后，vps会自动安装java环境。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;卸载：&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sh /fs/stop.sh ; rm -rf /fs&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;设置开机启动：&lt;/p&gt;
+&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;chmod +&lt;span class=&quot;keyword&quot;&gt;x&lt;/span&gt; /etc/rc.local&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;vi&lt;/span&gt; /etc/rc.local&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;然后加入&lt;/p&gt;
+&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; /fs/start.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;每天晚上1点自动重启：&lt;/p&gt;
+&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;crontab -&lt;span class=&quot;keyword&quot;&gt;e&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; * * * &lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; /fs/restart.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;FinalSpeed-windows客户端&quot;&gt;&lt;a href=&quot;#FinalSpeed-windows客户端&quot; class=&quot;headerlink&quot; title=&quot;FinalSpeed windows客户端&quot;&gt;&lt;/a&gt;FinalSpeed windows客户端&lt;/h3&gt;&lt;p&gt;官方最新版本为1.2 更新日志上表明cpu占用降低30%，但是稳定性较差，时常挂掉。推荐FinalSpeed1.12测试版 个人常用版本，很稳定。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;这一部分请参考一下网站。&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.kuoruan.com/82.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://blog.kuoruan.com/82.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;常用命令-1&quot;&gt;&lt;a href=&quot;#常用命令-1&quot; class=&quot;headerlink&quot; title=&quot;常用命令&quot;&gt;&lt;/a&gt;常用命令&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;启动：&lt;/p&gt;
+&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; /fs/start.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;停止：&lt;/p&gt;
+&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; /fs/&lt;span class=&quot;keyword&quot;&gt;stop&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;重新启动：&lt;/p&gt;
+&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; /fs/restart.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;运行日志：&lt;/p&gt;
+&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;tail -&lt;span class=&quot;keyword&quot;&gt;f&lt;/span&gt; /fs/server.&lt;span class=&quot;built_in&quot;&gt;log&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;gfw-press大杀器&quot;&gt;&lt;a href=&quot;#gfw-press大杀器&quot; class=&quot;headerlink&quot; title=&quot;gfw.press大杀器&quot;&gt;&lt;/a&gt;gfw.press大杀器&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;介绍&lt;br&gt;GFW.Press号称新一代军用级高强度加密抗干扰海底光缆专用网络数据高速传输软件，挺神的反正。号称除白名单外，再也不能破解的协议，开发者是推特赵国劣绅石斑鱼大爷 @chinashiyu&lt;/li&gt;
+&lt;li&gt;官网&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://gfw.press&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://gfw.press&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;高手的源码分析&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://medium.com/@FWTO_O/gfw-press%E6%BA%90%E7%A0%81%E7%AE%80%E6%9E%90-61a2714eb99f#.bgztaqa6m&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://medium.com/@FWTO_O/gfw-press%E6%BA%90%E7%A0%81%E7%AE%80%E6%9E%90-61a2714eb99f#.bgztaqa6m&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;效果&lt;br&gt;只支持http/https代理，基本够用。客户端包括pc端和android端。&lt;br&gt;搭建在vps上及其进程本身很稳定，使用过程中除了进行大流量长达半个小时的满宽带下载外，没有断过。&lt;strong&gt;使用FinalSpeed+gfw.press 满宽带挂整晚下载，没掉过速度！&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;缺点&lt;br&gt;Java语言编写，对VPS有一定要求，少于512M/512M vswap的openvz vps最好不要尝试，基本跑不动。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;gfw-press一键安装&quot;&gt;&lt;a href=&quot;#gfw-press一键安装&quot; class=&quot;headerlink&quot; title=&quot;gfw.press一键安装&quot;&gt;&lt;/a&gt;gfw.press一键安装&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;root账户登录vps&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;wget -O gfw3proxy.sh --no-check-certificate \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;https:&lt;span class=&quot;comment&quot;&gt;//www.dropbox.com/s/vuj2rpfpjlnkawu/gfw3proxy.sh?dl=0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;然后输入&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;chmod +x gfw3proxy.sh &amp;amp;&amp;amp; ./gfw3proxy.sh&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;执行&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;gfw.press/server.sh&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;安装完毕&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;加入开机启动&lt;/p&gt;
+&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;chmod +&lt;span class=&quot;keyword&quot;&gt;x&lt;/span&gt; /etc/rc.local&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;vi&lt;/span&gt; /etc/rc.local&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;加入&lt;/p&gt;
+&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;gfw.press/server.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;增加用户/端口&lt;br&gt;编辑gfw.press/user.txt。格式是：&lt;br&gt;端口【空格一个】密码，每行代表一个用户。&lt;br&gt;例如3个用戶&lt;/p&gt;
+&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;14401&lt;/span&gt; xyz123MN&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;14402&lt;/span&gt; XYZ456bc&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;14403&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;789&lt;/span&gt;lKpOH&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;终止进程&lt;/p&gt;
+&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;kill $(&lt;span class=&quot;keyword&quot;&gt;ps&lt;/span&gt; aux | &lt;span class=&quot;keyword&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;java&#39;&lt;/span&gt; | &lt;span class=&quot;keyword&quot;&gt;grep&lt;/span&gt; -v &lt;span class=&quot;keyword&quot;&gt;grep&lt;/span&gt; | awk &lt;span class=&quot;string&quot;&gt;&#39;&amp;#123;print $2&amp;#125;&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;重启&lt;/p&gt;
+&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;gfw.press/server.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;客户端可以如下网址中下载到。安装完成后设置浏览器http/https代理，本地端口默认1080.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/chinashiyu/gfw.press&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/chinashiyu/gfw.press&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;结束&quot;&gt;&lt;a href=&quot;#结束&quot; class=&quot;headerlink&quot; title=&quot;结束&quot;&gt;&lt;/a&gt;结束&lt;/h2&gt;&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.6&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;26&lt;/span&gt;  与SSR有关部分基本完成。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.6&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;28&lt;/span&gt;  TCP优化部分完成&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.6&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;  gfw.press、FinalSpeed和锐速部分基本完成。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 </content>
     
     <summary type="html">
