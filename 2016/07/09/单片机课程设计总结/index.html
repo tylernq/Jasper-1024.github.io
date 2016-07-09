@@ -1,0 +1,737 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="单片机,开源," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="默" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="累死人的单片机课程设计终于结束了，忙了两天多。就是个数码管+ADC。看看自己两年多前写的程序。。这感觉。用了一天多重构。。。。之前写程序的那个乱啊。。。重新整理下，自己的库函数。记录于此。
+
+1602库函数1602.h1234567891011121314151617181920212223242526272829303132333435363738/*模 块 名：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="http://yoursite.com/2016/07/09/单片机课程设计总结/index.html">
+<meta property="og:site_name" content="默">
+<meta property="og:description" content="累死人的单片机课程设计终于结束了，忙了两天多。就是个数码管+ADC。看看自己两年多前写的程序。。这感觉。用了一天多重构。。。。之前写程序的那个乱啊。。。重新整理下，自己的库函数。记录于此。
+
+1602库函数1602.h1234567891011121314151617181920212223242526272829303132333435363738/*模 块 名：">
+<meta property="og:image" content="http://cdn1.snapgram.co/imgs/2016/07/09/QQ.jpg">
+<meta property="og:updated_time" content="2016-07-09T14:55:44.800Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hello World">
+<meta name="twitter:description" content="累死人的单片机课程设计终于结束了，忙了两天多。就是个数码管+ADC。看看自己两年多前写的程序。。这感觉。用了一天多重构。。。。之前写程序的那个乱啊。。。重新整理下，自己的库函数。记录于此。
+
+1602库函数1602.h1234567891011121314151617181920212223242526272829303132333435363738/*模 块 名：">
+<meta name="twitter:image" content="http://cdn1.snapgram.co/imgs/2016/07/09/QQ.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Hello World | 默 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-79641673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">默</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">为了生存，而一点点淡忘了最初的本意。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Hello World
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-09T20:10:11+08:00" content="2016-07-09">
+              2016-07-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/电子类/" itemprop="url" rel="index">
+                    <span itemprop="name">电子类</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/09/单片机课程设计总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/09/单片机课程设计总结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/09/单片机课程设计总结/" class="leancloud_visitors" data-flag-title="Hello World">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>累死人的单片机课程设计终于结束了，忙了两天多。就是个数码管+ADC。看看自己两年多前写的程序。。这感觉。用了一天多重构。。。。之前写程序的那个乱啊。。。重新整理下，自己的库函数。记录于此。</p>
+<hr>
+<h1 id="1602库函数"><a href="#1602库函数" class="headerlink" title="1602库函数"></a>1602库函数</h1><h2 id="1602-h"><a href="#1602-h" class="headerlink" title="1602.h"></a>1602.h</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*模 块 名：                LCD1602      */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*创 建 人：zyy        日期：2014-11-04  */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*修 改 者：js         日期：2016-07-08	*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*版 本2.1	                            */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*使用方法：首先调用LCD初始化函数void LcdInit()；</span><br><span class="line">  输入一个double类型数据调用void LcdDisplay(double temp);       </span><br><span class="line">  显示在第二行；如需修改第一行数据可在LcdDisplay函数中修改 */</span></span><br><span class="line"><span class="comment">/*  BUG   : 第二行double数据显示最后一位后，会跟随一位乱码 */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stc12c5a60s2.h&gt;</span>      </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;intrins.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>  uint unsigned int</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>  uchar unsigned char</span></span><br><span class="line"></span><br><span class="line">sbit lcdrs = P1^<span class="number">7</span>;</span><br><span class="line">sbit lcden = P2^<span class="number">4</span>;</span><br><span class="line">sbit    rw = P1^<span class="number">6</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lcd_data_port P0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sdelay</span><span class="params">(uint s)</span></span>;			 <span class="comment">//通用延迟函数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_com</span><span class="params">(uchar com)</span></span>;	     <span class="comment">//并口写数据</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_data</span><span class="params">(uchar date)</span></span>;	 <span class="comment">//并口写数据</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LcdInit</span><span class="params">()</span></span>;		             <span class="comment">//1602初始化</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LcdDisplay</span><span class="params">(<span class="keyword">double</span> temp,uint t)</span></span>;	 <span class="comment">//显示函数</span></span><br></pre></td></tr></table></figure>
+<h2 id="1602-c"><a href="#1602-c" class="headerlink" title="1602.c"></a>1602.c</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1602.c</span></span><br><span class="line">include &lt;<span class="number">1602.</span>h&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*模 块 名：              LCD1602        */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*创 建 人：zyy       日期：2014-11-04    */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*修 改 者：js        日期：2016-07-08	*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*版 本2.1	                            */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**********************************************/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sdelay</span><span class="params">(uint s)</span>			   <span class="comment">//通用延迟函数</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	uint x,y;</span><br><span class="line">	<span class="keyword">for</span>(x=s;x&gt;<span class="number">0</span>;x--)</span><br><span class="line">	<span class="keyword">for</span>(y=<span class="number">250</span>;y&gt;<span class="number">0</span>;y--);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**********************************************/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_com</span><span class="params">(uchar com)</span>	   <span class="comment">//并口写数据</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	lcdrs=<span class="number">0</span>;</span><br><span class="line">	lcden=<span class="number">0</span>;</span><br><span class="line">	lcd_data_port=com;</span><br><span class="line">	sdelay(<span class="number">1</span>);</span><br><span class="line">	lcden=<span class="number">1</span>;</span><br><span class="line">	sdelay(<span class="number">1</span>);</span><br><span class="line">	lcden=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_data</span><span class="params">(uchar date)</span>	   <span class="comment">//并口写数据</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	lcdrs=<span class="number">1</span>;</span><br><span class="line">	lcden=<span class="number">0</span>;</span><br><span class="line">	lcd_data_port=date;</span><br><span class="line">	sdelay(<span class="number">1</span>);</span><br><span class="line">	lcden=<span class="number">1</span>;</span><br><span class="line">	sdelay(<span class="number">1</span>);</span><br><span class="line">	lcden=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*********************************************************************</span><br><span class="line">*</span><br><span class="line">* 函 数 名: LcdInit</span><br><span class="line">* 功能描述: LCD初始化</span><br><span class="line">* 函数说明: 初始化数据：0x38  0x0c	0x06  0x01</span><br><span class="line">* 调用函数: sdelay（），write_com（），	write_data（）</span><br><span class="line">* 输 入: 无</span><br><span class="line">* 返 回: 无</span><br><span class="line">* 设 计 者：zyy 日期：2014-12-23</span><br><span class="line">* 版 本：   1.0</span><br><span class="line">***********************************************************************/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LcdInit</span><span class="params">()</span>		     <span class="comment">//1602初始化</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	lcden=<span class="number">0</span>;</span><br><span class="line">	rw=<span class="number">0</span>;</span><br><span class="line">	write_com(<span class="number">0x38</span>);</span><br><span class="line">	write_com(<span class="number">0x0c</span>);</span><br><span class="line">	write_com(<span class="number">0x06</span>);</span><br><span class="line">	write_com(<span class="number">0x01</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*********************************************************************</span><br><span class="line">*</span><br><span class="line">* 函 数 名: LcdDisplay</span><br><span class="line">* 功能描述: LCD显示</span><br><span class="line">* 函数说明: double类型数据转化为字符串，在lcd第二行显示。</span><br><span class="line">* 调用函数: sprintf(),write_com(),sdelay()</span><br><span class="line">* 全局变量:	无</span><br><span class="line">* 输 入:    一个double类型变量值</span><br><span class="line">* 返 回:    无</span><br><span class="line">* 设 计 者：zyy 日期：2014-12-23</span><br><span class="line">* 修 改 者：js 日期：2016-07-08</span><br><span class="line">* 版 本：	2.0</span><br><span class="line">***********************************************************************/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LcdDisplay</span><span class="params">(<span class="keyword">double</span> temp,uint t)</span>	       		    <span class="comment">//显示函数</span></span><br><span class="line"></span>&#123;</span><br><span class="line"><span class="keyword">static</span> uchar  table0[]=&#123;<span class="string">"pm              "</span>&#125;;		<span class="comment">//1602默认第一行</span></span><br><span class="line"><span class="keyword">static</span> uchar  table1[]=&#123;<span class="string">"00.0            "</span>&#125;;</span><br><span class="line"></span><br><span class="line">uchar  num=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">sprintf</span>(table1,<span class="string">"%f"</span>,(<span class="keyword">double</span>)temp);</span><br><span class="line"><span class="built_in">sprintf</span>(table1+<span class="number">8</span>,<span class="string">"%2d"</span>,(uint)t);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   write_com(<span class="number">0x80</span>);</span><br><span class="line">	<span class="keyword">for</span>(num=<span class="number">0</span>;num&lt;<span class="number">15</span>;num++)	       <span class="comment">//第一行刷新</span></span><br><span class="line">	&#123;</span><br><span class="line">		write_data(table0[num]);</span><br><span class="line">		sdelay(<span class="number">5</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   write_com(<span class="number">0x80</span>+<span class="number">0x40</span>);</span><br><span class="line">    <span class="keyword">for</span>(num=<span class="number">0</span>;num&lt;<span class="number">16</span>;num++)	       <span class="comment">//第二行显示</span></span><br><span class="line">	&#123;write_data(table1[num]);    <span class="comment">//0.0195</span></span><br><span class="line">		sdelay(<span class="number">5</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="数码管"><a href="#数码管" class="headerlink" title="数码管"></a>数码管</h1><ul>
+<li>对应电路图如下<br><img src="http://cdn1.snapgram.co/imgs/2016/07/09/QQ.jpg" alt="QQ.jpg"><h2 id="shu-h"><a href="#shu-h" class="headerlink" title="shu.h"></a>shu.h</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*模 块 名：           数码管           */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*创 建 人：zy       日期：2014-07-01 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*版 本1.2	                            */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*使用方法：调用 Shu_Display(double js)函数，输入一个double类型数据，</span><br><span class="line">  固定显示格式为小数点前4位及小数点后两位。                             */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*BUG：显示小数点后第二位时，有时会与输入值小1.原因疑似与fmod()函数有关 */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stc12c5a60s2.h&gt;</span>      </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;intrins.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> uint unsigned int</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> uchar unsigned char</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="comment">//端口定义</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> io_dm P0         <span class="comment">//定义LED显示的段码数据脚</span></span></span><br><span class="line">sbit io_shu = P2^<span class="number">3</span>;      <span class="comment">//数码管开关低电平有效</span></span><br><span class="line">sbit io_A   = P2^<span class="number">0</span>;		 <span class="comment">//3-8译码器输入</span></span><br><span class="line">sbit io_B   = P2^<span class="number">1</span>;</span><br><span class="line">sbit io_C   = P2^<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">sbit io_DP  = P0^<span class="number">7</span>;		 <span class="comment">//dp点定义</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> uchar du_num[<span class="number">15</span>];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay_1ms</span><span class="params">(uchar x)</span></span>;    <span class="comment">//1ms延迟函数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">wei</span><span class="params">(uchar i)</span></span>;			<span class="comment">//位选输出函数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Shu_Display</span><span class="params">(<span class="keyword">double</span> js)</span></span>;<span class="comment">//数码管显示函数</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="shu-c"><a href="#shu-c" class="headerlink" title="shu.c"></a>shu.c</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;shu.h&gt;</span>   </span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*模 块 名：          数码管           */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*创 建 人：zy       日期：2014-07-01 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*版 本1.2	                            */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//显示数字</span></span><br><span class="line">uchar du_num[]=&#123;<span class="number">0x3f</span>,<span class="number">0x06</span>,<span class="number">0x5b</span>,<span class="number">0x4f</span>,<span class="number">0x66</span>,<span class="number">0x6d</span>,<span class="number">0x7d</span>,<span class="number">0x07</span>,<span class="number">0x7f</span>,<span class="number">0x6f</span>,<span class="number">0x77</span>,<span class="number">0x7c</span>,<span class="number">0x39</span>,<span class="number">0x5e</span>,<span class="number">0x79</span>,<span class="number">0x71</span>&#125;;</span><br><span class="line"><span class="comment">//                0    1    2    3    4    5    6    7    8    9    a    b    c    d    e    f </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay_1ms</span><span class="params">(uchar x)</span><span class="comment">//1ms延迟函数</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    uchar j;</span><br><span class="line">    <span class="keyword">while</span>(x--)&#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">125</span>;j++)</span><br><span class="line">            &#123;;&#125;</span><br><span class="line">        &#125;   </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">wei</span><span class="params">(uchar i)</span>		<span class="comment">//位选信号输入</span></span><br><span class="line"></span>&#123;	<span class="comment">//i=i+1;</span></span><br><span class="line">	<span class="keyword">switch</span> (i)</span><br><span class="line">	&#123; <span class="keyword">case</span> <span class="number">0</span>:&#123;io_A=<span class="number">0</span>;io_B=<span class="number">0</span>;io_C=<span class="number">0</span>;&#125;  <span class="keyword">break</span>;   </span><br><span class="line">      <span class="keyword">case</span> <span class="number">1</span>:&#123;io_A=<span class="number">1</span>;io_B=<span class="number">0</span>;io_C=<span class="number">0</span>;&#125;  <span class="keyword">break</span>; </span><br><span class="line">	  <span class="keyword">case</span> <span class="number">2</span>:&#123;io_A=<span class="number">0</span>;io_B=<span class="number">2</span>;io_C=<span class="number">0</span>;&#125;  <span class="keyword">break</span>; </span><br><span class="line">	  <span class="keyword">case</span> <span class="number">3</span>:&#123;io_A=<span class="number">1</span>;io_B=<span class="number">1</span>;io_C=<span class="number">0</span>;&#125;  <span class="keyword">break</span>; </span><br><span class="line">	  <span class="keyword">case</span> <span class="number">4</span>:&#123;io_A=<span class="number">0</span>;io_B=<span class="number">0</span>;io_C=<span class="number">1</span>;&#125;  <span class="keyword">break</span>; </span><br><span class="line">	  <span class="keyword">case</span> <span class="number">5</span>:&#123;io_A=<span class="number">1</span>;io_B=<span class="number">0</span>;io_C=<span class="number">1</span>;&#125;  <span class="keyword">break</span>; </span><br><span class="line">	  <span class="keyword">case</span> <span class="number">6</span>:&#123;io_A=<span class="number">0</span>;io_B=<span class="number">1</span>;io_C=<span class="number">1</span>;&#125;  <span class="keyword">break</span>; </span><br><span class="line">     </span><br><span class="line">	  <span class="keyword">default</span>: ; <span class="keyword">break</span>; </span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment">/*********************************************************************</span><br><span class="line">*</span><br><span class="line">* 函 数 名: Shu_Display() </span><br><span class="line">* 功能描述: 将数字显示到数码管上，显示格式4+2</span><br><span class="line">* 函数说明: 段选位选，动态刷新数码管</span><br><span class="line">* 调用函数: delay_1ms  fmod()</span><br><span class="line">* 全局变量: 无</span><br><span class="line">* 输 入:    1个double类型数据</span><br><span class="line">* 返 回:    无</span><br><span class="line">* 设 计 者：zy 日期：2014-07-01 </span><br><span class="line">* 修 改 者：zy 日期：2016-07-08</span><br><span class="line">* 版 本：   1.2</span><br><span class="line">***********************************************************************/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Shu_Display</span><span class="params">(<span class="keyword">double</span> js)</span></span><br><span class="line"></span>&#123;uchar i;                  <span class="comment">//循环变量</span></span><br><span class="line"> <span class="keyword">static</span> uchar  suff[<span class="number">6</span>];	   <span class="comment">//数据处理暂存数组</span></span><br><span class="line"> <span class="keyword">static</span> uint   cuff[<span class="number">4</span>];	   <span class="comment">//提取各位有关</span></span><br><span class="line"> <span class="keyword">static</span> <span class="keyword">double</span>  n=<span class="number">1</span>,y; 	   <span class="comment">//与小数截取有关</span></span><br><span class="line"> <span class="keyword">static</span>  uint count;		   <span class="comment">//暂存</span></span><br><span class="line"> </span><br><span class="line"> y=<span class="built_in">fmod</span>(js,n);			   <span class="comment">//分离js小数部分 存在y中</span></span><br><span class="line"></span><br><span class="line"> count=js;				   <span class="comment">//强制类型转换，取js整数部分</span></span><br><span class="line"></span><br><span class="line"> suff[<span class="number">0</span>] = count/<span class="number">1000</span>;	   <span class="comment">//取千位</span></span><br><span class="line"> cuff[<span class="number">0</span>] = count%<span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line"> suff[<span class="number">1</span>] = cuff[<span class="number">0</span>]/<span class="number">100</span>;	   <span class="comment">//取百位</span></span><br><span class="line"> cuff[<span class="number">1</span>] = cuff[<span class="number">0</span>]%<span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"> suff[<span class="number">2</span>] = cuff[<span class="number">1</span>]/<span class="number">10</span>;	   <span class="comment">//取十位</span></span><br><span class="line"> suff[<span class="number">3</span>] = cuff[<span class="number">1</span>]%<span class="number">10</span>;	   <span class="comment">//取个位</span></span><br><span class="line"></span><br><span class="line"> count	 = y*<span class="number">1000</span>;		   <span class="comment">//小数部分。扩大1000倍提取。</span></span><br><span class="line"> </span><br><span class="line"> cuff[<span class="number">2</span>] = count%<span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line"> suff[<span class="number">4</span>] = cuff[<span class="number">2</span>]/<span class="number">100</span>;	   <span class="comment">//小数点后一位</span></span><br><span class="line"> cuff[<span class="number">3</span>] = cuff[<span class="number">2</span>]%<span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"> suff[<span class="number">5</span>] = cuff[<span class="number">3</span>]/<span class="number">10</span>;	  <span class="comment">//小数点后2位</span></span><br><span class="line"></span><br><span class="line"> io_shu=<span class="number">0</span>;			      <span class="comment">//打开3-8译码器</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">6</span>;i++)</span><br><span class="line">   &#123;</span><br><span class="line">    wei(i);               <span class="comment">//位选</span></span><br><span class="line">	io_dm=du_num[suff[i]];<span class="comment">//段选</span></span><br><span class="line">	<span class="keyword">if</span>(i==<span class="number">3</span>) io_DP=<span class="number">1</span>;</span><br><span class="line">	delay_1ms(<span class="number">1</span>);	      <span class="comment">//延迟</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/单片机/" rel="tag">#单片机</a>
+          
+            <a href="/tags/开源/" rel="tag">#开源</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/27/VPS科学上网教程系列2/" rel="next" title="科学上网教程（二）——VPS优化加速">
+                <i class="fa fa-chevron-left"></i> 科学上网教程（二）——VPS优化加速
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/09/单片机课程设计总结/"
+           data-title="Hello World" data-url="http://yoursite.com/2016/07/09/单片机课程设计总结/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/v.png"
+               alt="Jasper" />
+          <p class="site-author-name" itemprop="name">Jasper</p>
+          <p class="site-description motion-element" itemprop="description">程序员 微尘 V</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jasper-1024" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1602库函数"><span class="nav-number">1.</span> <span class="nav-text">1602库函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1602-h"><span class="nav-number">1.1.</span> <span class="nav-text">1602.h</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1602-c"><span class="nav-number">1.2.</span> <span class="nav-text">1602.c</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数码管"><span class="nav-number">2.</span> <span class="nav-text">数码管</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shu-h"><span class="nav-number">2.1.</span> <span class="nav-text">shu.h</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shu-c"><span class="nav-number">2.2.</span> <span class="nav-text">shu.c</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016.6.2 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jasper</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jasper-1024"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("8AEPwU1rVoSnwxtOrX35u23j-gzGzoHsz", "SBLr7EMdL83IXCfJSbydMdll");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
