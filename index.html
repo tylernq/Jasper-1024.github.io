@@ -247,8 +247,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/18/第一行代码跟刷/" itemprop="url">
-                  第一行代码-隐藏标题栏
+                <a class="post-title-link" href="/2016/07/20/第一行代码AS跟刷-Activity/" itemprop="url">
+                  第一行代码AS跟刷-Activity
                 </a>
               
             
@@ -261,8 +261,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-18T10:10:11+08:00" content="2016-07-18">
-              2016-07-18
+            <time itemprop="dateCreated" datetime="2016-07-20T13:11:11+08:00" content="2016-07-20">
+              2016-07-20
             </time>
           </span>
 
@@ -291,8 +291,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/18/第一行代码跟刷/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/18/第一行代码跟刷/" itemprop="commentsCount"></span>
+                <a href="/2016/07/20/第一行代码AS跟刷-Activity/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/20/第一行代码AS跟刷-Activity/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -302,7 +302,193 @@
 
           
           
-             <span id="/2016/07/18/第一行代码跟刷/" class="leancloud_visitors" data-flag-title="第一行代码-隐藏标题栏">
+             <span id="/2016/07/20/第一行代码AS跟刷-Activity/" class="leancloud_visitors" data-flag-title="第一行代码AS跟刷-Activity">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="手动创建Activity"><a href="#手动创建Activity" class="headerlink" title="手动创建Activity"></a>手动创建Activity</h2><ul>
+<li><p>新建FirstAtivity继承自Activity</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span></span>&#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span>  <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">&#125; &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建加载布局<br>  <a href="http://snapgr.am/image/LoY4" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/07/20/1.jpg" alt="1.jpg"></a></p>
+<ul>
+<li>有时会遇到。貌似是Android的Bug。<br>  <img src="http://cdn1.snapgram.co/imgs/2016/07/20/2.jpg" alt="2.jpg"><br>  重新选择绿色小机器人即可<br>  <img src="http://cdn3.snapgram.co/imgs/2016/07/20/3.jpg" alt="3.jpg"></li>
+</ul>
+</li>
+<li><p>切换到first-layout</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  &lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line">  &lt;LinearLayout</span><br><span class="line">  xmlns:android="http://schemas.android.com/apk/res/android"</span><br><span class="line">  android:layout_width="match_parent"</span><br><span class="line">  android:layout_height="match_parent"&gt;</span><br><span class="line">  &lt;Button</span><br><span class="line">      android:id="@+id/button_1"</span><br><span class="line">      android:text="button_1"</span><br><span class="line">      android:layout_width="wrap_content"</span><br><span class="line">      android:layout_height="wrap_content" /&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在FirestActivity中加载layout<br>  在onCreate中加入</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setContentView(R.layout.first_layout);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在AndroidMainfest文件中注册。</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity</span><br><span class="line">           android:name=".FirstActivity"</span><br><span class="line">           android:label="This is FirstActivity"&gt;</span><br><span class="line">           &lt;intent-filter&gt;</span><br><span class="line">               &lt;action android:name="android.intent.action.MAIN"/&gt;</span><br><span class="line">               &lt;category android:name="android.intent.category.LAUNCHER"/&gt;</span><br><span class="line">           &lt;/intent-filter&gt;</span><br><span class="line">&lt;/activity&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在模拟器中启动apk<br>  <img src="http://cdn4.snapgram.co/images/2016/07/20/43168d.jpg" alt="43168d.jpg"><br>  天生没有状态栏，应该是继承自Activity的缘故，原因未知。</p>
+</li>
+<li><p>将继承关系改到AppCompatActivity，标题栏又出现了。<br>  <a href="http://snapgr.am/image/LogP" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/07/20/5ea429.jpg" alt="5ea429.jpg"></a></p>
+</li>
+</ul>
+<h2 id="隐藏标题栏"><a href="#隐藏标题栏" class="headerlink" title="隐藏标题栏"></a>隐藏标题栏</h2><ul>
+<li><p>AS中默认的activity是继承自AppCompatActivity。<br>  隐藏标题栏需要在setContentView前加上</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supportRequestWindowFeature(Window.FEATURE_NO_TITLE)</span><br></pre></td></tr></table></figure>
+<p>  效果如图<br>  <a href="http://snapgr.am/image/LogU" target="_blank" rel="external"><img src="http://cdn3.snapgram.co/imgs/2016/07/20/QQ.jpg" alt="QQ.jpg"></a></p>
+</li>
+<li><p>如果严格按照第一行代码来，FirestActivity继承自Activity。<br>  则要使用</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requestWindowFeature(Window.FEATURE_NO_TITLE)）；</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他详情见 第一行代码AS跟刷-隐藏标题栏。</p>
+</li>
+</ul>
+<h2 id="活动中使用Toast"><a href="#活动中使用Toast" class="headerlink" title="活动中使用Toast"></a>活动中使用Toast</h2><blockquote>
+<p><a href="https://developer.android.com/guide/topics/ui/notifiers/toasts.html#Positioning" target="_blank" rel="external">Toast google官方说明</a></p>
+<ul>
+<li>推送一个短小信息推送给用户<br>  如图（摘自android developer）<br>  <img src="http://cdn4.snapgram.co/images/2016/07/20/toast.png" alt="toast.png"></li>
+</ul>
+</blockquote>
+<ul>
+<li><p>使用方法</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Toast.makeText(context, text, duration).show();</span><br></pre></td></tr></table></figure>
+<p>  举例</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Toast.makeText(FirstActivity.<span class="keyword">this</span>, <span class="string">"you clicked button 1"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line"><span class="comment">/*                  activity.this   消息内容                显示时间设置   */</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Button使用说明"><a href="#Button使用说明" class="headerlink" title="Button使用说明"></a>Button使用说明</h2><blockquote>
+<p><a href="https://developer.android.com/reference/android/widget/Button.html" target="_blank" rel="external">Button google 官方说明</a></p>
+<ul>
+<li>第一行代码内容<br>  在 onCreate() 方法中，给 Button 绑定点击事件，点击 Button 嗲用Toast显示一条信息。<br>  在onCreate() 中添加如下代码  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Button button1 = (Button) findViewById(R.id.button_1);</span><br><span class="line">button1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">            Toast.makeText(FirstActivity.<span class="keyword">this</span>, <span class="string">"you clicked button 1"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>第二种方法<br>  在firest-layout中Button属性中添加<code>android:onClick</code><br>  代码如下</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Button</span><br><span class="line">    android:id=<span class="string">"@+id/button_1"</span></span><br><span class="line">    android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">    android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">    android:onClick=<span class="string">"selfDestruct"</span></span><br><span class="line">    android:text=<span class="string">"button_1"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p>  随后在<code>public class FirstActivity extends AppCompatActivity{}</code>中添加 selfDestruct函数。注意<strong>不是在onCreate()中添加！</strong>selfDestruct与onCreate()互不包含。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selfDestruct</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">    Toast.makeText(FirstActivity.<span class="keyword">this</span>, <span class="string">"you clicked button 1"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>两种方式效果相同如图<br>  [<img src="http://cdn2.snapgram.co/imgs/2016/07/20/6.jpg" alt="6.jpg"></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/17/第一行代码跟刷/" itemprop="url">
+                  第一行代码AS跟刷-隐藏标题栏
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-17T17:10:11+08:00" content="2016-07-17">
+              2016-07-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/第一行代码/" itemprop="url" rel="index">
+                    <span itemprop="name">第一行代码</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/17/第一行代码跟刷/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/17/第一行代码跟刷/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/17/第一行代码跟刷/" class="leancloud_visitors" data-flag-title="第一行代码AS跟刷-隐藏标题栏">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1562,7 +1748,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1579,7 +1765,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

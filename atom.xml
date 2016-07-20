@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-07-12T03:29:00.999Z</updated>
+  <updated>2016-07-20T07:26:50.029Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,101 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>第一行代码-隐藏标题栏</title>
-    <link href="http://yoursite.com/2016/07/18/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E8%B7%9F%E5%88%B7/"/>
-    <id>http://yoursite.com/2016/07/18/第一行代码跟刷/</id>
-    <published>2016-07-18T02:10:11.000Z</published>
-    <updated>2016-07-12T03:29:00.999Z</updated>
+    <title>第一行代码AS跟刷-Activity</title>
+    <link href="http://yoursite.com/2016/07/20/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81AS%E8%B7%9F%E5%88%B7-Activity/"/>
+    <id>http://yoursite.com/2016/07/20/第一行代码AS跟刷-Activity/</id>
+    <published>2016-07-20T05:11:11.000Z</published>
+    <updated>2016-07-20T07:26:50.029Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;手动创建Activity&quot;&gt;&lt;a href=&quot;#手动创建Activity&quot; class=&quot;headerlink&quot; title=&quot;手动创建Activity&quot;&gt;&lt;/a&gt;手动创建Activity&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;新建FirstAtivity继承自Activity&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;FirstActivity&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Activity&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt;  &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Bundle savedInstanceState)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.onCreate(savedInstanceState);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;创建加载布局&lt;br&gt;  &lt;a href=&quot;http://snapgr.am/image/LoY4&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://cdn2.snapgram.co/imgs/2016/07/20/1.jpg&quot; alt=&quot;1.jpg&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;有时会遇到。貌似是Android的Bug。&lt;br&gt;  &lt;img src=&quot;http://cdn1.snapgram.co/imgs/2016/07/20/2.jpg&quot; alt=&quot;2.jpg&quot;&gt;&lt;br&gt;  重新选择绿色小机器人即可&lt;br&gt;  &lt;img src=&quot;http://cdn3.snapgram.co/imgs/2016/07/20/3.jpg&quot; alt=&quot;3.jpg&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;切换到first-layout&lt;/p&gt;
+  &lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;  &amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;lt;LinearLayout&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  android:layout_width=&quot;match_parent&quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  android:layout_height=&quot;match_parent&quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;lt;Button&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      android:id=&quot;@+id/button_1&quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      android:text=&quot;button_1&quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      android:layout_width=&quot;wrap_content&quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      android:layout_height=&quot;wrap_content&quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/LinearLayout&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在FirestActivity中加载layout&lt;br&gt;  在onCreate中加入&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;setContentView(R.layout.first_layout);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在AndroidMainfest文件中注册。&lt;/p&gt;
+  &lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;activity&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           android:name=&quot;.FirstActivity&quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           android:label=&quot;This is FirstActivity&quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           &amp;lt;intent-filter&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;               &amp;lt;action android:name=&quot;android.intent.action.MAIN&quot;/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;               &amp;lt;category android:name=&quot;android.intent.category.LAUNCHER&quot;/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           &amp;lt;/intent-filter&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/activity&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在模拟器中启动apk&lt;br&gt;  &lt;img src=&quot;http://cdn4.snapgram.co/images/2016/07/20/43168d.jpg&quot; alt=&quot;43168d.jpg&quot;&gt;&lt;br&gt;  天生没有状态栏，应该是继承自Activity的缘故，原因未知。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;将继承关系改到AppCompatActivity，标题栏又出现了。&lt;br&gt;  &lt;a href=&quot;http://snapgr.am/image/LogP&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://cdn2.snapgram.co/imgs/2016/07/20/5ea429.jpg&quot; alt=&quot;5ea429.jpg&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;隐藏标题栏&quot;&gt;&lt;a href=&quot;#隐藏标题栏&quot; class=&quot;headerlink&quot; title=&quot;隐藏标题栏&quot;&gt;&lt;/a&gt;隐藏标题栏&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;AS中默认的activity是继承自AppCompatActivity。&lt;br&gt;  隐藏标题栏需要在setContentView前加上&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;supportRequestWindowFeature(Window.FEATURE_NO_TITLE)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;  效果如图&lt;br&gt;  &lt;a href=&quot;http://snapgr.am/image/LogU&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://cdn3.snapgram.co/imgs/2016/07/20/QQ.jpg&quot; alt=&quot;QQ.jpg&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如果严格按照第一行代码来，FirestActivity继承自Activity。&lt;br&gt;  则要使用&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;requestWindowFeature(Window.FEATURE_NO_TITLE)）；&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;其他详情见 第一行代码AS跟刷-隐藏标题栏。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;活动中使用Toast&quot;&gt;&lt;a href=&quot;#活动中使用Toast&quot; class=&quot;headerlink&quot; title=&quot;活动中使用Toast&quot;&gt;&lt;/a&gt;活动中使用Toast&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.android.com/guide/topics/ui/notifiers/toasts.html#Positioning&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Toast google官方说明&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;推送一个短小信息推送给用户&lt;br&gt;  如图（摘自android developer）&lt;br&gt;  &lt;img src=&quot;http://cdn4.snapgram.co/images/2016/07/20/toast.png&quot; alt=&quot;toast.png&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;使用方法&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Toast.makeText(context, text, duration).show();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;  举例&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Toast.makeText(FirstActivity.&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;you clicked button 1&quot;&lt;/span&gt;, Toast.LENGTH_SHORT).show();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/*                  activity.this   消息内容                显示时间设置   */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Button使用说明&quot;&gt;&lt;a href=&quot;#Button使用说明&quot; class=&quot;headerlink&quot; title=&quot;Button使用说明&quot;&gt;&lt;/a&gt;Button使用说明&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.android.com/reference/android/widget/Button.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Button google 官方说明&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一行代码内容&lt;br&gt;  在 onCreate() 方法中，给 Button 绑定点击事件，点击 Button 嗲用Toast显示一条信息。&lt;br&gt;  在onCreate() 中添加如下代码  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Button button1 = (Button) findViewById(R.id.button_1);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;button1.setOnClickListener(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; View.OnClickListener() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(View v)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            Toast.makeText(FirstActivity.&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;you clicked button 1&quot;&lt;/span&gt;, Toast.LENGTH_SHORT).show();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;第二种方法&lt;br&gt;  在firest-layout中Button属性中添加&lt;code&gt;android:onClick&lt;/code&gt;&lt;br&gt;  代码如下&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;Button&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    android:id=&lt;span class=&quot;string&quot;&gt;&quot;@+id/button_1&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    android:layout_width=&lt;span class=&quot;string&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    android:layout_height=&lt;span class=&quot;string&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    android:onClick=&lt;span class=&quot;string&quot;&gt;&quot;selfDestruct&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    android:text=&lt;span class=&quot;string&quot;&gt;&quot;button_1&quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;  随后在&lt;code&gt;public class FirstActivity extends AppCompatActivity{}&lt;/code&gt;中添加 selfDestruct函数。注意&lt;strong&gt;不是在onCreate()中添加！&lt;/strong&gt;selfDestruct与onCreate()互不包含。&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;selfDestruct&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(View view)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Toast.makeText(FirstActivity.&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;you clicked button 1&quot;&lt;/span&gt;, Toast.LENGTH_SHORT).show();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;两种方式效果相同如图&lt;br&gt;  [&lt;img src=&quot;http://cdn2.snapgram.co/imgs/2016/07/20/6.jpg&quot; alt=&quot;6.jpg&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;手动创建Activity&quot;&gt;&lt;a href=&quot;#手动创建Activity&quot; class=&quot;headerlink&quot; title=&quot;手动创建Activity&quot;&gt;&lt;/a&gt;手动创建Activity&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;新建FirstAtivity继承自Acti
+    
+    </summary>
+    
+      <category term="第一行代码" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/"/>
+    
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第一行代码AS跟刷-隐藏标题栏</title>
+    <link href="http://yoursite.com/2016/07/17/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E8%B7%9F%E5%88%B7/"/>
+    <id>http://yoursite.com/2016/07/17/第一行代码跟刷/</id>
+    <published>2016-07-17T09:10:11.000Z</published>
+    <updated>2016-07-20T07:25:31.412Z</updated>
     
     <content type="html">&lt;p&gt;Android Studio 尝试隐藏标题栏崩溃解决办法。&lt;/p&gt;
 &lt;h2 id=&quot;第一行代码隐藏方法&quot;&gt;&lt;a href=&quot;#第一行代码隐藏方法&quot; class=&quot;headerlink&quot; title=&quot;第一行代码隐藏方法&quot;&gt;&lt;/a&gt;第一行代码隐藏方法&lt;/h2&gt;&lt;ul&gt;
@@ -57,6 +147,8 @@
     
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
