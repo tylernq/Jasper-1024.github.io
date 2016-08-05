@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Linux,python," />
+  <meta name="keywords" content="Android,Android Studio,学习记录," />
 
 
 
@@ -59,33 +59,57 @@
 
 
 
-<meta name="description" content="为了更好的从事程序员事业、填坑linux、为学弟打下第一手资料、留下linux培训教材……
-实际就是为了搭个路由器，玩玩入了树莓派3b +电源+外壳+sd卡—300大洋——–肉疼
-树莓派3b的耗电量还是挺大的==推荐买个2A以上的电源==
-树莓派系统安装+进入命令行树莓派支持 数十款操作系统一般新手推荐的是树莓派官方支持的raspbian
-Raspbian系统镜像地址(最好在FQ下，否则会很慢的。">
+<meta name="description" content="activity生命周期
+参考资料如下 很详细！
+http://blog.csdn.net/android_tutor/article/details/5772285
+
+
+
+activity启动模式
+参考资料如下
+http://blog.csdn.net/liuhe688/article/details/6754323
+
+
+
+知晓当前运行Activity
+重写BaseActivity继承自AppC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初入树莓派1安装系统+进入SSH">
-<meta property="og:url" content="http://yoursite.com/2016/06/21/初入树莓派1----安装系统+进入SSH/index.html">
+<meta property="og:title" content="第一行代码AS跟刷-Activity(三)">
+<meta property="og:url" content="http://yoursite.com/2016/07/22/第一行代码AS跟刷-Activity(三)/index.html">
 <meta property="og:site_name" content="默">
-<meta property="og:description" content="为了更好的从事程序员事业、填坑linux、为学弟打下第一手资料、留下linux培训教材……
-实际就是为了搭个路由器，玩玩入了树莓派3b +电源+外壳+sd卡—300大洋——–肉疼
-树莓派3b的耗电量还是挺大的==推荐买个2A以上的电源==
-树莓派系统安装+进入命令行树莓派支持 数十款操作系统一般新手推荐的是树莓派官方支持的raspbian
-Raspbian系统镜像地址(最好在FQ下，否则会很慢的。">
-<meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/06/20/1.png">
-<meta property="og:image" content="http://cdn4.snapgram.co/images/2016/06/20/2.png">
-<meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/06/20/3.png">
-<meta property="og:image" content="http://cdn1.snapgram.co/imgs/2016/06/20/4.png">
-<meta property="og:updated_time" content="2016-06-21T06:41:10.912Z">
+<meta property="og:description" content="activity生命周期
+参考资料如下 很详细！
+http://blog.csdn.net/android_tutor/article/details/5772285
+
+
+
+activity启动模式
+参考资料如下
+http://blog.csdn.net/liuhe688/article/details/6754323
+
+
+
+知晓当前运行Activity
+重写BaseActivity继承自AppC">
+<meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/08/04/ScreenShot_20160804213250.png">
+<meta property="og:updated_time" content="2016-08-05T04:48:26.513Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初入树莓派1安装系统+进入SSH">
-<meta name="twitter:description" content="为了更好的从事程序员事业、填坑linux、为学弟打下第一手资料、留下linux培训教材……
-实际就是为了搭个路由器，玩玩入了树莓派3b +电源+外壳+sd卡—300大洋——–肉疼
-树莓派3b的耗电量还是挺大的==推荐买个2A以上的电源==
-树莓派系统安装+进入命令行树莓派支持 数十款操作系统一般新手推荐的是树莓派官方支持的raspbian
-Raspbian系统镜像地址(最好在FQ下，否则会很慢的。">
-<meta name="twitter:image" content="http://cdn2.snapgram.co/imgs/2016/06/20/1.png">
+<meta name="twitter:title" content="第一行代码AS跟刷-Activity(三)">
+<meta name="twitter:description" content="activity生命周期
+参考资料如下 很详细！
+http://blog.csdn.net/android_tutor/article/details/5772285
+
+
+
+activity启动模式
+参考资料如下
+http://blog.csdn.net/liuhe688/article/details/6754323
+
+
+
+知晓当前运行Activity
+重写BaseActivity继承自AppC">
+<meta name="twitter:image" content="http://cdn2.snapgram.co/imgs/2016/08/04/ScreenShot_20160804213250.png">
 
 
 
@@ -103,7 +127,7 @@ Raspbian系统镜像地址(最好在FQ下，否则会很慢的。">
   };
 </script>
 
-  <title> 初入树莓派1安装系统+进入SSH | 默 </title>
+  <title> 第一行代码AS跟刷-Activity(三) | 默 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -262,7 +286,7 @@ Raspbian系统镜像地址(最好在FQ下，否则会很慢的。">
             
             
               
-                初入树莓派1安装系统+进入SSH
+                第一行代码AS跟刷-Activity(三)
               
             
           </h1>
@@ -274,8 +298,8 @@ Raspbian系统镜像地址(最好在FQ下，否则会很慢的。">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-21T10:17:11+08:00" content="2016-06-21">
-              2016-06-21
+            <time itemprop="dateCreated" datetime="2016-07-22T12:49:11+08:00" content="2016-07-22">
+              2016-07-22
             </time>
           </span>
 
@@ -288,8 +312,8 @@ Raspbian系统镜像地址(最好在FQ下，否则会很慢的。">
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/树莓派折腾/" itemprop="url" rel="index">
-                    <span itemprop="name">树莓派折腾</span>
+                  <a href="/categories/第一行代码/" itemprop="url" rel="index">
+                    <span itemprop="name">第一行代码</span>
                   </a>
                 </span>
 
@@ -304,8 +328,8 @@ Raspbian系统镜像地址(最好在FQ下，否则会很慢的。">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/21/初入树莓派1----安装系统+进入SSH/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/21/初入树莓派1----安装系统+进入SSH/" itemprop="commentsCount"></span>
+                <a href="/2016/07/22/第一行代码AS跟刷-Activity(三)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/22/第一行代码AS跟刷-Activity(三)/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -315,7 +339,7 @@ Raspbian系统镜像地址(最好在FQ下，否则会很慢的。">
 
           
           
-             <span id="/2016/06/21/初入树莓派1----安装系统+进入SSH/" class="leancloud_visitors" data-flag-title="初入树莓派1安装系统+进入SSH">
+             <span id="/2016/07/22/第一行代码AS跟刷-Activity(三)/" class="leancloud_visitors" data-flag-title="第一行代码AS跟刷-Activity(三)">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -336,48 +360,36 @@ Raspbian系统镜像地址(最好在FQ下，否则会很慢的。">
       
 
       
-        <p><del><strong>为了更好的从事程序员事业、填坑linux、为学弟打下第一手资料、留下linux培训教材……</strong></del></p>
-<p><em>实际就是为了搭个路由器，玩玩</em><br>入了树莓派3b +电源+外壳+sd卡—300大洋——–<em>肉疼</em></p>
-<p>树莓派3b的耗电量还是挺大的==推荐买个2A以上的电源==</p>
-<h3 id="树莓派系统安装-进入命令行"><a href="#树莓派系统安装-进入命令行" class="headerlink" title="树莓派系统安装+进入命令行"></a>树莓派系统安装+进入命令行</h3><p>树莓派支持 数十款操作系统<br>一般新手推荐的是树莓派官方支持的<strong>raspbian</strong></p>
-<p><a href="http://vx2-downloads.raspberrypi.org/raspbian/images/raspbian-2016-05-13/2016-05-10-raspbian-jessie.zip" target="_blank" rel="external">Raspbian系统镜像地址</a>(最好在FQ下，否则会很慢的。你要用IDM当我没说)</p>
-<p>所要用到的工具是：</p>
-<ul>
-<li>1.多功能读卡器一个</li>
-<li>2.TF卡一张（8G以上）</li>
-</ul>
-<p>烧写器官方推荐是<strong>win32diskimager</strong></p>
-<p>但是有个很严重的缺点<strong>文件路径不支持中文</strong>。</p>
-<p>个人推荐 <strong>USB Image Tool</strong><br>故障率最低的是1.7版本。</p>
-<h3 id="插上读卡器，烧写系统开始！"><a href="#插上读卡器，烧写系统开始！" class="headerlink" title="插上读卡器，烧写系统开始！"></a>插上读卡器，烧写系统开始！</h3><ul>
-<li><p><strong>烧写系统</strong><br>打开USB Image Tool<br><strong>注意左上角是Device Mode，不是Volume Mode！</strong><br><a href="http://snapgr.am/image/Livb" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/06/20/1.png" alt="1.png"></a></p>
-<ul>
-<li>1.Rescan 选择下载后解压的img文件</li>
-<li>2.写入等待进度条完成即可。</li>
-</ul>
-</li>
-<li><p><strong>错误原因</strong></p>
-<ul>
-<li>1.USB Image Tool 在win7以上系统中必须要以管理员权限运行</li>
-<li>2.USB Image Tool运行需要.net环境 直接使用系统默认加载的即可。</li>
-</ul>
-<p>烧写完成后接入电源</p>
-</li>
-</ul>
-<h3 id="进入SSH管理（没有显示设备时）"><a href="#进入SSH管理（没有显示设备时）" class="headerlink" title="进入SSH管理（没有显示设备时）"></a>进入SSH管理（没有显示设备时）</h3><p>第一次进入系统时直接利用网线接入路由器，将电脑接入同一个wifi下。<br>在路由器管理界面查找树莓派对应得IP地址。<br>进不去路由？也可以扫描一下局域网设备中开启22端口的设备，八九不离十！</p>
-<ul>
-<li><strong>使用SSH管理工具，这里以putty为例。打开软件，填入树莓派ip地址。</strong><ul>
-<li><strong>打开软件，填入树莓派ip地址。</strong><br><em>默认登陆界面</em><br><a href="http://snapgr.am/image/Liv4" target="_blank" rel="external"><img src="http://cdn4.snapgram.co/images/2016/06/20/2.png" alt="2.png"></a><ul>
-<li><strong>默认用户名pi 密码raspberry。</strong><br><a href="http://snapgr.am/image/LivJ" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/06/20/3.png" alt="3.png"></a></li>
-<li><strong>登陆成功！</strong><br><img src="http://cdn1.snapgram.co/imgs/2016/06/20/4.png" alt="4.png"></li>
-</ul>
-<hr>
-参考<blockquote>
-<p><a href="http://blog.csdn.net/longerzone/article/details/36034619" target="_blank" rel="external">http://blog.csdn.net/longerzone/article/details/36034619</a></p>
+        <h2 id="activity生命周期"><a href="#activity生命周期" class="headerlink" title="activity生命周期"></a>activity生命周期</h2><ul>
+<li>参考资料如下 很详细！<blockquote>
+<p><a href="http://blog.csdn.net/android_tutor/article/details/5772285" target="_blank" rel="external">http://blog.csdn.net/android_tutor/article/details/5772285</a></p>
 </blockquote>
 </li>
 </ul>
+<h2 id="activity启动模式"><a href="#activity启动模式" class="headerlink" title="activity启动模式"></a>activity启动模式</h2><ul>
+<li>参考资料如下<blockquote>
+<p><a href="http://blog.csdn.net/liuhe688/article/details/6754323" target="_blank" rel="external">http://blog.csdn.net/liuhe688/article/details/6754323</a></p>
+</blockquote>
 </li>
+</ul>
+<h2 id="知晓当前运行Activity"><a href="#知晓当前运行Activity" class="headerlink" title="知晓当前运行Activity"></a>知晓当前运行Activity</h2><ul>
+<li>重写BaseActivity继承自AppCompatActivity(AndroidStudio中默认)重写onCreate（）；让工程中的activity都继承自BaseActivity 当Activity变动时打印输出log文件。</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        Log.d(<span class="string">"BaseActivity"</span>,getClass().getSimpleName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>运行效果如下图。两个Activity来回切换。<br>  <img src="http://cdn2.snapgram.co/imgs/2016/08/04/ScreenShot_20160804213250.png" alt="ScreenShot_20160804213250.png"></li>
+</ul>
+<h3 id="随时退出程序"><a href="#随时退出程序" class="headerlink" title="随时退出程序"></a>随时退出程序</h3><ul>
+<li>新建ActivityCollector 类 作为 Activity 管理器  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityCollector</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> List&lt;Activityactivities =<span class="keyword">new</span> ArrayList&lt;Activity&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addActivity</span><span class="params">(Activity activity)</span></span>&#123;</span><br><span class="line">        activities.add(activity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">removeActivity</span><span class="params">(Activity activity)</span></span>&#123;</span><br><span class="line">        activities.remove(activity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">finishAll</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(Activity activity : activities)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!activity.isFinishing())&#123;</span><br><span class="line">                activity.finish();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>BaseActivity 重写 onCreate()、onDestroy()   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    ActivityCollector.addActivity(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span>  <span class="title">onDestroy</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onDestroy();</span><br><span class="line">    ActivityCollector.removeActivity(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>所有activity继承自baseactivity，需要退出直接调用 finishAll()；</li>
 </ul>
 
       
@@ -393,9 +405,11 @@ Raspbian系统镜像地址(最好在FQ下，否则会很慢的。">
       
         <div class="post-tags">
           
-            <a href="/tags/Linux/" rel="tag">#Linux</a>
+            <a href="/tags/Android/" rel="tag">#Android</a>
           
-            <a href="/tags/python/" rel="tag">#python</a>
+            <a href="/tags/Android-Studio/" rel="tag">#Android Studio</a>
+          
+            <a href="/tags/学习记录/" rel="tag">#学习记录</a>
           
         </div>
       
@@ -404,16 +418,16 @@ Raspbian系统镜像地址(最好在FQ下，否则会很慢的。">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/18/hellowworld/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2016/07/20/第一行代码AS跟刷-Activity(一)/" rel="next" title="第一行代码AS跟刷-Activity(一)">
+                <i class="fa fa-chevron-left"></i> 第一行代码AS跟刷-Activity(一)
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/06/21/开端/" rel="prev" title="开端，起始。">
-                开端，起始。 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/07/22/第一行代码AS跟刷-Activity(二)/" rel="prev" title="第一行代码AS跟刷-Activity(二)">
+                第一行代码AS跟刷-Activity(二) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -555,7 +569,7 @@ Raspbian系统镜像地址(最好在FQ下，否则会很慢的。">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#树莓派系统安装-进入命令行"><span class="nav-number">1.</span> <span class="nav-text">树莓派系统安装+进入命令行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插上读卡器，烧写系统开始！"><span class="nav-number">2.</span> <span class="nav-text">插上读卡器，烧写系统开始！</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进入SSH管理（没有显示设备时）"><span class="nav-number">3.</span> <span class="nav-text">进入SSH管理（没有显示设备时）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#activity生命周期"><span class="nav-number">1.</span> <span class="nav-text">activity生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#activity启动模式"><span class="nav-number">2.</span> <span class="nav-text">activity启动模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#知晓当前运行Activity"><span class="nav-number">3.</span> <span class="nav-text">知晓当前运行Activity</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#随时退出程序"><span class="nav-number">3.1.</span> <span class="nav-text">随时退出程序</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
@@ -663,9 +677,9 @@ Raspbian系统镜像地址(最好在FQ下，否则会很慢的。">
 
     <script type="text/javascript">
       var disqus_shortname = 'jasper1024';
-      var disqus_identifier = '2016/06/21/初入树莓派1----安装系统+进入SSH/';
-      var disqus_title = '初入树莓派1安装系统+进入SSH';
-      var disqus_url = 'http://yoursite.com/2016/06/21/初入树莓派1----安装系统+进入SSH/';
+      var disqus_identifier = '2016/07/22/第一行代码AS跟刷-Activity(三)/';
+      var disqus_title = '第一行代码AS跟刷-Activity(三)';
+      var disqus_url = 'http://yoursite.com/2016/07/22/第一行代码AS跟刷-Activity(三)/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
