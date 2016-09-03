@@ -247,6 +247,629 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/11/第一行代码AS跟刷-UI(三)ListView/" itemprop="url">
+                  第一行代码AS跟刷-UI(三)ListView
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-11T19:00:00+08:00" content="2016-08-11">
+              2016-08-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/第一行代码/" itemprop="url" rel="index">
+                    <span itemprop="name">第一行代码</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/11/第一行代码AS跟刷-UI(三)ListView/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/11/第一行代码AS跟刷-UI(三)ListView/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/08/11/第一行代码AS跟刷-UI(三)ListView/" class="leancloud_visitors" data-flag-title="第一行代码AS跟刷-UI(三)ListView">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本节内容来自以下内容整合。</p>
+<blockquote>
+<p><a href="http://www.cnblogs.com/noTice520/archive/2011/12/05/2276379.html" target="_blank" rel="external">http://www.cnblogs.com/noTice520/archive/2011/12/05/2276379.html</a></p>
+<p>第一行代码</p>
+</blockquote>
+<h2 id="ListView被很多人称为最常用也是最难用的控件。于此抽出一节来详细说明补充第一行代码内容。"><a href="#ListView被很多人称为最常用也是最难用的控件。于此抽出一节来详细说明补充第一行代码内容。" class="headerlink" title="* ListView被很多人称为最常用也是最难用的控件。于此抽出一节来详细说明补充第一行代码内容。"></a>* ListView被很多人称为最常用也是最难用的控件。于此抽出一节来详细说明补充第一行代码内容。</h2><ul>
+<li><p>正文开始</p>
+<h2 id="ListView说明"><a href="#ListView说明" class="headerlink" title="ListView说明"></a>ListView说明</h2></li>
+<li><p>ListView通常有两个职责。</p>
+<ul>
+<li><p>将数据填充到布局。</p>
+</li>
+<li><p>处理用户的选择点击等操作。</p>
+</li>
+</ul>
+</li>
+<li><p>ListView的创建需要3个元素。</p>
+<ul>
+<li><p>ListView中的每一列的View。</p>
+</li>
+<li><p>填入View的数据或者图片等。</p>
+</li>
+<li><p>连接数据与ListView的适配器。</p>
+</li>
+</ul>
+</li>
+<li><p>适配器，参考资料种博主给的定义如下：<br>  适配器是一个连接数据和AdapterView（ListView就是一个典型的AdapterView）的桥梁，通过它能有效地实现数据与AdapterView的分离设置，使AdapterView与数据的绑定更加简便，修改更加方便。常用适配器类型如下。<br><img src="http://cdn2.snapgram.co/imgs/2016/08/12/ScreenShot_20160812164439.png" alt="ScreenShot_20160812164439.png"></p>
+</li>
+</ul>
+<h3 id="适配器运行效果"><a href="#适配器运行效果" class="headerlink" title="适配器运行效果"></a>适配器运行效果</h3><ul>
+<li>在main-activity.XML中添加ListView.<br>  代码如下  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">ListView</span></span><br><span class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/list_view"</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ListView</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>MainActivity中初始化<br>  以ArrayAdapter为例，代码如下</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//要显示的数组，屏幕长了点，为了显示滑动效果多增加了几项。</span></span><br><span class="line"> <span class="keyword">private</span> String[] data = &#123;<span class="string">"apple"</span>,<span class="string">"banana"</span>,<span class="string">"orange"</span>,<span class="string">"watermelon"</span>,<span class="string">"pear"</span>,<span class="string">"grape"</span>,<span class="string">"pineapple"</span>,<span class="string">"strawberry"</span>,<span class="string">"cherry"</span>,<span class="string">"mango"</span>,<span class="string">"A"</span>,<span class="string">"B"</span>,<span class="string">"C"</span>,<span class="string">"D"</span>,<span class="string">"E"</span>,<span class="string">"F"</span>&#125;;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">      setContentView(R.layout.activity_main);</span><br><span class="line">      Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);</span><br><span class="line">      setSupportActionBar(toolbar);</span><br><span class="line">      </span><br><span class="line"><span class="comment">//为适配器绑定数据</span></span><br><span class="line">	ArrayAdapter&lt;String&gt; adapter = <span class="keyword">new</span> ArrayAdapter&lt;String&gt;(MainActivity.<span class="keyword">this</span>,android.R.layout.simple_list_item_single_choice,data);</span><br><span class="line"><span class="comment">//得到ListView对象的引用</span></span><br><span class="line">ListView listView = (ListView) findViewById(R.id.list_view);</span><br><span class="line"><span class="comment">//适配器内容传递</span></span><br><span class="line">listView.setAdapter(adapter);</span><br><span class="line">    </span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示效果如下图<br>  <img src="http://cdn3.snapgram.co/imgs/2016/08/12/Screenshot_20160812-170816.png" alt="Screenshot_20160812-170816.png"></p>
+</li>
+</ul>
+<h4 id="ArrayAdapter"><a href="#ArrayAdapter" class="headerlink" title="ArrayAdapter"></a>ArrayAdapter</h4><ul>
+<li>基础的显示效果如上图所示</li>
+<li><p>实现的步骤。</p>
+<ul>
+<li><p>定义一个数组来存放item的内容。</p>
+</li>
+<li><p>通过实现ArrayAdapter的构造函数来创建一个ArrayAdapter的对象。</p>
+</li>
+<li><p>通过ListView的setAdapter()方法绑定ArrayAdapter。</p>
+<p>参考资料中特别提到第二步。<br>ArrayAdapter有多个构造函数，例程是的一种。</p>
+</li>
+<li>第一个参数为上下文，</li>
+<li>第二个参数为一个包含TextView，用来填充ListView的每一行的布局资源ID。</li>
+<li>第三个参数为ListView的内容。<br>其中  <strong>第二个参数可以使用自定义layout</strong>，但是<strong>layout必须要有TextView控件</strong>。通常使用Android提供的资源，还包括带RadioButton和CheckBox的ListView。</li>
+</ul>
+</li>
+<li><p>带带选择框  ListView使用</p>
+<ul>
+<li>指定android.R.layout.simple_list_item_checked这个资源，可以实现带选择框的ListView。必须使用setChoiceMode()方法设定选择为多选还是单选，否则选择效果无效。</li>
+<li><p>部分代码如下</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line"><span class="comment">//指定simple_list_item_checked</span></span><br><span class="line">	ArrayAdapter&lt;String&gt; adapter = <span class="keyword">new</span> ArrayAdapter&lt;String&gt;(MainActivity.<span class="keyword">this</span>,android.R.layout.simple_list_item_checked,data);</span><br><span class="line">ListView listView = (ListView) findViewById(R.id.list_view);</span><br><span class="line">listView.setAdapter(adapter);</span><br><span class="line"><span class="comment">//设置多选</span></span><br><span class="line">	listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>效果如下图所示<br><img src="http://cdn3.snapgram.co/imgs/2016/08/12/Screenshot_20160812-175707.png" alt="Screenshot_20160812-175707.png"></p>
+</li>
+</ul>
+</li>
+<li><p>带CheckBox  ListView使用</p>
+<ul>
+<li>与带选择框的ListView应用基本相同<br>  android.R.layout.simple_list_item_multiple_choice这个资源，使用setChoiceMode()设置单选/多选。</li>
+<li><p>部分代码如下</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> ArrayAdapter&lt;String&gt; adapter = <span class="keyword">new</span> ArrayAdapter&lt;String&gt;(MainActivity.<span class="keyword">this</span>,android.R.layout.simple_list_item_multiple_choice,data);</span><br><span class="line">ListView listView = (ListView) findViewById(R.id.list_view);</span><br><span class="line">listView.setAdapter(adapter);</span><br><span class="line"></span><br><span class="line">listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>效果如下图<br>  <img src="http://cdn4.snapgram.co/images/2016/08/12/Screenshot_20160812-180839.png" alt="Screenshot_20160812-180839.png"></p>
+</li>
+</ul>
+</li>
+<li><p>带RadioButton的ListView</p>
+<ul>
+<li>基本同上，不加累赘。</li>
+<li><p>代码如下</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ArrayAdapter&lt;String&gt; adapter = <span class="keyword">new</span> ArrayAdapter&lt;String&gt;(MainActivity.<span class="keyword">this</span>,android.R.layout.simple_list_item_single_choice,data);</span><br><span class="line">ListView listView = (ListView) findViewById(R.id.list_view);</span><br><span class="line">listView.setAdapter(adapter);</span><br><span class="line">listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>效果如下图<br>  <img src="http://cdn5.snapgram.co/images/2016/08/12/Screenshot_20160812-205336.png" alt="Screenshot_20160812-205336.png"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="响应点击事件"><a href="#响应点击事件" class="headerlink" title="响应点击事件"></a>响应点击事件</h4><ul>
+<li>使用AdapterView.OnItemClickListener注册一个监听器。点击任何ListView的子项后，回掉onItemClick()；</li>
+</ul>
+<ul>
+<li><p>onItemClick函数说明<br>  官方文档</p>
+<blockquote>
+<p><a href="https://developer.android.com/reference/android/widget/AdapterView.OnItemClickListener.html" target="_blank" rel="external">https://developer.android.com/reference/android/widget/AdapterView.OnItemClickListener.html</a></p>
+</blockquote>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">void onItemClick (AdapterView&lt;?&gt; parent, //点击子项所属ListView的指针</span><br><span class="line">View view, //所点击view的句柄</span><br><span class="line">int position, //所点击子项在listview中位置</span><br><span class="line">long id)//子项的ID 一般情况下与position一致</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>代码如下</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">listView.setOnItemClickListener(<span class="keyword">new</span> AdapterView.OnItemClickListener() &#123;</span><br><span class="line"></span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemClick</span><span class="params">(AdapterView&lt;?&gt; arg0, View arg1, <span class="keyword">int</span> arg2,<span class="keyword">long</span> arg3)</span> </span>&#123;</span><br><span class="line">          </span><br><span class="line">          <span class="comment">//点击后在标题上显示点击了第几行</span></span><br><span class="line">           setTitle(<span class="string">"你点击了第"</span>+arg2+<span class="string">"行"</span>);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>注意一点区别<strong>AdapterView.OnItemClickListener()这一项在第一行代码中为OnItemClickListener()</strong>       </li>
+</ul>
+</li>
+</ul>
+<h3 id="SimpleAdapter"><a href="#SimpleAdapter" class="headerlink" title="SimpleAdapter"></a>SimpleAdapter</h3><ul>
+<li>SimpleAdapter可以绑定xml布局到ListView中，具体步骤如下。<br><strong>(xml中绑定button不提示出错，但是点击操作被ListView的Item所覆盖，无法使用！)</strong><ul>
+<li>根据需要定义ListView每行所实现的布局。</li>
+<li>定义一个HashMap构成的列表，将数据以键值对的方式存放在里面。</li>
+<li>构造SimpleAdapter对象。</li>
+<li>将LsitView绑定到SimpleAdapter上。<br>  以实例来说明。</li>
+</ul>
+</li>
+<li><p>首先新建一个名为item.xml的RelativeLayout布局文件。两个TextView和1个ImageView构成。</p>
+<ul>
+<li>代码如下：<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">   &lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">   <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">   <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">ImageView</span></span><br><span class="line">       <span class="attr">android:layout_alignParentRight</span>=<span class="string">"true"</span></span><br><span class="line">       <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span><br><span class="line">       <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">       <span class="attr">android:id</span>=<span class="string">"@+id/ItemImage"</span></span><br><span class="line">       /&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">TextView</span></span><br><span class="line">       <span class="attr">android:id</span>=<span class="string">"@+id/ItemTitle"</span></span><br><span class="line">       <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">       <span class="attr">android:layout_width</span>=<span class="string">"fill_parent"</span></span><br><span class="line">       <span class="attr">android:textSize</span>=<span class="string">"20sp"</span></span><br><span class="line">       /&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">TextView</span></span><br><span class="line">       <span class="attr">android:id</span>=<span class="string">"@+id/ItemText"</span></span><br><span class="line">       <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">       <span class="attr">android:layout_width</span>=<span class="string">"fill_parent"</span></span><br><span class="line">       <span class="attr">android:layout_below</span>=<span class="string">"@+id/ItemTitle"</span></span><br><span class="line">       /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>在代码中为ListView绑定数据<br>  代码如下</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">       setContentView(R.layout.activity_my_list_view);</span><br><span class="line">       Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);</span><br><span class="line">       setSupportActionBar(toolbar);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">       lv = (ListView) findViewById(R.id.lv);</span><br><span class="line"><span class="comment">//定义一个动态数组</span></span><br><span class="line">       ArrayList&lt;HashMap&lt;String, Object&gt;&gt; listItem = <span class="keyword">new</span>	 ArrayList&lt;HashMap&lt;String,     Object&gt;&gt;();</span><br><span class="line"><span class="comment">//在数组中存放数据</span></span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">       &#123;</span><br><span class="line">           HashMap&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">           map.put(<span class="string">"ItemImage"</span>, R.drawable.apple_pic);<span class="comment">//加入图片</span></span><br><span class="line">           map.put(<span class="string">"ItemTitle"</span>, <span class="string">"第"</span>+i+<span class="string">"行"</span>);</span><br><span class="line">           map.put(<span class="string">"ItemText"</span>, <span class="string">"这是第"</span>+i+<span class="string">"行"</span>);</span><br><span class="line">           listItem.add(map);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       SimpleAdapter mSimpleAdapter = <span class="keyword">new</span> SimpleAdapter(<span class="keyword">this</span>,listItem,<span class="comment">//需要绑定的数据</span></span><br><span class="line">               R.layout.item,<span class="comment">//每一行的布局</span></span><br><span class="line"><span class="comment">//动态数组中的数据源的键对应到定义布局的View中</span></span><br><span class="line">               <span class="keyword">new</span> String[] &#123;<span class="string">"ItemImage"</span>,<span class="string">"ItemTitle"</span>, <span class="string">"ItemText"</span>&#125;,</span><br><span class="line">               <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;R.id.ItemImage,R.id.ItemTitle,R.id.ItemText&#125;</span><br><span class="line">       );</span><br><span class="line"></span><br><span class="line">       lv.setAdapter(mSimpleAdapter);<span class="comment">//为ListView绑定适配器</span></span><br><span class="line"></span><br><span class="line">       lv.setOnItemClickListener(<span class="keyword">new</span> AdapterView.OnItemClickListener() &#123;</span><br><span class="line"></span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemClick</span><span class="params">(AdapterView&lt;?&gt; arg0, View arg1, <span class="keyword">int</span> arg2, <span class="keyword">long</span> arg3)</span> </span>&#123;</span><br><span class="line">          setTitle(<span class="string">"你点击了第"</span>+arg2+<span class="string">"行"</span>);<span class="comment">//设置标题栏显示点击的行</span></span><br><span class="line"></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>函数说明<br>  SimpleAdapter mSimpleAdapter = new SimpleAdapter(this,listItem,R.layout.item,<br>   new String[] {“ItemImage”,”ItemTitle”, “ItemText”},<br>   new int[] {R.id.ItemImage,R.id.ItemTitle,R.id.ItemText}</p>
+<pre><code>);
+</code></pre></li>
+<li><p>函数原型：<br>  SimpleAdapter (Context context, </p>
+<pre><code>List&lt;? extends Map&lt;String, ?&gt;&gt; data, 
+int resource, 
+String[] from, 
+int[] to)
+</code></pre><ul>
+<li><p>Context context : </p>
+<ul>
+<li>The context where the View associated with this SimpleAdapter is running   </li>
+<li>关联SimpleAdapter运行的视图上下文</li>
+</ul>
+</li>
+<li><p>List&lt;? extends Map<string, ?="">&gt; data</string,></p>
+<ul>
+<li>A List of Maps. Each entry in the List corresponds to one row in the list. The Maps contain the data for each row, and should include all the entries specified in “from”</li>
+<li>Map列表，列表要显示的数据，这部分需要自己实现，如例子中的getData()，类型要与上面的一致，每条项目要与from中指定条目一致</li>
+</ul>
+</li>
+<li><p>int resource        </p>
+<ul>
+<li>Resource identifier of a view layout that defines the views for this list item. The layout file should include at least those named views defined in “to”</li>
+<li>resource：ListView单项布局文件的Id,这个布局就是你自定义的布局了，你想显示什么样子的布局都在这个布局中。这个布局中必须包括了to中定义的控件id</li>
+</ul>
+</li>
+<li>String[] from<ul>
+<li>String: A list of column names that will be added to the Map associated with each item.</li>
+<li>一个被添加到Map上关联每一个项目列名称的列表，数组里面是列名称</li>
+</ul>
+</li>
+<li>int[] to<ul>
+<li>The views that should display column in the “from” parameter. </li>
+<li>是一个int数组，数组里面的id是自定义布局中各个控件的id，需要与上面的from对应。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>详细说明<br>  SimpleAdapter mSimpleAdapter = new SimpleAdapter(this,listItem,R.layout.item,<br>   new String[] {“ItemImage”,”ItemTitle”, “ItemText”},<br>   new int[] {R.id.ItemImage,R.id.ItemTitle,R.id.ItemText}</p>
+<pre><code>);    
+</code></pre><ul>
+<li>this：关联的上下文</li>
+<li>listItem：Map列表</li>
+<li>R.layout.item：xml布局Id</li>
+<li>new String[] {“ItemImage”,”ItemTitle”, “ItemText”},<br>new int[] {R.id.ItemImage,R.id.ItemTitle,R.id.ItemText：互相对应</li>
+</ul>
+</li>
+<li><p>BaseAdapter<br>  内容还在眩晕中，回头补上。。。     </p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/10/第一行代码AS跟刷-UI(二)/" itemprop="url">
+                  第一行代码AS跟刷-UI(二)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-10T12:00:00+08:00" content="2016-08-10">
+              2016-08-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/第一行代码/" itemprop="url" rel="index">
+                    <span itemprop="name">第一行代码</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/10/第一行代码AS跟刷-UI(二)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/10/第一行代码AS跟刷-UI(二)/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/08/10/第一行代码AS跟刷-UI(二)/" class="leancloud_visitors" data-flag-title="第一行代码AS跟刷-UI(二)">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Dialog"><a href="#Dialog" class="headerlink" title="Dialog"></a>Dialog</h3><ul>
+<li><p>对话框。官方文档如下(中文)</p>
+<blockquote>
+<p><a href="https://developer.android.com/guide/topics/ui/dialogs.html#AlertDialog" target="_blank" rel="external">https://developer.android.com/guide/topics/ui/dialogs.html#AlertDialog</a></p>
+</blockquote>
+</li>
+<li><p>没有什么多说的，官方文档很清楚了。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">AlertDialog.Builder dialog = <span class="keyword">new</span> AlertDialog.Builder(MainActivity.<span class="keyword">this</span>);</span><br><span class="line">dialog.setTitle(<span class="string">"对话框"</span>);</span><br><span class="line">dialog.setMessage(<span class="string">"不小心出错"</span>);</span><br><span class="line">dialog.setCancelable(<span class="keyword">false</span>);</span><br><span class="line">dialog.setPositiveButton(<span class="string">"OK"</span>, <span class="keyword">new</span> DialogInterface.OnClickListener()&#123;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialog,<span class="keyword">int</span> which )</span></span>&#123;&#125;</span><br><span class="line">&#125;);</span><br><span class="line">dialog.setNegativeButton(<span class="string">"Cancel"</span>, <span class="keyword">new</span> DialogInterface.OnClickListener()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialog,<span class="keyword">int</span> which )</span></span>&#123;&#125;</span><br><span class="line">&#125;);</span><br><span class="line">dialog.show();</span><br></pre></td></tr></table></figure>
+<p>  效果如下<br>  <img src="http://cdn2.snapgram.co/imgs/2016/08/10/Screenshot_20160811-100654.png" alt="Screenshot_20160811-100654.png"></p>
+</li>
+</ul>
+<h3 id="ProgressDialog"><a href="#ProgressDialog" class="headerlink" title="ProgressDialog"></a>ProgressDialog</h3><ul>
+<li><p>官方文档</p>
+<blockquote>
+<p><a href="https://developer.android.com/reference/android/app/ProgressDialog.html" target="_blank" rel="external">https://developer.android.com/reference/android/app/ProgressDialog.html</a></p>
+</blockquote>
+</li>
+<li><p>基本显示效果是对话框+进度条</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ProgressDialog progressDialog = <span class="keyword">new</span> ProgressDialog(MainActivity.<span class="keyword">this</span>);</span><br><span class="line">progressDialog.setTitle(<span class="string">"progressDialog"</span>);</span><br><span class="line">progressDialog.setMessage(<span class="string">"加载中"</span>);</span><br><span class="line">progressDialog.setCancelable(<span class="keyword">false</span>);</span><br><span class="line">progressDialog.show();</span><br></pre></td></tr></table></figure>
+<p>  效果如下<br>  <a href="http://snapgr.am/image/LQbG" target="_blank" rel="external"><img src="http://cdn1.snapgram.co/imgs/2016/08/10/Screenshot_20160811-102959.png" alt="Screenshot_20160811-102959.png"></a></p>
+</li>
+<li><p>setCancelable()；设置为false后不能通过back键返回上一个Activity  只能调用ProgressDialog.dismiss()；来关闭。</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/06/第一行代码AS跟刷-UI(一)/" itemprop="url">
+                  第一行代码AS跟刷-UI(一)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-06T12:00:00+08:00" content="2016-08-06">
+              2016-08-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/第一行代码/" itemprop="url" rel="index">
+                    <span itemprop="name">第一行代码</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/06/第一行代码AS跟刷-UI(一)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/06/第一行代码AS跟刷-UI(一)/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/08/06/第一行代码AS跟刷-UI(一)/" class="leancloud_visitors" data-flag-title="第一行代码AS跟刷-UI(一)">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="TextView"><a href="#TextView" class="headerlink" title="TextView"></a>TextView</h3><ul>
+<li><p>打开AndroidStudio创建一个新工程。自带TextView。为了验证期间，吧文本改了一下。<br>  <img src="http://cdn4.snapgram.co/images/2016/08/06/Screenshot_20160806-215726.png" alt="Screenshot_20160806-215726.png"></p>
+</li>
+<li><p>android:layout_width 与android:layout_height 每个android控件都具有这两个属性。有3种取值 match_parent 、fill_parent、     wrap_content. 其中 match_parent 、fill_parent基本一个意思，TextView会占满整个它所属那层的布局空间。wrap_content则是根据内容多少决定整个TextView的大小。当然还可以手动指定高度和宽度大小，但是考虑到适配屏幕的不同，请慎用。</p>
+</li>
+<li>其他属性没什么可写的，androidstudio与eclipse+adt基本一致。</li>
+</ul>
+<h3 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h3><ul>
+<li>基本没什么可说的，前面用的很多了。添加第一行代码没有的一点内容Button属性中添加<code>android:onClick</code> 然后在对应class文件中添加对应函数即可完成点击响应。（觉得这个要实用一点）</li>
+</ul>
+<h3 id="EditText"><a href="#EditText" class="headerlink" title="EditText"></a>EditText</h3><ul>
+<li><p>google官方文档</p>
+<blockquote>
+<p><a href="https://developer.android.com/reference/android/widget/EditText.html" target="_blank" rel="external">https://developer.android.com/reference/android/widget/EditText.html</a></p>
+</blockquote>
+</li>
+<li><p>继承自TextView，设置TextView的属性 EditText一般通用。</p>
+</li>
+<li><p>android:hint：属性设置可以在用户输入前显示一些提示性文字。</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:hint="please enter something"</span><br></pre></td></tr></table></figure>
+<p>  效果如下图<br>  <a href="http://snapgr.am/image/LzLB" target="_blank" rel="external"><img src="http://cdn3.snapgram.co/imgs/2016/08/06/Screenshot_20160807-085357.png" alt="Screenshot_20160807-085357.png"></a></p>
+</li>
+<li><p>android:maxLines：当输入文字大于一行，可以通过设置 android:maxLines属性来拓展显示区域。</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:maxLines="2"</span><br></pre></td></tr></table></figure>
+<p> 效果如下图<br> <img src="http://cdn4.snapgram.co/images/2016/08/06/Screenshot_20160807-085806.png" alt="Screenshot_20160807-085806.png"></p>
+</li>
+<li><p>getText();   提取输入的文本。首先利用findViewById()；得到EditText实例，随后getText()；得到输入的文本。显示方式采用了Toast，Tosat需要输入字符串，利用toSpring()；转换为字符串。<br>  部分代码如下</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//xml中添加</span></span><br><span class="line">android:id=<span class="string">"@+id/editText"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//新建EditText类型的变量</span></span><br><span class="line">EditText editText;</span><br><span class="line"></span><br><span class="line"><span class="comment">//提取EditText实例</span></span><br><span class="line"> editText = (EditText)<span class="keyword">this</span>.findViewById(R.id.editText);</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//button_1点击响应事件</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">button_1</span><span class="params">(View view)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    Toast.makeText(MainActivity.<span class="keyword">this</span>,editText.getText().toString(), Toast.LENGTH_SHORT).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Imageview"><a href="#Imageview" class="headerlink" title="Imageview"></a>Imageview</h3><ul>
+<li><p>官方文档</p>
+<blockquote>
+<p><a href="https://developer.android.com/reference/android/widget/ImageView.html" target="_blank" rel="external">https://developer.android.com/reference/android/widget/ImageView.html</a></p>
+</blockquote>
+</li>
+<li><p>添加方式类似。。基本AndroidStudio都自动完成了。唯一有点区别的可能是<code>android:src=&quot;@drawable&quot;</code>指定Image的位置。一般将图片文件放在res\drawable文件夹下，为了适配不同分辨率的屏幕，还可以新建不同分辨率对应的文件夹，让显示效果到达最佳。<br>  效果如下<br>  <img src="http://cdn3.snapgram.co/imgs/2016/08/07/Screenshot_20160807-153851.png" alt="Screenshot_20160807-153851.png"></p>
+</li>
+<li><p>动态改变图片。调用setImageResource()；</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//xml中添加</span></span><br><span class="line">android:id=<span class="string">"@+id/imageView"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//新建 ImageView类型的变量</span></span><br><span class="line">ImageView imageView;</span><br><span class="line"></span><br><span class="line"><span class="comment">//找到imageView实例</span></span><br><span class="line"> imageView = (ImageView)<span class="keyword">this</span>.findViewById(R.id.imageView);</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//button_1</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">button_1</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">    imageView.setImageResource(R.drawable.dn);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="ProgressBar"><a href="#ProgressBar" class="headerlink" title="ProgressBar"></a>ProgressBar</h3><p>官方文档</p>
+<blockquote>
+<p><a href="https://developer.android.com/reference/android/widget/ProgressBar.html" target="_blank" rel="external">https://developer.android.com/reference/android/widget/ProgressBar.html</a></p>
+</blockquote>
+<ul>
+<li>添加方式与其他View相同，不加累赘。<br>  效果如下图<br>   <img src="http://cdn2.snapgram.co/imgs/2016/08/07/Scre447.png" alt="Scre447.png">     </li>
+</ul>
+<ul>
+<li><p>显示/隐藏进度条<br>  setVisibility()；</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**************************************/</span></span><br><span class="line"></span><br><span class="line">android:id=<span class="string">"@+id/Progress_Bar"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**************************************/</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">private</span> ProgressBar progressBar;</span><br><span class="line"> </span><br><span class="line"> progressBar = (ProgressBar)<span class="keyword">this</span>.findViewById(R.id.Progress_Bar);</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//onClik响应事件</span></span><br><span class="line"> <span class="keyword">if</span>(progressBar.getVisibility()==View.GONE)</span><br><span class="line">    &#123; progressBar.setVisibility(View.VISIBLE); &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;progressBar.setVisibility(View.GONE);&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>水平进度条<br>  直接上代码  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**************************************/</span></span><br><span class="line"> </span><br><span class="line"> style=<span class="string">"?android:attr/progressBarStyleHorizontal"</span></span><br><span class="line"> android:max=<span class="string">"100"</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/**************************************/</span></span><br><span class="line">  </span><br><span class="line"> <span class="keyword">private</span> ProgressBar progressBar;</span><br><span class="line"> </span><br><span class="line"> progressBar = (ProgressBar)<span class="keyword">this</span>.findViewById(R.id.Progress_Bar);</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//onClick 响应事件</span></span><br><span class="line"> progressBar.setProgress(progressBar.getProgress()+<span class="number">10</span>);</span><br><span class="line"> <span class="keyword">if</span>(progressBar.getProgress()==<span class="number">100</span>)</span><br><span class="line"> 	progressBar.setProgress(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/05/第一行代码AS跟刷-Activity(三)/" itemprop="url">
                   第一行代码AS跟刷-Activity(三)
                 </a>
@@ -885,7 +1508,7 @@
       
         
           
-            <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">20</span>  第一行代码Activity创建部分完成</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">21</span>  完成添加了button和<span class="keyword">menu</span>部分，对应P39页</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">22</span>  完成了P55页之前的activity部分。对于activity（二）</span><br></pre></td></tr></table></figure>
+            <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">20</span>  第一行代码Activity创建部分完成</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">21</span>  完成添加了button和<span class="keyword">menu</span>部分，对应P39页</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">22</span>  完成了P55页之前的activity部分。对于activity（二）</span><br><span class="line"><span class="number">2016.8</span>.<span class="number">10</span>  基本搞定，UI除ListView以外的部分。<span class="number">4</span>种布局比较熟悉，不再折腾。</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1636,434 +2259,13 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/21/开端/" itemprop="url">
-                  开端，起始。
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-21T13:52:11+08:00" content="2016-06-21">
-              2016-06-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/随/" itemprop="url" rel="index">
-                    <span itemprop="name">随</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/21/开端/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/21/开端/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/06/21/开端/" class="leancloud_visitors" data-flag-title="开端，起始。">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>总算是博客搭建完了，依附在github上，自己的域名什么的先不买了。</li>
-<li>评论系统、RSS、留言、统计、访问量 基本有个独立博客的样子了。之前一直以为独立博客要花很长时间才可以完成，其实也就那些东西，真正厉害的是造轮子的人。</li>
-<li>马上大四了，反而找到了自己的兴趣，不知道是高兴还是悲伤，做了三年的单片机最后发现最喜欢的是软件，造化弄人吧。 开始更新自己的经历和心情，基本不用担心审查和备案，反正服务器又不在国内。只能说走一步再走一步了用好剩下的时间。前路和期许很难，但是就这么熬着，总有意外的一天。</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/21/初入树莓派1----安装系统+进入SSH/" itemprop="url">
-                  初入树莓派1安装系统+进入SSH
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-21T10:17:11+08:00" content="2016-06-21">
-              2016-06-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/树莓派折腾/" itemprop="url" rel="index">
-                    <span itemprop="name">树莓派折腾</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/21/初入树莓派1----安装系统+进入SSH/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/21/初入树莓派1----安装系统+进入SSH/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/06/21/初入树莓派1----安装系统+进入SSH/" class="leancloud_visitors" data-flag-title="初入树莓派1安装系统+进入SSH">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><del><strong>为了更好的从事程序员事业、填坑linux、为学弟打下第一手资料、留下linux培训教材……</strong></del></p>
-<p><em>实际就是为了搭个路由器，玩玩</em><br>入了树莓派3b +电源+外壳+sd卡—300大洋——–<em>肉疼</em></p>
-<p>树莓派3b的耗电量还是挺大的==推荐买个2A以上的电源==</p>
-<h3 id="树莓派系统安装-进入命令行"><a href="#树莓派系统安装-进入命令行" class="headerlink" title="树莓派系统安装+进入命令行"></a>树莓派系统安装+进入命令行</h3><p>树莓派支持 数十款操作系统<br>一般新手推荐的是树莓派官方支持的<strong>raspbian</strong></p>
-<p><a href="http://vx2-downloads.raspberrypi.org/raspbian/images/raspbian-2016-05-13/2016-05-10-raspbian-jessie.zip" target="_blank" rel="external">Raspbian系统镜像地址</a>(最好在FQ下，否则会很慢的。你要用IDM当我没说)</p>
-<p>所要用到的工具是：</p>
-<ul>
-<li>1.多功能读卡器一个</li>
-<li>2.TF卡一张（8G以上）</li>
-</ul>
-<p>烧写器官方推荐是<strong>win32diskimager</strong></p>
-<p>但是有个很严重的缺点<strong>文件路径不支持中文</strong>。</p>
-<p>个人推荐 <strong>USB Image Tool</strong><br>故障率最低的是1.7版本。</p>
-<h3 id="插上读卡器，烧写系统开始！"><a href="#插上读卡器，烧写系统开始！" class="headerlink" title="插上读卡器，烧写系统开始！"></a>插上读卡器，烧写系统开始！</h3><ul>
-<li><p><strong>烧写系统</strong><br>打开USB Image Tool<br><strong>注意左上角是Device Mode，不是Volume Mode！</strong><br><a href="http://snapgr.am/image/Livb" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/06/20/1.png" alt="1.png"></a></p>
-<ul>
-<li>1.Rescan 选择下载后解压的img文件</li>
-<li>2.写入等待进度条完成即可。</li>
-</ul>
-</li>
-<li><p><strong>错误原因</strong></p>
-<ul>
-<li>1.USB Image Tool 在win7以上系统中必须要以管理员权限运行</li>
-<li>2.USB Image Tool运行需要.net环境 直接使用系统默认加载的即可。</li>
-</ul>
-<p>烧写完成后接入电源</p>
-</li>
-</ul>
-<h3 id="进入SSH管理（没有显示设备时）"><a href="#进入SSH管理（没有显示设备时）" class="headerlink" title="进入SSH管理（没有显示设备时）"></a>进入SSH管理（没有显示设备时）</h3><p>第一次进入系统时直接利用网线接入路由器，将电脑接入同一个wifi下。<br>在路由器管理界面查找树莓派对应得IP地址。<br>进不去路由？也可以扫描一下局域网设备中开启22端口的设备，八九不离十！</p>
-<ul>
-<li><strong>使用SSH管理工具，这里以putty为例。打开软件，填入树莓派ip地址。</strong><ul>
-<li><strong>打开软件，填入树莓派ip地址。</strong><br><em>默认登陆界面</em><br><a href="http://snapgr.am/image/Liv4" target="_blank" rel="external"><img src="http://cdn4.snapgram.co/images/2016/06/20/2.png" alt="2.png"></a><ul>
-<li><strong>默认用户名pi 密码raspberry。</strong><br><a href="http://snapgr.am/image/LivJ" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/06/20/3.png" alt="3.png"></a></li>
-<li><strong>登陆成功！</strong><br><img src="http://cdn1.snapgram.co/imgs/2016/06/20/4.png" alt="4.png"></li>
-</ul>
-<hr>
-参考<blockquote>
-<p><a href="http://blog.csdn.net/longerzone/article/details/36034619" target="_blank" rel="external">http://blog.csdn.net/longerzone/article/details/36034619</a></p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/18/hellowworld/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-18T10:10:11+08:00" content="2016-06-18">
-              2016-06-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/随/" itemprop="url" rel="index">
-                    <span itemprop="name">随</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/18/hellowworld/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/18/hellowworld/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/06/18/hellowworld/" class="leancloud_visitors" data-flag-title="Hello World">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -2102,7 +2304,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

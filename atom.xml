@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-08-05T04:50:59.507Z</updated>
+  <updated>2016-09-03T02:23:31.758Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,344 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第一行代码AS跟刷-UI(三)ListView</title>
+    <link href="http://yoursite.com/2016/08/11/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81AS%E8%B7%9F%E5%88%B7-UI(%E4%B8%89)ListView/"/>
+    <id>http://yoursite.com/2016/08/11/第一行代码AS跟刷-UI(三)ListView/</id>
+    <published>2016-08-11T11:00:00.000Z</published>
+    <updated>2016-09-03T02:23:31.758Z</updated>
+    
+    <content type="html">&lt;p&gt;本节内容来自以下内容整合。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/noTice520/archive/2011/12/05/2276379.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/noTice520/archive/2011/12/05/2276379.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;第一行代码&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;ListView被很多人称为最常用也是最难用的控件。于此抽出一节来详细说明补充第一行代码内容。&quot;&gt;&lt;a href=&quot;#ListView被很多人称为最常用也是最难用的控件。于此抽出一节来详细说明补充第一行代码内容。&quot; class=&quot;headerlink&quot; title=&quot;* ListView被很多人称为最常用也是最难用的控件。于此抽出一节来详细说明补充第一行代码内容。&quot;&gt;&lt;/a&gt;* ListView被很多人称为最常用也是最难用的控件。于此抽出一节来详细说明补充第一行代码内容。&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;正文开始&lt;/p&gt;
+&lt;h2 id=&quot;ListView说明&quot;&gt;&lt;a href=&quot;#ListView说明&quot; class=&quot;headerlink&quot; title=&quot;ListView说明&quot;&gt;&lt;/a&gt;ListView说明&lt;/h2&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ListView通常有两个职责。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;将数据填充到布局。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;处理用户的选择点击等操作。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ListView的创建需要3个元素。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;ListView中的每一列的View。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;填入View的数据或者图片等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;连接数据与ListView的适配器。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;适配器，参考资料种博主给的定义如下：&lt;br&gt;  适配器是一个连接数据和AdapterView（ListView就是一个典型的AdapterView）的桥梁，通过它能有效地实现数据与AdapterView的分离设置，使AdapterView与数据的绑定更加简便，修改更加方便。常用适配器类型如下。&lt;br&gt;&lt;img src=&quot;http://cdn2.snapgram.co/imgs/2016/08/12/ScreenShot_20160812164439.png&quot; alt=&quot;ScreenShot_20160812164439.png&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;适配器运行效果&quot;&gt;&lt;a href=&quot;#适配器运行效果&quot; class=&quot;headerlink&quot; title=&quot;适配器运行效果&quot;&gt;&lt;/a&gt;适配器运行效果&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;在main-activity.XML中添加ListView.&lt;br&gt;  代码如下  &lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;ListView&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;android:id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;@+id/list_view&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;android:layout_width&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;android:layout_height&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;ListView&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;MainActivity中初始化&lt;br&gt;  以ArrayAdapter为例，代码如下&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;comment&quot;&gt;//要显示的数组，屏幕长了点，为了显示滑动效果多增加了几项。&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; String[] data = &amp;#123;&lt;span class=&quot;string&quot;&gt;&quot;apple&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;banana&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;orange&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;watermelon&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;pear&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;grape&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;pineapple&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;strawberry&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;cherry&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;mango&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;A&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;B&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;C&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;D&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;E&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;F&quot;&lt;/span&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Bundle savedInstanceState)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.onCreate(savedInstanceState);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      setContentView(R.layout.activity_main);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      setSupportActionBar(toolbar);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//为适配器绑定数据&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	ArrayAdapter&amp;lt;String&amp;gt; adapter = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ArrayAdapter&amp;lt;String&amp;gt;(MainActivity.&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;,android.R.layout.simple_list_item_single_choice,data);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//得到ListView对象的引用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ListView listView = (ListView) findViewById(R.id.list_view);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//适配器内容传递&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;listView.setAdapter(adapter);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;显示效果如下图&lt;br&gt;  &lt;img src=&quot;http://cdn3.snapgram.co/imgs/2016/08/12/Screenshot_20160812-170816.png&quot; alt=&quot;Screenshot_20160812-170816.png&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;ArrayAdapter&quot;&gt;&lt;a href=&quot;#ArrayAdapter&quot; class=&quot;headerlink&quot; title=&quot;ArrayAdapter&quot;&gt;&lt;/a&gt;ArrayAdapter&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;基础的显示效果如上图所示&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;实现的步骤。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;定义一个数组来存放item的内容。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;通过实现ArrayAdapter的构造函数来创建一个ArrayAdapter的对象。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;通过ListView的setAdapter()方法绑定ArrayAdapter。&lt;/p&gt;
+&lt;p&gt;参考资料中特别提到第二步。&lt;br&gt;ArrayAdapter有多个构造函数，例程是的一种。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;第一个参数为上下文，&lt;/li&gt;
+&lt;li&gt;第二个参数为一个包含TextView，用来填充ListView的每一行的布局资源ID。&lt;/li&gt;
+&lt;li&gt;第三个参数为ListView的内容。&lt;br&gt;其中  &lt;strong&gt;第二个参数可以使用自定义layout&lt;/strong&gt;，但是&lt;strong&gt;layout必须要有TextView控件&lt;/strong&gt;。通常使用Android提供的资源，还包括带RadioButton和CheckBox的ListView。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;带带选择框  ListView使用&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;指定android.R.layout.simple_list_item_checked这个资源，可以实现带选择框的ListView。必须使用setChoiceMode()方法设定选择为多选还是单选，否则选择效果无效。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;部分代码如下&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//指定simple_list_item_checked&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	ArrayAdapter&amp;lt;String&amp;gt; adapter = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ArrayAdapter&amp;lt;String&amp;gt;(MainActivity.&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;,android.R.layout.simple_list_item_checked,data);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ListView listView = (ListView) findViewById(R.id.list_view);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;listView.setAdapter(adapter);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//设置多选&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;效果如下图所示&lt;br&gt;&lt;img src=&quot;http://cdn3.snapgram.co/imgs/2016/08/12/Screenshot_20160812-175707.png&quot; alt=&quot;Screenshot_20160812-175707.png&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;带CheckBox  ListView使用&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;与带选择框的ListView应用基本相同&lt;br&gt;  android.R.layout.simple_list_item_multiple_choice这个资源，使用setChoiceMode()设置单选/多选。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;部分代码如下&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt; ArrayAdapter&amp;lt;String&amp;gt; adapter = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ArrayAdapter&amp;lt;String&amp;gt;(MainActivity.&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;,android.R.layout.simple_list_item_multiple_choice,data);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ListView listView = (ListView) findViewById(R.id.list_view);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;listView.setAdapter(adapter);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;效果如下图&lt;br&gt;  &lt;img src=&quot;http://cdn4.snapgram.co/images/2016/08/12/Screenshot_20160812-180839.png&quot; alt=&quot;Screenshot_20160812-180839.png&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;带RadioButton的ListView&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基本同上，不加累赘。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;代码如下&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ArrayAdapter&amp;lt;String&amp;gt; adapter = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ArrayAdapter&amp;lt;String&amp;gt;(MainActivity.&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;,android.R.layout.simple_list_item_single_choice,data);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ListView listView = (ListView) findViewById(R.id.list_view);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;listView.setAdapter(adapter);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;效果如下图&lt;br&gt;  &lt;img src=&quot;http://cdn5.snapgram.co/images/2016/08/12/Screenshot_20160812-205336.png&quot; alt=&quot;Screenshot_20160812-205336.png&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;响应点击事件&quot;&gt;&lt;a href=&quot;#响应点击事件&quot; class=&quot;headerlink&quot; title=&quot;响应点击事件&quot;&gt;&lt;/a&gt;响应点击事件&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;使用AdapterView.OnItemClickListener注册一个监听器。点击任何ListView的子项后，回掉onItemClick()；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;onItemClick函数说明&lt;br&gt;  官方文档&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.android.com/reference/android/widget/AdapterView.OnItemClickListener.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://developer.android.com/reference/android/widget/AdapterView.OnItemClickListener.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+  &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;void onItemClick (AdapterView&amp;lt;?&amp;gt; parent, //点击子项所属ListView的指针&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;View view, //所点击view的句柄&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;int position, //所点击子项在listview中位置&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;long id)//子项的ID 一般情况下与position一致&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;代码如下&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;listView.setOnItemClickListener(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; AdapterView.OnItemClickListener() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onItemClick&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(AdapterView&amp;lt;?&amp;gt; arg0, View arg1, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; arg2,&lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; arg3)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          &lt;span class=&quot;comment&quot;&gt;//点击后在标题上显示点击了第几行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           setTitle(&lt;span class=&quot;string&quot;&gt;&quot;你点击了第&quot;&lt;/span&gt;+arg2+&lt;span class=&quot;string&quot;&gt;&quot;行&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;注意一点区别&lt;strong&gt;AdapterView.OnItemClickListener()这一项在第一行代码中为OnItemClickListener()&lt;/strong&gt;       &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;SimpleAdapter&quot;&gt;&lt;a href=&quot;#SimpleAdapter&quot; class=&quot;headerlink&quot; title=&quot;SimpleAdapter&quot;&gt;&lt;/a&gt;SimpleAdapter&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;SimpleAdapter可以绑定xml布局到ListView中，具体步骤如下。&lt;br&gt;&lt;strong&gt;(xml中绑定button不提示出错，但是点击操作被ListView的Item所覆盖，无法使用！)&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;根据需要定义ListView每行所实现的布局。&lt;/li&gt;
+&lt;li&gt;定义一个HashMap构成的列表，将数据以键值对的方式存放在里面。&lt;/li&gt;
+&lt;li&gt;构造SimpleAdapter对象。&lt;/li&gt;
+&lt;li&gt;将LsitView绑定到SimpleAdapter上。&lt;br&gt;  以实例来说明。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;首先新建一个名为item.xml的RelativeLayout布局文件。两个TextView和1个ImageView构成。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;代码如下：&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;   &amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;RelativeLayout&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;xmlns:android&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;attr&quot;&gt;android:layout_width&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;attr&quot;&gt;android:layout_height&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;ImageView&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;attr&quot;&gt;android:layout_alignParentRight&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;attr&quot;&gt;android:layout_width&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;attr&quot;&gt;android:layout_height&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;attr&quot;&gt;android:id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;@+id/ItemImage&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       /&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;TextView&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;attr&quot;&gt;android:id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;@+id/ItemTitle&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;attr&quot;&gt;android:layout_height&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;attr&quot;&gt;android:layout_width&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;fill_parent&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;attr&quot;&gt;android:textSize&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;20sp&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       /&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;TextView&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;attr&quot;&gt;android:id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;@+id/ItemText&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;attr&quot;&gt;android:layout_height&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;attr&quot;&gt;android:layout_width&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;fill_parent&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;attr&quot;&gt;android:layout_below&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;@+id/ItemTitle&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       /&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;RelativeLayout&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在代码中为ListView绑定数据&lt;br&gt;  代码如下&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Bundle savedInstanceState)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.onCreate(savedInstanceState);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       setContentView(R.layout.activity_my_list_view);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       setSupportActionBar(toolbar);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       lv = (ListView) findViewById(R.id.lv);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//定义一个动态数组&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       ArrayList&amp;lt;HashMap&amp;lt;String, Object&amp;gt;&amp;gt; listItem = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt;	 ArrayList&amp;lt;HashMap&amp;lt;String,     Object&amp;gt;&amp;gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//在数组中存放数据&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;i&amp;lt;&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;;i++)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           HashMap&amp;lt;String, Object&amp;gt; map = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; HashMap&amp;lt;String, Object&amp;gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           map.put(&lt;span class=&quot;string&quot;&gt;&quot;ItemImage&quot;&lt;/span&gt;, R.drawable.apple_pic);&lt;span class=&quot;comment&quot;&gt;//加入图片&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           map.put(&lt;span class=&quot;string&quot;&gt;&quot;ItemTitle&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;第&quot;&lt;/span&gt;+i+&lt;span class=&quot;string&quot;&gt;&quot;行&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           map.put(&lt;span class=&quot;string&quot;&gt;&quot;ItemText&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;这是第&quot;&lt;/span&gt;+i+&lt;span class=&quot;string&quot;&gt;&quot;行&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           listItem.add(map);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       SimpleAdapter mSimpleAdapter = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; SimpleAdapter(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;,listItem,&lt;span class=&quot;comment&quot;&gt;//需要绑定的数据&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;               R.layout.item,&lt;span class=&quot;comment&quot;&gt;//每一行的布局&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//动态数组中的数据源的键对应到定义布局的View中&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;               &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; String[] &amp;#123;&lt;span class=&quot;string&quot;&gt;&quot;ItemImage&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;ItemTitle&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;ItemText&quot;&lt;/span&gt;&amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;               &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;[] &amp;#123;R.id.ItemImage,R.id.ItemTitle,R.id.ItemText&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       );&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       lv.setAdapter(mSimpleAdapter);&lt;span class=&quot;comment&quot;&gt;//为ListView绑定适配器&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       lv.setOnItemClickListener(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; AdapterView.OnItemClickListener() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onItemClick&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(AdapterView&amp;lt;?&amp;gt; arg0, View arg1, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; arg2, &lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; arg3)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          setTitle(&lt;span class=&quot;string&quot;&gt;&quot;你点击了第&quot;&lt;/span&gt;+arg2+&lt;span class=&quot;string&quot;&gt;&quot;行&quot;&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//设置标题栏显示点击的行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;函数说明&lt;br&gt;  SimpleAdapter mSimpleAdapter = new SimpleAdapter(this,listItem,R.layout.item,&lt;br&gt;   new String[] {“ItemImage”,”ItemTitle”, “ItemText”},&lt;br&gt;   new int[] {R.id.ItemImage,R.id.ItemTitle,R.id.ItemText}&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;);
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;函数原型：&lt;br&gt;  SimpleAdapter (Context context, &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;List&amp;lt;? extends Map&amp;lt;String, ?&amp;gt;&amp;gt; data, 
+int resource, 
+String[] from, 
+int[] to)
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Context context : &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The context where the View associated with this SimpleAdapter is running   &lt;/li&gt;
+&lt;li&gt;关联SimpleAdapter运行的视图上下文&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;List&amp;lt;? extends Map&lt;string, ?=&quot;&quot;&gt;&amp;gt; data&lt;/string,&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A List of Maps. Each entry in the List corresponds to one row in the list. The Maps contain the data for each row, and should include all the entries specified in “from”&lt;/li&gt;
+&lt;li&gt;Map列表，列表要显示的数据，这部分需要自己实现，如例子中的getData()，类型要与上面的一致，每条项目要与from中指定条目一致&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;int resource        &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Resource identifier of a view layout that defines the views for this list item. The layout file should include at least those named views defined in “to”&lt;/li&gt;
+&lt;li&gt;resource：ListView单项布局文件的Id,这个布局就是你自定义的布局了，你想显示什么样子的布局都在这个布局中。这个布局中必须包括了to中定义的控件id&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;String[] from&lt;ul&gt;
+&lt;li&gt;String: A list of column names that will be added to the Map associated with each item.&lt;/li&gt;
+&lt;li&gt;一个被添加到Map上关联每一个项目列名称的列表，数组里面是列名称&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;int[] to&lt;ul&gt;
+&lt;li&gt;The views that should display column in the “from” parameter. &lt;/li&gt;
+&lt;li&gt;是一个int数组，数组里面的id是自定义布局中各个控件的id，需要与上面的from对应。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;详细说明&lt;br&gt;  SimpleAdapter mSimpleAdapter = new SimpleAdapter(this,listItem,R.layout.item,&lt;br&gt;   new String[] {“ItemImage”,”ItemTitle”, “ItemText”},&lt;br&gt;   new int[] {R.id.ItemImage,R.id.ItemTitle,R.id.ItemText}&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;);    
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;this：关联的上下文&lt;/li&gt;
+&lt;li&gt;listItem：Map列表&lt;/li&gt;
+&lt;li&gt;R.layout.item：xml布局Id&lt;/li&gt;
+&lt;li&gt;new String[] {“ItemImage”,”ItemTitle”, “ItemText”},&lt;br&gt;new int[] {R.id.ItemImage,R.id.ItemTitle,R.id.ItemText：互相对应&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BaseAdapter&lt;br&gt;  内容还在眩晕中，回头补上。。。     &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本节内容来自以下内容整合。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/noTice520/archive/2011/12/05/2276379.html&quot; target=&quot;_blank&quot; rel=&quot;externa
+    
+    </summary>
+    
+      <category term="第一行代码" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/"/>
+    
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第一行代码AS跟刷-UI(二)</title>
+    <link href="http://yoursite.com/2016/08/10/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81AS%E8%B7%9F%E5%88%B7-UI(%E4%BA%8C)/"/>
+    <id>http://yoursite.com/2016/08/10/第一行代码AS跟刷-UI(二)/</id>
+    <published>2016-08-10T04:00:00.000Z</published>
+    <updated>2016-08-11T11:53:32.138Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;Dialog&quot;&gt;&lt;a href=&quot;#Dialog&quot; class=&quot;headerlink&quot; title=&quot;Dialog&quot;&gt;&lt;/a&gt;Dialog&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;对话框。官方文档如下(中文)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.android.com/guide/topics/ui/dialogs.html#AlertDialog&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://developer.android.com/guide/topics/ui/dialogs.html#AlertDialog&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;没有什么多说的，官方文档很清楚了。&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;AlertDialog.Builder dialog = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; AlertDialog.Builder(MainActivity.&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dialog.setTitle(&lt;span class=&quot;string&quot;&gt;&quot;对话框&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dialog.setMessage(&lt;span class=&quot;string&quot;&gt;&quot;不小心出错&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dialog.setCancelable(&lt;span class=&quot;keyword&quot;&gt;false&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dialog.setPositiveButton(&lt;span class=&quot;string&quot;&gt;&quot;OK&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; DialogInterface.OnClickListener()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(DialogInterface dialog,&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; which )&lt;/span&gt;&lt;/span&gt;&amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dialog.setNegativeButton(&lt;span class=&quot;string&quot;&gt;&quot;Cancel&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; DialogInterface.OnClickListener()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(DialogInterface dialog,&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; which )&lt;/span&gt;&lt;/span&gt;&amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dialog.show();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;  效果如下&lt;br&gt;  &lt;img src=&quot;http://cdn2.snapgram.co/imgs/2016/08/10/Screenshot_20160811-100654.png&quot; alt=&quot;Screenshot_20160811-100654.png&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;ProgressDialog&quot;&gt;&lt;a href=&quot;#ProgressDialog&quot; class=&quot;headerlink&quot; title=&quot;ProgressDialog&quot;&gt;&lt;/a&gt;ProgressDialog&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;官方文档&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.android.com/reference/android/app/ProgressDialog.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://developer.android.com/reference/android/app/ProgressDialog.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;基本显示效果是对话框+进度条&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ProgressDialog progressDialog = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ProgressDialog(MainActivity.&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;progressDialog.setTitle(&lt;span class=&quot;string&quot;&gt;&quot;progressDialog&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;progressDialog.setMessage(&lt;span class=&quot;string&quot;&gt;&quot;加载中&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;progressDialog.setCancelable(&lt;span class=&quot;keyword&quot;&gt;false&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;progressDialog.show();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;  效果如下&lt;br&gt;  &lt;a href=&quot;http://snapgr.am/image/LQbG&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://cdn1.snapgram.co/imgs/2016/08/10/Screenshot_20160811-102959.png&quot; alt=&quot;Screenshot_20160811-102959.png&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;setCancelable()；设置为false后不能通过back键返回上一个Activity  只能调用ProgressDialog.dismiss()；来关闭。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Dialog&quot;&gt;&lt;a href=&quot;#Dialog&quot; class=&quot;headerlink&quot; title=&quot;Dialog&quot;&gt;&lt;/a&gt;Dialog&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;对话框。官方文档如下(中文)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;h
+    
+    </summary>
+    
+      <category term="第一行代码" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/"/>
+    
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第一行代码AS跟刷-UI(一)</title>
+    <link href="http://yoursite.com/2016/08/06/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81AS%E8%B7%9F%E5%88%B7-UI(%E4%B8%80)/"/>
+    <id>http://yoursite.com/2016/08/06/第一行代码AS跟刷-UI(一)/</id>
+    <published>2016-08-06T04:00:00.000Z</published>
+    <updated>2016-08-07T09:07:03.809Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;TextView&quot;&gt;&lt;a href=&quot;#TextView&quot; class=&quot;headerlink&quot; title=&quot;TextView&quot;&gt;&lt;/a&gt;TextView&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;打开AndroidStudio创建一个新工程。自带TextView。为了验证期间，吧文本改了一下。&lt;br&gt;  &lt;img src=&quot;http://cdn4.snapgram.co/images/2016/08/06/Screenshot_20160806-215726.png&quot; alt=&quot;Screenshot_20160806-215726.png&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;android:layout_width 与android:layout_height 每个android控件都具有这两个属性。有3种取值 match_parent 、fill_parent、     wrap_content. 其中 match_parent 、fill_parent基本一个意思，TextView会占满整个它所属那层的布局空间。wrap_content则是根据内容多少决定整个TextView的大小。当然还可以手动指定高度和宽度大小，但是考虑到适配屏幕的不同，请慎用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;其他属性没什么可写的，androidstudio与eclipse+adt基本一致。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Button&quot;&gt;&lt;a href=&quot;#Button&quot; class=&quot;headerlink&quot; title=&quot;Button&quot;&gt;&lt;/a&gt;Button&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;基本没什么可说的，前面用的很多了。添加第一行代码没有的一点内容Button属性中添加&lt;code&gt;android:onClick&lt;/code&gt; 然后在对应class文件中添加对应函数即可完成点击响应。（觉得这个要实用一点）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;EditText&quot;&gt;&lt;a href=&quot;#EditText&quot; class=&quot;headerlink&quot; title=&quot;EditText&quot;&gt;&lt;/a&gt;EditText&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;google官方文档&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.android.com/reference/android/widget/EditText.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://developer.android.com/reference/android/widget/EditText.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;继承自TextView，设置TextView的属性 EditText一般通用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;android:hint：属性设置可以在用户输入前显示一些提示性文字。&lt;/p&gt;
+  &lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;android:hint=&quot;please enter something&quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;  效果如下图&lt;br&gt;  &lt;a href=&quot;http://snapgr.am/image/LzLB&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://cdn3.snapgram.co/imgs/2016/08/06/Screenshot_20160807-085357.png&quot; alt=&quot;Screenshot_20160807-085357.png&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;android:maxLines：当输入文字大于一行，可以通过设置 android:maxLines属性来拓展显示区域。&lt;/p&gt;
+ &lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;android:maxLines=&quot;2&quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; 效果如下图&lt;br&gt; &lt;img src=&quot;http://cdn4.snapgram.co/images/2016/08/06/Screenshot_20160807-085806.png&quot; alt=&quot;Screenshot_20160807-085806.png&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;getText();   提取输入的文本。首先利用findViewById()；得到EditText实例，随后getText()；得到输入的文本。显示方式采用了Toast，Tosat需要输入字符串，利用toSpring()；转换为字符串。&lt;br&gt;  部分代码如下&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//xml中添加&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;android:id=&lt;span class=&quot;string&quot;&gt;&quot;@+id/editText&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//新建EditText类型的变量&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;EditText editText;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//提取EditText实例&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; editText = (EditText)&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.findViewById(R.id.editText);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;comment&quot;&gt;//button_1点击响应事件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;button_1&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(View view)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Toast.makeText(MainActivity.&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;,editText.getText().toString(), Toast.LENGTH_SHORT).show();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Imageview&quot;&gt;&lt;a href=&quot;#Imageview&quot; class=&quot;headerlink&quot; title=&quot;Imageview&quot;&gt;&lt;/a&gt;Imageview&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;官方文档&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.android.com/reference/android/widget/ImageView.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://developer.android.com/reference/android/widget/ImageView.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;添加方式类似。。基本AndroidStudio都自动完成了。唯一有点区别的可能是&lt;code&gt;android:src=&amp;quot;@drawable&amp;quot;&lt;/code&gt;指定Image的位置。一般将图片文件放在res\drawable文件夹下，为了适配不同分辨率的屏幕，还可以新建不同分辨率对应的文件夹，让显示效果到达最佳。&lt;br&gt;  效果如下&lt;br&gt;  &lt;img src=&quot;http://cdn3.snapgram.co/imgs/2016/08/07/Screenshot_20160807-153851.png&quot; alt=&quot;Screenshot_20160807-153851.png&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;动态改变图片。调用setImageResource()；&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//xml中添加&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;android:id=&lt;span class=&quot;string&quot;&gt;&quot;@+id/imageView&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//新建 ImageView类型的变量&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ImageView imageView;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//找到imageView实例&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; imageView = (ImageView)&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.findViewById(R.id.imageView);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;comment&quot;&gt;//button_1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;button_1&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(View view)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    imageView.setImageResource(R.drawable.dn);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;ProgressBar&quot;&gt;&lt;a href=&quot;#ProgressBar&quot; class=&quot;headerlink&quot; title=&quot;ProgressBar&quot;&gt;&lt;/a&gt;ProgressBar&lt;/h3&gt;&lt;p&gt;官方文档&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.android.com/reference/android/widget/ProgressBar.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://developer.android.com/reference/android/widget/ProgressBar.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;添加方式与其他View相同，不加累赘。&lt;br&gt;  效果如下图&lt;br&gt;   &lt;img src=&quot;http://cdn2.snapgram.co/imgs/2016/08/07/Scre447.png&quot; alt=&quot;Scre447.png&quot;&gt;     &lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;显示/隐藏进度条&lt;br&gt;  setVisibility()；&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/**************************************/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;android:id=&lt;span class=&quot;string&quot;&gt;&quot;@+id/Progress_Bar&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/**************************************/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; ProgressBar progressBar;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; progressBar = (ProgressBar)&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.findViewById(R.id.Progress_Bar);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;comment&quot;&gt;//onClik响应事件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(progressBar.getVisibility()==View.GONE)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123; progressBar.setVisibility(View.VISIBLE); &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;progressBar.setVisibility(View.GONE);&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;水平进度条&lt;br&gt;  直接上代码  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/**************************************/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; style=&lt;span class=&quot;string&quot;&gt;&quot;?android:attr/progressBarStyleHorizontal&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; android:max=&lt;span class=&quot;string&quot;&gt;&quot;100&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/**************************************/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; ProgressBar progressBar;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; progressBar = (ProgressBar)&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.findViewById(R.id.Progress_Bar);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;comment&quot;&gt;//onClick 响应事件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; progressBar.setProgress(progressBar.getProgress()+&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(progressBar.getProgress()==&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 	progressBar.setProgress(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;TextView&quot;&gt;&lt;a href=&quot;#TextView&quot; class=&quot;headerlink&quot; title=&quot;TextView&quot;&gt;&lt;/a&gt;TextView&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;打开AndroidStudio创建一个新工程。自带TextView。为了验
+    
+    </summary>
+    
+      <category term="第一行代码" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/"/>
+    
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
   
   <entry>
     <title>第一行代码AS跟刷-Activity(三)</title>
@@ -293,9 +631,9 @@
     <link href="http://yoursite.com/2016/07/17/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/"/>
     <id>http://yoursite.com/2016/07/17/第一行代码/</id>
     <published>2016-07-17T02:11:11.000Z</published>
-    <updated>2016-07-22T09:07:58.865Z</updated>
+    <updated>2016-08-11T11:54:46.179Z</updated>
     
-    <content type="html">&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.7&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;  第一行代码Activity创建部分完成&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.7&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;21&lt;/span&gt;  完成添加了button和&lt;span class=&quot;keyword&quot;&gt;menu&lt;/span&gt;部分，对应P39页&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.7&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;22&lt;/span&gt;  完成了P55页之前的activity部分。对于activity（二）&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    <content type="html">&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.7&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;  第一行代码Activity创建部分完成&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.7&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;21&lt;/span&gt;  完成添加了button和&lt;span class=&quot;keyword&quot;&gt;menu&lt;/span&gt;部分，对应P39页&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.7&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;22&lt;/span&gt;  完成了P55页之前的activity部分。对于activity（二）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.8&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;  基本搞定，UI除ListView以外的部分。&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;种布局比较熟悉，不再折腾。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 </content>
     
     <summary type="html">
@@ -871,17 +1209,17 @@
       <category term="随" scheme="http://yoursite.com/categories/%E9%9A%8F/"/>
     
     
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
       <category term="python" scheme="http://yoursite.com/tags/python/"/>
     
       <category term="单片机" scheme="http://yoursite.com/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
     
       <category term="开源" scheme="http://yoursite.com/tags/%E5%BC%80%E6%BA%90/"/>
+    
+      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
     
   </entry>
   
