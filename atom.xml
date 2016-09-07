@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-03T02:23:31.758Z</updated>
+  <updated>2016-09-07T05:04:50.986Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,146 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第一行代码AS跟刷-Broadcast广播(一)</title>
+    <link href="http://yoursite.com/2016/09/03/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81AS%E8%B7%9F%E5%88%B7-Broadcast%E5%B9%BF%E6%92%AD(%E4%B8%80)/"/>
+    <id>http://yoursite.com/2016/09/03/第一行代码AS跟刷-Broadcast广播(一)/</id>
+    <published>2016-09-03T07:00:00.000Z</published>
+    <updated>2016-09-07T05:04:50.986Z</updated>
+    
+    <content type="html">&lt;p&gt;经过上一节ListView的轰炸，头脑暂时处于麻痹状态。Fragment相关内容先放一放。来点轻松的重拾面对Android 的信心。。。来面对今天的主角&lt;strong&gt;BroadcastReceiver&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;BroadcastReceiver基础&quot;&gt;&lt;a href=&quot;#BroadcastReceiver基础&quot; class=&quot;headerlink&quot; title=&quot;BroadcastReceiver基础&quot;&gt;&lt;/a&gt;BroadcastReceiver基础&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;首先祭出官方文档及&lt;strong&gt;中文翻译&lt;/strong&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.android.com/reference/android/content/BroadcastReceiver.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://developer.android.com/reference/android/content/BroadcastReceiver.html&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.jianshu.com/p/1b56172b0c77&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jianshu.com/p/1b56172b0c77&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;BroadcastReceiver概述&quot;&gt;&lt;a href=&quot;#BroadcastReceiver概述&quot; class=&quot;headerlink&quot; title=&quot;BroadcastReceiver概述&quot;&gt;&lt;/a&gt;BroadcastReceiver概述&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/qiuscut/articles/2212064.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;@别路寻忆&lt;/a&gt;&lt;br&gt;Android中的四大组件是 Activity、Service、Broadcast和Content Provider。而Intent是一个对动作和行为的抽象描述，负责组件之间程序之间进行消息传递。那么Broadcast Receiver组件就提供了一种把Intent作为一个消息广播出去，由所有对其感兴趣的程序对其作出反应的机制。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/zuolongsnail/article/details/6450156&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;@zuolongsnail专栏&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;广播接收器是一个专注于接收广播通知信息，并做出对应处理的组件。很多广播是源自于系统代码的──比如，通知时区改变、电池电量低、拍摄了一张照片或者用户改变了语言选项。应用程序也可以进行广播──比如说，通知其它应用程序一些数据下载完成并处于可用状态。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;应用程序可以拥有任意数量的广播接收器以对所有它感兴趣的通知信息予以响应。所有的接收器均继承自BroadcastReceiver基类。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;广播接收器没有用户界面。然而，它们可以启动一个activity来响应它们收到的信息，或者用NotificationManager来通知用户。通知可以用很多种方式来吸引用户的注意力──闪动背灯、震动、播放声音等等。一般来说是在状态栏上放一个持久的图标，用户可以打开它并获取消息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;广播分类&quot;&gt;&lt;a href=&quot;#广播分类&quot; class=&quot;headerlink&quot; title=&quot;广播分类&quot;&gt;&lt;/a&gt;广播分类&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;触发广播发生的事件分类有两种&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Android系统广播事件&lt;br&gt; 由android设备状态变化而触发的系统广播如：&lt;br&gt; Intent.ACTION_POWER_CONNECTED;&lt;br&gt; //插上外部电源时发出的广播&lt;br&gt; Intent.ACTION_SCREEN_ON;&lt;br&gt; //屏幕被打开之后的广播&lt;br&gt; ACTION_TIME_CHANGED&lt;br&gt; //系统时间改变而触发的广播     等；&lt;/p&gt;
+&lt;p&gt; PS:著名的国产BAT毒瘤服务各种神奇的后台自启，其手段中重要的一环就是滥用Android系统广播！比如微信、QQ、淘宝当时间变化/电量变化/锁屏解锁 都会借由Android系统广播而实现后台重生。遇到这种情况直接出门左转–&lt;strong&gt;阻止运行！&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;自定义的广播事件&lt;br&gt; 这个比较好理解了，比如qq当我们再另外一台手机上登陆时，手头的这个手机qq就会自动下线。腾讯的服务器通过后台服务启用了自定义广播来终结正在运行的Activity，详情之后会有例程，不再累赘。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;能够被接收的广播类型&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;普通广播（Normal broadcasts）：&lt;br&gt; （由 Context.sendBroadcast发出）异步发出。所有广播接收器都可以在同一时间接收广播。广播接收者无法接收广播的处理结果或者阻断广播的传递。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;有序广播（Ordered broadcasts）：&lt;br&gt; （由 Context.sendOrderedBroadcast发出）每次只发送给一个广播接收器。当每个广播接收器依次执行时，它可以向下一个广播接收器传播结果，或者阻断该广播，使得该广播不能被下一个广播接收器接收到。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;通俗解释：&lt;br&gt;  普通广播就相当于小区/村委会的大喇叭，有事发生（触发广播）通知所有的人（广播接收器），全功率的大喊大叫确保所有人（广播接收器）都能听到。而有人（广播接收器）在睡觉被吵醒但是又没办法砸了那个大喇叭，只能继续听着（无法接收广播的处理结果或者阻断广播的传递）。&lt;br&gt;  有序广播 就相当于间谍机关的绝密消息传递。绝密到手（触发广播）间谍秘密汇总给上线A（广播接收器A）。本来 上线（广播接收器A）应该  听取完毕重新整理情向首长B（广播接收器B）报告（向广播接收器B传播 广播接收器A修改的结果）,但是A被收买，将情报隐匿了，没有向首长B汇报（广播接收器A阻断该广播，使得该广播不能被下一个广播接收器B接收到）。（PS结局首长B错误带人炸了村委会，该睡觉的人终于可以安生睡觉了！）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;广播事件注册有两种&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;静态注册，就是在AndroidManifest.xml文件中定义，注册的广播接收器必须要继承BroadcastReceiver.&lt;/li&gt;
+&lt;li&gt;动态注册，是在程序中使用Context.registerReceiver注册，注册的广播接收器相当于一个匿名类。两种方式都需要IntentFIlter。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;例程见下节。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;动态注册（在代码中注册）&quot;&gt;&lt;a href=&quot;#动态注册（在代码中注册）&quot; class=&quot;headerlink&quot; title=&quot;动态注册（在代码中注册）&quot;&gt;&lt;/a&gt;动态注册（在代码中注册）&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;在代码中通过registerReceiver()注册。app关闭后,该接收器也会随之销毁。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;首先定义一个内部子类NetworkChangeReceiver继承自 BroadcastReceiver&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;NetworkChangeReceiver&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;BroadcastReceiver&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//重写onReceive，接收到广播后提示消息&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onReceive&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Context context, Intent intent)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 	Toast.makeText(context, &lt;span class=&quot;string&quot;&gt;&quot;network is available网络已变化&quot;&lt;/span&gt;, Toast.LENGTH_SHORT).show();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在onCreate()方法中创建IntentFilter实例和NetworkChangeReceiver实例。并在IntentFilter实例中添加网络变化时系统广播对应值。随后传入registerReceiver()中注册。&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Bundle savedInstanceState)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.onCreate(savedInstanceState);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    setContentView(R.layout.activity_main);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;comment&quot;&gt;//创建IntentFilter实例&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    intentFilter = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; IntentFilter();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//添加对应系统广播&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    intentFilter.addAction(&lt;span class=&quot;string&quot;&gt;&quot;android.net.conn.CONNECTIVITY_CHANGE&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//添加NetworkChangeReceiver实例&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    networkChangeReceiver = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; NetworkChangeReceiver();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//动态注册&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    registerReceiver(networkChangeReceiver, intentFilter);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;动态注册的广播接收器最后要取消注册。在onDestroy()方法中调用unregisterReceiver()销毁动态注册的广播接收器。&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onDestroy&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.onDestroy();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    unregisterReceiver(networkChangeReceiver);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;最后要在AndroidMainfest.xml中声明查询系统网络状态的权限。&lt;/p&gt;
+  &lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;uses-permission&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;android:name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;android.permission.ACCESS_NETWORK_STATE&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;运行效果如如所示（模拟器）&lt;br&gt;  &lt;img src=&quot;http://ww2.sinaimg.cn/large/6153fc0cjw1f7j04rqb85j20u01hcjv9.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;静态注册（xml中注册）&quot;&gt;&lt;a href=&quot;#静态注册（xml中注册）&quot; class=&quot;headerlink&quot; title=&quot;静态注册（xml中注册）&quot;&gt;&lt;/a&gt;静态注册（xml中注册）&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;直接在Manifest.xml文件中配置广播接收者&lt;/li&gt;
+&lt;li&gt;例程为了方便同样以&lt;code&gt;android.net.conn.CONNECTIVITY_CHANGE&lt;/code&gt;为例，与动态注册相同。&lt;h3 id=&quot;不使用内部子类（第一行代码）&quot;&gt;&lt;a href=&quot;#不使用内部子类（第一行代码）&quot; class=&quot;headerlink&quot; title=&quot;不使用内部子类（第一行代码）&quot;&gt;&lt;/a&gt;不使用内部子类（第一行代码）&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;新建名称为BootCompleteReceiver的java class  代码如下&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt;  &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;BootCompleteReceiver&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;BroadcastReceiver&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onReceive&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Context context, Intent intent)&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       Toast.makeText(context, &lt;span class=&quot;string&quot;&gt;&quot;网络改变&quot;&lt;/span&gt;, Toast.LENGTH_SHORT).show();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  		 &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在AndroidManifest.xml文件中注册广播接收器&lt;br&gt;  代码如下&lt;/p&gt;
+  &lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;receiver&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;android:name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;.BootCompleteReceiver&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;intent-filter&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;action&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;android:name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;android.net.conn.CONNECTIVITY_CHANGE&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;intent-filter&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;receiver&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;在AndroidManifest.xml中声明权限  &lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;uses-permission&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;android:name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;android.permission.INTERNET&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;uses-permission&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;uses-permission&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;android:name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;android.permission.ACCESS_NETWORK_STATE&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;uses-permission&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;使用内部子类（在Activity中定义）&quot;&gt;&lt;a href=&quot;#使用内部子类（在Activity中定义）&quot; class=&quot;headerlink&quot; title=&quot;使用内部子类（在Activity中定义）&quot;&gt;&lt;/a&gt;使用内部子类（在Activity中定义）&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;在这晕圈了一下午，找不出毛病。看书多仔细吧，书上说了不用内部子类。&lt;/strong&gt;&lt;br&gt;详细资料在这里&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/chdjj/article/details/19496567&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/chdjj/article/details/19496567&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;清单文件注册广播接收者时，广播接收者的名字格式需要注意因为是内部类，所以需要在内部类所在的类与内部类之间加上$符号&lt;/strong&gt;(这一点在AndroidStudio中输入时有提示)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;内部类在声明时一定要写成静态内部类（class关键字前加上static）。否则会抛出异常&lt;/strong&gt;（广播发生时，应用停止运行）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;在MainActivity中新建子类  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;BootCompleteReceiver&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;BroadcastReceiver&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onReceive&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Context context, Intent intent)&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Toast.makeText(context, &lt;span class=&quot;string&quot;&gt;&quot;Boot complete&quot;&lt;/span&gt;, Toast.LENGTH_SHORT).show();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;在AndroidManifest.xml中注册广播接收器  &lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;receiver&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;android:name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;.MainActivity$BootCompleteReceiver&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;intent-filter&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;action&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;android:name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;android.net.conn.CONNECTIVITY_CHANGE&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;intent-filter&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;receiver&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;在AndroidManifest.xml中声明权限  &lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;uses-permission&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;android:name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;android.permission.INTERNET&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;uses-permission&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;uses-permission&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;android:name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;android.permission.ACCESS_NETWORK_STATE&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;uses-permission&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;运行效果同动态注册&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;经过上一节ListView的轰炸，头脑暂时处于麻痹状态。Fragment相关内容先放一放。来点轻松的重拾面对Android 的信心。。。来面对今天的主角&lt;strong&gt;BroadcastReceiver&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;Broadcast
+    
+    </summary>
+    
+      <category term="第一行代码" scheme="http://yoursite.com/categories/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/"/>
+    
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
   
   <entry>
     <title>第一行代码AS跟刷-UI(三)ListView</title>
