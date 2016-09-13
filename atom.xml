@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-13T12:41:08.231Z</updated>
+  <updated>2016-09-13T12:53:24.859Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>第一行代码AS跟刷-Broadcast广播(一)</title>
+    <title>第一行代码AS跟刷-Broadcast广播</title>
     <link href="http://yoursite.com/2016/09/03/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81AS%E8%B7%9F%E5%88%B7-Broadcast%E5%B9%BF%E6%92%AD/"/>
     <id>http://yoursite.com/2016/09/03/第一行代码AS跟刷-Broadcast广播/</id>
     <published>2016-09-03T04:00:00.000Z</published>
-    <updated>2016-09-13T12:41:08.231Z</updated>
+    <updated>2016-09-13T12:53:24.859Z</updated>
     
     <content type="html">&lt;h2 id=&quot;经过上一节ListView的轰炸，头脑暂时处于麻痹状态。Fragment相关内容先放一放。来点轻松的重拾面对Android-的信心。。。来面对今天的主角BroadcastReceiver&quot;&gt;&lt;a href=&quot;#经过上一节ListView的轰炸，头脑暂时处于麻痹状态。Fragment相关内容先放一放。来点轻松的重拾面对Android-的信心。。。来面对今天的主角BroadcastReceiver&quot; class=&quot;headerlink&quot; title=&quot;经过上一节ListView的轰炸，头脑暂时处于麻痹状态。Fragment相关内容先放一放。来点轻松的重拾面对Android 的信心。。。来面对今天的主角BroadcastReceiver&quot;&gt;&lt;/a&gt;经过上一节ListView的轰炸，头脑暂时处于麻痹状态。Fragment相关内容先放一放。来点轻松的重拾面对Android 的信心。。。来面对今天的主角&lt;strong&gt;BroadcastReceiver&lt;/strong&gt;&lt;/h2&gt;&lt;h2 id=&quot;BroadcastReceiver基础&quot;&gt;&lt;a href=&quot;#BroadcastReceiver基础&quot; class=&quot;headerlink&quot; title=&quot;BroadcastReceiver基础&quot;&gt;&lt;/a&gt;BroadcastReceiver基础&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;首先祭出官方文档及&lt;strong&gt;中文翻译&lt;/strong&gt;&lt;blockquote&gt;
@@ -1423,17 +1423,17 @@ int[] to)
       <category term="随" scheme="http://yoursite.com/categories/%E9%9A%8F/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
     
       <category term="单片机" scheme="http://yoursite.com/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
     
       <category term="开源" scheme="http://yoursite.com/tags/%E5%BC%80%E6%BA%90/"/>
     
-      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
     
   </entry>
   
