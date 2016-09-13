@@ -247,7 +247,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/03/第一行代码AS跟刷-Broadcast广播(一)/" itemprop="url">
+                <a class="post-title-link" href="/2016/09/03/第一行代码AS跟刷-Broadcast广播/" itemprop="url">
                   第一行代码AS跟刷-Broadcast广播(一)
                 </a>
               
@@ -261,7 +261,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-03T15:00:00+08:00" content="2016-09-03">
+            <time itemprop="dateCreated" datetime="2016-09-03T12:00:00+08:00" content="2016-09-03">
               2016-09-03
             </time>
           </span>
@@ -291,8 +291,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/09/03/第一行代码AS跟刷-Broadcast广播(一)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/03/第一行代码AS跟刷-Broadcast广播(一)/" itemprop="commentsCount"></span>
+                <a href="/2016/09/03/第一行代码AS跟刷-Broadcast广播/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/03/第一行代码AS跟刷-Broadcast广播/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -302,7 +302,7 @@
 
           
           
-             <span id="/2016/09/03/第一行代码AS跟刷-Broadcast广播(一)/" class="leancloud_visitors" data-flag-title="第一行代码AS跟刷-Broadcast广播(一)">
+             <span id="/2016/09/03/第一行代码AS跟刷-Broadcast广播/" class="leancloud_visitors" data-flag-title="第一行代码AS跟刷-Broadcast广播(一)">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -325,9 +325,7 @@
       
         
           
-            <p>经过上一节ListView的轰炸，头脑暂时处于麻痹状态。Fragment相关内容先放一放。来点轻松的重拾面对Android 的信心。。。来面对今天的主角<strong>BroadcastReceiver</strong></p>
-<hr>
-<h2 id="BroadcastReceiver基础"><a href="#BroadcastReceiver基础" class="headerlink" title="BroadcastReceiver基础"></a>BroadcastReceiver基础</h2><ul>
+            <h2 id="经过上一节ListView的轰炸，头脑暂时处于麻痹状态。Fragment相关内容先放一放。来点轻松的重拾面对Android-的信心。。。来面对今天的主角BroadcastReceiver"><a href="#经过上一节ListView的轰炸，头脑暂时处于麻痹状态。Fragment相关内容先放一放。来点轻松的重拾面对Android-的信心。。。来面对今天的主角BroadcastReceiver" class="headerlink" title="经过上一节ListView的轰炸，头脑暂时处于麻痹状态。Fragment相关内容先放一放。来点轻松的重拾面对Android 的信心。。。来面对今天的主角BroadcastReceiver"></a>经过上一节ListView的轰炸，头脑暂时处于麻痹状态。Fragment相关内容先放一放。来点轻松的重拾面对Android 的信心。。。来面对今天的主角<strong>BroadcastReceiver</strong></h2><h2 id="BroadcastReceiver基础"><a href="#BroadcastReceiver基础" class="headerlink" title="BroadcastReceiver基础"></a>BroadcastReceiver基础</h2><ul>
 <li>首先祭出官方文档及<strong>中文翻译</strong><blockquote>
 <p><a href="https://developer.android.com/reference/android/content/BroadcastReceiver.html" target="_blank" rel="external">https://developer.android.com/reference/android/content/BroadcastReceiver.html</a><br><a href="http://www.jianshu.com/p/1b56172b0c77" target="_blank" rel="external">http://www.jianshu.com/p/1b56172b0c77</a></p>
 </blockquote>
@@ -389,8 +387,6 @@
 <li><p>动态注册的广播接收器最后要取消注册。在onDestroy()方法中调用unregisterReceiver()销毁动态注册的广播接收器。</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onDestroy();</span><br><span class="line">    unregisterReceiver(networkChangeReceiver);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<ul>
 <li><p>最后要在AndroidMainfest.xml中声明查询系统网络状态的权限。</p>
   <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_NETWORK_STATE"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -406,9 +402,8 @@
 <li><p>在AndroidManifest.xml文件中注册广播接收器<br>  代码如下</p>
   <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">".BootCompleteReceiver"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.net.conn.CONNECTIVITY_CHANGE"</span>/&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<ul>
-<li>在AndroidManifest.xml中声明权限  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span>&gt;</span><span class="tag">&lt;/<span class="name">uses-permission</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_NETWORK_STATE"</span>&gt;</span><span class="tag">&lt;/<span class="name">uses-permission</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<li><p>在AndroidManifest.xml中声明权限</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span>&gt;</span><span class="tag">&lt;/<span class="name">uses-permission</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_NETWORK_STATE"</span>&gt;</span><span class="tag">&lt;/<span class="name">uses-permission</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="使用内部子类（在Activity中定义）"><a href="#使用内部子类（在Activity中定义）" class="headerlink" title="使用内部子类（在Activity中定义）"></a>使用内部子类（在Activity中定义）</h3><hr>
@@ -423,19 +418,100 @@
 </ul>
 <hr>
 <ul>
-<li>在MainActivity中新建子类  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">BootCompleteReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span></span>&#123;</span><br><span class="line">        Toast.makeText(context, <span class="string">"Boot complete"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>在MainActivity中新建子类</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">BootCompleteReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span></span>&#123;</span><br><span class="line">        Toast.makeText(context, <span class="string">"Boot complete"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在AndroidManifest.xml中注册广播接收器</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">".MainActivity$BootCompleteReceiver"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.net.conn.CONNECTIVITY_CHANGE"</span>/&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在AndroidManifest.xml中声明权限</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span>&gt;</span><span class="tag">&lt;/<span class="name">uses-permission</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_NETWORK_STATE"</span>&gt;</span><span class="tag">&lt;/<span class="name">uses-permission</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行效果同动态注册</p>
+</li>
+</ul>
+<h2 id="使用广播接收器注意事项"><a href="#使用广播接收器注意事项" class="headerlink" title="使用广播接收器注意事项"></a>使用广播接收器注意事项</h2><ul>
+<li>在onReceive()方法中不宜添加过多逻辑/耗时操作，广播接收器没有多线程，一旦时间过长，程序就会报错。</li>
+<li>广播接收器一般为启动其他组件作用。</li>
+</ul>
+<h2 id="发送标准广播"><a href="#发送标准广播" class="headerlink" title="发送标准广播"></a>发送标准广播</h2><hr>
+<ul>
+<li><p>发送标准广播之前，首先要注册一个作为目标的广播接收器。（过程略，只上代码）<br>  新建MyBroadcastReceiver.class</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBroadcastReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span></span>&#123;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span></span><br><span class="line">   </span>&#123;</span><br><span class="line">    Toast.makeText(context,<span class="string">"MyBroadcastReceiver"</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  在Xml中注册（静态）</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">".MyBroadcastReceiver"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.example.broadcasttest.MyBroad"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>xml中注册一个Button</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Button</span></span><br><span class="line">   <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span><br><span class="line">   <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">   <span class="attr">android:onClick</span>=<span class="string">"SendBroad"</span></span><br><span class="line">   <span class="attr">android:text</span>=<span class="string">"SendBroad"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MainActivity中新建 SendBroad()函数<br>  首先构建一个 Intent对象，将自定义的广播值填入。再调用sendBroadcast方法将广播发送出去。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SendBroad</span><span class="params">(View view)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.example.broadcasttest.MyBroad"</span>);</span><br><span class="line">    sendBroadcast(intent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
-<li>在AndroidManifest.xml中注册广播接收器  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">".MainActivity$BootCompleteReceiver"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.net.conn.CONNECTIVITY_CHANGE"</span>/&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<li>发送的是标准广播。运行效果如下图。<br>  <a href="http://snapgr.am/image/L2ou" target="_blank" rel="external"><img src="http://cdn4.snapgram.co/images/2016/09/10/Screenshot_20160910-220121.png" alt="Screenshot_20160910-220121.png"></a></li>
+</ul>
+<h2 id="发送有序广播"><a href="#发送有序广播" class="headerlink" title="发送有序广播"></a>发送有序广播</h2><hr>
+<ul>
+<li><p>首先新建一个Broad2 的工程。同样接收Broad发送的广播。<br>  代码如下</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AnotherBroadcast</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>&#123;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span></span><br><span class="line">   </span>&#123;</span><br><span class="line">       Toast.makeText(context,<span class="string">" AnotherBroadcast"</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">".AnotherBroadcast"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">intent-filter</span> <span class="attr">android:priority</span>=<span class="string">"10"</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.example.broadcasttest.MyBroad"</span>/&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试效果：当摁下发送广播按钮后，弹出两个提示。</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>修改Broad项目中onClick对应事件。将sendBroadcast(）改为sendOrderedBroadcast();发送有序广播。  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SendBroad</span><span class="params">(View view)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.example.broadcasttest.MyBroad"</span>);</span><br><span class="line">    sendOrderedBroadcast(intent,<span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
-<li>在AndroidManifest.xml中声明权限  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span>&gt;</span><span class="tag">&lt;/<span class="name">uses-permission</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_NETWORK_STATE"</span>&gt;</span><span class="tag">&lt;/<span class="name">uses-permission</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<li><p>效果与发送标准广播相同（还未定义优先级/截断等）</p>
+</li>
+<li><p>定义优先级，再Broad的AndroidMainfest.xml中修改注册的广播添加android:priority=”100”优先级100</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">".MyBroadcastReceiver"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span> <span class="attr">android:priority</span>=<span class="string">"100"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.example.broadcasttest.MyBroad"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在Broad2的AndroidMainfest.xml中添加android:priority=”10”优先级10</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">".AnotherBroadcast"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span> <span class="attr">android:priority</span>=<span class="string">"10"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.example.broadcasttest.MyBroad"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发送广播后MyBroadcastReceiver最先收到广播。</p>
+</li>
+<li><p>截断广播。有序广播中前一个广播接收器可以截断广播传播。添加 abortBroadcast();即可。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBroadcastReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span></span>&#123;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span></span><br><span class="line">   </span>&#123;</span><br><span class="line">       Toast.makeText(context,<span class="string">"MyBroadcastReceiver"</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">       abortBroadcast();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再次点击按钮发送广播，只有MyBroadcastReceiver可以接收到发送的广播。</p>
+</li>
+</ul>
+<h2 id="本地广播"><a href="#本地广播" class="headerlink" title="本地广播"></a>本地广播</h2><ul>
+<li><p>只在app应用内部传递的广播。注册过程类似于动态注册。</p>
+</li>
+<li><p>定义一个内部类LocalReceiver继承自BroadcastReceiver</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">LocalReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span></span>&#123;</span><br><span class="line">        Toast.makeText(context, <span class="string">"received local broadcast"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>首先在onCreate()方法中通过localBroadcastManager.getInstan得到一个LocalBroadcastManager的实例，再创建IntentFilter实例和LocalReceiver实例。并在IntentFilter实例中添加广播。随后传入localBroadcastManager.registerReceiver()中注册本地广播。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">private</span> IntentFilter intentFilter;</span><br><span class="line"><span class="keyword">private</span> LocalReceiver localReceiver;</span><br><span class="line"><span class="keyword">private</span> LocalBroadcastManager localBroadcastManager;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_main);</span><br><span class="line">    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);</span><br><span class="line"></span><br><span class="line">    localBroadcastManager = localBroadcastManager.getInstance(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    intentFilter = <span class="keyword">new</span> IntentFilter();</span><br><span class="line">    intentFilter.addAction(<span class="string">"com.example.broadcasttest.LOCAL_BROADCAST"</span>);</span><br><span class="line">    localReceiver = <span class="keyword">new</span> LocalReceiver();</span><br><span class="line">    localBroadcastManager.registerReceiver(localReceiver, intentFilter);       </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在Activity的onDestroy()中销毁注册。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onDestroy();</span><br><span class="line">    localBroadcastManager.unregisterReceiver(localReceiver);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
-<li>运行效果同动态注册</li>
+<li>在Button对应的函数中调用localBroadcastManager.sendBroadcast发送本地广播。  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SendBroad</span><span class="params">(View view)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">      Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.example.broadcasttest.LOCAL_BROADCAST"</span>);</span><br><span class="line">      localBroadcastManager.sendBroadcast(intent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>效果基本同上，不加累赘。不过在Broad2中是怎样都搜不到广播了。</p>
+</li>
+<li><p>本地广播特点</p>
+<ul>
+<li>明确广播只在应用内部，传递数据无需担心泄密。</li>
+<li>其他程序广播无法发送至程序内部。</li>
+<li>本地广播比全局广播更为高效。</li>
+</ul>
+</li>
 </ul>
 
           
@@ -1743,7 +1819,7 @@ int[] to)
       
         
           
-            <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">20</span>  第一行代码Activity创建部分完成</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">21</span>  完成添加了button和<span class="keyword">menu</span>部分，对应P39页</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">22</span>  完成了P55页之前的activity部分。对于activity（二）</span><br><span class="line"><span class="number">2016.8</span>.<span class="number">10</span>  基本搞定，UI除ListView以外的部分。<span class="number">4</span>种布局比较熟悉，不再折腾。</span><br></pre></td></tr></table></figure>
+            <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">20</span>  第一行代码Activity创建部分完成</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">21</span>  完成添加了button和<span class="keyword">menu</span>部分，对应P39页</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">22</span>  完成了P55页之前的activity部分。对于activity（二）</span><br><span class="line"><span class="number">2016.8</span>.<span class="number">10</span>  基本搞定，UI除ListView以外的部分。<span class="number">4</span>种布局比较熟悉，不再折腾。</span><br><span class="line"><span class="number">2016.8</span>.<span class="number">11</span>  开始ListView部分</span><br><span class="line"><span class="number">2016.8</span>.<span class="number">14</span>  停更半月</span><br><span class="line"><span class="number">2016.9</span>.<span class="number">02</span>  恢复更新</span><br><span class="line"><span class="number">2016.9</span>.<span class="number">03</span>  Broadcast部分开坑。</span><br><span class="line"><span class="number">2016.9</span>.<span class="number">07</span>  ListView部分除BaseAdapter外完成。BaseAdapter内容，什么时候理解深一点再补上。</span><br><span class="line"><span class="number">2016.9</span>.<span class="number">13</span>  完成了Broadcast对应部分</span><br></pre></td></tr></table></figure>
 
           
         
