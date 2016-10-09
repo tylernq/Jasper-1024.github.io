@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Linux,VPS,python," />
+  <meta name="keywords" content="Linux,python,VPS," />
 
 
 
@@ -95,7 +95,7 @@
 准备
 一台有公网IP的vps，开放了53端口（端口扫描显示开放了53端口）
 装的是linux系统（以    CentOS 6.4 为">
-<meta property="og:updated_time" content="2016-10-09T11:33:28.477Z">
+<meta property="og:updated_time" content="2016-10-09T11:38:06.963Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自建DNS服务器(dnsmasq)，对抗DNS污染">
 <meta name="twitter:description" content="背景
@@ -402,7 +402,7 @@
 <li><p><a href="http://www.jianshu.com/p/71ccc79aaa9e" target="_blank" rel="external">dnsmasq.conf设置项说明</a></p>
 </li>
 <li><p>此次使用的配置如下</p>
-  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   #指定给dnsmasq使用的hosts</span><br><span class="line">   addn-hosts=/etc/dnsmasq.host</span><br><span class="line">   #不使用/etc/resolv.conf(VPS默认DNS)来进行上游dns服务器解析需要配置的比较少直接写在dnsmasq.conf文件里了</span><br><span class="line">no-resolv</span><br><span class="line">   </span><br><span class="line">#上游DNS地址这里为腾讯DNS和中科大DNS</span><br><span class="line">server=119.29.29.29</span><br><span class="line">server=202.141.162.123</span><br><span class="line">server=/google.com/202.141.162.123</span><br><span class="line">   #这一行是针对学校内网访问，学校内地址使用学校内网DNS。具体地区调整。</span><br><span class="line">server=/.edu.cn/202.141.162.123</span><br></pre></td></tr></table></figure>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> #指定给dnsmasq使用的hosts</span><br><span class="line"> addn-hosts=/etc/dnsmasq.host</span><br><span class="line"> #不使用/etc/resolv.conf(VPS默认DNS)来进行上游dns服务器解析需要配置的比较少直接写在dnsmasq.conf文件里了</span><br><span class="line"> no-resolv</span><br><span class="line">   </span><br><span class="line">#上游DNS地址这里为腾讯DNS和中科大DNS</span><br><span class="line">server=119.29.29.29</span><br><span class="line">server=202.141.162.123</span><br><span class="line">server=/google.com/202.141.162.123</span><br><span class="line">   #这一行是针对学校内网访问，学校内地址使用学校内网DNS。具体地区调整。</span><br><span class="line">server=/.edu.cn/202.141.162.123</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>上游DNS推荐<br>  这里需要在VPS上测试各个DNS后决定。</p>
 <ul>
@@ -452,9 +452,9 @@
           
             <a href="/tags/Linux/" rel="tag">#Linux</a>
           
-            <a href="/tags/VPS/" rel="tag">#VPS</a>
-          
             <a href="/tags/python/" rel="tag">#python</a>
+          
+            <a href="/tags/VPS/" rel="tag">#VPS</a>
           
         </div>
       

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-10-09T11:33:28.477Z</updated>
+  <updated>2016-10-09T11:38:06.963Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/10/09/%E8%87%AA%E5%BB%BADNS%E8%A7%A3%E5%86%B3%E8%BF%90%E8%90%A5%E5%95%86DNS%E6%B1%A1%E6%9F%93/"/>
     <id>http://yoursite.com/2016/10/09/自建DNS解决运营商DNS污染/</id>
     <published>2016-10-09T04:00:00.000Z</published>
-    <updated>2016-10-09T11:33:28.477Z</updated>
+    <updated>2016-10-09T11:38:06.963Z</updated>
     
     <content type="html">&lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;学校网络出口劫持严重，上淘宝加返利———-等等等等等等&lt;/li&gt;
@@ -60,7 +60,7 @@
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.jianshu.com/p/71ccc79aaa9e&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;dnsmasq.conf设置项说明&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;此次使用的配置如下&lt;/p&gt;
-  &lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;   #指定给dnsmasq使用的hosts&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   addn-hosts=/etc/dnsmasq.host&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   #不使用/etc/resolv.conf(VPS默认DNS)来进行上游dns服务器解析需要配置的比较少直接写在dnsmasq.conf文件里了&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;no-resolv&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#上游DNS地址这里为腾讯DNS和中科大DNS&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;server=119.29.29.29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;server=202.141.162.123&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;server=/google.com/202.141.162.123&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   #这一行是针对学校内网访问，学校内地址使用学校内网DNS。具体地区调整。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;server=/.edu.cn/202.141.162.123&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+  &lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt; #指定给dnsmasq使用的hosts&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; addn-hosts=/etc/dnsmasq.host&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; #不使用/etc/resolv.conf(VPS默认DNS)来进行上游dns服务器解析需要配置的比较少直接写在dnsmasq.conf文件里了&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; no-resolv&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#上游DNS地址这里为腾讯DNS和中科大DNS&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;server=119.29.29.29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;server=202.141.162.123&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;server=/google.com/202.141.162.123&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   #这一行是针对学校内网访问，学校内地址使用学校内网DNS。具体地区调整。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;server=/.edu.cn/202.141.162.123&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;上游DNS推荐&lt;br&gt;  这里需要在VPS上测试各个DNS后决定。&lt;/p&gt;
 &lt;ul&gt;
@@ -109,9 +109,9 @@
     
       <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
-      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
-    
       <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
     
   </entry>
   
@@ -1561,17 +1561,17 @@ int[] to)
       <category term="随" scheme="http://yoursite.com/categories/%E9%9A%8F/"/>
     
     
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
       <category term="python" scheme="http://yoursite.com/tags/python/"/>
     
       <category term="单片机" scheme="http://yoursite.com/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
     
       <category term="开源" scheme="http://yoursite.com/tags/%E5%BC%80%E6%BA%90/"/>
+    
+      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
     
   </entry>
   
