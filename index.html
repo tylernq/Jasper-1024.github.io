@@ -247,6 +247,338 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/09/自建DNS解决运营商DNS污染/" itemprop="url">
+                  自建DNS服务器(dnsmasq)，对抗DNS污染
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-09T12:00:00+08:00" content="2016-10-09">
+              2016-10-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/树莓派折腾/" itemprop="url" rel="index">
+                    <span itemprop="name">树莓派折腾</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/09/自建DNS解决运营商DNS污染/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/10/09/自建DNS解决运营商DNS污染/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/10/09/自建DNS解决运营商DNS污染/" class="leancloud_visitors" data-flag-title="自建DNS服务器(dnsmasq)，对抗DNS污染">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ul>
+<li>学校网络出口劫持严重，上淘宝加返利———-等等等等等等</li>
+<li>一直更新hosts不方便，要上google，全平台不好弄</li>
+<li>项目组需要</li>
+</ul>
+<hr>
+<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><ul>
+<li>搭建一个可访问个人公网DNS服务器</li>
+<li>提高DNS加载速度</li>
+<li>规避运营商的DNS劫持</li>
+<li>不影响学校内网访问</li>
+<li>简单的能上google</li>
+</ul>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><ul>
+<li>一台有公网IP的vps，开放了53端口（<a href="http://tool.chinaz.com/port/" target="_blank" rel="external">端口扫描</a>显示开放了53端口）</li>
+<li>装的是linux系统（以    CentOS 6.4 为例）</li>
+<li>WinSCP（或其他文件管理）</li>
+<li>putty.exe（或者其他SSH登陆工具）</li>
+<li>没了。。。。</li>
+</ul>
+<h3 id="DNSmasq原理和说明"><a href="#DNSmasq原理和说明" class="headerlink" title="DNSmasq原理和说明"></a>DNSmasq原理和说明</h3><ul>
+<li>DNSmasq是一个小巧且方便地用于配置DNS和DHCP的工具，适用于小型网络。作为域名解析服务器(DNS)，dnsmasq可以通过缓存 DNS 请求来提高对访问过的网址的连接速度。</li>
+<li>通过设置DNSmasq的上游DNS地址为无污染DNS来解决运营商的DNS污染。</li>
+<li>DNSmasq可以对单独的网址设置DNS服务器。对于学校内网地址设置为学校教育网的DNS解析。对于类似于youtube这种由于DNS污染没法访问的地址，可以先收集无污染的DNS地址，然后交与无污染DNS解析得到正确地址。</li>
+<li>DNSmasq再对网址提交上游DNS解析前，可以先通过本地hosts匹配。设置合适hosts可以实现科学上网。</li>
+</ul>
+<hr>
+<p><strong>开始！</strong></p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><h4 id="安装dnsmasq"><a href="#安装dnsmasq" class="headerlink" title="安装dnsmasq"></a>安装dnsmasq</h4><ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install dnsmasq -y</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="配置Dnsmasq"><a href="#配置Dnsmasq" class="headerlink" title="配置Dnsmasq"></a>配置Dnsmasq</h4><ul>
+<li><p>Dnsmasq的配置文件是 /etc/dnsmasq.conf .通过WinSCP加载修改。</p>
+</li>
+<li><p><a href="http://www.jianshu.com/p/71ccc79aaa9e" target="_blank" rel="external">dnsmasq.conf设置项说明</a></p>
+</li>
+<li><p>此次使用的配置如下</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   #指定给dnsmasq使用的hosts</span><br><span class="line">   addn-hosts=/etc/dnsmasq.host</span><br><span class="line">   #不使用/etc/resolv.conf(VPS默认DNS)来进行上游dns服务器解析需要配置的比较少直接写在dnsmasq.conf文件里了</span><br><span class="line">no-resolv</span><br><span class="line">   </span><br><span class="line">#上游DNS地址这里为腾讯DNS和中科大DNS</span><br><span class="line">server=119.29.29.29</span><br><span class="line">server=202.141.162.123</span><br><span class="line">server=/google.com/202.141.162.123</span><br><span class="line">   #这一行是针对学校内网访问，学校内地址使用学校内网DNS。具体地区调整。</span><br><span class="line">server=/.edu.cn/202.141.162.123</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上游DNS推荐<br>  这里需要在VPS上测试各个DNS后决定。</p>
+<ul>
+<li>常用靠谱DNS<br>  阿里DNS        223.5.5.5               223.6.6.6<br>  114DNS          114.114.114.114<br>  腾讯DNS        119.29.29.29<br>  V2EX DNS    199.91.73.222       178.79.131.110（访问苹果商店有buff加速）</li>
+<li>无污染DNS<br>  目前比较稳定的只有中科大DNS和一些自建的小型DNS。小型DNS通过反带来访问google等，会带来一些隐私和安全风险，还是推荐自建DNS/hosts访问。<br>  中科大DNS<br>  202.38.93.153   （教育网）<br>  202.141.176.93  （中国移动）<br>  202.141.162.123 （中国电信）</li>
+<li>其他DNS请自行GOOGLE</li>
+</ul>
+</li>
+<li><p><strong>千万注意！！！</strong> 配置文件中有<strong>listen-address</strong>配置，网络大多数教程中有<code>listen-address=127.0.0.1</code>这是指Dnsmasq只服务于本机的DNS请求。如果需要搭建公网DNS服务，<strong>这个绝对不能有！！</strong></p>
+</li>
+</ul>
+<h4 id="创建-修改-etc-dnsmasq-host文件"><a href="#创建-修改-etc-dnsmasq-host文件" class="headerlink" title="创建/修改/etc/dnsmasq.host文件"></a>创建/修改/etc/dnsmasq.host文件</h4><ul>
+<li>一些常用去广告hosts/科学上网hosts的内容，<br>  具体不多说hosts科学上网是一天比一天死的快。没有找到靠谱的地址推荐。自行搜索把！</li>
+</ul>
+<h4 id="重启Dnsmasq服务"><a href="#重启Dnsmasq服务" class="headerlink" title="重启Dnsmasq服务"></a>重启Dnsmasq服务</h4><ul>
+<li><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service dnsmasq restart</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="测试53端口"><a href="#测试53端口" class="headerlink" title="测试53端口"></a>测试53端口</h4><ul>
+<li><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -tunlp|grep 53</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果正常应该如下</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_27_70_centos ~]# netstat -tunlp|grep 53</span><br><span class="line">tcp        0      0 0.0.0.0:53                  0.0.0.0:*                   LIST                    EN      4226/dnsmasq</span><br><span class="line">udp        0      0 0.0.0.0:53                  0.0.0.0:*                                                   4226/dnsmasq</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="修改本地DNS地址"><a href="#修改本地DNS地址" class="headerlink" title="修改本地DNS地址"></a>修改本地DNS地址</h4><ul>
+<li>这个不多说了，不会的自行google了。。</li>
+</ul>
+<hr>
+<p><strong>结束语</strong><br>创建完了，本地DNS快多了，访问淘宝再也没有了牛皮癣。</p>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><blockquote>
+<p><a href="http://blog.antior.cn/posts/2015_29.html" target="_blank" rel="external">http://blog.antior.cn/posts/2015_29.html</a><br><a href="http://www.jianshu.com/p/71ccc79aaa9e" target="_blank" rel="external">http://www.jianshu.com/p/71ccc79aaa9e</a><br><a href="http://www.linuxdown.net/install/soft/2016/0520/5566.html" target="_blank" rel="external">http://www.linuxdown.net/install/soft/2016/0520/5566.html</a><br><a href="http://blog.cnwyhx.com/centos-linux-dnsmasq-install-dns/" target="_blank" rel="external">http://blog.cnwyhx.com/centos-linux-dnsmasq-install-dns/</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/06/Android笔记/" itemprop="url">
+                  Android学习笔记-UI-Toolbar
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-06T12:00:00+08:00" content="2016-10-06">
+              2016-10-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/06/Android笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/10/06/Android笔记/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/10/06/Android笔记/" class="leancloud_visitors" data-flag-title="Android学习笔记-UI-Toolbar">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+<li>Toolbar：Google在material design中为了取代ActionBar而发布的组件。Android 5.0以上版本支持，如需兼容API21以下系统，需要引入 support v7</li>
+<li><a href="https://developer.android.com/reference/android/widget/Toolbar.html" target="_blank" rel="external">官方文档</a>入口</li>
+<li><p>相比ActionBar更为灵活，本质上是一个ViewGroup容器。<br>  A navigation button        导航按钮<br>  A branded logo image    logo图片<br>  A title and subtitle    标题和子标题<br>  One or more custom views    一个或者多个自定义视图<br>  An action menu    操作菜单</p>
+</li>
+<li></li>
+</ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ul>
+<li><p>Android Studio中已经使用Toolbar代替了ActionBar。新建工程时直接直接创建ToolBar。代码如下(截取)：</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">android.support.design.widget.AppBarLayout</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">    <span class="attr">android:theme</span>=<span class="string">"@style/AppTheme.AppBarOverlay"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">android.support.v7.widget.Toolbar</span></span><br><span class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/toolbar"</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"?attr/actionBarSize"</span></span><br><span class="line">        <span class="attr">android:background</span>=<span class="string">"?attr/colorPrimary"</span></span><br><span class="line">        <span class="attr">app:popupTheme</span>=<span class="string">"@style/AppTheme.PopupOverlay"</span> / &gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">android.support.design.widget.AppBarLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>  AppBarLayout作为父容器</p>
+<h3 id="手动创建ToolBar"><a href="#手动创建ToolBar" class="headerlink" title="手动创建ToolBar"></a>手动创建ToolBar</h3></li>
+<li></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/03/第一行代码AS跟刷-Broadcast广播/" itemprop="url">
                   第一行代码AS跟刷-Broadcast广播
                 </a>
@@ -1819,448 +2151,7 @@ int[] to)
       
         
           
-            <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">20</span>  第一行代码Activity创建部分完成</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">21</span>  完成添加了button和<span class="keyword">menu</span>部分，对应P39页</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">22</span>  完成了P55页之前的activity部分。对于activity（二）</span><br><span class="line"><span class="number">2016.8</span>.<span class="number">10</span>  基本搞定，UI除ListView以外的部分。<span class="number">4</span>种布局比较熟悉，不再折腾。</span><br><span class="line"><span class="number">2016.8</span>.<span class="number">11</span>  开始ListView部分</span><br><span class="line"><span class="number">2016.8</span>.<span class="number">14</span>  停更半月</span><br><span class="line"><span class="number">2016.9</span>.<span class="number">02</span>  恢复更新</span><br><span class="line"><span class="number">2016.9</span>.<span class="number">03</span>  Broadcast部分开坑。</span><br><span class="line"><span class="number">2016.9</span>.<span class="number">07</span>  ListView部分除BaseAdapter外完成。BaseAdapter内容，什么时候理解深一点再补上。</span><br><span class="line"><span class="number">2016.9</span>.<span class="number">13</span>  完成了Broadcast对应部分</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/09/单片机课程设计总结/" itemprop="url">
-                  单片机课程设计总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-09T20:10:11+08:00" content="2016-07-09">
-              2016-07-09
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/电子类/" itemprop="url" rel="index">
-                    <span itemprop="name">电子类</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/09/单片机课程设计总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/09/单片机课程设计总结/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/07/09/单片机课程设计总结/" class="leancloud_visitors" data-flag-title="单片机课程设计总结">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>累死人的单片机课程设计终于结束了，忙了两天多。就是个数码管+ADC。看看自己两年多前写的程序。。这感觉。用了一天多重构。。。。之前写程序的那个乱啊。。。重新整理下，自己的库函数。记录于此。</p>
-<hr>
-<h1 id="1602库函数"><a href="#1602库函数" class="headerlink" title="1602库函数"></a>1602库函数</h1><h2 id="1602-h"><a href="#1602-h" class="headerlink" title="1602.h"></a>1602.h</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*模 块 名：                LCD1602      */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*创 建 人：zyy        日期：2014-11-04  */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*修 改 者：js         日期：2016-07-08	*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*版 本2.1	                            */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*使用方法：首先调用LCD初始化函数void LcdInit()；</span><br><span class="line">  输入一个double类型数据调用void LcdDisplay(double temp);       </span><br><span class="line">  显示在第二行；如需修改第一行数据可在LcdDisplay函数中修改 */</span></span><br><span class="line"><span class="comment">/*  BUG   : 第二行double数据显示最后一位后，会跟随一位乱码 */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stc12c5a60s2.h&gt;</span>      </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;intrins.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>  uint unsigned int</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>  uchar unsigned char</span></span><br><span class="line"></span><br><span class="line">sbit lcdrs = P1^<span class="number">7</span>;</span><br><span class="line">sbit lcden = P2^<span class="number">4</span>;</span><br><span class="line">sbit    rw = P1^<span class="number">6</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lcd_data_port P0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sdelay</span><span class="params">(uint s)</span></span>;			 <span class="comment">//通用延迟函数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_com</span><span class="params">(uchar com)</span></span>;	     <span class="comment">//并口写数据</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_data</span><span class="params">(uchar date)</span></span>;	 <span class="comment">//并口写数据</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LcdInit</span><span class="params">()</span></span>;		             <span class="comment">//1602初始化</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LcdDisplay</span><span class="params">(<span class="keyword">double</span> temp,uint t)</span></span>;	 <span class="comment">//显示函数</span></span><br></pre></td></tr></table></figure>
-<h2 id="1602-c"><a href="#1602-c" class="headerlink" title="1602.c"></a>1602.c</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1602.c</span></span><br><span class="line">include &lt;<span class="number">1602.</span>h&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*模 块 名：              LCD1602        */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*创 建 人：zyy       日期：2014-11-04    */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*修 改 者：js        日期：2016-07-08	*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*版 本2.1	                            */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**********************************************/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sdelay</span><span class="params">(uint s)</span>			   <span class="comment">//通用延迟函数</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	uint x,y;</span><br><span class="line">	<span class="keyword">for</span>(x=s;x&gt;<span class="number">0</span>;x--)</span><br><span class="line">	<span class="keyword">for</span>(y=<span class="number">250</span>;y&gt;<span class="number">0</span>;y--);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**********************************************/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_com</span><span class="params">(uchar com)</span>	   <span class="comment">//并口写数据</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	lcdrs=<span class="number">0</span>;</span><br><span class="line">	lcden=<span class="number">0</span>;</span><br><span class="line">	lcd_data_port=com;</span><br><span class="line">	sdelay(<span class="number">1</span>);</span><br><span class="line">	lcden=<span class="number">1</span>;</span><br><span class="line">	sdelay(<span class="number">1</span>);</span><br><span class="line">	lcden=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_data</span><span class="params">(uchar date)</span>	   <span class="comment">//并口写数据</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	lcdrs=<span class="number">1</span>;</span><br><span class="line">	lcden=<span class="number">0</span>;</span><br><span class="line">	lcd_data_port=date;</span><br><span class="line">	sdelay(<span class="number">1</span>);</span><br><span class="line">	lcden=<span class="number">1</span>;</span><br><span class="line">	sdelay(<span class="number">1</span>);</span><br><span class="line">	lcden=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*********************************************************************</span><br><span class="line">*</span><br><span class="line">* 函 数 名: LcdInit</span><br><span class="line">* 功能描述: LCD初始化</span><br><span class="line">* 函数说明: 初始化数据：0x38  0x0c	0x06  0x01</span><br><span class="line">* 调用函数: sdelay（），write_com（），	write_data（）</span><br><span class="line">* 输 入: 无</span><br><span class="line">* 返 回: 无</span><br><span class="line">* 设 计 者：zyy 日期：2014-12-23</span><br><span class="line">* 版 本：   1.0</span><br><span class="line">***********************************************************************/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LcdInit</span><span class="params">()</span>		     <span class="comment">//1602初始化</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	lcden=<span class="number">0</span>;</span><br><span class="line">	rw=<span class="number">0</span>;</span><br><span class="line">	write_com(<span class="number">0x38</span>);</span><br><span class="line">	write_com(<span class="number">0x0c</span>);</span><br><span class="line">	write_com(<span class="number">0x06</span>);</span><br><span class="line">	write_com(<span class="number">0x01</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*********************************************************************</span><br><span class="line">*</span><br><span class="line">* 函 数 名: LcdDisplay</span><br><span class="line">* 功能描述: LCD显示</span><br><span class="line">* 函数说明: double类型数据转化为字符串，在lcd第二行显示。</span><br><span class="line">* 调用函数: sprintf(),write_com(),sdelay()</span><br><span class="line">* 全局变量:	无</span><br><span class="line">* 输 入:    一个double类型变量值</span><br><span class="line">* 返 回:    无</span><br><span class="line">* 设 计 者：zyy 日期：2014-12-23</span><br><span class="line">* 修 改 者：js 日期：2016-07-08</span><br><span class="line">* 版 本：	2.0</span><br><span class="line">***********************************************************************/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LcdDisplay</span><span class="params">(<span class="keyword">double</span> temp,uint t)</span>	       		    <span class="comment">//显示函数</span></span><br><span class="line"></span>&#123;</span><br><span class="line"><span class="keyword">static</span> uchar  table0[]=&#123;<span class="string">"pm              "</span>&#125;;		<span class="comment">//1602默认第一行</span></span><br><span class="line"><span class="keyword">static</span> uchar  table1[]=&#123;<span class="string">"00.0            "</span>&#125;;</span><br><span class="line"></span><br><span class="line">uchar  num=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">sprintf</span>(table1,<span class="string">"%f"</span>,(<span class="keyword">double</span>)temp);</span><br><span class="line"><span class="built_in">sprintf</span>(table1+<span class="number">8</span>,<span class="string">"%2d"</span>,(uint)t);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   write_com(<span class="number">0x80</span>);</span><br><span class="line">	<span class="keyword">for</span>(num=<span class="number">0</span>;num&lt;<span class="number">15</span>;num++)	       <span class="comment">//第一行刷新</span></span><br><span class="line">	&#123;</span><br><span class="line">		write_data(table0[num]);</span><br><span class="line">		sdelay(<span class="number">5</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   write_com(<span class="number">0x80</span>+<span class="number">0x40</span>);</span><br><span class="line">    <span class="keyword">for</span>(num=<span class="number">0</span>;num&lt;<span class="number">16</span>;num++)	       <span class="comment">//第二行显示</span></span><br><span class="line">	&#123;write_data(table1[num]);    <span class="comment">//0.0195</span></span><br><span class="line">		sdelay(<span class="number">5</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="数码管"><a href="#数码管" class="headerlink" title="数码管"></a>数码管</h1><ul>
-<li>对应电路图如下<br><img src="http://cdn1.snapgram.co/imgs/2016/07/09/QQ.jpg" alt="QQ.jpg"><h2 id="shu-h"><a href="#shu-h" class="headerlink" title="shu.h"></a>shu.h</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*模 块 名：           数码管           */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*创 建 人：zy       日期：2014-07-01 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*版 本1.2	                            */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*使用方法：调用 Shu_Display(double js)函数，输入一个double类型数据，</span><br><span class="line">  固定显示格式为小数点前4位及小数点后两位。                             */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*BUG：显示小数点后第二位时，有时会与输入值小1.原因疑似与fmod()函数有关 */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stc12c5a60s2.h&gt;</span>      </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;intrins.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> uint unsigned int</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> uchar unsigned char</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="comment">//端口定义</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> io_dm P0         <span class="comment">//定义LED显示的段码数据脚</span></span></span><br><span class="line">sbit io_shu = P2^<span class="number">3</span>;      <span class="comment">//数码管开关低电平有效</span></span><br><span class="line">sbit io_A   = P2^<span class="number">0</span>;		 <span class="comment">//3-8译码器输入</span></span><br><span class="line">sbit io_B   = P2^<span class="number">1</span>;</span><br><span class="line">sbit io_C   = P2^<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">sbit io_DP  = P0^<span class="number">7</span>;		 <span class="comment">//dp点定义</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> uchar du_num[<span class="number">15</span>];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay_1ms</span><span class="params">(uchar x)</span></span>;    <span class="comment">//1ms延迟函数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">wei</span><span class="params">(uchar i)</span></span>;			<span class="comment">//位选输出函数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Shu_Display</span><span class="params">(<span class="keyword">double</span> js)</span></span>;<span class="comment">//数码管显示函数</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="shu-c"><a href="#shu-c" class="headerlink" title="shu.c"></a>shu.c</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;shu.h&gt;</span>   </span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*模 块 名：          数码管           */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*创 建 人：zy       日期：2014-07-01 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*版 本1.2	                            */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//显示数字</span></span><br><span class="line">uchar du_num[]=&#123;<span class="number">0x3f</span>,<span class="number">0x06</span>,<span class="number">0x5b</span>,<span class="number">0x4f</span>,<span class="number">0x66</span>,<span class="number">0x6d</span>,<span class="number">0x7d</span>,<span class="number">0x07</span>,<span class="number">0x7f</span>,<span class="number">0x6f</span>,<span class="number">0x77</span>,<span class="number">0x7c</span>,<span class="number">0x39</span>,<span class="number">0x5e</span>,<span class="number">0x79</span>,<span class="number">0x71</span>&#125;;</span><br><span class="line"><span class="comment">//                0    1    2    3    4    5    6    7    8    9    a    b    c    d    e    f </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay_1ms</span><span class="params">(uchar x)</span><span class="comment">//1ms延迟函数</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    uchar j;</span><br><span class="line">    <span class="keyword">while</span>(x--)&#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">125</span>;j++)</span><br><span class="line">            &#123;;&#125;</span><br><span class="line">        &#125;   </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">wei</span><span class="params">(uchar i)</span>		<span class="comment">//位选信号输入</span></span><br><span class="line"></span>&#123;	<span class="comment">//i=i+1;</span></span><br><span class="line">	<span class="keyword">switch</span> (i)</span><br><span class="line">	&#123; <span class="keyword">case</span> <span class="number">0</span>:&#123;io_A=<span class="number">0</span>;io_B=<span class="number">0</span>;io_C=<span class="number">0</span>;&#125;  <span class="keyword">break</span>;   </span><br><span class="line">      <span class="keyword">case</span> <span class="number">1</span>:&#123;io_A=<span class="number">1</span>;io_B=<span class="number">0</span>;io_C=<span class="number">0</span>;&#125;  <span class="keyword">break</span>; </span><br><span class="line">	  <span class="keyword">case</span> <span class="number">2</span>:&#123;io_A=<span class="number">0</span>;io_B=<span class="number">2</span>;io_C=<span class="number">0</span>;&#125;  <span class="keyword">break</span>; </span><br><span class="line">	  <span class="keyword">case</span> <span class="number">3</span>:&#123;io_A=<span class="number">1</span>;io_B=<span class="number">1</span>;io_C=<span class="number">0</span>;&#125;  <span class="keyword">break</span>; </span><br><span class="line">	  <span class="keyword">case</span> <span class="number">4</span>:&#123;io_A=<span class="number">0</span>;io_B=<span class="number">0</span>;io_C=<span class="number">1</span>;&#125;  <span class="keyword">break</span>; </span><br><span class="line">	  <span class="keyword">case</span> <span class="number">5</span>:&#123;io_A=<span class="number">1</span>;io_B=<span class="number">0</span>;io_C=<span class="number">1</span>;&#125;  <span class="keyword">break</span>; </span><br><span class="line">	  <span class="keyword">case</span> <span class="number">6</span>:&#123;io_A=<span class="number">0</span>;io_B=<span class="number">1</span>;io_C=<span class="number">1</span>;&#125;  <span class="keyword">break</span>; </span><br><span class="line">     </span><br><span class="line">	  <span class="keyword">default</span>: ; <span class="keyword">break</span>; </span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment">/*********************************************************************</span><br><span class="line">*</span><br><span class="line">* 函 数 名: Shu_Display() </span><br><span class="line">* 功能描述: 将数字显示到数码管上，显示格式4+2</span><br><span class="line">* 函数说明: 段选位选，动态刷新数码管</span><br><span class="line">* 调用函数: delay_1ms  fmod()</span><br><span class="line">* 全局变量: 无</span><br><span class="line">* 输 入:    1个double类型数据</span><br><span class="line">* 返 回:    无</span><br><span class="line">* 设 计 者：zy 日期：2014-07-01 </span><br><span class="line">* 修 改 者：zy 日期：2016-07-08</span><br><span class="line">* 版 本：   1.2</span><br><span class="line">***********************************************************************/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Shu_Display</span><span class="params">(<span class="keyword">double</span> js)</span></span><br><span class="line"></span>&#123;uchar i;                  <span class="comment">//循环变量</span></span><br><span class="line"> <span class="keyword">static</span> uchar  suff[<span class="number">6</span>];	   <span class="comment">//数据处理暂存数组</span></span><br><span class="line"> <span class="keyword">static</span> uint   cuff[<span class="number">4</span>];	   <span class="comment">//提取各位有关</span></span><br><span class="line"> <span class="keyword">static</span> <span class="keyword">double</span>  n=<span class="number">1</span>,y; 	   <span class="comment">//与小数截取有关</span></span><br><span class="line"> <span class="keyword">static</span>  uint count;		   <span class="comment">//暂存</span></span><br><span class="line"> </span><br><span class="line"> y=<span class="built_in">fmod</span>(js,n);			   <span class="comment">//分离js小数部分 存在y中</span></span><br><span class="line"></span><br><span class="line"> count=js;				   <span class="comment">//强制类型转换，取js整数部分</span></span><br><span class="line"></span><br><span class="line"> suff[<span class="number">0</span>] = count/<span class="number">1000</span>;	   <span class="comment">//取千位</span></span><br><span class="line"> cuff[<span class="number">0</span>] = count%<span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line"> suff[<span class="number">1</span>] = cuff[<span class="number">0</span>]/<span class="number">100</span>;	   <span class="comment">//取百位</span></span><br><span class="line"> cuff[<span class="number">1</span>] = cuff[<span class="number">0</span>]%<span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"> suff[<span class="number">2</span>] = cuff[<span class="number">1</span>]/<span class="number">10</span>;	   <span class="comment">//取十位</span></span><br><span class="line"> suff[<span class="number">3</span>] = cuff[<span class="number">1</span>]%<span class="number">10</span>;	   <span class="comment">//取个位</span></span><br><span class="line"></span><br><span class="line"> count	 = y*<span class="number">1000</span>;		   <span class="comment">//小数部分。扩大1000倍提取。</span></span><br><span class="line"> </span><br><span class="line"> cuff[<span class="number">2</span>] = count%<span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line"> suff[<span class="number">4</span>] = cuff[<span class="number">2</span>]/<span class="number">100</span>;	   <span class="comment">//小数点后一位</span></span><br><span class="line"> cuff[<span class="number">3</span>] = cuff[<span class="number">2</span>]%<span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"> suff[<span class="number">5</span>] = cuff[<span class="number">3</span>]/<span class="number">10</span>;	  <span class="comment">//小数点后2位</span></span><br><span class="line"></span><br><span class="line"> io_shu=<span class="number">0</span>;			      <span class="comment">//打开3-8译码器</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">6</span>;i++)</span><br><span class="line">   &#123;</span><br><span class="line">    wei(i);               <span class="comment">//位选</span></span><br><span class="line">	io_dm=du_num[suff[i]];<span class="comment">//段选</span></span><br><span class="line">	<span class="keyword">if</span>(i==<span class="number">3</span>) io_DP=<span class="number">1</span>;</span><br><span class="line">	delay_1ms(<span class="number">1</span>);	      <span class="comment">//延迟</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/27/VPS科学上网教程系列2/" itemprop="url">
-                  科学上网教程（二）——VPS优化加速
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-27T17:52:16+08:00" content="2016-06-27">
-              2016-06-27
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/科学上网/" itemprop="url" rel="index">
-                    <span itemprop="name">科学上网</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/27/VPS科学上网教程系列2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/27/VPS科学上网教程系列2/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/06/27/VPS科学上网教程系列2/" class="leancloud_visitors" data-flag-title="科学上网教程（二）——VPS优化加速">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="TCP优化"><a href="#TCP优化" class="headerlink" title="TCP优化"></a>TCP优化</h2><p><strong>适用场景：高延迟搞丢包线路。</strong></p>
-<ul>
-<li><p>增加TCP连接数量</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/security/limits.conf</span><br></pre></td></tr></table></figure>
-<p>添加两行：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* soft nofile <span class="number">51200</span></span><br><span class="line">* hard nofile <span class="number">51200</span></span><br></pre></td></tr></table></figure>
-<p>保存(Ctrl + X —— y ——回车)</p>
-</li>
-<li><p>设置ulimit：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ulimit -n <span class="number">51200</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改内核参数适合的还是hybla（高延迟高丢包率环境）<br>首先看一下VPS现有算法：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl net.ipv4.tcp_available_congestion_control</span><br></pre></td></tr></table></figure>
-<p>没有hybla时，加载hybla算法.</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sbin/modprobe tcp_hybla</span><br></pre></td></tr></table></figure>
-<p>开始修改</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
-<p>复制代码：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#TCP配置优化(不然你自己根本不知道你在干什么)</span><br><span class="line">fs.file-max = 51200</span><br><span class="line">#提高整个系统的文件限制</span><br><span class="line">net.core.rmem_max = 67108864</span><br><span class="line">net.core.wmem_max = 67108864</span><br><span class="line">net.core.netdev_max_backlog = 250000</span><br><span class="line">net.core.somaxconn = 4096</span><br><span class="line"></span><br><span class="line">net.ipv4.tcp_syncookies = 1</span><br><span class="line">net.ipv4.tcp_tw_reuse = 1</span><br><span class="line">net.ipv4.tcp_tw_recycle = 0</span><br><span class="line">net.ipv4.tcp_fin_timeout = 30</span><br><span class="line">net.ipv4.tcp_keepalive_time = 1200</span><br><span class="line">net.ipv4.ip_local_port_range = 10000 65000</span><br><span class="line">net.ipv4.tcp_max_syn_backlog = 8192</span><br><span class="line">net.ipv4.tcp_max_tw_buckets = 5000</span><br><span class="line">net.ipv4.tcp_fastopen = 3</span><br><span class="line">net.ipv4.tcp_mem = 25600 51200 102400</span><br><span class="line">net.ipv4.tcp_rmem = 4096 87380 67108864</span><br><span class="line">net.ipv4.tcp_wmem = 4096 65536 67108864</span><br><span class="line">net.ipv4.tcp_mtu_probing = 1</span><br><span class="line">net.ipv4.tcp_congestion_control = hybla</span><br><span class="line">#END OF LINE</span><br></pre></td></tr></table></figure>
-<p>保存(Ctrl + X —— y ——回车)</p>
-<p>应用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重启SSR</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/shadowsocks restart</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="锐速"><a href="#锐速" class="headerlink" title="锐速"></a>锐速</h2><ul>
-<li><p>介绍<br>锐速（ServerSpeeder）加速软件是一种基于ZETATCP加速引擎的软件，只需单边部署就可以起到 显著加速效果的 TCP 加速技术。</p>
-</li>
-<li><p>应用场景及限制<br>单边加速，无需添加本地服务，但对linux内核有要求。（<strong>OVZ虚拟化不支持！</strong>）</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li>锐速目前已经停止了免费用户20M的提供，商业化提供破解属于侵权行为。</li>
-<li>以下提供的破解版安装方式，收集自网络。仅供个人实验使用，请支持正版。</li>
-</ul>
-<hr>
-<p>提供两种安装方式</p>
-<h3 id="锐速一键安装包"><a href="#锐速一键安装包" class="headerlink" title="锐速一键安装包"></a>锐速一键安装包</h3><p>参考地址</p>
-<blockquote>
-<p><a href="https://www.91yun.org/archives/683" target="_blank" rel="external">https://www.91yun.org/archives/683</a><br><a href="http://www.bandwagong.com/vultrvps/" target="_blank" rel="external">http://www.bandwagong.com/vultrvps/</a></p>
-</blockquote>
-<ul>
-<li><p>脚本自行匹配相同或相近内核，自动安装完成。</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -<span class="keyword">N</span> --<span class="keyword">no</span>-check-certificate http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/<span class="number">91</span>yun/serverspeeder/master/serverspe eder-<span class="keyword">all</span>.<span class="keyword">sh</span> &amp;&amp; bash serverspeeder-<span class="keyword">all</span>.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
-<p>根据屏幕提示输入 serverSpeederInstaller 其他信息默认，遇到Y或者N的地方，全部选Y.<br><img src="http://cdn2.snapgram.co/imgs/2016/06/28/QQ.jpg" alt="QQ.jpg"></p>
-</li>
-<li><p>如果你安装没有效果，编辑一下命令</p>
-  <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">vi</span> /serverspeeder/etc/config</span><br></pre></td></tr></table></figure>
-<p>  然后rsc和maxmode设置参数修改为1.然后在进行重启</p>
-  <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> restart</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>卸载</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chattr -i /serverspeeder/etc/apx* &amp;&amp; /serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> uninstall -<span class="keyword">f</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h3><p>参考</p>
-<blockquote>
-<p><a href="https://www.91yun.org/serverspeeder91yun" target="_blank" rel="external">https://www.91yun.org/serverspeeder91yun</a></p>
-</blockquote>
-<p>手动安装仅用于一键安装无效时，操作步骤在参考地址中很详细，不加累赘。</p>
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
-<li><p>启动锐速：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> start</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>停止锐速：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> <span class="keyword">stop</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看锐速是否正常运行</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service serverSpeeder status</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>重启锐速 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> restart</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="FinalSpeed"><a href="#FinalSpeed" class="headerlink" title="FinalSpeed"></a>FinalSpeed</h2><ul>
-<li><p>介绍<br>FinalSpeed是高速双边加速软件,可加速所有基于tcp协议的网络服务,在高丢包和高延迟环境下,仍可达到90%的物理带宽利用率,即使高峰时段也能轻松跑满带宽。<strong>可以与锐速共存</strong>。</p>
-</li>
-<li><p>应用场景及限制<br>双边加速，本地需要安装相应服务端。FinalSpeed本身只有加速功能，如需混淆、匿名等功能自行安装相应代理服务。在<strong>OVZ虚拟化</strong>的vps上<strong>只可用udp模式</strong>，udp在国内被封杀较严重，导致链接中断等。测试结果来看：</p>
-<ul>
-<li>单纯加速ss——不稳定，掉线严重。（与本地网络环境有很大关系）</li>
-<li>ssr特定模式无法加速。</li>
-<li>其他代理服务较为稳定，基本跑满本地带宽。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li><strong>FinalSpeed现在已停止更新</strong>，官方移除了安装方法，以下安装方式来自github备份。</li>
-</ul>
-<hr>
-<ul>
-<li>安装命令:<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rm -f install_fs.sh</span><br><span class="line">wget  https:<span class="comment">//github.com/dupontjoy/customization/raw/master/Rules/Shadowsocks/Finalspeed/install_fs.sh</span></span><br><span class="line">chmod +x install_fs.sh</span><br><span class="line">./install_fs.sh <span class="number">2</span>&gt;&amp;<span class="number">1</span> | tee install.log</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>一键安装完成后，vps会自动安装java环境。</p>
-<ul>
-<li><p>卸载：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh /fs/stop.sh ; rm -rf /fs</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>设置开机启动：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +<span class="keyword">x</span> /etc/rc.local</span><br><span class="line"><span class="keyword">vi</span> /etc/rc.local</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>然后加入</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sh</span> /fs/start.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>每天晚上1点自动重启：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">crontab -<span class="keyword">e</span></span><br><span class="line"><span class="number">0</span> <span class="number">1</span> * * * <span class="keyword">sh</span> /fs/restart.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="FinalSpeed-windows客户端"><a href="#FinalSpeed-windows客户端" class="headerlink" title="FinalSpeed windows客户端"></a>FinalSpeed windows客户端</h3><p>官方最新版本为1.2 更新日志上表明cpu占用降低30%，但是稳定性较差，时常挂掉。推荐FinalSpeed1.12测试版 个人常用版本，很稳定。</p>
-<ul>
-<li>这一部分请参考一下网站。<blockquote>
-<p><a href="https://blog.kuoruan.com/82.html" target="_blank" rel="external">https://blog.kuoruan.com/82.html</a></p>
-</blockquote>
-</li>
-</ul>
-<h3 id="常用命令-1"><a href="#常用命令-1" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
-<li><p>启动：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sh</span> /fs/start.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>停止：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sh</span> /fs/<span class="keyword">stop</span>.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重新启动：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sh</span> /fs/restart.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>运行日志：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -<span class="keyword">f</span> /fs/server.<span class="built_in">log</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="gfw-press大杀器"><a href="#gfw-press大杀器" class="headerlink" title="gfw.press大杀器"></a>gfw.press大杀器</h2><ul>
-<li>介绍<br>GFW.Press号称新一代军用级高强度加密抗干扰海底光缆专用网络数据高速传输软件，挺神的反正。号称除白名单外，再也不能破解的协议，开发者是推特赵国劣绅石斑鱼大爷 @chinashiyu</li>
-<li>官网<blockquote>
-<p><a href="http://gfw.press" target="_blank" rel="external">http://gfw.press</a></p>
-</blockquote>
-</li>
-<li><p>高手的源码分析</p>
-<blockquote>
-<p><a href="https://medium.com/@FWTO_O/gfw-press%E6%BA%90%E7%A0%81%E7%AE%80%E6%9E%90-61a2714eb99f#.bgztaqa6m" target="_blank" rel="external">https://medium.com/@FWTO_O/gfw-press%E6%BA%90%E7%A0%81%E7%AE%80%E6%9E%90-61a2714eb99f#.bgztaqa6m</a></p>
-</blockquote>
-</li>
-<li><p>效果<br>只支持http/https代理，基本够用。客户端包括pc端和android端。<br>搭建在vps上及其进程本身很稳定，使用过程中除了进行大流量长达半个小时的满宽带下载外，没有断过。<strong>使用FinalSpeed+gfw.press 满宽带挂整晚下载，没掉过速度！</strong></p>
-</li>
-<li><p>缺点<br>Java语言编写，对VPS有一定要求，少于512M/512M vswap的openvz vps最好不要尝试，基本跑不动。</p>
-</li>
-</ul>
-<hr>
-<h3 id="gfw-press一键安装"><a href="#gfw-press一键安装" class="headerlink" title="gfw.press一键安装"></a>gfw.press一键安装</h3><ul>
-<li><p>root账户登录vps</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget -O gfw3proxy.sh --no-check-certificate \</span><br><span class="line">https:<span class="comment">//www.dropbox.com/s/vuj2rpfpjlnkawu/gfw3proxy.sh?dl=0</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>然后输入</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x gfw3proxy.sh &amp;&amp; ./gfw3proxy.sh</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gfw.press/server.sh</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>安装完毕</p>
-<ul>
-<li><p>加入开机启动</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +<span class="keyword">x</span> /etc/rc.local</span><br><span class="line"><span class="keyword">vi</span> /etc/rc.local</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>加入</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gfw.press/server.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>增加用户/端口<br>编辑gfw.press/user.txt。格式是：<br>端口【空格一个】密码，每行代表一个用户。<br>例如3个用戶</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">14401</span> xyz123MN</span><br><span class="line"><span class="number">14402</span> XYZ456bc</span><br><span class="line"><span class="number">14403</span> <span class="number">789</span>lKpOH</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>终止进程</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill $(<span class="keyword">ps</span> aux | <span class="keyword">grep</span> <span class="string">'java'</span> | <span class="keyword">grep</span> -v <span class="keyword">grep</span> | awk <span class="string">'&#123;print $2&#125;'</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重启</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gfw.press/server.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>客户端可以如下网址中下载到。安装完成后设置浏览器http/https代理，本地端口默认1080.</p>
-<blockquote>
-<p><a href="https://github.com/chinashiyu/gfw.press" target="_blank" rel="external">https://github.com/chinashiyu/gfw.press</a></p>
-</blockquote>
-</li>
-</ul>
-<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line"><span class="number">2016.6</span>.<span class="number">26</span>  与SSR有关部分基本完成。</span><br><span class="line"><span class="number">2016.6</span>.<span class="number">28</span>  TCP优化部分完成</span><br><span class="line"><span class="number">2016.6</span>.<span class="number">29</span>  gfw.press、FinalSpeed和锐速部分基本完成。</span><br></pre></td></tr></table></figure>
+            <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">20</span>  第一行代码Activity创建部分完成</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">21</span>  完成添加了button和<span class="keyword">menu</span>部分，对应P39页</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">22</span>  完成了P55页之前的activity部分。对于activity（二）</span><br><span class="line"><span class="number">2016.8</span>.<span class="number">10</span>  基本搞定，UI除ListView以外的部分。<span class="number">4</span>种布局比较熟悉，不再折腾。</span><br><span class="line"><span class="number">2016.8</span>.<span class="number">11</span>  开始ListView部分</span><br><span class="line"><span class="number">2016.8</span>.<span class="number">14</span>  停更半月</span><br><span class="line"><span class="number">2016.9</span>.<span class="number">02</span>  恢复更新</span><br><span class="line"><span class="number">2016.9</span>.<span class="number">03</span>  Broadcast部分开坑。</span><br><span class="line"><span class="number">2016.9</span>.<span class="number">07</span>  ListView部分除BaseAdapter外完成。BaseAdapter内容，什么时候理解深一点再补上。</span><br><span class="line"><span class="number">2016.9</span>.<span class="number">13</span>  完成了Broadcast对应部分</span><br><span class="line"><span class="number">2016.10</span>.<span class="number">3</span>  重新按照google的文档查漏补缺.</span><br></pre></td></tr></table></figure>
 
           
         
@@ -2330,7 +2221,7 @@ int[] to)
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -2338,7 +2229,7 @@ int[] to)
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

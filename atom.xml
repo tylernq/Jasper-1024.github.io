@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-13T12:53:24.859Z</updated>
+  <updated>2016-10-09T11:33:28.477Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,147 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>自建DNS服务器(dnsmasq)，对抗DNS污染</title>
+    <link href="http://yoursite.com/2016/10/09/%E8%87%AA%E5%BB%BADNS%E8%A7%A3%E5%86%B3%E8%BF%90%E8%90%A5%E5%95%86DNS%E6%B1%A1%E6%9F%93/"/>
+    <id>http://yoursite.com/2016/10/09/自建DNS解决运营商DNS污染/</id>
+    <published>2016-10-09T04:00:00.000Z</published>
+    <updated>2016-10-09T11:33:28.477Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;学校网络出口劫持严重，上淘宝加返利———-等等等等等等&lt;/li&gt;
+&lt;li&gt;一直更新hosts不方便，要上google，全平台不好弄&lt;/li&gt;
+&lt;li&gt;项目组需要&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;目的&quot;&gt;&lt;a href=&quot;#目的&quot; class=&quot;headerlink&quot; title=&quot;目的&quot;&gt;&lt;/a&gt;目的&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;搭建一个可访问个人公网DNS服务器&lt;/li&gt;
+&lt;li&gt;提高DNS加载速度&lt;/li&gt;
+&lt;li&gt;规避运营商的DNS劫持&lt;/li&gt;
+&lt;li&gt;不影响学校内网访问&lt;/li&gt;
+&lt;li&gt;简单的能上google&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;一台有公网IP的vps，开放了53端口（&lt;a href=&quot;http://tool.chinaz.com/port/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;端口扫描&lt;/a&gt;显示开放了53端口）&lt;/li&gt;
+&lt;li&gt;装的是linux系统（以    CentOS 6.4 为例）&lt;/li&gt;
+&lt;li&gt;WinSCP（或其他文件管理）&lt;/li&gt;
+&lt;li&gt;putty.exe（或者其他SSH登陆工具）&lt;/li&gt;
+&lt;li&gt;没了。。。。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;DNSmasq原理和说明&quot;&gt;&lt;a href=&quot;#DNSmasq原理和说明&quot; class=&quot;headerlink&quot; title=&quot;DNSmasq原理和说明&quot;&gt;&lt;/a&gt;DNSmasq原理和说明&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;DNSmasq是一个小巧且方便地用于配置DNS和DHCP的工具，适用于小型网络。作为域名解析服务器(DNS)，dnsmasq可以通过缓存 DNS 请求来提高对访问过的网址的连接速度。&lt;/li&gt;
+&lt;li&gt;通过设置DNSmasq的上游DNS地址为无污染DNS来解决运营商的DNS污染。&lt;/li&gt;
+&lt;li&gt;DNSmasq可以对单独的网址设置DNS服务器。对于学校内网地址设置为学校教育网的DNS解析。对于类似于youtube这种由于DNS污染没法访问的地址，可以先收集无污染的DNS地址，然后交与无污染DNS解析得到正确地址。&lt;/li&gt;
+&lt;li&gt;DNSmasq再对网址提交上游DNS解析前，可以先通过本地hosts匹配。设置合适hosts可以实现科学上网。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;开始！&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;步骤&quot;&gt;&lt;a href=&quot;#步骤&quot; class=&quot;headerlink&quot; title=&quot;步骤&quot;&gt;&lt;/a&gt;步骤&lt;/h3&gt;&lt;h4 id=&quot;安装dnsmasq&quot;&gt;&lt;a href=&quot;#安装dnsmasq&quot; class=&quot;headerlink&quot; title=&quot;安装dnsmasq&quot;&gt;&lt;/a&gt;安装dnsmasq&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yum install dnsmasq -y&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;配置Dnsmasq&quot;&gt;&lt;a href=&quot;#配置Dnsmasq&quot; class=&quot;headerlink&quot; title=&quot;配置Dnsmasq&quot;&gt;&lt;/a&gt;配置Dnsmasq&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Dnsmasq的配置文件是 /etc/dnsmasq.conf .通过WinSCP加载修改。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.jianshu.com/p/71ccc79aaa9e&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;dnsmasq.conf设置项说明&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;此次使用的配置如下&lt;/p&gt;
+  &lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;   #指定给dnsmasq使用的hosts&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   addn-hosts=/etc/dnsmasq.host&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   #不使用/etc/resolv.conf(VPS默认DNS)来进行上游dns服务器解析需要配置的比较少直接写在dnsmasq.conf文件里了&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;no-resolv&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#上游DNS地址这里为腾讯DNS和中科大DNS&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;server=119.29.29.29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;server=202.141.162.123&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;server=/google.com/202.141.162.123&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   #这一行是针对学校内网访问，学校内地址使用学校内网DNS。具体地区调整。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;server=/.edu.cn/202.141.162.123&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;上游DNS推荐&lt;br&gt;  这里需要在VPS上测试各个DNS后决定。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;常用靠谱DNS&lt;br&gt;  阿里DNS        223.5.5.5               223.6.6.6&lt;br&gt;  114DNS          114.114.114.114&lt;br&gt;  腾讯DNS        119.29.29.29&lt;br&gt;  V2EX DNS    199.91.73.222       178.79.131.110（访问苹果商店有buff加速）&lt;/li&gt;
+&lt;li&gt;无污染DNS&lt;br&gt;  目前比较稳定的只有中科大DNS和一些自建的小型DNS。小型DNS通过反带来访问google等，会带来一些隐私和安全风险，还是推荐自建DNS/hosts访问。&lt;br&gt;  中科大DNS&lt;br&gt;  202.38.93.153   （教育网）&lt;br&gt;  202.141.176.93  （中国移动）&lt;br&gt;  202.141.162.123 （中国电信）&lt;/li&gt;
+&lt;li&gt;其他DNS请自行GOOGLE&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;千万注意！！！&lt;/strong&gt; 配置文件中有&lt;strong&gt;listen-address&lt;/strong&gt;配置，网络大多数教程中有&lt;code&gt;listen-address=127.0.0.1&lt;/code&gt;这是指Dnsmasq只服务于本机的DNS请求。如果需要搭建公网DNS服务，&lt;strong&gt;这个绝对不能有！！&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;创建-修改-etc-dnsmasq-host文件&quot;&gt;&lt;a href=&quot;#创建-修改-etc-dnsmasq-host文件&quot; class=&quot;headerlink&quot; title=&quot;创建/修改/etc/dnsmasq.host文件&quot;&gt;&lt;/a&gt;创建/修改/etc/dnsmasq.host文件&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;一些常用去广告hosts/科学上网hosts的内容，&lt;br&gt;  具体不多说hosts科学上网是一天比一天死的快。没有找到靠谱的地址推荐。自行搜索把！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;重启Dnsmasq服务&quot;&gt;&lt;a href=&quot;#重启Dnsmasq服务&quot; class=&quot;headerlink&quot; title=&quot;重启Dnsmasq服务&quot;&gt;&lt;/a&gt;重启Dnsmasq服务&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo service dnsmasq restart&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;测试53端口&quot;&gt;&lt;a href=&quot;#测试53端口&quot; class=&quot;headerlink&quot; title=&quot;测试53端口&quot;&gt;&lt;/a&gt;测试53端口&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;netstat -tunlp|grep 53&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如果正常应该如下&lt;/p&gt;
+  &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[root@VM_27_70_centos ~]# netstat -tunlp|grep 53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;tcp        0      0 0.0.0.0:53                  0.0.0.0:*                   LIST                    EN      4226/dnsmasq&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;udp        0      0 0.0.0.0:53                  0.0.0.0:*                                                   4226/dnsmasq&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;修改本地DNS地址&quot;&gt;&lt;a href=&quot;#修改本地DNS地址&quot; class=&quot;headerlink&quot; title=&quot;修改本地DNS地址&quot;&gt;&lt;/a&gt;修改本地DNS地址&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;这个不多说了，不会的自行google了。。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;结束语&lt;/strong&gt;&lt;br&gt;创建完了，本地DNS快多了，访问淘宝再也没有了牛皮癣。&lt;/p&gt;
+&lt;h3 id=&quot;参考文献&quot;&gt;&lt;a href=&quot;#参考文献&quot; class=&quot;headerlink&quot; title=&quot;参考文献&quot;&gt;&lt;/a&gt;参考文献&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.antior.cn/posts/2015_29.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.antior.cn/posts/2015_29.html&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.jianshu.com/p/71ccc79aaa9e&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jianshu.com/p/71ccc79aaa9e&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.linuxdown.net/install/soft/2016/0520/5566.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.linuxdown.net/install/soft/2016/0520/5566.html&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.cnwyhx.com/centos-linux-dnsmasq-install-dns/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.cnwyhx.com/centos-linux-dnsmasq-install-dns/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;学校网络出口劫持严重，上淘宝加返利———-等等等等等等&lt;/li&gt;
+&lt;li&gt;一直更新hosts不方便，要上google，全平台不好
+    
+    </summary>
+    
+      <category term="树莓派折腾" scheme="http://yoursite.com/categories/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android学习笔记-UI-Toolbar</title>
+    <link href="http://yoursite.com/2016/10/06/Android%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2016/10/06/Android笔记/</id>
+    <published>2016-10-06T04:00:00.000Z</published>
+    <updated>2016-10-09T10:19:04.045Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Toolbar：Google在material design中为了取代ActionBar而发布的组件。Android 5.0以上版本支持，如需兼容API21以下系统，需要引入 support v7&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.android.com/reference/android/widget/Toolbar.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方文档&lt;/a&gt;入口&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;相比ActionBar更为灵活，本质上是一个ViewGroup容器。&lt;br&gt;  A navigation button        导航按钮&lt;br&gt;  A branded logo image    logo图片&lt;br&gt;  A title and subtitle    标题和子标题&lt;br&gt;  One or more custom views    一个或者多个自定义视图&lt;br&gt;  An action menu    操作菜单&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;使用&quot;&gt;&lt;a href=&quot;#使用&quot; class=&quot;headerlink&quot; title=&quot;使用&quot;&gt;&lt;/a&gt;使用&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Android Studio中已经使用Toolbar代替了ActionBar。新建工程时直接直接创建ToolBar。代码如下(截取)：&lt;/p&gt;
+  &lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;android.support.design.widget.AppBarLayout&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;android:layout_width&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;android:layout_height&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;android:theme&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;@style/AppTheme.AppBarOverlay&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;android.support.v7.widget.Toolbar&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attr&quot;&gt;android:id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;@+id/toolbar&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attr&quot;&gt;android:layout_width&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attr&quot;&gt;android:layout_height&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;?attr/actionBarSize&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attr&quot;&gt;android:background&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;?attr/colorPrimary&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attr&quot;&gt;app:popupTheme&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;@style/AppTheme.PopupOverlay&quot;&lt;/span&gt; / &amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;android.support.design.widget.AppBarLayout&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;  AppBarLayout作为父容器&lt;/p&gt;
+&lt;h3 id=&quot;手动创建ToolBar&quot;&gt;&lt;a href=&quot;#手动创建ToolBar&quot; class=&quot;headerlink&quot; title=&quot;手动创建ToolBar&quot;&gt;&lt;/a&gt;手动创建ToolBar&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Toolbar：Google在material design中为了取代ActionBar而发布的组件。Android 5.0以上
+    
+    </summary>
+    
+      <category term="Android学习笔记" scheme="http://yoursite.com/categories/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
   
   <entry>
     <title>第一行代码AS跟刷-Broadcast广播</title>
@@ -845,9 +986,9 @@ int[] to)
     <link href="http://yoursite.com/2016/07/17/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81/"/>
     <id>http://yoursite.com/2016/07/17/第一行代码/</id>
     <published>2016-07-17T02:11:11.000Z</published>
-    <updated>2016-09-13T12:49:35.562Z</updated>
+    <updated>2016-10-03T13:03:36.778Z</updated>
     
-    <content type="html">&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.7&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;  第一行代码Activity创建部分完成&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.7&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;21&lt;/span&gt;  完成添加了button和&lt;span class=&quot;keyword&quot;&gt;menu&lt;/span&gt;部分，对应P39页&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.7&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;22&lt;/span&gt;  完成了P55页之前的activity部分。对于activity（二）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.8&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;  基本搞定，UI除ListView以外的部分。&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;种布局比较熟悉，不再折腾。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.8&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;11&lt;/span&gt;  开始ListView部分&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.8&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;14&lt;/span&gt;  停更半月&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.9&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;02&lt;/span&gt;  恢复更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.9&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;03&lt;/span&gt;  Broadcast部分开坑。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.9&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;07&lt;/span&gt;  ListView部分除BaseAdapter外完成。BaseAdapter内容，什么时候理解深一点再补上。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.9&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;13&lt;/span&gt;  完成了Broadcast对应部分&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    <content type="html">&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.7&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;  第一行代码Activity创建部分完成&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.7&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;21&lt;/span&gt;  完成添加了button和&lt;span class=&quot;keyword&quot;&gt;menu&lt;/span&gt;部分，对应P39页&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.7&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;22&lt;/span&gt;  完成了P55页之前的activity部分。对于activity（二）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.8&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;  基本搞定，UI除ListView以外的部分。&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;种布局比较熟悉，不再折腾。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.8&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;11&lt;/span&gt;  开始ListView部分&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.8&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;14&lt;/span&gt;  停更半月&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.9&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;02&lt;/span&gt;  恢复更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.9&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;03&lt;/span&gt;  Broadcast部分开坑。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.9&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;07&lt;/span&gt;  ListView部分除BaseAdapter外完成。BaseAdapter内容，什么时候理解深一点再补上。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.9&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;13&lt;/span&gt;  完成了Broadcast对应部分&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.10&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;  重新按照google的文档查漏补缺.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 </content>
     
     <summary type="html">
@@ -907,9 +1048,10 @@ int[] to)
     <link href="http://yoursite.com/2016/06/27/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%972/"/>
     <id>http://yoursite.com/2016/06/27/VPS科学上网教程系列2/</id>
     <published>2016-06-27T09:52:16.000Z</published>
-    <updated>2016-06-29T14:36:10.490Z</updated>
+    <updated>2016-09-29T04:45:02.110Z</updated>
     
-    <content type="html">&lt;h2 id=&quot;TCP优化&quot;&gt;&lt;a href=&quot;#TCP优化&quot; class=&quot;headerlink&quot; title=&quot;TCP优化&quot;&gt;&lt;/a&gt;TCP优化&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;适用场景：高延迟搞丢包线路。&lt;/strong&gt;&lt;/p&gt;
+    <content type="html">&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.6&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;26&lt;/span&gt;  与SSR有关部分基本完成。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.6&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;28&lt;/span&gt;  TCP优化部分完成&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.6&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;  gfw.press、FinalSpeed和锐速部分基本完成。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.9&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;  gfw.press目前不稳定，暂时废弃，增加KCP相关内容&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;TCP优化&quot;&gt;&lt;a href=&quot;#TCP优化&quot; class=&quot;headerlink&quot; title=&quot;TCP优化&quot;&gt;&lt;/a&gt;TCP优化&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;适用场景：高延迟搞丢包线路。&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;增加TCP连接数量&lt;/p&gt;
 &lt;figure class=&quot;highlight powershell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;nano /etc/security/limits.conf&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -1043,7 +1185,7 @@ int[] to)
 &lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;tail -&lt;span class=&quot;keyword&quot;&gt;f&lt;/span&gt; /fs/server.&lt;span class=&quot;built_in&quot;&gt;log&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&quot;gfw-press大杀器&quot;&gt;&lt;a href=&quot;#gfw-press大杀器&quot; class=&quot;headerlink&quot; title=&quot;gfw.press大杀器&quot;&gt;&lt;/a&gt;gfw.press大杀器&lt;/h2&gt;&lt;ul&gt;
+&lt;h2 id=&quot;gfw-press大杀器&quot;&gt;&lt;a href=&quot;#gfw-press大杀器&quot; class=&quot;headerlink&quot; title=&quot;~~ gfw.press大杀器~~&quot;&gt;&lt;/a&gt;~~ gfw.press大杀器~~&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;介绍&lt;br&gt;GFW.Press号称新一代军用级高强度加密抗干扰海底光缆专用网络数据高速传输软件，挺神的反正。号称除白名单外，再也不能破解的协议，开发者是推特赵国劣绅石斑鱼大爷 @chinashiyu&lt;/li&gt;
 &lt;li&gt;官网&lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&quot;http://gfw.press&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://gfw.press&lt;/a&gt;&lt;/p&gt;
@@ -1094,14 +1236,11 @@ int[] to)
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&quot;结束&quot;&gt;&lt;a href=&quot;#结束&quot; class=&quot;headerlink&quot; title=&quot;结束&quot;&gt;&lt;/a&gt;结束&lt;/h2&gt;&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.6&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;26&lt;/span&gt;  与SSR有关部分基本完成。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.6&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;28&lt;/span&gt;  TCP优化部分完成&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.6&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;  gfw.press、FinalSpeed和锐速部分基本完成。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-</content>
+&lt;h2 id=&quot;结束&quot;&gt;&lt;a href=&quot;#结束&quot; class=&quot;headerlink&quot; title=&quot;结束&quot;&gt;&lt;/a&gt;结束&lt;/h2&gt;</content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;TCP优化&quot;&gt;&lt;a href=&quot;#TCP优化&quot; class=&quot;headerlink&quot; title=&quot;TCP优化&quot;&gt;&lt;/a&gt;TCP优化&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;适用场景：高延迟搞丢包线路。&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;增加TCP连接数量&lt;
+      &lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;
     
     </summary>
     
@@ -1119,9 +1258,10 @@ int[] to)
     <link href="http://yoursite.com/2016/06/26/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%97/"/>
     <id>http://yoursite.com/2016/06/26/VPS科学上网教程系列/</id>
     <published>2016-06-26T04:16:16.000Z</published>
-    <updated>2016-06-28T15:15:57.737Z</updated>
+    <updated>2016-09-29T04:35:25.138Z</updated>
     
-    <content type="html">&lt;h2 id=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;a href=&quot;#基本从0开始的教程，当作自己的备份了。&quot; class=&quot;headerlink&quot; title=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;/a&gt;基本从0开始的教程，当作自己的备份了。&lt;/h2&gt;&lt;ul&gt;
+    <content type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.6.26  与SSR有关部分基本完成。  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.9.29  更新SSR部分内容&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;a href=&quot;#基本从0开始的教程，当作自己的备份了。&quot; class=&quot;headerlink&quot; title=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;/a&gt;基本从0开始的教程，当作自己的备份了。&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;吐槽&lt;/strong&gt;&lt;br&gt;作为一个伪程序员，每次最苦恼的就是Android SDK的更新，当初安装Android Studio时候就因为防火墙折腾了整整2周，简直就是把自学Android的那点耐心都磨没了。各种的搜索文档，离了google效率下降70%！科学上网简直成了程序员的必备生存技能了。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
@@ -1140,11 +1280,11 @@ int[] to)
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;VPS地点。&quot;&gt;&lt;a href=&quot;#VPS地点。&quot; class=&quot;headerlink&quot; title=&quot;VPS地点。&quot;&gt;&lt;/a&gt;VPS地点。&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;日本VPS电信网络访问要绕道美国，ping一半在200到300了，联通直连日本，ping在100上下！&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;&lt;del&gt;日本VPS电信网络访问要绕道美国&lt;/del&gt;绕道ping一般在200到300了，联通直连日本，ping在100上下！9.29）电信目前分地区直连日本，直连ping在100或者多一点。（有运气成分，多刷几个ip试试）&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;美国的VPS联通/电信访问延迟基本相当。一般选择靠近美国西海岸节点旧金山、洛杉矶、纽约等地点。&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;新加坡节点，在靠近南方地区，可以ping在100以内稳定！youtube 4k不卡。但在偏北一些地区ping不稳定。&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;新加坡节点，在靠近南方地区，可以ping在100以内稳定！youtube 4k不卡。但在偏北一些地区ping不稳定。（9.29）Vultr新开新加坡节点，北方部分地区直连。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;香港VPS，这个比较特殊，香港的VPS ping值可以低到20几，但是香港本身的国际出口就小，VPS价格也偏高，另外香港毕竟也在政府的直接管辖内，隐私方面风险比其他地区节点要大一些。建议土豪级别的游戏玩家使用。&lt;/p&gt;
 &lt;/li&gt;
@@ -1232,7 +1372,7 @@ int[] to)
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;默认在/root文件夹下，要进入/etc文件夹下找到shadowsocks.json&lt;br&gt; &lt;a href=&quot;http://snapgr.am/image/LORT&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://cdn2.snapgram.co/imgs/2016/06/25/22.jpg&quot; alt=&quot;22.jpg&quot;&gt;&lt;/a&gt;&lt;br&gt; &lt;img src=&quot;http://cdn1.snapgram.co/imgs/2016/06/25/23.jpg&quot; alt=&quot;23.jpg&quot;&gt;&lt;br&gt; &lt;img src=&quot;http://cdn3.snapgram.co/imgs/2016/06/25/24.jpg&quot; alt=&quot;24.jpg&quot;&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;正式开始编辑shadowsocks.json文件&lt;br&gt;因为SSR的android端暂时无人接手更新，所以我们配置两个端口来满足手机端和PC端应用。同理，如果是合租VPS下，可以配置多个端口提供给不同用户。&lt;br&gt;下面是一个shadowsocks.json的模板 &lt;code&gt;不加注释的版本&lt;/code&gt;可以直接复制粘贴,覆盖原始的shadowsocks.json文件。&lt;br&gt;参考资料网址&lt;br&gt;shadowsocks.json文件各项配置说明&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;正式开始编辑shadowsocks.json文件&lt;br&gt;&lt;del&gt;因为SSR的android端暂时无人接手更新&lt;/del&gt;，所以我们配置两个端口来满足手机端和PC端应用。同理，如果是合租VPS下，可以配置多个端口提供给不同用户。（9.29）SSR android版已经较为稳定，可以使用SSR混淆插件。ps：ssr 最近更新频繁，需要等待一段时间稳定发布后，再更新教程）&lt;br&gt;下面是一个shadowsocks.json的模板 &lt;code&gt;不加注释的版本&lt;/code&gt;可以直接复制粘贴,覆盖原始的shadowsocks.json文件。&lt;br&gt;参考资料网址&lt;br&gt;shadowsocks.json文件各项配置说明&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/breakwa11/shadowsocks-rss/wiki/Server-Setup&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/breakwa11/shadowsocks-rss/wiki/Server-Setup&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1282,13 +1422,11 @@ int[] to)
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&quot;结束&quot;&gt;&lt;a href=&quot;#结束&quot; class=&quot;headerlink&quot; title=&quot;结束&quot;&gt;&lt;/a&gt;结束&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.6.26  与SSR有关部分基本完成。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-</content>
+&lt;h2 id=&quot;结束&quot;&gt;&lt;a href=&quot;#结束&quot; class=&quot;headerlink&quot; title=&quot;结束&quot;&gt;&lt;/a&gt;结束&lt;/h2&gt;</content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;a href=&quot;#基本从0开始的教程，当作自己的备份了。&quot; class=&quot;headerlink&quot; title=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;/a&gt;基本从0开始的教程，当作自己的备份了。&lt;/h2&gt;&lt;ul&gt;
-
+      &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class
     
     </summary>
     
@@ -1423,17 +1561,17 @@ int[] to)
       <category term="随" scheme="http://yoursite.com/categories/%E9%9A%8F/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="python" scheme="http://yoursite.com/tags/python/"/>
     
       <category term="单片机" scheme="http://yoursite.com/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
     
       <category term="开源" scheme="http://yoursite.com/tags/%E5%BC%80%E6%BA%90/"/>
-    
-      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
     
   </entry>
   
