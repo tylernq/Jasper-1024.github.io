@@ -17,8 +17,8 @@
   
   <entry>
     <title>GitHub-Pages更新导致Next主题-博客主页空白，解决方案</title>
-    <link href="http://yoursite.com/2016/11/08/hexo/"/>
-    <id>http://yoursite.com/2016/11/08/hexo/</id>
+    <link href="http://yoursite.com/2016/11/08/GitHub-Pages%E6%9B%B4%E6%96%B0%E5%AF%BC%E8%87%B4Next%E4%B8%BB%E9%A2%98-%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A1%B5%E7%A9%BA%E7%99%BD%EF%BC%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>http://yoursite.com/2016/11/08/GitHub-Pages更新导致Next主题-博客主页空白，解决方案/</id>
     <published>2016-11-08T02:10:11.000Z</published>
     <updated>2016-11-09T10:59:05.509Z</updated>
     
@@ -1811,11 +1811,11 @@ int[] to)
     
       <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
     
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
-    
       <category term="单片机" scheme="http://yoursite.com/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
     
       <category term="开源" scheme="http://yoursite.com/tags/%E5%BC%80%E6%BA%90/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
     
   </entry>
   
