@@ -247,6 +247,536 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/22/第一行代码AS跟刷-Activity(二)/" itemprop="url">
+                  第一行代码AS跟刷-Activity(二)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-22T12:49:11+08:00" content="2016-07-22">
+              2016-07-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/第一行代码/" itemprop="url" rel="index">
+                    <span itemprop="name">第一行代码</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/22/第一行代码AS跟刷-Activity(二)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/22/第一行代码AS跟刷-Activity(二)/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/22/第一行代码AS跟刷-Activity(二)/" class="leancloud_visitors" data-flag-title="第一行代码AS跟刷-Activity(二)">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="销毁活动"><a href="#销毁活动" class="headerlink" title="销毁活动"></a>销毁活动</h2><ul>
+<li>调用<code>finish();</code>结束当前的Activity<br>  效果与back按键一致</li>
+</ul>
+<h2 id="Intent"><a href="#Intent" class="headerlink" title="Intent"></a>Intent</h2><h3 id="显式intent"><a href="#显式intent" class="headerlink" title="显式intent"></a>显式intent</h3><ul>
+<li><p>调用startActivity();接收一个intent参数。将构建好的intent传入即可。<br>  intent有多个构造函数的重载。其中有一个是Intent(Context，Class);<br>  Context活动的上下文，Class 指定启动的目标活动。</p>
+</li>
+<li><p>重写firestactivity中的button1的按下相应事件。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">button_1</span><span class="params">(View view)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    Intent I = <span class="keyword">new</span> Intent(FirestActivity.<span class="keyword">this</span>,SecondActivity.class);</span><br><span class="line">    startActivity(I);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>效果如图<br>  <img src="http://cdn4.snapgram.co/images/2016/07/22/Screenshot_20160722-132433.png" alt="Screenshot_20160722-132433.png"></p>
+</li>
+</ul>
+<h3 id="隐式intent"><a href="#隐式intent" class="headerlink" title="隐式intent"></a>隐式intent</h3><ul>
+<li><p>隐式intent并不指明启动的具体活动，指定跟抽象的action和category交与系统分析启动活动。</p>
+</li>
+<li><p>AndroidMainfest.xml中secondactivity中添加如下内容</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.example.activitytext.ACTION_START"</span>/&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改firestactivity中button1的onlick事件</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">button_1</span><span class="params">(View view)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    Intent I = <span class="keyword">new</span> Intent(<span class="string">"com.example.activitytext.ACTION_START"</span>);</span><br><span class="line">    startActivity(I);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>效果同显示intent</p>
+</li>
+</ul>
+<h2 id="向下一个activity传递数据"><a href="#向下一个activity传递数据" class="headerlink" title="向下一个activity传递数据"></a>向下一个activity传递数据</h2><ul>
+<li>Intent提供了putExtra()方法的重载，可以将想要传递的数据暂存到intent启动下一个活动时从intent中取出即可</li>
+<li><p>重写button1的相应事件</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">button_1</span><span class="params">(View view)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    String data = <span class="string">"hello second"</span>;</span><br><span class="line">    Intent I = <span class="keyword">new</span> Intent(FirestActivity.<span class="keyword">this</span>,SecondActivity.class);</span><br><span class="line">    I.putExtra(<span class="string">"extra_data"</span>,data);</span><br><span class="line">    startActivity(I);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在secondactivity的onCreate();中添加</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Intent I =getIntent();</span><br><span class="line">String data = I.getStringExtra(<span class="string">"extra_data"</span>);</span><br><span class="line">Log.d(<span class="string">"SecondActivity"</span>,data);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>效果，启动secondactivity时会读取data字符串，并打印到日志中<br>  <img src="http://cdn4.snapgram.co/images/2016/07/22/QQ.jpg" alt="QQ.jpg"></p>
+</li>
+</ul>
+<h2 id="返回数据给上一个活动"><a href="#返回数据给上一个活动" class="headerlink" title="返回数据给上一个活动"></a>返回数据给上一个活动</h2><ul>
+<li>利用Activity中的startActivityForResult();来启动下一个activity。在下一个活动销毁后回掉第一个activity的onActivityResult() ;得到传回的数据。</li>
+<li><p>修改firestactivity中button1对应按下响应事件</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">button_1</span><span class="params">(View view)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    Intent intent = <span class="keyword">new</span> Intent(FirestActivity.<span class="keyword">this</span>,SecondActivity.class);</span><br><span class="line">    startActivityForResult(intent, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重写seconactivity中的button2按下响应事件或者重写back按键对应事件</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">button_2</span><span class="params">(View view)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    Intent S = <span class="keyword">new</span> Intent();</span><br><span class="line">    S.putExtra(<span class="string">"data_return"</span>,<span class="string">"hellow firest"</span>);</span><br><span class="line">    setResult(RESULT_OK,S);</span><br><span class="line">    finish();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBackPressed</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line">    intent.putExtra(<span class="string">"data_return"</span>,<span class="string">"hello first"</span>);</span><br><span class="line">    setResult(RESULT_OK, intent);</span><br><span class="line">    finish();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre></li>
+<li><p>重写firestactivity中的 onActivityResult();</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode , <span class="keyword">int</span> resultCode ,Intent data)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">   <span class="keyword">switch</span> (requestCode)&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> (resultCode==RESULT_OK)&#123;</span><br><span class="line">                String returnedDate = data.getStringExtra(<span class="string">"data_return"</span>);</span><br><span class="line">                Log.d(<span class="string">"FirestActivity"</span>,returnedDate);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>效果为在log文件中打印出内容，不再累赘。</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/20/第一行代码AS跟刷-Activity(一)/" itemprop="url">
+                  第一行代码AS跟刷-Activity(一)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-20T13:11:11+08:00" content="2016-07-20">
+              2016-07-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/第一行代码/" itemprop="url" rel="index">
+                    <span itemprop="name">第一行代码</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/20/第一行代码AS跟刷-Activity(一)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/20/第一行代码AS跟刷-Activity(一)/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/20/第一行代码AS跟刷-Activity(一)/" class="leancloud_visitors" data-flag-title="第一行代码AS跟刷-Activity(一)">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="手动创建Activity"><a href="#手动创建Activity" class="headerlink" title="手动创建Activity"></a>手动创建Activity</h2><ul>
+<li><p>新建FirstAtivity继承自Activity</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span></span>&#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span>  <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">&#125; &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建加载布局<br>  <a href="http://snapgr.am/image/LoY4" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/07/20/1.jpg" alt="1.jpg"></a></p>
+<ul>
+<li>有时会遇到。貌似是Android的Bug。<br>  <img src="http://cdn1.snapgram.co/imgs/2016/07/20/2.jpg" alt="2.jpg"><br>  重新选择绿色小机器人即可<br>  <img src="http://cdn3.snapgram.co/imgs/2016/07/20/3.jpg" alt="3.jpg"></li>
+</ul>
+</li>
+<li><p>切换到first-layout</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  &lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line">  &lt;LinearLayout</span><br><span class="line">  xmlns:android="http://schemas.android.com/apk/res/android"</span><br><span class="line">  android:layout_width="match_parent"</span><br><span class="line">  android:layout_height="match_parent"&gt;</span><br><span class="line">  &lt;Button</span><br><span class="line">      android:id="@+id/button_1"</span><br><span class="line">      android:text="button_1"</span><br><span class="line">      android:layout_width="wrap_content"</span><br><span class="line">      android:layout_height="wrap_content" /&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在FirestActivity中加载layout<br>  在onCreate中加入</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setContentView(R.layout.first_layout);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在AndroidMainfest文件中注册。</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity</span><br><span class="line">           android:name=".FirstActivity"</span><br><span class="line">           android:label="This is FirstActivity"&gt;</span><br><span class="line">           &lt;intent-filter&gt;</span><br><span class="line">               &lt;action android:name="android.intent.action.MAIN"/&gt;</span><br><span class="line">               &lt;category android:name="android.intent.category.LAUNCHER"/&gt;</span><br><span class="line">           &lt;/intent-filter&gt;</span><br><span class="line">&lt;/activity&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在模拟器中启动apk<br>  <img src="http://cdn4.snapgram.co/images/2016/07/20/43168d.jpg" alt="43168d.jpg"><br>  天生没有状态栏，应该是继承自Activity的缘故，原因未知。</p>
+</li>
+<li><p>将继承关系改到AppCompatActivity，标题栏又出现了。<br>  <a href="http://snapgr.am/image/LogP" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/07/20/5ea429.jpg" alt="5ea429.jpg"></a></p>
+</li>
+</ul>
+<h2 id="隐藏标题栏"><a href="#隐藏标题栏" class="headerlink" title="隐藏标题栏"></a>隐藏标题栏</h2><ul>
+<li><p>AS中默认的activity是继承自AppCompatActivity。<br>  隐藏标题栏需要在setContentView前加上</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supportRequestWindowFeature(Window.FEATURE_NO_TITLE)</span><br></pre></td></tr></table></figure>
+<p>  效果如图<br>  <a href="http://snapgr.am/image/LogU" target="_blank" rel="external"><img src="http://cdn3.snapgram.co/imgs/2016/07/20/QQ.jpg" alt="QQ.jpg"></a></p>
+</li>
+<li><p>如果严格按照第一行代码来，FirestActivity继承自Activity。<br>  则要使用</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requestWindowFeature(Window.FEATURE_NO_TITLE)）；</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他详情见 第一行代码AS跟刷-隐藏标题栏。</p>
+</li>
+</ul>
+<h2 id="活动中使用Toast"><a href="#活动中使用Toast" class="headerlink" title="活动中使用Toast"></a>活动中使用Toast</h2><blockquote>
+<p><a href="https://developer.android.com/guide/topics/ui/notifiers/toasts.html#Positioning" target="_blank" rel="external">Toast google官方说明</a></p>
+<ul>
+<li>推送一个短小信息推送给用户<br>  如图（摘自android developer）<br>  <img src="http://cdn4.snapgram.co/images/2016/07/20/toast.png" alt="toast.png"></li>
+</ul>
+</blockquote>
+<ul>
+<li><p>使用方法</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Toast.makeText(context, text, duration).show();</span><br></pre></td></tr></table></figure>
+<p>  举例</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Toast.makeText(FirstActivity.<span class="keyword">this</span>, <span class="string">"you clicked button 1"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line"><span class="comment">/*                  activity.this   消息内容                显示时间设置   */</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Button使用说明"><a href="#Button使用说明" class="headerlink" title="Button使用说明"></a>Button使用说明</h2><blockquote>
+<p><a href="https://developer.android.com/reference/android/widget/Button.html" target="_blank" rel="external">Button google 官方说明</a></p>
+<h3 id="第一行代码AS"><a href="#第一行代码AS" class="headerlink" title="第一行代码AS"></a>第一行代码AS</h3></blockquote>
+<ul>
+<li>在 onCreate() 方法中，给 Button 绑定点击事件，点击 Button 嗲用Toast显示一条信息。<br>  在onCreate() 中添加如下代码  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Button button1 = (Button) findViewById(R.id.button_1);</span><br><span class="line">button1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">            Toast.makeText(FirstActivity.<span class="keyword">this</span>, <span class="string">"you clicked button 1"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="android-onClick方式"><a href="#android-onClick方式" class="headerlink" title="android:onClick方式"></a>android:onClick方式</h3><ul>
+<li><p>第二种方法<br>  在firest-layout中Button属性中添加<code>android:onClick</code><br>  代码如下</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Button</span><br><span class="line">    android:id=<span class="string">"@+id/button_1"</span></span><br><span class="line">    android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">    android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">    android:onClick=<span class="string">"selfDestruct"</span></span><br><span class="line">    android:text=<span class="string">"button_1"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p>  随后在<code>public class FirstActivity extends AppCompatActivity{}</code>中添加 selfDestruct函数。注意<strong>不是在onCreate()中添加！</strong>selfDestruct与onCreate()互不包含。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selfDestruct</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">    Toast.makeText(FirstActivity.<span class="keyword">this</span>, <span class="string">"you clicked button 1"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="运行效果"><a href="#运行效果" class="headerlink" title="运行效果"></a>运行效果</h3><ul>
+<li>两种方式效果相同如图<br>  [<img src="http://cdn2.snapgram.co/imgs/2016/07/20/6.jpg" alt="6.jpg"></li>
+</ul>
+<h2 id="menu使用说明"><a href="#menu使用说明" class="headerlink" title="menu使用说明"></a>menu使用说明</h2><blockquote>
+<p><a href="http://jingyan.baidu.com/article/47a29f24426063c014239931.html" target="_blank" rel="external">图解Android Studio下创建menu布局文件</a><br><a href="https://developer.android.com/guide/topics/ui/menus.html" target="_blank" rel="external">google官方说明<strong>(中文)</strong></a></p>
+</blockquote>
+<h3 id="menu介绍"><a href="#menu介绍" class="headerlink" title="menu介绍"></a>menu介绍</h3><ul>
+<li>菜单是许多应用中常见的用户界面组件。要提供熟悉而一致的用户体验，您应使用 Menu API 呈现 Activity 中的用户操作和其他选项<br>  <img src="http://cdn3.snapgram.co/imgs/2016/07/21/2011082121245374.png" alt="2011082121245374.png"><br>  注意：<strong>从 Android 3.0（API 级别 11）开始，采用 Android 技术的设备不必再提供一个专用“菜单”按钮。随着这种改变，Android 应用需摆脱对包含 6 个项目的传统菜单面板的依赖，取而代之的是要提供一个操作栏来呈现常见的用户操作。</strong><br>  如图所示<br>  <img src="http://cdn3.snapgram.co/imgs/2016/07/21/1.jpg" alt="1.jpg"></li>
+</ul>
+<h3 id="第一行代码AS-1"><a href="#第一行代码AS-1" class="headerlink" title="第一行代码AS"></a>第一行代码AS</h3><ul>
+<li><p>先在res文件夹右键，然后如下图所示<br><img src="http://cdn4.snapgram.co/images/2016/07/21/B.jpg" alt="B.jpg"></p>
+</li>
+<li><p>然后会出现下面的页面，在Resource type下拉栏选择menu，如下图所示：<br><img src="http://cdn2.snapgram.co/imgs/2016/07/21/B2.jpg" alt="B2.jpg"></p>
+</li>
+<li><p>最后点击OK就行了，这时候可以看到menu文件夹已经出来了。</p>
+</li>
+<li><p>接着在menu文件夹下右键，选择如下图所示：<br><img src="http://cdn1.snapgram.co/imgs/2016/07/21/B3.jpg" alt="B3.jpg"></p>
+</li>
+<li><p>输入文件名点击OK即可<br>  <img src="http://cdn3.snapgram.co/imgs/2016/07/21/B4.jpg" alt="B4.jpg"></p>
+</li>
+<li><p>在main.xml中添加如下代码</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"&gt;</span><br><span class="line">&lt;xml</span><br><span class="line">android:id="@+id/add_item"</span><br><span class="line">android:title="Add"/&gt;</span><br><span class="line">&lt;item</span><br><span class="line">android:id="@+id/remove_item"</span><br><span class="line">android:title="Remove"/&gt;</span><br><span class="line">&lt;/menu&gt;</span><br></pre></td></tr></table></figure>
+<p>  这里是创建了两个菜单项，add 和 remove。</p>
+</li>
+</ul>
+<ul>
+<li><p>打开FirestActivity 重写onCreateOptionsMenu();</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onCreateOptionsMenu</span><span class="params">(Menu menu)</span></span>&#123;</span><br><span class="line">getMenuInflater().inflate(R.menu.main,menu);</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>至此菜单创建完毕，效果如图。</p>
+<pre><code>![2.jpg](http://cdn4.snapgram.co/images/2016/07/21/2.jpg)
+</code></pre></li>
+<li><p>创建菜单点击响应事件<br>  重写FirestActivity中onOptionsItemSelected()；</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onOptionsItemSelected</span><span class="params">(MenuItem item)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Handle item selection</span></span><br><span class="line">    <span class="keyword">switch</span> (item.getItemId()) &#123;</span><br><span class="line">        <span class="keyword">case</span> R.id.add_item:</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">"you clicked Add"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">case</span> R.id.remove_item:</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">"you clicked Remove"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">super</span>.onOptionsItemSelected(item);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行效果图<br>  <img src="http://cdn2.snapgram.co/imgs/2016/07/21/3.jpg" alt="3.jpg"></p>
+<p>  <img src="http://cdn1.snapgram.co/imgs/2016/07/21/4.jpg" alt="4.jpg"></p>
+</li>
+</ul>
+<h3 id="android-onClick-创建菜单相应事件"><a href="#android-onClick-创建菜单相应事件" class="headerlink" title="android:onClick 创建菜单相应事件"></a>android:onClick 创建菜单相应事件</h3><ul>
+<li><p>main.xml中添加android:onClick</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   <span class="tag">&lt;<span class="name">menu</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">item</span></span><br><span class="line">       <span class="attr">android:id</span>=<span class="string">"@+id/add_item"</span></span><br><span class="line">       <span class="attr">android:onClick</span>=<span class="string">"item_Click"</span></span><br><span class="line">       <span class="attr">android:title</span>=<span class="string">"Add"</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">item</span></span><br><span class="line">       <span class="attr">android:id</span>=<span class="string">"@+id/remove_item"</span></span><br><span class="line">       <span class="attr">android:onClick</span>=<span class="string">"item_Click"</span></span><br><span class="line">       <span class="attr">android:title</span>=<span class="string">"Remove"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">menu</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在FirstActivity中添加响应函数</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">item_Click</span><span class="params">(MenuItem item)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Handle item selection</span></span><br><span class="line">    <span class="keyword">switch</span> (item.getItemId()) &#123;</span><br><span class="line">        <span class="keyword">case</span> R.id.add_item:</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">"you clicked Add"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> R.id.remove_item:</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">"you clicked Remove"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>: <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>效果同上。</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/17/第一行代码/" itemprop="url">
+                  第一行代码AS跟刷
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-17T10:11:11+08:00" content="2016-07-17">
+              2016-07-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/第一行代码/" itemprop="url" rel="index">
+                    <span itemprop="name">第一行代码</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/17/第一行代码/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/17/第一行代码/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/17/第一行代码/" class="leancloud_visitors" data-flag-title="第一行代码AS跟刷">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">20</span>  第一行代码Activity创建部分完成</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">21</span>  完成添加了button和<span class="keyword">menu</span>部分，对应P39页</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">22</span>  完成了P55页之前的activity部分。对于activity（二）</span><br><span class="line"><span class="number">2016.8</span>.<span class="number">10</span>  基本搞定，UI除ListView以外的部分。<span class="number">4</span>种布局比较熟悉，不再折腾。</span><br><span class="line"><span class="number">2016.8</span>.<span class="number">11</span>  开始ListView部分</span><br><span class="line"><span class="number">2016.8</span>.<span class="number">14</span>  停更半月</span><br><span class="line"><span class="number">2016.9</span>.<span class="number">02</span>  恢复更新</span><br><span class="line"><span class="number">2016.9</span>.<span class="number">03</span>  Broadcast部分开坑。</span><br><span class="line"><span class="number">2016.9</span>.<span class="number">07</span>  ListView部分除BaseAdapter外完成。BaseAdapter内容，什么时候理解深一点再补上。</span><br><span class="line"><span class="number">2016.9</span>.<span class="number">13</span>  完成了Broadcast对应部分</span><br><span class="line"><span class="number">2016.10</span>.<span class="number">3</span>  重新按照google的文档查漏补缺.</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/09/单片机课程设计总结/" itemprop="url">
                   单片机课程设计总结
                 </a>
@@ -766,7 +1296,7 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line">2016.06.26  与SSR有关部分基本完成。  </span><br><span class="line">2016.09.29  更新SSR部分内容</span><br><span class="line">2016.10.09  更新SSR内容，更新Android端接入。</span><br></pre></td></tr></table></figure>
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line">2016.06.26  与SSR有关部分基本完成。  </span><br><span class="line">2016.09.29  更新SSR部分内容</span><br><span class="line">2016.10.09  更新SSR内容，更新Android端接入。</span><br><span class="line">2016.11.09  更新SSR混淆相关内容，更新SSR-Android，更新部分介绍。</span><br></pre></td></tr></table></figure>
 <h2 id="基本从0开始的教程，当作自己的备份了。"><a href="#基本从0开始的教程，当作自己的备份了。" class="headerlink" title="基本从0开始的教程，当作自己的备份了。"></a>基本从0开始的教程，当作自己的备份了。</h2><ul>
 <li><strong>吐槽</strong><br>作为一个伪程序员，每次最苦恼的就是Android SDK的更新，当初安装Android Studio时候就因为防火墙折腾了整整2周，简直就是把自学Android的那点耐心都磨没了。各种的搜索文档，离了google效率下降70%！科学上网简直成了程序员的必备生存技能了。</li>
 </ul>
@@ -786,7 +1316,7 @@
 </li>
 </ul>
 <h3 id="VPS地点。"><a href="#VPS地点。" class="headerlink" title="VPS地点。"></a>VPS地点。</h3><ul>
-<li><p><del>日本VPS电信网络访问要绕道美国绕道ping一般在200到300了</del>，联通直连日本，ping在100上下！（9.29）电信目前分地区直连日本，直连ping在100或者多一点。（有运气成分，多刷几个ip试试）</p>
+<li><p><del>日本VPS电信网络访问要绕道美国绕道ping一般在200到300了</del>，（9.29）联通直连日本，ping在100上下！（11.09）联通目前也分地区有限速电信目前分地区直连日本，直连ping在100或者多一点。（有运气成分，多刷几个ip试试）</p>
 </li>
 <li><p>美国的VPS联通/电信访问延迟基本相当。一般选择靠近美国西海岸节点旧金山、洛杉矶、纽约等地点。</p>
 </li>
@@ -795,6 +1325,14 @@
 <li><p>香港VPS，这个比较特殊，香港的VPS ping值可以低到20几，但是香港本身的国际出口就小，VPS价格也偏高，另外香港毕竟也在政府的直接管辖内，隐私方面风险比其他地区节点要大一些。建议土豪级别的游戏玩家使用。</p>
 </li>
 </ul>
+<h3 id="（11-09）Vultr-日本-IP相关参考"><a href="#（11-09）Vultr-日本-IP相关参考" class="headerlink" title="- （11.09）Vultr-日本-IP相关参考"></a>- （11.09）Vultr-日本-IP相关参考</h3><blockquote>
+<p>来源：<br><a href="https://www.v2ex.com/t/302347" target="_blank" rel="external">https://www.v2ex.com/t/302347</a><br><strong>注意以下结论仅供参考，实际不同网络不同ip表现不一定相同</strong></p>
+<ul>
+<li>108.开头普遍反应较好，电信/联通稳定性比45开头要好，比较难刷到。</li>
+<li>45.7X-youtube-1080p，无压力</li>
+<li>45.3X-youtube-1080p ，略卡</li>
+</ul>
+</blockquote>
 <h3 id="VPS虚拟化架构。具体解释请自行google，只说明对科学上网的影响。"><a href="#VPS虚拟化架构。具体解释请自行google，只说明对科学上网的影响。" class="headerlink" title="VPS虚拟化架构。具体解释请自行google，只说明对科学上网的影响。"></a>VPS虚拟化架构。具体解释请自行google，只说明对科学上网的影响。</h3><ul>
 <li>OpenVZ（简称OVZ） 便宜！但是没法进行修改内核、加锐速之类的优化操作。访问速度基本取决于你的本地网络环境优化的可能性。（不是没有可以加速的手段，就是在基本相同情况下，不如其他架构的vps可以榨干VPS的传输性能）。加速手段：Finaspeed（已停止更新） 和net-speeder。</li>
 <li>Xen性能较好，实际用的不多，不做更多评论</li>
@@ -857,9 +1395,42 @@
 <blockquote>
 <p><a href="https://bit.no.com:43110/shadowsocksr.bit/" target="_blank" rel="external">https://bit.no.com:43110/shadowsocksr.bit/</a></p>
 </blockquote>
-<h3 id="10-9-新混淆插件选择"><a href="#10-9-新混淆插件选择" class="headerlink" title="(10.9)新混淆插件选择"></a>(10.9)新混淆插件选择</h3><ul>
-<li>SSR最近新增加了auth_aes128和auth_sha1_v4插件，建议用户使用新协议替换auth_sha1_v2.</li>
-<li>新协议的混淆性能更好尤其是auth_aes128。推荐使用。Android端目前支持到auth_sha1_v4，已替换auth_sha1_v2。</li>
+<h3 id="11-09-混淆插件选择"><a href="#11-09-混淆插件选择" class="headerlink" title="(11.09)混淆插件选择"></a>(11.09)混淆插件选择</h3><h4 id="混淆插件简介"><a href="#混淆插件简介" class="headerlink" title="混淆插件简介"></a>混淆插件简介</h4><ul>
+<li><del>(10.09)SSR最近新增加了auth_aes128和auth_sha1_v4插件，建议用户使用新协议替换auth_sha1_v2.</del></li>
+<li><p><del>(10.09)新协议的混淆性能更好尤其是auth_aes128。推荐使用。Android端目前支持到auth_sha1_v4，已替换auth_sha1_v2。</del></p>
+</li>
+<li><p>ShadowsocksR目前支持的混淆插件（此类型的插件用于定义加密后的通信协议）：<br>  plain ,http_simple ,http_post,random_head ,tls1.2_ticket<em>auth   
+  </em>协议定义插件(用于定义加密前的协议):<br>  origin,verify_sha1,auth_sha1,auth_sha1_v2,auth_sha1_v4,auth_aes128_md5/auth_aes128_sha1</p>
+</li>
+<li><p><a href="https://github.com/breakwa11/shadowsocks-rss/blob/master/ssr.md" target="_blank" rel="external">ShadowsocksR 协议插件文档</a></p>
+</li>
+</ul>
+<h4 id="混淆插件选择"><a href="#混淆插件选择" class="headerlink" title="混淆插件选择"></a>混淆插件选择</h4><ul>
+<li><p>通用</p>
+<ul>
+<li><p><strong>推荐auth_aes128_md5或auth_aes128_sha1+tls1.2_ticket_auth</strong><br>这种组合目前混淆效果最好，有利于个人VPS的长时间使用。</p>
+</li>
+<li><p>auth_aes128_md5或auth_aes128_sha1+随意，即使使用rc4加密亦可（SSR作者语） </p>
+</li>
+<li><p>玩游戏，或对延迟有要求，不要使用tls1.2_ticket_auth</p>
+</li>
+</ul>
+</li>
+<li><p>网络封锁/监控环境下</p>
+<ul>
+<li>例如学校教育网/公司内网/广电宽带等等，封杀了BT/禁止访问网盘等等等等。</li>
+<li>使用http_simple、http_post或tls1.2_ticket_auth 混淆访问的目标网址。再配合443/80端口通常可以解决问题。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Android<ul>
+<li>如果之前使用的是auth_sha1_v2，推荐以auth_aes128_md5或auth_aes128_sha1代替。</li>
+<li>手机运算能力较差的推荐使用auth_sha1_v4替换auth_sha1_v2</li>
+</ul>
+</li>
+</ul>
+<h4 id="使用最新混淆插件"><a href="#使用最新混淆插件" class="headerlink" title="使用最新混淆插件"></a>使用最新混淆插件</h4><ul>
 <li><p>vps端，需要先保存shadowsocks.json文件。再执行卸载</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./shadowsocksR.sh uninstall</span><br></pre></td></tr></table></figure>
 <p>  之后重新执行安装脚本即可</p>
@@ -867,7 +1438,7 @@
 </ul>
 <h3 id="安装SSR"><a href="#安装SSR" class="headerlink" title="安装SSR"></a>安装SSR</h3><ul>
 <li><p>复制以下代码到登陆成功的securecrt</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh</span><br><span class="line">chmod +x shadowsocksR.sh</span><br><span class="line">./shadowsocksR.sh 2&gt;&amp;1 | tee shadowsocksR.log</span><br></pre></td></tr></table></figure>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate	 https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh</span><br><span class="line">chmod +x shadowsocksR.sh</span><br><span class="line">./shadowsocksR.sh 2&gt;&amp;1 | tee shadowsocksR.log</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>如图，回车。<br><img src="http://cdn3.snapgram.co/imgs/2016/06/24/1189971.jpg" alt="1189971.jpg"></p>
 </li>
@@ -902,10 +1473,10 @@
 </blockquote>
 <ul>
 <li><p>注释版本</p>
-<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"server"</span>:<span class="string">"0.0.0.0"</span>,</span><br><span class="line">    <span class="string">"server_ipv6"</span>:<span class="string">"::"</span>,</span><br><span class="line">    <span class="string">"local_address"</span>:<span class="string">"127.0.0.1"</span>,</span><br><span class="line">    <span class="string">"local_port"</span>:<span class="number">1080</span>,</span><br><span class="line">    <span class="string">"port_password"</span>:&#123;</span><br><span class="line">     #手机端端口<span class="number">443</span> 密码为<span class="number">123456.</span></span><br><span class="line">     <span class="string">"443"</span>:<span class="string">"123456"</span>,</span><br><span class="line">     #第二个端口<span class="number">3389</span>，密码<span class="number">123456</span> ，protocol选择auth_aes128。obfs选择tls1<span class="number">.2</span>_ticket_auth，具体插件的介绍如下参考资料中</span><br><span class="line">     <span class="string">"3389"</span>:&#123;<span class="string">"protocol"</span>:<span class="string">"auth_aes128"</span>, <span class="string">"password"</span>:<span class="string">"123456"</span>, <span class="string">"obfs"</span>:<span class="string">"tls1.2_ticket_auth"</span>, <span class="string">"obfs_param"</span>:<span class="string">""</span>&#125;,</span><br><span class="line">    #注意无论怎么变化，最后一个端口设置，不带逗号！</span><br><span class="line">     <span class="string">"25"</span>:&#123;<span class="string">"protocol"</span>:<span class="string">"auth_sha1_v4"</span>, <span class="string">"password"</span>:<span class="string">"123456"</span>, <span class="string">"obfs"</span>:<span class="string">"tls1.2_ticket_auth"</span>, <span class="string">"obfs_param"</span>:<span class="string">""</span>&#125;#此处没有逗号！</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"timeout"</span>:<span class="number">400</span>,</span><br><span class="line">    #默认全局的加密方式，即上边各个端口的默认加密方式。一般为aes<span class="number">-256</span>-cfb，		此处，选择为chacha20，移动设备性能较好。</span><br><span class="line">    <span class="string">"method"</span>:<span class="string">"chacha20"</span>,</span><br><span class="line">    #protocol.协议定义插件的默认值，origin即使用原版SS协议，不混淆。</span><br><span class="line">    <span class="string">"protocol"</span>: <span class="string">"origin"</span>,</span><br><span class="line">    <span class="string">"protocol_param"</span>: <span class="string">""</span>,</span><br><span class="line">     #protocol.协议定义插件的默认值，plain即使用原协议，不混淆。</span><br><span class="line">    <span class="string">"obfs"</span>: <span class="string">"plain"</span>,</span><br><span class="line">    <span class="string">"obfs_param"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="string">"redirect"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="string">"dns_ipv6"</span>: <span class="literal">false</span>,</span><br><span class="line">   #TCP FAST OPEN ，打开</span><br><span class="line">    <span class="string">"fast_open"</span>: <span class="literal">true</span>,</span><br><span class="line">   <span class="string">"workers"</span>: <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"server"</span>:<span class="string">"0.0.0.0"</span>,</span><br><span class="line">    <span class="string">"server_ipv6"</span>:<span class="string">"::"</span>,</span><br><span class="line">    <span class="string">"local_address"</span>:<span class="string">"127.0.0.1"</span>,</span><br><span class="line">    <span class="string">"local_port"</span>:<span class="number">1080</span>,</span><br><span class="line">    <span class="string">"port_password"</span>:&#123;</span><br><span class="line">     #手机端端口<span class="number">443</span> 密码为<span class="number">123456.</span></span><br><span class="line">     <span class="string">"443"</span>:<span class="string">"123456"</span>,</span><br><span class="line">     #第二个端口<span class="number">3389</span>，密码<span class="number">123456</span> ，protocol选择auth_aes128_md5。obfs选择tls1<span class="number">.2</span>_ticket_auth，具体插件的介绍如下参考资料中</span><br><span class="line">     <span class="string">"3389"</span>:&#123;<span class="string">"protocol"</span>:<span class="string">"auth_aes128_md5"</span>, <span class="string">"password"</span>:<span class="string">"123456"</span>, <span class="string">"obfs"</span>:<span class="string">"tls1.2_ticket_auth"</span>, <span class="string">"obfs_param"</span>:<span class="string">""</span>&#125;,</span><br><span class="line">    #注意无论怎么变化，最后一个端口设置，不带逗号！</span><br><span class="line">     <span class="string">"25"</span>:&#123;<span class="string">"protocol"</span>:<span class="string">"auth_sha1_v4"</span>, <span class="string">"password"</span>:<span class="string">"123456"</span>, <span class="string">"obfs"</span>:<span class="string">"tls1.2_ticket_auth"</span>, <span class="string">"obfs_param"</span>:<span class="string">""</span>&#125;#此处没有逗号！</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"timeout"</span>:<span class="number">400</span>,</span><br><span class="line">    #默认全局的加密方式，即上边各个端口的默认加密方式。一般为aes<span class="number">-256</span>-cfb，		此处，选择为chacha20，移动设备性能较好。</span><br><span class="line">    <span class="string">"method"</span>:<span class="string">"chacha20"</span>,</span><br><span class="line">    #protocol.协议定义插件的默认值，origin即使用原版SS协议，不混淆。</span><br><span class="line">    <span class="string">"protocol"</span>: <span class="string">"origin"</span>,</span><br><span class="line">    <span class="string">"protocol_param"</span>: <span class="string">""</span>,</span><br><span class="line">     #protocol.协议定义插件的默认值，plain即使用原协议，不混淆。</span><br><span class="line">    <span class="string">"obfs"</span>: <span class="string">"plain"</span>,</span><br><span class="line">    <span class="string">"obfs_param"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="string">"redirect"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="string">"dns_ipv6"</span>: <span class="literal">false</span>,</span><br><span class="line">   #TCP FAST OPEN ，打开</span><br><span class="line">    <span class="string">"fast_open"</span>: <span class="literal">true</span>,</span><br><span class="line">   <span class="string">"workers"</span>: <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>无注释版本，可以复制粘贴覆盖原始文件</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"server"</span>:<span class="string">"0.0.0.0"</span>,</span><br><span class="line">    <span class="attr">"server_ipv6"</span>:<span class="string">"::"</span>,</span><br><span class="line">    <span class="attr">"local_address"</span>:<span class="string">"127.0.0.1"</span>,</span><br><span class="line">    <span class="attr">"local_port"</span>:<span class="number">1080</span>,</span><br><span class="line">    <span class="attr">"port_password"</span>:&#123;</span><br><span class="line">        <span class="attr">"443"</span>:<span class="string">"123456"</span>,</span><br><span class="line">        <span class="attr">"3389"</span>:&#123;<span class="attr">"protocol"</span>:<span class="string">"auth_aes128"</span>, <span class="attr">"password"</span>:<span class="string">"123456"</span>, <span class="attr">"obfs"</span>:<span class="string">"tls1.2_ticket_auth"</span>, <span class="attr">"obfs_param"</span>:<span class="string">""</span>&#125;,</span><br><span class="line">        <span class="attr">"25"</span>:&#123;<span class="attr">"protocol"</span>:<span class="string">"auth_sha1_v4"</span>, <span class="attr">"password"</span>:<span class="string">"123456"</span>, <span class="attr">"obfs"</span>:<span class="string">"tls1.2_ticket_auth"</span>, <span class="attr">"obfs_param"</span>:<span class="string">""</span>&#125;</span><br><span class="line"></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"timeout"</span>:<span class="number">400</span>,</span><br><span class="line">    <span class="attr">"method"</span>:<span class="string">"chacha20"</span>,</span><br><span class="line">    <span class="attr">"protocol"</span>: <span class="string">"origin"</span>,</span><br><span class="line">    <span class="attr">"protocol_param"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"obfs"</span>: <span class="string">"plain"</span>,</span><br><span class="line">    <span class="attr">"obfs_param"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"redirect"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"dns_ipv6"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"fast_open"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"workers"</span>: <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"server"</span>:<span class="string">"0.0.0.0"</span>,</span><br><span class="line">    <span class="attr">"server_ipv6"</span>:<span class="string">"::"</span>,</span><br><span class="line">    <span class="attr">"local_address"</span>:<span class="string">"127.0.0.1"</span>,</span><br><span class="line">    <span class="attr">"local_port"</span>:<span class="number">1080</span>,</span><br><span class="line">    <span class="attr">"port_password"</span>:&#123;</span><br><span class="line">        <span class="attr">"443"</span>:<span class="string">"123456"</span>,</span><br><span class="line">        <span class="attr">"3389"</span>:&#123;<span class="attr">"protocol"</span>:<span class="string">"auth_aes128_md5"</span>, <span class="attr">"password"</span>:<span class="string">"123456"</span>, <span class="attr">"obfs"</span>:<span class="string">"tls1.2_ticket_auth"</span>, <span class="attr">"obfs_param"</span>:<span class="string">""</span>&#125;,</span><br><span class="line">        <span class="attr">"25"</span>:&#123;<span class="attr">"protocol"</span>:<span class="string">"auth_sha1_v4"</span>, <span class="attr">"password"</span>:<span class="string">"123456"</span>, <span class="attr">"obfs"</span>:<span class="string">"tls1.2_ticket_auth"</span>, <span class="attr">"obfs_param"</span>:<span class="string">""</span>&#125;</span><br><span class="line"></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"timeout"</span>:<span class="number">400</span>,</span><br><span class="line">    <span class="attr">"method"</span>:<span class="string">"chacha20"</span>,</span><br><span class="line">    <span class="attr">"protocol"</span>: <span class="string">"origin"</span>,</span><br><span class="line">    <span class="attr">"protocol_param"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"obfs"</span>: <span class="string">"plain"</span>,</span><br><span class="line">    <span class="attr">"obfs_param"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"redirect"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"dns_ipv6"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"fast_open"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"workers"</span>: <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>配置完成后，重启SSR,以root账户登陆securecrt，复制以下代码，重启ssr。</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/shadowsocks restart</span><br></pre></td></tr></table></figure>
@@ -940,8 +1511,14 @@
 </li>
 <li><p>SSR-Android端</p>
 <blockquote>
-<p><a href="https://bit.no.com:43110/shadowsocksr.bit/" target="_blank" rel="external">https://bit.no.com:43110/shadowsocksr.bit/</a><br>  下载ssr-android。目前更新最新版为3.2.3.4版。使用方式与影ss-android版基本相同。VPS推荐设置混淆为auth_sha1_v4 端口配合使用</p>
+<p><a href="https://bit.no.com:43110/shadowsocksr.bit/" target="_blank" rel="external">https://bit.no.com:43110/shadowsocksr.bit/</a></p>
 </blockquote>
+<ul>
+<li><del>下载ssr-android。目前更新最新版为3.2.3.4版。使用方式与影ss-android版基本相同。VPS推荐设置混淆为auth_sha1_v4 端口配合使用</del><ul>
+<li>(11.09)<br>2016-10-12：ssr-android更新到3.2.7.8版，增加auth_aes128_md5和auth_aes128_sha1,推荐更新！</li>
+</ul>
+</li>
+</ul>
 </li>
 </ul>
 <hr>
@@ -1439,7 +2016,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
