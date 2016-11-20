@@ -247,6 +247,187 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/06/第一行代码AS跟刷-UI(一)/" itemprop="url">
+                  第一行代码AS跟刷-UI(一)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-06T12:00:00+08:00" content="2016-08-06">
+              2016-08-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/第一行代码/" itemprop="url" rel="index">
+                    <span itemprop="name">第一行代码</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/06/第一行代码AS跟刷-UI(一)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/06/第一行代码AS跟刷-UI(一)/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/08/06/第一行代码AS跟刷-UI(一)/" class="leancloud_visitors" data-flag-title="第一行代码AS跟刷-UI(一)">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="TextView"><a href="#TextView" class="headerlink" title="TextView"></a>TextView</h3><ul>
+<li><p>打开AndroidStudio创建一个新工程。自带TextView。为了验证期间，吧文本改了一下。<br>  <img src="http://cdn4.snapgram.co/images/2016/08/06/Screenshot_20160806-215726.png" alt="Screenshot_20160806-215726.png"></p>
+</li>
+<li><p>android:layout_width 与android:layout_height 每个android控件都具有这两个属性。有3种取值 match_parent 、fill_parent、     wrap_content. 其中 match_parent 、fill_parent基本一个意思，TextView会占满整个它所属那层的布局空间。wrap_content则是根据内容多少决定整个TextView的大小。当然还可以手动指定高度和宽度大小，但是考虑到适配屏幕的不同，请慎用。</p>
+</li>
+<li>其他属性没什么可写的，androidstudio与eclipse+adt基本一致。</li>
+</ul>
+<h3 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h3><ul>
+<li>基本没什么可说的，前面用的很多了。添加第一行代码没有的一点内容Button属性中添加<code>android:onClick</code> 然后在对应class文件中添加对应函数即可完成点击响应。（觉得这个要实用一点）</li>
+</ul>
+<h3 id="EditText"><a href="#EditText" class="headerlink" title="EditText"></a>EditText</h3><ul>
+<li><p>google官方文档</p>
+<blockquote>
+<p><a href="https://developer.android.com/reference/android/widget/EditText.html" target="_blank" rel="external">https://developer.android.com/reference/android/widget/EditText.html</a></p>
+</blockquote>
+</li>
+<li><p>继承自TextView，设置TextView的属性 EditText一般通用。</p>
+</li>
+<li><p>android:hint：属性设置可以在用户输入前显示一些提示性文字。</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:hint="please enter something"</span><br></pre></td></tr></table></figure>
+<p>  效果如下图<br>  <a href="http://snapgr.am/image/LzLB" target="_blank" rel="external"><img src="http://cdn3.snapgram.co/imgs/2016/08/06/Screenshot_20160807-085357.png" alt="Screenshot_20160807-085357.png"></a></p>
+</li>
+<li><p>android:maxLines：当输入文字大于一行，可以通过设置 android:maxLines属性来拓展显示区域。</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:maxLines="2"</span><br></pre></td></tr></table></figure>
+<p> 效果如下图<br> <img src="http://cdn4.snapgram.co/images/2016/08/06/Screenshot_20160807-085806.png" alt="Screenshot_20160807-085806.png"></p>
+</li>
+<li><p>getText();   提取输入的文本。首先利用findViewById()；得到EditText实例，随后getText()；得到输入的文本。显示方式采用了Toast，Tosat需要输入字符串，利用toSpring()；转换为字符串。<br>  部分代码如下</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//xml中添加</span></span><br><span class="line">android:id=<span class="string">"@+id/editText"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//新建EditText类型的变量</span></span><br><span class="line">EditText editText;</span><br><span class="line"></span><br><span class="line"><span class="comment">//提取EditText实例</span></span><br><span class="line"> editText = (EditText)<span class="keyword">this</span>.findViewById(R.id.editText);</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//button_1点击响应事件</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">button_1</span><span class="params">(View view)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    Toast.makeText(MainActivity.<span class="keyword">this</span>,editText.getText().toString(), Toast.LENGTH_SHORT).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Imageview"><a href="#Imageview" class="headerlink" title="Imageview"></a>Imageview</h3><ul>
+<li><p>官方文档</p>
+<blockquote>
+<p><a href="https://developer.android.com/reference/android/widget/ImageView.html" target="_blank" rel="external">https://developer.android.com/reference/android/widget/ImageView.html</a></p>
+</blockquote>
+</li>
+<li><p>添加方式类似。。基本AndroidStudio都自动完成了。唯一有点区别的可能是<code>android:src=&quot;@drawable&quot;</code>指定Image的位置。一般将图片文件放在res\drawable文件夹下，为了适配不同分辨率的屏幕，还可以新建不同分辨率对应的文件夹，让显示效果到达最佳。<br>  效果如下<br>  <img src="http://cdn3.snapgram.co/imgs/2016/08/07/Screenshot_20160807-153851.png" alt="Screenshot_20160807-153851.png"></p>
+</li>
+<li><p>动态改变图片。调用setImageResource()；</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//xml中添加</span></span><br><span class="line">android:id=<span class="string">"@+id/imageView"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//新建 ImageView类型的变量</span></span><br><span class="line">ImageView imageView;</span><br><span class="line"></span><br><span class="line"><span class="comment">//找到imageView实例</span></span><br><span class="line"> imageView = (ImageView)<span class="keyword">this</span>.findViewById(R.id.imageView);</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//button_1</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">button_1</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">    imageView.setImageResource(R.drawable.dn);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="ProgressBar"><a href="#ProgressBar" class="headerlink" title="ProgressBar"></a>ProgressBar</h3><p>官方文档</p>
+<blockquote>
+<p><a href="https://developer.android.com/reference/android/widget/ProgressBar.html" target="_blank" rel="external">https://developer.android.com/reference/android/widget/ProgressBar.html</a></p>
+</blockquote>
+<ul>
+<li>添加方式与其他View相同，不加累赘。<br>  效果如下图<br>   <img src="http://cdn2.snapgram.co/imgs/2016/08/07/Scre447.png" alt="Scre447.png">     </li>
+</ul>
+<ul>
+<li><p>显示/隐藏进度条<br>  setVisibility()；</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**************************************/</span></span><br><span class="line"></span><br><span class="line">android:id=<span class="string">"@+id/Progress_Bar"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**************************************/</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">private</span> ProgressBar progressBar;</span><br><span class="line"> </span><br><span class="line"> progressBar = (ProgressBar)<span class="keyword">this</span>.findViewById(R.id.Progress_Bar);</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//onClik响应事件</span></span><br><span class="line"> <span class="keyword">if</span>(progressBar.getVisibility()==View.GONE)</span><br><span class="line">    &#123; progressBar.setVisibility(View.VISIBLE); &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;progressBar.setVisibility(View.GONE);&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>水平进度条<br>  直接上代码  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**************************************/</span></span><br><span class="line"> </span><br><span class="line"> style=<span class="string">"?android:attr/progressBarStyleHorizontal"</span></span><br><span class="line"> android:max=<span class="string">"100"</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/**************************************/</span></span><br><span class="line">  </span><br><span class="line"> <span class="keyword">private</span> ProgressBar progressBar;</span><br><span class="line"> </span><br><span class="line"> progressBar = (ProgressBar)<span class="keyword">this</span>.findViewById(R.id.Progress_Bar);</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//onClick 响应事件</span></span><br><span class="line"> progressBar.setProgress(progressBar.getProgress()+<span class="number">10</span>);</span><br><span class="line"> <span class="keyword">if</span>(progressBar.getProgress()==<span class="number">100</span>)</span><br><span class="line"> 	progressBar.setProgress(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/05/第一行代码AS跟刷-Activity(三)/" itemprop="url">
                   第一行代码AS跟刷-Activity(三)
                 </a>
@@ -1994,142 +2175,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/18/hellowworld/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-18T10:10:11+08:00" content="2016-06-18">
-              2016-06-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/随/" itemprop="url" rel="index">
-                    <span itemprop="name">随</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/18/hellowworld/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/18/hellowworld/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/06/18/hellowworld/" class="leancloud_visitors" data-flag-title="Hello World">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2170,7 +2220,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -247,6 +247,177 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/18/Android笔记—Fragments/" itemprop="url">
+                  Android笔记—Fragments
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-18T12:00:00+08:00" content="2016-11-18">
+              2016-11-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/18/Android笔记—Fragments/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/11/18/Android笔记—Fragments/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/11/18/Android笔记—Fragments/" class="leancloud_visitors" data-flag-title="Android笔记—Fragments">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Fragments简介"><a href="#Fragments简介" class="headerlink" title="Fragments简介"></a>Fragments简介</h2><ul>
+<li>Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI 设计提供支持。</li>
+<li>可以将多个片段组合在一个 Activity 中来构建多窗格 UI，以及在多个 Activity 中重复使用某个片段。可以将片段视为 Activity 的模块化组成部分，它具有自己的生命周期，能接收自己的输入事件，可以在 Activity 运行时添加或删除片段（类似于不同 Activity 中重复使用的“子 Activity”）</li>
+<li><a href="https://developer.android.com/guide/components/fragments.html" target="_blank" rel="external">Google官方文档(中文)</a></li>
+</ul>
+<h2 id="创建Fragments"><a href="#创建Fragments" class="headerlink" title="创建Fragments"></a>创建Fragments</h2><ul>
+<li>fragment创建过程与Activity类似。<h3 id="创建一个Fragment类"><a href="#创建一个Fragment类" class="headerlink" title="创建一个Fragment类"></a>创建一个Fragment类</h3></li>
+<li>新建first_fragme 继承自Fragment </li>
+<li>Android Studio中 对应Fragment 包有两个，选择Android.app _</li>
+<li>当创建Fragment的时，必须重写onCreateView()回调方法.</li>
+<li>Fragment并非一定要绑定一个布局文件，下面会提到。</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span> <span class="params">(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState)</span></span>&#123;</span><br><span class="line">       View view = inflater.inflate(R.layout.fragment_firest,container,<span class="keyword">false</span>);</span><br><span class="line">       <span class="keyword">return</span> view;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>与此对应的fragment<em>firest布局文件 </em><br>  LinearLayout加一个Button，背景颜色设置为了靛蓝色。<br>  具体代码就不多说了。</p>
+</li>
+</ul>
+<h3 id="在XML将fragment添加到activity"><a href="#在XML将fragment添加到activity" class="headerlink" title="在XML将fragment添加到activity"></a>在XML将fragment添加到activity</h3><ul>
+<li><p>在activity_main.xml中添加如下代码。跟添加一个layout没有太大区别。</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">fragment</span></span><br><span class="line"><span class="attr">android:id</span>=<span class="string">"@+id/first_fragment"</span></span><br><span class="line"><span class="attr">android:name</span>=<span class="string">"layout.FirstFragment"</span></span><br><span class="line"><span class="attr">android:layout_width</span>=<span class="string">"0sp"</span></span><br><span class="line"><span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span><br><span class="line"><span class="attr">android:layout_weight</span>=<span class="string">"1"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>至此一个fragment添加完毕。为了对比，再新建一个second_fragment，背景颜色不同，两者同时添加进activity_main中。</p>
+</li>
+<li><img src="http://cdn5.snapgram.co/images/2016/10/10/Screenshot_1476109113.png" alt="Screenshot_1476109113.png"></li>
+</ul>
+<h3 id="在activity运行时添加fragment"><a href="#在activity运行时添加fragment" class="headerlink" title="在activity运行时添加fragment"></a>在activity运行时添加fragment</h3><ul>
+<li>添加或移除片段必须使用 FragmentManager 创建 FragmentTransaction， FragmentTransaction将提供添加、移除、替换片段以及执行其他片段事务所需的 API。</li>
+<li><p>处理片段时，请谨记：Activity 布局必须包含一个可以插入片段的容器 View。</p>
+</li>
+<li><p>Activity 内，调用 getSupportFragmentManager() 以获取 FragmentManager。然后，调用 beginTransaction() 创建一个 FragmentTransaction，并调用 add() 添加一个片段</p>
+</li>
+<li><p>可以在同一 FragmentTransaction 为 Activity 执行多片段事务。做好更改准备时，调用 commit()</p>
+</li>
+<li><p>示例：</p>
+<ul>
+<li><p>首先改造一下activity<em>main.xml</em><br>FrameLayout包含一个left_fragment</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">FrameLayout</span>  </span><br><span class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/right_layout"</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span><br><span class="line">    <span class="attr">android:layout_weight</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">fragment</span></span><br><span class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/left_fragment"</span></span><br><span class="line">        <span class="attr">android:name</span>=<span class="string">"com.example.fragment_text.leftfragment"</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在MainActivity的onCreate方法中添加fragment</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新建准备替换的Fragment实例</span></span><br><span class="line">rightfragment right = <span class="keyword">new</span> rightfragment();</span><br><span class="line"> </span><br><span class="line"><span class="comment">//新建FragmentManager</span></span><br><span class="line">FragmentManager fragmentManager = getSupportFragmentManager();</span><br><span class="line"><span class="comment">// 调用beginTransaction() 创建FragmentTransaction</span></span><br><span class="line">FragmentTransaction transaction = fragmentManager.beginTransaction();</span><br><span class="line"></span><br><span class="line"><span class="comment">//FragmentTransaction内处理添加/替换等。</span></span><br><span class="line">transaction.replace(R.id.right_layout,right);</span><br><span class="line"></span><br><span class="line"><span class="comment">//可回退，</span></span><br><span class="line">transaction.addToBackStack(<span class="keyword">null</span>);</span><br><span class="line"><span class="comment">//最后执行commit()方法</span></span><br><span class="line">transaction.commit();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>替换/添加 过程类似，replace/add</p>
+</li>
+</ul>
+<h3 id="fragment-之间的通信"><a href="#fragment-之间的通信" class="headerlink" title="fragment 之间的通信"></a>fragment 之间的通信</h3><ul>
+<li>占坑，待更新</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/08/GitHub-Pages更新导致Next主题-博客主页空白，解决方案/" itemprop="url">
                   GitHub-Pages更新导致Next主题-博客主页空白，解决方案
                 </a>
@@ -512,6 +683,245 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/06/Android笔记-Activity/" itemprop="url">
+                  Android笔记—Activity(一)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-06T12:00:00+08:00" content="2016-11-06">
+              2016-11-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/06/Android笔记-Activity/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/11/06/Android笔记-Activity/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/11/06/Android笔记-Activity/" class="leancloud_visitors" data-flag-title="Android笔记—Activity(一)">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Activity生命周期"><a href="#Activity生命周期" class="headerlink" title="Activity生命周期"></a>Activity生命周期</h2><ul>
+<li><img src="http://cdn5.snapgram.co/images/2016/11/15/basic-lifecycle.png" alt="basic-lifecycle.png"></li>
+<li>Activity 3种状态<ul>
+<li>Resumed/继续<br>Activity 处于前台，且用户可以与其交互</li>
+<li>Paused/暂停<br> Activity 被在前台中处于另一个 Activity—部分阻挡。 暂停的 Activity 不会接收用户输入并且无法执行任何代码。</li>
+<li>Stopped/停止<br>Activity完全隐藏，对用户完全不可见.当停止时，activity的所有状态信息比如成员变量都会被保留，但是不能再执行任何代码</li>
+</ul>
+</li>
+</ul>
+<h2 id="启动一个Activity"><a href="#启动一个Activity" class="headerlink" title="启动一个Activity"></a>启动一个Activity</h2><ul>
+<li>onCreate方法</li>
+<li><p>主Activity：</p>
+<ul>
+<li>用户点击app图标，启动主Activity</li>
+<li>在AndroidManifest.xml中声明<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>通过调用onCreate方法创建一个Activity实例，onCreate方法在Activity的整个生命周期中只执行一次。</p>
+</li>
+<li>之后系统会很快的调用onStart和onResume方法，Activity进入Resumed/继续模式。直到被其他activity覆盖/屏幕关闭。<h2 id="销毁Activity"><a href="#销毁Activity" class="headerlink" title="销毁Activity"></a>销毁Activity</h2></li>
+<li>onDestory方法<br>大多数的APP不需要实现这个方法，因为本地类引用会随着Activity一起总结，不过Activity的清理工作应该放在onPause下或者onStop。       </li>
+<li>Note:<br>在所有的情况下系统调用onDestory方法之后已经调用过onPause方法与onStop方法，不过有一个例外情况：你在onCreate方法中调用了finish方法。在一些例子中，当你的Activity临时决定要启动另一个Activity，你可能要在onCreate方法内调用finish方法来销毁这个Activity，在这种情况下，系统会立即调用onDestory方法，而不会调用其它任何生命周期方法。</li>
+</ul>
+<h2 id="暂停Activity"><a href="#暂停Activity" class="headerlink" title="暂停Activity"></a>暂停Activity</h2><ul>
+<li>onPause()方法</li>
+<li><p>Activity被其他Activity覆盖/失去用户焦点，系统调用onPause()方法，Activity 进入暂停状态。</p>
+<ul>
+<li>note：android7.0及以上版本加入了多窗口模式，当Activity失去用户焦点时，可能处于多窗口模式。</li>
+<li><p>onPause() 常用回调：</p>
+<ul>
+<li>检查 Activity 是否可见。不可见则停止可能消耗 CPU 的操作</li>
+<li>提交未保存的更改，仅保存用户离开时希望永久性保存此类更改（比如电子邮件草稿）。</li>
+<li>释放系统资源，GPS/Camer等</li>
+<li><p>示例 (释放Camer)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">super</span>.onPause();  <span class="comment">// Always call the superclass method first</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Release the Camera because we don't need it when paused</span></span><br><span class="line"><span class="comment">// and other activities might need to use it.</span></span><br><span class="line"><span class="keyword">if</span> (mCamera != <span class="keyword">null</span>) &#123;</span><br><span class="line">   mCamera.release();</span><br><span class="line">   mCamera = <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意事项：</p>
+<ul>
+<li>在onPause()一般不执行永久性存储用户更改，不执行 CPU 密集型工作，这些工作一般放在onStop() 。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="继续-Activity"><a href="#继续-Activity" class="headerlink" title="继续 Activity"></a>继续 Activity</h2><ul>
+<li>onResume() 方法</li>
+<li>暂停状态回到继续状态，Activity第一次启动时也会调用这个方法。</li>
+<li>onResume() 以初始化在 onPause() 期间释放的组件。</li>
+<li>示例(重新获取Camera)<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">super</span>.onResume();  <span class="comment">// Always call the superclass method first</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// Get the Camera instance as the activity achieves full user focus</span></span><br><span class="line">  <span class="keyword">if</span> (mCamera == <span class="keyword">null</span>) &#123;</span><br><span class="line">      initializeCamera(); <span class="comment">// Local method to handle camera init</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="停止-Activity"><a href="#停止-Activity" class="headerlink" title="停止 Activity"></a>停止 Activity</h2><ul>
+<li>note：<br>大多数相对简单的 Activity 而言，系统在 Activity 停止时会将Activity 实例保留在系统内存中，无需实现 onStop() 和 onRestart() 或甚至onStart() 方法。可能只需使用 onPause() 暂停正在进行的操作，并从系统资源断开连接。</li>
+</ul>
+<ul>
+<li>onStop() 方法</li>
+<li><p>场景：</p>
+<ul>
+<li>用户在最近应用切换到另一个应用</li>
+<li>应用中执行开始新 Activity 的操作</li>
+<li>Activity使用时，接打电话</li>
+</ul>
+</li>
+<li><p>调用时，Activity不再可见，释放几乎所有用户不使用时不需要的资源。如果系统内存紧张，则可能销毁内存中的Acitivity实例。</p>
+</li>
+<li>onStop() 方法调用后，Activity不再可见，极端情况下，系统可能会仅终止应用进程，而不调用 onDestroy() ，因此需要使用 onStop() 释放几乎所有用户不使用时不需要的资源。</li>
+<li>尽管 onPause() 方法在 onStop()之前调用，在onStop() 执行更大、占用更多 CPU 的关闭操作，比如向数据库写入信息</li>
+<li>示例（草稿笔记内容保存在永久存储）<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">super</span>.onStop();  <span class="comment">// Always call the superclass method first</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// Save the note's current draft, because the activity is stopping</span></span><br><span class="line">  <span class="comment">// and we want to be sure the current note progress isn't lost.</span></span><br><span class="line">  ContentValues values = <span class="keyword">new</span> ContentValues();</span><br><span class="line">  values.put(NotePad.Notes.COLUMN_NAME_NOTE, getCurrentNoteText());</span><br><span class="line">  values.put(NotePad.Notes.COLUMN_NAME_TITLE, getCurrentNoteTitle());</span><br><span class="line"></span><br><span class="line">  getContentResolver().update(</span><br><span class="line">  mUri,    <span class="comment">// The URI for the note to update.</span></span><br><span class="line">  values,  <span class="comment">// The map of column names and new values to apply to them.</span></span><br><span class="line">   <span class="keyword">null</span>,    <span class="comment">// No SELECT criteria are used.</span></span><br><span class="line">   <span class="keyword">null</span>     <span class="comment">// No WHERE columns are used.</span></span><br><span class="line">   );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="启动-重启-Activity"><a href="#启动-重启-Activity" class="headerlink" title="启动/重启 Activity"></a>启动/重启 Activity</h2><ul>
+<li>onStart() 方法</li>
+<li>Activity 停止转换为继续状态时，系统回调onRestart() 方法+ onStart() 方法.onStop() 方法清理了所有 Activity 的资源，重启 Activity 需要重新实例化它们。同时 Activity 初次创建时重新实例化它们。 出于此，经常使用 onStart() 方法作为 onStop() 方法的对应</li>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="keyword">super</span>.onStart();  <span class="comment">// Always call the superclass method first</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">// The activity is either being restarted or started for the first time</span></span><br><span class="line">   <span class="comment">// so this is where we should make sure that GPS is enabled</span></span><br><span class="line">   LocationManager locationManager =</span><br><span class="line">    (LocationManager) getSystemService(Context.LOCATION_SERVICE);</span><br><span class="line">   <span class="keyword">boolean</span> gpsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span> (!gpsEnabled) &#123;</span><br><span class="line">    <span class="comment">// Create a dialog here that requests the user to enable GPS, and use an intent</span></span><br><span class="line">    <span class="comment">// with the android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS action</span></span><br><span class="line">    <span class="comment">// to take the user to the Settings screen to enable GPS when they click "OK"</span></span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onRestart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="keyword">super</span>.onRestart();  <span class="comment">// Always call the superclass method first</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">// Activity being restarted from stopped state</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="保存-Activity-状态"><a href="#保存-Activity-状态" class="headerlink" title="保存 Activity 状态"></a>保存 Activity 状态</h2><ul>
+<li>onSaveInstanceState()方法</li>
+<li>默认情况下，Activity 实例被销毁时系统会使用 Bundle 实例状态保存 Activity 布局中有关每个 View 对象的信息。在Activity 重建时，布局状态便自动恢复先前的状态。 </li>
+<li>默认实现保存有关 Activity 视图层次的状态信息，例如 EditText 小部件中的文本或ListView 的滚动位置</li>
+<li>要恢复的更多信息，需要重写 onSaveInstanceState()方法，将键值对添加至 Bundle 对象</li>
+<li><img src="http://cdn4.snapgram.co/images/2016/11/18/basic-lifecycle-savestate.png" alt="basic-lifecycle-savestate.png"></li>
+</ul>
+<ul>
+<li>note:<br>旋转屏幕时，Activity 将被销毁并重新创建。原因：方向更改时可能需要时加载备用资源（比如布局）</li>
+</ul>
+<ul>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> String STATE_SCORE = <span class="string">"playerScore"</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> String STATE_LEVEL = <span class="string">"playerLevel"</span>;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSaveInstanceState</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// Save the user's current game state</span></span><br><span class="line">   savedInstanceState.putInt(STATE_SCORE, mCurrentScore);</span><br><span class="line">   savedInstanceState.putInt(STATE_LEVEL, mCurrentLevel);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// Always call the superclass so it can save the view hierarchy state</span></span><br><span class="line">   <span class="keyword">super</span>.onSaveInstanceState(savedInstanceState);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="恢复-Activity"><a href="#恢复-Activity" class="headerlink" title="恢复 Activity"></a>恢复 Activity</h2><ul>
+<li>onCreate() 和 onRestoreInstanceState() 回调方法均接收包含实例状态信息的相同 Bundle</li>
+<li>onCreate() 方法</li>
+<li>调用onCreate() 方法需要区分是创建 Activity 的新实例还是恢复先前的实例，判断 Bundle 是否为 null</li>
+<li><p>示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">super</span>.onCreate(savedInstanceState); <span class="comment">// Always call the superclass first</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">// Check whether we're recreating a previously destroyed instance</span></span><br><span class="line">   <span class="keyword">if</span> (savedInstanceState != <span class="keyword">null</span>) &#123;</span><br><span class="line">       <span class="comment">// Restore value of members from saved state</span></span><br><span class="line">       mCurrentScore = savedInstanceState.getInt(STATE_SCORE);</span><br><span class="line">       mCurrentLevel = savedInstanceState.getInt(STATE_LEVEL);</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">       <span class="comment">// Probably initialize members with default values for a new instance</span></span><br><span class="line">  	 &#125;</span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>onRestoreInstanceState()方法</p>
+</li>
+<li>只需要恢复的已保存的状态</li>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRestoreInstanceState</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">   <span class="comment">// Always call the superclass so it can restore the view hierarchy</span></span><br><span class="line">   <span class="keyword">super</span>.onRestoreInstanceState(savedInstanceState);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// Restore state members from saved instance</span></span><br><span class="line">   mCurrentScore = savedInstanceState.getInt(STATE_SCORE);</span><br><span class="line">   mCurrentLevel = savedInstanceState.getInt(STATE_LEVEL);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="重启Activity其他选择"><a href="#重启Activity其他选择" class="headerlink" title="重启Activity其他选择"></a>重启Activity其他选择</h2><ul>
+<li><a href="https://developer.android.com/guide/topics/resources/runtime-changes.html" target="_blank" rel="external">官方说明</a></li>
+<li>重启应用并恢复大量数据不仅成本高昂，而且会留下糟糕的使用体验，有两个其他选择<h3 id="在配置变更期间保留对象"><a href="#在配置变更期间保留对象" class="headerlink" title="在配置变更期间保留对象"></a>在配置变更期间保留对象</h3></li>
+<li>Activity 因配置变更而重启，则可通过保留 Fragment 来减轻重新初始化 Activity 的负担</li>
+<li>当 Android 系统因配置变更而关闭 Activity 时，不会销毁已标记为要保留的 Activity 的片段。 您可以将此类片段添加到 Activity 以保留有状态的对象。</li>
+<li>具体待更新</li>
+</ul>
+<h3 id="自行处理配置变更"><a href="#自行处理配置变更" class="headerlink" title="自行处理配置变更"></a>自行处理配置变更</h3><ul>
+<li>待更新</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/20/Android笔记-查漏/" itemprop="url">
                   Android笔记—查漏(一)
                 </a>
@@ -623,153 +1033,6 @@
 </li>
 </ul>
 
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/10/Android笔记—Fragments(一)/" itemprop="url">
-                  Android笔记—Fragments(一)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-10T12:00:00+08:00" content="2016-10-10">
-              2016-10-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">Android学习笔记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/10/10/Android笔记—Fragments(一)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/10/10/Android笔记—Fragments(一)/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/10/10/Android笔记—Fragments(一)/" class="leancloud_visitors" data-flag-title="Android笔记—Fragments(一)">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Fragments简介"><a href="#Fragments简介" class="headerlink" title="Fragments简介"></a>Fragments简介</h2><ul>
-<li>Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI 设计提供支持。</li>
-<li>可以将多个片段组合在一个 Activity 中来构建多窗格 UI，以及在多个 Activity 中重复使用某个片段。可以将片段视为 Activity 的模块化组成部分，它具有自己的生命周期，能接收自己的输入事件，可以在 Activity 运行时添加或删除片段（类似于不同 Activity 中重复使用的“子 Activity”）</li>
-<li><a href="https://developer.android.com/guide/components/fragments.html" target="_blank" rel="external">Google官方文档(中文)</a></li>
-</ul>
-<h2 id="创建Fragments"><a href="#创建Fragments" class="headerlink" title="创建Fragments"></a>创建Fragments</h2><ul>
-<li>fragment创建过程与Activity类似。<h3 id="创建一个Fragment类"><a href="#创建一个Fragment类" class="headerlink" title="创建一个Fragment类"></a>创建一个Fragment类</h3></li>
-<li>新建first_fragme 继承自Fragment </li>
-<li>Android Studio中 对应Fragment 包有两个，选择Android.app _</li>
-<li>当创建Fragment的时，必须重写onCreateView()回调方法.</li>
-<li>Fragment并非一定要绑定一个布局文件，下面会提到。</li>
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span> <span class="params">(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState)</span></span>&#123;</span><br><span class="line">       View view = inflater.inflate(R.layout.fragment_firest,container,<span class="keyword">false</span>);</span><br><span class="line">       <span class="keyword">return</span> view;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>与此对应的fragment<em>firest布局文件 </em><br>  LinearLayout加一个Button，背景颜色设置为了靛蓝色。<br>  具体代码就不多说了。</p>
-</li>
-</ul>
-<h3 id="在XML将fragment添加到activity"><a href="#在XML将fragment添加到activity" class="headerlink" title="在XML将fragment添加到activity"></a>在XML将fragment添加到activity</h3><ul>
-<li><p>在activity_main.xml中添加如下代码。跟添加一个layout没有太大区别。</p>
-  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">fragment</span></span><br><span class="line"><span class="attr">android:id</span>=<span class="string">"@+id/first_fragment"</span></span><br><span class="line"><span class="attr">android:name</span>=<span class="string">"layout.FirstFragment"</span></span><br><span class="line"><span class="attr">android:layout_width</span>=<span class="string">"0sp"</span></span><br><span class="line"><span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span><br><span class="line"><span class="attr">android:layout_weight</span>=<span class="string">"1"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>至此一个fragment添加完毕。为了对比，再新建一个second_fragment，背景颜色不同，两者同时添加进activity_main中。</p>
-</li>
-<li><img src="http://cdn5.snapgram.co/images/2016/10/10/Screenshot_1476109113.png" alt="Screenshot_1476109113.png"></li>
-</ul>
-<h3 id="在activity运行时添加fragment"><a href="#在activity运行时添加fragment" class="headerlink" title="在activity运行时添加fragment"></a>在activity运行时添加fragment</h3>
           
         
       
@@ -1878,192 +2141,11 @@ int[] to)
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/06/第一行代码AS跟刷-UI(一)/" itemprop="url">
-                  第一行代码AS跟刷-UI(一)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-06T12:00:00+08:00" content="2016-08-06">
-              2016-08-06
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/第一行代码/" itemprop="url" rel="index">
-                    <span itemprop="name">第一行代码</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/06/第一行代码AS跟刷-UI(一)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/06/第一行代码AS跟刷-UI(一)/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/08/06/第一行代码AS跟刷-UI(一)/" class="leancloud_visitors" data-flag-title="第一行代码AS跟刷-UI(一)">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="TextView"><a href="#TextView" class="headerlink" title="TextView"></a>TextView</h3><ul>
-<li><p>打开AndroidStudio创建一个新工程。自带TextView。为了验证期间，吧文本改了一下。<br>  <img src="http://cdn4.snapgram.co/images/2016/08/06/Screenshot_20160806-215726.png" alt="Screenshot_20160806-215726.png"></p>
-</li>
-<li><p>android:layout_width 与android:layout_height 每个android控件都具有这两个属性。有3种取值 match_parent 、fill_parent、     wrap_content. 其中 match_parent 、fill_parent基本一个意思，TextView会占满整个它所属那层的布局空间。wrap_content则是根据内容多少决定整个TextView的大小。当然还可以手动指定高度和宽度大小，但是考虑到适配屏幕的不同，请慎用。</p>
-</li>
-<li>其他属性没什么可写的，androidstudio与eclipse+adt基本一致。</li>
-</ul>
-<h3 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h3><ul>
-<li>基本没什么可说的，前面用的很多了。添加第一行代码没有的一点内容Button属性中添加<code>android:onClick</code> 然后在对应class文件中添加对应函数即可完成点击响应。（觉得这个要实用一点）</li>
-</ul>
-<h3 id="EditText"><a href="#EditText" class="headerlink" title="EditText"></a>EditText</h3><ul>
-<li><p>google官方文档</p>
-<blockquote>
-<p><a href="https://developer.android.com/reference/android/widget/EditText.html" target="_blank" rel="external">https://developer.android.com/reference/android/widget/EditText.html</a></p>
-</blockquote>
-</li>
-<li><p>继承自TextView，设置TextView的属性 EditText一般通用。</p>
-</li>
-<li><p>android:hint：属性设置可以在用户输入前显示一些提示性文字。</p>
-  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:hint="please enter something"</span><br></pre></td></tr></table></figure>
-<p>  效果如下图<br>  <a href="http://snapgr.am/image/LzLB" target="_blank" rel="external"><img src="http://cdn3.snapgram.co/imgs/2016/08/06/Screenshot_20160807-085357.png" alt="Screenshot_20160807-085357.png"></a></p>
-</li>
-<li><p>android:maxLines：当输入文字大于一行，可以通过设置 android:maxLines属性来拓展显示区域。</p>
- <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:maxLines="2"</span><br></pre></td></tr></table></figure>
-<p> 效果如下图<br> <img src="http://cdn4.snapgram.co/images/2016/08/06/Screenshot_20160807-085806.png" alt="Screenshot_20160807-085806.png"></p>
-</li>
-<li><p>getText();   提取输入的文本。首先利用findViewById()；得到EditText实例，随后getText()；得到输入的文本。显示方式采用了Toast，Tosat需要输入字符串，利用toSpring()；转换为字符串。<br>  部分代码如下</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//xml中添加</span></span><br><span class="line">android:id=<span class="string">"@+id/editText"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//新建EditText类型的变量</span></span><br><span class="line">EditText editText;</span><br><span class="line"></span><br><span class="line"><span class="comment">//提取EditText实例</span></span><br><span class="line"> editText = (EditText)<span class="keyword">this</span>.findViewById(R.id.editText);</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//button_1点击响应事件</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">button_1</span><span class="params">(View view)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    Toast.makeText(MainActivity.<span class="keyword">this</span>,editText.getText().toString(), Toast.LENGTH_SHORT).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="Imageview"><a href="#Imageview" class="headerlink" title="Imageview"></a>Imageview</h3><ul>
-<li><p>官方文档</p>
-<blockquote>
-<p><a href="https://developer.android.com/reference/android/widget/ImageView.html" target="_blank" rel="external">https://developer.android.com/reference/android/widget/ImageView.html</a></p>
-</blockquote>
-</li>
-<li><p>添加方式类似。。基本AndroidStudio都自动完成了。唯一有点区别的可能是<code>android:src=&quot;@drawable&quot;</code>指定Image的位置。一般将图片文件放在res\drawable文件夹下，为了适配不同分辨率的屏幕，还可以新建不同分辨率对应的文件夹，让显示效果到达最佳。<br>  效果如下<br>  <img src="http://cdn3.snapgram.co/imgs/2016/08/07/Screenshot_20160807-153851.png" alt="Screenshot_20160807-153851.png"></p>
-</li>
-<li><p>动态改变图片。调用setImageResource()；</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//xml中添加</span></span><br><span class="line">android:id=<span class="string">"@+id/imageView"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//新建 ImageView类型的变量</span></span><br><span class="line">ImageView imageView;</span><br><span class="line"></span><br><span class="line"><span class="comment">//找到imageView实例</span></span><br><span class="line"> imageView = (ImageView)<span class="keyword">this</span>.findViewById(R.id.imageView);</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//button_1</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">button_1</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">    imageView.setImageResource(R.drawable.dn);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="ProgressBar"><a href="#ProgressBar" class="headerlink" title="ProgressBar"></a>ProgressBar</h3><p>官方文档</p>
-<blockquote>
-<p><a href="https://developer.android.com/reference/android/widget/ProgressBar.html" target="_blank" rel="external">https://developer.android.com/reference/android/widget/ProgressBar.html</a></p>
-</blockquote>
-<ul>
-<li>添加方式与其他View相同，不加累赘。<br>  效果如下图<br>   <img src="http://cdn2.snapgram.co/imgs/2016/08/07/Scre447.png" alt="Scre447.png">     </li>
-</ul>
-<ul>
-<li><p>显示/隐藏进度条<br>  setVisibility()；</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**************************************/</span></span><br><span class="line"></span><br><span class="line">android:id=<span class="string">"@+id/Progress_Bar"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**************************************/</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">private</span> ProgressBar progressBar;</span><br><span class="line"> </span><br><span class="line"> progressBar = (ProgressBar)<span class="keyword">this</span>.findViewById(R.id.Progress_Bar);</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//onClik响应事件</span></span><br><span class="line"> <span class="keyword">if</span>(progressBar.getVisibility()==View.GONE)</span><br><span class="line">    &#123; progressBar.setVisibility(View.VISIBLE); &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;progressBar.setVisibility(View.GONE);&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>水平进度条<br>  直接上代码  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**************************************/</span></span><br><span class="line"> </span><br><span class="line"> style=<span class="string">"?android:attr/progressBarStyleHorizontal"</span></span><br><span class="line"> android:max=<span class="string">"100"</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/**************************************/</span></span><br><span class="line">  </span><br><span class="line"> <span class="keyword">private</span> ProgressBar progressBar;</span><br><span class="line"> </span><br><span class="line"> progressBar = (ProgressBar)<span class="keyword">this</span>.findViewById(R.id.Progress_Bar);</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//onClick 响应事件</span></span><br><span class="line"> progressBar.setProgress(progressBar.getProgress()+<span class="number">10</span>);</span><br><span class="line"> <span class="keyword">if</span>(progressBar.getProgress()==<span class="number">100</span>)</span><br><span class="line"> 	progressBar.setProgress(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2104,7 +2186,7 @@ int[] to)
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
