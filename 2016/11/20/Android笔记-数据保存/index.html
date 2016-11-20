@@ -59,57 +59,52 @@
 
 
 
-<meta name="description" content="activity生命周期
-参考资料如下 很详细！
-http://blog.csdn.net/android_tutor/article/details/5772285
+<meta name="description" content="Android 中的主要数据存储
+有三种
+
+保存键值集 要保存的相对较小键值集合，使用 SharedPreferences
+
+保存文件使用 Android 文件系统通过 File API 读取和写入文件，适合按开始到结束的顺序不跳过地读取或写入大量数据。 例如，图片文件或通过网络交换的任何内容
+
+在 SQL 数据库中保存数据Android内建的SQLite 数据库存储重复或结构化数据
 
 
 
-activity启动模式
-参考资料如下
-http://blog.csdn.net/liuhe688/article/details/6754323
 
-
-
-知晓当前运行Activity
-重写BaseActivity继承自AppC">
+PS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第一行代码AS跟刷-Activity(三)">
-<meta property="og:url" content="http://yoursite.com/2016/08/05/第一行代码AS跟刷-Activity(三)/index.html">
+<meta property="og:title" content="Android笔记—数据保存">
+<meta property="og:url" content="http://yoursite.com/2016/11/20/Android笔记-数据保存/index.html">
 <meta property="og:site_name" content="默">
-<meta property="og:description" content="activity生命周期
-参考资料如下 很详细！
-http://blog.csdn.net/android_tutor/article/details/5772285
+<meta property="og:description" content="Android 中的主要数据存储
+有三种
+
+保存键值集 要保存的相对较小键值集合，使用 SharedPreferences
+
+保存文件使用 Android 文件系统通过 File API 读取和写入文件，适合按开始到结束的顺序不跳过地读取或写入大量数据。 例如，图片文件或通过网络交换的任何内容
+
+在 SQL 数据库中保存数据Android内建的SQLite 数据库存储重复或结构化数据
 
 
 
-activity启动模式
-参考资料如下
-http://blog.csdn.net/liuhe688/article/details/6754323
 
-
-
-知晓当前运行Activity
-重写BaseActivity继承自AppC">
-<meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/08/04/ScreenShot_20160804213250.png">
-<meta property="og:updated_time" content="2016-08-05T04:50:59.507Z">
+PS">
+<meta property="og:updated_time" content="2016-11-20T09:35:51.045Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第一行代码AS跟刷-Activity(三)">
-<meta name="twitter:description" content="activity生命周期
-参考资料如下 很详细！
-http://blog.csdn.net/android_tutor/article/details/5772285
+<meta name="twitter:title" content="Android笔记—数据保存">
+<meta name="twitter:description" content="Android 中的主要数据存储
+有三种
+
+保存键值集 要保存的相对较小键值集合，使用 SharedPreferences
+
+保存文件使用 Android 文件系统通过 File API 读取和写入文件，适合按开始到结束的顺序不跳过地读取或写入大量数据。 例如，图片文件或通过网络交换的任何内容
+
+在 SQL 数据库中保存数据Android内建的SQLite 数据库存储重复或结构化数据
 
 
 
-activity启动模式
-参考资料如下
-http://blog.csdn.net/liuhe688/article/details/6754323
 
-
-
-知晓当前运行Activity
-重写BaseActivity继承自AppC">
-<meta name="twitter:image" content="http://cdn2.snapgram.co/imgs/2016/08/04/ScreenShot_20160804213250.png">
+PS">
 
 
 
@@ -127,7 +122,7 @@ http://blog.csdn.net/liuhe688/article/details/6754323
   };
 </script>
 
-  <title> 第一行代码AS跟刷-Activity(三) | 默 </title>
+  <title> Android笔记—数据保存 | 默 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -286,7 +281,7 @@ http://blog.csdn.net/liuhe688/article/details/6754323
             
             
               
-                第一行代码AS跟刷-Activity(三)
+                Android笔记—数据保存
               
             
           </h1>
@@ -298,8 +293,8 @@ http://blog.csdn.net/liuhe688/article/details/6754323
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-05T12:00:00+08:00" content="2016-08-05">
-              2016-08-05
+            <time itemprop="dateCreated" datetime="2016-11-20T12:00:00+08:00" content="2016-11-20">
+              2016-11-20
             </time>
           </span>
 
@@ -312,8 +307,8 @@ http://blog.csdn.net/liuhe688/article/details/6754323
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/第一行代码/" itemprop="url" rel="index">
-                    <span itemprop="name">第一行代码</span>
+                  <a href="/categories/Android学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android学习笔记</span>
                   </a>
                 </span>
 
@@ -328,8 +323,8 @@ http://blog.csdn.net/liuhe688/article/details/6754323
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/08/05/第一行代码AS跟刷-Activity(三)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/05/第一行代码AS跟刷-Activity(三)/" itemprop="commentsCount"></span>
+                <a href="/2016/11/20/Android笔记-数据保存/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/11/20/Android笔记-数据保存/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -339,7 +334,7 @@ http://blog.csdn.net/liuhe688/article/details/6754323
 
           
           
-             <span id="/2016/08/05/第一行代码AS跟刷-Activity(三)/" class="leancloud_visitors" data-flag-title="第一行代码AS跟刷-Activity(三)">
+             <span id="/2016/11/20/Android笔记-数据保存/" class="leancloud_visitors" data-flag-title="Android笔记—数据保存">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -360,36 +355,62 @@ http://blog.csdn.net/liuhe688/article/details/6754323
       
 
       
-        <h2 id="activity生命周期"><a href="#activity生命周期" class="headerlink" title="activity生命周期"></a>activity生命周期</h2><ul>
-<li>参考资料如下 很详细！<blockquote>
-<p><a href="http://blog.csdn.net/android_tutor/article/details/5772285" target="_blank" rel="external">http://blog.csdn.net/android_tutor/article/details/5772285</a></p>
-</blockquote>
+        <h2 id="Android-中的主要数据存储"><a href="#Android-中的主要数据存储" class="headerlink" title="Android 中的主要数据存储"></a>Android 中的主要数据存储</h2><ul>
+<li><p>有三种</p>
+</li>
+<li><p>保存键值集<br> 要保存的相对较小键值集合，使用 SharedPreferences</p>
+</li>
+<li><p>保存文件<br>使用 Android 文件系统通过 File API 读取和写入文件，适合按开始到结束的顺序不跳过地读取或写入大量数据。 例如，图片文件或通过网络交换的任何内容</p>
+</li>
+<li><p>在 SQL 数据库中保存数据<br>Android内建的SQLite 数据库存储重复或结构化数据</p>
 </li>
 </ul>
-<h2 id="activity启动模式"><a href="#activity启动模式" class="headerlink" title="activity启动模式"></a>activity启动模式</h2><ul>
-<li>参考资料如下<blockquote>
-<p><a href="http://blog.csdn.net/liuhe688/article/details/6754323" target="_blank" rel="external">http://blog.csdn.net/liuhe688/article/details/6754323</a></p>
-</blockquote>
-</li>
-</ul>
-<h2 id="知晓当前运行Activity"><a href="#知晓当前运行Activity" class="headerlink" title="知晓当前运行Activity"></a>知晓当前运行Activity</h2><ul>
-<li>重写BaseActivity继承自AppCompatActivity(AndroidStudio中默认)重写onCreate（）；让工程中的activity都继承自BaseActivity 当Activity变动时打印输出log文件。</li>
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        Log.d(<span class="string">"BaseActivity"</span>,getClass().getSimpleName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<hr>
 <ul>
-<li>运行效果如下图。两个Activity来回切换。<br>  <img src="http://cdn2.snapgram.co/imgs/2016/08/04/ScreenShot_20160804213250.png" alt="ScreenShot_20160804213250.png"></li>
+<li>PS：这里如果没有学过 SQL 数据库使用，推荐LitePal</li>
+<li>Android开源数据库<a href="https://github.com/LitePalFramework/LitePal#latest-downloads/" target="_blank" rel="external">LitePal</a>  ：郭霖(第一行代码作者)</li>
+<li>详细介绍在这里<a href="http://www.jianshu.com/p/557682e0a9f0" target="_blank" rel="external">（懒人必备）Android开源数据库LitePal</a></li>
 </ul>
-<h3 id="随时退出程序"><a href="#随时退出程序" class="headerlink" title="随时退出程序"></a>随时退出程序</h3><ul>
-<li>新建ActivityCollector 类 作为 Activity 管理器  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityCollector</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> List&lt;Activityactivities =<span class="keyword">new</span> ArrayList&lt;Activity&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addActivity</span><span class="params">(Activity activity)</span></span>&#123;</span><br><span class="line">        activities.add(activity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">removeActivity</span><span class="params">(Activity activity)</span></span>&#123;</span><br><span class="line">        activities.remove(activity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">finishAll</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(Activity activity : activities)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!activity.isFinishing())&#123;</span><br><span class="line">                activity.finish();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="保存键值集"><a href="#保存键值集" class="headerlink" title="保存键值集"></a>保存键值集</h3><ul>
+<li>想要保存的相对较小键值集合</li>
+<li><p>调用SharedPreferences</p>
+</li>
+<li><p>首先：获取SharedPreferences的句柄<br>用户可以创建一个共享参数文件或访问一个已经存在的共享参数文件。<br>具体途径有两条</p>
+<ul>
+<li><p>getSharedPreferences (String name, int mode)</p>
+<ul>
+<li>第一个参数：SharedPreferences的名称，第二个：参数指定操作模式</li>
+<li>需要创建/读取 多个共享参数文件时使用，每个文件都拥有一个标识符，可以通过这个标识符通过该方法的第一个参数获得共享参数对象。可以通过APP中的任意Context对象调用它。</li>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//指定SharedPreferences名称为data  模式为MODE_PRIVATE：只有当前程序才有权限读取/修改</span></span><br><span class="line">SharedPreferences sharedPref = getSharedPreferences(<span class="string">"data"</span>, MODE_PRIVATE);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+</li>
+<li><p>getPreferences (int mode)</p>
 <ul>
-<li>BaseActivity 重写 onCreate()、onDestroy()   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    ActivityCollector.addActivity(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span>  <span class="title">onDestroy</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onDestroy();</span><br><span class="line">    ActivityCollector.removeActivity(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>参数：指定操作模式</li>
+<li>只创建 Activity 的一个SharedPreferences。在Activity 中使用。 方法会检索属于该 Activity 的默认共享首选项文件，无需提供名称</li>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//模式：MODE_PRIVATE：只有当前程序才有权限读取/修改</span></span><br><span class="line">SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+</li>
+</ul>
+</li>
+<li><p>写入数据到共享参数中</p>
 <ul>
-<li>所有activity继承自baseactivity，需要退出直接调用 finishAll()；</li>
+<li>SharedPreferences 调用 edit() 创建一个 SharedPreferences.Editor<br>使用诸如 putInt() 和 putString() 方法写入的键和值<br>最后调用commit() 以保存更改</li>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建 .edit()</span></span><br><span class="line">SharedPreferences.Editor editor = sharedPref.edit();</span><br><span class="line"><span class="comment">//写入字符串。key-值 TextView</span></span><br><span class="line">editor.putString(<span class="string">"TextView"</span>,<span class="string">"hello"</span>);</span><br><span class="line"><span class="comment">//保存更改</span></span><br><span class="line">editor.commit();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>从共享参数中读取数据</p>
+<ul>
+<li>获取SharedPreferences的句柄<br>方式同上</li>
+<li>调用比如getInt()或getString()方法，然后传入键值，如果键不存在，则会返回一个默认值</li>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取SharedPreferences的句柄</span></span><br><span class="line">SharedPreferences sharedPreferences = getSharedPreferences(<span class="string">"data"</span>,MODE_PRIVATE);</span><br><span class="line"><span class="comment">//读取键值对应数据</span></span><br><span class="line">String text = sharedPreferences.getString(<span class="string">"TextView"</span>,<span class="string">""</span>);</span><br><span class="line"><span class="comment">//打印到log中 验证</span></span><br><span class="line">Log.d(<span class="string">"data"</span>,text);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
 </ul>
 
       
@@ -418,17 +439,13 @@ http://blog.csdn.net/liuhe688/article/details/6754323
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/22/第一行代码AS跟刷-Activity(二)/" rel="next" title="第一行代码AS跟刷-Activity(二)">
-                <i class="fa fa-chevron-left"></i> 第一行代码AS跟刷-Activity(二)
+              <a href="/2016/11/18/Android笔记—Fragments/" rel="next" title="Android笔记—Fragments">
+                <i class="fa fa-chevron-left"></i> Android笔记—Fragments
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/06/第一行代码AS跟刷-UI(一)/" rel="prev" title="第一行代码AS跟刷-UI(一)">
-                第一行代码AS跟刷-UI(一) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -569,7 +586,7 @@ http://blog.csdn.net/liuhe688/article/details/6754323
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#activity生命周期"><span class="nav-number">1.</span> <span class="nav-text">activity生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#activity启动模式"><span class="nav-number">2.</span> <span class="nav-text">activity启动模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#知晓当前运行Activity"><span class="nav-number">3.</span> <span class="nav-text">知晓当前运行Activity</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#随时退出程序"><span class="nav-number">3.1.</span> <span class="nav-text">随时退出程序</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-中的主要数据存储"><span class="nav-number">1.</span> <span class="nav-text">Android 中的主要数据存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#保存键值集"><span class="nav-number">1.1.</span> <span class="nav-text">保存键值集</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
@@ -677,9 +694,9 @@ http://blog.csdn.net/liuhe688/article/details/6754323
 
     <script type="text/javascript">
       var disqus_shortname = 'jasper1024';
-      var disqus_identifier = '2016/08/05/第一行代码AS跟刷-Activity(三)/';
-      var disqus_title = '第一行代码AS跟刷-Activity(三)';
-      var disqus_url = 'http://yoursite.com/2016/08/05/第一行代码AS跟刷-Activity(三)/';
+      var disqus_identifier = '2016/11/20/Android笔记-数据保存/';
+      var disqus_title = 'Android笔记—数据保存';
+      var disqus_url = 'http://yoursite.com/2016/11/20/Android笔记-数据保存/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
