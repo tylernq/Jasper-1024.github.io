@@ -59,57 +59,83 @@
 
 
 
-<meta name="description" content="为了更好的从事程序员事业、填坑linux、为学弟打下第一手资料、留下linux培训教材……
+<meta name="description" content="初始化启用树莓派root用户
+不做物联网终端时启用root用户比较方便
+SSH连接树莓派
+在命令行下执行
 
-实际就是为了搭个路由器，玩玩 入了树莓派3b +电源+外壳+sd卡—300大洋——–肉疼
+启用root用户
+1sudo passwd root
+
+执行后输入两遍你要设定的root密码
+
+在输入1sudo passwd –unlock root
 
 
-树莓派系统安装
-树莓派3b的耗电量还是挺大的 推荐买个2.5A的电源
 
-系统选择
+root用户解锁完成
 
-树莓派支持 数十款操作系统，一般新手推荐的是raspbian
+执行完毕后依旧无法登陆
 
-Raspbian是为树莓派设计，基于Debian的操作系统，不隶">
+执行
+1sudo nano /etc/ssh/sshd_config
+
+找到Per">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初入树莓派1安装系统+进入SSH">
-<meta property="og:url" content="http://yoursite.com/2016/06/21/初入树莓派1----安装系统+进入SSH/index.html">
+<meta property="og:title" content="初入树莓派2---初始化+远程桌面">
+<meta property="og:url" content="http://yoursite.com/2016/06/21/初入树莓派2----常规初始化+远程桌面/index.html">
 <meta property="og:site_name" content="默">
-<meta property="og:description" content="为了更好的从事程序员事业、填坑linux、为学弟打下第一手资料、留下linux培训教材……
+<meta property="og:description" content="初始化启用树莓派root用户
+不做物联网终端时启用root用户比较方便
+SSH连接树莓派
+在命令行下执行
 
-实际就是为了搭个路由器，玩玩 入了树莓派3b +电源+外壳+sd卡—300大洋——–肉疼
+启用root用户
+1sudo passwd root
+
+执行后输入两遍你要设定的root密码
+
+在输入1sudo passwd –unlock root
 
 
-树莓派系统安装
-树莓派3b的耗电量还是挺大的 推荐买个2.5A的电源
 
-系统选择
+root用户解锁完成
 
-树莓派支持 数十款操作系统，一般新手推荐的是raspbian
+执行完毕后依旧无法登陆
 
-Raspbian是为树莓派设计，基于Debian的操作系统，不隶">
-<meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/06/20/1.png">
-<meta property="og:image" content="http://cdn4.snapgram.co/images/2016/06/20/2.png">
-<meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/06/20/3.png">
-<meta property="og:image" content="http://cdn1.snapgram.co/imgs/2016/06/20/4.png">
-<meta property="og:updated_time" content="2016-11-26T05:07:26.718Z">
+执行
+1sudo nano /etc/ssh/sshd_config
+
+找到Per">
+<meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/11/27/950743-20160520171916373-887591767.png">
+<meta property="og:image" content="http://cdn1.snapgram.co/imgs/2016/11/27/950743-20160520171919435-1542955508.png">
+<meta property="og:image" content="http://cdn4.snapgram.co/images/2016/11/27/950743-20160520171926529-1842218984.png">
+<meta property="og:updated_time" content="2016-11-27T11:00:21.773Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初入树莓派1安装系统+进入SSH">
-<meta name="twitter:description" content="为了更好的从事程序员事业、填坑linux、为学弟打下第一手资料、留下linux培训教材……
+<meta name="twitter:title" content="初入树莓派2---初始化+远程桌面">
+<meta name="twitter:description" content="初始化启用树莓派root用户
+不做物联网终端时启用root用户比较方便
+SSH连接树莓派
+在命令行下执行
 
-实际就是为了搭个路由器，玩玩 入了树莓派3b +电源+外壳+sd卡—300大洋——–肉疼
+启用root用户
+1sudo passwd root
+
+执行后输入两遍你要设定的root密码
+
+在输入1sudo passwd –unlock root
 
 
-树莓派系统安装
-树莓派3b的耗电量还是挺大的 推荐买个2.5A的电源
 
-系统选择
+root用户解锁完成
 
-树莓派支持 数十款操作系统，一般新手推荐的是raspbian
+执行完毕后依旧无法登陆
 
-Raspbian是为树莓派设计，基于Debian的操作系统，不隶">
-<meta name="twitter:image" content="http://cdn2.snapgram.co/imgs/2016/06/20/1.png">
+执行
+1sudo nano /etc/ssh/sshd_config
+
+找到Per">
+<meta name="twitter:image" content="http://cdn2.snapgram.co/imgs/2016/11/27/950743-20160520171916373-887591767.png">
 
 
 
@@ -127,7 +153,7 @@ Raspbian是为树莓派设计，基于Debian的操作系统，不隶">
   };
 </script>
 
-  <title> 初入树莓派1安装系统+进入SSH | 默 </title>
+  <title> 初入树莓派2---初始化+远程桌面 | 默 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -286,7 +312,7 @@ Raspbian是为树莓派设计，基于Debian的操作系统，不隶">
             
             
               
-                初入树莓派1安装系统+进入SSH
+                初入树莓派2---初始化+远程桌面
               
             
           </h1>
@@ -328,8 +354,8 @@ Raspbian是为树莓派设计，基于Debian的操作系统，不隶">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/21/初入树莓派1----安装系统+进入SSH/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/21/初入树莓派1----安装系统+进入SSH/" itemprop="commentsCount"></span>
+                <a href="/2016/06/21/初入树莓派2----常规初始化+远程桌面/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/21/初入树莓派2----常规初始化+远程桌面/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -339,7 +365,7 @@ Raspbian是为树莓派设计，基于Debian的操作系统，不隶">
 
           
           
-             <span id="/2016/06/21/初入树莓派1----安装系统+进入SSH/" class="leancloud_visitors" data-flag-title="初入树莓派1安装系统+进入SSH">
+             <span id="/2016/06/21/初入树莓派2----常规初始化+远程桌面/" class="leancloud_visitors" data-flag-title="初入树莓派2---初始化+远程桌面">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -360,74 +386,88 @@ Raspbian是为树莓派设计，基于Debian的操作系统，不隶">
       
 
       
-        <p><del><strong>为了更好的从事程序员事业、填坑linux、为学弟打下第一手资料、留下linux培训教材……</strong></del></p>
+        <h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><h3 id="启用树莓派root用户"><a href="#启用树莓派root用户" class="headerlink" title="启用树莓派root用户"></a>启用树莓派root用户</h3><ul>
+<li>不做物联网终端时启用root用户比较方便</li>
+<li>SSH连接树莓派</li>
+<li><p>在命令行下执行</p>
 <ul>
-<li><em>实际就是为了搭个路由器，玩玩</em><br> 入了树莓派3b +电源+外壳+sd卡—300大洋——–<em>肉疼</em></li>
+<li><p>启用root用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd root</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行后输入两遍你要设定的root密码</p>
+</li>
+<li>在输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd –unlock root</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<hr>
-<h3 id="树莓派系统安装"><a href="#树莓派系统安装" class="headerlink" title="树莓派系统安装"></a>树莓派系统安装</h3><ul>
-<li>树莓派3b的耗电量还是挺大的<br> 推荐买个2.5A的电源</li>
-</ul>
-<p>系统选择</p>
+</li>
+<li><p>root用户解锁完成</p>
+</li>
+<li><p>执行完毕后依旧无法登陆</p>
 <ul>
-<li><p>树莓派支持 数十款操作系统，一般新手推荐的是<strong>raspbian</strong></p>
+<li><p>执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Raspbian是为树莓派设计，基于Debian的操作系统，不隶属于树莓派基金会[1]，但被列为官方支持的操作系统，</p>
+<li><p>找到<code>PermitRootLogin without-password</code><br> 改为<code>PermitRootLogin yes</code></p>
 </li>
-<li><p><a href="https://www.raspberrypi.org/downloads/raspbian/" target="_blank" rel="external">Raspbian镜像地址</a>(最好在FQ下，否则会很慢的。你要用IDM当我没说)</p>
-</li>
-<li>Raspbian有两个版本，简单区别如下<ul>
-<li>RASPBIAN JESSIE WITH PIXEL<br>带有完整的桌面体验，安装包1.4G左右</li>
-<li>RASPBIAN JESSIE LITE<br>没有X-server 套件，没有 Qt 和 GTK+ 的函式库。等于去掉了桌面。安装包400Mb上下。</li>
+<li>Ctrl + X 、 Y 、 回车 保存</li>
+<li><code>sudo reboot</code></li>
 </ul>
 </li>
 </ul>
-<ul>
-<li><p>所要用到的工具是：</p>
-<ul>
-<li>1.多功能读卡器一个</li>
-<li>2.TF卡一张（4G以上）</li>
-</ul>
+<h3 id="更换国内镜像地址"><a href="#更换国内镜像地址" class="headerlink" title="更换国内镜像地址"></a>更换国内镜像地址</h3><hr>
+<h2 id="gt-http-blog-lxx1-com-2040"><a href="#gt-http-blog-lxx1-com-2040" class="headerlink" title="&gt; http://blog.lxx1.com/2040"></a>&gt; <a href="http://blog.lxx1.com/2040" target="_blank" rel="external">http://blog.lxx1.com/2040</a></h2><ul>
+<li>由于众所周知的原因，树莓派链接官方更新源实在太过缓慢，国内有一批不错的镜像地址，可以解决系统/软件更新问题。</li>
+<li><p>收集的树莓派镜像一般使用比较频繁的有下面几个<br>1.<a href="http://mirrors.aliyun.com/" target="_blank" rel="external">阿里云</a>  首推镜像地址，移动/联通/电信网络都有不错的访问速度。<br>2.<a href="http://mirrors.neusoft.edu.cn/raspbian/raspbian/" target="_blank" rel="external">大连东软信息学院</a>  北方用户比较友好<br>3.<a href="http://mirrors.ustc.edu.cn/raspbian/raspbian/" target="_blank" rel="external">中国科学技术大学</a>  教育网有加成，非教育网就慢多了</p>
 </li>
-<li><p>烧写器官方推荐是<strong>win32diskimager</strong><br>但是<strong>文件路径不支持中文</strong>。</p>
-</li>
-<li><p>个人推荐 <strong>USB Image Tool</strong><br>故障率最低的是1.7版本。</p>
-</li>
-</ul>
-<h3 id="插上读卡器，烧写系统开始！"><a href="#插上读卡器，烧写系统开始！" class="headerlink" title="插上读卡器，烧写系统开始！"></a>插上读卡器，烧写系统开始！</h3><ul>
-<li><p><strong>烧写系统</strong></p>
-<ol>
-<li>打开USB Image Tool<br><strong>注意左上角是Device Mode，不是Volume Mode！</strong><br><a href="http://snapgr.am/image/Livb" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/06/20/1.png" alt="1.png"></a></li>
-<li>选择下载后解压的img文件</li>
-<li>写入等待进度条完成即可。</li>
-</ol>
-</li>
-<li><p><strong>错误原因</strong></p>
-<ol>
-<li>USB Image Tool 在win7以上系统中必须要以管理员权限运行</li>
-<li>USB Image Tool运行需要.net环境 直接使用系统默认加载的即可。</li>
-<li>烧写完成后接入电源</li>
-</ol>
-</li>
-</ul>
-<h3 id="进入SSH管理（没有显示设备时）"><a href="#进入SSH管理（没有显示设备时）" class="headerlink" title="进入SSH管理（没有显示设备时）"></a>进入SSH管理（没有显示设备时）</h3><ul>
-<li><p>第一次进入系统时直接利用网线接入路由器，将电脑接入同一个wifi下。<br>在路由器管理界面查找树莓派对应得IP地址。<br>也可以扫描一下局域网设备中开启22端口的设备.</p>
-</li>
-<li><p><strong>使用SSH管理工具，这里以putty为例。打开软件，填入树莓派ip地址。</strong></p>
-<ol>
-<li><strong>打开软件，填入树莓派ip地址。</strong><br><em>默认登陆界面</em><br><a href="http://snapgr.am/image/Liv4" target="_blank" rel="external"><img src="http://cdn4.snapgram.co/images/2016/06/20/2.png" alt="2.png"></a><ol>
-<li><strong>默认用户名pi 密码raspberry。</strong><br><a href="http://snapgr.am/image/LivJ" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/06/20/3.png" alt="3.png"></a></li>
-<li><strong>登陆成功！</strong><br><img src="http://cdn1.snapgram.co/imgs/2016/06/20/4.png" alt="4.png"></li>
-</ol>
-</li>
-</ol>
+<li><p>这里选择 阿里云的镜像</p>
 </li>
 </ul>
 <ul>
-<li>参考<blockquote>
-<p><a href="http://blog.csdn.net/longerzone/article/details/36034619" target="_blank" rel="external">http://blog.csdn.net/longerzone/article/details/36034619</a></p>
-</blockquote>
+<li><p>更新 sources.list</p>
+<ul>
+<li><p>执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>删除官方内容或者用#注释掉，添加以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.aliyun.com/raspbian/raspbian/ jessie main non-free contrib</span><br><span class="line">deb-src http://mirrors.aliyun.com/raspbian/raspbian/ jessie main non-free contrib</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>删除raspi.list备用更新源(可选)</p>
+<ul>
+<li>通常更新sources.list后依旧缓慢，大多是raspi.list的锅</li>
+<li><code>rm /etc/apt/sources.list.d/raspi.list</code>    </li>
+</ul>
+</li>
+</ul>
+<h3 id="设置中文字体"><a href="#设置中文字体" class="headerlink" title="设置中文字体"></a>设置中文字体</h3><ul>
+<li><p>系统中缺少中文字库 首先更新字库和输入法</p>
+<ul>
+<li><p>执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ttf-wqy-zenhei</span><br><span class="line">sudo apt-get install scim-pinyin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接下来 都点 y</p>
+</li>
+<li><p>执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo raspi-config</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>选择change_locale</p>
+</li>
+<li><img src="http://cdn2.snapgram.co/imgs/2016/11/27/950743-20160520171916373-887591767.png" alt="950743-20160520171916373-887591767.png"><br>空格键在前面打勾或去掉勾（星号=勾） Tab选择OK</li>
+<li>去掉en_GB.UTF-8 UTF-8<br>勾选：”en_US.UTF-8 UTF-8”、”zh_CN.UTF-8 UTF-8”、”zh_CN.GBK GBK”</li>
+<li>OK，下一屏幕,</li>
+<li><img src="http://cdn1.snapgram.co/imgs/2016/11/27/950743-20160520171919435-1542955508.png" alt="950743-20160520171919435-1542955508.png"><br>默认语言选zh_CN.UTF-8</li>
+</ul>
+</li>
+</ul>
+<h2 id="远程桌面"><a href="#远程桌面" class="headerlink" title="远程桌面"></a>远程桌面</h2><ul>
+<li><p>终端执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install xrdp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>windows端 CMD 执行  <code>mstsc</code></p>
+</li>
+<li>输入树莓派ip地址 用户名 密码 </li>
+<li><a href="http://snapgr.am/image/L7lS" target="_blank" rel="external"><img src="http://cdn4.snapgram.co/images/2016/11/27/950743-20160520171926529-1842218984.png" alt="950743-20160520171926529-1842218984.png"></a></li>
 </ul>
 
       
@@ -454,16 +494,16 @@ Raspbian是为树莓派设计，基于Debian的操作系统，不隶">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/18/hellowworld/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2016/06/21/初入树莓派1----安装系统+进入SSH/" rel="next" title="初入树莓派1安装系统+进入SSH">
+                <i class="fa fa-chevron-left"></i> 初入树莓派1安装系统+进入SSH
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/06/21/初入树莓派2----常规初始化+远程桌面/" rel="prev" title="初入树莓派2---初始化+远程桌面">
-                初入树莓派2---初始化+远程桌面 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/06/21/开端/" rel="prev" title="开端，起始。">
+                开端，起始。 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -605,7 +645,7 @@ Raspbian是为树莓派设计，基于Debian的操作系统，不隶">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#树莓派系统安装"><span class="nav-number">1.</span> <span class="nav-text">树莓派系统安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插上读卡器，烧写系统开始！"><span class="nav-number">2.</span> <span class="nav-text">插上读卡器，烧写系统开始！</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进入SSH管理（没有显示设备时）"><span class="nav-number">3.</span> <span class="nav-text">进入SSH管理（没有显示设备时）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化"><span class="nav-number">1.</span> <span class="nav-text">初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#启用树莓派root用户"><span class="nav-number">1.1.</span> <span class="nav-text">启用树莓派root用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更换国内镜像地址"><span class="nav-number">1.2.</span> <span class="nav-text">更换国内镜像地址</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gt-http-blog-lxx1-com-2040"><span class="nav-number">2.</span> <span class="nav-text">> http://blog.lxx1.com/2040</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置中文字体"><span class="nav-number">2.1.</span> <span class="nav-text">设置中文字体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程桌面"><span class="nav-number">3.</span> <span class="nav-text">远程桌面</span></a></li></ol></div>
             
           </div>
         </section>
@@ -713,9 +753,9 @@ Raspbian是为树莓派设计，基于Debian的操作系统，不隶">
 
     <script type="text/javascript">
       var disqus_shortname = 'jasper1024';
-      var disqus_identifier = '2016/06/21/初入树莓派1----安装系统+进入SSH/';
-      var disqus_title = '初入树莓派1安装系统+进入SSH';
-      var disqus_url = 'http://yoursite.com/2016/06/21/初入树莓派1----安装系统+进入SSH/';
+      var disqus_identifier = '2016/06/21/初入树莓派2----常规初始化+远程桌面/';
+      var disqus_title = '初入树莓派2---初始化+远程桌面';
+      var disqus_url = 'http://yoursite.com/2016/06/21/初入树莓派2----常规初始化+远程桌面/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');

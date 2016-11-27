@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content=",,," />
+  <meta name="keywords" content="Android,Android Studio,学习记录," />
 
 
 
@@ -59,32 +59,16 @@
 
 
 
-<meta name="description" content="Android Studio 尝试隐藏标题栏崩溃解决办法。
-第一行代码隐藏方法
-在onCreate()中添加requestWindowFeature(Window.FEATURE_NO_TITLE);设置在setContentView之前。Android Studio 尝试———崩溃。
-
-原因
-Android Studio 创建的默认Activity继承自AppCompatActivity而不是A">
-<meta name="keywords">
-<meta property="og:type" content="website">
-<meta property="og:title" content="第一行代码AS跟刷-隐藏标题栏">
-<meta property="og:url" content="http://yoursite.com/第一行代码跟刷.html">
+<meta name="description" content="第一行代码系列Andorid笔记系列12345678910111213更新2016.7.20  第一行代码Activity创建部分完成2016.7.21  完成添加了button和menu部分，对应P39页2016.7.22  完成了P55页之前的activity部分。对于activity（二）2016.8.10  基本搞定，UI除ListView以外的部分。4种布局比较熟悉，不再折腾。2016.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android">
+<meta property="og:url" content="http://yoursite.com/2016/07/17/Android汇总/index.html">
 <meta property="og:site_name" content="默">
-<meta property="og:description" content="Android Studio 尝试隐藏标题栏崩溃解决办法。
-第一行代码隐藏方法
-在onCreate()中添加requestWindowFeature(Window.FEATURE_NO_TITLE);设置在setContentView之前。Android Studio 尝试———崩溃。
-
-原因
-Android Studio 创建的默认Activity继承自AppCompatActivity而不是A">
-<meta property="og:updated_time" content="2016-07-20T07:25:31.412Z">
+<meta property="og:description" content="第一行代码系列Andorid笔记系列12345678910111213更新2016.7.20  第一行代码Activity创建部分完成2016.7.21  完成添加了button和menu部分，对应P39页2016.7.22  完成了P55页之前的activity部分。对于activity（二）2016.8.10  基本搞定，UI除ListView以外的部分。4种布局比较熟悉，不再折腾。2016.">
+<meta property="og:updated_time" content="2016-11-25T15:47:54.510Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第一行代码AS跟刷-隐藏标题栏">
-<meta name="twitter:description" content="Android Studio 尝试隐藏标题栏崩溃解决办法。
-第一行代码隐藏方法
-在onCreate()中添加requestWindowFeature(Window.FEATURE_NO_TITLE);设置在setContentView之前。Android Studio 尝试———崩溃。
-
-原因
-Android Studio 创建的默认Activity继承自AppCompatActivity而不是A">
+<meta name="twitter:title" content="Android">
+<meta name="twitter:description" content="第一行代码系列Andorid笔记系列12345678910111213更新2016.7.20  第一行代码Activity创建部分完成2016.7.21  完成添加了button和menu部分，对应P39页2016.7.22  完成了P55页之前的activity部分。对于activity（二）2016.8.10  基本搞定，UI除ListView以外的部分。4种布局比较熟悉，不再折腾。2016.">
 
 
 
@@ -102,13 +86,7 @@ Android Studio 创建的默认Activity继承自AppCompatActivity而不是A">
   };
 </script>
 
-  <title>
-  
-
-  
-    第一行代码AS跟刷-隐藏标题栏 | 默
-  
-</title>
+  <title> Android | 默 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -138,7 +116,7 @@ Android Studio 创建的默认Activity继承自AppCompatActivity而不是A">
     
   
 
-  <div class="container one-collumn sidebar-position-right  ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -248,39 +226,153 @@ Android Studio 创建的默认Activity继承自AppCompatActivity而不是A">
 
   <div id="posts" class="posts-expand">
     
-    
-      <p>Android Studio 尝试隐藏标题栏崩溃解决办法。</p>
-<h2 id="第一行代码隐藏方法"><a href="#第一行代码隐藏方法" class="headerlink" title="第一行代码隐藏方法"></a>第一行代码隐藏方法</h2><ul>
-<li><p>在<code>onCreate()</code>中添加<code>requestWindowFeature(Window.FEATURE_NO_TITLE);</code>设置在<code>setContentView</code>之前。<br>Android Studio 尝试———崩溃。</p>
-</li>
-<li><p>原因</p>
-<p>Android Studio 创建的默认Activity继承自<strong>AppCompatActivity</strong>而不是<strong>Activity</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);</span><br><span class="line">        setSupportActionBar(toolbar);</span><br><span class="line"></span><br><span class="line">        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);</span><br><span class="line">        fab.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">                Snackbar.make(view, <span class="string">"Replace with your own action"</span>, Snackbar.LENGTH_LONG)</span><br><span class="line">                        .setAction(<span class="string">"Action"</span>, <span class="keyword">null</span>).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>解决办法<br>将<strong>AppCompatActivity</strong>改为<strong>Activity</strong>编译即可。</p>
-</li>
-</ul>
-<h2 id="其他方案"><a href="#其他方案" class="headerlink" title="其他方案"></a>其他方案</h2><ul>
-<li>将<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requestWindowFeature(Window.FEATURE_NO_TITLE);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>换为<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Actionbar actionbar=getActionBar();</span><br><span class="line">actionbar.hide();</span><br></pre></td></tr></table></figure></p>
-<p><strong>试过之后程序崩溃</strong></p>
-<ul>
-<li>AndroidManifest.xml文件中修改该活动的主题，加入<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android：theme=&quot;@style/Theme.AppCompat.NoActionBar&quot;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
 
-  <div class="comments" id="comments">
-    
-      <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      </div>
-    
-  </div>
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android
+              
+            
+          </h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-17T10:11:11+08:00" content="2016-07-17">
+              2016-07-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/第一行代码/" itemprop="url" rel="index">
+                    <span itemprop="name">第一行代码</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/17/Android汇总/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/17/Android汇总/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/17/Android汇总/" class="leancloud_visitors" data-flag-title="Android">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第一行代码系列"><a href="#第一行代码系列" class="headerlink" title="第一行代码系列"></a>第一行代码系列</h2><h2 id="Andorid笔记系列"><a href="#Andorid笔记系列" class="headerlink" title="Andorid笔记系列"></a>Andorid笔记系列</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">20</span>  第一行代码Activity创建部分完成</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">21</span>  完成添加了button和<span class="keyword">menu</span>部分，对应P39页</span><br><span class="line"><span class="number">2016.7</span>.<span class="number">22</span>  完成了P55页之前的activity部分。对于activity（二）</span><br><span class="line"><span class="number">2016.8</span>.<span class="number">10</span>  基本搞定，UI除ListView以外的部分。<span class="number">4</span>种布局比较熟悉，不再折腾。</span><br><span class="line"><span class="number">2016.8</span>.<span class="number">11</span>  开始ListView部分</span><br><span class="line"><span class="number">2016.8</span>.<span class="number">14</span>  停更半月</span><br><span class="line"><span class="number">2016.9</span>.<span class="number">02</span>  恢复更新</span><br><span class="line"><span class="number">2016.9</span>.<span class="number">03</span>  Broadcast部分开坑。</span><br><span class="line"><span class="number">2016.9</span>.<span class="number">07</span>  ListView部分除BaseAdapter外完成。BaseAdapter内容，什么时候理解深一点再补上。</span><br><span class="line"><span class="number">2016.9</span>.<span class="number">13</span>  完成了Broadcast对应部分</span><br><span class="line"><span class="number">2016.10</span>.<span class="number">3</span>  重新按照google的文档查漏补缺.</span><br><span class="line"><span class="number">2016.10</span>.<span class="number">3</span>  更名Android笔记，重新开始更新。</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/Android-Studio/" rel="tag">#Android Studio</a>
+          
+            <a href="/tags/学习记录/" rel="tag">#学习记录</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/09/单片机课程设计总结/" rel="next" title="单片机课程设计总结">
+                <i class="fa fa-chevron-left"></i> 单片机课程设计总结
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/22/第一行代码AS跟刷-Activity(二)/" rel="prev" title="第一行代码AS跟刷-Activity(二)">
+                第一行代码AS跟刷-Activity(二) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -319,8 +411,17 @@ Android Studio 创建的默认Activity继承自AppCompatActivity而不是A">
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/v.png"
@@ -390,6 +491,17 @@ Android Studio 创建的默认Activity继承自AppCompatActivity而不是A">
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一行代码系列"><span class="nav-number">1.</span> <span class="nav-text">第一行代码系列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Andorid笔记系列"><span class="nav-number">2.</span> <span class="nav-text">Andorid笔记系列</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -474,6 +586,10 @@ Android Studio 创建的默认Activity继承自AppCompatActivity而不是A">
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
 
   
 
@@ -490,9 +606,9 @@ Android Studio 创建的默认Activity继承自AppCompatActivity而不是A">
 
     <script type="text/javascript">
       var disqus_shortname = 'jasper1024';
-      var disqus_identifier = '第一行代码跟刷.html';
-      var disqus_title = '第一行代码AS跟刷-隐藏标题栏';
-      var disqus_url = 'http://yoursite.com/第一行代码跟刷.html';
+      var disqus_identifier = '2016/07/17/Android汇总/';
+      var disqus_title = 'Android';
+      var disqus_url = 'http://yoursite.com/2016/07/17/Android汇总/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
