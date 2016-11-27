@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-21T08:57:46.396Z</updated>
+  <updated>2016-11-27T11:03:35.334Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,197 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>初入树莓派2---初始化+远程桌面</title>
+    <link href="http://yoursite.com/2016/11/27/%E5%88%9D%E5%85%A5%E6%A0%91%E8%8E%93%E6%B4%BE2----%E5%B8%B8%E8%A7%84%E5%88%9D%E5%A7%8B%E5%8C%96+%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/"/>
+    <id>http://yoursite.com/2016/11/27/初入树莓派2----常规初始化+远程桌面/</id>
+    <published>2016-11-27T02:17:11.000Z</published>
+    <updated>2016-11-27T11:03:35.334Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;初始化&quot;&gt;&lt;a href=&quot;#初始化&quot; class=&quot;headerlink&quot; title=&quot;初始化&quot;&gt;&lt;/a&gt;初始化&lt;/h2&gt;&lt;h3 id=&quot;启用树莓派root用户&quot;&gt;&lt;a href=&quot;#启用树莓派root用户&quot; class=&quot;headerlink&quot; title=&quot;启用树莓派root用户&quot;&gt;&lt;/a&gt;启用树莓派root用户&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;不做物联网终端时启用root用户比较方便&lt;/li&gt;
+&lt;li&gt;SSH连接树莓派&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在命令行下执行&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;启用root用户&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo passwd root&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;执行后输入两遍你要设定的root密码&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;在输入&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo passwd –unlock root&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;root用户解锁完成&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;执行完毕后依旧无法登陆&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;执行&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo nano /etc/ssh/sshd_config&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;找到&lt;code&gt;PermitRootLogin without-password&lt;/code&gt;&lt;br&gt; 改为&lt;code&gt;PermitRootLogin yes&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;Ctrl + X 、 Y 、 回车 保存&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo reboot&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;更换国内镜像地址&quot;&gt;&lt;a href=&quot;#更换国内镜像地址&quot; class=&quot;headerlink&quot; title=&quot;更换国内镜像地址&quot;&gt;&lt;/a&gt;更换国内镜像地址&lt;/h3&gt;&lt;hr&gt;
+&lt;h2 id=&quot;gt-http-blog-lxx1-com-2040&quot;&gt;&lt;a href=&quot;#gt-http-blog-lxx1-com-2040&quot; class=&quot;headerlink&quot; title=&quot;&amp;gt; http://blog.lxx1.com/2040&quot;&gt;&lt;/a&gt;&amp;gt; &lt;a href=&quot;http://blog.lxx1.com/2040&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.lxx1.com/2040&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;由于众所周知的原因，树莓派链接官方更新源实在太过缓慢，国内有一批不错的镜像地址，可以解决系统/软件更新问题。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;收集的树莓派镜像一般使用比较频繁的有下面几个&lt;br&gt;1.&lt;a href=&quot;http://mirrors.aliyun.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;阿里云&lt;/a&gt;  首推镜像地址，移动/联通/电信网络都有不错的访问速度。&lt;br&gt;2.&lt;a href=&quot;http://mirrors.neusoft.edu.cn/raspbian/raspbian/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;大连东软信息学院&lt;/a&gt;  北方用户比较友好&lt;br&gt;3.&lt;a href=&quot;http://mirrors.ustc.edu.cn/raspbian/raspbian/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;中国科学技术大学&lt;/a&gt;  教育网有加成，非教育网就慢多了&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;这里选择 阿里云的镜像&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;更新 sources.list&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;执行&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo nano /etc/apt/sources.list&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;删除官方内容或者用#注释掉，添加以下内容&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;deb http://mirrors.aliyun.com/raspbian/raspbian/ jessie main non-free contrib&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;deb-src http://mirrors.aliyun.com/raspbian/raspbian/ jessie main non-free contrib&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;删除raspi.list备用更新源(可选)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通常更新sources.list后依旧缓慢，大多是raspi.list的锅&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rm /etc/apt/sources.list.d/raspi.list&lt;/code&gt;    &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;设置中文字体&quot;&gt;&lt;a href=&quot;#设置中文字体&quot; class=&quot;headerlink&quot; title=&quot;设置中文字体&quot;&gt;&lt;/a&gt;设置中文字体&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;系统中缺少中文字库 首先更新字库和输入法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;执行&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo apt-get install ttf-wqy-zenhei&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo apt-get install scim-pinyin&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;接下来 都点 y&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;执行&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo raspi-config&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;选择change_locale&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;img src=&quot;http://cdn2.snapgram.co/imgs/2016/11/27/950743-20160520171916373-887591767.png&quot; alt=&quot;950743-20160520171916373-887591767.png&quot;&gt;&lt;br&gt;空格键在前面打勾或去掉勾（星号=勾） Tab选择OK&lt;/li&gt;
+&lt;li&gt;去掉en_GB.UTF-8 UTF-8&lt;br&gt;勾选：”en_US.UTF-8 UTF-8”、”zh_CN.UTF-8 UTF-8”、”zh_CN.GBK GBK”&lt;/li&gt;
+&lt;li&gt;OK，下一屏幕,&lt;/li&gt;
+&lt;li&gt;&lt;img src=&quot;http://cdn1.snapgram.co/imgs/2016/11/27/950743-20160520171919435-1542955508.png&quot; alt=&quot;950743-20160520171919435-1542955508.png&quot;&gt;&lt;br&gt;默认语言选zh_CN.UTF-8&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;远程桌面&quot;&gt;&lt;a href=&quot;#远程桌面&quot; class=&quot;headerlink&quot; title=&quot;远程桌面&quot;&gt;&lt;/a&gt;远程桌面&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;终端执行&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;apt-get install xrdp&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;windows端 CMD 执行  &lt;code&gt;mstsc&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;输入树莓派ip地址 用户名 密码 &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://snapgr.am/image/L7lS&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://cdn4.snapgram.co/images/2016/11/27/950743-20160520171926529-1842218984.png&quot; alt=&quot;950743-20160520171926529-1842218984.png&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;初始化&quot;&gt;&lt;a href=&quot;#初始化&quot; class=&quot;headerlink&quot; title=&quot;初始化&quot;&gt;&lt;/a&gt;初始化&lt;/h2&gt;&lt;h3 id=&quot;启用树莓派root用户&quot;&gt;&lt;a href=&quot;#启用树莓派root用户&quot; class=&quot;headerlink&quot; title=
+    
+    </summary>
+    
+      <category term="树莓派" scheme="http://yoursite.com/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android笔记—数据保存</title>
+    <link href="http://yoursite.com/2016/11/20/Android%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E4%BF%9D%E5%AD%98/"/>
+    <id>http://yoursite.com/2016/11/20/Android笔记-数据保存/</id>
+    <published>2016-11-20T04:00:00.000Z</published>
+    <updated>2016-11-20T09:35:51.045Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Android-中的主要数据存储&quot;&gt;&lt;a href=&quot;#Android-中的主要数据存储&quot; class=&quot;headerlink&quot; title=&quot;Android 中的主要数据存储&quot;&gt;&lt;/a&gt;Android 中的主要数据存储&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;有三种&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;保存键值集&lt;br&gt; 要保存的相对较小键值集合，使用 SharedPreferences&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;保存文件&lt;br&gt;使用 Android 文件系统通过 File API 读取和写入文件，适合按开始到结束的顺序不跳过地读取或写入大量数据。 例如，图片文件或通过网络交换的任何内容&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在 SQL 数据库中保存数据&lt;br&gt;Android内建的SQLite 数据库存储重复或结构化数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;PS：这里如果没有学过 SQL 数据库使用，推荐LitePal&lt;/li&gt;
+&lt;li&gt;Android开源数据库&lt;a href=&quot;https://github.com/LitePalFramework/LitePal#latest-downloads/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;LitePal&lt;/a&gt;  ：郭霖(第一行代码作者)&lt;/li&gt;
+&lt;li&gt;详细介绍在这里&lt;a href=&quot;http://www.jianshu.com/p/557682e0a9f0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;（懒人必备）Android开源数据库LitePal&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;保存键值集&quot;&gt;&lt;a href=&quot;#保存键值集&quot; class=&quot;headerlink&quot; title=&quot;保存键值集&quot;&gt;&lt;/a&gt;保存键值集&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;想要保存的相对较小键值集合&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;调用SharedPreferences&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;首先：获取SharedPreferences的句柄&lt;br&gt;用户可以创建一个共享参数文件或访问一个已经存在的共享参数文件。&lt;br&gt;具体途径有两条&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;getSharedPreferences (String name, int mode)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一个参数：SharedPreferences的名称，第二个：参数指定操作模式&lt;/li&gt;
+&lt;li&gt;需要创建/读取 多个共享参数文件时使用，每个文件都拥有一个标识符，可以通过这个标识符通过该方法的第一个参数获得共享参数对象。可以通过APP中的任意Context对象调用它。&lt;/li&gt;
+&lt;li&gt;示例&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//指定SharedPreferences名称为data  模式为MODE_PRIVATE：只有当前程序才有权限读取/修改&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SharedPreferences sharedPref = getSharedPreferences(&lt;span class=&quot;string&quot;&gt;&quot;data&quot;&lt;/span&gt;, MODE_PRIVATE);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;getPreferences (int mode)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;参数：指定操作模式&lt;/li&gt;
+&lt;li&gt;只创建 Activity 的一个SharedPreferences。在Activity 中使用。 方法会检索属于该 Activity 的默认共享首选项文件，无需提供名称&lt;/li&gt;
+&lt;li&gt;示例&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//模式：MODE_PRIVATE：只有当前程序才有权限读取/修改&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;写入数据到共享参数中&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SharedPreferences 调用 edit() 创建一个 SharedPreferences.Editor&lt;br&gt;使用诸如 putInt() 和 putString() 方法写入的键和值&lt;br&gt;最后调用commit() 以保存更改&lt;/li&gt;
+&lt;li&gt;示例&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//创建 .edit()&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SharedPreferences.Editor editor = sharedPref.edit();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//写入字符串。key-值 TextView&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;editor.putString(&lt;span class=&quot;string&quot;&gt;&quot;TextView&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;hello&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//保存更改&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;editor.commit();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;从共享参数中读取数据&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;获取SharedPreferences的句柄&lt;br&gt;方式同上&lt;/li&gt;
+&lt;li&gt;调用比如getInt()或getString()方法，然后传入键值，如果键不存在，则会返回一个默认值&lt;/li&gt;
+&lt;li&gt;示例&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//获取SharedPreferences的句柄&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SharedPreferences sharedPreferences = getSharedPreferences(&lt;span class=&quot;string&quot;&gt;&quot;data&quot;&lt;/span&gt;,MODE_PRIVATE);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//读取键值对应数据&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;String text = sharedPreferences.getString(&lt;span class=&quot;string&quot;&gt;&quot;TextView&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//打印到log中 验证&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Log.d(&lt;span class=&quot;string&quot;&gt;&quot;data&quot;&lt;/span&gt;,text);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Android-中的主要数据存储&quot;&gt;&lt;a href=&quot;#Android-中的主要数据存储&quot; class=&quot;headerlink&quot; title=&quot;Android 中的主要数据存储&quot;&gt;&lt;/a&gt;Android 中的主要数据存储&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;有三种&lt;/
+    
+    </summary>
+    
+      <category term="Android学习笔记" scheme="http://yoursite.com/categories/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
   
   <entry>
     <title>第一行代码AS跟刷-Activity(一)</title>
@@ -153,90 +344,6 @@
   </entry>
   
   <entry>
-    <title>Android笔记—数据保存</title>
-    <link href="http://yoursite.com/2016/11/20/Android%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E4%BF%9D%E5%AD%98/"/>
-    <id>http://yoursite.com/2016/11/20/Android笔记-数据保存/</id>
-    <published>2016-11-20T04:00:00.000Z</published>
-    <updated>2016-11-20T09:35:51.045Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;Android-中的主要数据存储&quot;&gt;&lt;a href=&quot;#Android-中的主要数据存储&quot; class=&quot;headerlink&quot; title=&quot;Android 中的主要数据存储&quot;&gt;&lt;/a&gt;Android 中的主要数据存储&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;有三种&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;保存键值集&lt;br&gt; 要保存的相对较小键值集合，使用 SharedPreferences&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;保存文件&lt;br&gt;使用 Android 文件系统通过 File API 读取和写入文件，适合按开始到结束的顺序不跳过地读取或写入大量数据。 例如，图片文件或通过网络交换的任何内容&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;在 SQL 数据库中保存数据&lt;br&gt;Android内建的SQLite 数据库存储重复或结构化数据&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;ul&gt;
-&lt;li&gt;PS：这里如果没有学过 SQL 数据库使用，推荐LitePal&lt;/li&gt;
-&lt;li&gt;Android开源数据库&lt;a href=&quot;https://github.com/LitePalFramework/LitePal#latest-downloads/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;LitePal&lt;/a&gt;  ：郭霖(第一行代码作者)&lt;/li&gt;
-&lt;li&gt;详细介绍在这里&lt;a href=&quot;http://www.jianshu.com/p/557682e0a9f0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;（懒人必备）Android开源数据库LitePal&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h3 id=&quot;保存键值集&quot;&gt;&lt;a href=&quot;#保存键值集&quot; class=&quot;headerlink&quot; title=&quot;保存键值集&quot;&gt;&lt;/a&gt;保存键值集&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;想要保存的相对较小键值集合&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;调用SharedPreferences&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;首先：获取SharedPreferences的句柄&lt;br&gt;用户可以创建一个共享参数文件或访问一个已经存在的共享参数文件。&lt;br&gt;具体途径有两条&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;getSharedPreferences (String name, int mode)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;第一个参数：SharedPreferences的名称，第二个：参数指定操作模式&lt;/li&gt;
-&lt;li&gt;需要创建/读取 多个共享参数文件时使用，每个文件都拥有一个标识符，可以通过这个标识符通过该方法的第一个参数获得共享参数对象。可以通过APP中的任意Context对象调用它。&lt;/li&gt;
-&lt;li&gt;示例&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//指定SharedPreferences名称为data  模式为MODE_PRIVATE：只有当前程序才有权限读取/修改&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SharedPreferences sharedPref = getSharedPreferences(&lt;span class=&quot;string&quot;&gt;&quot;data&quot;&lt;/span&gt;, MODE_PRIVATE);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;getPreferences (int mode)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;参数：指定操作模式&lt;/li&gt;
-&lt;li&gt;只创建 Activity 的一个SharedPreferences。在Activity 中使用。 方法会检索属于该 Activity 的默认共享首选项文件，无需提供名称&lt;/li&gt;
-&lt;li&gt;示例&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//模式：MODE_PRIVATE：只有当前程序才有权限读取/修改&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;写入数据到共享参数中&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;SharedPreferences 调用 edit() 创建一个 SharedPreferences.Editor&lt;br&gt;使用诸如 putInt() 和 putString() 方法写入的键和值&lt;br&gt;最后调用commit() 以保存更改&lt;/li&gt;
-&lt;li&gt;示例&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//创建 .edit()&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SharedPreferences.Editor editor = sharedPref.edit();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//写入字符串。key-值 TextView&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;editor.putString(&lt;span class=&quot;string&quot;&gt;&quot;TextView&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;hello&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//保存更改&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;editor.commit();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;从共享参数中读取数据&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;获取SharedPreferences的句柄&lt;br&gt;方式同上&lt;/li&gt;
-&lt;li&gt;调用比如getInt()或getString()方法，然后传入键值，如果键不存在，则会返回一个默认值&lt;/li&gt;
-&lt;li&gt;示例&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//获取SharedPreferences的句柄&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SharedPreferences sharedPreferences = getSharedPreferences(&lt;span class=&quot;string&quot;&gt;&quot;data&quot;&lt;/span&gt;,MODE_PRIVATE);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//读取键值对应数据&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;String text = sharedPreferences.getString(&lt;span class=&quot;string&quot;&gt;&quot;TextView&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//打印到log中 验证&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Log.d(&lt;span class=&quot;string&quot;&gt;&quot;data&quot;&lt;/span&gt;,text);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Android-中的主要数据存储&quot;&gt;&lt;a href=&quot;#Android-中的主要数据存储&quot; class=&quot;headerlink&quot; title=&quot;Android 中的主要数据存储&quot;&gt;&lt;/a&gt;Android 中的主要数据存储&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;有三种&lt;/
-    
-    </summary>
-    
-      <category term="Android学习笔记" scheme="http://yoursite.com/categories/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
-      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Android笔记—Fragments</title>
     <link href="http://yoursite.com/2016/11/18/Android%E7%AC%94%E8%AE%B0%E2%80%94Fragments/"/>
     <id>http://yoursite.com/2016/11/18/Android笔记—Fragments/</id>
@@ -347,36 +454,6 @@
     
       <category term="点滴" scheme="http://yoursite.com/categories/%E7%82%B9%E6%BB%B4/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Android笔记—(一)</title>
-    <link href="http://yoursite.com/2016/11/06/Android%E7%AC%94%E8%AE%B0-%E6%94%AF%E6%8C%81%E4%B8%8D%E5%90%8C%E8%AE%BE%E5%A4%87/"/>
-    <id>http://yoursite.com/2016/11/06/Android笔记-支持不同设备/</id>
-    <published>2016-11-06T04:00:00.000Z</published>
-    <updated>2016-11-06T04:45:05.283Z</updated>
-    
-    <content type="html">&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.android.com/training/basics/supporting-devices/languages.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方文档&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.android.com/training/basics/supporting-devices/languages.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方文档&lt;/a&gt;&lt;/
-    
-    </summary>
-    
-      <category term="Android学习笔记" scheme="http://yoursite.com/categories/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
-      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
@@ -509,6 +586,36 @@
     
       &lt;h2 id=&quot;Activity生命周期&quot;&gt;&lt;a href=&quot;#Activity生命周期&quot; class=&quot;headerlink&quot; title=&quot;Activity生命周期&quot;&gt;&lt;/a&gt;Activity生命周期&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;img src=&quot;http://cdn5.sn
+    
+    </summary>
+    
+      <category term="Android学习笔记" scheme="http://yoursite.com/categories/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android笔记—(一)</title>
+    <link href="http://yoursite.com/2016/11/06/Android%E7%AC%94%E8%AE%B0-%E6%94%AF%E6%8C%81%E4%B8%8D%E5%90%8C%E8%AE%BE%E5%A4%87/"/>
+    <id>http://yoursite.com/2016/11/06/Android笔记-支持不同设备/</id>
+    <published>2016-11-06T04:00:00.000Z</published>
+    <updated>2016-11-06T04:45:05.283Z</updated>
+    
+    <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.android.com/training/basics/supporting-devices/languages.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方文档&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.android.com/training/basics/supporting-devices/languages.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方文档&lt;/a&gt;&lt;/
     
     </summary>
     
@@ -2017,34 +2124,6 @@ int[] to)
       <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
       <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>开端，起始。</title>
-    <link href="http://yoursite.com/2016/06/21/%E5%BC%80%E7%AB%AF/"/>
-    <id>http://yoursite.com/2016/06/21/开端/</id>
-    <published>2016-06-21T05:52:11.000Z</published>
-    <updated>2016-06-21T06:24:17.770Z</updated>
-    
-    <content type="html">&lt;ul&gt;
-&lt;li&gt;总算是博客搭建完了，依附在github上，自己的域名什么的先不买了。&lt;/li&gt;
-&lt;li&gt;评论系统、RSS、留言、统计、访问量 基本有个独立博客的样子了。之前一直以为独立博客要花很长时间才可以完成，其实也就那些东西，真正厉害的是造轮子的人。&lt;/li&gt;
-&lt;li&gt;马上大四了，反而找到了自己的兴趣，不知道是高兴还是悲伤，做了三年的单片机最后发现最喜欢的是软件，造化弄人吧。 开始更新自己的经历和心情，基本不用担心审查和备案，反正服务器又不在国内。只能说走一步再走一步了用好剩下的时间。前路和期许很难，但是就这么熬着，总有意外的一天。&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;总算是博客搭建完了，依附在github上，自己的域名什么的先不买了。&lt;/li&gt;
-&lt;li&gt;评论系统、RSS、留言、统计、访问量 基本有个独立博客的样子了。之前一直以为独立博客要花很长时间才可以完成，其实也就那些东西，真正厉害的是造轮子的人。&lt;/li&gt;
-&lt;li&gt;马上
-    
-    </summary>
-    
-      <category term="随" scheme="http://yoursite.com/categories/%E9%9A%8F/"/>
-    
     
   </entry>
   
