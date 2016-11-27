@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-20T09:35:51.045Z</updated>
+  <updated>2016-11-21T08:57:46.396Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,90 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Android笔记—数据保存</title>
-    <link href="http://yoursite.com/2016/11/20/Android%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E4%BF%9D%E5%AD%98/"/>
-    <id>http://yoursite.com/2016/11/20/Android笔记-数据保存/</id>
-    <published>2016-11-20T04:00:00.000Z</published>
-    <updated>2016-11-20T09:35:51.045Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;Android-中的主要数据存储&quot;&gt;&lt;a href=&quot;#Android-中的主要数据存储&quot; class=&quot;headerlink&quot; title=&quot;Android 中的主要数据存储&quot;&gt;&lt;/a&gt;Android 中的主要数据存储&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;有三种&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;保存键值集&lt;br&gt; 要保存的相对较小键值集合，使用 SharedPreferences&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;保存文件&lt;br&gt;使用 Android 文件系统通过 File API 读取和写入文件，适合按开始到结束的顺序不跳过地读取或写入大量数据。 例如，图片文件或通过网络交换的任何内容&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;在 SQL 数据库中保存数据&lt;br&gt;Android内建的SQLite 数据库存储重复或结构化数据&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;ul&gt;
-&lt;li&gt;PS：这里如果没有学过 SQL 数据库使用，推荐LitePal&lt;/li&gt;
-&lt;li&gt;Android开源数据库&lt;a href=&quot;https://github.com/LitePalFramework/LitePal#latest-downloads/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;LitePal&lt;/a&gt;  ：郭霖(第一行代码作者)&lt;/li&gt;
-&lt;li&gt;详细介绍在这里&lt;a href=&quot;http://www.jianshu.com/p/557682e0a9f0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;（懒人必备）Android开源数据库LitePal&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h3 id=&quot;保存键值集&quot;&gt;&lt;a href=&quot;#保存键值集&quot; class=&quot;headerlink&quot; title=&quot;保存键值集&quot;&gt;&lt;/a&gt;保存键值集&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;想要保存的相对较小键值集合&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;调用SharedPreferences&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;首先：获取SharedPreferences的句柄&lt;br&gt;用户可以创建一个共享参数文件或访问一个已经存在的共享参数文件。&lt;br&gt;具体途径有两条&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;getSharedPreferences (String name, int mode)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;第一个参数：SharedPreferences的名称，第二个：参数指定操作模式&lt;/li&gt;
-&lt;li&gt;需要创建/读取 多个共享参数文件时使用，每个文件都拥有一个标识符，可以通过这个标识符通过该方法的第一个参数获得共享参数对象。可以通过APP中的任意Context对象调用它。&lt;/li&gt;
-&lt;li&gt;示例&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//指定SharedPreferences名称为data  模式为MODE_PRIVATE：只有当前程序才有权限读取/修改&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SharedPreferences sharedPref = getSharedPreferences(&lt;span class=&quot;string&quot;&gt;&quot;data&quot;&lt;/span&gt;, MODE_PRIVATE);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;getPreferences (int mode)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;参数：指定操作模式&lt;/li&gt;
-&lt;li&gt;只创建 Activity 的一个SharedPreferences。在Activity 中使用。 方法会检索属于该 Activity 的默认共享首选项文件，无需提供名称&lt;/li&gt;
-&lt;li&gt;示例&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//模式：MODE_PRIVATE：只有当前程序才有权限读取/修改&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;写入数据到共享参数中&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;SharedPreferences 调用 edit() 创建一个 SharedPreferences.Editor&lt;br&gt;使用诸如 putInt() 和 putString() 方法写入的键和值&lt;br&gt;最后调用commit() 以保存更改&lt;/li&gt;
-&lt;li&gt;示例&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//创建 .edit()&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SharedPreferences.Editor editor = sharedPref.edit();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//写入字符串。key-值 TextView&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;editor.putString(&lt;span class=&quot;string&quot;&gt;&quot;TextView&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;hello&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//保存更改&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;editor.commit();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;从共享参数中读取数据&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;获取SharedPreferences的句柄&lt;br&gt;方式同上&lt;/li&gt;
-&lt;li&gt;调用比如getInt()或getString()方法，然后传入键值，如果键不存在，则会返回一个默认值&lt;/li&gt;
-&lt;li&gt;示例&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//获取SharedPreferences的句柄&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SharedPreferences sharedPreferences = getSharedPreferences(&lt;span class=&quot;string&quot;&gt;&quot;data&quot;&lt;/span&gt;,MODE_PRIVATE);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//读取键值对应数据&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;String text = sharedPreferences.getString(&lt;span class=&quot;string&quot;&gt;&quot;TextView&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//打印到log中 验证&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Log.d(&lt;span class=&quot;string&quot;&gt;&quot;data&quot;&lt;/span&gt;,text);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Android-中的主要数据存储&quot;&gt;&lt;a href=&quot;#Android-中的主要数据存储&quot; class=&quot;headerlink&quot; title=&quot;Android 中的主要数据存储&quot;&gt;&lt;/a&gt;Android 中的主要数据存储&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;有三种&lt;/
-    
-    </summary>
-    
-      <category term="Android学习笔记" scheme="http://yoursite.com/categories/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
-      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
-  </entry>
   
   <entry>
     <title>第一行代码AS跟刷-Activity(一)</title>
@@ -237,6 +153,90 @@
   </entry>
   
   <entry>
+    <title>Android笔记—数据保存</title>
+    <link href="http://yoursite.com/2016/11/20/Android%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E4%BF%9D%E5%AD%98/"/>
+    <id>http://yoursite.com/2016/11/20/Android笔记-数据保存/</id>
+    <published>2016-11-20T04:00:00.000Z</published>
+    <updated>2016-11-20T09:35:51.045Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Android-中的主要数据存储&quot;&gt;&lt;a href=&quot;#Android-中的主要数据存储&quot; class=&quot;headerlink&quot; title=&quot;Android 中的主要数据存储&quot;&gt;&lt;/a&gt;Android 中的主要数据存储&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;有三种&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;保存键值集&lt;br&gt; 要保存的相对较小键值集合，使用 SharedPreferences&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;保存文件&lt;br&gt;使用 Android 文件系统通过 File API 读取和写入文件，适合按开始到结束的顺序不跳过地读取或写入大量数据。 例如，图片文件或通过网络交换的任何内容&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在 SQL 数据库中保存数据&lt;br&gt;Android内建的SQLite 数据库存储重复或结构化数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;PS：这里如果没有学过 SQL 数据库使用，推荐LitePal&lt;/li&gt;
+&lt;li&gt;Android开源数据库&lt;a href=&quot;https://github.com/LitePalFramework/LitePal#latest-downloads/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;LitePal&lt;/a&gt;  ：郭霖(第一行代码作者)&lt;/li&gt;
+&lt;li&gt;详细介绍在这里&lt;a href=&quot;http://www.jianshu.com/p/557682e0a9f0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;（懒人必备）Android开源数据库LitePal&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;保存键值集&quot;&gt;&lt;a href=&quot;#保存键值集&quot; class=&quot;headerlink&quot; title=&quot;保存键值集&quot;&gt;&lt;/a&gt;保存键值集&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;想要保存的相对较小键值集合&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;调用SharedPreferences&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;首先：获取SharedPreferences的句柄&lt;br&gt;用户可以创建一个共享参数文件或访问一个已经存在的共享参数文件。&lt;br&gt;具体途径有两条&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;getSharedPreferences (String name, int mode)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一个参数：SharedPreferences的名称，第二个：参数指定操作模式&lt;/li&gt;
+&lt;li&gt;需要创建/读取 多个共享参数文件时使用，每个文件都拥有一个标识符，可以通过这个标识符通过该方法的第一个参数获得共享参数对象。可以通过APP中的任意Context对象调用它。&lt;/li&gt;
+&lt;li&gt;示例&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//指定SharedPreferences名称为data  模式为MODE_PRIVATE：只有当前程序才有权限读取/修改&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SharedPreferences sharedPref = getSharedPreferences(&lt;span class=&quot;string&quot;&gt;&quot;data&quot;&lt;/span&gt;, MODE_PRIVATE);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;getPreferences (int mode)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;参数：指定操作模式&lt;/li&gt;
+&lt;li&gt;只创建 Activity 的一个SharedPreferences。在Activity 中使用。 方法会检索属于该 Activity 的默认共享首选项文件，无需提供名称&lt;/li&gt;
+&lt;li&gt;示例&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//模式：MODE_PRIVATE：只有当前程序才有权限读取/修改&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;写入数据到共享参数中&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SharedPreferences 调用 edit() 创建一个 SharedPreferences.Editor&lt;br&gt;使用诸如 putInt() 和 putString() 方法写入的键和值&lt;br&gt;最后调用commit() 以保存更改&lt;/li&gt;
+&lt;li&gt;示例&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//创建 .edit()&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SharedPreferences.Editor editor = sharedPref.edit();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//写入字符串。key-值 TextView&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;editor.putString(&lt;span class=&quot;string&quot;&gt;&quot;TextView&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;hello&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//保存更改&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;editor.commit();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;从共享参数中读取数据&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;获取SharedPreferences的句柄&lt;br&gt;方式同上&lt;/li&gt;
+&lt;li&gt;调用比如getInt()或getString()方法，然后传入键值，如果键不存在，则会返回一个默认值&lt;/li&gt;
+&lt;li&gt;示例&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//获取SharedPreferences的句柄&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SharedPreferences sharedPreferences = getSharedPreferences(&lt;span class=&quot;string&quot;&gt;&quot;data&quot;&lt;/span&gt;,MODE_PRIVATE);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//读取键值对应数据&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;String text = sharedPreferences.getString(&lt;span class=&quot;string&quot;&gt;&quot;TextView&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//打印到log中 验证&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Log.d(&lt;span class=&quot;string&quot;&gt;&quot;data&quot;&lt;/span&gt;,text);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Android-中的主要数据存储&quot;&gt;&lt;a href=&quot;#Android-中的主要数据存储&quot; class=&quot;headerlink&quot; title=&quot;Android 中的主要数据存储&quot;&gt;&lt;/a&gt;Android 中的主要数据存储&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;有三种&lt;/
+    
+    </summary>
+    
+      <category term="Android学习笔记" scheme="http://yoursite.com/categories/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Android笔记—Fragments</title>
     <link href="http://yoursite.com/2016/11/18/Android%E7%AC%94%E8%AE%B0%E2%80%94Fragments/"/>
     <id>http://yoursite.com/2016/11/18/Android笔记—Fragments/</id>
@@ -347,6 +347,36 @@
     
       <category term="点滴" scheme="http://yoursite.com/categories/%E7%82%B9%E6%BB%B4/"/>
     
+    
+  </entry>
+  
+  <entry>
+    <title>Android笔记—(一)</title>
+    <link href="http://yoursite.com/2016/11/06/Android%E7%AC%94%E8%AE%B0-%E6%94%AF%E6%8C%81%E4%B8%8D%E5%90%8C%E8%AE%BE%E5%A4%87/"/>
+    <id>http://yoursite.com/2016/11/06/Android笔记-支持不同设备/</id>
+    <published>2016-11-06T04:00:00.000Z</published>
+    <updated>2016-11-06T04:45:05.283Z</updated>
+    
+    <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.android.com/training/basics/supporting-devices/languages.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方文档&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.android.com/training/basics/supporting-devices/languages.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方文档&lt;/a&gt;&lt;/
+    
+    </summary>
+    
+      <category term="Android学习笔记" scheme="http://yoursite.com/categories/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
@@ -479,36 +509,6 @@
     
       &lt;h2 id=&quot;Activity生命周期&quot;&gt;&lt;a href=&quot;#Activity生命周期&quot; class=&quot;headerlink&quot; title=&quot;Activity生命周期&quot;&gt;&lt;/a&gt;Activity生命周期&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;img src=&quot;http://cdn5.sn
-    
-    </summary>
-    
-      <category term="Android学习笔记" scheme="http://yoursite.com/categories/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
-      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android笔记—(一)</title>
-    <link href="http://yoursite.com/2016/11/06/Android%E7%AC%94%E8%AE%B0-%E6%94%AF%E6%8C%81%E4%B8%8D%E5%90%8C%E8%AE%BE%E5%A4%87/"/>
-    <id>http://yoursite.com/2016/11/06/Android笔记-支持不同设备/</id>
-    <published>2016-11-06T04:00:00.000Z</published>
-    <updated>2016-11-06T04:45:05.283Z</updated>
-    
-    <content type="html">&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.android.com/training/basics/supporting-devices/languages.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方文档&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.android.com/training/basics/supporting-devices/languages.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方文档&lt;/a&gt;&lt;/
     
     </summary>
     
@@ -677,9 +677,9 @@
     
       <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
-    
       <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
     
   </entry>
   
