@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content=",,," />
 
 
 
@@ -59,15 +59,58 @@
 
 
 
-<meta name="description" content="程序员 微尘 V">
+<meta name="description" content="activity生命周期
+参考资料如下 很详细！
+http://blog.csdn.net/android_tutor/article/details/5772285
+
+
+
+activity启动模式
+参考资料如下
+http://blog.csdn.net/liuhe688/article/details/6754323
+
+
+
+知晓当前运行Activity
+重写BaseActivity继承自AppC">
+<meta name="keywords">
 <meta property="og:type" content="website">
-<meta property="og:title" content="默">
-<meta property="og:url" content="http://yoursite.com/tags/开源/index.html">
+<meta property="og:title" content="第一行代码AS跟刷-Activity(三)">
+<meta property="og:url" content="http://yoursite.com/第一行代码AS跟刷-Activity(三).html">
 <meta property="og:site_name" content="默">
-<meta property="og:description" content="程序员 微尘 V">
+<meta property="og:description" content="activity生命周期
+参考资料如下 很详细！
+http://blog.csdn.net/android_tutor/article/details/5772285
+
+
+
+activity启动模式
+参考资料如下
+http://blog.csdn.net/liuhe688/article/details/6754323
+
+
+
+知晓当前运行Activity
+重写BaseActivity继承自AppC">
+<meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/08/04/ScreenShot_20160804213250.png">
+<meta property="og:updated_time" content="2016-08-05T04:50:59.507Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="默">
-<meta name="twitter:description" content="程序员 微尘 V">
+<meta name="twitter:title" content="第一行代码AS跟刷-Activity(三)">
+<meta name="twitter:description" content="activity生命周期
+参考资料如下 很详细！
+http://blog.csdn.net/android_tutor/article/details/5772285
+
+
+
+activity启动模式
+参考资料如下
+http://blog.csdn.net/liuhe688/article/details/6754323
+
+
+
+知晓当前运行Activity
+重写BaseActivity继承自AppC">
+<meta name="twitter:image" content="http://cdn2.snapgram.co/imgs/2016/08/04/ScreenShot_20160804213250.png">
 
 
 
@@ -85,7 +128,13 @@
   };
 </script>
 
-  <title> 标签: 开源 | 默 </title>
+  <title>
+  
+
+  
+    第一行代码AS跟刷-Activity(三) | 默
+  
+</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -223,74 +272,52 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        开源
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+    
+      <h2 id="activity生命周期"><a href="#activity生命周期" class="headerlink" title="activity生命周期"></a>activity生命周期</h2><ul>
+<li>参考资料如下 很详细！<blockquote>
+<p><a href="http://blog.csdn.net/android_tutor/article/details/5772285" target="_blank" rel="external">http://blog.csdn.net/android_tutor/article/details/5772285</a></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="activity启动模式"><a href="#activity启动模式" class="headerlink" title="activity启动模式"></a>activity启动模式</h2><ul>
+<li>参考资料如下<blockquote>
+<p><a href="http://blog.csdn.net/liuhe688/article/details/6754323" target="_blank" rel="external">http://blog.csdn.net/liuhe688/article/details/6754323</a></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="知晓当前运行Activity"><a href="#知晓当前运行Activity" class="headerlink" title="知晓当前运行Activity"></a>知晓当前运行Activity</h2><ul>
+<li>重写BaseActivity继承自AppCompatActivity(AndroidStudio中默认)重写onCreate（）；让工程中的activity都继承自BaseActivity 当Activity变动时打印输出log文件。</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        Log.d(<span class="string">"BaseActivity"</span>,getClass().getSimpleName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>运行效果如下图。两个Activity来回切换。<br>  <img src="http://cdn2.snapgram.co/imgs/2016/08/04/ScreenShot_20160804213250.png" alt="ScreenShot_20160804213250.png"></li>
+</ul>
+<h3 id="随时退出程序"><a href="#随时退出程序" class="headerlink" title="随时退出程序"></a>随时退出程序</h3><ul>
+<li>新建ActivityCollector 类 作为 Activity 管理器  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityCollector</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> List&lt;Activityactivities =<span class="keyword">new</span> ArrayList&lt;Activity&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addActivity</span><span class="params">(Activity activity)</span></span>&#123;</span><br><span class="line">        activities.add(activity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">removeActivity</span><span class="params">(Activity activity)</span></span>&#123;</span><br><span class="line">        activities.remove(activity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">finishAll</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(Activity activity : activities)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!activity.isFinishing())&#123;</span><br><span class="line">                activity.finish();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>BaseActivity 重写 onCreate()、onDestroy()   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    ActivityCollector.addActivity(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span>  <span class="title">onDestroy</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onDestroy();</span><br><span class="line">    ActivityCollector.removeActivity(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>所有activity继承自baseactivity，需要退出直接调用 finishAll()；</li>
+</ul>
 
     
-      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/07/09/单片机课程设计总结/" itemprop="url">
-              
-                <span itemprop="name">单片机课程设计总结</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-09T20:10:11+08:00"
-              content="2016-07-09" >
-          07-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+  <div class="comments" id="comments">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/06/18/hellowworld/" itemprop="url">
-              
-                <span itemprop="name">Hello World</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-18T10:10:11+08:00"
-              content="2016-06-18" >
-          06-18
-        </time>
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
       </div>
-
-    </header>
-  </article>
-
-
     
   </div>
 
-  
+  </div>
 
 
           </div>
@@ -298,6 +325,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -488,9 +526,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'jasper1024';
-      var disqus_identifier = 'tags/开源/index.html';
-      var disqus_title = '';
-      var disqus_url = '';
+      var disqus_identifier = '第一行代码AS跟刷-Activity(三).html';
+      var disqus_title = '第一行代码AS跟刷-Activity(三)';
+      var disqus_url = 'http://yoursite.com/第一行代码AS跟刷-Activity(三).html';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
@@ -501,6 +539,8 @@
       }
 
       run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
       
     </script>
   

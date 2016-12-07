@@ -59,32 +59,38 @@
 
 
 
-<meta name="description" content="Android Studio 尝试隐藏标题栏崩溃解决办法。
-第一行代码隐藏方法
-在onCreate()中添加requestWindowFeature(Window.FEATURE_NO_TITLE);设置在setContentView之前。Android Studio 尝试———崩溃。
+<meta name="description" content="销毁活动
+调用finish();结束当前的Activity  效果与back按键一致
 
-原因
-Android Studio 创建的默认Activity继承自AppCompatActivity而不是A">
+Intent显式intent
+调用startActivity();接收一个intent参数。将构建好的intent传入即可。  intent有多个构造函数的重载。其中有一个是Intent(Context，Class);  Context活动的上下文，Class 指定启动的目标活动。
+
+重写firestactiv">
 <meta name="keywords">
 <meta property="og:type" content="website">
-<meta property="og:title" content="第一行代码AS跟刷-隐藏标题栏">
-<meta property="og:url" content="http://yoursite.com/第一行代码跟刷.html">
+<meta property="og:title" content="第一行代码AS跟刷-Activity(二)">
+<meta property="og:url" content="http://yoursite.com/第一行代码AS跟刷-Activity(二).html">
 <meta property="og:site_name" content="默">
-<meta property="og:description" content="Android Studio 尝试隐藏标题栏崩溃解决办法。
-第一行代码隐藏方法
-在onCreate()中添加requestWindowFeature(Window.FEATURE_NO_TITLE);设置在setContentView之前。Android Studio 尝试———崩溃。
+<meta property="og:description" content="销毁活动
+调用finish();结束当前的Activity  效果与back按键一致
 
-原因
-Android Studio 创建的默认Activity继承自AppCompatActivity而不是A">
-<meta property="og:updated_time" content="2016-07-20T07:25:31.412Z">
+Intent显式intent
+调用startActivity();接收一个intent参数。将构建好的intent传入即可。  intent有多个构造函数的重载。其中有一个是Intent(Context，Class);  Context活动的上下文，Class 指定启动的目标活动。
+
+重写firestactiv">
+<meta property="og:image" content="http://cdn4.snapgram.co/images/2016/07/22/Screenshot_20160722-132433.png">
+<meta property="og:image" content="http://cdn4.snapgram.co/images/2016/07/22/QQ.jpg">
+<meta property="og:updated_time" content="2016-07-22T09:10:57.361Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第一行代码AS跟刷-隐藏标题栏">
-<meta name="twitter:description" content="Android Studio 尝试隐藏标题栏崩溃解决办法。
-第一行代码隐藏方法
-在onCreate()中添加requestWindowFeature(Window.FEATURE_NO_TITLE);设置在setContentView之前。Android Studio 尝试———崩溃。
+<meta name="twitter:title" content="第一行代码AS跟刷-Activity(二)">
+<meta name="twitter:description" content="销毁活动
+调用finish();结束当前的Activity  效果与back按键一致
 
-原因
-Android Studio 创建的默认Activity继承自AppCompatActivity而不是A">
+Intent显式intent
+调用startActivity();接收一个intent参数。将构建好的intent传入即可。  intent有多个构造函数的重载。其中有一个是Intent(Context，Class);  Context活动的上下文，Class 指定启动的目标活动。
+
+重写firestactiv">
+<meta name="twitter:image" content="http://cdn4.snapgram.co/images/2016/07/22/Screenshot_20160722-132433.png">
 
 
 
@@ -106,7 +112,7 @@ Android Studio 创建的默认Activity继承自AppCompatActivity而不是A">
   
 
   
-    第一行代码AS跟刷-隐藏标题栏 | 默
+    第一行代码AS跟刷-Activity(二) | 默
   
 </title>
 </head>
@@ -249,25 +255,54 @@ Android Studio 创建的默认Activity继承自AppCompatActivity而不是A">
   <div id="posts" class="posts-expand">
     
     
-      <p>Android Studio 尝试隐藏标题栏崩溃解决办法。</p>
-<h2 id="第一行代码隐藏方法"><a href="#第一行代码隐藏方法" class="headerlink" title="第一行代码隐藏方法"></a>第一行代码隐藏方法</h2><ul>
-<li><p>在<code>onCreate()</code>中添加<code>requestWindowFeature(Window.FEATURE_NO_TITLE);</code>设置在<code>setContentView</code>之前。<br>Android Studio 尝试———崩溃。</p>
+      <h2 id="销毁活动"><a href="#销毁活动" class="headerlink" title="销毁活动"></a>销毁活动</h2><ul>
+<li>调用<code>finish();</code>结束当前的Activity<br>  效果与back按键一致</li>
+</ul>
+<h2 id="Intent"><a href="#Intent" class="headerlink" title="Intent"></a>Intent</h2><h3 id="显式intent"><a href="#显式intent" class="headerlink" title="显式intent"></a>显式intent</h3><ul>
+<li><p>调用startActivity();接收一个intent参数。将构建好的intent传入即可。<br>  intent有多个构造函数的重载。其中有一个是Intent(Context，Class);<br>  Context活动的上下文，Class 指定启动的目标活动。</p>
 </li>
-<li><p>原因</p>
-<p>Android Studio 创建的默认Activity继承自<strong>AppCompatActivity</strong>而不是<strong>Activity</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);</span><br><span class="line">        setSupportActionBar(toolbar);</span><br><span class="line"></span><br><span class="line">        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);</span><br><span class="line">        fab.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">                Snackbar.make(view, <span class="string">"Replace with your own action"</span>, Snackbar.LENGTH_LONG)</span><br><span class="line">                        .setAction(<span class="string">"Action"</span>, <span class="keyword">null</span>).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<li><p>重写firestactivity中的button1的按下相应事件。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">button_1</span><span class="params">(View view)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    Intent I = <span class="keyword">new</span> Intent(FirestActivity.<span class="keyword">this</span>,SecondActivity.class);</span><br><span class="line">    startActivity(I);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>解决办法<br>将<strong>AppCompatActivity</strong>改为<strong>Activity</strong>编译即可。</p>
+<li><p>效果如图<br>  <img src="http://cdn4.snapgram.co/images/2016/07/22/Screenshot_20160722-132433.png" alt="Screenshot_20160722-132433.png"></p>
 </li>
 </ul>
-<h2 id="其他方案"><a href="#其他方案" class="headerlink" title="其他方案"></a>其他方案</h2><ul>
-<li>将<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requestWindowFeature(Window.FEATURE_NO_TITLE);</span><br></pre></td></tr></table></figure>
+<h3 id="隐式intent"><a href="#隐式intent" class="headerlink" title="隐式intent"></a>隐式intent</h3><ul>
+<li><p>隐式intent并不指明启动的具体活动，指定跟抽象的action和category交与系统分析启动活动。</p>
+</li>
+<li><p>AndroidMainfest.xml中secondactivity中添加如下内容</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.example.activitytext.ACTION_START"</span>/&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改firestactivity中button1的onlick事件</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">button_1</span><span class="params">(View view)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    Intent I = <span class="keyword">new</span> Intent(<span class="string">"com.example.activitytext.ACTION_START"</span>);</span><br><span class="line">    startActivity(I);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>效果同显示intent</p>
 </li>
 </ul>
-<p>换为<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Actionbar actionbar=getActionBar();</span><br><span class="line">actionbar.hide();</span><br></pre></td></tr></table></figure></p>
-<p><strong>试过之后程序崩溃</strong></p>
-<ul>
-<li>AndroidManifest.xml文件中修改该活动的主题，加入<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android：theme=&quot;@style/Theme.AppCompat.NoActionBar&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="向下一个activity传递数据"><a href="#向下一个activity传递数据" class="headerlink" title="向下一个activity传递数据"></a>向下一个activity传递数据</h2><ul>
+<li>Intent提供了putExtra()方法的重载，可以将想要传递的数据暂存到intent启动下一个活动时从intent中取出即可</li>
+<li><p>重写button1的相应事件</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">button_1</span><span class="params">(View view)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    String data = <span class="string">"hello second"</span>;</span><br><span class="line">    Intent I = <span class="keyword">new</span> Intent(FirestActivity.<span class="keyword">this</span>,SecondActivity.class);</span><br><span class="line">    I.putExtra(<span class="string">"extra_data"</span>,data);</span><br><span class="line">    startActivity(I);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在secondactivity的onCreate();中添加</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Intent I =getIntent();</span><br><span class="line">String data = I.getStringExtra(<span class="string">"extra_data"</span>);</span><br><span class="line">Log.d(<span class="string">"SecondActivity"</span>,data);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>效果，启动secondactivity时会读取data字符串，并打印到日志中<br>  <img src="http://cdn4.snapgram.co/images/2016/07/22/QQ.jpg" alt="QQ.jpg"></p>
+</li>
+</ul>
+<h2 id="返回数据给上一个活动"><a href="#返回数据给上一个活动" class="headerlink" title="返回数据给上一个活动"></a>返回数据给上一个活动</h2><ul>
+<li>利用Activity中的startActivityForResult();来启动下一个activity。在下一个活动销毁后回掉第一个activity的onActivityResult() ;得到传回的数据。</li>
+<li><p>修改firestactivity中button1对应按下响应事件</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">button_1</span><span class="params">(View view)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    Intent intent = <span class="keyword">new</span> Intent(FirestActivity.<span class="keyword">this</span>,SecondActivity.class);</span><br><span class="line">    startActivityForResult(intent, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重写seconactivity中的button2按下响应事件或者重写back按键对应事件</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">button_2</span><span class="params">(View view)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    Intent S = <span class="keyword">new</span> Intent();</span><br><span class="line">    S.putExtra(<span class="string">"data_return"</span>,<span class="string">"hellow firest"</span>);</span><br><span class="line">    setResult(RESULT_OK,S);</span><br><span class="line">    finish();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBackPressed</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line">    intent.putExtra(<span class="string">"data_return"</span>,<span class="string">"hello first"</span>);</span><br><span class="line">    setResult(RESULT_OK, intent);</span><br><span class="line">    finish();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre></li>
+<li><p>重写firestactivity中的 onActivityResult();</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode , <span class="keyword">int</span> resultCode ,Intent data)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">   <span class="keyword">switch</span> (requestCode)&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> (resultCode==RESULT_OK)&#123;</span><br><span class="line">                String returnedDate = data.getStringExtra(<span class="string">"data_return"</span>);</span><br><span class="line">                Log.d(<span class="string">"FirestActivity"</span>,returnedDate);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>效果为在log文件中打印出内容，不再累赘。</p>
 </li>
 </ul>
 
@@ -490,9 +525,9 @@ Android Studio 创建的默认Activity继承自AppCompatActivity而不是A">
 
     <script type="text/javascript">
       var disqus_shortname = 'jasper1024';
-      var disqus_identifier = '第一行代码跟刷.html';
-      var disqus_title = '第一行代码AS跟刷-隐藏标题栏';
-      var disqus_url = 'http://yoursite.com/第一行代码跟刷.html';
+      var disqus_identifier = '第一行代码AS跟刷-Activity(二).html';
+      var disqus_title = '第一行代码AS跟刷-Activity(二)';
+      var disqus_url = 'http://yoursite.com/第一行代码AS跟刷-Activity(二).html';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');

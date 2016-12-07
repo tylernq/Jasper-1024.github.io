@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content=",,," />
 
 
 
@@ -59,15 +59,25 @@
 
 
 
-<meta name="description" content="程序员 微尘 V">
+<meta name="description" content="Fragments简介
+Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI 设计提供支持。
+可以将多个片段组合在一个 Activity 中来构建多窗格 UI，以及在多个 Activity 中重复使用某个片段。可以将片段视为 Activity 的模块化组成部分，它具有自己的生命周期，能接收自己的输">
+<meta name="keywords">
 <meta property="og:type" content="website">
-<meta property="og:title" content="默">
-<meta property="og:url" content="http://yoursite.com/tags/开源/index.html">
+<meta property="og:title" content="Android笔记—Fragments">
+<meta property="og:url" content="http://yoursite.com/Android笔记—Fragments.html">
 <meta property="og:site_name" content="默">
-<meta property="og:description" content="程序员 微尘 V">
+<meta property="og:description" content="Fragments简介
+Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI 设计提供支持。
+可以将多个片段组合在一个 Activity 中来构建多窗格 UI，以及在多个 Activity 中重复使用某个片段。可以将片段视为 Activity 的模块化组成部分，它具有自己的生命周期，能接收自己的输">
+<meta property="og:image" content="http://cdn5.snapgram.co/images/2016/10/10/Screenshot_1476109113.png">
+<meta property="og:updated_time" content="2016-11-20T02:38:25.347Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="默">
-<meta name="twitter:description" content="程序员 微尘 V">
+<meta name="twitter:title" content="Android笔记—Fragments">
+<meta name="twitter:description" content="Fragments简介
+Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI 设计提供支持。
+可以将多个片段组合在一个 Activity 中来构建多窗格 UI，以及在多个 Activity 中重复使用某个片段。可以将片段视为 Activity 的模块化组成部分，它具有自己的生命周期，能接收自己的输">
+<meta name="twitter:image" content="http://cdn5.snapgram.co/images/2016/10/10/Screenshot_1476109113.png">
 
 
 
@@ -85,7 +95,13 @@
   };
 </script>
 
-  <title> 标签: 开源 | 默 </title>
+  <title>
+  
+
+  
+    Android笔记—Fragments | 默
+  
+</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -223,74 +239,69 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        开源
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+    
+      <h2 id="Fragments简介"><a href="#Fragments简介" class="headerlink" title="Fragments简介"></a>Fragments简介</h2><ul>
+<li>Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI 设计提供支持。</li>
+<li>可以将多个片段组合在一个 Activity 中来构建多窗格 UI，以及在多个 Activity 中重复使用某个片段。可以将片段视为 Activity 的模块化组成部分，它具有自己的生命周期，能接收自己的输入事件，可以在 Activity 运行时添加或删除片段（类似于不同 Activity 中重复使用的“子 Activity”）</li>
+<li><a href="https://developer.android.com/guide/components/fragments.html" target="_blank" rel="external">Google官方文档(中文)</a></li>
+</ul>
+<h2 id="创建Fragments"><a href="#创建Fragments" class="headerlink" title="创建Fragments"></a>创建Fragments</h2><ul>
+<li>fragment创建过程与Activity类似。<h3 id="创建一个Fragment类"><a href="#创建一个Fragment类" class="headerlink" title="创建一个Fragment类"></a>创建一个Fragment类</h3></li>
+<li>新建first_fragme 继承自Fragment </li>
+<li>Android Studio中 对应Fragment 包有两个，选择Android.app _</li>
+<li>当创建Fragment的时，必须重写onCreateView()回调方法.</li>
+<li>Fragment并非一定要绑定一个布局文件，下面会提到。</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span> <span class="params">(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState)</span></span>&#123;</span><br><span class="line">       View view = inflater.inflate(R.layout.fragment_firest,container,<span class="keyword">false</span>);</span><br><span class="line">       <span class="keyword">return</span> view;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>与此对应的fragment<em>firest布局文件 </em><br>  LinearLayout加一个Button，背景颜色设置为了靛蓝色。<br>  具体代码就不多说了。</p>
+</li>
+</ul>
+<h3 id="在XML将fragment添加到activity"><a href="#在XML将fragment添加到activity" class="headerlink" title="在XML将fragment添加到activity"></a>在XML将fragment添加到activity</h3><ul>
+<li><p>在activity_main.xml中添加如下代码。跟添加一个layout没有太大区别。</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">fragment</span></span><br><span class="line"><span class="attr">android:id</span>=<span class="string">"@+id/first_fragment"</span></span><br><span class="line"><span class="attr">android:name</span>=<span class="string">"layout.FirstFragment"</span></span><br><span class="line"><span class="attr">android:layout_width</span>=<span class="string">"0sp"</span></span><br><span class="line"><span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span><br><span class="line"><span class="attr">android:layout_weight</span>=<span class="string">"1"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>至此一个fragment添加完毕。为了对比，再新建一个second_fragment，背景颜色不同，两者同时添加进activity_main中。</p>
+</li>
+<li><img src="http://cdn5.snapgram.co/images/2016/10/10/Screenshot_1476109113.png" alt="Screenshot_1476109113.png"></li>
+</ul>
+<h3 id="在activity运行时添加fragment"><a href="#在activity运行时添加fragment" class="headerlink" title="在activity运行时添加fragment"></a>在activity运行时添加fragment</h3><ul>
+<li>添加或移除片段必须使用 FragmentManager 创建 FragmentTransaction， FragmentTransaction将提供添加、移除、替换片段以及执行其他片段事务所需的 API。</li>
+<li><p>处理片段时，请谨记：Activity 布局必须包含一个可以插入片段的容器 View。</p>
+</li>
+<li><p>Activity 内，调用 getSupportFragmentManager() 以获取 FragmentManager。然后，调用 beginTransaction() 创建一个 FragmentTransaction，并调用 add() 添加一个片段</p>
+</li>
+<li><p>可以在同一 FragmentTransaction 为 Activity 执行多片段事务。做好更改准备时，调用 commit()</p>
+</li>
+<li><p>示例：</p>
+<ul>
+<li><p>首先改造一下activity<em>main.xml</em><br>FrameLayout包含一个left_fragment</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">FrameLayout</span>  </span><br><span class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/right_layout"</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span><br><span class="line">    <span class="attr">android:layout_weight</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">fragment</span></span><br><span class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/left_fragment"</span></span><br><span class="line">        <span class="attr">android:name</span>=<span class="string">"com.example.fragment_text.leftfragment"</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在MainActivity的onCreate方法中添加fragment</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新建准备替换的Fragment实例</span></span><br><span class="line">rightfragment right = <span class="keyword">new</span> rightfragment();</span><br><span class="line"> </span><br><span class="line"><span class="comment">//新建FragmentManager</span></span><br><span class="line">FragmentManager fragmentManager = getSupportFragmentManager();</span><br><span class="line"><span class="comment">// 调用beginTransaction() 创建FragmentTransaction</span></span><br><span class="line">FragmentTransaction transaction = fragmentManager.beginTransaction();</span><br><span class="line"></span><br><span class="line"><span class="comment">//FragmentTransaction内处理添加/替换等。</span></span><br><span class="line">transaction.replace(R.id.right_layout,right);</span><br><span class="line"></span><br><span class="line"><span class="comment">//可回退，</span></span><br><span class="line">transaction.addToBackStack(<span class="keyword">null</span>);</span><br><span class="line"><span class="comment">//最后执行commit()方法</span></span><br><span class="line">transaction.commit();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>替换/添加 过程类似，replace/add</p>
+</li>
+</ul>
+<h3 id="fragment-之间的通信"><a href="#fragment-之间的通信" class="headerlink" title="fragment 之间的通信"></a>fragment 之间的通信</h3><ul>
+<li>占坑，待更新</li>
+</ul>
 
     
-      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/07/09/单片机课程设计总结/" itemprop="url">
-              
-                <span itemprop="name">单片机课程设计总结</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-09T20:10:11+08:00"
-              content="2016-07-09" >
-          07-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+  <div class="comments" id="comments">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/06/18/hellowworld/" itemprop="url">
-              
-                <span itemprop="name">Hello World</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-18T10:10:11+08:00"
-              content="2016-06-18" >
-          06-18
-        </time>
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
       </div>
-
-    </header>
-  </article>
-
-
     
   </div>
 
-  
+  </div>
 
 
           </div>
@@ -298,6 +309,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -488,9 +510,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'jasper1024';
-      var disqus_identifier = 'tags/开源/index.html';
-      var disqus_title = '';
-      var disqus_url = '';
+      var disqus_identifier = 'Android笔记—Fragments.html';
+      var disqus_title = 'Android笔记—Fragments';
+      var disqus_url = 'http://yoursite.com/Android笔记—Fragments.html';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
@@ -501,6 +523,8 @@
       }
 
       run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
       
     </script>
   

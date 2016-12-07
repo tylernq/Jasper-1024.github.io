@@ -1,0 +1,653 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content=",,," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="默" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="TextView
+打开AndroidStudio创建一个新工程。自带TextView。为了验证期间，吧文本改了一下。  
+
+android:layout_width 与android:layout_height 每个android控件都具有这两个属性。有3种取值 match_parent 、fill_parent、     wrap_content. 其中 match_parent 、fill_p">
+<meta name="keywords">
+<meta property="og:type" content="website">
+<meta property="og:title" content="第一行代码AS跟刷-UI(一)">
+<meta property="og:url" content="http://yoursite.com/第一行代码AS跟刷-UI(一).html">
+<meta property="og:site_name" content="默">
+<meta property="og:description" content="TextView
+打开AndroidStudio创建一个新工程。自带TextView。为了验证期间，吧文本改了一下。  
+
+android:layout_width 与android:layout_height 每个android控件都具有这两个属性。有3种取值 match_parent 、fill_parent、     wrap_content. 其中 match_parent 、fill_p">
+<meta property="og:image" content="http://cdn4.snapgram.co/images/2016/08/06/Screenshot_20160806-215726.png">
+<meta property="og:image" content="http://cdn3.snapgram.co/imgs/2016/08/06/Screenshot_20160807-085357.png">
+<meta property="og:image" content="http://cdn4.snapgram.co/images/2016/08/06/Screenshot_20160807-085806.png">
+<meta property="og:image" content="http://cdn3.snapgram.co/imgs/2016/08/07/Screenshot_20160807-153851.png">
+<meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/08/07/Scre447.png">
+<meta property="og:updated_time" content="2016-08-07T09:07:03.809Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第一行代码AS跟刷-UI(一)">
+<meta name="twitter:description" content="TextView
+打开AndroidStudio创建一个新工程。自带TextView。为了验证期间，吧文本改了一下。  
+
+android:layout_width 与android:layout_height 每个android控件都具有这两个属性。有3种取值 match_parent 、fill_parent、     wrap_content. 其中 match_parent 、fill_p">
+<meta name="twitter:image" content="http://cdn4.snapgram.co/images/2016/08/06/Screenshot_20160806-215726.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title>
+  
+
+  
+    第一行代码AS跟刷-UI(一) | 默
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-79641673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">默</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">为了生存，而一点点淡忘了最初的本意。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+      <h3 id="TextView"><a href="#TextView" class="headerlink" title="TextView"></a>TextView</h3><ul>
+<li><p>打开AndroidStudio创建一个新工程。自带TextView。为了验证期间，吧文本改了一下。<br>  <img src="http://cdn4.snapgram.co/images/2016/08/06/Screenshot_20160806-215726.png" alt="Screenshot_20160806-215726.png"></p>
+</li>
+<li><p>android:layout_width 与android:layout_height 每个android控件都具有这两个属性。有3种取值 match_parent 、fill_parent、     wrap_content. 其中 match_parent 、fill_parent基本一个意思，TextView会占满整个它所属那层的布局空间。wrap_content则是根据内容多少决定整个TextView的大小。当然还可以手动指定高度和宽度大小，但是考虑到适配屏幕的不同，请慎用。</p>
+</li>
+<li>其他属性没什么可写的，androidstudio与eclipse+adt基本一致。</li>
+</ul>
+<h3 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h3><ul>
+<li>基本没什么可说的，前面用的很多了。添加第一行代码没有的一点内容Button属性中添加<code>android:onClick</code> 然后在对应class文件中添加对应函数即可完成点击响应。（觉得这个要实用一点）</li>
+</ul>
+<h3 id="EditText"><a href="#EditText" class="headerlink" title="EditText"></a>EditText</h3><ul>
+<li><p>google官方文档</p>
+<blockquote>
+<p><a href="https://developer.android.com/reference/android/widget/EditText.html" target="_blank" rel="external">https://developer.android.com/reference/android/widget/EditText.html</a></p>
+</blockquote>
+</li>
+<li><p>继承自TextView，设置TextView的属性 EditText一般通用。</p>
+</li>
+<li><p>android:hint：属性设置可以在用户输入前显示一些提示性文字。</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:hint="please enter something"</span><br></pre></td></tr></table></figure>
+<p>  效果如下图<br>  <a href="http://snapgr.am/image/LzLB" target="_blank" rel="external"><img src="http://cdn3.snapgram.co/imgs/2016/08/06/Screenshot_20160807-085357.png" alt="Screenshot_20160807-085357.png"></a></p>
+</li>
+<li><p>android:maxLines：当输入文字大于一行，可以通过设置 android:maxLines属性来拓展显示区域。</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:maxLines="2"</span><br></pre></td></tr></table></figure>
+<p> 效果如下图<br> <img src="http://cdn4.snapgram.co/images/2016/08/06/Screenshot_20160807-085806.png" alt="Screenshot_20160807-085806.png"></p>
+</li>
+<li><p>getText();   提取输入的文本。首先利用findViewById()；得到EditText实例，随后getText()；得到输入的文本。显示方式采用了Toast，Tosat需要输入字符串，利用toSpring()；转换为字符串。<br>  部分代码如下</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//xml中添加</span></span><br><span class="line">android:id=<span class="string">"@+id/editText"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//新建EditText类型的变量</span></span><br><span class="line">EditText editText;</span><br><span class="line"></span><br><span class="line"><span class="comment">//提取EditText实例</span></span><br><span class="line"> editText = (EditText)<span class="keyword">this</span>.findViewById(R.id.editText);</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//button_1点击响应事件</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">button_1</span><span class="params">(View view)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    Toast.makeText(MainActivity.<span class="keyword">this</span>,editText.getText().toString(), Toast.LENGTH_SHORT).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Imageview"><a href="#Imageview" class="headerlink" title="Imageview"></a>Imageview</h3><ul>
+<li><p>官方文档</p>
+<blockquote>
+<p><a href="https://developer.android.com/reference/android/widget/ImageView.html" target="_blank" rel="external">https://developer.android.com/reference/android/widget/ImageView.html</a></p>
+</blockquote>
+</li>
+<li><p>添加方式类似。。基本AndroidStudio都自动完成了。唯一有点区别的可能是<code>android:src=&quot;@drawable&quot;</code>指定Image的位置。一般将图片文件放在res\drawable文件夹下，为了适配不同分辨率的屏幕，还可以新建不同分辨率对应的文件夹，让显示效果到达最佳。<br>  效果如下<br>  <img src="http://cdn3.snapgram.co/imgs/2016/08/07/Screenshot_20160807-153851.png" alt="Screenshot_20160807-153851.png"></p>
+</li>
+<li><p>动态改变图片。调用setImageResource()；</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//xml中添加</span></span><br><span class="line">android:id=<span class="string">"@+id/imageView"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//新建 ImageView类型的变量</span></span><br><span class="line">ImageView imageView;</span><br><span class="line"></span><br><span class="line"><span class="comment">//找到imageView实例</span></span><br><span class="line"> imageView = (ImageView)<span class="keyword">this</span>.findViewById(R.id.imageView);</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//button_1</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">button_1</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">    imageView.setImageResource(R.drawable.dn);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="ProgressBar"><a href="#ProgressBar" class="headerlink" title="ProgressBar"></a>ProgressBar</h3><p>官方文档</p>
+<blockquote>
+<p><a href="https://developer.android.com/reference/android/widget/ProgressBar.html" target="_blank" rel="external">https://developer.android.com/reference/android/widget/ProgressBar.html</a></p>
+</blockquote>
+<ul>
+<li>添加方式与其他View相同，不加累赘。<br>  效果如下图<br>   <img src="http://cdn2.snapgram.co/imgs/2016/08/07/Scre447.png" alt="Scre447.png">     </li>
+</ul>
+<ul>
+<li><p>显示/隐藏进度条<br>  setVisibility()；</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**************************************/</span></span><br><span class="line"></span><br><span class="line">android:id=<span class="string">"@+id/Progress_Bar"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**************************************/</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">private</span> ProgressBar progressBar;</span><br><span class="line"> </span><br><span class="line"> progressBar = (ProgressBar)<span class="keyword">this</span>.findViewById(R.id.Progress_Bar);</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//onClik响应事件</span></span><br><span class="line"> <span class="keyword">if</span>(progressBar.getVisibility()==View.GONE)</span><br><span class="line">    &#123; progressBar.setVisibility(View.VISIBLE); &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;progressBar.setVisibility(View.GONE);&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>水平进度条<br>  直接上代码  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**************************************/</span></span><br><span class="line"> </span><br><span class="line"> style=<span class="string">"?android:attr/progressBarStyleHorizontal"</span></span><br><span class="line"> android:max=<span class="string">"100"</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/**************************************/</span></span><br><span class="line">  </span><br><span class="line"> <span class="keyword">private</span> ProgressBar progressBar;</span><br><span class="line"> </span><br><span class="line"> progressBar = (ProgressBar)<span class="keyword">this</span>.findViewById(R.id.Progress_Bar);</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//onClick 响应事件</span></span><br><span class="line"> progressBar.setProgress(progressBar.getProgress()+<span class="number">10</span>);</span><br><span class="line"> <span class="keyword">if</span>(progressBar.getProgress()==<span class="number">100</span>)</span><br><span class="line"> 	progressBar.setProgress(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+    
+
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    
+  </div>
+
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/v.png"
+               alt="Jasper" />
+          <p class="site-author-name" itemprop="name">Jasper</p>
+          <p class="site-description motion-element" itemprop="description">程序员 微尘 V</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jasper-1024" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016.6.2 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jasper</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'jasper1024';
+      var disqus_identifier = '第一行代码AS跟刷-UI(一).html';
+      var disqus_title = '第一行代码AS跟刷-UI(一)';
+      var disqus_url = 'http://yoursite.com/第一行代码AS跟刷-UI(一).html';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("8AEPwU1rVoSnwxtOrX35u23j-gzGzoHsz", "SBLr7EMdL83IXCfJSbydMdll");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content=",,," />
 
 
 
@@ -59,15 +59,20 @@
 
 
 
-<meta name="description" content="程序员 微尘 V">
+<meta name="description" content="android:hint  这个属性用来在Text中内容为空的时候展示，为了不使用硬编码的字符串，这里使用了@string/editmessage——的值引用另一个文件中的一个字符串资源
+在资源类型前的符号+是指当你第一次要指定一个资源ID。当你编译APP的时候，SDK工具会使用这个ID的名称在工程的gen/R.java文件中创建一个新的资源ID的引用，这个引用表示的就是XML中的EditTex">
+<meta name="keywords">
 <meta property="og:type" content="website">
-<meta property="og:title" content="默">
-<meta property="og:url" content="http://yoursite.com/tags/开源/index.html">
+<meta property="og:title" content="Android笔记—查漏(一)">
+<meta property="og:url" content="http://yoursite.com/Android笔记-查漏.html">
 <meta property="og:site_name" content="默">
-<meta property="og:description" content="程序员 微尘 V">
+<meta property="og:description" content="android:hint  这个属性用来在Text中内容为空的时候展示，为了不使用硬编码的字符串，这里使用了@string/editmessage——的值引用另一个文件中的一个字符串资源
+在资源类型前的符号+是指当你第一次要指定一个资源ID。当你编译APP的时候，SDK工具会使用这个ID的名称在工程的gen/R.java文件中创建一个新的资源ID的引用，这个引用表示的就是XML中的EditTex">
+<meta property="og:updated_time" content="2016-11-06T02:59:30.346Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="默">
-<meta name="twitter:description" content="程序员 微尘 V">
+<meta name="twitter:title" content="Android笔记—查漏(一)">
+<meta name="twitter:description" content="android:hint  这个属性用来在Text中内容为空的时候展示，为了不使用硬编码的字符串，这里使用了@string/editmessage——的值引用另一个文件中的一个字符串资源
+在资源类型前的符号+是指当你第一次要指定一个资源ID。当你编译APP的时候，SDK工具会使用这个ID的名称在工程的gen/R.java文件中创建一个新的资源ID的引用，这个引用表示的就是XML中的EditTex">
 
 
 
@@ -85,7 +90,13 @@
   };
 </script>
 
-  <title> 标签: 开源 | 默 </title>
+  <title>
+  
+
+  
+    Android笔记—查漏(一) | 默
+  
+</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -223,74 +234,53 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        开源
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+    
+      <ul>
+<li>android:hint  这个属性用来在Text中内容为空的时候展示，为了不使用硬编码的字符串，这里使用了@string/edit<em>message</em>——的值引用另一个文件中的一个字符串资源</li>
+<li>在资源类型前的符号+是指当你第一次要指定一个资源ID。当你编译APP的时候，SDK工具会使用这个ID的名称在工程的gen/R.java文件中创建一个新的资源ID的引用，这个引用表示的就是XML中的EditText对象。如果使用这种方式声明了ID，那么在后面就不需要再使用+，其它地方引用的时候也不需要+。</li>
+<li><p>app/build.gradle 包括一些defaultConfig设置： </p>
+<ul>
+<li>compiledSdkVersion 表示你应用编译依靠的编译平台版本。默认情况下，这里设置的是你SDK中最新的版本。 </li>
+<li>applicationId 是在你新建工程过程中指定的用于标示你程序的标识符的全称。 </li>
+<li>minSdkVersion 标示应用的最低支持版本 </li>
+<li>targetSdkVersion 标示对于应用测试过的最高支持版本，如果有新版本可用了，你应该在最新的版本上进行测试，并且更新这个值到最新的版本。 </li>
+</ul>
+</li>
+<li><p>android:layout<em>weight</em> 指定view权重, 当指定了权重会影响布局效果，应该把EditText的宽设置为0，因为使用了wrap<em>content</em>的话会要求系统计算一次不必要的宽度，因为权重会要求系统进行重新计算并使用剩余的宽度。 </p>
+</li>
+<li><p>android:onClick<br>   android:onClick 指定的方法名称匹配，签名必须与所示内容完全相同。具体而言，该方法必须：</p>
+<ul>
+<li>是公共方法</li>
+<li>具有空返回值</li>
+<li>以 View 作为唯一参数（这将是之前点击的 View）</li>
+</ul>
+</li>
+</ul>
+<h2 id="启动另一个activity-并传递字符串"><a href="#启动另一个activity-并传递字符串" class="headerlink" title="启动另一个activity 并传递字符串"></a>启动另一个activity 并传递字符串</h2><ul>
+<li>构建一个Intent<br>  <code>Intent intent = new Intent(this, DisplayMessageActivity.class);</code><br>  构造方法有两个参数：<br>  Context 是第一个参数，这里使用了this是因为Activity是Context的子类。<br>  Class 类是系统将要分发的APP组件，在这里，这个Activity将会被启动。</li>
+</ul>
+<ul>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendMessage</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 创建一个新的intent对象，绑定DisplayMessageActivity</span></span><br><span class="line">    Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, DisplayMessageActivity.class);</span><br><span class="line">    <span class="comment">//创建一个editText对象，绑定xml中editText</span></span><br><span class="line">    EditText editText = (EditText) findViewById(R.id.edit_message);</span><br><span class="line">    <span class="comment">//获取editText中输入文字，转成字符串</span></span><br><span class="line">    String message = editText.getText().toString();</span><br><span class="line">    <span class="comment">//一个Intent对象可以携带被称为extras的键值对。</span></span><br><span class="line">    <span class="comment">// putExtra()方法将键放在第一个参数中，将值放在第二个参数中。</span></span><br><span class="line">    intent.putExtra(EXTRA_MESSAGE, message);</span><br><span class="line">    <span class="comment">//启动intent对应Activity</span></span><br><span class="line">    startActivity(intent);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_display_message);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建本地intent</span></span><br><span class="line">    Intent intent = getIntent();</span><br><span class="line">    <span class="comment">//取出String类型数据，如果是Int类型就是getIntExtra，Boolean类型就是getBooleanExtra</span></span><br><span class="line">    String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);</span><br><span class="line">    <span class="comment">//显示String</span></span><br><span class="line">    <span class="comment">//创建新的TextView</span></span><br><span class="line">    TextView textView = <span class="keyword">new</span> TextView(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//设置文本大小</span></span><br><span class="line">    textView.setTextSize(<span class="number">40</span>);</span><br><span class="line">    <span class="comment">//设置显示内容</span></span><br><span class="line">    textView.setText(message);</span><br><span class="line">    <span class="comment">//绑定xml</span></span><br><span class="line">    ViewGroup layout = (ViewGroup) findViewById(R.id.activity_display_message);</span><br><span class="line">    <span class="comment">//ViewGroup中添加TextView</span></span><br><span class="line">    layout.addView(textView);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
     
-      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/07/09/单片机课程设计总结/" itemprop="url">
-              
-                <span itemprop="name">单片机课程设计总结</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-09T20:10:11+08:00"
-              content="2016-07-09" >
-          07-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+  <div class="comments" id="comments">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/06/18/hellowworld/" itemprop="url">
-              
-                <span itemprop="name">Hello World</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-18T10:10:11+08:00"
-              content="2016-06-18" >
-          06-18
-        </time>
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
       </div>
-
-    </header>
-  </article>
-
-
     
   </div>
 
-  
+  </div>
 
 
           </div>
@@ -298,6 +288,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -488,9 +489,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'jasper1024';
-      var disqus_identifier = 'tags/开源/index.html';
-      var disqus_title = '';
-      var disqus_url = '';
+      var disqus_identifier = 'Android笔记-查漏.html';
+      var disqus_title = 'Android笔记—查漏(一)';
+      var disqus_url = 'http://yoursite.com/Android笔记-查漏.html';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
@@ -501,6 +502,8 @@
       }
 
       run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
       
     </script>
   

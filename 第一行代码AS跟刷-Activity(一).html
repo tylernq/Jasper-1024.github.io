@@ -1,0 +1,713 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content=",,," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="默" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="手动创建Activity
+新建FirstAtivity继承自Activity
+ 12345public class FirstActivity extends Activity&amp;#123;@Overrideprotected  void onCreate(Bundle savedInstanceState) &amp;#123;    super.onCreate(savedInstanceState);">
+<meta name="keywords">
+<meta property="og:type" content="website">
+<meta property="og:title" content="第一行代码AS跟刷-Activity(一)">
+<meta property="og:url" content="http://yoursite.com/第一行代码AS跟刷-Activity(一).html">
+<meta property="og:site_name" content="默">
+<meta property="og:description" content="手动创建Activity
+新建FirstAtivity继承自Activity
+ 12345public class FirstActivity extends Activity&amp;#123;@Overrideprotected  void onCreate(Bundle savedInstanceState) &amp;#123;    super.onCreate(savedInstanceState);">
+<meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/07/20/1.jpg">
+<meta property="og:image" content="http://cdn1.snapgram.co/imgs/2016/07/20/2.jpg">
+<meta property="og:image" content="http://cdn3.snapgram.co/imgs/2016/07/20/3.jpg">
+<meta property="og:image" content="http://cdn4.snapgram.co/images/2016/07/20/43168d.jpg">
+<meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/07/20/5ea429.jpg">
+<meta property="og:image" content="http://cdn3.snapgram.co/imgs/2016/07/20/QQ.jpg">
+<meta property="og:image" content="http://cdn4.snapgram.co/images/2016/07/20/toast.png">
+<meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/07/20/6.jpg">
+<meta property="og:image" content="http://cdn3.snapgram.co/imgs/2016/07/21/2011082121245374.png">
+<meta property="og:image" content="http://cdn3.snapgram.co/imgs/2016/07/21/1.jpg">
+<meta property="og:image" content="http://cdn4.snapgram.co/images/2016/07/21/B.jpg">
+<meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/07/21/B2.jpg">
+<meta property="og:image" content="http://cdn1.snapgram.co/imgs/2016/07/21/B3.jpg">
+<meta property="og:image" content="http://cdn3.snapgram.co/imgs/2016/07/21/B4.jpg">
+<meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/07/21/3.jpg">
+<meta property="og:image" content="http://cdn1.snapgram.co/imgs/2016/07/21/4.jpg">
+<meta property="og:updated_time" content="2016-11-21T08:57:46.396Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第一行代码AS跟刷-Activity(一)">
+<meta name="twitter:description" content="手动创建Activity
+新建FirstAtivity继承自Activity
+ 12345public class FirstActivity extends Activity&amp;#123;@Overrideprotected  void onCreate(Bundle savedInstanceState) &amp;#123;    super.onCreate(savedInstanceState);">
+<meta name="twitter:image" content="http://cdn2.snapgram.co/imgs/2016/07/20/1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title>
+  
+
+  
+    第一行代码AS跟刷-Activity(一) | 默
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-79641673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">默</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">为了生存，而一点点淡忘了最初的本意。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+      <h2 id="手动创建Activity"><a href="#手动创建Activity" class="headerlink" title="手动创建Activity"></a>手动创建Activity</h2><ul>
+<li><p>新建FirstAtivity继承自Activity</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span></span>&#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span>  <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">&#125; &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建加载布局<br>  <a href="http://snapgr.am/image/LoY4" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/07/20/1.jpg" alt="1.jpg"></a></p>
+<ul>
+<li>有时会遇到。貌似是Android的Bug。<br>  <img src="http://cdn1.snapgram.co/imgs/2016/07/20/2.jpg" alt="2.jpg"><br>  重新选择绿色小机器人即可<br>  <img src="http://cdn3.snapgram.co/imgs/2016/07/20/3.jpg" alt="3.jpg"></li>
+</ul>
+</li>
+<li><p>切换到first-layout</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  &lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line">  &lt;LinearLayout</span><br><span class="line">  xmlns:android="http://schemas.android.com/apk/res/android"</span><br><span class="line">  android:layout_width="match_parent"</span><br><span class="line">  android:layout_height="match_parent"&gt;</span><br><span class="line">  &lt;Button</span><br><span class="line">      android:id="@+id/button_1"</span><br><span class="line">      android:text="button_1"</span><br><span class="line">      android:layout_width="wrap_content"</span><br><span class="line">      android:layout_height="wrap_content" /&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在FirestActivity中加载layout<br>  在onCreate中加入</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setContentView(R.layout.first_layout);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在AndroidMainfest文件中注册。</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity</span><br><span class="line">           android:name=".FirstActivity"</span><br><span class="line">           android:label="This is FirstActivity"&gt;</span><br><span class="line">           &lt;intent-filter&gt;</span><br><span class="line">               &lt;action android:name="android.intent.action.MAIN"/&gt;</span><br><span class="line">               &lt;category android:name="android.intent.category.LAUNCHER"/&gt;</span><br><span class="line">           &lt;/intent-filter&gt;</span><br><span class="line">&lt;/activity&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在模拟器中启动apk<br>  <img src="http://cdn4.snapgram.co/images/2016/07/20/43168d.jpg" alt="43168d.jpg"><br>  天生没有状态栏，应该是继承自Activity的缘故，原因未知。</p>
+</li>
+<li><p>将继承关系改到AppCompatActivity，标题栏又出现了。<br>  <a href="http://snapgr.am/image/LogP" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/07/20/5ea429.jpg" alt="5ea429.jpg"></a></p>
+</li>
+</ul>
+<h2 id="隐藏标题栏"><a href="#隐藏标题栏" class="headerlink" title="隐藏标题栏"></a>隐藏标题栏</h2><ul>
+<li><p>AS中默认的activity是继承自AppCompatActivity。<br>  隐藏标题栏需要在setContentView前加上</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supportRequestWindowFeature(Window.FEATURE_NO_TITLE)</span><br></pre></td></tr></table></figure>
+<p>  效果如图<br>  <a href="http://snapgr.am/image/LogU" target="_blank" rel="external"><img src="http://cdn3.snapgram.co/imgs/2016/07/20/QQ.jpg" alt="QQ.jpg"></a></p>
+</li>
+<li><p>如果严格按照第一行代码来，FirestActivity继承自Activity。<br>  则要使用</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requestWindowFeature(Window.FEATURE_NO_TITLE)）；</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他详情见 第一行代码AS跟刷-隐藏标题栏。</p>
+</li>
+</ul>
+<h2 id="活动中使用Toast"><a href="#活动中使用Toast" class="headerlink" title="活动中使用Toast"></a>活动中使用Toast</h2><blockquote>
+<p><a href="https://developer.android.com/guide/topics/ui/notifiers/toasts.html#Positioning" target="_blank" rel="external">Toast google官方说明</a></p>
+<ul>
+<li>推送一个短小信息推送给用户<br>  如图（摘自android developer）<br>  <img src="http://cdn4.snapgram.co/images/2016/07/20/toast.png" alt="toast.png"></li>
+</ul>
+</blockquote>
+<ul>
+<li><p>使用方法</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Toast.makeText(context, text, duration).show();</span><br></pre></td></tr></table></figure>
+<p>  举例</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Toast.makeText(FirstActivity.<span class="keyword">this</span>, <span class="string">"you clicked button 1"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line"><span class="comment">/*                  activity.this   消息内容                显示时间设置   */</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Button使用说明"><a href="#Button使用说明" class="headerlink" title="Button使用说明"></a>Button使用说明</h2><blockquote>
+<p><a href="https://developer.android.com/reference/android/widget/Button.html" target="_blank" rel="external">Button google 官方说明</a></p>
+<h3 id="第一行代码AS"><a href="#第一行代码AS" class="headerlink" title="第一行代码AS"></a>第一行代码AS</h3></blockquote>
+<ul>
+<li>在 onCreate() 方法中，给 Button 绑定点击事件，点击 Button 嗲用Toast显示一条信息。<br>  在onCreate() 中添加如下代码  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Button button1 = (Button) findViewById(R.id.button_1);</span><br><span class="line">button1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">            Toast.makeText(FirstActivity.<span class="keyword">this</span>, <span class="string">"you clicked button 1"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="android-onClick方式"><a href="#android-onClick方式" class="headerlink" title="android:onClick方式"></a>android:onClick方式</h3><ul>
+<li><p>第二种方法<br>  在firest-layout中Button属性中添加<code>android:onClick</code><br>  代码如下</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Button</span><br><span class="line">    android:id=<span class="string">"@+id/button_1"</span></span><br><span class="line">    android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">    android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">    android:onClick=<span class="string">"selfDestruct"</span></span><br><span class="line">    android:text=<span class="string">"button_1"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p>  随后在<code>public class FirstActivity extends AppCompatActivity{}</code>中添加 selfDestruct函数。注意<strong>不是在onCreate()中添加！</strong>selfDestruct与onCreate()互不包含。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selfDestruct</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">    Toast.makeText(FirstActivity.<span class="keyword">this</span>, <span class="string">"you clicked button 1"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="运行效果"><a href="#运行效果" class="headerlink" title="运行效果"></a>运行效果</h3><ul>
+<li>两种方式效果相同如图<br>  [<img src="http://cdn2.snapgram.co/imgs/2016/07/20/6.jpg" alt="6.jpg"></li>
+</ul>
+<h2 id="menu使用说明"><a href="#menu使用说明" class="headerlink" title="menu使用说明"></a>menu使用说明</h2><blockquote>
+<p><a href="http://jingyan.baidu.com/article/47a29f24426063c014239931.html" target="_blank" rel="external">图解Android Studio下创建menu布局文件</a><br><a href="https://developer.android.com/guide/topics/ui/menus.html" target="_blank" rel="external">google官方说明<strong>(中文)</strong></a></p>
+</blockquote>
+<h3 id="menu介绍"><a href="#menu介绍" class="headerlink" title="menu介绍"></a>menu介绍</h3><ul>
+<li>菜单是许多应用中常见的用户界面组件。要提供熟悉而一致的用户体验，您应使用 Menu API 呈现 Activity 中的用户操作和其他选项<br>  <img src="http://cdn3.snapgram.co/imgs/2016/07/21/2011082121245374.png" alt="2011082121245374.png"><br>  注意：<strong>从 Android 3.0（API 级别 11）开始，采用 Android 技术的设备不必再提供一个专用“菜单”按钮。随着这种改变，Android 应用需摆脱对包含 6 个项目的传统菜单面板的依赖，取而代之的是要提供一个操作栏来呈现常见的用户操作。</strong><br>  如图所示<br>  <img src="http://cdn3.snapgram.co/imgs/2016/07/21/1.jpg" alt="1.jpg"></li>
+</ul>
+<h3 id="第一行代码AS-1"><a href="#第一行代码AS-1" class="headerlink" title="第一行代码AS"></a>第一行代码AS</h3><ul>
+<li><p>先在res文件夹右键，然后如下图所示<br><img src="http://cdn4.snapgram.co/images/2016/07/21/B.jpg" alt="B.jpg"></p>
+</li>
+<li><p>然后会出现下面的页面，在Resource type下拉栏选择menu，如下图所示：<br><img src="http://cdn2.snapgram.co/imgs/2016/07/21/B2.jpg" alt="B2.jpg"></p>
+</li>
+<li><p>最后点击OK就行了，这时候可以看到menu文件夹已经出来了。</p>
+</li>
+<li><p>接着在menu文件夹下右键，选择如下图所示：<br><img src="http://cdn1.snapgram.co/imgs/2016/07/21/B3.jpg" alt="B3.jpg"></p>
+</li>
+<li><p>输入文件名点击OK即可<br>  <img src="http://cdn3.snapgram.co/imgs/2016/07/21/B4.jpg" alt="B4.jpg"></p>
+</li>
+<li><p>在main.xml中添加如下代码</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"&gt;</span><br><span class="line">&lt;xml</span><br><span class="line">android:id="@+id/add_item"</span><br><span class="line">android:title="Add"/&gt;</span><br><span class="line">&lt;item</span><br><span class="line">android:id="@+id/remove_item"</span><br><span class="line">android:title="Remove"/&gt;</span><br><span class="line">&lt;/menu&gt;</span><br></pre></td></tr></table></figure>
+<p>  这里是创建了两个菜单项，add 和 remove。</p>
+</li>
+</ul>
+<ul>
+<li><p>打开FirestActivity 重写onCreateOptionsMenu();</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onCreateOptionsMenu</span><span class="params">(Menu menu)</span></span>&#123;</span><br><span class="line">getMenuInflater().inflate(R.menu.main,menu);</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>至此菜单创建完毕，效果如图。</p>
+<pre><code>![2.jpg](http://cdn4.snapgram.co/images/2016/07/21/2.jpg)
+</code></pre></li>
+<li><p>创建菜单点击响应事件<br>  重写FirestActivity中onOptionsItemSelected()；</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onOptionsItemSelected</span><span class="params">(MenuItem item)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Handle item selection</span></span><br><span class="line">    <span class="keyword">switch</span> (item.getItemId()) &#123;</span><br><span class="line">        <span class="keyword">case</span> R.id.add_item:</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">"you clicked Add"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">case</span> R.id.remove_item:</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">"you clicked Remove"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">super</span>.onOptionsItemSelected(item);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行效果图<br>  <img src="http://cdn2.snapgram.co/imgs/2016/07/21/3.jpg" alt="3.jpg"></p>
+<p>  <img src="http://cdn1.snapgram.co/imgs/2016/07/21/4.jpg" alt="4.jpg"></p>
+</li>
+</ul>
+<h3 id="android-onClick-创建菜单相应事件"><a href="#android-onClick-创建菜单相应事件" class="headerlink" title="android:onClick 创建菜单相应事件"></a>android:onClick 创建菜单相应事件</h3><ul>
+<li><p>main.xml中添加android:onClick</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   <span class="tag">&lt;<span class="name">menu</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">item</span></span><br><span class="line">       <span class="attr">android:id</span>=<span class="string">"@+id/add_item"</span></span><br><span class="line">       <span class="attr">android:onClick</span>=<span class="string">"item_Click"</span></span><br><span class="line">       <span class="attr">android:title</span>=<span class="string">"Add"</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">item</span></span><br><span class="line">       <span class="attr">android:id</span>=<span class="string">"@+id/remove_item"</span></span><br><span class="line">       <span class="attr">android:onClick</span>=<span class="string">"item_Click"</span></span><br><span class="line">       <span class="attr">android:title</span>=<span class="string">"Remove"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">menu</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在FirstActivity中添加响应函数</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">item_Click</span><span class="params">(MenuItem item)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Handle item selection</span></span><br><span class="line">    <span class="keyword">switch</span> (item.getItemId()) &#123;</span><br><span class="line">        <span class="keyword">case</span> R.id.add_item:</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">"you clicked Add"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> R.id.remove_item:</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">"you clicked Remove"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>: <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>效果同上。</p>
+</li>
+</ul>
+
+    
+
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    
+  </div>
+
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/v.png"
+               alt="Jasper" />
+          <p class="site-author-name" itemprop="name">Jasper</p>
+          <p class="site-description motion-element" itemprop="description">程序员 微尘 V</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jasper-1024" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016.6.2 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jasper</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'jasper1024';
+      var disqus_identifier = '第一行代码AS跟刷-Activity(一).html';
+      var disqus_title = '第一行代码AS跟刷-Activity(一)';
+      var disqus_url = 'http://yoursite.com/第一行代码AS跟刷-Activity(一).html';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("8AEPwU1rVoSnwxtOrX35u23j-gzGzoHsz", "SBLr7EMdL83IXCfJSbydMdll");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

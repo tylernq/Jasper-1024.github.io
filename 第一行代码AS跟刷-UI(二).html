@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content=",,," />
 
 
 
@@ -59,15 +59,41 @@
 
 
 
-<meta name="description" content="程序员 微尘 V">
+<meta name="description" content="Dialog
+对话框。官方文档如下(中文)
+
+https://developer.android.com/guide/topics/ui/dialogs.html#AlertDialog
+
+
+没有什么多说的，官方文档很清楚了。
+  12345678910111213AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.t">
+<meta name="keywords">
 <meta property="og:type" content="website">
-<meta property="og:title" content="默">
-<meta property="og:url" content="http://yoursite.com/tags/开源/index.html">
+<meta property="og:title" content="第一行代码AS跟刷-UI(二)">
+<meta property="og:url" content="http://yoursite.com/第一行代码AS跟刷-UI(二).html">
 <meta property="og:site_name" content="默">
-<meta property="og:description" content="程序员 微尘 V">
+<meta property="og:description" content="Dialog
+对话框。官方文档如下(中文)
+
+https://developer.android.com/guide/topics/ui/dialogs.html#AlertDialog
+
+
+没有什么多说的，官方文档很清楚了。
+  12345678910111213AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.t">
+<meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/08/10/Screenshot_20160811-100654.png">
+<meta property="og:image" content="http://cdn1.snapgram.co/imgs/2016/08/10/Screenshot_20160811-102959.png">
+<meta property="og:updated_time" content="2016-08-11T11:53:32.138Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="默">
-<meta name="twitter:description" content="程序员 微尘 V">
+<meta name="twitter:title" content="第一行代码AS跟刷-UI(二)">
+<meta name="twitter:description" content="Dialog
+对话框。官方文档如下(中文)
+
+https://developer.android.com/guide/topics/ui/dialogs.html#AlertDialog
+
+
+没有什么多说的，官方文档很清楚了。
+  12345678910111213AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.t">
+<meta name="twitter:image" content="http://cdn2.snapgram.co/imgs/2016/08/10/Screenshot_20160811-100654.png">
 
 
 
@@ -85,7 +111,13 @@
   };
 </script>
 
-  <title> 标签: 开源 | 默 </title>
+  <title>
+  
+
+  
+    第一行代码AS跟刷-UI(二) | 默
+  
+</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -223,74 +255,45 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        开源
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+    
+      <h3 id="Dialog"><a href="#Dialog" class="headerlink" title="Dialog"></a>Dialog</h3><ul>
+<li><p>对话框。官方文档如下(中文)</p>
+<blockquote>
+<p><a href="https://developer.android.com/guide/topics/ui/dialogs.html#AlertDialog" target="_blank" rel="external">https://developer.android.com/guide/topics/ui/dialogs.html#AlertDialog</a></p>
+</blockquote>
+</li>
+<li><p>没有什么多说的，官方文档很清楚了。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">AlertDialog.Builder dialog = <span class="keyword">new</span> AlertDialog.Builder(MainActivity.<span class="keyword">this</span>);</span><br><span class="line">dialog.setTitle(<span class="string">"对话框"</span>);</span><br><span class="line">dialog.setMessage(<span class="string">"不小心出错"</span>);</span><br><span class="line">dialog.setCancelable(<span class="keyword">false</span>);</span><br><span class="line">dialog.setPositiveButton(<span class="string">"OK"</span>, <span class="keyword">new</span> DialogInterface.OnClickListener()&#123;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialog,<span class="keyword">int</span> which )</span></span>&#123;&#125;</span><br><span class="line">&#125;);</span><br><span class="line">dialog.setNegativeButton(<span class="string">"Cancel"</span>, <span class="keyword">new</span> DialogInterface.OnClickListener()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialog,<span class="keyword">int</span> which )</span></span>&#123;&#125;</span><br><span class="line">&#125;);</span><br><span class="line">dialog.show();</span><br></pre></td></tr></table></figure>
+<p>  效果如下<br>  <img src="http://cdn2.snapgram.co/imgs/2016/08/10/Screenshot_20160811-100654.png" alt="Screenshot_20160811-100654.png"></p>
+</li>
+</ul>
+<h3 id="ProgressDialog"><a href="#ProgressDialog" class="headerlink" title="ProgressDialog"></a>ProgressDialog</h3><ul>
+<li><p>官方文档</p>
+<blockquote>
+<p><a href="https://developer.android.com/reference/android/app/ProgressDialog.html" target="_blank" rel="external">https://developer.android.com/reference/android/app/ProgressDialog.html</a></p>
+</blockquote>
+</li>
+<li><p>基本显示效果是对话框+进度条</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ProgressDialog progressDialog = <span class="keyword">new</span> ProgressDialog(MainActivity.<span class="keyword">this</span>);</span><br><span class="line">progressDialog.setTitle(<span class="string">"progressDialog"</span>);</span><br><span class="line">progressDialog.setMessage(<span class="string">"加载中"</span>);</span><br><span class="line">progressDialog.setCancelable(<span class="keyword">false</span>);</span><br><span class="line">progressDialog.show();</span><br></pre></td></tr></table></figure>
+<p>  效果如下<br>  <a href="http://snapgr.am/image/LQbG" target="_blank" rel="external"><img src="http://cdn1.snapgram.co/imgs/2016/08/10/Screenshot_20160811-102959.png" alt="Screenshot_20160811-102959.png"></a></p>
+</li>
+<li><p>setCancelable()；设置为false后不能通过back键返回上一个Activity  只能调用ProgressDialog.dismiss()；来关闭。</p>
+</li>
+</ul>
 
     
-      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/07/09/单片机课程设计总结/" itemprop="url">
-              
-                <span itemprop="name">单片机课程设计总结</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-09T20:10:11+08:00"
-              content="2016-07-09" >
-          07-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+  <div class="comments" id="comments">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/06/18/hellowworld/" itemprop="url">
-              
-                <span itemprop="name">Hello World</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-18T10:10:11+08:00"
-              content="2016-06-18" >
-          06-18
-        </time>
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
       </div>
-
-    </header>
-  </article>
-
-
     
   </div>
 
-  
+  </div>
 
 
           </div>
@@ -298,6 +301,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -488,9 +502,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'jasper1024';
-      var disqus_identifier = 'tags/开源/index.html';
-      var disqus_title = '';
-      var disqus_url = '';
+      var disqus_identifier = '第一行代码AS跟刷-UI(二).html';
+      var disqus_title = '第一行代码AS跟刷-UI(二)';
+      var disqus_url = 'http://yoursite.com/第一行代码AS跟刷-UI(二).html';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
@@ -501,6 +515,8 @@
       }
 
       run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
       
     </script>
   
