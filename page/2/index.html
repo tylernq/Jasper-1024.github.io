@@ -247,6 +247,198 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/21/初入树莓派1----安装系统+进入SSH/" itemprop="url">
+                  初入树莓派1安装系统+进入SSH
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-21T10:17:11+08:00" content="2016-06-21">
+              2016-06-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/树莓派/" itemprop="url" rel="index">
+                    <span itemprop="name">树莓派</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/21/初入树莓派1----安装系统+进入SSH/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/21/初入树莓派1----安装系统+进入SSH/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/21/初入树莓派1----安装系统+进入SSH/" class="leancloud_visitors" data-flag-title="初入树莓派1安装系统+进入SSH">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><del><strong>为了更好的从事程序员事业、填坑linux、为学弟打下第一手资料、留下linux培训教材……</strong></del></p>
+<ul>
+<li><em>实际就是为了搭个路由器，玩玩</em><br> 入了树莓派3b +电源+外壳+sd卡—300大洋——–<em>肉疼</em></li>
+</ul>
+<hr>
+<h3 id="树莓派系统安装"><a href="#树莓派系统安装" class="headerlink" title="树莓派系统安装"></a>树莓派系统安装</h3><ul>
+<li>树莓派3b的耗电量还是挺大的<br> 推荐买个2.5A的电源</li>
+</ul>
+<p>系统选择</p>
+<ul>
+<li><p>树莓派支持 数十款操作系统，一般新手推荐的是<strong>raspbian</strong></p>
+</li>
+<li><p>Raspbian是为树莓派设计，基于Debian的操作系统，不隶属于树莓派基金会[1]，但被列为官方支持的操作系统，</p>
+</li>
+<li><p><a href="https://www.raspberrypi.org/downloads/raspbian/" target="_blank" rel="external">Raspbian镜像地址</a>(最好在FQ下，否则会很慢的。你要用IDM当我没说)</p>
+</li>
+<li>Raspbian有两个版本，简单区别如下<ul>
+<li>RASPBIAN JESSIE WITH PIXEL<br>带有完整的桌面体验，安装包1.4G左右</li>
+<li>RASPBIAN JESSIE LITE<br>没有X-server 套件，没有 Qt 和 GTK+ 的函式库。等于去掉了桌面。安装包400Mb上下。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>所要用到的工具是：</p>
+<ul>
+<li>1.多功能读卡器一个</li>
+<li>2.TF卡一张（4G以上）</li>
+</ul>
+</li>
+<li><p>烧写器官方推荐是<strong>win32diskimager</strong><br>但是<strong>文件路径不支持中文</strong>。</p>
+</li>
+<li><p>个人推荐 <strong>USB Image Tool</strong><br>故障率最低的是1.7版本。</p>
+</li>
+</ul>
+<h3 id="插上读卡器，烧写系统开始！"><a href="#插上读卡器，烧写系统开始！" class="headerlink" title="插上读卡器，烧写系统开始！"></a>插上读卡器，烧写系统开始！</h3><ul>
+<li><p><strong>烧写系统</strong></p>
+<ol>
+<li>打开USB Image Tool<br><strong>注意左上角是Device Mode，不是Volume Mode！</strong><br><a href="http://snapgr.am/image/Livb" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/06/20/1.png" alt="1.png"></a></li>
+<li>选择下载后解压的img文件</li>
+<li>写入等待进度条完成即可。</li>
+</ol>
+</li>
+<li><p><strong>错误原因</strong></p>
+<ol>
+<li>USB Image Tool 在win7以上系统中必须要以管理员权限运行</li>
+<li>USB Image Tool运行需要.net环境 直接使用系统默认加载的即可。</li>
+<li>烧写完成后接入电源</li>
+</ol>
+</li>
+</ul>
+<h3 id="进入SSH管理（没有显示设备时）"><a href="#进入SSH管理（没有显示设备时）" class="headerlink" title="进入SSH管理（没有显示设备时）"></a>进入SSH管理（没有显示设备时）</h3><ul>
+<li><p>第一次进入系统时直接利用网线接入路由器，将电脑接入同一个wifi下。<br>在路由器管理界面查找树莓派对应得IP地址。<br>也可以扫描一下局域网设备中开启22端口的设备.</p>
+</li>
+<li><p><strong>使用SSH管理工具，这里以putty为例。打开软件，填入树莓派ip地址。</strong></p>
+<ol>
+<li><strong>打开软件，填入树莓派ip地址。</strong><br><em>默认登陆界面</em><br><a href="http://snapgr.am/image/Liv4" target="_blank" rel="external"><img src="http://cdn4.snapgram.co/images/2016/06/20/2.png" alt="2.png"></a><ol>
+<li><strong>默认用户名pi 密码raspberry。</strong><br><a href="http://snapgr.am/image/LivJ" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/06/20/3.png" alt="3.png"></a></li>
+<li><strong>登陆成功！</strong><br><img src="http://cdn1.snapgram.co/imgs/2016/06/20/4.png" alt="4.png"></li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>参考<blockquote>
+<p><a href="http://blog.csdn.net/longerzone/article/details/36034619" target="_blank" rel="external">http://blog.csdn.net/longerzone/article/details/36034619</a></p>
+</blockquote>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/18/hellowworld/" itemprop="url">
                   Hello World
                 </a>
@@ -402,7 +594,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -410,7 +602,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
