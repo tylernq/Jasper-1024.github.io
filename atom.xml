@@ -737,9 +737,9 @@
     <link href="http://yoursite.com/2016/06/27/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%972/"/>
     <id>http://yoursite.com/2016/06/27/VPS科学上网教程系列2/</id>
     <published>2016-06-27T09:52:16.000Z</published>
-    <updated>2016-09-29T04:45:02.110Z</updated>
+    <updated>2016-12-11T13:11:26.282Z</updated>
     
-    <content type="html">&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.6&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;26&lt;/span&gt;  与SSR有关部分基本完成。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.6&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;28&lt;/span&gt;  TCP优化部分完成&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.6&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;  gfw.press、FinalSpeed和锐速部分基本完成。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.9&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;  gfw.press目前不稳定，暂时废弃，增加KCP相关内容&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    <content type="html">&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.06&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;26&lt;/span&gt;    与SSR有关部分基本完成。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.06&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;28&lt;/span&gt;    TCP优化部分完成&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.06&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;    gfw.press、FinalSpeed和锐速部分基本完成。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.12&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;11&lt;/span&gt;    重新整理相关内容，增加SSR混淆&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h2 id=&quot;TCP优化&quot;&gt;&lt;a href=&quot;#TCP优化&quot; class=&quot;headerlink&quot; title=&quot;TCP优化&quot;&gt;&lt;/a&gt;TCP优化&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;适用场景：高延迟搞丢包线路。&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;增加TCP连接数量&lt;/p&gt;
@@ -874,7 +874,7 @@
 &lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;tail -&lt;span class=&quot;keyword&quot;&gt;f&lt;/span&gt; /fs/server.&lt;span class=&quot;built_in&quot;&gt;log&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&quot;gfw-press大杀器&quot;&gt;&lt;a href=&quot;#gfw-press大杀器&quot; class=&quot;headerlink&quot; title=&quot;~~ gfw.press大杀器~~&quot;&gt;&lt;/a&gt;~~ gfw.press大杀器~~&lt;/h2&gt;&lt;ul&gt;
+&lt;h2 id=&quot;gfw-press大杀器&quot;&gt;&lt;a href=&quot;#gfw-press大杀器&quot; class=&quot;headerlink&quot; title=&quot;gfw.press大杀器&quot;&gt;&lt;/a&gt;gfw.press大杀器&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;介绍&lt;br&gt;GFW.Press号称新一代军用级高强度加密抗干扰海底光缆专用网络数据高速传输软件，挺神的反正。号称除白名单外，再也不能破解的协议，开发者是推特赵国劣绅石斑鱼大爷 @chinashiyu&lt;/li&gt;
 &lt;li&gt;官网&lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&quot;http://gfw.press&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://gfw.press&lt;/a&gt;&lt;/p&gt;
@@ -885,7 +885,7 @@
 &lt;p&gt;&lt;a href=&quot;https://medium.com/@FWTO_O/gfw-press%E6%BA%90%E7%A0%81%E7%AE%80%E6%9E%90-61a2714eb99f#.bgztaqa6m&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://medium.com/@FWTO_O/gfw-press%E6%BA%90%E7%A0%81%E7%AE%80%E6%9E%90-61a2714eb99f#.bgztaqa6m&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;效果&lt;br&gt;只支持http/https代理，基本够用。客户端包括pc端和android端。&lt;br&gt;搭建在vps上及其进程本身很稳定，使用过程中除了进行大流量长达半个小时的满宽带下载外，没有断过。&lt;strong&gt;使用FinalSpeed+gfw.press 满宽带挂整晚下载，没掉过速度！&lt;/strong&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;效果&lt;br&gt;只支持http/https代理，基本够用。客户端包括pc端和android端。&lt;br&gt;搭建在vps上及其进程本身很稳定，使用过程中除了进行大流量长达半个小时的满宽带下载外，没有断过。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;缺点&lt;br&gt;Java语言编写，对VPS有一定要求，少于512M/512M vswap的openvz vps最好不要尝试，基本跑不动。&lt;/p&gt;
 &lt;/li&gt;
@@ -925,6 +925,35 @@
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3 id=&quot;Kcptun&quot;&gt;&lt;a href=&quot;#Kcptun&quot; class=&quot;headerlink&quot; title=&quot;Kcptun&quot;&gt;&lt;/a&gt;Kcptun&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;小内存VPS可用(64M内存服务器稳定运行)，OVZ架构可用， Go 语言编写&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;警告！&lt;/strong&gt;Kcptun配置较为繁琐，不当配置将带来大量流量消耗！&lt;/p&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;Kcptun 基于 KCP 协议的 UDP 隧道，它可以将 TCP 流转换为 KCP+UDP 流。而 KCP 是一个快速可靠协议，能以比 TCP 浪费10%-20%的带宽的代价，换取平均延迟降低 30%-40%，且最大延迟降低三倍的传输效果。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Kcptun 服务端安装繁琐，目前没有改为Kcptun加速的需求，收集网络一部分Kcptun搭建教程供参考。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;blockquote&gt;
+&lt;p&gt;小内存福音，Kcptun Shadowsocks加速方案      &lt;a href=&quot;https://blog.kuoruan.com/102.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://blog.kuoruan.com/102.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Kcptun 服务端一键安装脚本,喜闻乐见的多用户支持&lt;br&gt;  &lt;a href=&quot;https://blog.kuoruan.com/110.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://blog.kuoruan.com/110.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;SSR混淆&quot;&gt;&lt;a href=&quot;#SSR混淆&quot; class=&quot;headerlink&quot; title=&quot;SSR混淆&quot;&gt;&lt;/a&gt;SSR混淆&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;作者Jessica Lynn&lt;br&gt;转载自&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://plus.google.com/113582246973758055268/posts/H51ZpzwUFDK?iem=4&amp;amp;gpawv=1&amp;amp;hl=zh-Hans-TW&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://plus.google.com/113582246973758055268/posts/H51ZpzwUFDK?iem=4&amp;amp;gpawv=1&amp;amp;hl=zh-Hans-TW&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;一些混淆参数（域名）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;国内：&lt;br&gt;  sz.btfs.mail.ftn.qq.com&lt;br&gt;  btrace.video.qq.com&lt;br&gt;  ossweb-img.qq.com&lt;br&gt;  1234-wyfqdku4kcgcabalp6rdudo7–1042249034.cmos.greencompute.org&lt;br&gt;  aecpm.alicdn.com&lt;br&gt;  aldh5.tmall.com&lt;br&gt;  at.alicdn.com&lt;br&gt;  atanx.alicdn.com&lt;br&gt;  g.alicdn.com&lt;br&gt;  gtms03.alicdn.com&lt;br&gt;  gw.alicdn.com&lt;br&gt;  img.alicdn.com&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;国外：&lt;br&gt;  az813057.vo.msecnd.net&lt;br&gt;  az817829.vo.msecnd.net&lt;br&gt;  azureedge.net&lt;br&gt;  media.gettyimages.com&lt;br&gt;  origin.cdn77.com&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&quot;结束&quot;&gt;&lt;a href=&quot;#结束&quot; class=&quot;headerlink&quot; title=&quot;结束&quot;&gt;&lt;/a&gt;结束&lt;/h2&gt;</content>
     
     <summary type="html">
@@ -947,7 +976,7 @@
     <link href="http://yoursite.com/2016/06/26/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%97/"/>
     <id>http://yoursite.com/2016/06/26/VPS科学上网教程系列/</id>
     <published>2016-06-26T04:16:16.000Z</published>
-    <updated>2016-12-11T12:31:36.322Z</updated>
+    <updated>2016-12-11T13:11:39.339Z</updated>
     
     <content type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.06.26  与SSR有关部分基本完成。  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.09.29  更新SSR部分内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.10.09  更新SSR内容，更新Android端接入。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.11.09  更新SSR混淆相关内容，更新SSR-Android，更新部分介绍。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.11.20  整合一部分VPS优化内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.12.11  删减调整一部分内容&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h2 id=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;a href=&quot;#基本从0开始的教程，当作自己的备份了。&quot; class=&quot;headerlink&quot; title=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;/a&gt;基本从0开始的教程，当作自己的备份了。&lt;/h2&gt;&lt;ul&gt;
