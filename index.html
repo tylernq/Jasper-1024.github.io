@@ -419,8 +419,7 @@
 <h4 id="ViewHolder"><a href="#ViewHolder" class="headerlink" title="ViewHolder"></a>ViewHolder</h4></li>
 <li>ViewHolder不是Android的开发API，而是一种设计方法</li>
 <li><p>针对<br><code>ImageView fruitImage = (ImageView)view.findViewById(R.id.fruit_image);
-TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code></p>
-<p>每次布局实例化后，findViewById都会重新执行获取控件实例</p>
+TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每次布局实例化后，findViewById都会重新执行获取控件实例</p>
 </li>
 <li><p>新增内部类 ViewHolder，利用Tag附加到对应View中，即每次加载布局时，对应的  获取控件实例的操作也一并执行，并储存在View中。这样 获取控件实例的操作直接缓存在View中，不会再重复执行</p>
 </li>
