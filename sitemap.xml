@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/12/13/Android%E7%AC%94%E8%AE%B0-UI-ListView/</loc>
+    
+    <lastmod>2016-12-14T15:00:56.495Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/12/09/Android%E7%AC%94%E8%AE%B0-UI(%E4%B8%80)/</loc>
+    
+    <lastmod>2016-12-14T15:00:48.852Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/07/17/Android%E6%B1%87%E6%80%BB/</loc>
     
     <lastmod>2016-12-14T14:59:13.247Z</lastmod>
@@ -9,23 +23,9 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/12/13/Android%E7%AC%94%E8%AE%B0-UI-ListView/</loc>
-    
-    <lastmod>2016-12-14T14:57:32.524Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2016/12/07/Android%E7%AC%94%E8%AE%B0-Activity/</loc>
     
     <lastmod>2016-12-14T08:23:03.094Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/12/09/Android%E7%AC%94%E8%AE%B0-UI(%E4%B8%80)/</loc>
-    
-    <lastmod>2016-12-14T08:22:18.222Z</lastmod>
     
   </url>
   
