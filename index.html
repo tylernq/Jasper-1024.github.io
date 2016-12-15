@@ -2066,7 +2066,7 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
       
         
           
-            <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line"><span class="number">2016.06</span>.<span class="number">26</span>    与SSR有关部分基本完成。</span><br><span class="line"><span class="number">2016.06</span>.<span class="number">28</span>    TCP优化部分完成</span><br><span class="line"><span class="number">2016.06</span>.<span class="number">29</span>    gfw.press、FinalSpeed和锐速部分基本完成。</span><br><span class="line"><span class="number">2016.12</span>.<span class="number">11</span>    重新整理相关内容，增加SSR混淆</span><br></pre></td></tr></table></figure>
+            <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line"><span class="number">2016.06</span>.<span class="number">26</span>    与SSR有关部分基本完成。</span><br><span class="line"><span class="number">2016.06</span>.<span class="number">28</span>    TCP优化部分完成</span><br><span class="line"><span class="number">2016.06</span>.<span class="number">29</span>    gfw.press、FinalSpeed和锐速部分基本完成。</span><br><span class="line"><span class="number">2016.12</span>.<span class="number">11</span>    重新整理相关内容，增加SSR混淆</span><br><span class="line"><span class="number">2016.12</span>.<span class="number">15</span>    增加TCP-BBR</span><br></pre></td></tr></table></figure>
 <h2 id="TCP优化"><a href="#TCP优化" class="headerlink" title="TCP优化"></a>TCP优化</h2><p><strong>适用场景：高延迟搞丢包线路。</strong></p>
 <ul>
 <li><p>增加TCP连接数量</p>
@@ -2281,6 +2281,40 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
 <li><p>国外：<br>  az813057.vo.msecnd.net<br>  az817829.vo.msecnd.net<br>  azureedge.net<br>  media.gettyimages.com<br>  origin.cdn77.com</p>
 </li>
 </ul>
+<h2 id="TCP-BBR"><a href="#TCP-BBR" class="headerlink" title="TCP-BBR"></a>TCP-BBR</h2><ul>
+<li><p>BBR (Bottleneck Bandwidth and RTT)是由google工程师编写的新的 TCP 拥塞控制算法，目的是要尽量跑满带宽, 并且尽量不要有排队的情况, 加速效果不比锐速差，<br>完全开源，对隐匿性要求高而无法使用锐速的人士，也可以放心使用<br><a href="https://github.com/google/bbr" target="_blank" rel="external">开源地址</a></p>
+</li>
+<li><p>测试环境 Debian 7 x64  Vultr</p>
+</li>
+<li>启用TCP-BBR涉及VPS更换内核，所以如果步骤错误，或者VPS不兼容最新的内核，会导致无法开机等错误，脚本来自于逗逼根据地</li>
+<li>锐速不支持，更换后的4.9内核</li>
+</ul>
+<hr>
+<ul>
+<li>低版本linux内核加入TCP-BBR，正在测试中，稳定后会放出教程</li>
+</ul>
+<hr>
+<ul>
+<li><p>连接SSH，输入下面命令，更新内核</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate https://soft.dou-bi.co/Bash/bbr.sh &amp;&amp; chmod +x bbr.sh &amp;&amp; bash bbr.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Debian系统，更换内核时会询问你是否终止删除内核，选择 No 方向键 选择，回车键 确认)</p>
+</li>
+<li><p>安装完毕，自动重启VPS，重连SSH</p>
+</li>
+<li><p>修改sysctl.conf</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
+<p>复制代码：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#TCP配置优化(不然你自己根本不知道你在干什么)</span><br><span class="line">fs.file-max = 51200</span><br><span class="line">#提高整个系统的文件限制</span><br><span class="line">net.core.rmem_max = 67108864</span><br><span class="line">net.core.wmem_max = 67108864</span><br><span class="line">net.core.netdev_max_backlog = 250000</span><br><span class="line">net.core.somaxconn = 4096</span><br><span class="line"></span><br><span class="line">net.ipv4.tcp_syncookies = 1</span><br><span class="line">net.ipv4.tcp_tw_reuse = 1</span><br><span class="line">net.ipv4.tcp_tw_recycle = 0</span><br><span class="line">net.ipv4.tcp_fin_timeout = 30</span><br><span class="line">net.ipv4.tcp_keepalive_time = 1200</span><br><span class="line">net.ipv4.ip_local_port_range = 10000 65000</span><br><span class="line">net.ipv4.tcp_max_syn_backlog = 8192</span><br><span class="line">net.ipv4.tcp_max_tw_buckets = 5000</span><br><span class="line">net.ipv4.tcp_fastopen = 3</span><br><span class="line">net.ipv4.tcp_mem = 25600 51200 102400</span><br><span class="line">net.ipv4.tcp_rmem = 4096 87380 67108864</span><br><span class="line">net.ipv4.tcp_wmem = 4096 65536 67108864</span><br><span class="line">net.ipv4.tcp_mtu_probing = 1</span><br><span class="line">net.ipv4.tcp_congestion_control = bbr</span><br><span class="line">#END OF LINE</span><br></pre></td></tr></table></figure>
+<p>保存(Ctrl + X —— y ——回车)</p>
+<p>应用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>重启SSR <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/shadowsocks restart</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2>
           
         
@@ -2404,7 +2438,7 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line">2016.06.26  与SSR有关部分基本完成。  </span><br><span class="line">2016.09.29  更新SSR部分内容</span><br><span class="line">2016.10.09  更新SSR内容，更新Android端接入。</span><br><span class="line">2016.11.09  更新SSR混淆相关内容，更新SSR-Android，更新部分介绍。</span><br><span class="line">2016.11.20  整合一部分VPS优化内容</span><br><span class="line">2016.12.11  删减调整一部分内容</span><br></pre></td></tr></table></figure>
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line">2016.06.26  与SSR有关部分基本完成。  </span><br><span class="line">2016.09.29  更新SSR部分内容</span><br><span class="line">2016.10.09  更新SSR内容，更新Android端接入。</span><br><span class="line">2016.11.09  更新SSR混淆相关内容，更新SSR-Android，更新部分介绍。</span><br><span class="line">2016.11.20  整合一部分VPS优化内容</span><br><span class="line">2016.12.11  删减调整一部分内容</span><br><span class="line">2016.12.15  替换锐速优化为 BBR，整合TCP优化</span><br></pre></td></tr></table></figure>
 <h2 id="基本从0开始的教程，当作自己的备份了。"><a href="#基本从0开始的教程，当作自己的备份了。" class="headerlink" title="基本从0开始的教程，当作自己的备份了。"></a>基本从0开始的教程，当作自己的备份了。</h2><ul>
 <li><strong>吐槽</strong><br>作为一个伪程序员，每次最苦恼的就是Android SDK的更新，当初安装Android Studio时候就因为防火墙折腾了整整2周，简直就是把自学Android的那点耐心都磨没了。各种的搜索文档，离了google效率下降70%！科学上网简直成了程序员的必备生存技能了。</li>
 </ul>
@@ -2610,10 +2644,9 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
 </ul>
 <h2 id="VPS优化"><a href="#VPS优化" class="headerlink" title="VPS优化"></a>VPS优化</h2><ul>
 <li>详情在<a href="https://jasper-1024.github.io/2016/06/27/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%972/" target="_blank" rel="external">科学上网教程（二）——VPS优化加速</a></li>
-<li>这里只提及TCP优化和锐速<h3 id="TCP优化"><a href="#TCP优化" class="headerlink" title="TCP优化"></a>TCP优化</h3></li>
-<li>建议可以加载TCP优化的VPS都进行一下设置<br><strong>适用场景：高延迟搞丢包线路。</strong></li>
+<li>这里只提及Tcp优化+BBR</li>
 </ul>
-<ul>
+<h3 id="TCP优化"><a href="#TCP优化" class="headerlink" title="TCP优化"></a>TCP优化</h3><ul>
 <li><p>增加TCP连接数量</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/security/limits.conf</span><br></pre></td></tr></table></figure>
 <p>添加两行：</p>
@@ -2623,75 +2656,39 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
 <li><p>设置ulimit：</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ulimit -n <span class="number">51200</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>修改内核参数适合的还是hybla（高延迟高丢包率环境）<br>首先看一下VPS现有算法：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl net.ipv4.tcp_available_congestion_control</span><br></pre></td></tr></table></figure>
-<p>没有hybla时，加载hybla算法.</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sbin/modprobe tcp_hybla</span><br></pre></td></tr></table></figure>
-<p>开始修改</p>
+</ul>
+<h3 id="TCP-BBR-推荐"><a href="#TCP-BBR-推荐" class="headerlink" title="TCP-BBR(推荐)"></a>TCP-BBR(推荐)</h3><ul>
+<li><p>BBR (Bottleneck Bandwidth and RTT)是由google工程师编写的新的 TCP 拥塞控制算法，目的是要尽量跑满带宽, 并且尽量不要有排队的情况, 加速效果不比锐速差，<br>完全开源，对隐匿性要求高而无法使用锐速的人士，也可以放心使用<br><a href="https://github.com/google/bbr" target="_blank" rel="external">开源地址</a></p>
+</li>
+<li><p>测试环境 Debian 7 x64  Vultr</p>
+</li>
+<li>启用TCP-BBR涉及VPS更换内核，所以如果步骤错误，或者VPS不兼容最新的内核，会导致无法开机等错误，脚本来自于逗逼根据地</li>
+<li>锐速不支持，更换后的4.9内核</li>
+</ul>
+<hr>
+<ul>
+<li>低版本linux内核加入TCP-BBR，正在测试中，稳定后会放出教程</li>
+</ul>
+<hr>
+<ul>
+<li><p>连接SSH，输入下面命令，更新内核</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate https://soft.dou-bi.co/Bash/bbr.sh &amp;&amp; chmod +x bbr.sh &amp;&amp; bash bbr.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Debian系统，更换内核时会询问你是否终止删除内核，选择 No 方向键 选择，回车键 确认)</p>
+</li>
+<li><p>安装完毕，自动重启VPS，重连SSH</p>
+</li>
+<li><p>修改sysctl.conf</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
 <p>复制代码：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#TCP配置优化(不然你自己根本不知道你在干什么)</span><br><span class="line">fs.file-max = 51200</span><br><span class="line">#提高整个系统的文件限制</span><br><span class="line">net.core.rmem_max = 67108864</span><br><span class="line">net.core.wmem_max = 67108864</span><br><span class="line">net.core.netdev_max_backlog = 250000</span><br><span class="line">net.core.somaxconn = 4096</span><br><span class="line"></span><br><span class="line">net.ipv4.tcp_syncookies = 1</span><br><span class="line">net.ipv4.tcp_tw_reuse = 1</span><br><span class="line">net.ipv4.tcp_tw_recycle = 0</span><br><span class="line">net.ipv4.tcp_fin_timeout = 30</span><br><span class="line">net.ipv4.tcp_keepalive_time = 1200</span><br><span class="line">net.ipv4.ip_local_port_range = 10000 65000</span><br><span class="line">net.ipv4.tcp_max_syn_backlog = 8192</span><br><span class="line">net.ipv4.tcp_max_tw_buckets = 5000</span><br><span class="line">net.ipv4.tcp_fastopen = 3</span><br><span class="line">net.ipv4.tcp_mem = 25600 51200 102400</span><br><span class="line">net.ipv4.tcp_rmem = 4096 87380 67108864</span><br><span class="line">net.ipv4.tcp_wmem = 4096 65536 67108864</span><br><span class="line">net.ipv4.tcp_mtu_probing = 1</span><br><span class="line">net.ipv4.tcp_congestion_control = hybla</span><br><span class="line">#END OF LINE</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#TCP配置优化(不然你自己根本不知道你在干什么)</span><br><span class="line">fs.file-max = 51200</span><br><span class="line">#提高整个系统的文件限制</span><br><span class="line">net.core.rmem_max = 67108864</span><br><span class="line">net.core.wmem_max = 67108864</span><br><span class="line">net.core.netdev_max_backlog = 250000</span><br><span class="line">net.core.somaxconn = 4096</span><br><span class="line"></span><br><span class="line">net.ipv4.tcp_syncookies = 1</span><br><span class="line">net.ipv4.tcp_tw_reuse = 1</span><br><span class="line">net.ipv4.tcp_tw_recycle = 0</span><br><span class="line">net.ipv4.tcp_fin_timeout = 30</span><br><span class="line">net.ipv4.tcp_keepalive_time = 1200</span><br><span class="line">net.ipv4.ip_local_port_range = 10000 65000</span><br><span class="line">net.ipv4.tcp_max_syn_backlog = 8192</span><br><span class="line">net.ipv4.tcp_max_tw_buckets = 5000</span><br><span class="line">net.ipv4.tcp_fastopen = 3</span><br><span class="line">net.ipv4.tcp_mem = 25600 51200 102400</span><br><span class="line">net.ipv4.tcp_rmem = 4096 87380 67108864</span><br><span class="line">net.ipv4.tcp_wmem = 4096 65536 67108864</span><br><span class="line">net.ipv4.tcp_mtu_probing = 1</span><br><span class="line">net.ipv4.tcp_congestion_control = bbr</span><br><span class="line">#END OF LINE</span><br></pre></td></tr></table></figure>
 <p>保存(Ctrl + X —— y ——回车)</p>
 <p>应用</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>重启SSR</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/shadowsocks restart</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="锐速"><a href="#锐速" class="headerlink" title="锐速"></a>锐速</h3><ul>
-<li>适用于丢包/不稳定线路，加速效果明显</li>
-<li>锐速属于闭源软件，没有证据证明锐速存在后门，也没有证据审计过锐速源码。如果你对隐匿性要求很高，是否安装请思量后决定。</li>
 </ul>
 <ul>
-<li><p>介绍<br>锐速（ServerSpeeder）加速软件是一种基于ZETATCP加速引擎的软件，只需单边部署就可以起到 显著加速效果的 TCP 加速技术。</p>
-</li>
-<li><p>应用场景及限制<br>单边加速，无需添加本地服务，但对linux内核有要求。（<strong>OVZ虚拟化不支持！</strong>）</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li>锐速目前已经停止了免费用户20M的提供，商业化提供破解属于侵权行为。</li>
-<li>以下提供的破解版安装方式，收集自网络。仅供个人实验使用，请支持正版。</li>
-</ul>
-<hr>
-<p>提供两种安装方式</p>
-<h4 id="锐速一键安装包"><a href="#锐速一键安装包" class="headerlink" title="锐速一键安装包"></a>锐速一键安装包</h4><p>参考地址</p>
-<blockquote>
-<p><a href="https://www.91yun.org/archives/683" target="_blank" rel="external">https://www.91yun.org/archives/683</a><br><a href="http://www.bandwagong.com/vultrvps/" target="_blank" rel="external">http://www.bandwagong.com/vultrvps/</a></p>
-</blockquote>
-<ul>
-<li><p>脚本自行匹配相同或相近内核，自动安装完成。</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -<span class="keyword">N</span> --<span class="keyword">no</span>-check-certificate http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/<span class="number">91</span>yun/serverspeeder/master/serverspe eder-<span class="keyword">all</span>.<span class="keyword">sh</span> &amp;&amp; bash serverspeeder-<span class="keyword">all</span>.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
-<p>根据屏幕提示输入 serverSpeederInstaller 其他信息默认，遇到Y或者N的地方，全部选Y.<br><img src="http://cdn2.snapgram.co/imgs/2016/06/28/QQ.jpg" alt="QQ.jpg"></p>
-</li>
-<li><p>如果你安装没有效果，编辑一下命令</p>
-  <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">vi</span> /serverspeeder/etc/config</span><br></pre></td></tr></table></figure>
-<p>  然后rsc和maxmode设置参数修改为1.然后在进行重启</p>
-  <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> restart</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>卸载</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chattr -i /serverspeeder/etc/apx* &amp;&amp; /serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> uninstall -<span class="keyword">f</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h4><p>参考</p>
-<blockquote>
-<p><a href="https://www.91yun.org/serverspeeder91yun" target="_blank" rel="external">https://www.91yun.org/serverspeeder91yun</a></p>
-</blockquote>
-<p>手动安装仅用于一键安装无效时，操作步骤在参考地址中很详细，不加累赘。</p>
-<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><ul>
-<li><p>启动锐速：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> start</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>停止锐速：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> <span class="keyword">stop</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看锐速是否正常运行</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service serverSpeeder status</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>重启锐速 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> restart</span><br></pre></td></tr></table></figure>
+<li>重启SSR <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/shadowsocks restart</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="shadowsocksR客户端配置"><a href="#shadowsocksR客户端配置" class="headerlink" title="shadowsocksR客户端配置"></a>shadowsocksR客户端配置</h2><ul>
