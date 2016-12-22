@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-22T09:22:03.049Z</updated>
+  <updated>2016-12-22T09:28:16.896Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/12/18/Android%E7%AC%94%E8%AE%B0-Fragments/"/>
     <id>http://yoursite.com/2016/12/18/Android笔记-Fragments/</id>
     <published>2016-12-18T04:00:00.000Z</published>
-    <updated>2016-12-22T09:22:03.049Z</updated>
+    <updated>2016-12-22T09:28:16.896Z</updated>
     
     <content type="html">&lt;hr&gt;
 &lt;p&gt;资料来源如下&lt;/p&gt;
@@ -100,7 +100,11 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;动态添加碎片&quot;&gt;&lt;a href=&quot;#动态添加碎片&quot; class=&quot;headerlink&quot; title=&quot;动态添加碎片&quot;&gt;&lt;/a&gt;动态添加碎片&lt;/h3&gt;&lt;hr&gt;
-&lt;h2 id=&quot;处理片段时，请谨记：Activity-布局必须包含一个可以插入片段的容器-View&quot;&gt;&lt;a href=&quot;#处理片段时，请谨记：Activity-布局必须包含一个可以插入片段的容器-View&quot; class=&quot;headerlink&quot; title=&quot; *处理片段时，请谨记：Activity 布局必须包含一个可以插入片段的容器 View&quot;&gt;&lt;/a&gt;&lt;em&gt; &lt;em&gt;*处理片段时，请谨记：Activity 布局必须包含一个可以插入片段的容器 View&lt;/em&gt;&lt;/em&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;处理片段时，请谨记：Activity 布局必须包含一个可以插入片段的容器 View&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;添加或移除片段必须使用 FragmentManager 创建 FragmentTransaction， FragmentTransaction将提供添加、移除、替换片段以及执行其他片段事务所需的 API。Activity 内调用 getSupportFragmentManager() 以获取 FragmentManager&lt;/p&gt;
 &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;rightfragment right = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; rightfragment();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;FragmentManager fragmentManager = getSupportFragmentManager();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
@@ -162,7 +166,11 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&quot;在Fragment中使用Context对象，getActivity-方法，只能是在fragment已经依附于Activity后才能调用。当fragment未依附于某个Activity、或fragment已经处于其生命周期的末尾而不再依附于某个Activity时，调用getActivity-方法会直接返回null&quot;&gt;&lt;a href=&quot;#在Fragment中使用Context对象，getActivity-方法，只能是在fragment已经依附于Activity后才能调用。当fragment未依附于某个Activity、或fragment已经处于其生命周期的末尾而不再依附于某个Activity时，调用getActivity-方法会直接返回null&quot; class=&quot;headerlink&quot; title=&quot;* 在Fragment中使用Context对象，getActivity()方法，只能是在fragment已经依附于Activity后才能调用。当fragment未依附于某个Activity、或fragment已经处于其生命周期的末尾而不再依附于某个Activity时，调用getActivity()方法会直接返回null&quot;&gt;&lt;/a&gt;* 在Fragment中使用Context对象，getActivity()方法，只能是在fragment已经依附于Activity后才能调用。当fragment未依附于某个Activity、或fragment已经处于其生命周期的末尾而不再依附于某个Activity时，调用getActivity()方法会直接返回null&lt;/h2&gt;&lt;ul&gt;
+&lt;ul&gt;
+&lt;li&gt;在Fragment中使用Context对象，getActivity()方法，只能是在fragment已经依附于Activity后才能调用。当fragment未依附于某个Activity、或fragment已经处于其生命周期的末尾而不再依附于某个Activity时，调用getActivity()方法会直接返回null&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Activity 中获取 Fragment 实例()&lt;br&gt;FragmentManger提供了findFragmentById()方法&lt;/p&gt;
 &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;RightFragment fragment = (RightFragment) getFragmentManager().findFragmentById(R.id.example_fragment);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;如果使用的使support-V4包，则 getFragmentManager()改为getSupportFragmentManager()，代码如下：&lt;/p&gt;

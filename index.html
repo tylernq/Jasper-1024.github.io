@@ -403,7 +403,11 @@
 </li>
 </ul>
 <h3 id="动态添加碎片"><a href="#动态添加碎片" class="headerlink" title="动态添加碎片"></a>动态添加碎片</h3><hr>
-<h2 id="处理片段时，请谨记：Activity-布局必须包含一个可以插入片段的容器-View"><a href="#处理片段时，请谨记：Activity-布局必须包含一个可以插入片段的容器-View" class="headerlink" title=" *处理片段时，请谨记：Activity 布局必须包含一个可以插入片段的容器 View"></a><em> <em>*处理片段时，请谨记：Activity 布局必须包含一个可以插入片段的容器 View</em></em></h2><ul>
+<ul>
+<li><strong>处理片段时，请谨记：Activity 布局必须包含一个可以插入片段的容器 View</strong></li>
+</ul>
+<hr>
+<ul>
 <li><p>添加或移除片段必须使用 FragmentManager 创建 FragmentTransaction， FragmentTransaction将提供添加、移除、替换片段以及执行其他片段事务所需的 API。Activity 内调用 getSupportFragmentManager() 以获取 FragmentManager</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rightfragment right = <span class="keyword">new</span> rightfragment();</span><br><span class="line">FragmentManager fragmentManager = getSupportFragmentManager();</span><br></pre></td></tr></table></figure>
 </li>
@@ -465,7 +469,11 @@
 </li>
 </ul>
 <hr>
-<h2 id="在Fragment中使用Context对象，getActivity-方法，只能是在fragment已经依附于Activity后才能调用。当fragment未依附于某个Activity、或fragment已经处于其生命周期的末尾而不再依附于某个Activity时，调用getActivity-方法会直接返回null"><a href="#在Fragment中使用Context对象，getActivity-方法，只能是在fragment已经依附于Activity后才能调用。当fragment未依附于某个Activity、或fragment已经处于其生命周期的末尾而不再依附于某个Activity时，调用getActivity-方法会直接返回null" class="headerlink" title="* 在Fragment中使用Context对象，getActivity()方法，只能是在fragment已经依附于Activity后才能调用。当fragment未依附于某个Activity、或fragment已经处于其生命周期的末尾而不再依附于某个Activity时，调用getActivity()方法会直接返回null"></a>* 在Fragment中使用Context对象，getActivity()方法，只能是在fragment已经依附于Activity后才能调用。当fragment未依附于某个Activity、或fragment已经处于其生命周期的末尾而不再依附于某个Activity时，调用getActivity()方法会直接返回null</h2><ul>
+<ul>
+<li>在Fragment中使用Context对象，getActivity()方法，只能是在fragment已经依附于Activity后才能调用。当fragment未依附于某个Activity、或fragment已经处于其生命周期的末尾而不再依附于某个Activity时，调用getActivity()方法会直接返回null</li>
+</ul>
+<hr>
+<ul>
 <li><p>Activity 中获取 Fragment 实例()<br>FragmentManger提供了findFragmentById()方法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RightFragment fragment = (RightFragment) getFragmentManager().findFragmentById(R.id.example_fragment);</span><br></pre></td></tr></table></figure>
 <p>如果使用的使support-V4包，则 getFragmentManager()改为getSupportFragmentManager()，代码如下：</p>
