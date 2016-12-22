@@ -1,0 +1,928 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,Android Studio,学习记录," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="默" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="资料来源如下
+
+第一行代码(第二版)
+
+
+Fragments简介
+Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI 设计提供支持。
+可以将多个片段组合在一个 Activity 中来构建多窗格 UI，以及在多个 Activity 中重复使用某个片段。可以将片段视为 Activity 的模块化组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android笔记—Fragments">
+<meta property="og:url" content="http://yoursite.com/2016/12/18/Android笔记-Fragments/index.html">
+<meta property="og:site_name" content="默">
+<meta property="og:description" content="资料来源如下
+
+第一行代码(第二版)
+
+
+Fragments简介
+Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI 设计提供支持。
+可以将多个片段组合在一个 Activity 中来构建多窗格 UI，以及在多个 Activity 中重复使用某个片段。可以将片段视为 Activity 的模块化组">
+<meta property="og:image" content="http://cdn5.snapgram.co/images/2016/10/10/Screenshot_1476109113.png">
+<meta property="og:image" content="http://cdn3.snapgram.co/imgs/2016/12/22/fragment_lifecycle.png">
+<meta property="og:image" content="http://cdn1.snapgram.co/imgs/2016/12/22/activity_fragment_lifecycle.png">
+<meta property="og:updated_time" content="2016-12-22T09:14:38.146Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android笔记—Fragments">
+<meta name="twitter:description" content="资料来源如下
+
+第一行代码(第二版)
+
+
+Fragments简介
+Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI 设计提供支持。
+可以将多个片段组合在一个 Activity 中来构建多窗格 UI，以及在多个 Activity 中重复使用某个片段。可以将片段视为 Activity 的模块化组">
+<meta name="twitter:image" content="http://cdn5.snapgram.co/images/2016/10/10/Screenshot_1476109113.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Android笔记—Fragments | 默 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-79641673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">默</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">为了生存，而一点点淡忘了最初的本意。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android笔记—Fragments
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-18T12:00:00+08:00" content="2016-12-18">
+              2016-12-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/18/Android笔记-Fragments/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/18/Android笔记-Fragments/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/18/Android笔记-Fragments/" class="leancloud_visitors" data-flag-title="Android笔记—Fragments">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>资料来源如下</p>
+<ul>
+<li>第一行代码(第二版)</li>
+</ul>
+<hr>
+<h2 id="Fragments简介"><a href="#Fragments简介" class="headerlink" title="Fragments简介"></a>Fragments简介</h2><ul>
+<li>Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI 设计提供支持。</li>
+<li>可以将多个片段组合在一个 Activity 中来构建多窗格 UI，以及在多个 Activity 中重复使用某个片段。可以将片段视为 Activity 的模块化组成部分，它具有自己的生命周期，能接收自己的输入事件，可以在 Activity 运行时添加或删除片段（类似于不同 Activity 中重复使用的“子 Activity”）</li>
+<li><a href="https://developer.android.com/guide/components/fragments.html" target="_blank" rel="external">Google官方文档(中文)</a></li>
+</ul>
+<h2 id="创建Fragments"><a href="#创建Fragments" class="headerlink" title="创建Fragments"></a>创建Fragments</h2><ul>
+<li>fragment创建过程与Activity类似。</li>
+</ul>
+<ul>
+<li>创建Fragment，需要继承一个Fragment类，并实现Fragment的生命周期回调方法，如onCreate(), onStart(), onPause(), onStop()等</li>
+</ul>
+<ul>
+<li>一般来说，在Fragment中应至少重写以下这些生命周期方法<br><strong>必须重写的时onCreateView()方法.</strong><ul>
+<li>onCreate()：创建Fragment实例时，系统回调的方法。在该方法中，对一些必要的组件进行初始化</li>
+<li>onCreateView()：Fragment上绘制UI时，回掉该方法。返回一个View对象，表示Fragment的根视图；若Fragment不需要绑定示图，可以返回null</li>
+<li>onPause()：当用户离开Fragment时回调。在该方法中，对Fragment的数据信息做持久化的保存工作</li>
+</ul>
+</li>
+</ul>
+<h3 id="创建一个Fragment类"><a href="#创建一个Fragment类" class="headerlink" title="创建一个Fragment类"></a>创建一个Fragment类</h3><ul>
+<li>新建first_fragme 继承自Fragment </li>
+<li><p>Android Studio中 对应Fragment 包有两个，选择support-v4 _(这个版本可以再Android版本中保持Fragment特性一致)</p>
+</li>
+<li><p>Fragment并非一定要绑定一个布局文件，下面会提到。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span> <span class="params">(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState)</span></span>&#123;</span><br><span class="line">       View view = inflater.inflate(R.layout.fragment_firest,container,<span class="keyword">false</span>);</span><br><span class="line">       <span class="keyword">return</span> view;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>与此对应的fragment<em>firest布局文件 </em><br>LinearLayout加一个Button，背景颜色设置为了靛蓝色。</li>
+</ul>
+</li>
+<li><p>onCreateView()方法</p>
+<ul>
+<li>ViewGroup来自宿主Activity容器布局，Fragment的布局将其作为根视图插入至该视图中。</li>
+<li>Bundle用于回传之前占据该位置的Fragment实例所保存的Bundle信息，当该Fragment的新实例处于resume状态时，该参数被回传</li>
+</ul>
+</li>
+<li><p>inflate() 方法</p>
+<ul>
+<li><p>参数1（int）：需要绑定的Layout的资源ID；</p>
+</li>
+<li><p>参数2（ViewGroup）：绑定的Layout布局的父视图；</p>
+</li>
+<li><p>参数3（boolean）：是否需要将参数1的Layout资源依附于，参数2的ViewGroup上，false，表示不依附。（系统已经默认将Layout插入至ViewGroup中，若为true，将添加一层冗余的视图</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="在XML将fragment添加到activity"><a href="#在XML将fragment添加到activity" class="headerlink" title="在XML将fragment添加到activity"></a>在XML将fragment添加到activity</h3><ul>
+<li><p>在activity_main.xml中添加如下代码。跟添加一个layout没有太大区别。</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">fragment</span></span><br><span class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/left_fragment"</span></span><br><span class="line">    <span class="attr">android:name</span>=<span class="string">"ljy.com.fragmenttest.fragment_firest"</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span><br><span class="line">    <span class="attr">android:layout_weight</span>=<span class="string">"1"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>至此一个fragment添加完毕。为了对比，再新建一个second_fragment，背景颜色不同，两者同时添加进activity_main中。</p>
+</li>
+<li><p><img src="http://cdn5.snapgram.co/images/2016/10/10/Screenshot_1476109113.png" alt="Screenshot_1476109113.png"></p>
+</li>
+<li><p>一般来说必须为fragment设定唯一的身份标识，以便当宿主Activity为restart状态时可以恢复fragment</p>
+<ul>
+<li>android:id属性为fragment指定唯一ID</li>
+<li>android:tag属性为fragment指定唯一字符串标识</li>
+<li>未指定，则该fragment的标识为其父容器控件的ID</li>
+</ul>
+</li>
+</ul>
+<h3 id="动态添加碎片"><a href="#动态添加碎片" class="headerlink" title="动态添加碎片"></a>动态添加碎片</h3><hr>
+<h2 id="处理片段时，请谨记：Activity-布局必须包含一个可以插入片段的容器-View"><a href="#处理片段时，请谨记：Activity-布局必须包含一个可以插入片段的容器-View" class="headerlink" title=" *处理片段时，请谨记：Activity 布局必须包含一个可以插入片段的容器 View"></a><em> <em>*处理片段时，请谨记：Activity 布局必须包含一个可以插入片段的容器 View</em></em></h2><ul>
+<li><p>添加或移除片段必须使用 FragmentManager 创建 FragmentTransaction， FragmentTransaction将提供添加、移除、替换片段以及执行其他片段事务所需的 API。Activity 内调用 getSupportFragmentManager() 以获取 FragmentManager</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rightfragment right = <span class="keyword">new</span> rightfragment();</span><br><span class="line">FragmentManager fragmentManager = getSupportFragmentManager();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用 beginTransaction() 创建一个 FragmentTransaction事务，并调用 add() 添加一个片段，做好更改准备时，调用 commit()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FragmentTransaction transaction = fragmentManager.beginTransaction();</span><br><span class="line">transaction.replace(R.id.right_layout,right); </span><br><span class="line">transaction.commit();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>示例：</p>
+<ul>
+<li><p>首先改造一下activity<em>main.xml</em><br>FrameLayout包含一个left_fragment</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">FrameLayout</span>  </span><br><span class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/right_layout"</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span><br><span class="line">    <span class="attr">android:layout_weight</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">fragment</span></span><br><span class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/left_fragment"</span></span><br><span class="line">        <span class="attr">android:name</span>=<span class="string">"com.example.fragment_text.leftfragment"</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在MainActivity的onCreate方法中添加fragment</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新建准备替换的Fragment实例</span></span><br><span class="line">rightfragment right = <span class="keyword">new</span> rightfragment();</span><br><span class="line"> </span><br><span class="line"><span class="comment">//新建FragmentManager</span></span><br><span class="line">FragmentManager fragmentManager = getSupportFragmentManager();</span><br><span class="line"><span class="comment">// 调用beginTransaction() 创建FragmentTransaction</span></span><br><span class="line">FragmentTransaction transaction = fragmentManager.beginTransaction();</span><br><span class="line"></span><br><span class="line"><span class="comment">//FragmentTransaction内处理添加/替换等。</span></span><br><span class="line">transaction.replace(R.id.right_layout,right);</span><br><span class="line">      </span><br><span class="line"><span class="comment">//最后执行commit()方法</span></span><br><span class="line">transaction.commit();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="管理Fragments-执行Fragment事务"><a href="#管理Fragments-执行Fragment事务" class="headerlink" title="管理Fragments/执行Fragment事务"></a>管理Fragments/执行Fragment事务</h2><ul>
+<li><p>Activity中管理Fragment，使用FragmentManager(</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FragmentManager fragmentManager = getFragmentManager();</span><br></pre></td></tr></table></figure>
+<p>可以实现的操作</p>
+<ul>
+<li>findFragmentById()方法获取由Activity管辖的绑定了UI的Fragment实例</li>
+<li>popBackStack()方法将Fragment从后退栈中弹出</li>
+<li>addOnBackStackChangedListener()方法注册监听器，用于监听后退栈的变化</li>
+</ul>
+</li>
+<li><p>Fragment可实现动态添加、删除、替换 等 操作，每一组向Activity提交的变化称为事务，使用FragmentTransaction这操作事务,调用beginTransaction(）开启一个事务</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FragmentManager fragmentManager = getFragmentManager();</span><br><span class="line">FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();</span><br></pre></td></tr></table></figure>
+<p>可实现对Feagment的操作</p>
+<ul>
+<li>add()  //添加</li>
+<li>remove()   //移除</li>
+<li>replace()   //替换</li>
+</ul>
+</li>
+<li><p>事务要在Activity中生效，调用commit()方法提交</p>
+</li>
+<li><p>commit()方法之前，调用addToBackStack()方法，可以将该事物添加到由Activity管辖的Fragment返回栈中。点击Back键即撤销该事物提交的更改</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>使用FragmentTransaction操作事务时注意</p>
+<ul>
+<li>commit()必须在最后调用</li>
+<li>一个布局容器中添加多个Fragment，加入的顺序决定了这些Fragment绑定的UI视图在View树中的层级顺序</li>
+</ul>
+</li>
+<li><p>commit()方法提交后，并不会立即执行事务，UI更新只能在主线程中进行，主线程空闲时，才会执行事务操作<br>Android也提供了 在UI线程中调用executePendingTransactions()方法，使commit()方法调用后立即执行提交的事务（一般用不到）</p>
+</li>
+</ul>
+<hr>
+<h2 id="与-Activity-通信"><a href="#与-Activity-通信" class="headerlink" title="与 Activity 通信"></a>与 Activity 通信</h2><ul>
+<li><p>Fragment 中获取 Activity 实例<br> getActivity()方法可以获取到 Activity 实例</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MainActivity activity = (MainActivity) getActivity();</span><br></pre></td></tr></table></figure>
+<p> 调用Activity中的试图也很简单，使用findViewById()即可，getActivity()方法返回的既是一个Context对象</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">View listView = getActivity().findViewById(R.id.list);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="在Fragment中使用Context对象，getActivity-方法，只能是在fragment已经依附于Activity后才能调用。当fragment未依附于某个Activity、或fragment已经处于其生命周期的末尾而不再依附于某个Activity时，调用getActivity-方法会直接返回null"><a href="#在Fragment中使用Context对象，getActivity-方法，只能是在fragment已经依附于Activity后才能调用。当fragment未依附于某个Activity、或fragment已经处于其生命周期的末尾而不再依附于某个Activity时，调用getActivity-方法会直接返回null" class="headerlink" title="* 在Fragment中使用Context对象，getActivity()方法，只能是在fragment已经依附于Activity后才能调用。当fragment未依附于某个Activity、或fragment已经处于其生命周期的末尾而不再依附于某个Activity时，调用getActivity()方法会直接返回null"></a>* 在Fragment中使用Context对象，getActivity()方法，只能是在fragment已经依附于Activity后才能调用。当fragment未依附于某个Activity、或fragment已经处于其生命周期的末尾而不再依附于某个Activity时，调用getActivity()方法会直接返回null</h2><ul>
+<li><p>Activity 中获取 Fragment 实例()<br>FragmentManger提供了findFragmentById()方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RightFragment fragment = (RightFragment) getFragmentManager().findFragmentById(R.id.example_fragment);</span><br></pre></td></tr></table></figure>
+<p>如果使用的使support-V4包，则 getFragmentManager()改为getSupportFragmentManager()，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RightFragment fragment = (RightFragment)getSupportFragmentManager().findFragmentById(R.id.example_fragment);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>Fragment与Frangment之间也可以通过宿主Activity，获取到另一个Fragment实例，调用另一个Fragment中的方法</li>
+</ul>
+<h3 id="为Activity创建事件回调"><a href="#为Activity创建事件回调" class="headerlink" title="为Activity创建事件回调"></a>为Activity创建事件回调</h3><ul>
+<li>占坑，</li>
+</ul>
+<h2 id="Frangment的生命周期"><a href="#Frangment的生命周期" class="headerlink" title="Frangment的生命周期"></a>Frangment的生命周期</h2><ul>
+<li><p>与Activity极为相似，且 Frangment的生命周期与宿主Activity有很大关联</p>
+</li>
+<li><p>有3种状态</p>
+<ul>
+<li>Resumed继续：宿主Activity处于running，Fragment处于可见状态</li>
+<li>Paused暂停：另一个Activity处于前台并获得了焦点，该Fragment的宿主Activity并未被全部遮挡</li>
+<li>Stopped停止：Fragment不可见或Fragment已被Activity移除，宿主Activity被回收时，Fragment也将被回收</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><img src="http://cdn3.snapgram.co/imgs/2016/12/22/fragment_lifecycle.png" alt="fragment_lifecycle.png"></li>
+</ul>
+<h3 id="宿主Activity的影响"><a href="#宿主Activity的影响" class="headerlink" title="宿主Activity的影响"></a>宿主Activity的影响</h3><ul>
+<li><a href="http://snapgr.am/image/L5KP" target="_blank" rel="external"><img src="http://cdn1.snapgram.co/imgs/2016/12/22/activity_fragment_lifecycle.png" alt="activity_fragment_lifecycle.png"></a></li>
+</ul>
+<hr>
+<h4 id="重要回调方法"><a href="#重要回调方法" class="headerlink" title="重要回调方法"></a>重要回调方法</h4><ul>
+<li>onAttach()：fragment关联Activity时回调</li>
+<li>onCreateView()：fragment绑定UI视图(加载布局)时回调</li>
+<li>onActivityCreated()：宿主Activity创建完毕  (宿主Activity的onCreate()方法返回)  后调用</li>
+<li>onDestroyView()：与fragment绑定的UI视图被移除时回调</li>
+<li>onDetach()：fragment不再依附于Activity时回调</li>
+</ul>
+<hr>
+<ul>
+<li><p>Activity 与Fragment在生命周期之间的最显著差异在于它们在其各自返回栈中的存储方式。<br>默认情况下，Activity 停止时会被放入由系统管理的 Activity 返回栈（以便用户通过返回按钮回退到 Activity），<br>Frament仅当您在移除片段的事务执行期间通过调用 addToBackStack() 请求保存实例时，系统才会将Fragment放入由宿主 Activity 管理的返回栈。</p>
+</li>
+<li><p>一旦Activity处于resume状态时，可以自由地添加或移除fragment，也就是说，只有当Activity的状态为resume时，fragment才能够自由地控制自己的生命周期</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/Android-Studio/" rel="tag">#Android Studio</a>
+          
+            <a href="/tags/学习记录/" rel="tag">#学习记录</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/13/Android笔记-UI-ListView/" rel="next" title="Android笔记-UI-ListView">
+                <i class="fa fa-chevron-left"></i> Android笔记-UI-ListView
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/v.png"
+               alt="Jasper" />
+          <p class="site-author-name" itemprop="name">Jasper</p>
+          <p class="site-description motion-element" itemprop="description">程序员 微尘 V</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jasper-1024" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Fragments简介"><span class="nav-number">1.</span> <span class="nav-text">Fragments简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Fragments"><span class="nav-number">2.</span> <span class="nav-text">创建Fragments</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个Fragment类"><span class="nav-number">2.1.</span> <span class="nav-text">创建一个Fragment类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在XML将fragment添加到activity"><span class="nav-number">2.2.</span> <span class="nav-text">在XML将fragment添加到activity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态添加碎片"><span class="nav-number">2.3.</span> <span class="nav-text">动态添加碎片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理片段时，请谨记：Activity-布局必须包含一个可以插入片段的容器-View"><span class="nav-number">3.</span> <span class="nav-text"> *处理片段时，请谨记：Activity 布局必须包含一个可以插入片段的容器 View</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#管理Fragments-执行Fragment事务"><span class="nav-number">4.</span> <span class="nav-text">管理Fragments/执行Fragment事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与-Activity-通信"><span class="nav-number">5.</span> <span class="nav-text">与 Activity 通信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在Fragment中使用Context对象，getActivity-方法，只能是在fragment已经依附于Activity后才能调用。当fragment未依附于某个Activity、或fragment已经处于其生命周期的末尾而不再依附于某个Activity时，调用getActivity-方法会直接返回null"><span class="nav-number">6.</span> <span class="nav-text">* 在Fragment中使用Context对象，getActivity()方法，只能是在fragment已经依附于Activity后才能调用。当fragment未依附于某个Activity、或fragment已经处于其生命周期的末尾而不再依附于某个Activity时，调用getActivity()方法会直接返回null</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为Activity创建事件回调"><span class="nav-number">6.1.</span> <span class="nav-text">为Activity创建事件回调</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Frangment的生命周期"><span class="nav-number">7.</span> <span class="nav-text">Frangment的生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#宿主Activity的影响"><span class="nav-number">7.1.</span> <span class="nav-text">宿主Activity的影响</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#重要回调方法"><span class="nav-number">7.1.1.</span> <span class="nav-text">重要回调方法</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016.6.2 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jasper</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'jasper1024';
+      var disqus_identifier = '2016/12/18/Android笔记-Fragments/';
+      var disqus_title = 'Android笔记—Fragments';
+      var disqus_url = 'http://yoursite.com/2016/12/18/Android笔记-Fragments/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("8AEPwU1rVoSnwxtOrX35u23j-gzGzoHsz", "SBLr7EMdL83IXCfJSbydMdll");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
