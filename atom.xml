@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-23T14:49:44.664Z</updated>
+  <updated>2016-12-23T14:51:52.890Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/12/23/Android%E7%AC%94%E8%AE%B0-Broadcast%E5%B9%BF%E6%92%AD/"/>
     <id>http://yoursite.com/2016/12/23/Android笔记-Broadcast广播/</id>
     <published>2016-12-23T04:00:00.000Z</published>
-    <updated>2016-12-23T14:49:44.664Z</updated>
+    <updated>2016-12-23T14:51:52.890Z</updated>
     
     <content type="html">&lt;hr&gt;
 &lt;p&gt;资料来源如下&lt;/p&gt;
@@ -52,14 +52,12 @@
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&quot;广播分类&quot;&gt;&lt;a href=&quot;#广播分类&quot; class=&quot;headerlink&quot; title=&quot;广播分类&quot;&gt;&lt;/a&gt;广播分类&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;触发广播发生的事件分类有两种&lt;ol&gt;
-&lt;li&gt;Android系统广播事件&lt;br&gt; 由android设备状态变化而触发的系统广播如：&lt;br&gt; Intent.ACTION_POWER_CONNECTED;&lt;br&gt; //插上外部电源时发出的广播&lt;br&gt; Intent.ACTION_SCREEN_ON;&lt;br&gt; //屏幕被打开之后的广播&lt;br&gt; ACTION_TIME_CHANGED&lt;br&gt;//系统时间改变而触发的广播     等；&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;触发广播发生的事件分类有两种&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Android系统广播事件&lt;br&gt; 由android设备状态变化而触发的系统广播如：&lt;br&gt; Intent.ACTION_POWER_CONNECTED;&lt;br&gt; //插上外部电源时发出的广播&lt;br&gt; Intent.ACTION_SCREEN_ON;&lt;br&gt; //屏幕被打开之后的广播&lt;br&gt; ACTION_TIME_CHANGED&lt;br&gt;//系统时间改变而触发的广播&lt;/li&gt;
+&lt;li&gt;自定义的广播事件&lt;br&gt; 这个比较好理解了，比如qq当我们再另外一台手机上登陆时，手头的这个手机qq就会自动下线。腾讯的服务器通过后台服务启用了自定义广播来终结正在运行的Activity，详情之后会有例程，不再累赘。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;2. 自定义的广播事件
-    这个比较好理解了，比如qq当我们再另外一台手机上登陆时，手头的这个手机qq就会自动下线。腾讯的服务器通过后台服务启用了自定义广播来终结正在运行的Activity，详情之后会有例程，不再累赘。
-&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;能够被接收的广播类型&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;普通广播（Normal broadcasts）：&lt;br&gt; （由 Context.sendBroadcast发出）异步发出。所有广播接收器都可以在同一时间接收广播。广播接收者无法接收广播的处理结果或者阻断广播的传递。&lt;/p&gt;
@@ -1542,9 +1540,9 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
     
       <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
-    
       <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
     
   </entry>
   
@@ -2352,13 +2350,13 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
     
       <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
+      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
+    
       <category term="python" scheme="http://yoursite.com/tags/python/"/>
     
       <category term="单片机" scheme="http://yoursite.com/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
     
       <category term="开源" scheme="http://yoursite.com/tags/%E5%BC%80%E6%BA%90/"/>
-    
-      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
     
   </entry>
   
