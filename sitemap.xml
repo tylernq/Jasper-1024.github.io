@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/07/17/Android%E6%B1%87%E6%80%BB/</loc>
+    
+    <lastmod>2016-12-23T14:53:49.920Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/12/23/Android%E7%AC%94%E8%AE%B0-Broadcast%E5%B9%BF%E6%92%AD/</loc>
     
-    <lastmod>2016-12-23T14:51:52.890Z</lastmod>
+    <lastmod>2016-12-23T14:53:08.678Z</lastmod>
     
   </url>
   
@@ -33,13 +40,6 @@
     <loc>http://yoursite.com/2016/12/16/Android%E7%AC%94%E8%AE%B0-UI-RecyclerView/</loc>
     
     <lastmod>2016-12-22T09:19:29.745Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/07/17/Android%E6%B1%87%E6%80%BB/</loc>
-    
-    <lastmod>2016-12-22T09:16:27.734Z</lastmod>
     
   </url>
   
