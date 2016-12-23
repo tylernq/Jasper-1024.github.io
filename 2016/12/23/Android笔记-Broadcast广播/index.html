@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content=",,," />
+  <meta name="keywords" content="Android,Android Studio,学习记录," />
 
 
 
@@ -59,31 +59,51 @@
 
 
 
-<meta name="description" content="经过上一节ListView的轰炸，头脑暂时处于麻痹状态。Fragment相关内容先放一放。来点轻松的重拾面对Android 的信心。。。来面对今天的主角BroadcastReceiver
+<meta name="description" content="资料来源如下
+
+第一行代码(第二版)
+
+编程环境
+
+Android Studio 2.2.3
+
 
 BroadcastReceiver基础
 首先祭出官方文档及中文翻译
-https://developer.android.com/reference/android/content/BroadcastReceiv">
-<meta name="keywords">
-<meta property="og:type" content="website">
-<meta property="og:title" content="第一行代码AS跟刷-Broadcast广播">
-<meta property="og:url" content="http://yoursite.com/第一行代码AS跟刷-Broadcast广播.html">
+https://developer.android.com/reference/android/content/BroadcastReceiver.htmlhttp://www.jianshu.com/p/1b56172b0c77">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android笔记—Broadcast广播">
+<meta property="og:url" content="http://yoursite.com/2016/12/23/Android笔记-Broadcast广播/index.html">
 <meta property="og:site_name" content="默">
-<meta property="og:description" content="经过上一节ListView的轰炸，头脑暂时处于麻痹状态。Fragment相关内容先放一放。来点轻松的重拾面对Android 的信心。。。来面对今天的主角BroadcastReceiver
+<meta property="og:description" content="资料来源如下
+
+第一行代码(第二版)
+
+编程环境
+
+Android Studio 2.2.3
+
 
 BroadcastReceiver基础
 首先祭出官方文档及中文翻译
-https://developer.android.com/reference/android/content/BroadcastReceiv">
+https://developer.android.com/reference/android/content/BroadcastReceiver.htmlhttp://www.jianshu.com/p/1b56172b0c77">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/6153fc0cjw1f7j04rqb85j20u01hcjv9.jpg">
 <meta property="og:image" content="http://cdn4.snapgram.co/images/2016/09/10/Screenshot_20160910-220121.png">
-<meta property="og:updated_time" content="2016-12-23T04:08:04.529Z">
+<meta property="og:updated_time" content="2016-12-23T14:49:44.664Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第一行代码AS跟刷-Broadcast广播">
-<meta name="twitter:description" content="经过上一节ListView的轰炸，头脑暂时处于麻痹状态。Fragment相关内容先放一放。来点轻松的重拾面对Android 的信心。。。来面对今天的主角BroadcastReceiver
+<meta name="twitter:title" content="Android笔记—Broadcast广播">
+<meta name="twitter:description" content="资料来源如下
+
+第一行代码(第二版)
+
+编程环境
+
+Android Studio 2.2.3
+
 
 BroadcastReceiver基础
 首先祭出官方文档及中文翻译
-https://developer.android.com/reference/android/content/BroadcastReceiv">
+https://developer.android.com/reference/android/content/BroadcastReceiver.htmlhttp://www.jianshu.com/p/1b56172b0c77">
 <meta name="twitter:image" content="http://ww2.sinaimg.cn/large/6153fc0cjw1f7j04rqb85j20u01hcjv9.jpg">
 
 
@@ -102,13 +122,7 @@ https://developer.android.com/reference/android/content/BroadcastReceiv">
   };
 </script>
 
-  <title>
-  
-
-  
-    第一行代码AS跟刷-Broadcast广播 | 默
-  
-</title>
+  <title> Android笔记—Broadcast广播 | 默 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -138,7 +152,7 @@ https://developer.android.com/reference/android/content/BroadcastReceiv">
     
   
 
-  <div class="container one-collumn sidebar-position-right  ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -248,8 +262,108 @@ https://developer.android.com/reference/android/content/BroadcastReceiv">
 
   <div id="posts" class="posts-expand">
     
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
     
-      <p>经过上一节ListView的轰炸，头脑暂时处于麻痹状态。Fragment相关内容先放一放。来点轻松的重拾面对Android 的信心。。。来面对今天的主角<strong>BroadcastReceiver</strong></p>
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android笔记—Broadcast广播
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-23T12:00:00+08:00" content="2016-12-23">
+              2016-12-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/23/Android笔记-Broadcast广播/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/23/Android笔记-Broadcast广播/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/23/Android笔记-Broadcast广播/" class="leancloud_visitors" data-flag-title="Android笔记—Broadcast广播">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>资料来源如下</p>
+<ul>
+<li>第一行代码(第二版)</li>
+</ul>
+<p>编程环境</p>
+<ul>
+<li>Android Studio 2.2.3</li>
+</ul>
 <hr>
 <h2 id="BroadcastReceiver基础"><a href="#BroadcastReceiver基础" class="headerlink" title="BroadcastReceiver基础"></a>BroadcastReceiver基础</h2><ul>
 <li>首先祭出官方文档及<strong>中文翻译</strong><blockquote>
@@ -271,15 +385,14 @@ https://developer.android.com/reference/android/content/BroadcastReceiv">
 </li>
 </ol>
 <h3 id="广播分类"><a href="#广播分类" class="headerlink" title="广播分类"></a>广播分类</h3><ul>
-<li><p>触发广播发生的事件分类有两种</p>
-<ol>
-<li><p>Android系统广播事件<br> 由android设备状态变化而触发的系统广播如：<br> Intent.ACTION_POWER_CONNECTED;<br> //插上外部电源时发出的广播<br> Intent.ACTION_SCREEN_ON;<br> //屏幕被打开之后的广播<br> ACTION_TIME_CHANGED<br> //系统时间改变而触发的广播     等；</p>
-<p> PS:著名的国产BAT毒瘤服务各种神奇的后台自启，其手段中重要的一环就是滥用Android系统广播！比如微信、QQ、淘宝当时间变化/电量变化/锁屏解锁 都会借由Android系统广播而实现后台重生。遇到这种情况直接出门左转–<strong>阻止运行！</strong></p>
-</li>
-<li><p>自定义的广播事件<br> 这个比较好理解了，比如qq当我们再另外一台手机上登陆时，手头的这个手机qq就会自动下线。腾讯的服务器通过后台服务启用了自定义广播来终结正在运行的Activity，详情之后会有例程，不再累赘。</p>
-</li>
+<li>触发广播发生的事件分类有两种<ol>
+<li>Android系统广播事件<br> 由android设备状态变化而触发的系统广播如：<br> Intent.ACTION_POWER_CONNECTED;<br> //插上外部电源时发出的广播<br> Intent.ACTION_SCREEN_ON;<br> //屏幕被打开之后的广播<br> ACTION_TIME_CHANGED<br>//系统时间改变而触发的广播     等；</li>
 </ol>
 </li>
+</ul>
+<pre><code>2. 自定义的广播事件
+    这个比较好理解了，比如qq当我们再另外一台手机上登陆时，手头的这个手机qq就会自动下线。腾讯的服务器通过后台服务启用了自定义广播来终结正在运行的Activity，详情之后会有例程，不再累赘。
+</code></pre><ul>
 <li><p>能够被接收的广播类型</p>
 <ol>
 <li><p>普通广播（Normal broadcasts）：<br> （由 Context.sendBroadcast发出）异步发出。所有广播接收器都可以在同一时间接收广播。广播接收者无法接收广播的处理结果或者阻断广播的传递。</p>
@@ -376,9 +489,8 @@ https://developer.android.com/reference/android/content/BroadcastReceiv">
 <li><p>MainActivity中新建 SendBroad()函数<br>  首先构建一个 Intent对象，将自定义的广播值填入。再调用sendBroadcast方法将广播发送出去。</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SendBroad</span><span class="params">(View view)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.example.broadcasttest.MyBroad"</span>);</span><br><span class="line">    sendBroadcast(intent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<ul>
-<li>发送的是标准广播。运行效果如下图。<br>  <a href="http://snapgr.am/image/L2ou" target="_blank" rel="external"><img src="http://cdn4.snapgram.co/images/2016/09/10/Screenshot_20160910-220121.png" alt="Screenshot_20160910-220121.png"></a></li>
+<li><p>发送的是标准广播。运行效果如下图。<br>  <a href="http://snapgr.am/image/L2ou" target="_blank" rel="external"><img src="http://cdn4.snapgram.co/images/2016/09/10/Screenshot_20160910-220121.png" alt="Screenshot_20160910-220121.png"></a></p>
+</li>
 </ul>
 <h2 id="发送有序广播"><a href="#发送有序广播" class="headerlink" title="发送有序广播"></a>发送有序广播</h2><hr>
 <ul>
@@ -391,10 +503,9 @@ https://developer.android.com/reference/android/content/BroadcastReceiv">
 </ul>
 <hr>
 <ul>
-<li>修改Broad项目中onClick对应事件。将sendBroadcast(）改为sendOrderedBroadcast();发送有序广播。  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SendBroad</span><span class="params">(View view)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.example.broadcasttest.MyBroad"</span>);</span><br><span class="line">    sendOrderedBroadcast(intent,<span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>修改Broad项目中onClick对应事件。将sendBroadcast(）改为sendOrderedBroadcast();发送有序广播。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SendBroad</span><span class="params">(View view)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.example.broadcasttest.MyBroad"</span>);</span><br><span class="line">    sendOrderedBroadcast(intent,<span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<ul>
 <li><p>效果与发送标准广播相同（还未定义优先级/截断等）</p>
 </li>
 <li><p>定义优先级，再Broad的AndroidMainfest.xml中修改注册的广播添加android:priority=”100”优先级100</p>
@@ -423,12 +534,9 @@ https://developer.android.com/reference/android/content/BroadcastReceiv">
 <li><p>在Activity的onDestroy()中销毁注册。</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onDestroy();</span><br><span class="line">    localBroadcastManager.unregisterReceiver(localReceiver);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<ul>
-<li>在Button对应的函数中调用localBroadcastManager.sendBroadcast发送本地广播。  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SendBroad</span><span class="params">(View view)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">      Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.example.broadcasttest.LOCAL_BROADCAST"</span>);</span><br><span class="line">      localBroadcastManager.sendBroadcast(intent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>在Button对应的函数中调用localBroadcastManager.sendBroadcast发送本地广播。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SendBroad</span><span class="params">(View view)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">      Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.example.broadcasttest.LOCAL_BROADCAST"</span>);</span><br><span class="line">      localBroadcastManager.sendBroadcast(intent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<ul>
 <li><p>效果基本同上，不加累赘。不过在Broad2中是怎样都搜不到广播了。</p>
 </li>
 <li><p>本地广播特点</p>
@@ -440,16 +548,54 @@ https://developer.android.com/reference/android/content/BroadcastReceiv">
 </li>
 </ul>
 
-    
+      
+    </div>
 
-  <div class="comments" id="comments">
-    
-      <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      </div>
-    
-  </div>
+    <div>
+      
+        
+      
+    </div>
 
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/Android-Studio/" rel="tag">#Android Studio</a>
+          
+            <a href="/tags/学习记录/" rel="tag">#学习记录</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/18/Android笔记-Fragments/" rel="next" title="Android笔记—Fragments">
+                <i class="fa fa-chevron-left"></i> Android笔记—Fragments
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -488,8 +634,17 @@ https://developer.android.com/reference/android/content/BroadcastReceiv">
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/v.png"
@@ -559,6 +714,17 @@ https://developer.android.com/reference/android/content/BroadcastReceiv">
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#BroadcastReceiver基础"><span class="nav-number">1.</span> <span class="nav-text">BroadcastReceiver基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BroadcastReceiver概述"><span class="nav-number">1.1.</span> <span class="nav-text">BroadcastReceiver概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广播分类"><span class="nav-number">1.2.</span> <span class="nav-text">广播分类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态注册（在代码中注册）"><span class="nav-number">2.</span> <span class="nav-text">动态注册（在代码中注册）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态注册（xml中注册）"><span class="nav-number">3.</span> <span class="nav-text">静态注册（xml中注册）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不使用内部子类（第一行代码）"><span class="nav-number">3.1.</span> <span class="nav-text">不使用内部子类（第一行代码）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用内部子类（在Activity中定义）"><span class="nav-number">3.2.</span> <span class="nav-text">使用内部子类（在Activity中定义）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用广播接收器注意事项"><span class="nav-number">4.</span> <span class="nav-text">使用广播接收器注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发送标准广播"><span class="nav-number">5.</span> <span class="nav-text">发送标准广播</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发送有序广播"><span class="nav-number">6.</span> <span class="nav-text">发送有序广播</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地广播"><span class="nav-number">7.</span> <span class="nav-text">本地广播</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -643,6 +809,10 @@ https://developer.android.com/reference/android/content/BroadcastReceiv">
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
 
   
 
@@ -659,9 +829,9 @@ https://developer.android.com/reference/android/content/BroadcastReceiv">
 
     <script type="text/javascript">
       var disqus_shortname = 'jasper1024';
-      var disqus_identifier = '第一行代码AS跟刷-Broadcast广播.html';
-      var disqus_title = '第一行代码AS跟刷-Broadcast广播';
-      var disqus_url = 'http://yoursite.com/第一行代码AS跟刷-Broadcast广播.html';
+      var disqus_identifier = '2016/12/23/Android笔记-Broadcast广播/';
+      var disqus_title = 'Android笔记—Broadcast广播';
+      var disqus_url = 'http://yoursite.com/2016/12/23/Android笔记-Broadcast广播/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');

@@ -66,7 +66,7 @@
 
 编程环境
 
-Android Studio 2.2.3 
+Android Studio 2.2.3
 
 导语
 
@@ -74,7 +74,7 @@ Fragments的艺术之旅
 
 
 Fragments简介
-Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI">
+Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI 设">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android笔记—Fragments">
 <meta property="og:url" content="http://yoursite.com/2016/12/18/Android笔记-Fragments/index.html">
@@ -86,7 +86,7 @@ Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主�
 
 编程环境
 
-Android Studio 2.2.3 
+Android Studio 2.2.3
 
 导语
 
@@ -94,11 +94,11 @@ Fragments的艺术之旅
 
 
 Fragments简介
-Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI">
+Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI 设">
 <meta property="og:image" content="http://cdn5.snapgram.co/images/2016/10/10/Screenshot_1476109113.png">
 <meta property="og:image" content="http://cdn3.snapgram.co/imgs/2016/12/22/fragment_lifecycle.png">
 <meta property="og:image" content="http://cdn1.snapgram.co/imgs/2016/12/22/activity_fragment_lifecycle.png">
-<meta property="og:updated_time" content="2016-12-22T09:28:16.896Z">
+<meta property="og:updated_time" content="2016-12-22T09:40:39.289Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android笔记—Fragments">
 <meta name="twitter:description" content="资料来源如下
@@ -108,7 +108,7 @@ Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主�
 
 编程环境
 
-Android Studio 2.2.3 
+Android Studio 2.2.3
 
 导语
 
@@ -116,7 +116,7 @@ Fragments的艺术之旅
 
 
 Fragments简介
-Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI">
+Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI 设">
 <meta name="twitter:image" content="http://cdn5.snapgram.co/images/2016/10/10/Screenshot_1476109113.png">
 
 
@@ -376,7 +376,7 @@ Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主�
 </ul>
 <p>编程环境</p>
 <ul>
-<li>Android Studio 2.2.3 </li>
+<li>Android Studio 2.2.3</li>
 </ul>
 <p>导语</p>
 <ul>
@@ -403,7 +403,7 @@ Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主�
 </li>
 </ul>
 <h3 id="创建一个Fragment类"><a href="#创建一个Fragment类" class="headerlink" title="创建一个Fragment类"></a>创建一个Fragment类</h3><ul>
-<li>新建first_fragme 继承自Fragment </li>
+<li>新建first_fragme 继承自Fragment</li>
 <li><p>Android Studio中 对应Fragment 包有两个，选择support-v4 _(这个版本可以再Android版本中保持Fragment特性一致)</p>
 </li>
 <li><p>Fragment并非一定要绑定一个布局文件，下面会提到。</p>
@@ -455,7 +455,7 @@ Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主�
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rightfragment right = <span class="keyword">new</span> rightfragment();</span><br><span class="line">FragmentManager fragmentManager = getSupportFragmentManager();</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>调用 beginTransaction() 创建一个 FragmentTransaction事务，并调用 add() 添加一个片段，做好更改准备时，调用 commit()</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FragmentTransaction transaction = fragmentManager.beginTransaction();</span><br><span class="line">transaction.replace(R.id.right_layout,right); </span><br><span class="line">transaction.commit();</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FragmentTransaction transaction = fragmentManager.beginTransaction();</span><br><span class="line">transaction.replace(R.id.right_layout,right);</span><br><span class="line">transaction.commit();</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>示例：</p>
 <ul>
@@ -463,7 +463,7 @@ Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主�
  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">FrameLayout</span>  </span><br><span class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/right_layout"</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span><br><span class="line">    <span class="attr">android:layout_weight</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">fragment</span></span><br><span class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/left_fragment"</span></span><br><span class="line">        <span class="attr">android:name</span>=<span class="string">"com.example.fragment_text.leftfragment"</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在MainActivity的onCreate方法中添加fragment</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新建准备替换的Fragment实例</span></span><br><span class="line">rightfragment right = <span class="keyword">new</span> rightfragment();</span><br><span class="line"> </span><br><span class="line"><span class="comment">//新建FragmentManager</span></span><br><span class="line">FragmentManager fragmentManager = getSupportFragmentManager();</span><br><span class="line"><span class="comment">// 调用beginTransaction() 创建FragmentTransaction</span></span><br><span class="line">FragmentTransaction transaction = fragmentManager.beginTransaction();</span><br><span class="line"></span><br><span class="line"><span class="comment">//FragmentTransaction内处理添加/替换等。</span></span><br><span class="line">transaction.replace(R.id.right_layout,right);</span><br><span class="line">      </span><br><span class="line"><span class="comment">//最后执行commit()方法</span></span><br><span class="line">transaction.commit();</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新建准备替换的Fragment实例</span></span><br><span class="line">rightfragment right = <span class="keyword">new</span> rightfragment();</span><br><span class="line"></span><br><span class="line"><span class="comment">//新建FragmentManager</span></span><br><span class="line">FragmentManager fragmentManager = getSupportFragmentManager();</span><br><span class="line"><span class="comment">// 调用beginTransaction() 创建FragmentTransaction</span></span><br><span class="line">FragmentTransaction transaction = fragmentManager.beginTransaction();</span><br><span class="line"></span><br><span class="line"><span class="comment">//FragmentTransaction内处理添加/替换等。</span></span><br><span class="line">transaction.replace(R.id.right_layout,right);</span><br><span class="line"></span><br><span class="line"><span class="comment">//最后执行commit()方法</span></span><br><span class="line">transaction.commit();</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -522,9 +522,8 @@ Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主�
 <p>如果使用的使support-V4包，则 getFragmentManager()改为getSupportFragmentManager()，代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RightFragment fragment = (RightFragment)getSupportFragmentManager().findFragmentById(R.id.example_fragment);</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<ul>
-<li>Fragment与Frangment之间也可以通过宿主Activity，获取到另一个Fragment实例，调用另一个Fragment中的方法</li>
+<li><p>Fragment与Frangment之间也可以通过宿主Activity，获取到另一个Fragment实例，调用另一个Fragment中的方法</p>
+</li>
 </ul>
 <h3 id="为Activity创建事件回调"><a href="#为Activity创建事件回调" class="headerlink" title="为Activity创建事件回调"></a>为Activity创建事件回调</h3><ul>
 <li>占坑，</li>
@@ -595,6 +594,10 @@ Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主�
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/23/Android笔记-Broadcast广播/" rel="prev" title="Android笔记—Broadcast广播">
+                Android笔记—Broadcast广播 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -669,7 +672,7 @@ Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
