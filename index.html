@@ -247,6 +247,167 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/25/Android Studio优化编译速度/" itemprop="url">
+                  Android Studio优化编译速度
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-25T12:00:00+08:00" content="2016-12-25">
+              2016-12-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/25/Android Studio优化编译速度/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/25/Android Studio优化编译速度/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/25/Android Studio优化编译速度/" class="leancloud_visitors" data-flag-title="Android Studio优化编译速度">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>资料来源如下</p>
+<ul>
+<li><a href="http://www.jianshu.com/p/1c878c10a6bb" target="_blank" rel="external">http://www.jianshu.com/p/1c878c10a6bb</a></li>
+<li><a href="http://www.jianshu.com/p/9b8ef61b7cdb" target="_blank" rel="external">http://www.jianshu.com/p/9b8ef61b7cdb</a></li>
+<li><a href="http://www.jianshu.com/p/64d9a52aebbf" target="_blank" rel="external">http://www.jianshu.com/p/64d9a52aebbf</a></li>
+</ul>
+<p>编程环境</p>
+<ul>
+<li>Android Studio 2.2.3</li>
+</ul>
+<p>导语</p>
+<ul>
+<li>ssd盘容量不够了，重装系统，随便重新安装了Android Studio 记录一边优化过程</li>
+</ul>
+<hr>
+<h2 id="最重要的-有一个良好的梯子-全局翻墙"><a href="#最重要的-有一个良好的梯子-全局翻墙" class="headerlink" title="最重要的 有一个良好的梯子+全局翻墙"></a>最重要的 有一个良好的梯子+全局翻墙</h2><ul>
+<li>大部分Android Studio安装的问题,就基本不会出现</li>
+</ul>
+<h4 id="开启gradle单独的守护进程"><a href="#开启gradle单独的守护进程" class="headerlink" title="开启gradle单独的守护进程"></a>开启gradle单独的守护进程</h4><ul>
+<li><p>在C:\Users.gradle目录(user目录即当前用户不同电脑一般不同)下新建 gradle.properties文件<br>复制下面的代码</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">org.gradle.daemon=true  </span><br><span class="line">org.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=800m  </span><br><span class="line">-XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8</span><br><span class="line">org.gradle.parallel=true  </span><br><span class="line">org.gradle.configureondemand=true</span><br></pre></td></tr></table></figure>
+<p>应该是增大了gradle 运行的 java 虚拟机的大小，我的电脑是8g内存，这个配置效果最好</p>
+</li>
+</ul>
+<h4 id="扩大Android-Studio-运行内存"><a href="#扩大Android-Studio-运行内存" class="headerlink" title="扩大Android Studio 运行内存"></a>扩大Android Studio 运行内存</h4><ul>
+<li><p>找到Android Studio安装目录下的bin文件夹<br>找到studio64.exe.vmoptions和studio.exe.vmoptions文件(64位)<br>studio.exe.vmoptions和studio.exe.vmoptions文件(32位)</p>
+</li>
+<li><p>分别编辑文件,改动3个地方如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-Xms1024m</span><br><span class="line">-Xmx2048m</span><br><span class="line">-XX:MaxPermSize=800m</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Android-Studio-设置"><a href="#Android-Studio-设置" class="headerlink" title="Android Studio 设置"></a>Android Studio 设置</h4><ul>
+<li><p>Command-line Option不填<br><img src="http://cdn2.snapgram.co/imgs/2016/12/25/ScreenShot_20161225224242.png" alt="ScreenShot_20161225224242.png"></p>
+</li>
+<li><p>gradle 离线模式<br>勾选Office Work，我这里测试是速度基本不变，但是网上有人测试是效果相差很多，原因不明，可能是网络一直全局翻墙的关系<br><img src="http://cdn1.snapgram.co/imgs/2016/12/25/ScreenShot_20161225224455.png" alt="ScreenShot_20161225224455.png"></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/23/Android笔记-Broadcast广播/" itemprop="url">
                   Android笔记—Broadcast广播
                 </a>
@@ -2598,130 +2759,6 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/17/Android汇总/" itemprop="url">
-                  Android
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-17T10:11:11+08:00" content="2016-07-17">
-              2016-07-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">Android笔记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/17/Android汇总/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/17/Android汇总/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/07/17/Android汇总/" class="leancloud_visitors" data-flag-title="Android">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Andorid笔记系列"><a href="#Andorid笔记系列" class="headerlink" title="Andorid笔记系列"></a>Andorid笔记系列</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line"><span class="number">2016.07</span>.<span class="number">20</span>    第一行代码Activity创建部分完成</span><br><span class="line"><span class="number">2016.07</span>.<span class="number">21</span>    完成添加了button和<span class="keyword">menu</span>部分，对应P39页</span><br><span class="line"><span class="number">2016.07</span>.<span class="number">22</span>    完成了P55页之前的activity部分。对于activity（二）</span><br><span class="line"><span class="number">2016.08</span>.<span class="number">10</span>    基本搞定，UI除ListView以外的部分。<span class="number">4</span>种布局比较熟悉，不再折腾。</span><br><span class="line"><span class="number">2016.08</span>.<span class="number">11</span>    开始ListView部分</span><br><span class="line"><span class="number">2016.08</span>.<span class="number">14</span>    停更半月</span><br><span class="line"><span class="number">2016.09</span>.<span class="number">02</span>    恢复更新</span><br><span class="line"><span class="number">2016.09</span>.<span class="number">03</span>    Broadcast部分开坑。</span><br><span class="line"><span class="number">2016.09</span>.<span class="number">07</span>    ListView部分除BaseAdapter外完成。BaseAdapter内容，什么时候理解深一点再补上。</span><br><span class="line"><span class="number">2016.09</span>.<span class="number">13</span>    完成了Broadcast对应部分</span><br><span class="line"><span class="number">2016.10</span>.<span class="number">03</span>    重新按照google的文档查漏补缺.</span><br><span class="line"><span class="number">2016.10</span>.<span class="number">03</span>    更名Android笔记，重新开始更新。</span><br><span class="line"><span class="number">2016.12</span>.<span class="number">05</span>    第二行代码开始！</span><br><span class="line"><span class="number">2016.12</span>.<span class="number">07</span>    重新整理Android系列笔记，从<span class="number">0</span>整合</span><br><span class="line"><span class="number">2016.12</span>.<span class="number">08</span>    Activity部分整合完成</span><br><span class="line"><span class="number">2016.12</span>.<span class="number">13</span>    UI部分基础完成，LIstView部分完成</span><br><span class="line"><span class="number">2016.12</span>.<span class="number">16</span>    RecycleView部分，基础完成，有待进一步填坑 </span><br><span class="line"><span class="number">2016.12</span>.<span class="number">22</span>    Fragment完成，有一个占坑</span><br><span class="line"><span class="number">2016.12</span>.<span class="number">23</span>    Broadcast完成</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2767,7 +2804,7 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content=",,," />
+  <meta name="keywords" content="Android Studio," />
 
 
 
@@ -59,25 +59,55 @@
 
 
 
-<meta name="description" content="Fragments简介
-Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI 设计提供支持。
-可以将多个片段组合在一个 Activity 中来构建多窗格 UI，以及在多个 Activity 中重复使用某个片段。可以将片段视为 Activity 的模块化组成部分，它具有自己的生命周期，能接收自己的输">
-<meta name="keywords">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Android笔记—Fragments">
-<meta property="og:url" content="http://yoursite.com/Android笔记—Fragments.html">
+<meta name="description" content="资料来源如下
+
+http://www.jianshu.com/p/1c878c10a6bb
+http://www.jianshu.com/p/9b8ef61b7cdb
+http://www.jianshu.com/p/64d9a52aebbf
+
+编程环境
+
+Android Studio 2.2.3
+
+导语
+
+ssd盘容量不够了，重装系统，随便重新安装了Android Studio 记录一边优化过">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Studio优化编译速度">
+<meta property="og:url" content="http://yoursite.com/2016/12/25/Android Studio优化编译速度/index.html">
 <meta property="og:site_name" content="默">
-<meta property="og:description" content="Fragments简介
-Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI 设计提供支持。
-可以将多个片段组合在一个 Activity 中来构建多窗格 UI，以及在多个 Activity 中重复使用某个片段。可以将片段视为 Activity 的模块化组成部分，它具有自己的生命周期，能接收自己的输">
-<meta property="og:image" content="http://cdn5.snapgram.co/images/2016/10/10/Screenshot_1476109113.png">
-<meta property="og:updated_time" content="2016-11-20T02:38:25.347Z">
+<meta property="og:description" content="资料来源如下
+
+http://www.jianshu.com/p/1c878c10a6bb
+http://www.jianshu.com/p/9b8ef61b7cdb
+http://www.jianshu.com/p/64d9a52aebbf
+
+编程环境
+
+Android Studio 2.2.3
+
+导语
+
+ssd盘容量不够了，重装系统，随便重新安装了Android Studio 记录一边优化过">
+<meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/12/25/ScreenShot_20161225224242.png">
+<meta property="og:image" content="http://cdn1.snapgram.co/imgs/2016/12/25/ScreenShot_20161225224455.png">
+<meta property="og:updated_time" content="2016-12-25T14:51:15.768Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android笔记—Fragments">
-<meta name="twitter:description" content="Fragments简介
-Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI 设计提供支持。
-可以将多个片段组合在一个 Activity 中来构建多窗格 UI，以及在多个 Activity 中重复使用某个片段。可以将片段视为 Activity 的模块化组成部分，它具有自己的生命周期，能接收自己的输">
-<meta name="twitter:image" content="http://cdn5.snapgram.co/images/2016/10/10/Screenshot_1476109113.png">
+<meta name="twitter:title" content="Android Studio优化编译速度">
+<meta name="twitter:description" content="资料来源如下
+
+http://www.jianshu.com/p/1c878c10a6bb
+http://www.jianshu.com/p/9b8ef61b7cdb
+http://www.jianshu.com/p/64d9a52aebbf
+
+编程环境
+
+Android Studio 2.2.3
+
+导语
+
+ssd盘容量不够了，重装系统，随便重新安装了Android Studio 记录一边优化过">
+<meta name="twitter:image" content="http://cdn2.snapgram.co/imgs/2016/12/25/ScreenShot_20161225224242.png">
 
 
 
@@ -95,13 +125,7 @@ Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主�
   };
 </script>
 
-  <title>
-  
-
-  
-    Android笔记—Fragments | 默
-  
-</title>
+  <title> Android Studio优化编译速度 | 默 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -131,7 +155,7 @@ Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主�
     
   
 
-  <div class="container one-collumn sidebar-position-right  ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -241,66 +265,182 @@ Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主�
 
   <div id="posts" class="posts-expand">
     
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
     
-      <h2 id="Fragments简介"><a href="#Fragments简介" class="headerlink" title="Fragments简介"></a>Fragments简介</h2><ul>
-<li>Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI 设计提供支持。</li>
-<li>可以将多个片段组合在一个 Activity 中来构建多窗格 UI，以及在多个 Activity 中重复使用某个片段。可以将片段视为 Activity 的模块化组成部分，它具有自己的生命周期，能接收自己的输入事件，可以在 Activity 运行时添加或删除片段（类似于不同 Activity 中重复使用的“子 Activity”）</li>
-<li><a href="https://developer.android.com/guide/components/fragments.html" target="_blank" rel="external">Google官方文档(中文)</a></li>
-</ul>
-<h2 id="创建Fragments"><a href="#创建Fragments" class="headerlink" title="创建Fragments"></a>创建Fragments</h2><ul>
-<li>fragment创建过程与Activity类似。<h3 id="创建一个Fragment类"><a href="#创建一个Fragment类" class="headerlink" title="创建一个Fragment类"></a>创建一个Fragment类</h3></li>
-<li>新建first_fragme 继承自Fragment </li>
-<li>Android Studio中 对应Fragment 包有两个，选择Android.app _</li>
-<li>当创建Fragment的时，必须重写onCreateView()回调方法.</li>
-<li>Fragment并非一定要绑定一个布局文件，下面会提到。</li>
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span> <span class="params">(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState)</span></span>&#123;</span><br><span class="line">       View view = inflater.inflate(R.layout.fragment_firest,container,<span class="keyword">false</span>);</span><br><span class="line">       <span class="keyword">return</span> view;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>与此对应的fragment<em>firest布局文件 </em><br>  LinearLayout加一个Button，背景颜色设置为了靛蓝色。<br>  具体代码就不多说了。</p>
-</li>
-</ul>
-<h3 id="在XML将fragment添加到activity"><a href="#在XML将fragment添加到activity" class="headerlink" title="在XML将fragment添加到activity"></a>在XML将fragment添加到activity</h3><ul>
-<li><p>在activity_main.xml中添加如下代码。跟添加一个layout没有太大区别。</p>
-  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">fragment</span></span><br><span class="line"><span class="attr">android:id</span>=<span class="string">"@+id/first_fragment"</span></span><br><span class="line"><span class="attr">android:name</span>=<span class="string">"layout.FirstFragment"</span></span><br><span class="line"><span class="attr">android:layout_width</span>=<span class="string">"0sp"</span></span><br><span class="line"><span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span><br><span class="line"><span class="attr">android:layout_weight</span>=<span class="string">"1"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>至此一个fragment添加完毕。为了对比，再新建一个second_fragment，背景颜色不同，两者同时添加进activity_main中。</p>
-</li>
-<li><img src="http://cdn5.snapgram.co/images/2016/10/10/Screenshot_1476109113.png" alt="Screenshot_1476109113.png"></li>
-</ul>
-<h3 id="在activity运行时添加fragment"><a href="#在activity运行时添加fragment" class="headerlink" title="在activity运行时添加fragment"></a>在activity运行时添加fragment</h3><ul>
-<li>添加或移除片段必须使用 FragmentManager 创建 FragmentTransaction， FragmentTransaction将提供添加、移除、替换片段以及执行其他片段事务所需的 API。</li>
-<li><p>处理片段时，请谨记：Activity 布局必须包含一个可以插入片段的容器 View。</p>
-</li>
-<li><p>Activity 内，调用 getSupportFragmentManager() 以获取 FragmentManager。然后，调用 beginTransaction() 创建一个 FragmentTransaction，并调用 add() 添加一个片段</p>
-</li>
-<li><p>可以在同一 FragmentTransaction 为 Activity 执行多片段事务。做好更改准备时，调用 commit()</p>
-</li>
-<li><p>示例：</p>
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android Studio优化编译速度
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-25T12:00:00+08:00" content="2016-12-25">
+              2016-12-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/25/Android Studio优化编译速度/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/25/Android Studio优化编译速度/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/25/Android Studio优化编译速度/" class="leancloud_visitors" data-flag-title="Android Studio优化编译速度">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>资料来源如下</p>
 <ul>
-<li><p>首先改造一下activity<em>main.xml</em><br>FrameLayout包含一个left_fragment</p>
- <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">FrameLayout</span>  </span><br><span class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/right_layout"</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span><br><span class="line">    <span class="attr">android:layout_weight</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">fragment</span></span><br><span class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/left_fragment"</span></span><br><span class="line">        <span class="attr">android:name</span>=<span class="string">"com.example.fragment_text.leftfragment"</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在MainActivity的onCreate方法中添加fragment</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新建准备替换的Fragment实例</span></span><br><span class="line">rightfragment right = <span class="keyword">new</span> rightfragment();</span><br><span class="line"> </span><br><span class="line"><span class="comment">//新建FragmentManager</span></span><br><span class="line">FragmentManager fragmentManager = getSupportFragmentManager();</span><br><span class="line"><span class="comment">// 调用beginTransaction() 创建FragmentTransaction</span></span><br><span class="line">FragmentTransaction transaction = fragmentManager.beginTransaction();</span><br><span class="line"></span><br><span class="line"><span class="comment">//FragmentTransaction内处理添加/替换等。</span></span><br><span class="line">transaction.replace(R.id.right_layout,right);</span><br><span class="line"></span><br><span class="line"><span class="comment">//可回退，</span></span><br><span class="line">transaction.addToBackStack(<span class="keyword">null</span>);</span><br><span class="line"><span class="comment">//最后执行commit()方法</span></span><br><span class="line">transaction.commit();</span><br></pre></td></tr></table></figure>
+<li><a href="http://www.jianshu.com/p/1c878c10a6bb" target="_blank" rel="external">http://www.jianshu.com/p/1c878c10a6bb</a></li>
+<li><a href="http://www.jianshu.com/p/9b8ef61b7cdb" target="_blank" rel="external">http://www.jianshu.com/p/9b8ef61b7cdb</a></li>
+<li><a href="http://www.jianshu.com/p/64d9a52aebbf" target="_blank" rel="external">http://www.jianshu.com/p/64d9a52aebbf</a></li>
+</ul>
+<p>编程环境</p>
+<ul>
+<li>Android Studio 2.2.3</li>
+</ul>
+<p>导语</p>
+<ul>
+<li>ssd盘容量不够了，重装系统，随便重新安装了Android Studio 记录一边优化过程</li>
+</ul>
+<hr>
+<h2 id="最重要的-有一个良好的梯子-全局翻墙"><a href="#最重要的-有一个良好的梯子-全局翻墙" class="headerlink" title="最重要的 有一个良好的梯子+全局翻墙"></a>最重要的 有一个良好的梯子+全局翻墙</h2><ul>
+<li>大部分Android Studio安装的问题,就基本不会出现</li>
+</ul>
+<h4 id="开启gradle单独的守护进程"><a href="#开启gradle单独的守护进程" class="headerlink" title="开启gradle单独的守护进程"></a>开启gradle单独的守护进程</h4><ul>
+<li><p>在C:\Users.gradle目录(user目录即当前用户不同电脑一般不同)下新建 gradle.properties文件<br>复制下面的代码</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">org.gradle.daemon=true  </span><br><span class="line">org.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=800m  </span><br><span class="line">-XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8</span><br><span class="line">org.gradle.parallel=true  </span><br><span class="line">org.gradle.configureondemand=true</span><br></pre></td></tr></table></figure>
+<p>应该是增大了gradle 运行的 java 虚拟机的大小，我的电脑是8g内存，这个配置效果最好</p>
 </li>
 </ul>
+<h4 id="扩大Android-Studio-运行内存"><a href="#扩大Android-Studio-运行内存" class="headerlink" title="扩大Android Studio 运行内存"></a>扩大Android Studio 运行内存</h4><ul>
+<li><p>找到Android Studio安装目录下的bin文件夹<br>找到studio64.exe.vmoptions和studio.exe.vmoptions文件(64位)<br>studio.exe.vmoptions和studio.exe.vmoptions文件(32位)</p>
 </li>
-<li><p>替换/添加 过程类似，replace/add</p>
+<li><p>分别编辑文件,改动3个地方如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-Xms1024m</span><br><span class="line">-Xmx2048m</span><br><span class="line">-XX:MaxPermSize=800m</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="fragment-之间的通信"><a href="#fragment-之间的通信" class="headerlink" title="fragment 之间的通信"></a>fragment 之间的通信</h3><ul>
-<li>占坑，待更新</li>
+<h4 id="Android-Studio-设置"><a href="#Android-Studio-设置" class="headerlink" title="Android Studio 设置"></a>Android Studio 设置</h4><ul>
+<li><p>Command-line Option不填<br><img src="http://cdn2.snapgram.co/imgs/2016/12/25/ScreenShot_20161225224242.png" alt="ScreenShot_20161225224242.png"></p>
+</li>
+<li><p>gradle 离线模式<br>勾选Office Work，我这里测试是速度基本不变，但是网上有人测试是效果相差很多，原因不明，可能是网络一直全局翻墙的关系<br><img src="http://cdn1.snapgram.co/imgs/2016/12/25/ScreenShot_20161225224455.png" alt="ScreenShot_20161225224455.png"></p>
+</li>
 </ul>
 
-    
+      
+    </div>
 
-  <div class="comments" id="comments">
-    
-      <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      </div>
-    
-  </div>
+    <div>
+      
+        
+      
+    </div>
 
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android-Studio/" rel="tag">#Android Studio</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/23/Android笔记-Broadcast广播/" rel="next" title="Android笔记—Broadcast广播">
+                <i class="fa fa-chevron-left"></i> Android笔记—Broadcast广播
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -339,8 +479,17 @@ Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主�
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/v.png"
@@ -410,6 +559,17 @@ Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主�
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#最重要的-有一个良好的梯子-全局翻墙"><span class="nav-number">1.</span> <span class="nav-text">最重要的 有一个良好的梯子+全局翻墙</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#开启gradle单独的守护进程"><span class="nav-number">1.0.1.</span> <span class="nav-text">开启gradle单独的守护进程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扩大Android-Studio-运行内存"><span class="nav-number">1.0.2.</span> <span class="nav-text">扩大Android Studio 运行内存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android-Studio-设置"><span class="nav-number">1.0.3.</span> <span class="nav-text">Android Studio 设置</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -494,6 +654,10 @@ Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主�
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
 
   
 
@@ -510,9 +674,9 @@ Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主�
 
     <script type="text/javascript">
       var disqus_shortname = 'jasper1024';
-      var disqus_identifier = 'Android笔记—Fragments.html';
-      var disqus_title = 'Android笔记—Fragments';
-      var disqus_url = 'http://yoursite.com/Android笔记—Fragments.html';
+      var disqus_identifier = '2016/12/25/Android Studio优化编译速度/';
+      var disqus_title = 'Android Studio优化编译速度';
+      var disqus_url = 'http://yoursite.com/2016/12/25/Android Studio优化编译速度/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');

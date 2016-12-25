@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-23T14:53:08.678Z</updated>
+  <updated>2016-12-25T14:51:15.768Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,69 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android Studio优化编译速度</title>
+    <link href="http://yoursite.com/2016/12/25/Android%20Studio%E4%BC%98%E5%8C%96%E7%BC%96%E8%AF%91%E9%80%9F%E5%BA%A6/"/>
+    <id>http://yoursite.com/2016/12/25/Android Studio优化编译速度/</id>
+    <published>2016-12-25T04:00:00.000Z</published>
+    <updated>2016-12-25T14:51:15.768Z</updated>
+    
+    <content type="html">&lt;hr&gt;
+&lt;p&gt;资料来源如下&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.jianshu.com/p/1c878c10a6bb&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jianshu.com/p/1c878c10a6bb&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.jianshu.com/p/9b8ef61b7cdb&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jianshu.com/p/9b8ef61b7cdb&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.jianshu.com/p/64d9a52aebbf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jianshu.com/p/64d9a52aebbf&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;编程环境&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Android Studio 2.2.3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;导语&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ssd盘容量不够了，重装系统，随便重新安装了Android Studio 记录一边优化过程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;最重要的-有一个良好的梯子-全局翻墙&quot;&gt;&lt;a href=&quot;#最重要的-有一个良好的梯子-全局翻墙&quot; class=&quot;headerlink&quot; title=&quot;最重要的 有一个良好的梯子+全局翻墙&quot;&gt;&lt;/a&gt;最重要的 有一个良好的梯子+全局翻墙&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;大部分Android Studio安装的问题,就基本不会出现&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;开启gradle单独的守护进程&quot;&gt;&lt;a href=&quot;#开启gradle单独的守护进程&quot; class=&quot;headerlink&quot; title=&quot;开启gradle单独的守护进程&quot;&gt;&lt;/a&gt;开启gradle单独的守护进程&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;在C:\Users.gradle目录(user目录即当前用户不同电脑一般不同)下新建 gradle.properties文件&lt;br&gt;复制下面的代码&lt;/p&gt;
+&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;org.gradle.daemon=true  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;org.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=800m  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;org.gradle.parallel=true  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;org.gradle.configureondemand=true&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;应该是增大了gradle 运行的 java 虚拟机的大小，我的电脑是8g内存，这个配置效果最好&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;扩大Android-Studio-运行内存&quot;&gt;&lt;a href=&quot;#扩大Android-Studio-运行内存&quot; class=&quot;headerlink&quot; title=&quot;扩大Android Studio 运行内存&quot;&gt;&lt;/a&gt;扩大Android Studio 运行内存&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;找到Android Studio安装目录下的bin文件夹&lt;br&gt;找到studio64.exe.vmoptions和studio.exe.vmoptions文件(64位)&lt;br&gt;studio.exe.vmoptions和studio.exe.vmoptions文件(32位)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;分别编辑文件,改动3个地方如下&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;-Xms1024m&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-Xmx2048m&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-XX:MaxPermSize=800m&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;Android-Studio-设置&quot;&gt;&lt;a href=&quot;#Android-Studio-设置&quot; class=&quot;headerlink&quot; title=&quot;Android Studio 设置&quot;&gt;&lt;/a&gt;Android Studio 设置&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Command-line Option不填&lt;br&gt;&lt;img src=&quot;http://cdn2.snapgram.co/imgs/2016/12/25/ScreenShot_20161225224242.png&quot; alt=&quot;ScreenShot_20161225224242.png&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;gradle 离线模式&lt;br&gt;勾选Office Work，我这里测试是速度基本不变，但是网上有人测试是效果相差很多，原因不明，可能是网络一直全局翻墙的关系&lt;br&gt;&lt;img src=&quot;http://cdn1.snapgram.co/imgs/2016/12/25/ScreenShot_20161225224455.png&quot; alt=&quot;ScreenShot_20161225224455.png&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;资料来源如下&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.jianshu.com/p/1c878c10a6bb&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jianshu.com/p/1c878c10
+    
+    </summary>
+    
+      <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+  </entry>
   
   <entry>
     <title>Android笔记—Broadcast广播</title>
@@ -232,9 +295,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -454,9 +517,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -621,9 +684,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -761,9 +824,9 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1029,9 +1092,9 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1291,9 +1354,9 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1539,9 +1602,9 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
     
       <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
-      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
-    
       <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
     
   </entry>
   
@@ -1564,9 +1627,9 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -2349,13 +2412,13 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
     
       <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
-      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
-    
       <category term="python" scheme="http://yoursite.com/tags/python/"/>
     
       <category term="单片机" scheme="http://yoursite.com/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
     
       <category term="开源" scheme="http://yoursite.com/tags/%E5%BC%80%E6%BA%90/"/>
+    
+      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
     
   </entry>
   
