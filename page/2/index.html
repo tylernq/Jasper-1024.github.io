@@ -953,7 +953,7 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line">2016.06.26  与SSR有关部分基本完成。  </span><br><span class="line">2016.09.29  更新SSR部分内容</span><br><span class="line">2016.10.09  更新SSR内容，更新Android端接入。</span><br><span class="line">2016.11.09  更新SSR混淆相关内容，更新SSR-Android，更新部分介绍。</span><br><span class="line">2016.11.20  整合一部分VPS优化内容</span><br><span class="line">2016.12.11  删减调整一部分内容</span><br><span class="line">2016.12.15  替换锐速优化为 BBR，整合TCP优化</span><br></pre></td></tr></table></figure>
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line">2016.06.26  与SSR有关部分基本完成。  </span><br><span class="line">2016.09.29  更新SSR部分内容</span><br><span class="line">2016.10.09  更新SSR内容，更新Android端接入。</span><br><span class="line">2016.11.09  更新SSR混淆相关内容，更新SSR-Android，更新部分介绍。</span><br><span class="line">2016.11.20  整合一部分VPS优化内容</span><br><span class="line">2016.12.11  删减调整一部分内容</span><br><span class="line">2016.12.15  替换锐速优化为 BBR，整合TCP优化</span><br><span class="line">2016.12.26  更换TCP BBR 脚本，脚本来自@秋水逸冰 版本，测试通过</span><br></pre></td></tr></table></figure>
 <h2 id="基本从0开始的教程，当作自己的备份了。"><a href="#基本从0开始的教程，当作自己的备份了。" class="headerlink" title="基本从0开始的教程，当作自己的备份了。"></a>基本从0开始的教程，当作自己的备份了。</h2><ul>
 <li><strong>吐槽</strong><br>作为一个伪程序员，每次最苦恼的就是Android SDK的更新，当初安装Android Studio时候就因为防火墙折腾了整整2周，简直就是把自学Android的那点耐心都磨没了。各种的搜索文档，离了google效率下降70%！科学上网简直成了程序员的必备生存技能了。</li>
 </ul>
@@ -1172,28 +1172,49 @@
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ulimit -n <span class="number">51200</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="TCP-BBR-推荐"><a href="#TCP-BBR-推荐" class="headerlink" title="TCP-BBR(推荐)"></a>TCP-BBR(推荐)</h3><ul>
+<h3 id="TCP-BBR-推荐"><a href="#TCP-BBR-推荐" class="headerlink" title="TCP-BBR(推荐)"></a>TCP-BBR(推荐)</h3><hr>
+<ul>
+<li><p>脚本来自于@秋水逸冰</p>
+</li>
+<li><p><strong>敬告</strong>：</p>
+<ul>
+<li>锐速不支持，更换后的4.9内核</li>
+<li>个别网友遇到开启TCP-BBR断流问题</li>
+<li>加速效果与具体网络状态有关</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
 <li><p>BBR (Bottleneck Bandwidth and RTT)是由google工程师编写的新的 TCP 拥塞控制算法，目的是要尽量跑满带宽, 并且尽量不要有排队的情况, 加速效果不比锐速差，<br>完全开源，对隐匿性要求高而无法使用锐速的人士，也可以放心使用<br><a href="https://github.com/google/bbr" target="_blank" rel="external">开源地址</a></p>
 </li>
-<li><p>测试环境 Debian 7 x64  Vultr</p>
+<li><p>启用TCP-BBR涉及VPS更换内核，所以如果步骤错误，或者VPS不兼容最新的内核，会导致无法开机等错误</p>
 </li>
-<li>启用TCP-BBR涉及VPS更换内核，所以如果步骤错误，或者VPS不兼容最新的内核，会导致无法开机等错误，脚本来自于逗逼根据地</li>
-<li>锐速不支持，更换后的4.9内核</li>
+<li><p>目前在 Vultr / DO 上测试通过。其他主机提供商，请自行测试</p>
+</li>
 </ul>
 <hr>
 <ul>
-<li>低版本linux内核加入TCP-BBR，正在测试中，稳定后会放出教程</li>
-</ul>
-<hr>
+<li><p>连接SSH，运行下面的命令</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh</span><br><span class="line">chmod +x bbr.sh</span><br><span class="line">./bbr.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提示需要重启 VPS，输入 y 并回车后重启，重连SSH</p>
+</li>
+<li><p>脚本会自动更新匹配的4.9版本内核，并启用TCP BBR</p>
+</li>
+<li><p>验证</p>
 <ul>
-<li><p>连接SSH，输入下面命令，更新内核</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate https://soft.dou-bi.co/Bash/bbr.sh &amp;&amp; chmod +x bbr.sh &amp;&amp; bash bbr.sh</span><br></pre></td></tr></table></figure>
+<li><p>输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure>
+<p>有4.9.0 表示 更新成功</p>
 </li>
-<li><p>Debian系统，更换内核时会询问你是否终止删除内核，选择 No 方向键 选择，回车键 确认)</p>
+<li><p>输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsmod | grep bbr</span><br></pre></td></tr></table></figure>
+<p>返回值有 tcp<em>bbr </em>即bbr已启动。</p>
 </li>
-<li><p>安装完毕，自动重启VPS，重连SSH</p>
+</ul>
 </li>
-<li><p>修改sysctl.conf</p>
+<li><p>添加一些优化内容<br>修改sysctl.conf</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
 <p>复制代码：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#TCP配置优化(不然你自己根本不知道你在干什么)</span><br><span class="line">fs.file-max = 51200</span><br><span class="line">#提高整个系统的文件限制</span><br><span class="line">net.core.rmem_max = 67108864</span><br><span class="line">net.core.wmem_max = 67108864</span><br><span class="line">net.core.netdev_max_backlog = 250000</span><br><span class="line">net.core.somaxconn = 4096</span><br><span class="line"></span><br><span class="line">net.ipv4.tcp_syncookies = 1</span><br><span class="line">net.ipv4.tcp_tw_reuse = 1</span><br><span class="line">net.ipv4.tcp_tw_recycle = 0</span><br><span class="line">net.ipv4.tcp_fin_timeout = 30</span><br><span class="line">net.ipv4.tcp_keepalive_time = 1200</span><br><span class="line">net.ipv4.ip_local_port_range = 10000 65000</span><br><span class="line">net.ipv4.tcp_max_syn_backlog = 8192</span><br><span class="line">net.ipv4.tcp_max_tw_buckets = 5000</span><br><span class="line">net.ipv4.tcp_fastopen = 3</span><br><span class="line">net.ipv4.tcp_mem = 25600 51200 102400</span><br><span class="line">net.ipv4.tcp_rmem = 4096 87380 67108864</span><br><span class="line">net.ipv4.tcp_wmem = 4096 65536 67108864</span><br><span class="line">net.ipv4.tcp_mtu_probing = 1</span><br><span class="line">net.ipv4.tcp_congestion_control = bbr</span><br><span class="line">#END OF LINE</span><br></pre></td></tr></table></figure>
