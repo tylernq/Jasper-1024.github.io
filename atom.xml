@@ -1711,10 +1711,10 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
     <link href="http://yoursite.com/2016/06/27/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%972/"/>
     <id>http://yoursite.com/2016/06/27/VPS科学上网教程系列2/</id>
     <published>2016-06-27T09:52:16.000Z</published>
-    <updated>2016-12-15T11:16:00.750Z</updated>
+    <updated>2017-01-11T03:23:03.405Z</updated>
     
-    <content type="html">&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.06&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;26&lt;/span&gt;    与SSR有关部分基本完成。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.06&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;28&lt;/span&gt;    TCP优化部分完成&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.06&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;    gfw.press、FinalSpeed和锐速部分基本完成。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.12&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;11&lt;/span&gt;    重新整理相关内容，增加SSR混淆&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.12&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;    增加TCP-BBR&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;TCP优化&quot;&gt;&lt;a href=&quot;#TCP优化&quot; class=&quot;headerlink&quot; title=&quot;TCP优化&quot;&gt;&lt;/a&gt;TCP优化&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;适用场景：高延迟搞丢包线路。&lt;/strong&gt;&lt;/p&gt;
+    <content type="html">&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.06&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;26&lt;/span&gt;    与SSR有关部分基本完成。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.06&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;28&lt;/span&gt;    TCP优化部分完成&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.06&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;29&lt;/span&gt;    gfw.press、FinalSpeed和锐速部分基本完成。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.12&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;11&lt;/span&gt;    重新整理相关内容，增加SSR混淆&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2016.12&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;    增加TCP-BBR&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2017.01&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;11&lt;/span&gt;    整理相关内容，增加锐速配置优化&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;TCP优化&quot;&gt;&lt;a href=&quot;#TCP优化&quot; class=&quot;headerlink&quot; title=&quot;TCP优化&quot;&gt;&lt;/a&gt;TCP优化&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;适用场景：高延迟搞丢包线路&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;使用TCP-BBR可以略过此部分(已包含)&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;增加TCP连接数量&lt;/p&gt;
 &lt;figure class=&quot;highlight powershell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;nano /etc/security/limits.conf&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -1749,15 +1749,21 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;ul&gt;
-&lt;li&gt;锐速目前已经停止了免费用户20M的提供，商业化提供破解属于侵权行为。&lt;/li&gt;
+&lt;li&gt;锐速目前已经基本停止运营，而且母公司LotServer面向企业用户还在运营&lt;/li&gt;
 &lt;li&gt;以下提供的破解版安装方式，收集自网络。仅供个人实验使用，请支持正版。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;p&gt;提供两种安装方式&lt;/p&gt;
-&lt;h3 id=&quot;锐速一键安装包&quot;&gt;&lt;a href=&quot;#锐速一键安装包&quot; class=&quot;headerlink&quot; title=&quot;锐速一键安装包&quot;&gt;&lt;/a&gt;锐速一键安装包&lt;/h3&gt;&lt;p&gt;参考地址&lt;/p&gt;
-&lt;blockquote&gt;
+&lt;h3 id=&quot;锐速安装&quot;&gt;&lt;a href=&quot;#锐速安装&quot; class=&quot;headerlink&quot; title=&quot;锐速安装&quot;&gt;&lt;/a&gt;锐速安装&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;目前提供三种方式安装&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;(1.11)新增 lotServer 安装，建议首先尝试使用，安装失败再尝试其他方式&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;锐速一键安装包&quot;&gt;&lt;a href=&quot;#锐速一键安装包&quot; class=&quot;headerlink&quot; title=&quot;锐速一键安装包&quot;&gt;&lt;/a&gt;锐速一键安装包&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;有部分使用者可能存在91yun的锐速破解后存在断流问题，可以尝试锐速 (lotServer)&lt;/strong&gt; &lt;/li&gt;
+&lt;li&gt;参考地址&lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.91yun.org/archives/683&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.91yun.org/archives/683&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.bandwagong.com/vultrvps/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.bandwagong.com/vultrvps/&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;脚本自行匹配相同或相近内核，自动安装完成。&lt;/p&gt;
 &lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;wget -&lt;span class=&quot;keyword&quot;&gt;N&lt;/span&gt; --&lt;span class=&quot;keyword&quot;&gt;no&lt;/span&gt;-check-certificate http&lt;span class=&quot;variable&quot;&gt;s:&lt;/span&gt;//raw.githubusercontent.&lt;span class=&quot;keyword&quot;&gt;com&lt;/span&gt;/&lt;span class=&quot;number&quot;&gt;91&lt;/span&gt;yun/serverspeeder/master/serverspe eder-&lt;span class=&quot;keyword&quot;&gt;all&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; &amp;amp;&amp;amp; bash serverspeeder-&lt;span class=&quot;keyword&quot;&gt;all&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -1772,12 +1778,34 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
 &lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;chattr -i /serverspeeder/etc/apx* &amp;amp;&amp;amp; /serverspeeder/bin/serverSpeeder.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; uninstall -&lt;span class=&quot;keyword&quot;&gt;f&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&quot;手动安装&quot;&gt;&lt;a href=&quot;#手动安装&quot; class=&quot;headerlink&quot; title=&quot;手动安装&quot;&gt;&lt;/a&gt;手动安装&lt;/h3&gt;&lt;p&gt;参考&lt;/p&gt;
+&lt;h4 id=&quot;锐速-手动安装&quot;&gt;&lt;a href=&quot;#锐速-手动安装&quot; class=&quot;headerlink&quot; title=&quot;锐速 手动安装&quot;&gt;&lt;/a&gt;锐速 手动安装&lt;/h4&gt;&lt;p&gt;参考&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.91yun.org/serverspeeder91yun&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.91yun.org/serverspeeder91yun&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;手动安装仅用于一键安装无效时，操作步骤在参考地址中很详细，不加累赘。&lt;/p&gt;
-&lt;h3 id=&quot;常用命令&quot;&gt;&lt;a href=&quot;#常用命令&quot; class=&quot;headerlink&quot; title=&quot;常用命令&quot;&gt;&lt;/a&gt;常用命令&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&quot;锐速-lotServer-一键安装&quot;&gt;&lt;a href=&quot;#锐速-lotServer-一键安装&quot; class=&quot;headerlink&quot; title=&quot;锐速 (lotServer) 一键安装&quot;&gt;&lt;/a&gt;锐速 (lotServer) 一键安装&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;参考&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/0oVicero0/serverSpeeser_Install&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/0oVicero0/serverSpeeser_Install&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;lotServer是锐速的母公司，面向企业用户。大家比较熟悉的锐速其实是lotServer的马甲&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;安装&lt;/p&gt;
+&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Iwget --&lt;span class=&quot;keyword&quot;&gt;no&lt;/span&gt;-check-certificate -O appex.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; http&lt;span class=&quot;variable&quot;&gt;s:&lt;/span&gt;//raw.githubusercontent.&lt;span class=&quot;keyword&quot;&gt;com&lt;/span&gt;/&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;oVicero0/serverSpeeser_Install/master/appex.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; &amp;amp;&amp;amp; chmod +&lt;span class=&quot;keyword&quot;&gt;x&lt;/span&gt; appex.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; &amp;amp;&amp;amp; bash appex.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; install&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;卸载&lt;/p&gt;
+&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;wget --&lt;span class=&quot;keyword&quot;&gt;no&lt;/span&gt;-check-certificate -O appex.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; http&lt;span class=&quot;variable&quot;&gt;s:&lt;/span&gt;//raw.githubusercontent.&lt;span class=&quot;keyword&quot;&gt;com&lt;/span&gt;/&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;oVicero0/serverSpeeser_Install/master/appex.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; &amp;amp;&amp;amp; chmod +&lt;span class=&quot;keyword&quot;&gt;x&lt;/span&gt; appex.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; &amp;amp;&amp;amp; bash appex.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; unstall&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;启动命令  &lt;code&gt;/appex/bin/lotServer.sh start&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;状态查询  &lt;code&gt;/appex/bin/lotServer.sh status&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;停止加速  &lt;code&gt;/appex/bin/lotServer.sh stop&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;常用命令-针对非企业版&quot;&gt;&lt;a href=&quot;#常用命令-针对非企业版&quot; class=&quot;headerlink&quot; title=&quot;常用命令(针对非企业版)&quot;&gt;&lt;/a&gt;常用命令(针对非企业版)&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;启动锐速：&lt;/p&gt;
 &lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/serverspeeder/bin/serverSpeeder.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; start&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
@@ -1787,9 +1815,29 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
 &lt;li&gt;&lt;p&gt;查看锐速是否正常运行&lt;/p&gt;
 &lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;service serverSpeeder status&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
+&lt;li&gt;&lt;p&gt;重启锐速&lt;/p&gt;
+ &lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/serverspeeder/bin/serverSpeeder.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; restart&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;重启锐速 &lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/serverspeeder/bin/serverSpeeder.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; restart&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;1-11-锐速配置文件优化-针对非企业版&quot;&gt;&lt;a href=&quot;#1-11-锐速配置文件优化-针对非企业版&quot; class=&quot;headerlink&quot; title=&quot;(1.11)锐速配置文件优化(针对非企业版)&quot;&gt;&lt;/a&gt;(1.11)锐速配置文件优化(针对非企业版)&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;配置文件在&lt;code&gt;/serverspeeder/etc/config&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;首先确保下面3个参数开启&lt;/p&gt;
+&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;rsc=&lt;span class=&quot;string&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;advinacc=&lt;span class=&quot;string&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;maxmode=&lt;span class=&quot;string&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;rsc=”1″ #RSC 网卡驱动模式&lt;br&gt;advinacc=”1″ #流量方向加速&lt;br&gt;maxmode=”1″ #最大传输模式&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;DO vps还要开启gso&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;下面是一些个人测试对加速有效果的选项，请结合网络环境自行测试&lt;/p&gt;
+&lt;h4 id=&quot;杂项&quot;&gt;&lt;a href=&quot;#杂项&quot; class=&quot;headerlink&quot; title=&quot;杂项&quot;&gt;&lt;/a&gt;杂项&lt;/h4&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;initialCwndWan=“64″&lt;br&gt;初始 TCP 发送窗口能够发送的数据包的数量，该值设置的高会获得更好的加速效果，但是可能会造成网络的拥塞。使用值在60以下有效果&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;l2wQLimit=”1024 4096″&lt;br&gt;从 LAN 到 WAN 加速引擎在缓冲池充满和空闲时分别能够缓存的数据包队列的长度的上限，该值设置的高会获得更好的加速效果，但是会消耗更多的内存。&lt;br&gt;w2lQLimit=”1024 4096″&lt;br&gt;从 WAN 到 LAN 加速引擎在缓冲池充满和空闲时分别能够缓存的数据包队列的长度的上限，该值设置的高会获得更好的加速效果，但是会消耗更多的内存。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;halfCwndMinSRtt=”500″&lt;br&gt;halfCwndLossRateShift=”3″&lt;br&gt;以上两个值用于判断网络拥塞，分别为延时和丢包率，丢包率默认值为 3，即1/2^3，当拥塞产生时，退出第三代 Learning-based TCP 算法，采用类似传统 TCP 的算法。&lt;br&gt;此处对于高丢包的线路来说，直接设置为1，即丢包百分之50以上时，才退出Learning-based TCP 算法(这会导致高丢包线路上增加流量消耗)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;修改完成后，重启锐速&lt;/p&gt;
+ &lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/serverspeeder/bin/serverSpeeder.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; restart&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&quot;FinalSpeed&quot;&gt;&lt;a href=&quot;#FinalSpeed&quot; class=&quot;headerlink&quot; title=&quot;FinalSpeed&quot;&gt;&lt;/a&gt;FinalSpeed&lt;/h2&gt;&lt;ul&gt;
@@ -1834,7 +1882,7 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&quot;常用命令-1&quot;&gt;&lt;a href=&quot;#常用命令-1&quot; class=&quot;headerlink&quot; title=&quot;常用命令&quot;&gt;&lt;/a&gt;常用命令&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id=&quot;常用命令&quot;&gt;&lt;a href=&quot;#常用命令&quot; class=&quot;headerlink&quot; title=&quot;常用命令&quot;&gt;&lt;/a&gt;常用命令&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;启动：&lt;/p&gt;
 &lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; /fs/start.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
