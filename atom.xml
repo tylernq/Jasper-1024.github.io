@@ -1984,10 +1984,10 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
     <link href="http://yoursite.com/2016/06/26/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%97/"/>
     <id>http://yoursite.com/2016/06/26/VPS科学上网教程系列/</id>
     <published>2016-06-26T04:16:16.000Z</published>
-    <updated>2016-12-30T02:28:53.380Z</updated>
+    <updated>2017-01-11T02:46:25.398Z</updated>
     
-    <content type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.06.26  与SSR有关部分基本完成。  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.09.29  更新SSR部分内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.10.09  更新SSR内容，更新Android端接入。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.11.09  更新SSR混淆相关内容，更新SSR-Android，更新部分介绍。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.11.20  整合一部分VPS优化内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.12.11  删减调整一部分内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.12.15  替换锐速优化为 BBR，整合TCP优化&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.12.26  更换TCP BBR 脚本，脚本来自@秋水逸冰 版本，测试通过&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;12-30注意-SSR作者停更，目前一键脚本暂时可用，如果出现一键脚本失效等，请留言！&quot;&gt;&lt;a href=&quot;#12-30注意-SSR作者停更，目前一键脚本暂时可用，如果出现一键脚本失效等，请留言！&quot; class=&quot;headerlink&quot; title=&quot;12.30注意 SSR作者停更，目前一键脚本暂时可用，如果出现一键脚本失效等，请留言！&quot;&gt;&lt;/a&gt;12.30注意 SSR作者停更，目前一键脚本暂时可用，如果出现一键脚本失效等，请留言！&lt;/h2&gt;&lt;h2 id=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;a href=&quot;#基本从0开始的教程，当作自己的备份了。&quot; class=&quot;headerlink&quot; title=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;/a&gt;基本从0开始的教程，当作自己的备份了。&lt;/h2&gt;&lt;ul&gt;
+    <content type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.06.26  与SSR有关部分基本完成。  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.09.29  更新SSR部分内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.10.09  更新SSR内容，更新Android端接入。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.11.09  更新SSR混淆相关内容，更新SSR-Android，更新部分介绍。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.11.20  整合一部分VPS优化内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.12.11  删减调整一部分内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.12.15  替换锐速优化为 BBR，整合TCP优化&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.12.26  更换TCP BBR 脚本，脚本来自@秋水逸冰 版本，测试通过 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2017.01.11  同步更新一部分SSR内容&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;12-30注意-SSR作者停更，目前一键脚本暂时可用，如果出现一键脚本失效等，请留言！&quot;&gt;&lt;a href=&quot;#12-30注意-SSR作者停更，目前一键脚本暂时可用，如果出现一键脚本失效等，请留言！&quot; class=&quot;headerlink&quot; title=&quot;12.30注意 SSR作者停更，目前一键脚本暂时可用，如果出现一键脚本失效等，请留言！&quot;&gt;&lt;/a&gt;&lt;del&gt;12.30注意 SSR作者停更，&lt;/del&gt;目前一键脚本暂时可用，如果出现一键脚本失效等，请留言！&lt;/h2&gt;&lt;h2 id=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;a href=&quot;#基本从0开始的教程，当作自己的备份了。&quot; class=&quot;headerlink&quot; title=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;/a&gt;基本从0开始的教程，当作自己的备份了。&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;吐槽&lt;/strong&gt;&lt;br&gt;作为一个伪程序员，每次最苦恼的就是Android SDK的更新，当初安装Android Studio时候就因为防火墙折腾了整整2周，简直就是把自学Android的那点耐心都磨没了。各种的搜索文档，离了google效率下降70%！科学上网简直成了程序员的必备生存技能了。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
@@ -2006,7 +2006,7 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;VPS地点。&quot;&gt;&lt;a href=&quot;#VPS地点。&quot; class=&quot;headerlink&quot; title=&quot;VPS地点。&quot;&gt;&lt;/a&gt;VPS地点。&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;del&gt;日本VPS电信网络访问要绕道美国绕道ping一般在200到300了&lt;/del&gt;，（9.29）联通直连日本，ping在100上下！（11.09）联通目前也分地区有限速。电信目前分地区直连日本，直连ping在100或者多一点。（有运气成分，多刷几个ip试试）&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;&lt;del&gt;日本VPS电信网络访问要绕道美国绕道ping一般在200到300了&lt;/del&gt;，（9.29）联通直连日本，ping在100！联通目前也分地区有限速。&lt;br&gt;电信目前分地区直连日本，直连ping在100或者多一点。（有运气成分，多刷几个ip试试）&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;美国的VPS联通/电信访问延迟基本相当。一般选择靠近美国西海岸节点旧金山、洛杉矶、纽约等地点。&lt;/p&gt;
 &lt;/li&gt;
@@ -2019,6 +2019,8 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
 &lt;p&gt;来源：&lt;br&gt;&lt;a href=&quot;https://www.v2ex.com/t/302347&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.v2ex.com/t/302347&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;刷ip地址可以使用Vultr的reserved IP功能，实测是在一个小时后可以删除无用ip&lt;/p&gt;
+&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;日本节点-IP&lt;br&gt;&lt;strong&gt;注意以下结论仅供参考，实际不同网络不同ip表现不一定相同&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;108.开头普遍反应较好，电信/联通稳定性比45开头要好，比较难刷到。&lt;/li&gt;
@@ -2069,12 +2071,15 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
 &lt;p&gt;出现如图所示,标签变绿就说明连接成功啦.&lt;br&gt;&lt;img src=&quot;http://cdn1.snapgram.co/imgs/2016/06/24/crt4.png&quot; alt=&quot;crt4.png&quot;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&quot;部署ShadowSocksR&quot;&gt;&lt;a href=&quot;#部署ShadowSocksR&quot; class=&quot;headerlink&quot; title=&quot;部署ShadowSocksR&quot;&gt;&lt;/a&gt;部署ShadowSocksR&lt;/h2&gt;&lt;p&gt;为什么选择SSR而不是原版的SS&lt;/p&gt;
+&lt;h2 id=&quot;部署ShadowSocksR&quot;&gt;&lt;a href=&quot;#部署ShadowSocksR&quot; class=&quot;headerlink&quot; title=&quot;部署ShadowSocksR&quot;&gt;&lt;/a&gt;部署ShadowSocksR&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/breakwa11/shadowsocks-rss&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SSR github&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;为什么选择SSR而不是原版的SS&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;主要原因如下&lt;ol&gt;
 &lt;li&gt;可以直接启用chacha20加密，在移动设备上比较好使&lt;/li&gt;
 &lt;li&gt;TFO(TCP Fast Open)直接自带，减少握手次数。&lt;/li&gt;
-&lt;li&gt;二次混淆和抗重放等附加功能（关于这个有争议）关于&lt;/li&gt;
+&lt;li&gt;二次混淆和抗重放等附加功能（关于这个有争议）&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -2261,9 +2266,12 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&quot;shadowsocksR客户端配置&quot;&gt;&lt;a href=&quot;#shadowsocksR客户端配置&quot; class=&quot;headerlink&quot; title=&quot;shadowsocksR客户端配置&quot;&gt;&lt;/a&gt;shadowsocksR客户端配置&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;现在SSR最新的更新在0网中，&lt;del&gt;直接访问不便&lt;/del&gt;&lt;br&gt;&lt;del&gt;给出个ssr的客户端集合&lt;/del&gt;&lt;br&gt;&lt;del&gt;&amp;gt;&lt;a href=&quot;http://userscloud.com/go/embed/iss72k58dh2l/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://userscloud.com/go/embed/iss72k58dh2l/&lt;/a&gt;&lt;/del&gt;&lt;br&gt;**（10.9）无需安装ZeroNet，直接访问即可&lt;blockquote&gt;
+&lt;li&gt;&lt;p&gt;现在SSR更新在0网中，&lt;del&gt;直接访问不便&lt;/del&gt;&lt;br&gt;&lt;del&gt;给出个ssr的客户端集合&lt;/del&gt;&lt;br&gt;&lt;del&gt;&amp;gt;&lt;a href=&quot;http://userscloud.com/go/embed/iss72k58dh2l/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://userscloud.com/go/embed/iss72k58dh2l/&lt;/a&gt;&lt;/del&gt;&lt;br&gt;**（10.9）无需安装ZeroNet，直接访问即可&lt;/p&gt;
+&lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&quot;https://bit.no.com:43110/shadowsocksr.bit/**&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://bit.no.com:43110/shadowsocksr.bit/**&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;(1.11)最新的4.05客户端(注意MD5校验)在&lt;a href=&quot;https://github.com/breakwa11/shadowsocks-rss&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github&lt;/a&gt;可以下载到,未来ssr更新放在那里目前不明，随时更新&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;ul&gt;
@@ -2288,12 +2296,13 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
 &lt;p&gt;&lt;a href=&quot;https://github.com/FelisCatus/SwitchyOmega/wiki/GFWList&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/FelisCatus/SwitchyOmega/wiki/GFWList&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.jianshu.com/p/37ef0b9ecc08&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jianshu.com/p/37ef0b9ecc08&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;SSR-Android端&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;SSR-Android端(注意MD5校验)&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://bit.no.com:43110/shadowsocksr.bit/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://bit.no.com:43110/shadowsocksr.bit/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/shadowsocksr/shadowsocksr-android/releases&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/shadowsocksr/shadowsocksr-android/releases&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;del&gt;下载ssr-android。目前更新最新版为3.2.3.4版。使用方式与影ss-android版基本相同。VPS推荐设置混淆为auth_sha1_v4 端口配合使用&lt;/del&gt;&lt;/li&gt;
-&lt;li&gt;(12.11)&lt;br&gt; ssr-android更新到3.2.7.14.版，增加auth_aes128_md5和auth_aes128_sha1,推荐更新！&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;(12.11)&lt;/del&gt;&lt;br&gt; &lt;del&gt;ssr-android更新到3.2.7.14.版，增加auth_aes128_md5和auth_aes128_sha1,推荐更新！&lt;/del&gt;&lt;/li&gt;
+&lt;li&gt;(1.11)&lt;br&gt;ssr-android更新到3.3.3.1推荐更新！&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
