@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content=",,," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -59,53 +59,15 @@
 
 
 
-<meta name="description" content="Android 中的主要数据存储
-有三种
-
-保存键值集 要保存的相对较小键值集合，使用 SharedPreferences
-
-保存文件使用 Android 文件系统通过 File API 读取和写入文件，适合按开始到结束的顺序不跳过地读取或写入大量数据。 例如，图片文件或通过网络交换的任何内容
-
-在 SQL 数据库中保存数据Android内建的SQLite 数据库存储重复或结构化数据
-
-
-
-
-PS">
-<meta name="keywords">
+<meta name="description" content="程序员 微尘 V">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Android笔记—数据保存">
-<meta property="og:url" content="http://yoursite.com/Android笔记-数据保存.html">
+<meta property="og:title" content="默">
+<meta property="og:url" content="http://yoursite.com/archives/2017/index.html">
 <meta property="og:site_name" content="默">
-<meta property="og:description" content="Android 中的主要数据存储
-有三种
-
-保存键值集 要保存的相对较小键值集合，使用 SharedPreferences
-
-保存文件使用 Android 文件系统通过 File API 读取和写入文件，适合按开始到结束的顺序不跳过地读取或写入大量数据。 例如，图片文件或通过网络交换的任何内容
-
-在 SQL 数据库中保存数据Android内建的SQLite 数据库存储重复或结构化数据
-
-
-
-
-PS">
-<meta property="og:updated_time" content="2016-11-20T09:35:51.045Z">
+<meta property="og:description" content="程序员 微尘 V">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android笔记—数据保存">
-<meta name="twitter:description" content="Android 中的主要数据存储
-有三种
-
-保存键值集 要保存的相对较小键值集合，使用 SharedPreferences
-
-保存文件使用 Android 文件系统通过 File API 读取和写入文件，适合按开始到结束的顺序不跳过地读取或写入大量数据。 例如，图片文件或通过网络交换的任何内容
-
-在 SQL 数据库中保存数据Android内建的SQLite 数据库存储重复或结构化数据
-
-
-
-
-PS">
+<meta name="twitter:title" content="默">
+<meta name="twitter:description" content="程序员 微尘 V">
 
 
 
@@ -123,13 +85,7 @@ PS">
   };
 </script>
 
-  <title>
-  
-
-  
-    Android笔记—数据保存 | 默
-  
-</title>
+  <title> 归档 | 默 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -159,7 +115,7 @@ PS">
     
   
 
-  <div class="container one-collumn sidebar-position-right  ">
+  <div class="container one-collumn sidebar-position-right  page-archive  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -267,78 +223,103 @@ PS">
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-    
-      <h2 id="Android-中的主要数据存储"><a href="#Android-中的主要数据存储" class="headerlink" title="Android 中的主要数据存储"></a>Android 中的主要数据存储</h2><ul>
-<li><p>有三种</p>
-</li>
-<li><p>保存键值集<br> 要保存的相对较小键值集合，使用 SharedPreferences</p>
-</li>
-<li><p>保存文件<br>使用 Android 文件系统通过 File API 读取和写入文件，适合按开始到结束的顺序不跳过地读取或写入大量数据。 例如，图片文件或通过网络交换的任何内容</p>
-</li>
-<li><p>在 SQL 数据库中保存数据<br>Android内建的SQLite 数据库存储重复或结构化数据</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li>PS：这里如果没有学过 SQL 数据库使用，推荐LitePal</li>
-<li>Android开源数据库<a href="https://github.com/LitePalFramework/LitePal#latest-downloads/" target="_blank" rel="external">LitePal</a>  ：郭霖(第一行代码作者)</li>
-<li>详细介绍在这里<a href="http://www.jianshu.com/p/557682e0a9f0" target="_blank" rel="external">（懒人必备）Android开源数据库LitePal</a></li>
-</ul>
-<hr>
-<h3 id="保存键值集"><a href="#保存键值集" class="headerlink" title="保存键值集"></a>保存键值集</h3><ul>
-<li>想要保存的相对较小键值集合</li>
-<li><p>调用SharedPreferences</p>
-</li>
-<li><p>首先：获取SharedPreferences的句柄<br>用户可以创建一个共享参数文件或访问一个已经存在的共享参数文件。<br>具体途径有两条</p>
-<ul>
-<li><p>getSharedPreferences (String name, int mode)</p>
-<ul>
-<li>第一个参数：SharedPreferences的名称，第二个：参数指定操作模式</li>
-<li>需要创建/读取 多个共享参数文件时使用，每个文件都拥有一个标识符，可以通过这个标识符通过该方法的第一个参数获得共享参数对象。可以通过APP中的任意Context对象调用它。</li>
-<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//指定SharedPreferences名称为data  模式为MODE_PRIVATE：只有当前程序才有权限读取/修改</span></span><br><span class="line">SharedPreferences sharedPref = getSharedPreferences(<span class="string">"data"</span>, MODE_PRIVATE);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>getPreferences (int mode)</p>
-<ul>
-<li>参数：指定操作模式</li>
-<li>只创建 Activity 的一个SharedPreferences。在Activity 中使用。 方法会检索属于该 Activity 的默认共享首选项文件，无需提供名称</li>
-<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//模式：MODE_PRIVATE：只有当前程序才有权限读取/修改</span></span><br><span class="line">SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>写入数据到共享参数中</p>
-<ul>
-<li>SharedPreferences 调用 edit() 创建一个 SharedPreferences.Editor<br>使用诸如 putInt() 和 putString() 方法写入的键和值<br>最后调用commit() 以保存更改</li>
-<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建 .edit()</span></span><br><span class="line">SharedPreferences.Editor editor = sharedPref.edit();</span><br><span class="line"><span class="comment">//写入字符串。key-值 TextView</span></span><br><span class="line">editor.putString(<span class="string">"TextView"</span>,<span class="string">"hello"</span>);</span><br><span class="line"><span class="comment">//保存更改</span></span><br><span class="line">editor.commit();</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>从共享参数中读取数据</p>
-<ul>
-<li>获取SharedPreferences的句柄<br>方式同上</li>
-<li>调用比如getInt()或getString()方法，然后传入键值，如果键不存在，则会返回一个默认值</li>
-<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取SharedPreferences的句柄</span></span><br><span class="line">SharedPreferences sharedPreferences = getSharedPreferences(<span class="string">"data"</span>,MODE_PRIVATE);</span><br><span class="line"><span class="comment">//读取键值对应数据</span></span><br><span class="line">String text = sharedPreferences.getString(<span class="string">"TextView"</span>,<span class="string">""</span>);</span><br><span class="line"><span class="comment">//打印到log中 验证</span></span><br><span class="line">Log.d(<span class="string">"data"</span>,text);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
+  <section id="posts" class="posts-collapse">
+    <span class="archive-move-on"></span>
+
+    <span class="archive-page-counter">
+      
+      
+      
+        
+      
+      嗯..! 目前共计 20 篇日志。 继续努力。
+    </span>
 
     
 
-  <div class="comments" id="comments">
-    
-      <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      
+      
+      
+
+      
+        
+        <div class="collection-title">
+          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
+        </div>
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2017/01/19/Android笔记-ContentResolver/" itemprop="url">
+              
+                <span itemprop="name">Android笔记—ContentResolver</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-01-19T12:00:00+08:00"
+              content="2017-01-19" >
+          01-19
+        </time>
       </div>
-    
-  </div>
 
-  </div>
+    </header>
+  </article>
+
+
+
+    
+
+      
+      
+      
+
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2017/01/14/Android笔记-数据保存/" itemprop="url">
+              
+                <span itemprop="name">Android笔记—数据保存</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-01-14T12:00:00+08:00"
+              content="2017-01-14" >
+          01-14
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+    
+
+  </section>
+
+  
+
 
 
           </div>
@@ -346,17 +327,6 @@ PS">
 
 
           
-  <div class="comments" id="comments">
-    
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -388,7 +358,7 @@ PS">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -531,6 +501,12 @@ PS">
   
 
   
+  
+    <script type="text/javascript" id="motion.page.archive">
+      $('.archive-year').velocity('transition.slideLeftIn');
+    </script>
+  
+
 
   
 
@@ -547,9 +523,9 @@ PS">
 
     <script type="text/javascript">
       var disqus_shortname = 'jasper1024';
-      var disqus_identifier = 'Android笔记-数据保存.html';
-      var disqus_title = 'Android笔记—数据保存';
-      var disqus_url = 'http://yoursite.com/Android笔记-数据保存.html';
+      var disqus_identifier = 'archives/2017/index.html';
+      var disqus_title = '';
+      var disqus_url = '';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
@@ -560,8 +536,6 @@ PS">
       }
 
       run_disqus_script('count.js');
-      
-        run_disqus_script('embed.js');
       
     </script>
   

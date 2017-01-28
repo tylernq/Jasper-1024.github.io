@@ -247,6 +247,530 @@
             
               
                 
+                <a class="post-title-link" href="/2017/01/19/Android笔记-ContentResolver/" itemprop="url">
+                  Android笔记—ContentResolver
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-19T12:00:00+08:00" content="2017-01-19">
+              2017-01-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/19/Android笔记-ContentResolver/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/19/Android笔记-ContentResolver/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/19/Android笔记-ContentResolver/" class="leancloud_visitors" data-flag-title="Android笔记—ContentResolver">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>资料来源如下</p>
+<ul>
+<li>第一行代码(第二版)</li>
+<li><a href="http://www.jianshu.com/p/57798618bd90" target="_blank" rel="external">android6.0运行时权限详解</a></li>
+</ul>
+<p>编程环境</p>
+<ul>
+<li>Android Studio 2.2.3 </li>
+</ul>
+<p>导语</p>
+<ul>
+<li>内容提供器是安全的应用间共享数据途径，在正式进入之前需要了解一下 Android 自6.0以来权限的变化</li>
+</ul>
+<hr>
+<h2 id="Android-权限详解"><a href="#Android-权限详解" class="headerlink" title="Android 权限详解"></a>Android 权限详解</h2><hr>
+<p>资料来源：</p>
+<ul>
+<li><a href="http://www.jianshu.com/p/57798618bd90" target="_blank" rel="external">android6.0运行时权限详解</a></li>
+<li><a href="https://developer.android.com/guide/topics/security/permissions.html" target="_blank" rel="external">Develop-API Guides-系统权限</a></li>
+<li>第一行代码(第二版)</li>
+</ul>
+<hr>
+<h3 id="Android权限介绍"><a href="#Android权限介绍" class="headerlink" title="Android权限介绍"></a>Android权限介绍</h3><ul>
+<li><p>Android 是一个权限分隔的操作系统<br>每个应用系统标识（Linux 用户 ID 和组 ID）不同。系统各部分标识亦不相同。Linux 据此将不同的应用以及应用与系统分隔开来。<br>更详细的安全功能通过“权限”提供，权限 会限制特定进程可以执行的具体操作，并且根据 URI 权限授权临时访问特定的数据段</p>
+</li>
+<li><p>权限声明<br>最常见的权限声明在 AndroidManifest.xml 文件中一个或多个uses-permission 标记, </p>
+<ul>
+<li>例如 声明短信权限 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">  <span class="attr">package</span>=<span class="string">"com.android.app.myapp"</span> &gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.RECEIVE_SMS"</span> /&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>android 6.0 权限机制<br>android 6.0之前 权限及在安装的时候，根据权限声明产生一个权限列表，用户只有在同意之后才能完成app的安装。<br>android 6.0 以后 引入了  运行时权限 功能，应用所需权限不再一次性在安装时申请，而是在运行时需要用到那种权限向用户申请，同时用户也可以随时取消该授权</p>
+</li>
+<li><p>权限分类</p>
+<ul>
+<li>Normal Permissions(普通权限)<br>不涉及用户隐私，不需要用户进行授权的，例如 手机震动、访问网络等</li>
+<li>Dangerous Permission(危险权限)<br>涉及到用户隐私的，需要用户进行授权，例如 读取sdcard、访问通讯录等<br><a href="https://developer.android.com/guide/topics/security/permissions.html" target="_blank" rel="external">危险权限组</a>如表1</li>
+</ul>
+</li>
+</ul>
+<h3 id="应用运行时申请权限（适用于-Android6-0-及以上版本）"><a href="#应用运行时申请权限（适用于-Android6-0-及以上版本）" class="headerlink" title="应用运行时申请权限（适用于 Android6.0 及以上版本）"></a>应用运行时申请权限（适用于 Android6.0 及以上版本）</h3><ul>
+<li>通过一个简单的实例来说明过程<h4 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h4></li>
+<li><p>拨打电话 CALL<em>PHONE  </em>权限为例 </p>
+<ul>
+<li>权限声明<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.CALL_PHONE"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>拨打10010</p>
+<ul>
+<li>代码如下 构建一个隐式intent 启动拨打电话<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_CALL);</span><br><span class="line">intent.setData(Uri.parse(<span class="string">"tel:10010"</span>));</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>在主界面上添加一个Button 在其onClick方法中拨打电话，运行程序!</li>
+</ul>
+<hr>
+<ul>
+<li>在An’d’roid 6.0 以下版本中 电话都可以正常拨出。Android 6.0 以上版本中 则可能会应用崩溃/无反应，查看logcat的打印日志可以看到 “Permission Denial”权限被禁止的信息，接下来尝试使用 运行时申请权限</li>
+</ul>
+<hr>
+<ul>
+<li>检查是否已获得授权<br>int  checkSelfPermission(Context context, String permission)方法 <ul>
+<li>Context context context<br>String permission  权限具体名称<br>打电话对应 Manifest.permission.CALL<em>PHONE   </em></li>
+<li>方法返回  PERMISSION_GRANTED  /   PERMISSION_DENIED</li>
+<li>例程<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(ContextCompat.checkSelfPermission</span><br><span class="line">(MainActivity.<span class="keyword">this</span>,Manifest.permission.CALL_PHONE) </span><br><span class="line">!=PackageManager.PERMISSION_GRANTED)</span><br><span class="line">&#123;</span><br><span class="line">         ;</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">         ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>申请权限<br>void ActivityCompat.requestPermissions (Activity activity, String[] permissions, int requestCode)方法</p>
+<ul>
+<li><p>Activity activity  Activity实例<br>String[] permissions  请求权限名<br>int requestCode 请求码，大于0即可，对应在onRequestPermissionsResult 回掉方法中的requestCode</p>
+</li>
+<li><p>例程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ActivityCompat.requestPermissions(MainActivity.<span class="keyword">this</span>,</span><br><span class="line"><span class="keyword">new</span> String[]&#123;Manifest.permission.CALL_PHONE&#125;,<span class="number">1</span> );</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>授权后回掉<br>无论用户是否授权都会进入回掉方法，需要重写该方法。<br>void onRequestPermissionsResult (int requestCode, String[] permissions, int[] grantResults)方法</p>
+<ul>
+<li><p>int requestCode    在 requestPermissions 中传入的请求码<br>String[] permissions   请求的权限，不为空<br>int[] grantResults        授权结果 只有 PERMISSION_GRANTED  / PERMISSION_DENIED 两个值</p>
+</li>
+<li><p>例程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, String[] permissions, <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (requestCode) &#123;</span><br><span class="line">    	<span class="comment">//请求码 1</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            <span class="comment">//授权结果(int) 的 长度是否大于0  与上 授权结果是否等于  PackageManager.PERMISSION_GRANTED </span></span><br><span class="line">            <span class="keyword">if</span> (grantResults.length &gt; <span class="number">0</span> &amp;&amp; grantResults[<span class="number">0</span>] == PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">            <span class="comment">//授权通过执行</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//授权没有通过  </span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>当用户拒绝后再次询问<br>  boolean ActivityCompat.shouldShowRequestPermissionRationale(Activity activity, String permission)             （真心太长了）</p>
+<ul>
+<li>Activity activity  Activity实例<br>String permission   权限名称<br>应用第一次需要授权时,用户授权，该方法返回false。当用户拒绝授权,下次需要该权限时,该方法会返回true</li>
+<li>例程<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">if</span> (ActivityCompat.shouldShowRequestPermissionRationale</span><br><span class="line">(PermissionActivity.<span class="keyword">this</span>,Manifest.permission.READ_CONTACTS))</span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//第二次询问用户是否授权</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line"><span class="comment">//用户依旧拒绝后操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>例程源码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">      setContentView(R.layout.activity_main);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Button</span><span class="params">(View view)</span></span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(ContextCompat.checkSelfPermission(MainActivity.<span class="keyword">this</span>,Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED)&#123;</span><br><span class="line">          ActivityCompat.requestPermissions(MainActivity.<span class="keyword">this</span>, <span class="keyword">new</span> String[]&#123;Manifest.permission.CALL_PHONE&#125;,<span class="number">1</span> );</span><br><span class="line">      &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">          call();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">          Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_CALL);</span><br><span class="line">          intent.setData(Uri.parse(<span class="string">"tel:10010"</span>));</span><br><span class="line">          startActivity(intent);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (SecurityException e) &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, String[] permissions, <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">switch</span> (requestCode) &#123;</span><br><span class="line">          <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">              <span class="keyword">if</span> (grantResults.length &gt; <span class="number">0</span> &amp;&amp; grantResults[<span class="number">0</span>] == PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">                  call();</span><br><span class="line">              &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                  Toast.makeText(<span class="keyword">this</span>, <span class="string">"You denied the permission"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">default</span>:</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Button</span></span><br><span class="line">     <span class="attr">android:onClick</span>=<span class="string">"Button"</span></span><br><span class="line">     <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span><br><span class="line">     <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">     <span class="attr">android:text</span>=<span class="string">"Hello World!"</span> /&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/14/Android笔记-数据保存/" itemprop="url">
+                  Android笔记—数据保存
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-14T12:00:00+08:00" content="2017-01-14">
+              2017-01-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/14/Android笔记-数据保存/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/14/Android笔记-数据保存/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/14/Android笔记-数据保存/" class="leancloud_visitors" data-flag-title="Android笔记—数据保存">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>资料来源如下</p>
+<ul>
+<li>第一行代码(第二版)</li>
+</ul>
+<p>编程环境</p>
+<ul>
+<li>Android Studio 2.2.3 </li>
+</ul>
+<hr>
+<h2 id="Android-中的主要数据存储"><a href="#Android-中的主要数据存储" class="headerlink" title="Android 中的主要数据存储"></a>Android 中的主要数据存储</h2><ul>
+<li><p>有三种</p>
+</li>
+<li><p>保存键值集<br> 要保存的相对较小键值集合，使用 SharedPreferences</p>
+</li>
+<li><p>保存文件<br>使用 Android 文件系统通过 File API 读取和写入文件，适合按开始到结束的顺序不跳过地读取或写入大量数据。 例如，图片文件或通过网络交换的任何内容</p>
+</li>
+<li><p>在 SQL 数据库中保存数据<br>Android内建的SQLite 数据库存储重复或结构化数据</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>PS：这里如果没有学过 SQL 数据库使用，推荐LitePal</li>
+<li>Android开源数据库<a href="https://github.com/LitePalFramework/LitePal#latest-downloads/" target="_blank" rel="external">LitePal</a>  ：郭霖(第一行代码作者)</li>
+<li>详细介绍在这里<a href="http://www.jianshu.com/p/557682e0a9f0" target="_blank" rel="external">（懒人必备）Android开源数据库LitePal</a></li>
+</ul>
+<hr>
+<h3 id="保存键值集"><a href="#保存键值集" class="headerlink" title="保存键值集"></a>保存键值集</h3><ul>
+<li>想要保存的相对较小键值集合</li>
+<li><p>调用SharedPreferences</p>
+</li>
+<li><p>首先：获取SharedPreferences的句柄<br>用户可以创建一个共享参数文件或访问一个已经存在的共享参数文件。<br>具体途径有三条</p>
+<ul>
+<li><p>getSharedPreferences (String name, int mode)</p>
+<ul>
+<li>第一个参数：SharedPreferences的名称，第二个：参数指定操作模式</li>
+<li>需要创建/读取 多个共享参数文件时使用，每个文件都拥有一个标识符，可以通过这个标识符通过该方法的第一个参数获得共享参数对象。可以通过APP中的任意Context对象调用它。</li>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//指定SharedPreferences名称为data  模式为MODE_PRIVATE：只有当前程序才有权限读取/修改</span></span><br><span class="line">SharedPreferences sharedPref = getSharedPreferences(<span class="string">"data"</span>, MODE_PRIVATE);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>getPreferences (int mode)</p>
+<ul>
+<li>参数：指定操作模式</li>
+<li>只创建 Activity 的一个SharedPreferences。在Activity 中使用。 方法会检索属于该 Activity 的默认共享首选项文件，无需提供名称</li>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//模式：MODE_PRIVATE：只有当前程序才有权限读取/修改</span></span><br><span class="line">SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>getDefaultSharedPreferences(context)</p>
+<ul>
+<li>参数：context</li>
+<li>自动以档期应用程序包名作为前缀命名SharedPreferences文件</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>写入数据到共享参数中<ul>
+<li>SharedPreferences 调用 edit() 创建一个 SharedPreferences.Editor<br>使用诸如 putInt() 和 putString() 方法写入的键和值<br>最后调用commit() 以保存更改<br>也可调用apply() 保存更改</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>commit() 与 apply() 相同/区别</li>
+<li>相同<ul>
+<li>都是提交preference修改数据</li>
+</ul>
+</li>
+<li>区别<ul>
+<li>apply没有返回值  commit返回boolean表明修改是否提交成功</li>
+<li>apply是将操作提交到内存，而后异步真正提交到文件<br> commit是同步的提交到文件<br> 多个commit同时提交，互相等待，效率较低<br> apply直接覆盖，效率较高<ul>
+<li>apply没有任何错误提示，只是提交的动作</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建 .edit()</span></span><br><span class="line">SharedPreferences.Editor editor = sharedPref.edit();</span><br><span class="line"><span class="comment">//写入字符串。key-值 TextView</span></span><br><span class="line">editor.putString(<span class="string">"TextView"</span>,<span class="string">"hello"</span>);</span><br><span class="line"><span class="comment">//保存更改</span></span><br><span class="line">editor.commit();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>从共享参数中读取数据<ul>
+<li>获取SharedPreferences的句柄<br>方式同上</li>
+<li>调用比如getInt()或getString()方法，然后传入键值，如果键不存在，则会返回一个默认值</li>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取SharedPreferences的句柄</span></span><br><span class="line">SharedPreferences sharedPreferences = getSharedPreferences(<span class="string">"data"</span>,MODE_PRIVATE);</span><br><span class="line"><span class="comment">//读取键值对应数据</span></span><br><span class="line">String text = sharedPreferences.getString(<span class="string">"TextView"</span>,<span class="string">""</span>);</span><br><span class="line"><span class="comment">//打印到log中 验证</span></span><br><span class="line">Log.d(<span class="string">"data"</span>,text);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="保存到文件"><a href="#保存到文件" class="headerlink" title="保存到文件"></a>保存到文件</h3><ul>
+<li>Android 设备有两个文件存储区域： 内部存储 和 外部存储<br>Android 设备早期内置的非易失性内存（内部存储），以及移动存储介质 微型 SD 卡等（外部存储）<br>任何Android设备始终有两个存储空间，并且无论外部存储设备是否可移动，API 的行为均一致</li>
+</ul>
+<ul>
+<li>Android的文件存储是以java流为基础，并优化了一些操作。java流不属于本文范围。</li>
+<li>涉及java流部分参考<a href="http://androidtoast.iteye.com/blog/1172673" target="_blank" rel="external">Android文件IO详解</a></li>
+</ul>
+<h4 id="内部存储"><a href="#内部存储" class="headerlink" title="内部存储"></a>内部存储</h4><h4 id="保存到内部存储"><a href="#保存到内部存储" class="headerlink" title="保存到内部存储"></a>保存到内部存储</h4><ul>
+<li>某一应用对其内部存储 始终具有 进行读写的权限，而无需声明任何权限，在 Android N之前，内部文件可以通过放宽权限让其他应用访问。<strong>但是极不推荐以这种方式共享文件</strong></li>
+</ul>
+<ul>
+<li><p>简单实例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">(String inputText)</span></span>&#123;</span><br><span class="line">      <span class="comment">//新建一个FileOutputStream对象(字节流)</span></span><br><span class="line">      FileOutputStream out = <span class="keyword">null</span>;</span><br><span class="line">      <span class="comment">//新建一个BufferedWriter (字符流)</span></span><br><span class="line">      BufferedWriter writer = <span class="keyword">null</span>;</span><br><span class="line">      <span class="keyword">try</span>&#123;</span><br><span class="line">          <span class="comment">//out 实例化</span></span><br><span class="line">          out = openFileOutput(<span class="string">"data"</span>,Context.MODE_PRIVATE);</span><br><span class="line">          <span class="comment">//OutputStreamWrit  字节流转换为字符流</span></span><br><span class="line">          <span class="comment">//字符流绑定BufferedWriter(缓冲区)</span></span><br><span class="line">          writer = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> OutputStreamWriter(out));</span><br><span class="line">          <span class="comment">//写入到文件</span></span><br><span class="line">          writer.write(inputText);</span><br><span class="line">      &#125;<span class="keyword">catch</span> (IOException e )&#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">          <span class="keyword">try</span>&#123;</span><br><span class="line">              <span class="comment">//如果写入成功</span></span><br><span class="line">              <span class="keyword">if</span> (writer != <span class="keyword">null</span>) &#123;</span><br><span class="line">              	<span class="comment">//关闭流</span></span><br><span class="line">                  writer.close();</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">              e.printStackTrace();</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>FileOutputStream：</p>
+<ul>
+<li>继承自 OutputStream 用于文件处理的节点流</li>
+<li>用于写入原始字节流到文件</li>
+</ul>
+</li>
+<li><p>FileOutputStream openFileOutput (String name, int mode)</p>
+<ul>
+<li>返回FileOutputStream对象</li>
+<li>第一个参数是文件名</li>
+<li>第二个参数是操作模式，有4种取值<ul>
+<li>MODE<em>PRIVATE(默认)</em>当同一文件名存在时覆盖原文件</li>
+<li>MODE<em>APPEND  </em>当同名文件存在时，在原文件末尾追加</li>
+<li>其余两种均在android4.2及以上版本中废弃</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>OutputStreamWrit</p>
+<ul>
+<li>继承自 Writer </li>
+<li>将字节流转换为字符流</li>
+</ul>
+</li>
+<li><p>BufferedWriter </p>
+<ul>
+<li>继承自Writer </li>
+<li>绑定字符输出流，提高具体的流对象的效率</li>
+<li>.flush()方法 对缓冲区进行刷新，让数据到目的地</li>
+<li>.close();方法 关闭缓冲区，即关闭绑定的流</li>
+</ul>
+</li>
+</ul>
+<h5 id="从内部存储读取文件"><a href="#从内部存储读取文件" class="headerlink" title="从内部存储读取文件"></a>从内部存储读取文件</h5><ul>
+<li><p>简单实例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">load</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="comment">//新建FileInputStream对象</span></span><br><span class="line">     FileInputStream in = <span class="keyword">null</span>;</span><br><span class="line">     <span class="comment">//新建 BufferedReader对象</span></span><br><span class="line">     BufferedReader reader = <span class="keyword">null</span>;</span><br><span class="line">     <span class="comment">//新建一个StringBuilder 空</span></span><br><span class="line">      content = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">     <span class="keyword">try</span>&#123;</span><br><span class="line">     	<span class="comment">//FileInputStream对象实例化</span></span><br><span class="line">         in = openFileInput(<span class="string">"data"</span>);</span><br><span class="line">         <span class="comment">//字节流转换为字符流</span></span><br><span class="line">         <span class="comment">//缓冲流绑定字符流</span></span><br><span class="line">         reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(in));</span><br><span class="line">         <span class="comment">//空 String</span></span><br><span class="line">         String line = <span class="string">""</span>;</span><br><span class="line">         <span class="comment">//读取文件内容，并判断是否读取完成</span></span><br><span class="line">         <span class="keyword">while</span>((line = reader.readLine())!=<span class="keyword">null</span>)&#123;</span><br><span class="line">         	<span class="comment">//读取内容添加到 StringBuilder 对象中   </span></span><br><span class="line">             content.append(line);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">         e.printStackTrace();</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">finally</span> &#123;</span><br><span class="line">         <span class="keyword">if</span>(reader != <span class="keyword">null</span>)&#123;</span><br><span class="line">             <span class="keyword">try</span>&#123;</span><br><span class="line">             	<span class="comment">//关闭流</span></span><br><span class="line">                 reader.close();</span><br><span class="line">             &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">                 e.printStackTrace();</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="comment">//将读取结果 由StringBuilder转换为String 并返回</span></span><br><span class="line">     <span class="keyword">return</span> content.toString();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>FileInputStream</p>
+<ul>
+<li>继承自 InputStream，用于文件处理的节点流</li>
+<li>从文件中读取</li>
+</ul>
+</li>
+<li><p>FileInputStream openFileInput(String filename)</p>
+<ul>
+<li>返回FileInputStream对象</li>
+<li>参数为 读取的文件名</li>
+</ul>
+</li>
+<li><p>InputStreamRead</p>
+<ul>
+<li>将字节流转换为字符流</li>
+</ul>
+</li>
+<li><p>BufferedReader</p>
+<ul>
+<li>缓冲流</li>
+</ul>
+</li>
+</ul>
+<h4 id="外部存储"><a href="#外部存储" class="headerlink" title="外部存储"></a>外部存储</h4><ul>
+<li>占坑</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/31/2016总结/" itemprop="url">
                   2016总结
                 </a>
@@ -2356,351 +2880,6 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/27/初入树莓派2----常规初始化+远程桌面/" itemprop="url">
-                  初入树莓派2---初始化+远程桌面
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-27T10:17:11+08:00" content="2016-11-27">
-              2016-11-27
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/树莓派/" itemprop="url" rel="index">
-                    <span itemprop="name">树莓派</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/27/初入树莓派2----常规初始化+远程桌面/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/11/27/初入树莓派2----常规初始化+远程桌面/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/11/27/初入树莓派2----常规初始化+远程桌面/" class="leancloud_visitors" data-flag-title="初入树莓派2---初始化+远程桌面">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><h3 id="启用树莓派root用户"><a href="#启用树莓派root用户" class="headerlink" title="启用树莓派root用户"></a>启用树莓派root用户</h3><ul>
-<li>不做物联网终端时启用root用户比较方便</li>
-<li>SSH连接树莓派</li>
-<li><p>在命令行下执行</p>
-<ul>
-<li><p>启用root用户</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd root</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行后输入两遍你要设定的root密码</p>
-</li>
-<li>在输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd –unlock root</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>root用户解锁完成</p>
-</li>
-<li><p>执行完毕后依旧无法登陆</p>
-<ul>
-<li><p>执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>找到<code>PermitRootLogin without-password</code><br> 改为<code>PermitRootLogin yes</code></p>
-</li>
-<li>Ctrl + X 、 Y 、 回车 保存</li>
-<li><code>sudo reboot</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="更换国内镜像地址"><a href="#更换国内镜像地址" class="headerlink" title="更换国内镜像地址"></a>更换国内镜像地址</h3><hr>
-<h2 id="gt-http-blog-lxx1-com-2040"><a href="#gt-http-blog-lxx1-com-2040" class="headerlink" title="&gt; http://blog.lxx1.com/2040"></a>&gt; <a href="http://blog.lxx1.com/2040" target="_blank" rel="external">http://blog.lxx1.com/2040</a></h2><ul>
-<li>由于众所周知的原因，树莓派链接官方更新源实在太过缓慢，国内有一批不错的镜像地址，可以解决系统/软件更新问题。</li>
-<li><p>收集的树莓派镜像一般使用比较频繁的有下面几个<br>1.<a href="http://mirrors.aliyun.com/" target="_blank" rel="external">阿里云</a>  首推镜像地址，移动/联通/电信网络都有不错的访问速度。<br>2.<a href="http://mirrors.neusoft.edu.cn/raspbian/raspbian/" target="_blank" rel="external">大连东软信息学院</a>  北方用户比较友好<br>3.<a href="http://mirrors.ustc.edu.cn/raspbian/raspbian/" target="_blank" rel="external">中国科学技术大学</a>  教育网有加成，非教育网就慢多了</p>
-</li>
-<li><p>这里选择 阿里云的镜像</p>
-</li>
-</ul>
-<ul>
-<li><p>更新 sources.list</p>
-<ul>
-<li><p>执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除官方内容或者用#注释掉，添加以下内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.aliyun.com/raspbian/raspbian/ jessie main non-free contrib</span><br><span class="line">deb-src http://mirrors.aliyun.com/raspbian/raspbian/ jessie main non-free contrib</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>删除raspi.list备用更新源(可选)</p>
-<ul>
-<li>通常更新sources.list后依旧缓慢，大多是raspi.list的锅</li>
-<li><code>rm /etc/apt/sources.list.d/raspi.list</code>    </li>
-</ul>
-</li>
-</ul>
-<h3 id="设置中文字体"><a href="#设置中文字体" class="headerlink" title="设置中文字体"></a>设置中文字体</h3><ul>
-<li><p>系统中缺少中文字库 首先更新字库和输入法</p>
-<ul>
-<li><p>执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ttf-wqy-zenhei</span><br><span class="line">sudo apt-get install scim-pinyin</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>接下来 都点 y</p>
-</li>
-<li><p>执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo raspi-config</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>选择change_locale</p>
-</li>
-<li><img src="http://cdn2.snapgram.co/imgs/2016/11/27/950743-20160520171916373-887591767.png" alt="950743-20160520171916373-887591767.png"><br>空格键在前面打勾或去掉勾（星号=勾） Tab选择OK</li>
-<li>去掉en_GB.UTF-8 UTF-8<br>勾选：”en_US.UTF-8 UTF-8”、”zh_CN.UTF-8 UTF-8”、”zh_CN.GBK GBK”</li>
-<li>OK，下一屏幕,</li>
-<li><img src="http://cdn1.snapgram.co/imgs/2016/11/27/950743-20160520171919435-1542955508.png" alt="950743-20160520171919435-1542955508.png"><br>默认语言选zh_CN.UTF-8</li>
-</ul>
-</li>
-</ul>
-<h2 id="远程桌面"><a href="#远程桌面" class="headerlink" title="远程桌面"></a>远程桌面</h2><ul>
-<li><p>终端执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install xrdp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>windows端 CMD 执行  <code>mstsc</code></p>
-</li>
-<li>输入树莓派ip地址 用户名 密码 </li>
-<li><a href="http://snapgr.am/image/L7lS" target="_blank" rel="external"><img src="http://cdn4.snapgram.co/images/2016/11/27/950743-20160520171926529-1842218984.png" alt="950743-20160520171926529-1842218984.png"></a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/08/GitHub-Pages更新导致Next主题-博客主页空白，解决方案/" itemprop="url">
-                  GitHub-Pages更新导致Next主题-博客主页空白，解决方案
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-08T10:10:11+08:00" content="2016-11-08">
-              2016-11-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/点滴/" itemprop="url" rel="index">
-                    <span itemprop="name">点滴</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/08/GitHub-Pages更新导致Next主题-博客主页空白，解决方案/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/11/08/GitHub-Pages更新导致Next主题-博客主页空白，解决方案/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/11/08/GitHub-Pages更新导致Next主题-博客主页空白，解决方案/" class="leancloud_visitors" data-flag-title="GitHub-Pages更新导致Next主题-博客主页空白，解决方案">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>倒腾了俩小时，以为梯子坏了，结果。。。GitHub-Pages更新了！！！</strong> </p>
-<hr>
-<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><ul>
-<li>GitHub-Pages更新，  过滤掉了 source/vendors 目录的访问。</li>
-<li><a href="https://github.com/iissnan/hexo-theme-next/issues/1214" target="_blank" rel="external">issues入口</a></li>
-</ul>
-<h3 id="解决1更新主题"><a href="#解决1更新主题" class="headerlink" title="解决1更新主题"></a>解决1更新主题</h3><ul>
-<li>作者更新了到最新的master分支，解决了这个问题，<br>  So：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="解决2更新本地设置（Next最新版）"><a href="#解决2更新本地设置（Next最新版）" class="headerlink" title="解决2更新本地设置（Next最新版）"></a>解决2更新本地设置（Next最新版）</h3><ul>
-<li>将 source/vendors 目录修改成 source/lib （或者其他的名称，只是 lib 我测试了可以使用）；同时，修改下主题配置文件_config.yml， 将 _internal: vendors 改成你所修改的名字，例如  _internal: lib。</li>
-</ul>
-<h3 id="解决3更新本地设置（Next5-0及以下版本）"><a href="#解决3更新本地设置（Next5-0及以下版本）" class="headerlink" title="解决3更新本地设置（Next5.0及以下版本）"></a>解决3更新本地设置（Next5.0及以下版本）</h3><ul>
-<li>将 source/vendors 目录修改成 source/lib （或者其他的名称，只是 lib 我测试了可以使用）；同时，修改下主题配置文件_config.yml， <strong>vendors: vendors </strong>改成你所修改的名字，例如  _internal: lib。</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2746,7 +2925,7 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

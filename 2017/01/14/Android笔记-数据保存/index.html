@@ -1,0 +1,944 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android Studio,Android,学习记录," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="默" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="资料来源如下
+
+第一行代码(第二版)
+
+编程环境
+
+Android Studio 2.2.3 
+
+
+Android 中的主要数据存储
+有三种
+
+保存键值集 要保存的相对较小键值集合，使用 SharedPreferences
+
+保存文件使用 Android 文件系统通过 File API 读取和写入文件，适合按开始到结束的顺序不跳过地读取或写入大量数据。 例如，图片文件或通过网络交换的任何内容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android笔记—数据保存">
+<meta property="og:url" content="http://yoursite.com/2017/01/14/Android笔记-数据保存/index.html">
+<meta property="og:site_name" content="默">
+<meta property="og:description" content="资料来源如下
+
+第一行代码(第二版)
+
+编程环境
+
+Android Studio 2.2.3 
+
+
+Android 中的主要数据存储
+有三种
+
+保存键值集 要保存的相对较小键值集合，使用 SharedPreferences
+
+保存文件使用 Android 文件系统通过 File API 读取和写入文件，适合按开始到结束的顺序不跳过地读取或写入大量数据。 例如，图片文件或通过网络交换的任何内容">
+<meta property="og:updated_time" content="2017-01-14T13:30:28.259Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android笔记—数据保存">
+<meta name="twitter:description" content="资料来源如下
+
+第一行代码(第二版)
+
+编程环境
+
+Android Studio 2.2.3 
+
+
+Android 中的主要数据存储
+有三种
+
+保存键值集 要保存的相对较小键值集合，使用 SharedPreferences
+
+保存文件使用 Android 文件系统通过 File API 读取和写入文件，适合按开始到结束的顺序不跳过地读取或写入大量数据。 例如，图片文件或通过网络交换的任何内容">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Android笔记—数据保存 | 默 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-79641673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">默</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">为了生存，而一点点淡忘了最初的本意。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android笔记—数据保存
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-14T12:00:00+08:00" content="2017-01-14">
+              2017-01-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/14/Android笔记-数据保存/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/14/Android笔记-数据保存/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/14/Android笔记-数据保存/" class="leancloud_visitors" data-flag-title="Android笔记—数据保存">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>资料来源如下</p>
+<ul>
+<li>第一行代码(第二版)</li>
+</ul>
+<p>编程环境</p>
+<ul>
+<li>Android Studio 2.2.3 </li>
+</ul>
+<hr>
+<h2 id="Android-中的主要数据存储"><a href="#Android-中的主要数据存储" class="headerlink" title="Android 中的主要数据存储"></a>Android 中的主要数据存储</h2><ul>
+<li><p>有三种</p>
+</li>
+<li><p>保存键值集<br> 要保存的相对较小键值集合，使用 SharedPreferences</p>
+</li>
+<li><p>保存文件<br>使用 Android 文件系统通过 File API 读取和写入文件，适合按开始到结束的顺序不跳过地读取或写入大量数据。 例如，图片文件或通过网络交换的任何内容</p>
+</li>
+<li><p>在 SQL 数据库中保存数据<br>Android内建的SQLite 数据库存储重复或结构化数据</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>PS：这里如果没有学过 SQL 数据库使用，推荐LitePal</li>
+<li>Android开源数据库<a href="https://github.com/LitePalFramework/LitePal#latest-downloads/" target="_blank" rel="external">LitePal</a>  ：郭霖(第一行代码作者)</li>
+<li>详细介绍在这里<a href="http://www.jianshu.com/p/557682e0a9f0" target="_blank" rel="external">（懒人必备）Android开源数据库LitePal</a></li>
+</ul>
+<hr>
+<h3 id="保存键值集"><a href="#保存键值集" class="headerlink" title="保存键值集"></a>保存键值集</h3><ul>
+<li>想要保存的相对较小键值集合</li>
+<li><p>调用SharedPreferences</p>
+</li>
+<li><p>首先：获取SharedPreferences的句柄<br>用户可以创建一个共享参数文件或访问一个已经存在的共享参数文件。<br>具体途径有三条</p>
+<ul>
+<li><p>getSharedPreferences (String name, int mode)</p>
+<ul>
+<li>第一个参数：SharedPreferences的名称，第二个：参数指定操作模式</li>
+<li>需要创建/读取 多个共享参数文件时使用，每个文件都拥有一个标识符，可以通过这个标识符通过该方法的第一个参数获得共享参数对象。可以通过APP中的任意Context对象调用它。</li>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//指定SharedPreferences名称为data  模式为MODE_PRIVATE：只有当前程序才有权限读取/修改</span></span><br><span class="line">SharedPreferences sharedPref = getSharedPreferences(<span class="string">"data"</span>, MODE_PRIVATE);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>getPreferences (int mode)</p>
+<ul>
+<li>参数：指定操作模式</li>
+<li>只创建 Activity 的一个SharedPreferences。在Activity 中使用。 方法会检索属于该 Activity 的默认共享首选项文件，无需提供名称</li>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//模式：MODE_PRIVATE：只有当前程序才有权限读取/修改</span></span><br><span class="line">SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>getDefaultSharedPreferences(context)</p>
+<ul>
+<li>参数：context</li>
+<li>自动以档期应用程序包名作为前缀命名SharedPreferences文件</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>写入数据到共享参数中<ul>
+<li>SharedPreferences 调用 edit() 创建一个 SharedPreferences.Editor<br>使用诸如 putInt() 和 putString() 方法写入的键和值<br>最后调用commit() 以保存更改<br>也可调用apply() 保存更改</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>commit() 与 apply() 相同/区别</li>
+<li>相同<ul>
+<li>都是提交preference修改数据</li>
+</ul>
+</li>
+<li>区别<ul>
+<li>apply没有返回值  commit返回boolean表明修改是否提交成功</li>
+<li>apply是将操作提交到内存，而后异步真正提交到文件<br> commit是同步的提交到文件<br> 多个commit同时提交，互相等待，效率较低<br> apply直接覆盖，效率较高<ul>
+<li>apply没有任何错误提示，只是提交的动作</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建 .edit()</span></span><br><span class="line">SharedPreferences.Editor editor = sharedPref.edit();</span><br><span class="line"><span class="comment">//写入字符串。key-值 TextView</span></span><br><span class="line">editor.putString(<span class="string">"TextView"</span>,<span class="string">"hello"</span>);</span><br><span class="line"><span class="comment">//保存更改</span></span><br><span class="line">editor.commit();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>从共享参数中读取数据<ul>
+<li>获取SharedPreferences的句柄<br>方式同上</li>
+<li>调用比如getInt()或getString()方法，然后传入键值，如果键不存在，则会返回一个默认值</li>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取SharedPreferences的句柄</span></span><br><span class="line">SharedPreferences sharedPreferences = getSharedPreferences(<span class="string">"data"</span>,MODE_PRIVATE);</span><br><span class="line"><span class="comment">//读取键值对应数据</span></span><br><span class="line">String text = sharedPreferences.getString(<span class="string">"TextView"</span>,<span class="string">""</span>);</span><br><span class="line"><span class="comment">//打印到log中 验证</span></span><br><span class="line">Log.d(<span class="string">"data"</span>,text);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="保存到文件"><a href="#保存到文件" class="headerlink" title="保存到文件"></a>保存到文件</h3><ul>
+<li>Android 设备有两个文件存储区域： 内部存储 和 外部存储<br>Android 设备早期内置的非易失性内存（内部存储），以及移动存储介质 微型 SD 卡等（外部存储）<br>任何Android设备始终有两个存储空间，并且无论外部存储设备是否可移动，API 的行为均一致</li>
+</ul>
+<ul>
+<li>Android的文件存储是以java流为基础，并优化了一些操作。java流不属于本文范围。</li>
+<li>涉及java流部分参考<a href="http://androidtoast.iteye.com/blog/1172673" target="_blank" rel="external">Android文件IO详解</a></li>
+</ul>
+<h4 id="内部存储"><a href="#内部存储" class="headerlink" title="内部存储"></a>内部存储</h4><h4 id="保存到内部存储"><a href="#保存到内部存储" class="headerlink" title="保存到内部存储"></a>保存到内部存储</h4><ul>
+<li>某一应用对其内部存储 始终具有 进行读写的权限，而无需声明任何权限，在 Android N之前，内部文件可以通过放宽权限让其他应用访问。<strong>但是极不推荐以这种方式共享文件</strong></li>
+</ul>
+<ul>
+<li><p>简单实例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">(String inputText)</span></span>&#123;</span><br><span class="line">      <span class="comment">//新建一个FileOutputStream对象(字节流)</span></span><br><span class="line">      FileOutputStream out = <span class="keyword">null</span>;</span><br><span class="line">      <span class="comment">//新建一个BufferedWriter (字符流)</span></span><br><span class="line">      BufferedWriter writer = <span class="keyword">null</span>;</span><br><span class="line">      <span class="keyword">try</span>&#123;</span><br><span class="line">          <span class="comment">//out 实例化</span></span><br><span class="line">          out = openFileOutput(<span class="string">"data"</span>,Context.MODE_PRIVATE);</span><br><span class="line">          <span class="comment">//OutputStreamWrit  字节流转换为字符流</span></span><br><span class="line">          <span class="comment">//字符流绑定BufferedWriter(缓冲区)</span></span><br><span class="line">          writer = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> OutputStreamWriter(out));</span><br><span class="line">          <span class="comment">//写入到文件</span></span><br><span class="line">          writer.write(inputText);</span><br><span class="line">      &#125;<span class="keyword">catch</span> (IOException e )&#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">          <span class="keyword">try</span>&#123;</span><br><span class="line">              <span class="comment">//如果写入成功</span></span><br><span class="line">              <span class="keyword">if</span> (writer != <span class="keyword">null</span>) &#123;</span><br><span class="line">              	<span class="comment">//关闭流</span></span><br><span class="line">                  writer.close();</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">              e.printStackTrace();</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>FileOutputStream：</p>
+<ul>
+<li>继承自 OutputStream 用于文件处理的节点流</li>
+<li>用于写入原始字节流到文件</li>
+</ul>
+</li>
+<li><p>FileOutputStream openFileOutput (String name, int mode)</p>
+<ul>
+<li>返回FileOutputStream对象</li>
+<li>第一个参数是文件名</li>
+<li>第二个参数是操作模式，有4种取值<ul>
+<li>MODE<em>PRIVATE(默认)</em>当同一文件名存在时覆盖原文件</li>
+<li>MODE<em>APPEND  </em>当同名文件存在时，在原文件末尾追加</li>
+<li>其余两种均在android4.2及以上版本中废弃</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>OutputStreamWrit</p>
+<ul>
+<li>继承自 Writer </li>
+<li>将字节流转换为字符流</li>
+</ul>
+</li>
+<li><p>BufferedWriter </p>
+<ul>
+<li>继承自Writer </li>
+<li>绑定字符输出流，提高具体的流对象的效率</li>
+<li>.flush()方法 对缓冲区进行刷新，让数据到目的地</li>
+<li>.close();方法 关闭缓冲区，即关闭绑定的流</li>
+</ul>
+</li>
+</ul>
+<h5 id="从内部存储读取文件"><a href="#从内部存储读取文件" class="headerlink" title="从内部存储读取文件"></a>从内部存储读取文件</h5><ul>
+<li><p>简单实例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">load</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="comment">//新建FileInputStream对象</span></span><br><span class="line">     FileInputStream in = <span class="keyword">null</span>;</span><br><span class="line">     <span class="comment">//新建 BufferedReader对象</span></span><br><span class="line">     BufferedReader reader = <span class="keyword">null</span>;</span><br><span class="line">     <span class="comment">//新建一个StringBuilder 空</span></span><br><span class="line">      content = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">     <span class="keyword">try</span>&#123;</span><br><span class="line">     	<span class="comment">//FileInputStream对象实例化</span></span><br><span class="line">         in = openFileInput(<span class="string">"data"</span>);</span><br><span class="line">         <span class="comment">//字节流转换为字符流</span></span><br><span class="line">         <span class="comment">//缓冲流绑定字符流</span></span><br><span class="line">         reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(in));</span><br><span class="line">         <span class="comment">//空 String</span></span><br><span class="line">         String line = <span class="string">""</span>;</span><br><span class="line">         <span class="comment">//读取文件内容，并判断是否读取完成</span></span><br><span class="line">         <span class="keyword">while</span>((line = reader.readLine())!=<span class="keyword">null</span>)&#123;</span><br><span class="line">         	<span class="comment">//读取内容添加到 StringBuilder 对象中   </span></span><br><span class="line">             content.append(line);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">         e.printStackTrace();</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">finally</span> &#123;</span><br><span class="line">         <span class="keyword">if</span>(reader != <span class="keyword">null</span>)&#123;</span><br><span class="line">             <span class="keyword">try</span>&#123;</span><br><span class="line">             	<span class="comment">//关闭流</span></span><br><span class="line">                 reader.close();</span><br><span class="line">             &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">                 e.printStackTrace();</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="comment">//将读取结果 由StringBuilder转换为String 并返回</span></span><br><span class="line">     <span class="keyword">return</span> content.toString();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>FileInputStream</p>
+<ul>
+<li>继承自 InputStream，用于文件处理的节点流</li>
+<li>从文件中读取</li>
+</ul>
+</li>
+<li><p>FileInputStream openFileInput(String filename)</p>
+<ul>
+<li>返回FileInputStream对象</li>
+<li>参数为 读取的文件名</li>
+</ul>
+</li>
+<li><p>InputStreamRead</p>
+<ul>
+<li>将字节流转换为字符流</li>
+</ul>
+</li>
+<li><p>BufferedReader</p>
+<ul>
+<li>缓冲流</li>
+</ul>
+</li>
+</ul>
+<h4 id="外部存储"><a href="#外部存储" class="headerlink" title="外部存储"></a>外部存储</h4><ul>
+<li>占坑</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android-Studio/" rel="tag">#Android Studio</a>
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/学习记录/" rel="tag">#学习记录</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/31/2016总结/" rel="next" title="2016总结">
+                <i class="fa fa-chevron-left"></i> 2016总结
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/19/Android笔记-ContentResolver/" rel="prev" title="Android笔记—ContentResolver">
+                Android笔记—ContentResolver <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/v.png"
+               alt="Jasper" />
+          <p class="site-author-name" itemprop="name">Jasper</p>
+          <p class="site-description motion-element" itemprop="description">程序员 微尘 V</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jasper-1024" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-中的主要数据存储"><span class="nav-number">1.</span> <span class="nav-text">Android 中的主要数据存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#保存键值集"><span class="nav-number">1.1.</span> <span class="nav-text">保存键值集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保存到文件"><span class="nav-number">1.2.</span> <span class="nav-text">保存到文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内部存储"><span class="nav-number">1.2.1.</span> <span class="nav-text">内部存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#保存到内部存储"><span class="nav-number">1.2.2.</span> <span class="nav-text">保存到内部存储</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#从内部存储读取文件"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">从内部存储读取文件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外部存储"><span class="nav-number">1.2.3.</span> <span class="nav-text">外部存储</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016.6.2 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jasper</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'jasper1024';
+      var disqus_identifier = '2017/01/14/Android笔记-数据保存/';
+      var disqus_title = 'Android笔记—数据保存';
+      var disqus_url = 'http://yoursite.com/2017/01/14/Android笔记-数据保存/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("8AEPwU1rVoSnwxtOrX35u23j-gzGzoHsz", "SBLr7EMdL83IXCfJSbydMdll");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
