@@ -247,6 +247,359 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/07/Android笔记-Activity/" itemprop="url">
+                  Android笔记—Activity
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-07T12:00:00+08:00" content="2016-12-07">
+              2016-12-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/07/Android笔记-Activity/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/07/Android笔记-Activity/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/07/Android笔记-Activity/" class="leancloud_visitors" data-flag-title="Android笔记—Activity">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<ul>
+<li>资料来源如下</li>
+<li>第一行代码(第二版)</li>
+</ul>
+<hr>
+<h2 id="Activity基础"><a href="#Activity基础" class="headerlink" title="Activity基础"></a>Activity基础</h2><h3 id="Activity定义"><a href="#Activity定义" class="headerlink" title="Activity定义"></a>Activity定义</h3><ul>
+<li>Activity 是Android四大组件之一，用户可与其提供的屏幕进行交互，以执行操作。 每个 Activity 都会获得一个用于绘制其用户界面的窗口。窗口可以充满屏幕，也可浮动。应用通常由多个彼此联系的 Activity 组成。应用中的某个 Activity 为“主”Activity，即首次启动应用时的Activity。</li>
+</ul>
+<h3 id="创建Activity"><a href="#创建Activity" class="headerlink" title="创建Activity"></a>创建Activity</h3><ul>
+<li><p>新建FirstAtivity继承自AppCompatActivity</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span></span>&#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span>  <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">&#125; &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建加载布局<br>  <a href="http://snapgr.am/image/LoY4" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/07/20/1.jpg" alt="1.jpg"></a></p>
+</li>
+<li><p>切换到first-layout</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  &lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line">  &lt;LinearLayout</span><br><span class="line">  xmlns:android="http://schemas.android.com/apk/res/android"</span><br><span class="line">  android:layout_width="match_parent"</span><br><span class="line">  android:layout_height="match_parent"&gt;</span><br><span class="line">  &lt;Button</span><br><span class="line">      android:id="@+id/button_1"</span><br><span class="line">      android:text="button_1"</span><br><span class="line">      android:layout_width="wrap_content"</span><br><span class="line">      android:layout_height="wrap_content" /&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在FirestActivity中加载layout<br>  在onCreate中加入</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setContentView(R.layout.first_layout);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在AndroidMainfest文件中注册。</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity</span><br><span class="line">           android:name=".FirstActivity"</span><br><span class="line">           android:label="This is FirstActivity"&gt;</span><br><span class="line">           &lt;intent-filter&gt;</span><br><span class="line">               &lt;action android:name="android.intent.action.MAIN"/&gt;</span><br><span class="line">               &lt;category android:name="android.intent.category.LAUNCHER"/&gt;</span><br><span class="line">           &lt;/intent-filter&gt;</span><br><span class="line">&lt;/activity&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在模拟器中启动apk<br>  <a href="http://snapgr.am/image/LogP" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/07/20/5ea429.jpg" alt="5ea429.jpg"></a></p>
+</li>
+</ul>
+<h3 id="使用Toast"><a href="#使用Toast" class="headerlink" title="使用Toast"></a>使用Toast</h3><blockquote>
+<p><a href="https://developer.android.com/guide/topics/ui/notifiers/toasts.html#Positioning" target="_blank" rel="external">Toast google官方说明</a></p>
+<ul>
+<li>推送一个短小信息推送给用户<br>  如图（摘自android developer）<br>  <img src="http://cdn4.snapgram.co/images/2016/07/20/toast.png" alt="toast.png"></li>
+</ul>
+</blockquote>
+<ul>
+<li><p>使用方法</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Toast.makeText(context, text, duration).show();</span><br></pre></td></tr></table></figure>
+<p>  举例</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Toast.makeText(FirstActivity.<span class="keyword">this</span>, <span class="string">"you clicked button 1"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line"><span class="comment">/*                  activity.this   消息内容                显示时间设置   */</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="使用Menu"><a href="#使用Menu" class="headerlink" title="使用Menu"></a>使用Menu</h3><ul>
+<li><p>创建菜单</p>
+<ul>
+<li>在res下新疆menu文件夹，右击menu文件夹—new—Menu resource file，创建main的菜单文件。</li>
+<li><p>main.xml中添加如下代码</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> &lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">menu</span>        <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">item</span></span><br><span class="line">     <span class="attr">android:id</span>=<span class="string">"@+id/add_item"</span></span><br><span class="line">     <span class="attr">android:title</span>=<span class="string">"Add"</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">item</span></span><br><span class="line">     <span class="attr">android:id</span>=<span class="string">"@+id/remove_item"</span></span><br><span class="line">     <span class="attr">android:title</span>=<span class="string">"Remove"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">menu</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里创建了两个菜单项 Add和Remove</p>
+</li>
+<li><p>在FirestActivity中重写 onCreateOptionsMenu()方法（快捷键 Ctrl+O）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  <span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onCreateOptionsMenu</span><span class="params">(Menu menu)</span> </span>&#123;</span><br><span class="line">    getMenuInflater().inflate(R.menu.main, menu);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>getMenuInflater()</code>可以得到MenuInflater对象，再调用.inflate就可以创建菜单。.inflat接受俩个参数，一是资源文件名，二是菜单项添加至那个对象中。onCreateOptionsMenu方法中返回true表示创建菜单并显示。</p>
+</li>
+<li>效果如下。<br><img src="http://cdn2.snapgram.co/imgs/2016/12/07/Screenshot_1481113497.png" alt="Screenshot_1481113497.png"></li>
+</ul>
+</li>
+<li><p>创建菜单点击响应事件</p>
+<ul>
+<li><p>重写onOptionsItemSelected方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onOptionsItemSelected</span><span class="params">(MenuItem item)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">switch</span> (item.getItemId()) &#123;</span><br><span class="line">       <span class="keyword">case</span> R.id.add_item:</span><br><span class="line">           Toast.makeText(<span class="keyword">this</span>, <span class="string">"Add"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">       <span class="keyword">case</span> R.id.remove_item:</span><br><span class="line">           Toast.makeText(<span class="keyword">this</span>, <span class="string">"Remove"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">       <span class="keyword">default</span>:</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>通过item.getItemId()判断点击选项，弹出不同的Toast</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="向一个activity-并传递字符串"><a href="#向一个activity-并传递字符串" class="headerlink" title="向一个activity 并传递字符串"></a>向一个activity 并传递字符串</h3><ul>
+<li>构建一个Intent<br>  <code>Intent intent = new Intent(this, DisplayMessageActivity.class);</code><br>  构造方法有两个参数：<br>  Context 是第一个参数，这里使用了this是因为Activity是Context的子类。<br>  Class 类是系统将要分发的APP组件，在这里，这个Activity将会被启动。</li>
+</ul>
+<ul>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendMessage</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 创建一个新的intent对象，绑定DisplayMessageActivity</span></span><br><span class="line">    Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, DisplayMessageActivity.class);</span><br><span class="line">    <span class="comment">//创建一个editText对象，绑定xml中editText</span></span><br><span class="line">    EditText editText = (EditText) findViewById(R.id.edit_message);</span><br><span class="line">    <span class="comment">//获取editText中输入文字，转成字符串</span></span><br><span class="line">    String message = editText.getText().toString();</span><br><span class="line">    <span class="comment">//一个Intent对象可以携带被称为extras的键值对。</span></span><br><span class="line">    <span class="comment">// putExtra()方法将键放在第一个参数中，将值放在第二个参数中。</span></span><br><span class="line">    intent.putExtra(EXTRA_MESSAGE, message);</span><br><span class="line">    <span class="comment">//启动intent对应Activity</span></span><br><span class="line">    startActivity(intent);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_display_message);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建本地intent</span></span><br><span class="line">    Intent intent = getIntent();</span><br><span class="line">    <span class="comment">//取出String类型数据，如果是Int类型就是getIntExtra，Boolean类型就是getBooleanExtra</span></span><br><span class="line">    String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);</span><br><span class="line">    <span class="comment">//显示String</span></span><br><span class="line">    <span class="comment">//创建新的TextView</span></span><br><span class="line">    TextView textView = <span class="keyword">new</span> TextView(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//设置文本大小</span></span><br><span class="line">    textView.setTextSize(<span class="number">40</span>);</span><br><span class="line">    <span class="comment">//设置显示内容</span></span><br><span class="line">    textView.setText(message);</span><br><span class="line">    <span class="comment">//绑定xml</span></span><br><span class="line">    ViewGroup layout = (ViewGroup) findViewById(R.id.activity_display_message);</span><br><span class="line">    <span class="comment">//ViewGroup中添加TextView</span></span><br><span class="line">    layout.addView(textView);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="返回数据给上一个Activity"><a href="#返回数据给上一个Activity" class="headerlink" title="返回数据给上一个Activity"></a>返回数据给上一个Activity</h3><ul>
+<li><p>构建Intent使用startActivityForResult()方法传入请求码，启动下一个Activity<br>在下一个Activity中构建Intent，intent.putExtra存入键值-key，调用setResult()方法，传入finish()结束掉Activity<br>重写第一个Activity中的onActivityResult()方法，调用.getStringExtra取出key对应键值。</p>
+</li>
+<li><p>startActivityForResult(Intent, int Bundle) Intent与单纯启动Activity的Intent相同，第二个是请求码，下一级 回调提供相同的请求码，以便您应用可以正确识别结果。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(FirestActivity.<span class="keyword">this</span>,ScendActivity.class);</span><br><span class="line">startActivityForResult(intent,<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>setResult()方法，第一个参数向上级方法处理结果，一般使用RESULT_OK或RESULT_CANCELED，第二个参数 对应Intent</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新建显示Intent</span></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line"><span class="comment">//存入key-键值</span></span><br><span class="line">intent.putExtra(<span class="string">"data_return"</span>,<span class="string">"Hello Firest"</span>);</span><br><span class="line">setResult(RESULT_OK,intent);</span><br><span class="line"><span class="comment">//结束Activity</span></span><br><span class="line">finish();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>onActivityResult()三个参数.第一个startActivityForResult() 传递的请求代码。第二个 Activity 指定的结果代码。成功是 RESULT_OK；失败，则是 RESULT_CANCELED。第三个是传送结果数据的 Intent。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode,<span class="keyword">int</span> resultCode,Intent data)</span></span>&#123;</span><br><span class="line">    <span class="comment">//选择不同请求码对应处理逻辑</span></span><br><span class="line">    <span class="keyword">switch</span>(requestCode)&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            <span class="comment">//处理结果时候ok</span></span><br><span class="line">            <span class="keyword">if</span>(resultCode == RESULT_OK)&#123;</span><br><span class="line">                <span class="comment">//取出数据</span></span><br><span class="line">                String returnedData = data.getStringExtra(<span class="string">"data_return"</span>);</span><br><span class="line">                Log.d(<span class="string">"FirstActivity"</span>, returnedData);</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Activity生命周期"><a href="#Activity生命周期" class="headerlink" title="Activity生命周期"></a>Activity生命周期</h2><p>  <img src="http://cdn2.snapgram.co/imgs/2016/12/07/basic-lifecycle.png" alt="basic-lifecycle.png"></p>
+<ul>
+<li>Activity 3种状态<ul>
+<li>Resumed/继续<br>Activity 处于前台，且用户可以与其交互</li>
+<li>Paused/暂停<br> Activity 被在前台中处于另一个 Activity—部分阻挡。 暂停的 Activity 不会接收用户输入并且无法执行任何代码。</li>
+<li>Stopped/停止<br>Activity完全隐藏，对用户完全不可见.当停止时，activity的所有状态信息比如成员变量都会被保留，但是不能再执行任何代码</li>
+</ul>
+</li>
+</ul>
+<h3 id="启动一个Activity"><a href="#启动一个Activity" class="headerlink" title="启动一个Activity"></a>启动一个Activity</h3><ul>
+<li>onCreate方法</li>
+<li><p>主Activity：</p>
+<ul>
+<li>用户点击app图标，启动主Activity</li>
+<li>在AndroidManifest.xml中声明<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>通过调用onCreate方法创建一个Activity实例，onCreate方法在Activity的整个生命周期中只执行一次。</p>
+</li>
+<li>之后系统会很快的调用onStart和onResume方法，Activity进入Resumed/继续模式。直到被其他activity覆盖/屏幕关闭。<h3 id="销毁Activity"><a href="#销毁Activity" class="headerlink" title="销毁Activity"></a>销毁Activity</h3></li>
+<li>onDestory方法<br>大多数的APP不需要实现这个方法，因为本地类引用会随着Activity一起总结，不过Activity的清理工作应该放在onPause下或者onStop。       </li>
+<li>Note:<br>在所有的情况下系统调用onDestory方法之后已经调用过onPause方法与onStop方法，不过有一个例外情况：你在onCreate方法中调用了finish方法。在一些例子中，当你的Activity临时决定要启动另一个Activity，你可能要在onCreate方法内调用finish方法来销毁这个Activity，在这种情况下，系统会立即调用onDestory方法，而不会调用其它任何生命周期方法。</li>
+</ul>
+<h3 id="暂停Activity"><a href="#暂停Activity" class="headerlink" title="暂停Activity"></a>暂停Activity</h3><ul>
+<li>onPause()方法</li>
+<li><p>Activity被其他Activity覆盖/失去用户焦点，系统调用onPause()方法，Activity 进入暂停状态。</p>
+<ul>
+<li>note：android7.0及以上版本加入了多窗口模式，当Activity失去用户焦点时，可能处于多窗口模式。</li>
+<li><p>onPause() 常用回调：</p>
+<ul>
+<li>检查 Activity 是否可见。不可见则停止可能消耗 CPU 的操作</li>
+<li>提交未保存的更改，仅保存用户离开时希望永久性保存此类更改（比如电子邮件草稿）。</li>
+<li>释放系统资源，GPS/Camer等</li>
+<li><p>示例 (释放Camer)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">super</span>.onPause();  <span class="comment">// Always call the superclass method first</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Release the Camera because we don't need it when paused</span></span><br><span class="line"><span class="comment">// and other activities might need to use it.</span></span><br><span class="line"><span class="keyword">if</span> (mCamera != <span class="keyword">null</span>) &#123;</span><br><span class="line">   mCamera.release();</span><br><span class="line">   mCamera = <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意事项：</p>
+<ul>
+<li>在onPause()一般不执行永久性存储用户更改，不执行 CPU 密集型工作，这些工作一般放在onStop() 。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="继续-Activity"><a href="#继续-Activity" class="headerlink" title="继续 Activity"></a>继续 Activity</h3><ul>
+<li>onResume() 方法</li>
+<li>暂停状态回到继续状态，Activity第一次启动时也会调用这个方法。</li>
+<li>onResume() 以初始化在 onPause() 期间释放的组件。</li>
+<li>示例(重新获取Camera)<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">super</span>.onResume();  <span class="comment">// Always call the superclass method first</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// Get the Camera instance as the activity achieves full user focus</span></span><br><span class="line">  <span class="keyword">if</span> (mCamera == <span class="keyword">null</span>) &#123;</span><br><span class="line">      initializeCamera(); <span class="comment">// Local method to handle camera init</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="停止-Activity"><a href="#停止-Activity" class="headerlink" title="停止 Activity"></a>停止 Activity</h3><ul>
+<li>note：<br>大多数相对简单的 Activity 而言，系统在 Activity 停止时会将Activity 实例保留在系统内存中，无需实现 onStop() 和 onRestart() 或甚至onStart() 方法。可能只需使用 onPause() 暂停正在进行的操作，并从系统资源断开连接。</li>
+</ul>
+<ul>
+<li>onStop() 方法</li>
+<li><p>场景：</p>
+<ul>
+<li>用户在最近应用切换到另一个应用</li>
+<li>应用中执行开始新 Activity 的操作</li>
+<li>Activity使用时，接打电话</li>
+</ul>
+</li>
+<li><p>调用时，Activity不再可见，释放几乎所有用户不使用时不需要的资源。如果系统内存紧张，则可能销毁内存中的Acitivity实例。</p>
+</li>
+<li>onStop() 方法调用后，Activity不再可见，极端情况下，系统可能会仅终止应用进程，而不调用 onDestroy() ，因此需要使用 onStop() 释放几乎所有用户不使用时不需要的资源。</li>
+<li>尽管 onPause() 方法在 onStop()之前调用，在onStop() 执行更大、占用更多 CPU 的关闭操作，比如向数据库写入信息</li>
+<li>示例（草稿笔记内容保存在永久存储）<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">super</span>.onStop();  <span class="comment">// Always call the superclass method first</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// Save the note's current draft, because the activity is stopping</span></span><br><span class="line">  <span class="comment">// and we want to be sure the current note progress isn't lost.</span></span><br><span class="line">  ContentValues values = <span class="keyword">new</span> ContentValues();</span><br><span class="line">  values.put(NotePad.Notes.COLUMN_NAME_NOTE, getCurrentNoteText());</span><br><span class="line">  values.put(NotePad.Notes.COLUMN_NAME_TITLE, getCurrentNoteTitle());</span><br><span class="line"></span><br><span class="line">  getContentResolver().update(</span><br><span class="line">  mUri,    <span class="comment">// The URI for the note to update.</span></span><br><span class="line">  values,  <span class="comment">// The map of column names and new values to apply to them.</span></span><br><span class="line">   <span class="keyword">null</span>,    <span class="comment">// No SELECT criteria are used.</span></span><br><span class="line">   <span class="keyword">null</span>     <span class="comment">// No WHERE columns are used.</span></span><br><span class="line">   );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="启动-重启-Activity"><a href="#启动-重启-Activity" class="headerlink" title="启动/重启 Activity"></a>启动/重启 Activity</h3><ul>
+<li>onStart() 方法</li>
+<li>Activity 停止转换为继续状态时，系统回调onRestart() 方法+ onStart() 方法.onStop() 方法清理了所有 Activity 的资源，重启 Activity 需要重新实例化它们。同时 Activity 初次创建时重新实例化它们。 出于此，经常使用 onStart() 方法作为 onStop() 方法的对应</li>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="keyword">super</span>.onStart();  <span class="comment">// Always call the superclass method first</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">// The activity is either being restarted or started for the first time</span></span><br><span class="line">   <span class="comment">// so this is where we should make sure that GPS is enabled</span></span><br><span class="line">   LocationManager locationManager =</span><br><span class="line">    (LocationManager) getSystemService(Context.LOCATION_SERVICE);</span><br><span class="line">   <span class="keyword">boolean</span> gpsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span> (!gpsEnabled) &#123;</span><br><span class="line">    <span class="comment">// Create a dialog here that requests the user to enable GPS, and use an intent</span></span><br><span class="line">    <span class="comment">// with the android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS action</span></span><br><span class="line">    <span class="comment">// to take the user to the Settings screen to enable GPS when they click "OK"</span></span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onRestart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="keyword">super</span>.onRestart();  <span class="comment">// Always call the superclass method first</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">// Activity being restarted from stopped state</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="保存-Activity-状态"><a href="#保存-Activity-状态" class="headerlink" title="保存 Activity 状态"></a>保存 Activity 状态</h3><ul>
+<li>onSaveInstanceState()方法</li>
+<li>默认情况下，Activity 实例被销毁时系统会使用 Bundle 实例状态保存 Activity 布局中有关每个 View 对象的信息。在Activity 重建时，布局状态便自动恢复先前的状态。 </li>
+<li>默认实现保存有关 Activity 视图层次的状态信息，例如 EditText 小部件中的文本或ListView 的滚动位置</li>
+<li>要恢复的更多信息，需要重写 onSaveInstanceState()方法，将键值对添加至 Bundle 对象</li>
+<li><img src="http://cdn4.snapgram.co/images/2016/11/18/basic-lifecycle-savestate.png" alt="basic-lifecycle-savestate.png"></li>
+</ul>
+<ul>
+<li>note:<br>旋转屏幕时，Activity 将被销毁并重新创建。原因：方向更改时可能需要时加载备用资源（比如布局）</li>
+</ul>
+<ul>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> String STATE_SCORE = <span class="string">"playerScore"</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> String STATE_LEVEL = <span class="string">"playerLevel"</span>;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSaveInstanceState</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// Save the user's current game state</span></span><br><span class="line">   savedInstanceState.putInt(STATE_SCORE, mCurrentScore);</span><br><span class="line">   savedInstanceState.putInt(STATE_LEVEL, mCurrentLevel);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// Always call the superclass so it can save the view hierarchy state</span></span><br><span class="line">   <span class="keyword">super</span>.onSaveInstanceState(savedInstanceState);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="恢复-Activity"><a href="#恢复-Activity" class="headerlink" title="恢复 Activity"></a>恢复 Activity</h3><ul>
+<li>onCreate() 和 onRestoreInstanceState() 回调方法均接收包含实例状态信息的相同 Bundle</li>
+<li>onCreate() 方法</li>
+<li>调用onCreate() 方法需要区分是创建 Activity 的新实例还是恢复先前的实例，判断 Bundle 是否为 null</li>
+<li><p>示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">super</span>.onCreate(savedInstanceState); <span class="comment">// Always call the superclass first</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">// Check whether we're recreating a previously destroyed instance</span></span><br><span class="line">   <span class="keyword">if</span> (savedInstanceState != <span class="keyword">null</span>) &#123;</span><br><span class="line">       <span class="comment">// Restore value of members from saved state</span></span><br><span class="line">       mCurrentScore = savedInstanceState.getInt(STATE_SCORE);</span><br><span class="line">       mCurrentLevel = savedInstanceState.getInt(STATE_LEVEL);</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">       <span class="comment">// Probably initialize members with default values for a new instance</span></span><br><span class="line">  	 &#125;</span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>onRestoreInstanceState()方法</p>
+</li>
+<li>只需要恢复的已保存的状态</li>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRestoreInstanceState</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">   <span class="comment">// Always call the superclass so it can restore the view hierarchy</span></span><br><span class="line">   <span class="keyword">super</span>.onRestoreInstanceState(savedInstanceState);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// Restore state members from saved instance</span></span><br><span class="line">   mCurrentScore = savedInstanceState.getInt(STATE_SCORE);</span><br><span class="line">   mCurrentLevel = savedInstanceState.getInt(STATE_LEVEL);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="重启Activity其他选择"><a href="#重启Activity其他选择" class="headerlink" title="重启Activity其他选择"></a>重启Activity其他选择</h3><ul>
+<li><a href="https://developer.android.com/guide/topics/resources/runtime-changes.html" target="_blank" rel="external">官方说明</a></li>
+<li>重启应用并恢复大量数据不仅成本高昂，而且会留下糟糕的使用体验，有两个其他选择<h4 id="在配置变更期间保留对象"><a href="#在配置变更期间保留对象" class="headerlink" title="在配置变更期间保留对象"></a>在配置变更期间保留对象</h4></li>
+<li>Activity 因配置变更而重启，则可通过保留 Fragment 来减轻重新初始化 Activity 的负担</li>
+<li>当 Android 系统因配置变更而关闭 Activity 时，不会销毁已标记为要保留的 Activity 的片段。 您可以将此类片段添加到 Activity 以保留有状态的对象。</li>
+</ul>
+<h2 id="Activity最佳实践"><a href="#Activity最佳实践" class="headerlink" title="Activity最佳实践"></a>Activity最佳实践</h2><h3 id="知晓当前运行的活动"><a href="#知晓当前运行的活动" class="headerlink" title="知晓当前运行的活动"></a>知晓当前运行的活动</h3><ul>
+<li><p>自定义BaseActivity继承自AppCompatActivity<br>重写onCreate方法，打印当前运行的Activity名<br>app类所有Activity改为继承BaseActivity</p>
+</li>
+<li><p>代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">      <span class="comment">//打印当前类名</span></span><br><span class="line">      Log.d(<span class="string">"BaseActivity"</span>, getClass().getSimpleName())；</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>效果如下<br><img src="http://cdn2.snapgram.co/imgs/2016/12/08/ScreenShot_20161208172740.png" alt="ScreenShot_20161208172740.png"></p>
+</li>
+</ul>
+<h3 id="随时退出程序"><a href="#随时退出程序" class="headerlink" title="随时退出程序"></a>随时退出程序</h3><ul>
+<li>新建ActivityCollector类作为活动管理器，添加/删除Activity登记,在BaseActivity中添加对应代码。</li>
+<li><p>代码如下  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityCollector</span> </span>&#123;</span><br><span class="line"><span class="comment">//新建Activity的列表对象</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> List&lt;Activity&gt; activities = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="comment">//添加Activity进入列表</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addActivity</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">       activities.add(activity);</span><br><span class="line">   &#125;</span><br><span class="line"><span class="comment">//在列表中移除Activity</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">removeActivity</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">       activities.remove(activity);</span><br><span class="line">   &#125;</span><br><span class="line"><span class="comment">//for循环列表 结束所有Activity</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">finishAll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">for</span> (Activity activity : activities) &#123;</span><br><span class="line">           <span class="keyword">if</span> (!activity.isFinishing()) &#123;</span><br><span class="line">               activity.finish();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>BaseActivity<br>在onCreate()方法中添加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Activity管理器中添加新的活动</span></span><br><span class="line">ActivityCollector.addActivity(<span class="keyword">this</span>);</span><br></pre></td></tr></table></figure>
+<p>重写onDestroy()方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onDestroy();</span><br><span class="line">    <span class="comment">//Activity管理器中移除活动</span></span><br><span class="line">    ActivityCollector.removeActivity(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在任何地方调用finishAll()方法即可。</p>
+</li>
+</ul>
+<h3 id="启动活动的最近写法"><a href="#启动活动的最近写法" class="headerlink" title="启动活动的最近写法"></a>启动活动的最近写法</h3><ul>
+<li>启动下一个Activity并传递数据模块化</li>
+<li><p>在SecondActivity内增加actionStart()方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//调用的Activity，数据1，数据2</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">actionStart</span><span class="params">(Context context, String data1, String data2)</span></span>&#123;</span><br><span class="line">    <span class="comment">//新建Intent，绑定SecondActivity</span></span><br><span class="line">    Intent intent = <span class="keyword">new</span> Intent(context,ScendActivity.class);</span><br><span class="line">    <span class="comment">//存入data1，data2</span></span><br><span class="line">    intent.putExtra(<span class="string">"param1"</span>,data1);</span><br><span class="line">    intent.putExtra(<span class="string">"param2"</span>,data2);</span><br><span class="line">    <span class="comment">//启动Activity</span></span><br><span class="line">    context.startActivity(intent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动SecondActivity方式<br><code>ScendActivity.actionStart(FirestActivity.this,&quot;data1&quot;,&quot;data2&quot;);</code>  </p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/27/初入树莓派2----常规初始化+远程桌面/" itemprop="url">
                   初入树莓派2---初始化+远程桌面
                 </a>
@@ -2207,142 +2560,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/18/hellowworld/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-18T10:10:11+08:00" content="2016-06-18">
-              2016-06-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/随/" itemprop="url" rel="index">
-                    <span itemprop="name">随</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/18/hellowworld/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/18/hellowworld/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/06/18/hellowworld/" class="leancloud_visitors" data-flag-title="Hello World">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2383,7 +2605,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

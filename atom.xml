@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-28T13:24:28.091Z</updated>
+  <updated>2017-02-03T03:53:23.111Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,134 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android笔记 — Notifications</title>
+    <link href="http://yoursite.com/2017/01/28/Android%E7%AC%94%E8%AE%B0-Notifications/"/>
+    <id>http://yoursite.com/2017/01/28/Android笔记-Notifications/</id>
+    <published>2017-01-28T04:00:00.000Z</published>
+    <updated>2017-02-03T03:53:23.111Z</updated>
+    
+    <content type="html">&lt;hr&gt;
+&lt;p&gt;资料来源如下&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一行代码(第二版)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.android.com/training/notify-user/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android  Training Notifying the User&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.android.com/guide/topics/ui/notifiers/notifications.html#CreateNotification&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android API 通知&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.oschina.net/question/234345_40111&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;【Android】状态栏通知Notification、NotificationManager详解&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;编程环境&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Android Studio 2.2.3 &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;导语&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;从 国产应用的滥用通知满屏 到 原生Android对通知的每次改进 通知始终是用户体验的一个核心点，自此开始这趟漂移之旅！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;创建通知&quot;&gt;&lt;a href=&quot;#创建通知&quot; class=&quot;headerlink&quot; title=&quot;创建通知&quot;&gt;&lt;/a&gt;创建通知&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;行文前：&lt;br&gt;Android每次版本几乎都会有通知API的改动，不同版本之间通知兼容性很是问题，为此我们使用support_v7 库中的NotificationCompat.Builder代替Notification.Builder二者使用方式相同&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;涉及到的两个类&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;NotificationManager&lt;/li&gt;
+&lt;li&gt;Notification (support库中对应NotificationCompat)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;NotificationManager&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;状态栏通知的管理类，负责发通知、清除通知等 &lt;/li&gt;
+&lt;li&gt;NotificationManager 是一个系统Service，必须通过 getSystemService()方法来获取&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Notification&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;具体的状态栏通知对象，可以设置icon、文字、提示声音、振动等参数&lt;/li&gt;
+&lt;li&gt;一个Builder对象至少包含三个方面&lt;ul&gt;
+&lt;li&gt;一个小图标，通过setSmallIcon()方法设置。&lt;/li&gt;
+&lt;li&gt;通知标题，通过setContentTitle()方法设置。&lt;/li&gt;
+&lt;li&gt;详细文本，通过setContentText()方法设置。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;简单示例&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;创建通知构建器&lt;br&gt; 代码&lt;/p&gt;
+ &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Notification notification = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; NotificationCompat.Builder(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           .setContentTitle(&lt;span class=&quot;string&quot;&gt;&quot;这是通知标题&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           .setContentText(&lt;span class=&quot;string&quot;&gt;&quot;这是通知内容&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           &lt;span class=&quot;comment&quot;&gt;//这里使用的是应用图标，一般没人这么干&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           .setSmallIcon(R.mipmap.ic_launcher)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           .build();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;发布通知&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;获得NotificationManager的实例&lt;/li&gt;
+&lt;li&gt;使用notify()方法发布通知。在调用notify()方法  指定通知的ID，(ID用于通知更新)  加载Notification实例&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; mNotificationId = &lt;span class=&quot;number&quot;&gt;001&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;manager.notify(mNotificationId, notification);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;效果如下&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;android 7.0 / 6.0 /4.0 通过&lt;/li&gt;
+&lt;li&gt;&lt;img src=&quot;http://cdn1.snapgram.co/imgs/2017/02/02/ScreenShot_20170202173430.png&quot; alt=&quot;ScreenShot_20170202173430.png&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;PendingIntent&quot;&gt;&lt;a href=&quot;#PendingIntent&quot; class=&quot;headerlink&quot; title=&quot;PendingIntent&quot;&gt;&lt;/a&gt;PendingIntent&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;可以简单理解为延迟的Intent&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;PendingIntent 生命周期与主程序无关。通过 PendingIntent 可以调用起三种组件 &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;组件 Activity   Service   Broadcast &lt;/li&gt;
+&lt;li&gt;对应 getActivity()    getService()  getBroadcast()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;getXXX()&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PendingIntent getxxx (Context context, &lt;pre&gt;&lt;code&gt;int requestCode, 
+Intent intent, 
+int flags)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;Context context  上下文&lt;/li&gt;
+&lt;li&gt;int requestCode  请求码 一般传入0即可&lt;/li&gt;
+&lt;li&gt;Intent intent  Intent 对象&lt;/li&gt;
+&lt;li&gt;int flags  PendingIntent行为 有5种取值&lt;ul&gt;
+&lt;li&gt;FLAG_CANCEL_CURRENT 如果 PendingIntent 已经存在，则用新的PendingIntent  取代&lt;/li&gt;
+&lt;li&gt;FLAG&lt;em&gt;IMMUTABLE  PendingIntent不可变&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;FLAG_NO_CREATE   PendingIntent如果已存在则不创建新实例&lt;/li&gt;
+&lt;li&gt;FLAG_ONE_SHOT  PendingIntent只使用一次&lt;/li&gt;
+&lt;li&gt;FLAG_UPDATE_CURRENT  PendingIntent已存在时，Intent 有了改动则更新 PendingIntent&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;这里区分两种Activity&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;资料来源如下&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一行代码(第二版)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.android.com/training/notify-user/index.html&quot; target=&quot;_blank&quot; rel=
+    
+    </summary>
+    
+      <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
   
   <entry>
     <title>Android笔记—ContentResolver</title>
@@ -1982,9 +2110,9 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
     
       <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
-      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
-    
       <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
     
   </entry>
   
@@ -2837,46 +2965,6 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
       <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
       <category term="python" scheme="http://yoursite.com/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2016/06/18/hellowworld/"/>
-    <id>http://yoursite.com/2016/06/18/hellowworld/</id>
-    <published>2016-06-18T02:10:11.000Z</published>
-    <updated>2016-06-21T06:29:45.778Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Run-server&quot;&gt;&lt;a href=&quot;#Run-server&quot; class=&quot;headerlink&quot; title=&quot;Run server&quot;&gt;&lt;/a&gt;Run server&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/server.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Generate-static-files&quot;&gt;&lt;a href=&quot;#Generate-static-files&quot; class=&quot;headerlink&quot; title=&quot;Generate static files&quot;&gt;&lt;/a&gt;Generate static files&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo generate&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/generating.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Generating&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Deploy-to-remote-sites&quot;&gt;&lt;a href=&quot;#Deploy-to-remote-sites&quot; class=&quot;headerlink&quot; title=&quot;Deploy to remote sites&quot;&gt;&lt;/a&gt;Deploy to remote sites&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo deploy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#
-    
-    </summary>
-    
-      <category term="随" scheme="http://yoursite.com/categories/%E9%9A%8F/"/>
-    
-    
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
-    
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
-    
-      <category term="单片机" scheme="http://yoursite.com/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
-    
-      <category term="开源" scheme="http://yoursite.com/tags/%E5%BC%80%E6%BA%90/"/>
     
   </entry>
   
