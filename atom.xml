@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-03T03:53:23.111Z</updated>
+  <updated>2017-03-15T01:51:24.740Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Android笔记 — Notifications</title>
-    <link href="http://yoursite.com/2017/01/28/Android%E7%AC%94%E8%AE%B0-Notifications/"/>
-    <id>http://yoursite.com/2017/01/28/Android笔记-Notifications/</id>
-    <published>2017-01-28T04:00:00.000Z</published>
-    <updated>2017-02-03T03:53:23.111Z</updated>
+    <title>Android笔记—仿绿色守护嗜睡模式通知</title>
+    <link href="http://yoursite.com/2017/03/07/Android%E7%AC%94%E8%AE%B0%E2%80%94%E4%BB%BF%E7%BB%BF%E8%89%B2%E5%AE%88%E6%8A%A4%E5%97%9C%E7%9D%A1%E6%A8%A1%E5%BC%8F%E9%80%9A%E7%9F%A5/"/>
+    <id>http://yoursite.com/2017/03/07/Android笔记—仿绿色守护嗜睡模式通知/</id>
+    <published>2017-03-07T04:00:00.000Z</published>
+    <updated>2017-03-15T01:51:24.740Z</updated>
     
     <content type="html">&lt;hr&gt;
 &lt;p&gt;资料来源如下&lt;/p&gt;
@@ -36,10 +36,18 @@
 &lt;/ul&gt;
 &lt;p&gt;导语&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;从 国产应用的滥用通知满屏 到 原生Android对通知的每次改进 通知始终是用户体验的一个核心点，自此开始这趟漂移之旅！&lt;/li&gt;
+&lt;li&gt;OneTapDoze遇到的第一个难题，顺带记录Android 通知相关内容&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&quot;创建通知&quot;&gt;&lt;a href=&quot;#创建通知&quot; class=&quot;headerlink&quot; title=&quot;创建通知&quot;&gt;&lt;/a&gt;创建通知&lt;/h2&gt;&lt;ul&gt;
+&lt;h2 id=&quot;最终效果&quot;&gt;&lt;a href=&quot;#最终效果&quot; class=&quot;headerlink&quot; title=&quot;最终效果&quot;&gt;&lt;/a&gt;最终效果&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;绿色守护进入doze模式后，会在通知栏创建一个计时通知 如下图&lt;br&gt;&lt;img src=&quot;http://cdn3.snapgram.co/imgs/2017/03/07/Screenshot_20170307-231118.png&quot; alt=&quot;Screenshot_20170307-231118.png&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;退出doze模式后，会指示进入doze和退出doze的时间段。&lt;br&gt;&lt;img src=&quot;http://cdn4.snapgram.co/images/2017/03/07/Screenshot_20170307-231132.png&quot; alt=&quot;Screenshot_20170307-231132.png&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;我们要仿照的样式就是这样，进入退出doze，对应创建通知的代码都在doze模式改变的Broadcast中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;基础部分&quot;&gt;&lt;a href=&quot;#基础部分&quot; class=&quot;headerlink&quot; title=&quot;基础部分&quot;&gt;&lt;/a&gt;基础部分&lt;/h2&gt;&lt;h3 id=&quot;创建通知&quot;&gt;&lt;a href=&quot;#创建通知&quot; class=&quot;headerlink&quot; title=&quot;创建通知&quot;&gt;&lt;/a&gt;创建通知&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;行文前：&lt;br&gt;Android每次版本几乎都会有通知API的改动，不同版本之间通知兼容性很是问题，为此我们使用support_v7 库中的NotificationCompat.Builder代替Notification.Builder二者使用方式相同&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
@@ -70,7 +78,7 @@
 &lt;li&gt;&lt;p&gt;简单示例&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;创建通知构建器&lt;br&gt; 代码&lt;/p&gt;
- &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Notification notification = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; NotificationCompat.Builder(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           .setContentTitle(&lt;span class=&quot;string&quot;&gt;&quot;这是通知标题&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           .setContentText(&lt;span class=&quot;string&quot;&gt;&quot;这是通知内容&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           &lt;span class=&quot;comment&quot;&gt;//这里使用的是应用图标，一般没人这么干&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           .setSmallIcon(R.mipmap.ic_launcher)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           .build();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+ &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Notification notification = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; NotificationCompat.Builder(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           .setContentTitle(&lt;span class=&quot;string&quot;&gt;&quot;这是通知标题&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           .setContentText(&lt;span class=&quot;string&quot;&gt;&quot;这是通知内容&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           &lt;span class=&quot;comment&quot;&gt;//这里使用的是应用图标，一般没人这么干，就是为了方便&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           .setSmallIcon(R.mipmap.ic_launcher)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           .build();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;发布通知&lt;/p&gt;
 &lt;ul&gt;
@@ -90,34 +98,55 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&quot;PendingIntent&quot;&gt;&lt;a href=&quot;#PendingIntent&quot; class=&quot;headerlink&quot; title=&quot;PendingIntent&quot;&gt;&lt;/a&gt;PendingIntent&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;可以简单理解为延迟的Intent&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;PendingIntent 生命周期与主程序无关。通过 PendingIntent 可以调用起三种组件 &lt;/p&gt;
+&lt;h3 id=&quot;更新通知&quot;&gt;&lt;a href=&quot;#更新通知&quot; class=&quot;headerlink&quot; title=&quot;更新通知&quot;&gt;&lt;/a&gt;更新通知&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;可以创建一个全新的NotificationCompat对象，也可以在原NotificationCompat对象基础上修改，最后只要 .notify 方法中对应同一个 mNotificationId ，系统就会自动更新已有通知，代码不在累赘。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;基础部分到此，足矣&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;正题&quot;&gt;&lt;a href=&quot;#正题&quot; class=&quot;headerlink&quot; title=&quot;正题&quot;&gt;&lt;/a&gt;正题&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;实现时间段的显示，肯定会保存系统进入doze 退出doze对应的时间点。再计算出中间经历的时间。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;提取系统时间&quot;&gt;&lt;a href=&quot;#提取系统时间&quot; class=&quot;headerlink&quot; title=&quot;提取系统时间&quot;&gt;&lt;/a&gt;提取系统时间&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;java.util.Date&lt;br&gt;这里用到了java中的 时间类型 java.util.Date&lt;br&gt;java.util.Date 是java中常用时间类型，可以被SimpleDateFormat格式化format() 指定输出的时间格式&lt;br&gt;比如我们需要 小时：分：秒&lt;br&gt;&lt;code&gt;SimpleDateFormat scanf = new SimpleDateFormat(&amp;quot;HH:mm:ss&amp;quot;);&lt;/code&gt;&lt;br&gt;&lt;code&gt;scanf.format(java.util.Date)&lt;/code&gt; 即可。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;提前当前系统时间&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;java.util.Date time_after = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;time_after = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; java.util.Date(System.currentTimeMillis());&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;计算时间差&lt;br&gt;理论上是两个时间相减再格式化输出即可，可惜没成，原因还没找到。于是土办法：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;组件 Activity   Service   Broadcast &lt;/li&gt;
-&lt;li&gt;对应 getActivity()    getService()  getBroadcast()&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;getXXX()&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;PendingIntent getxxx (Context context, &lt;pre&gt;&lt;code&gt;int requestCode, 
-Intent intent, 
-int flags)
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;Context context  上下文&lt;/li&gt;
-&lt;li&gt;int requestCode  请求码 一般传入0即可&lt;/li&gt;
-&lt;li&gt;Intent intent  Intent 对象&lt;/li&gt;
-&lt;li&gt;int flags  PendingIntent行为 有5种取值&lt;ul&gt;
-&lt;li&gt;FLAG_CANCEL_CURRENT 如果 PendingIntent 已经存在，则用新的PendingIntent  取代&lt;/li&gt;
-&lt;li&gt;FLAG&lt;em&gt;IMMUTABLE  PendingIntent不可变&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;FLAG_NO_CREATE   PendingIntent如果已存在则不创建新实例&lt;/li&gt;
-&lt;li&gt;FLAG_ONE_SHOT  PendingIntent只使用一次&lt;/li&gt;
-&lt;li&gt;FLAG_UPDATE_CURRENT  PendingIntent已存在时，Intent 有了改动则更新 PendingIntent&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;调用 .getTime() 方法，将 java.util.Date 转化为毫秒计时(long)&lt;/li&gt;
+&lt;li&gt;取两者差值&lt;/li&gt;
+&lt;li&gt;转化为 时间长短 字符串返回，&lt;/li&gt;
+&lt;li&gt;代码如下&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt; size = (time_after.getTime() - time_befor.getTime());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; string = scanf.format(time_befor) + &lt;span class=&quot;string&quot;&gt;&quot;-&quot;&lt;/span&gt; + scanf.format(time_after) + &lt;span class=&quot;string&quot;&gt;&quot;=&quot;&lt;/span&gt;+ trform(size);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;function&quot;&gt;String &lt;span class=&quot;title&quot;&gt;trform&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; size)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; day, hour, min, secone;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; day = size / (&lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;60&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;60&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;24&lt;/span&gt;);          &lt;span class=&quot;comment&quot;&gt;//以天数为单位取整&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; hour = (size / (&lt;span class=&quot;number&quot;&gt;60&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;60&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt;) - day * &lt;span class=&quot;number&quot;&gt;24&lt;/span&gt;);             &lt;span class=&quot;comment&quot;&gt;//以小时为单位取整&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; min = ((size / (&lt;span class=&quot;number&quot;&gt;60&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt;)) - day * &lt;span class=&quot;number&quot;&gt;24&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;60&lt;/span&gt; - hour * &lt;span class=&quot;number&quot;&gt;60&lt;/span&gt;);    &lt;span class=&quot;comment&quot;&gt;//以分钟为单位取整&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; secone = (size / &lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt; - day * &lt;span class=&quot;number&quot;&gt;24&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;60&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;60&lt;/span&gt; - hour * &lt;span class=&quot;number&quot;&gt;60&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;60&lt;/span&gt; - min * &lt;span class=&quot;number&quot;&gt;60&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (day != &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; day + &lt;span class=&quot;string&quot;&gt;&quot;d&quot;&lt;/span&gt; + hour + &lt;span class=&quot;string&quot;&gt;&quot;h&quot;&lt;/span&gt; + min + &lt;span class=&quot;string&quot;&gt;&quot;m&quot;&lt;/span&gt; + secone + &lt;span class=&quot;string&quot;&gt;&quot;s&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &amp;#125; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (hour != &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; hour + &lt;span class=&quot;string&quot;&gt;&quot;h&quot;&lt;/span&gt; + min + &lt;span class=&quot;string&quot;&gt;&quot;m&quot;&lt;/span&gt; + secone + &lt;span class=&quot;string&quot;&gt;&quot;s&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &amp;#125; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (min != &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; min + &lt;span class=&quot;string&quot;&gt;&quot;m&quot;&lt;/span&gt; + secone + &lt;span class=&quot;string&quot;&gt;&quot;s&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &amp;#125; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; secone + &lt;span class=&quot;string&quot;&gt;&quot;s&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;这里区分两种Activity&lt;/p&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;通知扩展布局&quot;&gt;&lt;a href=&quot;#通知扩展布局&quot; class=&quot;headerlink&quot; title=&quot;通知扩展布局&quot;&gt;&lt;/a&gt;通知扩展布局&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;在如下图片中，可以发现，通知在发出后，只默认显示最近一次的时间记录，其他时间记录可以在此条通知上下滑查看。明显与基础部分不同。&lt;br&gt;&lt;img src=&quot;http://cdn4.snapgram.co/images/2017/03/07/Screenshot_20170307-231132.png&quot; alt=&quot;Screenshot_20170307-231132.png&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;此处应用了 Builder.setStyle() 拓展布局，顾名思义，这是用于拓展通知显示范围&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4 id=&quot;使用扩展布局&quot;&gt;&lt;a href=&quot;#使用扩展布局&quot; class=&quot;headerlink&quot; title=&quot;使用扩展布局&quot;&gt;&lt;/a&gt;使用扩展布局&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;使用拓展布局&lt;ul&gt;
+&lt;li&gt;构建一个 inboxStyle 对象&lt;/li&gt;
+&lt;li&gt;.addLine方法  添加 String  inboxStyle 行&lt;/li&gt;
+&lt;li&gt;使用 Builder.setStyle( inboxStyle )加载到通知&lt;/li&gt;
+&lt;li&gt;等待通知发布即可。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;简单例程如下 &lt;/p&gt;
+ &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//创建 inboxStyle&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; NotificationCompat.InboxStyle inboxStyle = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; NotificationCompat.InboxStyle();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;comment&quot;&gt;//添加 String 行 ，前提是 我已经创建了一个 String&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; inboxStyle.addLine(string);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;comment&quot;&gt;// 在notification 设置    inboxStyle 在一堆 build 里面&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; .setStyle(inboxStyle)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;清除原有内容，发布新的 inboxStyle 只需要 &lt;code&gt;inboxStyle = new NotificationCompat.InboxStyle();&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Doze模式改变广播&quot;&gt;&lt;a href=&quot;#Doze模式改变广播&quot; class=&quot;headerlink&quot; title=&quot;Doze模式改变广播&quot;&gt;&lt;/a&gt;Doze模式改变广播&lt;/h3&gt;&lt;h2 id=&quot;对应-ACTION-DEVICE-IDLE-MODE-CHANGED&quot;&gt;&lt;a href=&quot;#对应-ACTION-DEVICE-IDLE-MODE-CHANGED&quot; class=&quot;headerlink&quot; title=&quot;* 对应 ACTION_DEVICE_IDLE_MODE_CHANGED&quot;&gt;&lt;/a&gt;* 对应 &lt;code&gt;ACTION_DEVICE_IDLE_MODE_CHANGED&lt;/code&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;坑：只能动态注册，静态注册无效，具体代码中&lt;code&gt;powermanger.ACTION_DEVICE_IDLE_MODE_CHANGED&lt;/code&gt; 需要实例化 PowerManger ，而 PowerManger 又是与 Activity绑定，所以只有应用保持后台存活时才会进入广播。&lt;/li&gt;
+&lt;li&gt;例程如下&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//实例化 PowerManager&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;PowerManager powermanger = (PowerManager) getApplicationContext().getSystemService(Context.POWER_SERVICE);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//动态注册广播&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;intentFilter = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; IntentFilter();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;intentFilter.addAction(powermanger.ACTION_DEVICE_IDLE_MODE_CHANGED);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//idlemodechage 是 BroadcastReceiver &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;idlemodechage = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; IdleModeChange();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;registerReceiver(idlemodechage, intentFilter);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 </content>
@@ -135,9 +164,9 @@ int flags)
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -272,9 +301,9 @@ int flags)
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -479,9 +508,9 @@ int flags)
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -803,9 +832,9 @@ int flags)
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1025,9 +1054,9 @@ int flags)
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1192,9 +1221,9 @@ int flags)
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1332,9 +1361,9 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1600,9 +1629,9 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1862,9 +1891,9 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -2135,9 +2164,9 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -2504,7 +2533,7 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
     <link href="http://yoursite.com/2016/06/26/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%97/"/>
     <id>http://yoursite.com/2016/06/26/VPS科学上网教程系列/</id>
     <published>2016-06-26T04:16:16.000Z</published>
-    <updated>2017-02-17T04:48:32.112Z</updated>
+    <updated>2017-02-17T04:50:46.780Z</updated>
     
     <content type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.06.26  与SSR有关部分基本完成。  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.09.29  更新SSR部分内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.10.09  更新SSR内容，更新Android端接入。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.11.09  更新SSR混淆相关内容，更新SSR-Android，更新部分介绍。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.11.20  整合一部分VPS优化内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.12.11  删减调整一部分内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.12.15  替换锐速优化为 BBR，整合TCP优化&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.12.26  更换TCP BBR 脚本，脚本来自@秋水逸冰 版本，测试通过 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2017.01.11  同步更新一部分SSR内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2017.02.17  同步更新，调整删减内容，降低上手难度，增加VPS测速相关内容&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h2 id=&quot;目前一键脚本可用，如果出现一键脚本失效等，请留言或邮件我！&quot;&gt;&lt;a href=&quot;#目前一键脚本可用，如果出现一键脚本失效等，请留言或邮件我！&quot; class=&quot;headerlink&quot; title=&quot;目前一键脚本可用，如果出现一键脚本失效等，请留言或邮件我！&quot;&gt;&lt;/a&gt;目前一键脚本可用，如果出现一键脚本失效等，请留言或邮件我！&lt;/h2&gt;&lt;h2 id=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;a href=&quot;#基本从0开始的教程，当作自己的备份了。&quot; class=&quot;headerlink&quot; title=&quot;基本从0开始的教程，当作自己的备份了。&quot;&gt;&lt;/a&gt;基本从0开始的教程，当作自己的备份了。&lt;/h2&gt;&lt;ul&gt;
@@ -2926,18 +2955,20 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;SSR-Android&quot;&gt;&lt;a href=&quot;#SSR-Android&quot; class=&quot;headerlink&quot; title=&quot;SSR-Android&quot;&gt;&lt;/a&gt;SSR-Android&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;SSR-Android端(注意MD5校验)&lt;blockquote&gt;
+&lt;li&gt;&lt;p&gt;SSR-Android端(注意MD5校验)&lt;/p&gt;
+&lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/shadowsocksr/shadowsocksr-android/releases&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/shadowsocksr/shadowsocksr-android/releases&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
 &lt;ul&gt;
 &lt;li&gt;(12.11)&lt;br&gt; &lt;del&gt;ssr-android更新到3.2.7.14.版，增加auth_aes128_md5和auth_aes128_sha1,推荐更新！&lt;/del&gt;&lt;/li&gt;
-&lt;li&gt;(1.11)&lt;br&gt;&lt;del&gt;ssr-android更新到3.3.3.1推荐更新！&lt;/del&gt;&lt;/li&gt;
+&lt;li&gt;(1.11)&lt;br&gt;&lt;del&gt;ssr-android更新到3.3.3.1推荐更新！&lt;/del&gt;&lt;ul&gt;
 &lt;li&gt;(2.17)&lt;br&gt;ssr-android更新到3.3.4.5 推荐更新!&lt;/li&gt;
 &lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;android端使用&lt;ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;android端使用&lt;/p&gt;
+&lt;ol&gt;
 &lt;li&gt;可以直接输入SSR配置，较为繁琐&lt;/li&gt;
 &lt;li&gt;在SSR C#版本，中输入完毕，保存。直接扫描二维码即可！&lt;br&gt;&lt;strong&gt;二维码必须在光标移到 SSR链接 处才会出现&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;

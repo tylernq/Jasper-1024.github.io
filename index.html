@@ -247,8 +247,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/28/Android笔记-Notifications/" itemprop="url">
-                  Android笔记 — Notifications
+                <a class="post-title-link" href="/2017/03/07/Android笔记—仿绿色守护嗜睡模式通知/" itemprop="url">
+                  Android笔记—仿绿色守护嗜睡模式通知
                 </a>
               
             
@@ -261,8 +261,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-28T12:00:00+08:00" content="2017-01-28">
-              2017-01-28
+            <time itemprop="dateCreated" datetime="2017-03-07T12:00:00+08:00" content="2017-03-07">
+              2017-03-07
             </time>
           </span>
 
@@ -291,8 +291,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/01/28/Android笔记-Notifications/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/28/Android笔记-Notifications/" itemprop="commentsCount"></span>
+                <a href="/2017/03/07/Android笔记—仿绿色守护嗜睡模式通知/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/07/Android笔记—仿绿色守护嗜睡模式通知/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -302,7 +302,7 @@
 
           
           
-             <span id="/2017/01/28/Android笔记-Notifications/" class="leancloud_visitors" data-flag-title="Android笔记 — Notifications">
+             <span id="/2017/03/07/Android笔记—仿绿色守护嗜睡模式通知/" class="leancloud_visitors" data-flag-title="Android笔记—仿绿色守护嗜睡模式通知">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -339,10 +339,18 @@
 </ul>
 <p>导语</p>
 <ul>
-<li>从 国产应用的滥用通知满屏 到 原生Android对通知的每次改进 通知始终是用户体验的一个核心点，自此开始这趟漂移之旅！</li>
+<li>OneTapDoze遇到的第一个难题，顺带记录Android 通知相关内容</li>
 </ul>
 <hr>
-<h2 id="创建通知"><a href="#创建通知" class="headerlink" title="创建通知"></a>创建通知</h2><ul>
+<h2 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h2><ul>
+<li><p>绿色守护进入doze模式后，会在通知栏创建一个计时通知 如下图<br><img src="http://cdn3.snapgram.co/imgs/2017/03/07/Screenshot_20170307-231118.png" alt="Screenshot_20170307-231118.png"></p>
+</li>
+<li><p>退出doze模式后，会指示进入doze和退出doze的时间段。<br><img src="http://cdn4.snapgram.co/images/2017/03/07/Screenshot_20170307-231132.png" alt="Screenshot_20170307-231132.png"></p>
+</li>
+<li><p>我们要仿照的样式就是这样，进入退出doze，对应创建通知的代码都在doze模式改变的Broadcast中。</p>
+</li>
+</ul>
+<h2 id="基础部分"><a href="#基础部分" class="headerlink" title="基础部分"></a>基础部分</h2><h3 id="创建通知"><a href="#创建通知" class="headerlink" title="创建通知"></a>创建通知</h3><ul>
 <li>行文前：<br>Android每次版本几乎都会有通知API的改动，不同版本之间通知兼容性很是问题，为此我们使用support_v7 库中的NotificationCompat.Builder代替Notification.Builder二者使用方式相同</li>
 </ul>
 <hr>
@@ -373,7 +381,7 @@
 <li><p>简单示例</p>
 <ul>
 <li><p>创建通知构建器<br> 代码</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Notification notification = <span class="keyword">new</span> NotificationCompat.Builder(<span class="keyword">this</span>)</span><br><span class="line">           .setContentTitle(<span class="string">"这是通知标题"</span>)</span><br><span class="line">           .setContentText(<span class="string">"这是通知内容"</span>)</span><br><span class="line">           <span class="comment">//这里使用的是应用图标，一般没人这么干</span></span><br><span class="line">           .setSmallIcon(R.mipmap.ic_launcher)</span><br><span class="line">           .build();</span><br></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Notification notification = <span class="keyword">new</span> NotificationCompat.Builder(<span class="keyword">this</span>)</span><br><span class="line">           .setContentTitle(<span class="string">"这是通知标题"</span>)</span><br><span class="line">           .setContentText(<span class="string">"这是通知内容"</span>)</span><br><span class="line">           <span class="comment">//这里使用的是应用图标，一般没人这么干，就是为了方便</span></span><br><span class="line">           .setSmallIcon(R.mipmap.ic_launcher)</span><br><span class="line">           .build();</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>发布通知</p>
 <ul>
@@ -393,34 +401,55 @@
 </ul>
 </li>
 </ul>
-<h2 id="PendingIntent"><a href="#PendingIntent" class="headerlink" title="PendingIntent"></a>PendingIntent</h2><ul>
-<li>可以简单理解为延迟的Intent</li>
-<li><p>PendingIntent 生命周期与主程序无关。通过 PendingIntent 可以调用起三种组件 </p>
+<h3 id="更新通知"><a href="#更新通知" class="headerlink" title="更新通知"></a>更新通知</h3><ul>
+<li><p>可以创建一个全新的NotificationCompat对象，也可以在原NotificationCompat对象基础上修改，最后只要 .notify 方法中对应同一个 mNotificationId ，系统就会自动更新已有通知，代码不在累赘。</p>
+</li>
+<li><p>基础部分到此，足矣</p>
+</li>
+</ul>
+<h2 id="正题"><a href="#正题" class="headerlink" title="正题"></a>正题</h2><ul>
+<li>实现时间段的显示，肯定会保存系统进入doze 退出doze对应的时间点。再计算出中间经历的时间。</li>
+</ul>
+<h3 id="提取系统时间"><a href="#提取系统时间" class="headerlink" title="提取系统时间"></a>提取系统时间</h3><ul>
+<li><p>java.util.Date<br>这里用到了java中的 时间类型 java.util.Date<br>java.util.Date 是java中常用时间类型，可以被SimpleDateFormat格式化format() 指定输出的时间格式<br>比如我们需要 小时：分：秒<br><code>SimpleDateFormat scanf = new SimpleDateFormat(&quot;HH:mm:ss&quot;);</code><br><code>scanf.format(java.util.Date)</code> 即可。</p>
+</li>
+<li><p>提前当前系统时间</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java.util.Date time_after = <span class="keyword">null</span>;</span><br><span class="line">time_after = <span class="keyword">new</span> java.util.Date(System.currentTimeMillis());</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>计算时间差<br>理论上是两个时间相减再格式化输出即可，可惜没成，原因还没找到。于是土办法：</p>
 <ul>
-<li>组件 Activity   Service   Broadcast </li>
-<li>对应 getActivity()    getService()  getBroadcast()</li>
-</ul>
-</li>
-<li><p>getXXX()</p>
-<ul>
-<li>PendingIntent getxxx (Context context, <pre><code>int requestCode, 
-Intent intent, 
-int flags)
-</code></pre></li>
-<li>Context context  上下文</li>
-<li>int requestCode  请求码 一般传入0即可</li>
-<li>Intent intent  Intent 对象</li>
-<li>int flags  PendingIntent行为 有5种取值<ul>
-<li>FLAG_CANCEL_CURRENT 如果 PendingIntent 已经存在，则用新的PendingIntent  取代</li>
-<li>FLAG<em>IMMUTABLE  PendingIntent不可变</em></li>
-<li>FLAG_NO_CREATE   PendingIntent如果已存在则不创建新实例</li>
-<li>FLAG_ONE_SHOT  PendingIntent只使用一次</li>
-<li>FLAG_UPDATE_CURRENT  PendingIntent已存在时，Intent 有了改动则更新 PendingIntent</li>
-</ul>
+<li>调用 .getTime() 方法，将 java.util.Date 转化为毫秒计时(long)</li>
+<li>取两者差值</li>
+<li>转化为 时间长短 字符串返回，</li>
+<li>代码如下<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> size = (time_after.getTime() - time_befor.getTime());</span><br><span class="line"> string = scanf.format(time_befor) + <span class="string">"-"</span> + scanf.format(time_after) + <span class="string">"="</span>+ trform(size);</span><br><span class="line">      </span><br><span class="line"> <span class="function">String <span class="title">trform</span><span class="params">(<span class="keyword">long</span> size)</span> </span>&#123;</span><br><span class="line"> <span class="keyword">long</span> day, hour, min, secone;</span><br><span class="line"> </span><br><span class="line"> day = size / (<span class="number">1000</span> * <span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span>);          <span class="comment">//以天数为单位取整</span></span><br><span class="line"> hour = (size / (<span class="number">60</span> * <span class="number">60</span> * <span class="number">1000</span>) - day * <span class="number">24</span>);             <span class="comment">//以小时为单位取整</span></span><br><span class="line"> min = ((size / (<span class="number">60</span> * <span class="number">1000</span>)) - day * <span class="number">24</span> * <span class="number">60</span> - hour * <span class="number">60</span>);    <span class="comment">//以分钟为单位取整</span></span><br><span class="line"> secone = (size / <span class="number">1000</span> - day * <span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span> - hour * <span class="number">60</span> * <span class="number">60</span> - min * <span class="number">60</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (day != <span class="number">0</span>) &#123;</span><br><span class="line">   <span class="keyword">return</span> day + <span class="string">"d"</span> + hour + <span class="string">"h"</span> + min + <span class="string">"m"</span> + secone + <span class="string">"s"</span>;</span><br><span class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (hour != <span class="number">0</span>) &#123;</span><br><span class="line">         <span class="keyword">return</span> hour + <span class="string">"h"</span> + min + <span class="string">"m"</span> + secone + <span class="string">"s"</span>;</span><br><span class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (min != <span class="number">0</span>) &#123;</span><br><span class="line">         <span class="keyword">return</span> min + <span class="string">"m"</span> + secone + <span class="string">"s"</span>;</span><br><span class="line">     &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">         <span class="keyword">return</span> secone + <span class="string">"s"</span>;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
-<li><p>这里区分两种Activity</p>
+</ul>
+<h3 id="通知扩展布局"><a href="#通知扩展布局" class="headerlink" title="通知扩展布局"></a>通知扩展布局</h3><ul>
+<li><p>在如下图片中，可以发现，通知在发出后，只默认显示最近一次的时间记录，其他时间记录可以在此条通知上下滑查看。明显与基础部分不同。<br><img src="http://cdn4.snapgram.co/images/2017/03/07/Screenshot_20170307-231132.png" alt="Screenshot_20170307-231132.png"></p>
+</li>
+<li><p>此处应用了 Builder.setStyle() 拓展布局，顾名思义，这是用于拓展通知显示范围</p>
+</li>
+</ul>
+<hr>
+<h4 id="使用扩展布局"><a href="#使用扩展布局" class="headerlink" title="使用扩展布局"></a>使用扩展布局</h4><ul>
+<li>使用拓展布局<ul>
+<li>构建一个 inboxStyle 对象</li>
+<li>.addLine方法  添加 String  inboxStyle 行</li>
+<li>使用 Builder.setStyle( inboxStyle )加载到通知</li>
+<li>等待通知发布即可。</li>
+</ul>
+</li>
+<li><p>简单例程如下 </p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建 inboxStyle</span></span><br><span class="line"> NotificationCompat.InboxStyle inboxStyle = <span class="keyword">new</span> NotificationCompat.InboxStyle();</span><br><span class="line"> <span class="comment">//添加 String 行 ，前提是 我已经创建了一个 String</span></span><br><span class="line"> inboxStyle.addLine(string);</span><br><span class="line"> <span class="comment">// 在notification 设置    inboxStyle 在一堆 build 里面</span></span><br><span class="line"> .setStyle(inboxStyle)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清除原有内容，发布新的 inboxStyle 只需要 <code>inboxStyle = new NotificationCompat.InboxStyle();</code></p>
+</li>
+</ul>
+<h3 id="Doze模式改变广播"><a href="#Doze模式改变广播" class="headerlink" title="Doze模式改变广播"></a>Doze模式改变广播</h3><h2 id="对应-ACTION-DEVICE-IDLE-MODE-CHANGED"><a href="#对应-ACTION-DEVICE-IDLE-MODE-CHANGED" class="headerlink" title="* 对应 ACTION_DEVICE_IDLE_MODE_CHANGED"></a>* 对应 <code>ACTION_DEVICE_IDLE_MODE_CHANGED</code></h2><ul>
+<li>坑：只能动态注册，静态注册无效，具体代码中<code>powermanger.ACTION_DEVICE_IDLE_MODE_CHANGED</code> 需要实例化 PowerManger ，而 PowerManger 又是与 Activity绑定，所以只有应用保持后台存活时才会进入广播。</li>
+<li>例程如下<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实例化 PowerManager</span></span><br><span class="line">PowerManager powermanger = (PowerManager) getApplicationContext().getSystemService(Context.POWER_SERVICE);</span><br><span class="line"><span class="comment">//动态注册广播</span></span><br><span class="line">intentFilter = <span class="keyword">new</span> IntentFilter();</span><br><span class="line">intentFilter.addAction(powermanger.ACTION_DEVICE_IDLE_MODE_CHANGED);</span><br><span class="line"><span class="comment">//idlemodechage 是 BroadcastReceiver </span></span><br><span class="line">idlemodechage = <span class="keyword">new</span> IdleModeChange();</span><br><span class="line">registerReceiver(idlemodechage, intentFilter);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 
