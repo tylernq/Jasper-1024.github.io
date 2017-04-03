@@ -1474,7 +1474,7 @@
       
         
           
-            <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line"><span class="number">2016.06</span>.<span class="number">26</span>    与SSR有关部分基本完成。</span><br><span class="line"><span class="number">2016.06</span>.<span class="number">28</span>    TCP优化部分完成</span><br><span class="line"><span class="number">2016.06</span>.<span class="number">29</span>    gfw.press、FinalSpeed和锐速部分基本完成。</span><br><span class="line"><span class="number">2016.12</span>.<span class="number">11</span>    重新整理相关内容，增加SSR混淆</span><br><span class="line"><span class="number">2016.12</span>.<span class="number">15</span>    增加TCP-BBR</span><br><span class="line"><span class="number">2017.01</span>.<span class="number">11</span>    整理相关内容，增加锐速配置优化 </span><br><span class="line"><span class="number">2017.03</span>.<span class="number">28</span>    更新一部分配置内容，删除无效内容</span><br></pre></td></tr></table></figure>
+            <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line"><span class="number">2016.06</span>.<span class="number">26</span>    与SSR有关部分基本完成。</span><br><span class="line"><span class="number">2016.06</span>.<span class="number">28</span>    TCP优化部分完成</span><br><span class="line"><span class="number">2016.06</span>.<span class="number">29</span>    gfw.press、FinalSpeed和锐速部分基本完成。</span><br><span class="line"><span class="number">2016.12</span>.<span class="number">11</span>    重新整理相关内容，增加SSR混淆</span><br><span class="line"><span class="number">2016.12</span>.<span class="number">15</span>    增加TCP-BBR</span><br><span class="line"><span class="number">2017.01</span>.<span class="number">11</span>    整理相关内容，增加锐速配置优化 </span><br><span class="line"><span class="number">2017.03</span>.<span class="number">28</span>    更新一部分配置内容，删除无效内容</span><br><span class="line"><span class="number">2017.04</span>.<span class="number">02</span>    因<span class="number">91</span>yun被爆隐私问题，删除其对应内容</span><br></pre></td></tr></table></figure>
 <h2 id="TCP优化"><a href="#TCP优化" class="headerlink" title="TCP优化"></a>TCP优化</h2><p><strong>适用场景：高延迟搞丢包线路</strong><br><strong>使用TCP-BBR可以略过此部分(已包含)</strong></p>
 <ul>
 <li><p>增加TCP连接数量</p>
@@ -1515,27 +1515,25 @@
 </ul>
 <hr>
 <h3 id="锐速安装"><a href="#锐速安装" class="headerlink" title="锐速安装"></a>锐速安装</h3><ul>
-<li>目前提供三种方式安装</li>
+<li>目前提供 两 种方式安装，91yun依旧有效，请谨慎尝试。</li>
 <li><strong>(1.11)新增 lotServer 安装，建议首先尝试使用，安装失败再尝试其他方式</strong></li>
 </ul>
 <h4 id="锐速一键安装包"><a href="#锐速一键安装包" class="headerlink" title="锐速一键安装包"></a>锐速一键安装包</h4><ul>
-<li><strong>有部分使用者可能存在91yun的锐速破解后存在断流问题，可以尝试锐速 (lotServer)</strong> </li>
-<li>参考地址<blockquote>
-<p><a href="https://www.91yun.org/archives/683" target="_blank" rel="external">https://www.91yun.org/archives/683</a><br><a href="http://www.bandwagong.com/vultrvps/" target="_blank" rel="external">http://www.bandwagong.com/vultrvps/</a></p>
-</blockquote>
-</li>
+<li><strong>91yun 被曝测速脚本有上传用户ip及测速结果，故删除其对应部分</strong></li>
+<li>~~<strong>有部分使用者可能存在91yun的锐速破解后存在断流问题，可以尝试锐速 (lotServer)</strong> ~~</li>
+<li><del>参考地址</del><br><del>&gt;<a href="http://www.bandwagong.com/vultrvps/" target="_blank" rel="external">http://www.bandwagong.com/vultrvps/</a></del></li>
 </ul>
 <ul>
-<li><p>脚本自行匹配相同或相近内核，自动安装完成。</p>
+<li><p>~~ 脚本自行匹配相同或相近内核，自动安装完成。~~</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -<span class="keyword">N</span> --<span class="keyword">no</span>-check-certificate http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/<span class="number">91</span>yun/serverspeeder/master/serverspe eder-<span class="keyword">all</span>.<span class="keyword">sh</span> &amp;&amp; bash serverspeeder-<span class="keyword">all</span>.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
-<p>根据屏幕提示输入 serverSpeederInstaller 其他信息默认，遇到Y或者N的地方，全部选Y.<br><img src="http://cdn2.snapgram.co/imgs/2016/06/28/QQ.jpg" alt="QQ.jpg"></p>
+<p><del>根据屏幕提示输入 serverSpeederInstaller 其他信息默认，遇到Y或者N的地方，全部选Y.</del><br><img src="http://cdn2.snapgram.co/imgs/2016/06/28/QQ.jpg" alt="QQ.jpg"></p>
 </li>
-<li><p>如果你安装没有效果，编辑一下命令</p>
+<li><p><del>如果你安装没有效果，编辑一下命令</del></p>
   <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">vi</span> /serverspeeder/etc/config</span><br></pre></td></tr></table></figure>
-<p>  然后rsc和maxmode设置参数修改为1.然后在进行重启</p>
+<p>  <del>然后rsc和maxmode设置参数修改为1.然后在进行重启</del></p>
   <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> restart</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>卸载</p>
+<li><p><del>卸载</del></p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chattr -i /serverspeeder/etc/apx* &amp;&amp; /serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> uninstall -<span class="keyword">f</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -1544,7 +1542,7 @@
 <p><a href="https://www.91yun.org/serverspeeder91yun" target="_blank" rel="external">https://www.91yun.org/serverspeeder91yun</a></p>
 </blockquote>
 <p>手动安装仅用于一键安装无效时，操作步骤在参考地址中很详细，不加累赘。</p>
-<h4 id="锐速-lotServer-一键安装"><a href="#锐速-lotServer-一键安装" class="headerlink" title="锐速 (lotServer) 一键安装"></a>锐速 (lotServer) 一键安装</h4><ul>
+<h4 id="锐速-lotServer-一键安装-推荐"><a href="#锐速-lotServer-一键安装-推荐" class="headerlink" title="锐速 (lotServer) 一键安装(推荐)"></a>锐速 (lotServer) 一键安装(推荐)</h4><ul>
 <li><p>参考</p>
 <blockquote>
 <p><a href="https://github.com/0oVicero0/serverSpeeser_Install" target="_blank" rel="external">https://github.com/0oVicero0/serverSpeeser_Install</a></p>
