@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-04-08T05:20:52.564Z</updated>
+  <updated>2017-04-08T05:31:37.483Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,105 +16,102 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>��ѧ�����̳̣���������VPS��ȫ�ӹ�</title>
+    <title>科学上网教程（三）——VPS安全加固</title>
     <link href="http://yoursite.com/2017/04/08/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B3/"/>
     <id>http://yoursite.com/2017/04/08/VPS科学上网教程3/</id>
     <published>2017-04-08T09:52:16.000Z</published>
-    <updated>2017-04-08T05:20:52.564Z</updated>
+    <updated>2017-04-08T05:31:37.483Z</updated>
     
-    <content type="html">&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;����&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2017.04&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;08&lt;/span&gt;  VPS�ճ�һЩ��ȫ��ʩ&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    <content type="html">&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2017.04&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;08&lt;/span&gt;  VPS日常一些安全措施&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;hr&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;����&lt;br&gt;��ѧ�����̳�ϵ�У��ܾ�û�и����������ˡ����³��ð�ȫ��ʩ�����ٱ�֤�����ᱻ���׵ĵ����⼦������һЩ���õİ�ȫ��ʩ��&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;导语&lt;br&gt;科学上网教程系列，很久没有更新新内容了。更新常用安全措施，至少保证，不会被轻易的当作肉鸡。都是一些常用的安全措施。&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;ϵͳ������CentOS &lt;/p&gt;
+&lt;li&gt;&lt;p&gt;系统环境：CentOS&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&quot;SSH&quot;&gt;&lt;a href=&quot;#SSH&quot; class=&quot;headerlink&quot; title=&quot;SSH&quot;&gt;&lt;/a&gt;SSH&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;�����ַ���&lt;ul&gt;
-&lt;li&gt;���׹ر�SSH��½����Ϊ��Կ��½����ȫ�����ߣ������ý�Ϊ����&lt;/li&gt;
-&lt;li&gt;�޸�SSH��½�˿ڣ�ͬʱ����Ĭ�϶˿ڣ������� ssh ������ IP ��ͣ&lt;h3 id=&quot;��Կ��½&quot;&gt;&lt;a href=&quot;#��Կ��½&quot; class=&quot;headerlink&quot; title=&quot;��Կ��½&quot;&gt;&lt;/a&gt;��Կ��½&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;有两种方案&lt;ul&gt;
+&lt;li&gt;彻底关闭SSH登陆，改为密钥登陆，安全性最高，但配置较为复杂&lt;/li&gt;
+&lt;li&gt;修改SSH登陆端口，同时开放默认端口，将爆破 ssh 密码的 IP 封停&lt;h3 id=&quot;密钥登陆&quot;&gt;&lt;a href=&quot;#密钥登陆&quot; class=&quot;headerlink&quot; title=&quot;密钥登陆&quot;&gt;&lt;/a&gt;密钥登陆&lt;/h3&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;��Ҫ����������,��ʱ���ٸ���&lt;blockquote&gt;
+&lt;li&gt;主要步骤在这里,有时间再更新&lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&quot;https://ttt.tt/104/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://ttt.tt/104/&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&quot;�޸K˿�&quot;&gt;&lt;a href=&quot;#�޸K˿�&quot; class=&quot;headerlink&quot; title=&quot;�޸Ķ˿�&quot;&gt;&lt;/a&gt;�޸Ķ˿�&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;���� ���£������ǽ� SSH �˿ڸ�Ϊ 999 �˿�&lt;/p&gt;
+&lt;h3 id=&quot;修改端口&quot;&gt;&lt;a href=&quot;#修改端口&quot; class=&quot;headerlink&quot; title=&quot;修改端口&quot;&gt;&lt;/a&gt;修改端口&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;命令 如下，以下是将 SSH 端口改为 999 端口&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sed -i &amp;apos;s/#Port 22/Port 999/g&amp;apos; /etc/ssh/sshd_config&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;��װ fail2ban ���� �����ƽ�ip&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;安装 fail2ban 封掉 暴力破解ip&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&quot;fail2ban&quot;&gt;&lt;a href=&quot;#fail2ban&quot; class=&quot;headerlink&quot; title=&quot;fail2ban&quot;&gt;&lt;/a&gt;fail2ban&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;fail2ban �� Linux �ϵ�һ�����������ֱ����Ŀ�Դ���ܣ��������ض���ϵͳ����־�ļ��������ݼ��⵽���κο��ɵ���Ϊ�Զ�������ͬ�ķ��������������Ա��� ssh ������ IP ��ͣ��Ĭ��10���ӡ�&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;fail2ban 是 Linux 上的一个著名的入侵保护的开源框架，它会监控多个系统的日志文件，并根据检测到的任何可疑的行为自动触发不同的防御动作。将尝试爆破 ssh 密码的 IP 封停，默认10分钟。&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;��ϸ���ð�װ������������ַ������ʹ��Ĭ�����ü��ɡ�&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;详细配置安装方法在如下网址，这里使用默认配置即可。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&quot;https://linux.cn/article-5067-1.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://linux.cn/article-5067-1.html&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;��װ fail2ban&lt;br&gt;CentOS ��Ҫ��ǰ &lt;a href=&quot;https://linux.cn/article-2324-1.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt; ���� EPEL �ֿ� &lt;/a&gt;&lt;br&gt;�� root �û���½���� root �û���Ҫ ����ǰ ���� sudo&lt;/p&gt;
-&lt;p&gt;��װ����&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;安装 fail2ban&lt;br&gt;CentOS 需要提前 &lt;a href=&quot;https://linux.cn/article-2324-1.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt; 设置 EPEL 仓库 &lt;/a&gt;&lt;br&gt;以 root 用户登陆，非 root 用户需要 命令前 增加 sudo&lt;/p&gt;
+&lt;p&gt;安装命令&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//CentOS&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yum install fail2ban&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//Debian / ubuntu&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;apt-get install fail2ban&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;��������&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;其他命令&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;����&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;重启&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;service fail2ban restart&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;��֤״̬&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;验证状态&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;fail2ban-client ping&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;����&lt;/p&gt;
+&lt;p&gt;返回&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Server replied: pong&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;���ÿ���������&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;设置开机自启动&lt;/p&gt;
   &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;// CentOS/RHEL 6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;chkconfig fail2ban on&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// CentOS/RHEL 7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;systemctl enable fail2ban&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&quot;����Linux�����˿�&quot;&gt;&lt;a href=&quot;#����Linux�����˿�&quot; class=&quot;headerlink&quot; title=&quot;����Linux�����˿�&quot;&gt;&lt;/a&gt;����Linux�����˿�&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;�رն����˿�����Զ��ȷ��ѡ����ֻ���³��ö˿� �� SSR�˿�&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;����  iptables &lt;strong&gt;���� iptables ���ò���һ���ĸ��ӣ���������&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;禁用Linux多余端口&quot;&gt;&lt;a href=&quot;#禁用Linux多余端口&quot; class=&quot;headerlink&quot; title=&quot;禁用Linux多余端口&quot;&gt;&lt;/a&gt;禁用Linux多余端口&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;关闭多余端口是永远正确的选择！只留下常用端口 和 SSR端口&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;配置  iptables &lt;strong&gt;警告 iptables 配置不是一般的复杂，谨慎操作&lt;/strong&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;����Ĭ�Ϲ���&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;清空默认规则&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;iptables -F&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;����22�˿ڣ��������ƽ������ռ� //doge&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;允许22端口，给暴力破解留点空间 //doge&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;iptables -A INPUT -p tcp --dport 22 -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;iptables -A OUTPUT -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;����53�˿� udp ��һ������DNS�������������㲻��Ҫ�����Դ���&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;允许53端口 udp ，一般用做DNS服务器，如果你不需要则忽略此条&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;iptables -A OUTPUT -p udp --dport 53 -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;iptables -A INPUT -p udp --sport 53 -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;�����������ʱ���&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;允许本机访问本机&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;iptables -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;iptables -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;�������� SSH �˿�&lt;/strong&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;允许真正 SSH 端口&lt;/strong&gt;&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;iptables -A INPUT -p tcp -s 0/0 --dport 999 -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;iptables -A OUTPUT -p tcp --sport 99 -m state --state ESTABLISHED -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;���� 80 443 �˿ڣ�http �� https &lt;/p&gt;
+&lt;li&gt;&lt;p&gt;允许 80 443 端口，http 和 https&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;iptables -A INPUT -p tcp -s 0/0 --dport 80 -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;iptables -A OUTPUT -p tcp --sport 80 -m state --state ESTABLISHED -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;iptables -A INPUT -p tcp -s 0/0 --dport 443 -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;iptables -A OUTPUT -p tcp --sport 443 -m state --state ESTABLISHED -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;���� SSR�˿� ��888 xxx Ϊ�� ���м����˿ڣ������Ӽ���&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;允许 SSR端口 以888 xxx 为例 你有几个端口，就添加几个&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;iptables -A INPUT -p tcp -s 0/0 --dport 888 -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;iptables -A OUTPUT -p tcp --sport 888 -m state --state ESTABLISHED -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;iptables -A INPUT -p tcp -s 0/0 --dport xxx -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;iptables -A OUTPUT -p tcp --sport xxx -m state --state ESTABLISHED -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;�������� &lt;/p&gt;
+&lt;li&gt;&lt;p&gt;保存配置&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;iptables-save &amp;gt; /etc/sysconfig/iptables&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;���� iptables&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;重载 iptables&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;iptables -L&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&quot;��װ-CSF-����ae&quot;&gt;&lt;a href=&quot;#��װ-CSF-����ae&quot; class=&quot;headerlink&quot; title=&quot;��װ CSF ����ǽ&quot;&gt;&lt;/a&gt;��װ CSF ����ǽ&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;����&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;rm -fv csf.tgz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;wget http://download.configserver.com/csf.tgz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;tar -xzf csf.tgz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cd csf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sh install.sh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//ʹ���±ߵ���������֤csf��ȷ��װ���Ѿ�����&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;perl /usr/local/csf/bin/csftest.pl&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;h2 id=&quot;安装-CSF-防火墙&quot;&gt;&lt;a href=&quot;#安装-CSF-防火墙&quot; class=&quot;headerlink&quot; title=&quot;安装 CSF 防火墙&quot;&gt;&lt;/a&gt;安装 CSF 防火墙&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;命令&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;rm -fv csf.tgz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;wget http://download.configserver.com/csf.tgz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;tar -xzf csf.tgz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cd csf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sh install.sh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//使用下边的命令来验证csf正确安装并已经运行&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;perl /usr/local/csf/bin/csftest.pl&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 </content>
     
@@ -124,7 +121,7 @@
     
     </summary>
     
-      <category term="��ѧ����" scheme="http://yoursite.com/categories/%EF%BF%BD%EF%BF%BD%D1%A7%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD/"/>
+      <category term="科学上网" scheme="http://yoursite.com/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
     
     
       <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
