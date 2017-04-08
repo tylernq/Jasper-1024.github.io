@@ -279,9 +279,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -416,9 +416,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -623,9 +623,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -947,9 +947,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1169,9 +1169,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1336,9 +1336,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1476,9 +1476,9 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1744,9 +1744,9 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -2006,9 +2006,9 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -2279,9 +2279,9 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -2654,9 +2654,9 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
     <link href="http://yoursite.com/2016/06/26/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%97/"/>
     <id>http://yoursite.com/2016/06/26/VPS科学上网教程系列/</id>
     <published>2016-06-26T04:16:16.000Z</published>
-    <updated>2017-04-08T05:28:29.691Z</updated>
+    <updated>2017-04-08T05:35:16.496Z</updated>
     
-    <content type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.06.26  与SSR有关部分基本完成。  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.09.29  更新SSR部分内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.10.09  更新SSR内容，更新Android端接入。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.11.09  更新SSR混淆相关内容，更新SSR-Android，更新部分介绍。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.11.20  整合一部分VPS优化内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.12.11  删减调整一部分内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.12.15  替换锐速优化为 BBR，整合TCP优化&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.12.26  更换TCP BBR 脚本，脚本来自@秋水逸冰 版本，测试通过 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2017.01.11  同步更新一部分SSR内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2017.02.17  同步更新，调整删减内容，降低上手难度，增加VPS测速相关内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2017.03.28  调整一部分内容，更新Vps推荐&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    <content type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.06.26  与SSR有关部分基本完成。  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.09.29  更新SSR部分内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.10.09  更新SSR内容，更新Android端接入。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.11.09  更新SSR混淆相关内容，更新SSR-Android，更新部分介绍。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.11.20  整合一部分VPS优化内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.12.11  删减调整一部分内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.12.15  替换锐速优化为 BBR，整合TCP优化&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.12.26  更换TCP BBR 脚本，脚本来自@秋水逸冰 版本，测试通过 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2017.01.11  同步更新一部分SSR内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2017.02.17  同步更新，调整删减内容，降低上手难度，增加VPS测速相关内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2017.03.28  调整一部分内容，更新Vps推荐&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2017.04.08  新增 VPS 安全加固&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h2 id=&quot;安装脚本说明：遇到失效等，请留言或邮件我！（3-28）&quot;&gt;&lt;a href=&quot;#安装脚本说明：遇到失效等，请留言或邮件我！（3-28）&quot; class=&quot;headerlink&quot; title=&quot;安装脚本说明：遇到失效等，请留言或邮件我！（3.28）&quot;&gt;&lt;/a&gt;安装脚本说明：遇到失效等，请留言或邮件我！（3.28）&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;脚本来源 @秋水逸冰&lt;br&gt;&lt;a href=&quot;https://shadowsocks.be/9.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ShadowsocksR一键安装脚本&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -3064,7 +3064,7 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&quot;VPS安全加固-安全性是重中之重！&quot;&gt;&lt;a href=&quot;#VPS安全加固-安全性是重中之重！&quot; class=&quot;headerlink&quot; title=&quot;VPS安全加固( 安全性是重中之重！)&quot;&gt;&lt;/a&gt;VPS安全加固( 安全性是重中之重！)&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;必须进行的步骤，安全性是重中之重！&lt;br&gt;详情在&lt;a href=&quot;&quot;&gt;科学上网教程（三）——VPS安全加固&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;必须进行的步骤，安全性是重中之重！&lt;br&gt;详情在&lt;a href=&quot;https://jasper-1024.github.io/2017/04/08/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B3/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;科学上网教程（三）——VPS安全加固&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&quot;shadowsocksR-客户端配置&quot;&gt;&lt;a href=&quot;#shadowsocksR-客户端配置&quot; class=&quot;headerlink&quot; title=&quot;shadowsocksR 客户端配置&quot;&gt;&lt;/a&gt;shadowsocksR 客户端配置&lt;/h2&gt;&lt;h3 id=&quot;shadowsocksR-C-windows版本&quot;&gt;&lt;a href=&quot;#shadowsocksR-C-windows版本&quot; class=&quot;headerlink&quot; title=&quot;shadowsocksR C# windows版本&quot;&gt;&lt;/a&gt;shadowsocksR C# windows版本&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;del&gt;(2.17)最新的4.1.0客户端(注意MD5校验)在&lt;a href=&quot;https://github.com/breakwa11/shadowsocks-rss&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github&lt;/a&gt;下载到&lt;/del&gt;&lt;/p&gt;
