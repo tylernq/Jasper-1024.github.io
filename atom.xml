@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-03-15T01:51:24.740Z</updated>
+  <updated>2017-04-08T05:20:52.564Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,124 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>��ѧ�����̳̣���������VPS��ȫ�ӹ�</title>
+    <link href="http://yoursite.com/2017/04/08/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B3/"/>
+    <id>http://yoursite.com/2017/04/08/VPS科学上网教程3/</id>
+    <published>2017-04-08T09:52:16.000Z</published>
+    <updated>2017-04-08T05:20:52.564Z</updated>
+    
+    <content type="html">&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;����&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2017.04&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;08&lt;/span&gt;  VPS�ճ�һЩ��ȫ��ʩ&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;����&lt;br&gt;��ѧ�����̳�ϵ�У��ܾ�û�и����������ˡ����³��ð�ȫ��ʩ�����ٱ�֤�����ᱻ���׵ĵ����⼦������һЩ���õİ�ȫ��ʩ��&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ϵͳ������CentOS &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;SSH&quot;&gt;&lt;a href=&quot;#SSH&quot; class=&quot;headerlink&quot; title=&quot;SSH&quot;&gt;&lt;/a&gt;SSH&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;�����ַ���&lt;ul&gt;
+&lt;li&gt;���׹ر�SSH��½����Ϊ��Կ��½����ȫ�����ߣ������ý�Ϊ����&lt;/li&gt;
+&lt;li&gt;�޸�SSH��½�˿ڣ�ͬʱ����Ĭ�϶˿ڣ������� ssh ������ IP ��ͣ&lt;h3 id=&quot;��Կ��½&quot;&gt;&lt;a href=&quot;#��Կ��½&quot; class=&quot;headerlink&quot; title=&quot;��Կ��½&quot;&gt;&lt;/a&gt;��Կ��½&lt;/h3&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;��Ҫ����������,��ʱ���ٸ���&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://ttt.tt/104/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://ttt.tt/104/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;�޸K˿�&quot;&gt;&lt;a href=&quot;#�޸K˿�&quot; class=&quot;headerlink&quot; title=&quot;�޸Ķ˿�&quot;&gt;&lt;/a&gt;�޸Ķ˿�&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;���� ���£������ǽ� SSH �˿ڸ�Ϊ 999 �˿�&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sed -i &amp;apos;s/#Port 22/Port 999/g&amp;apos; /etc/ssh/sshd_config&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;��װ fail2ban ���� �����ƽ�ip&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;fail2ban&quot;&gt;&lt;a href=&quot;#fail2ban&quot; class=&quot;headerlink&quot; title=&quot;fail2ban&quot;&gt;&lt;/a&gt;fail2ban&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;fail2ban �� Linux �ϵ�һ�����������ֱ����Ŀ�Դ���ܣ��������ض���ϵͳ����־�ļ��������ݼ��⵽���κο��ɵ���Ϊ�Զ�������ͬ�ķ��������������Ա��� ssh ������ IP ��ͣ��Ĭ��10���ӡ�&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;��ϸ���ð�װ������������ַ������ʹ��Ĭ�����ü��ɡ�&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://linux.cn/article-5067-1.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://linux.cn/article-5067-1.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;��װ fail2ban&lt;br&gt;CentOS ��Ҫ��ǰ &lt;a href=&quot;https://linux.cn/article-2324-1.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt; ���� EPEL �ֿ� &lt;/a&gt;&lt;br&gt;�� root �û���½���� root �û���Ҫ ����ǰ ���� sudo&lt;/p&gt;
+&lt;p&gt;��װ����&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//CentOS&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yum install fail2ban&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//Debian / ubuntu&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;apt-get install fail2ban&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;��������&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;����&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;service fail2ban restart&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;��֤״̬&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;fail2ban-client ping&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;����&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Server replied: pong&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;���ÿ���������&lt;/p&gt;
+  &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;// CentOS/RHEL 6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;chkconfig fail2ban on&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// CentOS/RHEL 7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;systemctl enable fail2ban&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;����Linux�����˿�&quot;&gt;&lt;a href=&quot;#����Linux�����˿�&quot; class=&quot;headerlink&quot; title=&quot;����Linux�����˿�&quot;&gt;&lt;/a&gt;����Linux�����˿�&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;�رն����˿�����Զ��ȷ��ѡ����ֻ���³��ö˿� �� SSR�˿�&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;����  iptables &lt;strong&gt;���� iptables ���ò���һ���ĸ��ӣ���������&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;����Ĭ�Ϲ���&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;iptables -F&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;����22�˿ڣ��������ƽ������ռ� //doge&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;iptables -A INPUT -p tcp --dport 22 -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;iptables -A OUTPUT -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;����53�˿� udp ��һ������DNS�������������㲻��Ҫ�����Դ���&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;iptables -A OUTPUT -p udp --dport 53 -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;iptables -A INPUT -p udp --sport 53 -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;�����������ʱ���&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;iptables -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;iptables -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;�������� SSH �˿�&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;iptables -A INPUT -p tcp -s 0/0 --dport 999 -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;iptables -A OUTPUT -p tcp --sport 99 -m state --state ESTABLISHED -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;���� 80 443 �˿ڣ�http �� https &lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;iptables -A INPUT -p tcp -s 0/0 --dport 80 -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;iptables -A OUTPUT -p tcp --sport 80 -m state --state ESTABLISHED -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;iptables -A INPUT -p tcp -s 0/0 --dport 443 -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;iptables -A OUTPUT -p tcp --sport 443 -m state --state ESTABLISHED -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;���� SSR�˿� ��888 xxx Ϊ�� ���м����˿ڣ������Ӽ���&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;iptables -A INPUT -p tcp -s 0/0 --dport 888 -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;iptables -A OUTPUT -p tcp --sport 888 -m state --state ESTABLISHED -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;iptables -A INPUT -p tcp -s 0/0 --dport xxx -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;iptables -A OUTPUT -p tcp --sport xxx -m state --state ESTABLISHED -j ACCEPT&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;�������� &lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;iptables-save &amp;gt; /etc/sysconfig/iptables&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;���� iptables&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;iptables -L&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;��װ-CSF-����ae&quot;&gt;&lt;a href=&quot;#��װ-CSF-����ae&quot; class=&quot;headerlink&quot; title=&quot;��װ CSF ����ǽ&quot;&gt;&lt;/a&gt;��װ CSF ����ǽ&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;����&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;rm -fv csf.tgz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;wget http://download.configserver.com/csf.tgz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;tar -xzf csf.tgz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cd csf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sh install.sh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//ʹ���±ߵ���������֤csf��ȷ��װ���Ѿ�����&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;perl /usr/local/csf/bin/csftest.pl&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;t
+    
+    </summary>
+    
+      <category term="��ѧ����" scheme="http://yoursite.com/categories/%EF%BF%BD%EF%BF%BD%D1%A7%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
+    
+  </entry>
   
   <entry>
     <title>Android笔记—仿绿色守护嗜睡模式通知</title>
@@ -2539,7 +2657,7 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
     <link href="http://yoursite.com/2016/06/26/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%97/"/>
     <id>http://yoursite.com/2016/06/26/VPS科学上网教程系列/</id>
     <published>2016-06-26T04:16:16.000Z</published>
-    <updated>2017-03-28T09:26:43.822Z</updated>
+    <updated>2017-04-08T05:28:29.691Z</updated>
     
     <content type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;更新&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.06.26  与SSR有关部分基本完成。  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.09.29  更新SSR部分内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.10.09  更新SSR内容，更新Android端接入。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.11.09  更新SSR混淆相关内容，更新SSR-Android，更新部分介绍。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.11.20  整合一部分VPS优化内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.12.11  删减调整一部分内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.12.15  替换锐速优化为 BBR，整合TCP优化&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2016.12.26  更换TCP BBR 脚本，脚本来自@秋水逸冰 版本，测试通过 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2017.01.11  同步更新一部分SSR内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2017.02.17  同步更新，调整删减内容，降低上手难度，增加VPS测速相关内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2017.03.28  调整一部分内容，更新Vps推荐&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h2 id=&quot;安装脚本说明：遇到失效等，请留言或邮件我！（3-28）&quot;&gt;&lt;a href=&quot;#安装脚本说明：遇到失效等，请留言或邮件我！（3-28）&quot; class=&quot;headerlink&quot; title=&quot;安装脚本说明：遇到失效等，请留言或邮件我！（3.28）&quot;&gt;&lt;/a&gt;安装脚本说明：遇到失效等，请留言或邮件我！（3.28）&lt;/h2&gt;&lt;ul&gt;
@@ -2948,6 +3066,9 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
 &lt;li&gt;重启SSR &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/etc/init.d/shadowsocks restart&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&quot;VPS安全加固-安全性是重中之重！&quot;&gt;&lt;a href=&quot;#VPS安全加固-安全性是重中之重！&quot; class=&quot;headerlink&quot; title=&quot;VPS安全加固( 安全性是重中之重！)&quot;&gt;&lt;/a&gt;VPS安全加固( 安全性是重中之重！)&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;必须进行的步骤，安全性是重中之重！&lt;br&gt;详情在&lt;a href=&quot;&quot;&gt;科学上网教程（三）——VPS安全加固&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&quot;shadowsocksR-客户端配置&quot;&gt;&lt;a href=&quot;#shadowsocksR-客户端配置&quot; class=&quot;headerlink&quot; title=&quot;shadowsocksR 客户端配置&quot;&gt;&lt;/a&gt;shadowsocksR 客户端配置&lt;/h2&gt;&lt;h3 id=&quot;shadowsocksR-C-windows版本&quot;&gt;&lt;a href=&quot;#shadowsocksR-C-windows版本&quot; class=&quot;headerlink&quot; title=&quot;shadowsocksR C# windows版本&quot;&gt;&lt;/a&gt;shadowsocksR C# windows版本&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;del&gt;(2.17)最新的4.1.0客户端(注意MD5校验)在&lt;a href=&quot;https://github.com/breakwa11/shadowsocks-rss&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github&lt;/a&gt;下载到&lt;/del&gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -3041,101 +3162,6 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);&lt;/code&gt;&
     
       <category term="随" scheme="http://yoursite.com/categories/%E9%9A%8F/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>初入树莓派1安装系统+进入SSH</title>
-    <link href="http://yoursite.com/2016/06/21/%E5%88%9D%E5%85%A5%E6%A0%91%E8%8E%93%E6%B4%BE1----%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F+%E8%BF%9B%E5%85%A5SSH/"/>
-    <id>http://yoursite.com/2016/06/21/初入树莓派1----安装系统+进入SSH/</id>
-    <published>2016-06-21T02:17:11.000Z</published>
-    <updated>2016-11-26T05:07:26.718Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;del&gt;&lt;strong&gt;为了更好的从事程序员事业、填坑linux、为学弟打下第一手资料、留下linux培训教材……&lt;/strong&gt;&lt;/del&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;em&gt;实际就是为了搭个路由器，玩玩&lt;/em&gt;&lt;br&gt; 入了树莓派3b +电源+外壳+sd卡—300大洋——–&lt;em&gt;肉疼&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h3 id=&quot;树莓派系统安装&quot;&gt;&lt;a href=&quot;#树莓派系统安装&quot; class=&quot;headerlink&quot; title=&quot;树莓派系统安装&quot;&gt;&lt;/a&gt;树莓派系统安装&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;树莓派3b的耗电量还是挺大的&lt;br&gt; 推荐买个2.5A的电源&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;系统选择&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;树莓派支持 数十款操作系统，一般新手推荐的是&lt;strong&gt;raspbian&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Raspbian是为树莓派设计，基于Debian的操作系统，不隶属于树莓派基金会[1]，但被列为官方支持的操作系统，&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.raspberrypi.org/downloads/raspbian/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Raspbian镜像地址&lt;/a&gt;(最好在FQ下，否则会很慢的。你要用IDM当我没说)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;Raspbian有两个版本，简单区别如下&lt;ul&gt;
-&lt;li&gt;RASPBIAN JESSIE WITH PIXEL&lt;br&gt;带有完整的桌面体验，安装包1.4G左右&lt;/li&gt;
-&lt;li&gt;RASPBIAN JESSIE LITE&lt;br&gt;没有X-server 套件，没有 Qt 和 GTK+ 的函式库。等于去掉了桌面。安装包400Mb上下。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;所要用到的工具是：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;1.多功能读卡器一个&lt;/li&gt;
-&lt;li&gt;2.TF卡一张（4G以上）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;烧写器官方推荐是&lt;strong&gt;win32diskimager&lt;/strong&gt;&lt;br&gt;但是&lt;strong&gt;文件路径不支持中文&lt;/strong&gt;。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;个人推荐 &lt;strong&gt;USB Image Tool&lt;/strong&gt;&lt;br&gt;故障率最低的是1.7版本。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;插上读卡器，烧写系统开始！&quot;&gt;&lt;a href=&quot;#插上读卡器，烧写系统开始！&quot; class=&quot;headerlink&quot; title=&quot;插上读卡器，烧写系统开始！&quot;&gt;&lt;/a&gt;插上读卡器，烧写系统开始！&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;烧写系统&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;打开USB Image Tool&lt;br&gt;&lt;strong&gt;注意左上角是Device Mode，不是Volume Mode！&lt;/strong&gt;&lt;br&gt;&lt;a href=&quot;http://snapgr.am/image/Livb&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://cdn2.snapgram.co/imgs/2016/06/20/1.png&quot; alt=&quot;1.png&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;选择下载后解压的img文件&lt;/li&gt;
-&lt;li&gt;写入等待进度条完成即可。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;错误原因&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;USB Image Tool 在win7以上系统中必须要以管理员权限运行&lt;/li&gt;
-&lt;li&gt;USB Image Tool运行需要.net环境 直接使用系统默认加载的即可。&lt;/li&gt;
-&lt;li&gt;烧写完成后接入电源&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;进入SSH管理（没有显示设备时）&quot;&gt;&lt;a href=&quot;#进入SSH管理（没有显示设备时）&quot; class=&quot;headerlink&quot; title=&quot;进入SSH管理（没有显示设备时）&quot;&gt;&lt;/a&gt;进入SSH管理（没有显示设备时）&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;第一次进入系统时直接利用网线接入路由器，将电脑接入同一个wifi下。&lt;br&gt;在路由器管理界面查找树莓派对应得IP地址。&lt;br&gt;也可以扫描一下局域网设备中开启22端口的设备.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;使用SSH管理工具，这里以putty为例。打开软件，填入树莓派ip地址。&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;打开软件，填入树莓派ip地址。&lt;/strong&gt;&lt;br&gt;&lt;em&gt;默认登陆界面&lt;/em&gt;&lt;br&gt;&lt;a href=&quot;http://snapgr.am/image/Liv4&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://cdn4.snapgram.co/images/2016/06/20/2.png&quot; alt=&quot;2.png&quot;&gt;&lt;/a&gt;&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;默认用户名pi 密码raspberry。&lt;/strong&gt;&lt;br&gt;&lt;a href=&quot;http://snapgr.am/image/LivJ&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://cdn2.snapgram.co/imgs/2016/06/20/3.png&quot; alt=&quot;3.png&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;登陆成功！&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;http://cdn1.snapgram.co/imgs/2016/06/20/4.png&quot; alt=&quot;4.png&quot;&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;参考&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/longerzone/article/details/36034619&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/longerzone/article/details/36034619&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;del&gt;&lt;strong&gt;为了更好的从事程序员事业、填坑linux、为学弟打下第一手资料、留下linux培训教材……&lt;/strong&gt;&lt;/del&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;em&gt;实际就是为了搭个路由器，玩玩&lt;/em&gt;&lt;br&gt; 入了树莓派3b +电源+外壳+sd卡—300
-    
-    </summary>
-    
-      <category term="树莓派" scheme="http://yoursite.com/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
-    
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
     
   </entry>
   
