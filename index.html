@@ -247,6 +247,233 @@
             
               
                 
+                <a class="post-title-link" href="/2017/06/11/Android笔记-乐联网上传数据 TCP长连接总结/" itemprop="url">
+                  Android笔记—乐联网上传数据 TCP长连接总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-11T12:00:00+08:00" content="2017-06-11">
+              2017-06-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/06/11/Android笔记-乐联网上传数据 TCP长连接总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/11/Android笔记-乐联网上传数据 TCP长连接总结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/06/11/Android笔记-乐联网上传数据 TCP长连接总结/" class="leancloud_visitors" data-flag-title="Android笔记—乐联网上传数据 TCP长连接总结">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>资料来源如下</p>
+<ul>
+<li>乐联网</li>
+</ul>
+<p>编程环境</p>
+<ul>
+<li>Android Studio 2.2.3 </li>
+</ul>
+<p>导语</p>
+<ul>
+<li>毕设中的乐联网部分,记录以供复习</li>
+<li>开源在github上</li>
+<li><a href="https://github.com/Jasper-1024/HbuLeWei" target="_blank" rel="external">https://github.com/Jasper-1024/HbuLeWei</a></li>
+</ul>
+<hr>
+<h2 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h2><ul>
+<li>使用okhttp上传数据。</li>
+<li>Tcp长连接实现方向控制</li>
+<li>以代码为主</li>
+</ul>
+<h2 id="相关教程"><a href="#相关教程" class="headerlink" title="相关教程"></a>相关教程</h2><ul>
+<li><p>okhttp入门</p>
+<blockquote>
+<p><a href="http://blog.csdn.net/biezhihua/article/details/50603624" target="_blank" rel="external">http://blog.csdn.net/biezhihua/article/details/50603624</a></p>
+</blockquote>
+</li>
+<li><p>乐联网</p>
+<blockquote>
+<p><a href="https://www.lewei50.com/dev/doc/176" target="_blank" rel="external">https://www.lewei50.com/dev/doc/176</a><br><a href="https://www.lewei50.com/dev/doc/155" target="_blank" rel="external">https://www.lewei50.com/dev/doc/155</a></p>
+</blockquote>
+</li>
+<li><p>Tcp长连接</p>
+<blockquote>
+<p><a href="http://ls15114843569.blog.51cto.com/11015399/1767195" target="_blank" rel="external">http://ls15114843569.blog.51cto.com/11015399/1767195</a></p>
+</blockquote>
+</li>
+<li><p>简易上传</p>
+<blockquote>
+<p><a href="http://ls15114843569.blog.51cto.com/11015399/1767195" target="_blank" rel="external">http://ls15114843569.blog.51cto.com/11015399/1767195</a></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="上传数据"><a href="#上传数据" class="headerlink" title="上传数据"></a>上传数据</h2><ul>
+<li><p>API介绍</p>
+<blockquote>
+<p><a href="https://www.lewei50.com/dev/apiinfo/3" target="_blank" rel="external">https://www.lewei50.com/dev/apiinfo/3</a></p>
+</blockquote>
+</li>
+<li><p>API测试</p>
+<blockquote>
+<p><a href="https://www.lewei50.com/dev/apitest/3" target="_blank" rel="external">https://www.lewei50.com/dev/apitest/3</a></p>
+</blockquote>
+</li>
+<li><p>地址：<a href="http://www.lewei50.com/api/v1/gateway/updatesensors/你的网关号" target="_blank" rel="external">http://www.lewei50.com/api/v1/gateway/updatesensors/你的网关号</a></p>
+<p>POST方式</p>
+<p>需要配置header头 Userkey</p>
+</li>
+<li><p>数据发送/返回方式JSON</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">      <span class="attr">"Name"</span>:<span class="string">"T1"</span>,</span><br><span class="line">      <span class="attr">"Value"</span>:<span class="string">"1"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">      <span class="attr">"Name"</span>:<span class="string">"01H1"</span>,</span><br><span class="line">      <span class="attr">"Value"</span>:<span class="string">"96.2"</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>返回格式</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"Successful"</span>: <span class="literal">true</span>, </span><br><span class="line">  <span class="attr">"Message"</span>: <span class="literal">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>okhttp POST 传感器数据 这里使用了一个静态内部类。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">	<span class="comment">//返回数据处理</span></span><br><span class="line">  <span class="keyword">public</span> okhttp3.Callback callback = <span class="keyword">new</span> okhttp3.Callback() &#123;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Call call, Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">          <span class="comment">//返回服务器内容</span></span><br><span class="line">          String responsedata = response.body().string();</span><br><span class="line">          LogUtil.d(<span class="string">"okHttp"</span>, responsedata);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Call call, IOException e)</span> </span>&#123;</span><br><span class="line">          <span class="comment">//异常处理</span></span><br><span class="line">          LogUtil.d(<span class="string">"okHttp"</span>, <span class="string">"POST错误"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//内部类</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Http</span> </span>&#123;</span><br><span class="line">      <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> MediaType MEDIA_TYPE_MARKDOWN</span><br><span class="line">              = MediaType.parse(<span class="string">"text/x-markdown; charset=utf-8"</span>);</span><br><span class="line"><span class="comment">//POST数据，指定接收回掉</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">postData</span><span class="params">(String sensor_name, String sensor_data, okhttp3.Callback callback)</span> </span>&#123;</span><br><span class="line">          OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line">          <span class="keyword">final</span> String value =</span><br><span class="line">                  <span class="string">"["</span> +</span><br><span class="line">                          <span class="string">"    &#123;"</span> +</span><br><span class="line">                          <span class="string">"        \"Name\":\""</span> + sensor_name + <span class="string">"\","</span> +</span><br><span class="line">                          <span class="string">"        \"Value\":\""</span> + sensor_data + <span class="string">"\""</span> +</span><br><span class="line">                          <span class="string">"    &#125;"</span> +</span><br><span class="line">                          <span class="string">"]"</span>;</span><br><span class="line">          RequestBody requestBody = <span class="keyword">new</span> RequestBody() &#123;</span><br><span class="line">              <span class="meta">@Override</span></span><br><span class="line">              <span class="function"><span class="keyword">public</span> MediaType <span class="title">contentType</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                  <span class="keyword">return</span> MEDIA_TYPE_MARKDOWN;</span><br><span class="line">              &#125;</span><br><span class="line"></span><br><span class="line">              <span class="meta">@Override</span></span><br><span class="line">              <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeTo</span><span class="params">(BufferedSink sink)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">                  sink.write(value.getBytes());</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;;</span><br><span class="line">          Request request = <span class="keyword">new</span> Request.Builder()</span><br><span class="line">                  .url(<span class="string">"http://www.lewei50.com/api/V1/gateway/UpdateSensors/01"</span>)</span><br><span class="line">                  .header(<span class="string">"userkey"</span>, <span class="string">"你的userkey"</span>)</span><br><span class="line">                  .post(requestBody)</span><br><span class="line">                  .build();</span><br><span class="line">          client.newCall(request).enqueue(callback);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>实际使用 放在一个后台服务内，调用相当简单<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Http.postData(<span class="string">"PM2.5"</span>, <span class="string">"你的数据转为String"</span>, callback);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Tcp长连接，远程控制"><a href="#Tcp长连接，远程控制" class="headerlink" title="Tcp长连接，远程控制"></a>Tcp长连接，远程控制</h2><ul>
+<li>首先参考<a href="https://wenku.baidu.com/view/f3457b63dd3383c4bb4cd2f0.html" target="_blank" rel="external">乐联网反向控制教程</a>，新建一个控制器，这里以开关为例。</li>
+<li>原理是与服务器保持一个TCP长连接，不到40s刷新一次，以此保持通道，与被控制段通信，发送控制信息。</li>
+<li><p>Tcp长连接参考了@墨迹流韶的<a href="http://blog.cocoper.com/2017/01/21/Android/Common/2017-01-21-Android%E5%9F%BA%E4%BA%8ETcp%E5%8D%8F%E8%AE%AE%E7%9A%84Socket%E9%95%BF%E9%93%BE%E6%8E%A5%E5%B0%81%E8%A3%85/" target="_blank" rel="external">Android基于Tcp协议的Socket长链接封装</a></p>
+</li>
+<li><p>地址 tcp.lewei50.com<br>端口号 9960<br>心跳包间隔 1min以内</p>
+</li>
+<li><p>发送/接收数据格式 Json<br>本地发送数据格式</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">  "method": "update",</span><br><span class="line"></span><br><span class="line">  "gatewayNo": "你的网关号",</span><br><span class="line"></span><br><span class="line">  "userkey": "你的userkey"</span><br><span class="line"></span><br><span class="line">&#125;&amp;^!</span><br></pre></td></tr></table></figure>
+<p>服务器发送控制命令格式，数据处理时需要去掉字符串最后的&amp;^! </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">"method":"send",</span><br><span class="line"></span><br><span class="line">"gatewayNo":"01",</span><br><span class="line"></span><br><span class="line">"userkey":"6d16ddb3c58c4e448a7e15e7acxxxxxx",</span><br><span class="line"></span><br><span class="line">"f":" updateSensor",</span><br><span class="line"></span><br><span class="line">"p1":"D1",</span><br><span class="line"></span><br><span class="line">"p2":"1"</span><br><span class="line"></span><br><span class="line">&#125;&amp;^!</span><br></pre></td></tr></table></figure>
+<p>本地响应控制命令后返回数据格式</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="attr">"method"</span>:<span class="string">"response"</span>,</span><br><span class="line"></span><br><span class="line"><span class="attr">"result"</span>:&#123;</span><br><span class="line">	</span><br><span class="line">  <span class="attr">"successful"</span>:<span class="literal">true</span>,</span><br><span class="line">  </span><br><span class="line">  <span class="attr">"message"</span>:<span class="string">"ok!"</span>,</span><br><span class="line">  </span><br><span class="line">  <span class="attr">"data"</span>:[&#123;</span><br><span class="line">	    </span><br><span class="line">       <span class="attr">"id"</span>:<span class="string">"D1"</span>,</span><br><span class="line">      </span><br><span class="line">  	<span class="attr">"value"</span>:<span class="string">"1"</span></span><br><span class="line">  	</span><br><span class="line">    &#125;,</span><br><span class="line">  </span><br><span class="line">&#125;&amp;^!</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>TCP连接类  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TcpSocketHelper</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> String mTag = <span class="string">"TcpSocketHelper"</span>;</span><br><span class="line">  <span class="keyword">private</span> Socket socket;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">boolean</span> _connect;</span><br><span class="line">  <span class="keyword">private</span> ReceiveThread mReceiveThread;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">boolean</span> receiveStop;</span><br><span class="line">  <span class="keyword">private</span> Date lastKeepAliveOkTime;</span><br><span class="line">  <span class="keyword">private</span> OnRecivedListener mRecivedListener;</span><br><span class="line">  <span class="comment">//地址</span></span><br><span class="line">  <span class="keyword">private</span> String mIpAddr = <span class="string">"http://tcp.lewei50.com"</span>;</span><br><span class="line">  <span class="comment">//端口</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> mPort = <span class="number">9960</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 开启链接socket</span><br><span class="line">   * <span class="doctag">@param</span> ipAddr</span><br><span class="line">   * <span class="doctag">@param</span> port</span><br><span class="line">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startConnect</span><span class="params">(String ipAddr, <span class="keyword">int</span> port)</span></span>&#123;</span><br><span class="line">      LogUtil.d(mTag, <span class="string">"准备链接..."</span>);</span><br><span class="line">      <span class="keyword">this</span>.mIpAddr = ipAddr;</span><br><span class="line">      <span class="keyword">this</span>.mPort = port;</span><br><span class="line">      InetAddress serverAddr;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">          socket = <span class="keyword">new</span> Socket(ipAddr, port);</span><br><span class="line">          LogUtil.d(mTag, <span class="string">"准备链接..."</span>);</span><br><span class="line">          _connect = <span class="keyword">true</span>;</span><br><span class="line">          mReceiveThread = <span class="keyword">new</span> ReceiveThread();</span><br><span class="line">          receiveStop = <span class="keyword">false</span>;</span><br><span class="line">          mReceiveThread.start();</span><br><span class="line">          LogUtil.d(mTag, <span class="string">"链接成功..."</span>);</span><br><span class="line"></span><br><span class="line">      &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">          LogUtil.d(mTag, <span class="string">"链接出错..."</span> + e.getMessage());</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 关闭链接</span><br><span class="line">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">closeConnect</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (socket != <span class="keyword">null</span>)&#123;</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">              socket.close();</span><br><span class="line">              socket = <span class="keyword">null</span>;</span><br><span class="line">          &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">              e.printStackTrace();</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 保持心跳</span><br><span class="line">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">KeepAlive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="comment">// 判断socket是否已断开,断开就重连</span></span><br><span class="line">      <span class="keyword">if</span> (lastKeepAliveOkTime != <span class="keyword">null</span>) &#123;</span><br><span class="line">          LogUtil.d(mTag, <span class="string">"上次心跳成功时间:"</span>+ DateFormat.format(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>, lastKeepAliveOkTime));</span><br><span class="line">          Date now = Calendar.getInstance().getTime();</span><br><span class="line">          <span class="keyword">long</span> between = (now.getTime() - lastKeepAliveOkTime.getTime());<span class="comment">// 得到两者的毫秒数</span></span><br><span class="line">          <span class="keyword">if</span> (between &gt; <span class="number">60</span> * <span class="number">1000</span>) &#123;</span><br><span class="line">              LogUtil.d(mTag, <span class="string">"心跳异常超过40,重新连接:"</span>);</span><br><span class="line">              lastKeepAliveOkTime = <span class="keyword">null</span>;</span><br><span class="line">              socket = <span class="keyword">null</span>;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          lastKeepAliveOkTime = Calendar.getInstance().getTime();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (!checkIsAlive()) &#123;</span><br><span class="line">          LogUtil.d(mTag, <span class="string">"链接已断开,重新连接."</span>);</span><br><span class="line">          startConnect(mIpAddr, mPort);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 此方法是检测是否连接</span><br><span class="line">   * <span class="doctag">@return</span></span><br><span class="line">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkIsAlive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (socket == <span class="keyword">null</span>||!socket.isConnected())</span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 发送数据的方法</span><br><span class="line">   * <span class="doctag">@param</span> msg</span><br><span class="line">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendmessage</span><span class="params">(String msg)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">boolean</span> isAlive = checkIsAlive();</span><br><span class="line">      <span class="keyword">if</span> (!isAlive)</span><br><span class="line">          <span class="keyword">return</span>;</span><br><span class="line">      LogUtil.d(mTag, <span class="string">"准备发送消息:"</span> + msg);</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (socket != <span class="keyword">null</span> &amp;&amp; socket.isConnected()) &#123;</span><br><span class="line">              <span class="keyword">if</span> (!socket.isOutputShutdown()) &#123;</span><br><span class="line"></span><br><span class="line">                  <span class="comment">//2.得到socket读写流</span></span><br><span class="line">                  OutputStream os=socket.getOutputStream();</span><br><span class="line">                  <span class="comment">//true:是否自动flush</span></span><br><span class="line">                  PrintWriter outStream=<span class="keyword">new</span> PrintWriter(os, <span class="keyword">true</span>);</span><br><span class="line">                  outStream.print(msg);</span><br><span class="line">                  outStream.flush();</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          LogUtil.d(mTag, <span class="string">"发送成功!"</span>);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 设置接收数据监听器</span><br><span class="line">   * <span class="doctag">@param</span> mRecivedListener</span><br><span class="line">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setmRecivedListener</span><span class="params">(OnRecivedListener mRecivedListener)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.mRecivedListener = mRecivedListener;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 数据接收线程</span><br><span class="line">   */</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">ReceiveThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line"></span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">              <span class="keyword">try</span> &#123;</span><br><span class="line">                  sleep(<span class="number">2000</span>);</span><br><span class="line">                    <span class="comment">// 判断 Socket 是否处于连接状态</span></span><br><span class="line">                  <span class="keyword">if</span> (socket != <span class="keyword">null</span> &amp;&amp; socket.isConnected()) &#123;</span><br><span class="line">                      <span class="comment">// 客户端接收服务器端的响应，读取服务器端向客户端的输入流</span></span><br><span class="line">                      InputStream isRead = socket.getInputStream();</span><br><span class="line">                      <span class="comment">// 缓冲区</span></span><br><span class="line">                      <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[isRead.available()];</span><br><span class="line">                      <span class="comment">// 读取缓冲区</span></span><br><span class="line">                      isRead.read(buffer);</span><br><span class="line">                      <span class="comment">// 转换为字符串</span></span><br><span class="line">                      String responseInfo = <span class="keyword">new</span> String(buffer);</span><br><span class="line">                      <span class="comment">// 日志中输出</span></span><br><span class="line">                      <span class="keyword">if</span>(responseInfo != <span class="keyword">null</span>&amp;&amp;!responseInfo.equals(<span class="string">""</span>))&#123;</span><br><span class="line">                          LogUtil.d(<span class="string">"TcpManager"</span>, <span class="string">"返回："</span>+responseInfo);</span><br><span class="line">                          mRecivedListener.onRecived(responseInfo);</span><br><span class="line">                      &#125;</span><br><span class="line"></span><br><span class="line">                      lastKeepAliveOkTime = Calendar.getInstance().getTime();</span><br><span class="line">                      KeepAlive();</span><br><span class="line"></span><br><span class="line">                      <span class="keyword">continue</span>;</span><br><span class="line">                  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                      <span class="keyword">if</span> (socket != <span class="keyword">null</span>)</span><br><span class="line">                          LogUtil.d(mTag, <span class="string">"链接状态:"</span> + socket.isConnected());</span><br><span class="line">                  &#125;</span><br><span class="line"></span><br><span class="line">              &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                  LogUtil.d(mTag, <span class="string">"监听出错:"</span> + e.toString());</span><br><span class="line">                  e.printStackTrace();</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用,包装在一个后台service中，在service中实现TcpSocketHelper的onRecived方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  //tcp返回信息</span><br><span class="line">  @Override</span><br><span class="line">  public void onRecived(String data) &#123;</span><br><span class="line">      LogUtil.d(&quot;okHttpService&quot;, data);</span><br><span class="line">      //处理服务器发回的数据      </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">TcpSocketHelper tcpSocketHelper  = new TcpSocketHelper();</span><br><span class="line">tcpSocketHelper.startConnect(&quot;tcp.lewei50.com&quot;, 9960);</span><br><span class="line">//设置监听</span><br><span class="line">tcpSocketHelper.setmRecivedListener(this);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>发送心跳包<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">String value =</span><br><span class="line">          <span class="string">"    &#123;"</span> +</span><br><span class="line">                  <span class="string">"        \"method\":\"update\","</span> +</span><br><span class="line">                  <span class="string">"        \"gatewayNo\":\"01\","</span> +</span><br><span class="line">                  <span class="string">"        \"userkey\":\"你的userkey\""</span> +</span><br><span class="line">                  <span class="string">"    &#125;&amp;^!"</span>;</span><br><span class="line"> <span class="comment">//发送数据</span></span><br><span class="line"> tcpSocketHelper.sendmessage(value);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>处理数据 在service的onRecived中</p>
+</li>
+<li><p>本地处理完毕后，向服务器返回被控制器状态</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String value5 = <span class="string">"&#123;\"method\":\"response\",\"result\":&#123;\"successful\":true,\"message\":\"ok!\",\"data\":[&#123;\"id\":\"D1\",\"value \":\"1\"&#125;]&#125;&#125;&amp;^! "</span>;</span><br><span class="line"> </span><br><span class="line">tcpSocketHelper.sendmessage(value6);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/05/08/Android笔记-自用MVP框架/" itemprop="url">
                   Android笔记-自用MVP框架
                 </a>
@@ -596,7 +823,50 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();</span><br><span class="line"><span class="keyword">if</span> (mBluetoothAdapter == <span class="keyword">null</span>) &#123;</span><br><span class="line">  <span class="comment">// 蓝牙不可用操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>开启蓝牙<br>BluetoothAdapter 的 .isEnabled() 可以判断系统蓝牙是否开启.<br>没有开启时 startActivityForResult() 发送包含  ACTION_REQUEST_ENABLE  的 Intent 请求系统开启蓝牙,并在 onActivityResult() 返回的数据中 RESULT_CANCELED 表示开启失败 RESULT_OK  表示开启成功,这里我们只检测开启失败情况,并提示用户 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!mBluetoothAdapter.isEnabled()) &#123;</span><br><span class="line">  Intent enableBtIntent = <span class="keyword">new</span> Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);</span><br><span class="line">  startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (requestCode == REQUEST_ENABLE_BT &amp;&amp; resultCode == RESULT_CANCELED) &#123;</span><br><span class="line">          Toast.makeText(MyApplication.getContext(),R.string.Bluetooth_openfail, Toast.LENGTH_SHORT).show();</span><br><span class="line">      &#125;</span><br><span class="line">      BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();</span><br><span class="line">      <span class="keyword">if</span> (mBluetoothAdapter == <span class="keyword">null</span>) &#123;</span><br><span class="line">          <span class="comment">//设备不支持蓝牙时处理</span></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>查询已配对的设备<br>调用 getBondedDevices(),返回已配对设备的一组 BluetoothDevice.之后使用for循环遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;BluetoothDevice&gt; pairedDevices = mBluetoothAdapter.getBondedDevices();</span><br><span class="line"><span class="keyword">if</span> (pairedDevices.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">//重新加载bluetoothDeviceList</span></span><br><span class="line">        bluetoothDeviceList.clear();</span><br><span class="line">        <span class="comment">//BluetoothDevice列表循环</span></span><br><span class="line">        <span class="keyword">for</span> (BluetoothDevice device : pairedDevices) &#123;</span><br><span class="line">          bluetoothDeviceList.add(device);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>扫描设备<br>查找设备是非常耗费系统资源的事项，需要安排在子线程中执行，这里没有用到，由需要请参考Google官方蓝牙教程</p>
+</li>
+<li><p>连接设备<br>蓝牙分主从机，链接为服务器/客户端。这里使用的是连接为客户端。</p>
+<ul>
+<li>首先获取远程设备的 BluetoothDevice 对象，即在选择设备阶段的BluetoothDevice</li>
+<li>调用 createRfcommSocketToServiceRecord(UUID) 获取 BluetoothSocket，UUID通用唯一识别码 在蓝牙中具体是什么没有很好的解释。这里的值取的是<br><code>&quot;00001101-0000-1000-8000-00805F9B34FB&quot;</code></li>
+<li>调用 connect() 发起连接,阻塞调用，需要在子线程中执行。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//蓝牙连接子线程</span></span><br><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//解析函数</span></span><br><span class="line">    ConnectThread(BluetoothDevice bluetoothDevice) &#123;</span><br><span class="line">        <span class="comment">// 使用一个中间变量 tmp</span></span><br><span class="line">        <span class="comment">// mmSocket 类型是 final</span></span><br><span class="line"></span><br><span class="line">        BluetoothSocket tmp = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">// 获取 BluetoothSocket</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// MY_UUID is the app's UUID string, also used by the server code</span></span><br><span class="line">            tmp = bluetoothDevice.createRfcommSocketToServiceRecord(UUID.fromString(MyApplication.MY_UUID));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//赋值给 mmSocket</span></span><br><span class="line">        mmSocket = tmp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 关闭蓝牙扫描</span></span><br><span class="line">        MyApplication.getBluetoothAdapter().cancelDiscovery();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 通过 socket 连接到设备. connect() 会一直执行直到成功连接或者抛出异常</span></span><br><span class="line">            mmSocket.connect();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException connectException) &#123;</span><br><span class="line">            <span class="comment">//无法连接到蓝牙,关闭连接并退出</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                mmSocket.close();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//没有正常关闭</span></span><br><span class="line">            <span class="keyword">catch</span> (IOException ignored) &#123;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// Do work to manage the connection (in a separate thread)</span></span><br><span class="line">        mConnectedThread = <span class="keyword">new</span> ConnectedThread(mmSocket);</span><br><span class="line">        mConnectedThread.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 关闭蓝牙连接</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            mmSocket.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>管理连接<br>获取BluetoothSocket<br>获取 InputStream 和 OutputStream， getInputStream() 和 getOutputStream() 来处理数据传输。read(byte[]) 和 write(byte[]) 读取数据并写入到流式传输。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectedThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">      <span class="comment">//BluetoothSocket</span></span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</span><br><span class="line">      <span class="comment">//输入流</span></span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">final</span> InputStream mmInStream;</span><br><span class="line">      <span class="comment">//输出流</span></span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">final</span> OutputStream mmOutStream;</span><br><span class="line"></span><br><span class="line">      ConnectedThread(BluetoothSocket socket) &#123;</span><br><span class="line">          <span class="comment">//传入BluetoothSocket，实例化mmSocket</span></span><br><span class="line">          mmSocket = socket;</span><br><span class="line">          <span class="comment">//输入/输出流 中间变量</span></span><br><span class="line">          InputStream tmpIn = <span class="keyword">null</span>;</span><br><span class="line">          OutputStream tmpOut = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">          <span class="comment">// 输入输出流实例化</span></span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">              tmpIn = socket.getInputStream();</span><br><span class="line">              tmpOut = socket.getOutputStream();</span><br><span class="line">          &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">              e.printStackTrace();</span><br><span class="line">          &#125;</span><br><span class="line">          mmInStream = tmpIn;</span><br><span class="line">          mmOutStream = tmpOut;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">          <span class="keyword">int</span> bytes;</span><br><span class="line">          <span class="comment">// 连接成功时</span></span><br><span class="line">          <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">              <span class="keyword">try</span> &#123;</span><br><span class="line">                  <span class="comment">// 在InputStream读数据</span></span><br><span class="line">                  bytes = mmInStream.read();</span><br><span class="line">                  <span class="comment">//发送数据</span></span><br><span class="line">                  Events.bluetooth_Recycle bluetooth_recycle = <span class="keyword">new</span> Events.bluetooth_Recycle();</span><br><span class="line">                  bluetooth_recycle.s = bytes;</span><br><span class="line">                  bluetooth_recycle.bytes = String.valueOf((<span class="keyword">char</span>) bytes);</span><br><span class="line">                  EventBus.getDefault().post(bluetooth_recycle);</span><br><span class="line">              &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                  <span class="keyword">break</span>;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//写方法</span></span><br><span class="line">      <span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">              mmOutStream.write(bytes);</span><br><span class="line">          &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">              e.printStackTrace();</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//关闭流连接</span></span><br><span class="line">      <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">              mmSocket.close();</span><br><span class="line">          &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="EventBus"><a href="#EventBus" class="headerlink" title="EventBus"></a>EventBus</h3><ul>
+<li>直接放链接了<blockquote>
+<p><a href="http://www.jianshu.com/p/a040955194fc" target="_blank" rel="external">http://www.jianshu.com/p/a040955194fc</a><br><a href="http://www.jianshu.com/p/acfe78296bb5" target="_blank" rel="external">http://www.jianshu.com/p/acfe78296bb5</a><br><a href="http://www.ff50.net/view/40565212977623506063.html" target="_blank" rel="external">http://www.ff50.net/view/40565212977623506063.html</a></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ul>
+<li><p>蓝牙连接子线程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//解析函数</span></span><br><span class="line">      ConnectThread(BluetoothDevice bluetoothDevice) &#123;</span><br><span class="line">          <span class="comment">// 使用一个中间变量 tmp</span></span><br><span class="line">          <span class="comment">// mmSocket 类型是 final</span></span><br><span class="line"></span><br><span class="line">          BluetoothSocket tmp = <span class="keyword">null</span>;</span><br><span class="line">          <span class="comment">// 获取 BluetoothSocket</span></span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">              <span class="comment">// MY_UUID is the app's UUID string, also used by the server code</span></span><br><span class="line">              tmp = bluetoothDevice.createRfcommSocketToServiceRecord(UUID.fromString(MyApplication.MY_UUID));</span><br><span class="line">          &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">//赋值给 mmSocket</span></span><br><span class="line">          mmSocket = tmp;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          <span class="comment">// 关闭蓝牙扫描</span></span><br><span class="line">          MyApplication.getBluetoothAdapter().cancelDiscovery();</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">              <span class="comment">// 通过 socket 连接到设备. connect() 会一直执行直到成功连接或者抛出异常</span></span><br><span class="line">              mmSocket.connect();</span><br><span class="line">          &#125; <span class="keyword">catch</span> (IOException connectException) &#123;</span><br><span class="line">              <span class="comment">//无法连接到蓝牙,关闭连接并退出</span></span><br><span class="line">              <span class="keyword">try</span> &#123;</span><br><span class="line">                  mmSocket.close();</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="comment">//没有正常关闭</span></span><br><span class="line">              <span class="keyword">catch</span> (IOException ignored) &#123;</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">return</span>;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">// Do work to manage the connection (in a separate thread)</span></span><br><span class="line">          mConnectedThread = <span class="keyword">new</span> ConnectedThread(mmSocket);</span><br><span class="line">          mConnectedThread.start();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">/**</span><br><span class="line">       * 关闭蓝牙连接</span><br><span class="line">       */</span></span><br><span class="line">      <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">              mmSocket.close();</span><br><span class="line">          &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>管理连接子线程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">//管理连接子线程</span></span><br><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectedThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="comment">//BluetoothSocket</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</span><br><span class="line">    <span class="comment">//输入流</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> InputStream mmInStream;</span><br><span class="line">    <span class="comment">//输出流</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> OutputStream mmOutStream;</span><br><span class="line"></span><br><span class="line">    ConnectedThread(BluetoothSocket socket) &#123;</span><br><span class="line">        <span class="comment">//传入BluetoothSocket，实例化mmSocket</span></span><br><span class="line">        mmSocket = socket;</span><br><span class="line">        <span class="comment">//输入/输出流 中间变量</span></span><br><span class="line">        InputStream tmpIn = <span class="keyword">null</span>;</span><br><span class="line">        OutputStream tmpOut = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 输入输出流实例化</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            tmpIn = socket.getInputStream();</span><br><span class="line">            tmpOut = socket.getOutputStream();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        mmInStream = tmpIn;</span><br><span class="line">        mmOutStream = tmpOut;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="keyword">int</span> bytes;</span><br><span class="line">        <span class="comment">// 连接成功时</span></span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">// 在InputStream读数据</span></span><br><span class="line">                bytes = mmInStream.read();</span><br><span class="line">                <span class="comment">//发送数据</span></span><br><span class="line">                Events.bluetooth_Recycle bluetooth_recycle = <span class="keyword">new</span> Events.bluetooth_Recycle();</span><br><span class="line">                bluetooth_recycle.s = bytes;</span><br><span class="line">                bluetooth_recycle.bytes = String.valueOf((<span class="keyword">char</span>) bytes);</span><br><span class="line">                EventBus.getDefault().post(bluetooth_recycle);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//写方法</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            mmOutStream.write(bytes);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//关闭流连接</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            mmSocket.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>连接蓝牙<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//连接线程</span></span><br><span class="line"><span class="keyword">private</span> ConnectThread mConnectThread;</span><br><span class="line"><span class="comment">//管理连接进程</span></span><br><span class="line"><span class="keyword">private</span> ConnectedThread mConnectedThread;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建连接子线程</span></span><br><span class="line">mConnectThread = <span class="keyword">new</span> ConnectThread(bluetoothDevice);</span><br><span class="line"><span class="comment">//启动连接子线程</span></span><br><span class="line">mConnectThread.start();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>向蓝牙写入数据<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//发送数据String,        主线程            优先级4       非粘性事件</span></span><br><span class="line"><span class="meta">@Subscribe</span>(threadMode = ThreadMode.MAIN, priority = <span class="number">4</span>, sticky = <span class="keyword">false</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEvent</span><span class="params">(Events.bluetooth_Send bluetoothSend)</span> </span>&#123;</span><br><span class="line">    String bytes = bluetoothSend.bytes;</span><br><span class="line">    mConnectedThread.write(bytes.getBytes());</span><br><span class="line">    LogUtil.d(Tag, <span class="string">"onEvent:Send"</span> + bluetoothSend.bytes);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>接收数据处理<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">//数据转换                后台进程            优先级3       非粘性事件</span></span><br><span class="line"><span class="meta">@Subscribe</span>(threadMode = ThreadMode.BACKGROUND, priority = <span class="number">3</span>, sticky = <span class="keyword">false</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEvent</span><span class="params">(Events.bluetooth_Transformers bluetoothTransformers)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> bytes = bluetoothTransformers.bytes;</span><br><span class="line">    <span class="comment">//处理数据</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 
           
@@ -2220,321 +2490,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/18/Android笔记-Fragments/" itemprop="url">
-                  Android笔记—Fragments
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-18T12:00:00+08:00" content="2016-12-18">
-              2016-12-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">Android笔记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/18/Android笔记-Fragments/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/18/Android笔记-Fragments/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/12/18/Android笔记-Fragments/" class="leancloud_visitors" data-flag-title="Android笔记—Fragments">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<p>资料来源如下</p>
-<ul>
-<li>第一行代码(第二版)</li>
-<li><a href="http://blog.csdn.net/vanpersie_9987/article/details/51311808" target="_blank" rel="external"> Android官方文档之App Components（Fragments）</a></li>
-</ul>
-<p>编程环境</p>
-<ul>
-<li>Android Studio 2.2.3</li>
-</ul>
-<p>导语</p>
-<ul>
-<li>Fragments的艺术之旅</li>
-</ul>
-<hr>
-<h2 id="Fragments简介"><a href="#Fragments简介" class="headerlink" title="Fragments简介"></a>Fragments简介</h2><ul>
-<li>Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI 设计提供支持。</li>
-<li>可以将多个片段组合在一个 Activity 中来构建多窗格 UI，以及在多个 Activity 中重复使用某个片段。可以将片段视为 Activity 的模块化组成部分，它具有自己的生命周期，能接收自己的输入事件，可以在 Activity 运行时添加或删除片段（类似于不同 Activity 中重复使用的“子 Activity”）</li>
-<li><a href="https://developer.android.com/guide/components/fragments.html" target="_blank" rel="external">Google官方文档(中文)</a></li>
-</ul>
-<h2 id="创建Fragments"><a href="#创建Fragments" class="headerlink" title="创建Fragments"></a>创建Fragments</h2><ul>
-<li>fragment创建过程与Activity类似。</li>
-</ul>
-<ul>
-<li>创建Fragment，需要继承一个Fragment类，并实现Fragment的生命周期回调方法，如onCreate(), onStart(), onPause(), onStop()等</li>
-</ul>
-<ul>
-<li>一般来说，在Fragment中应至少重写以下这些生命周期方法<br><strong>必须重写的时onCreateView()方法.</strong><ul>
-<li>onCreate()：创建Fragment实例时，系统回调的方法。在该方法中，对一些必要的组件进行初始化</li>
-<li>onCreateView()：Fragment上绘制UI时，回掉该方法。返回一个View对象，表示Fragment的根视图；若Fragment不需要绑定示图，可以返回null</li>
-<li>onPause()：当用户离开Fragment时回调。在该方法中，对Fragment的数据信息做持久化的保存工作</li>
-</ul>
-</li>
-</ul>
-<h3 id="创建一个Fragment类"><a href="#创建一个Fragment类" class="headerlink" title="创建一个Fragment类"></a>创建一个Fragment类</h3><ul>
-<li>新建first_fragme 继承自Fragment</li>
-<li><p>Android Studio中 对应Fragment 包有两个，选择support-v4 _(这个版本可以再Android版本中保持Fragment特性一致)</p>
-</li>
-<li><p>Fragment并非一定要绑定一个布局文件，下面会提到。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span> <span class="params">(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState)</span></span>&#123;</span><br><span class="line">       View view = inflater.inflate(R.layout.fragment_firest,container,<span class="keyword">false</span>);</span><br><span class="line">       <span class="keyword">return</span> view;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>与此对应的fragment<em>firest布局文件 </em><br>LinearLayout加一个Button，背景颜色设置为了靛蓝色。</li>
-</ul>
-</li>
-<li><p>onCreateView()方法</p>
-<ul>
-<li>ViewGroup来自宿主Activity容器布局，Fragment的布局将其作为根视图插入至该视图中。</li>
-<li>Bundle用于回传之前占据该位置的Fragment实例所保存的Bundle信息，当该Fragment的新实例处于resume状态时，该参数被回传</li>
-</ul>
-</li>
-<li><p>inflate() 方法</p>
-<ul>
-<li><p>参数1（int）：需要绑定的Layout的资源ID；</p>
-</li>
-<li><p>参数2（ViewGroup）：绑定的Layout布局的父视图；</p>
-</li>
-<li><p>参数3（boolean）：是否需要将参数1的Layout资源依附于，参数2的ViewGroup上，false，表示不依附。（系统已经默认将Layout插入至ViewGroup中，若为true，将添加一层冗余的视图</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="在XML将fragment添加到activity"><a href="#在XML将fragment添加到activity" class="headerlink" title="在XML将fragment添加到activity"></a>在XML将fragment添加到activity</h3><ul>
-<li><p>在activity_main.xml中添加如下代码。跟添加一个layout没有太大区别。</p>
-  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">fragment</span></span><br><span class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/left_fragment"</span></span><br><span class="line">    <span class="attr">android:name</span>=<span class="string">"ljy.com.fragmenttest.fragment_firest"</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span><br><span class="line">    <span class="attr">android:layout_weight</span>=<span class="string">"1"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>至此一个fragment添加完毕。为了对比，再新建一个second_fragment，背景颜色不同，两者同时添加进activity_main中。</p>
-</li>
-<li><p><img src="http://cdn5.snapgram.co/images/2016/10/10/Screenshot_1476109113.png" alt="Screenshot_1476109113.png"></p>
-</li>
-<li><p>一般来说必须为fragment设定唯一的身份标识，以便当宿主Activity为restart状态时可以恢复fragment</p>
-<ul>
-<li>android:id属性为fragment指定唯一ID</li>
-<li>android:tag属性为fragment指定唯一字符串标识</li>
-<li>未指定，则该fragment的标识为其父容器控件的ID</li>
-</ul>
-</li>
-</ul>
-<h3 id="动态添加碎片"><a href="#动态添加碎片" class="headerlink" title="动态添加碎片"></a>动态添加碎片</h3><hr>
-<ul>
-<li><strong>处理片段时，请谨记：Activity 布局必须包含一个可以插入片段的容器 View</strong></li>
-</ul>
-<hr>
-<ul>
-<li><p>添加或移除片段必须使用 FragmentManager 创建 FragmentTransaction， FragmentTransaction将提供添加、移除、替换片段以及执行其他片段事务所需的 API。Activity 内调用 getSupportFragmentManager() 以获取 FragmentManager</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rightfragment right = <span class="keyword">new</span> rightfragment();</span><br><span class="line">FragmentManager fragmentManager = getSupportFragmentManager();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>调用 beginTransaction() 创建一个 FragmentTransaction事务，并调用 add() 添加一个片段，做好更改准备时，调用 commit()</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FragmentTransaction transaction = fragmentManager.beginTransaction();</span><br><span class="line">transaction.replace(R.id.right_layout,right);</span><br><span class="line">transaction.commit();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>示例：</p>
-<ul>
-<li><p>首先改造一下activity<em>main.xml</em><br>FrameLayout包含一个left_fragment</p>
- <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">FrameLayout</span>  </span><br><span class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/right_layout"</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span><br><span class="line">    <span class="attr">android:layout_weight</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">fragment</span></span><br><span class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/left_fragment"</span></span><br><span class="line">        <span class="attr">android:name</span>=<span class="string">"com.example.fragment_text.leftfragment"</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在MainActivity的onCreate方法中添加fragment</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新建准备替换的Fragment实例</span></span><br><span class="line">rightfragment right = <span class="keyword">new</span> rightfragment();</span><br><span class="line"></span><br><span class="line"><span class="comment">//新建FragmentManager</span></span><br><span class="line">FragmentManager fragmentManager = getSupportFragmentManager();</span><br><span class="line"><span class="comment">// 调用beginTransaction() 创建FragmentTransaction</span></span><br><span class="line">FragmentTransaction transaction = fragmentManager.beginTransaction();</span><br><span class="line"></span><br><span class="line"><span class="comment">//FragmentTransaction内处理添加/替换等。</span></span><br><span class="line">transaction.replace(R.id.right_layout,right);</span><br><span class="line"></span><br><span class="line"><span class="comment">//最后执行commit()方法</span></span><br><span class="line">transaction.commit();</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="管理Fragments-执行Fragment事务"><a href="#管理Fragments-执行Fragment事务" class="headerlink" title="管理Fragments/执行Fragment事务"></a>管理Fragments/执行Fragment事务</h2><ul>
-<li><p>Activity中管理Fragment，使用FragmentManager(</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FragmentManager fragmentManager = getFragmentManager();</span><br></pre></td></tr></table></figure>
-<p>可以实现的操作</p>
-<ul>
-<li>findFragmentById()方法获取由Activity管辖的绑定了UI的Fragment实例</li>
-<li>popBackStack()方法将Fragment从后退栈中弹出</li>
-<li>addOnBackStackChangedListener()方法注册监听器，用于监听后退栈的变化</li>
-</ul>
-</li>
-<li><p>Fragment可实现动态添加、删除、替换 等 操作，每一组向Activity提交的变化称为事务，使用FragmentTransaction这操作事务,调用beginTransaction(）开启一个事务</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FragmentManager fragmentManager = getFragmentManager();</span><br><span class="line">FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();</span><br></pre></td></tr></table></figure>
-<p>可实现对Feagment的操作</p>
-<ul>
-<li>add()  //添加</li>
-<li>remove()   //移除</li>
-<li>replace()   //替换</li>
-</ul>
-</li>
-<li><p>事务要在Activity中生效，调用commit()方法提交</p>
-</li>
-<li><p>commit()方法之前，调用addToBackStack()方法，可以将该事物添加到由Activity管辖的Fragment返回栈中。点击Back键即撤销该事物提交的更改</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>使用FragmentTransaction操作事务时注意</p>
-<ul>
-<li>commit()必须在最后调用</li>
-<li>一个布局容器中添加多个Fragment，加入的顺序决定了这些Fragment绑定的UI视图在View树中的层级顺序</li>
-</ul>
-</li>
-<li><p>commit()方法提交后，并不会立即执行事务，UI更新只能在主线程中进行，主线程空闲时，才会执行事务操作<br>Android也提供了 在UI线程中调用executePendingTransactions()方法，使commit()方法调用后立即执行提交的事务（一般用不到）</p>
-</li>
-</ul>
-<hr>
-<h2 id="与-Activity-通信"><a href="#与-Activity-通信" class="headerlink" title="与 Activity 通信"></a>与 Activity 通信</h2><ul>
-<li><p>Fragment 中获取 Activity 实例<br> getActivity()方法可以获取到 Activity 实例</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MainActivity activity = (MainActivity) getActivity();</span><br></pre></td></tr></table></figure>
-<p> 调用Activity中的试图也很简单，使用findViewById()即可，getActivity()方法返回的既是一个Context对象</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">View listView = getActivity().findViewById(R.id.list);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<ul>
-<li>在Fragment中使用Context对象，getActivity()方法，只能是在fragment已经依附于Activity后才能调用。当fragment未依附于某个Activity、或fragment已经处于其生命周期的末尾而不再依附于某个Activity时，调用getActivity()方法会直接返回null</li>
-</ul>
-<hr>
-<ul>
-<li><p>Activity 中获取 Fragment 实例()<br>FragmentManger提供了findFragmentById()方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RightFragment fragment = (RightFragment) getFragmentManager().findFragmentById(R.id.example_fragment);</span><br></pre></td></tr></table></figure>
-<p>如果使用的使support-V4包，则 getFragmentManager()改为getSupportFragmentManager()，代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RightFragment fragment = (RightFragment)getSupportFragmentManager().findFragmentById(R.id.example_fragment);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Fragment与Frangment之间也可以通过宿主Activity，获取到另一个Fragment实例，调用另一个Fragment中的方法</p>
-</li>
-</ul>
-<h3 id="为Activity创建事件回调"><a href="#为Activity创建事件回调" class="headerlink" title="为Activity创建事件回调"></a>为Activity创建事件回调</h3><ul>
-<li>占坑，</li>
-</ul>
-<h2 id="Frangment的生命周期"><a href="#Frangment的生命周期" class="headerlink" title="Frangment的生命周期"></a>Frangment的生命周期</h2><ul>
-<li><p>与Activity极为相似，且 Frangment的生命周期与宿主Activity有很大关联</p>
-</li>
-<li><p>有3种状态</p>
-<ul>
-<li>Resumed继续：宿主Activity处于running，Fragment处于可见状态</li>
-<li>Paused暂停：另一个Activity处于前台并获得了焦点，该Fragment的宿主Activity并未被全部遮挡</li>
-<li>Stopped停止：Fragment不可见或Fragment已被Activity移除，宿主Activity被回收时，Fragment也将被回收</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><img src="http://cdn3.snapgram.co/imgs/2016/12/22/fragment_lifecycle.png" alt="fragment_lifecycle.png"></li>
-</ul>
-<h3 id="宿主Activity的影响"><a href="#宿主Activity的影响" class="headerlink" title="宿主Activity的影响"></a>宿主Activity的影响</h3><ul>
-<li><a href="http://snapgr.am/image/L5KP" target="_blank" rel="external"><img src="http://cdn1.snapgram.co/imgs/2016/12/22/activity_fragment_lifecycle.png" alt="activity_fragment_lifecycle.png"></a></li>
-</ul>
-<hr>
-<h4 id="重要回调方法"><a href="#重要回调方法" class="headerlink" title="重要回调方法"></a>重要回调方法</h4><ul>
-<li>onAttach()：fragment关联Activity时回调</li>
-<li>onCreateView()：fragment绑定UI视图(加载布局)时回调</li>
-<li>onActivityCreated()：宿主Activity创建完毕  (宿主Activity的onCreate()方法返回)  后调用</li>
-<li>onDestroyView()：与fragment绑定的UI视图被移除时回调</li>
-<li>onDetach()：fragment不再依附于Activity时回调</li>
-</ul>
-<hr>
-<ul>
-<li><p>Activity 与Fragment在生命周期之间的最显著差异在于它们在其各自返回栈中的存储方式。<br>默认情况下，Activity 停止时会被放入由系统管理的 Activity 返回栈（以便用户通过返回按钮回退到 Activity），<br>Frament仅当您在移除片段的事务执行期间通过调用 addToBackStack() 请求保存实例时，系统才会将Fragment放入由宿主 Activity 管理的返回栈。</p>
-</li>
-<li><p>一旦Activity处于resume状态时，可以自由地添加或移除fragment，也就是说，只有当Activity的状态为resume时，fragment才能够自由地控制自己的生命周期</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2580,7 +2535,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

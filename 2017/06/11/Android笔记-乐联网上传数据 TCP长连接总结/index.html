@@ -1,0 +1,902 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android Studio,Android,学习记录,毕设," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="默" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="资料来源如下
+
+乐联网
+
+编程环境
+
+Android Studio 2.2.3 
+
+导语
+
+毕设中的乐联网部分,记录以供复习
+开源在github上
+https://github.com/Jasper-1024/HbuLeWei
+
+
+最终效果
+使用okhttp上传数据。
+Tcp长连接实现方向控制
+以代码为主
+
+相关教程
+okhttp入门
+
+http://blog.csdn.net/biezhihu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android笔记—乐联网上传数据 TCP长连接总结">
+<meta property="og:url" content="http://yoursite.com/2017/06/11/Android笔记-乐联网上传数据 TCP长连接总结/index.html">
+<meta property="og:site_name" content="默">
+<meta property="og:description" content="资料来源如下
+
+乐联网
+
+编程环境
+
+Android Studio 2.2.3 
+
+导语
+
+毕设中的乐联网部分,记录以供复习
+开源在github上
+https://github.com/Jasper-1024/HbuLeWei
+
+
+最终效果
+使用okhttp上传数据。
+Tcp长连接实现方向控制
+以代码为主
+
+相关教程
+okhttp入门
+
+http://blog.csdn.net/biezhihu">
+<meta property="og:updated_time" content="2017-06-11T14:55:38.908Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android笔记—乐联网上传数据 TCP长连接总结">
+<meta name="twitter:description" content="资料来源如下
+
+乐联网
+
+编程环境
+
+Android Studio 2.2.3 
+
+导语
+
+毕设中的乐联网部分,记录以供复习
+开源在github上
+https://github.com/Jasper-1024/HbuLeWei
+
+
+最终效果
+使用okhttp上传数据。
+Tcp长连接实现方向控制
+以代码为主
+
+相关教程
+okhttp入门
+
+http://blog.csdn.net/biezhihu">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Android笔记—乐联网上传数据 TCP长连接总结 | 默 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-79641673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">默</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">为了生存，而一点点淡忘了最初的本意。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android笔记—乐联网上传数据 TCP长连接总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-11T12:00:00+08:00" content="2017-06-11">
+              2017-06-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/06/11/Android笔记-乐联网上传数据 TCP长连接总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/11/Android笔记-乐联网上传数据 TCP长连接总结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/06/11/Android笔记-乐联网上传数据 TCP长连接总结/" class="leancloud_visitors" data-flag-title="Android笔记—乐联网上传数据 TCP长连接总结">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>资料来源如下</p>
+<ul>
+<li>乐联网</li>
+</ul>
+<p>编程环境</p>
+<ul>
+<li>Android Studio 2.2.3 </li>
+</ul>
+<p>导语</p>
+<ul>
+<li>毕设中的乐联网部分,记录以供复习</li>
+<li>开源在github上</li>
+<li><a href="https://github.com/Jasper-1024/HbuLeWei" target="_blank" rel="external">https://github.com/Jasper-1024/HbuLeWei</a></li>
+</ul>
+<hr>
+<h2 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h2><ul>
+<li>使用okhttp上传数据。</li>
+<li>Tcp长连接实现方向控制</li>
+<li>以代码为主</li>
+</ul>
+<h2 id="相关教程"><a href="#相关教程" class="headerlink" title="相关教程"></a>相关教程</h2><ul>
+<li><p>okhttp入门</p>
+<blockquote>
+<p><a href="http://blog.csdn.net/biezhihua/article/details/50603624" target="_blank" rel="external">http://blog.csdn.net/biezhihua/article/details/50603624</a></p>
+</blockquote>
+</li>
+<li><p>乐联网</p>
+<blockquote>
+<p><a href="https://www.lewei50.com/dev/doc/176" target="_blank" rel="external">https://www.lewei50.com/dev/doc/176</a><br><a href="https://www.lewei50.com/dev/doc/155" target="_blank" rel="external">https://www.lewei50.com/dev/doc/155</a></p>
+</blockquote>
+</li>
+<li><p>Tcp长连接</p>
+<blockquote>
+<p><a href="http://ls15114843569.blog.51cto.com/11015399/1767195" target="_blank" rel="external">http://ls15114843569.blog.51cto.com/11015399/1767195</a></p>
+</blockquote>
+</li>
+<li><p>简易上传</p>
+<blockquote>
+<p><a href="http://ls15114843569.blog.51cto.com/11015399/1767195" target="_blank" rel="external">http://ls15114843569.blog.51cto.com/11015399/1767195</a></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="上传数据"><a href="#上传数据" class="headerlink" title="上传数据"></a>上传数据</h2><ul>
+<li><p>API介绍</p>
+<blockquote>
+<p><a href="https://www.lewei50.com/dev/apiinfo/3" target="_blank" rel="external">https://www.lewei50.com/dev/apiinfo/3</a></p>
+</blockquote>
+</li>
+<li><p>API测试</p>
+<blockquote>
+<p><a href="https://www.lewei50.com/dev/apitest/3" target="_blank" rel="external">https://www.lewei50.com/dev/apitest/3</a></p>
+</blockquote>
+</li>
+<li><p>地址：<a href="http://www.lewei50.com/api/v1/gateway/updatesensors/你的网关号" target="_blank" rel="external">http://www.lewei50.com/api/v1/gateway/updatesensors/你的网关号</a></p>
+<p>POST方式</p>
+<p>需要配置header头 Userkey</p>
+</li>
+<li><p>数据发送/返回方式JSON</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">      <span class="attr">"Name"</span>:<span class="string">"T1"</span>,</span><br><span class="line">      <span class="attr">"Value"</span>:<span class="string">"1"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">      <span class="attr">"Name"</span>:<span class="string">"01H1"</span>,</span><br><span class="line">      <span class="attr">"Value"</span>:<span class="string">"96.2"</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>返回格式</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"Successful"</span>: <span class="literal">true</span>, </span><br><span class="line">  <span class="attr">"Message"</span>: <span class="literal">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>okhttp POST 传感器数据 这里使用了一个静态内部类。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">	<span class="comment">//返回数据处理</span></span><br><span class="line">  <span class="keyword">public</span> okhttp3.Callback callback = <span class="keyword">new</span> okhttp3.Callback() &#123;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Call call, Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">          <span class="comment">//返回服务器内容</span></span><br><span class="line">          String responsedata = response.body().string();</span><br><span class="line">          LogUtil.d(<span class="string">"okHttp"</span>, responsedata);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Call call, IOException e)</span> </span>&#123;</span><br><span class="line">          <span class="comment">//异常处理</span></span><br><span class="line">          LogUtil.d(<span class="string">"okHttp"</span>, <span class="string">"POST错误"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//内部类</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Http</span> </span>&#123;</span><br><span class="line">      <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> MediaType MEDIA_TYPE_MARKDOWN</span><br><span class="line">              = MediaType.parse(<span class="string">"text/x-markdown; charset=utf-8"</span>);</span><br><span class="line"><span class="comment">//POST数据，指定接收回掉</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">postData</span><span class="params">(String sensor_name, String sensor_data, okhttp3.Callback callback)</span> </span>&#123;</span><br><span class="line">          OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line">          <span class="keyword">final</span> String value =</span><br><span class="line">                  <span class="string">"["</span> +</span><br><span class="line">                          <span class="string">"    &#123;"</span> +</span><br><span class="line">                          <span class="string">"        \"Name\":\""</span> + sensor_name + <span class="string">"\","</span> +</span><br><span class="line">                          <span class="string">"        \"Value\":\""</span> + sensor_data + <span class="string">"\""</span> +</span><br><span class="line">                          <span class="string">"    &#125;"</span> +</span><br><span class="line">                          <span class="string">"]"</span>;</span><br><span class="line">          RequestBody requestBody = <span class="keyword">new</span> RequestBody() &#123;</span><br><span class="line">              <span class="meta">@Override</span></span><br><span class="line">              <span class="function"><span class="keyword">public</span> MediaType <span class="title">contentType</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                  <span class="keyword">return</span> MEDIA_TYPE_MARKDOWN;</span><br><span class="line">              &#125;</span><br><span class="line"></span><br><span class="line">              <span class="meta">@Override</span></span><br><span class="line">              <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeTo</span><span class="params">(BufferedSink sink)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">                  sink.write(value.getBytes());</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;;</span><br><span class="line">          Request request = <span class="keyword">new</span> Request.Builder()</span><br><span class="line">                  .url(<span class="string">"http://www.lewei50.com/api/V1/gateway/UpdateSensors/01"</span>)</span><br><span class="line">                  .header(<span class="string">"userkey"</span>, <span class="string">"你的userkey"</span>)</span><br><span class="line">                  .post(requestBody)</span><br><span class="line">                  .build();</span><br><span class="line">          client.newCall(request).enqueue(callback);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>实际使用 放在一个后台服务内，调用相当简单<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Http.postData(<span class="string">"PM2.5"</span>, <span class="string">"你的数据转为String"</span>, callback);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Tcp长连接，远程控制"><a href="#Tcp长连接，远程控制" class="headerlink" title="Tcp长连接，远程控制"></a>Tcp长连接，远程控制</h2><ul>
+<li>首先参考<a href="https://wenku.baidu.com/view/f3457b63dd3383c4bb4cd2f0.html" target="_blank" rel="external">乐联网反向控制教程</a>，新建一个控制器，这里以开关为例。</li>
+<li>原理是与服务器保持一个TCP长连接，不到40s刷新一次，以此保持通道，与被控制段通信，发送控制信息。</li>
+<li><p>Tcp长连接参考了@墨迹流韶的<a href="http://blog.cocoper.com/2017/01/21/Android/Common/2017-01-21-Android%E5%9F%BA%E4%BA%8ETcp%E5%8D%8F%E8%AE%AE%E7%9A%84Socket%E9%95%BF%E9%93%BE%E6%8E%A5%E5%B0%81%E8%A3%85/" target="_blank" rel="external">Android基于Tcp协议的Socket长链接封装</a></p>
+</li>
+<li><p>地址 tcp.lewei50.com<br>端口号 9960<br>心跳包间隔 1min以内</p>
+</li>
+<li><p>发送/接收数据格式 Json<br>本地发送数据格式</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">  "method": "update",</span><br><span class="line"></span><br><span class="line">  "gatewayNo": "你的网关号",</span><br><span class="line"></span><br><span class="line">  "userkey": "你的userkey"</span><br><span class="line"></span><br><span class="line">&#125;&amp;^!</span><br></pre></td></tr></table></figure>
+<p>服务器发送控制命令格式，数据处理时需要去掉字符串最后的&amp;^! </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">"method":"send",</span><br><span class="line"></span><br><span class="line">"gatewayNo":"01",</span><br><span class="line"></span><br><span class="line">"userkey":"6d16ddb3c58c4e448a7e15e7acxxxxxx",</span><br><span class="line"></span><br><span class="line">"f":" updateSensor",</span><br><span class="line"></span><br><span class="line">"p1":"D1",</span><br><span class="line"></span><br><span class="line">"p2":"1"</span><br><span class="line"></span><br><span class="line">&#125;&amp;^!</span><br></pre></td></tr></table></figure>
+<p>本地响应控制命令后返回数据格式</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="attr">"method"</span>:<span class="string">"response"</span>,</span><br><span class="line"></span><br><span class="line"><span class="attr">"result"</span>:&#123;</span><br><span class="line">	</span><br><span class="line">  <span class="attr">"successful"</span>:<span class="literal">true</span>,</span><br><span class="line">  </span><br><span class="line">  <span class="attr">"message"</span>:<span class="string">"ok!"</span>,</span><br><span class="line">  </span><br><span class="line">  <span class="attr">"data"</span>:[&#123;</span><br><span class="line">	    </span><br><span class="line">       <span class="attr">"id"</span>:<span class="string">"D1"</span>,</span><br><span class="line">      </span><br><span class="line">  	<span class="attr">"value"</span>:<span class="string">"1"</span></span><br><span class="line">  	</span><br><span class="line">    &#125;,</span><br><span class="line">  </span><br><span class="line">&#125;&amp;^!</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>TCP连接类  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TcpSocketHelper</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> String mTag = <span class="string">"TcpSocketHelper"</span>;</span><br><span class="line">  <span class="keyword">private</span> Socket socket;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">boolean</span> _connect;</span><br><span class="line">  <span class="keyword">private</span> ReceiveThread mReceiveThread;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">boolean</span> receiveStop;</span><br><span class="line">  <span class="keyword">private</span> Date lastKeepAliveOkTime;</span><br><span class="line">  <span class="keyword">private</span> OnRecivedListener mRecivedListener;</span><br><span class="line">  <span class="comment">//地址</span></span><br><span class="line">  <span class="keyword">private</span> String mIpAddr = <span class="string">"http://tcp.lewei50.com"</span>;</span><br><span class="line">  <span class="comment">//端口</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> mPort = <span class="number">9960</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 开启链接socket</span><br><span class="line">   * <span class="doctag">@param</span> ipAddr</span><br><span class="line">   * <span class="doctag">@param</span> port</span><br><span class="line">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startConnect</span><span class="params">(String ipAddr, <span class="keyword">int</span> port)</span></span>&#123;</span><br><span class="line">      LogUtil.d(mTag, <span class="string">"准备链接..."</span>);</span><br><span class="line">      <span class="keyword">this</span>.mIpAddr = ipAddr;</span><br><span class="line">      <span class="keyword">this</span>.mPort = port;</span><br><span class="line">      InetAddress serverAddr;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">          socket = <span class="keyword">new</span> Socket(ipAddr, port);</span><br><span class="line">          LogUtil.d(mTag, <span class="string">"准备链接..."</span>);</span><br><span class="line">          _connect = <span class="keyword">true</span>;</span><br><span class="line">          mReceiveThread = <span class="keyword">new</span> ReceiveThread();</span><br><span class="line">          receiveStop = <span class="keyword">false</span>;</span><br><span class="line">          mReceiveThread.start();</span><br><span class="line">          LogUtil.d(mTag, <span class="string">"链接成功..."</span>);</span><br><span class="line"></span><br><span class="line">      &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">          LogUtil.d(mTag, <span class="string">"链接出错..."</span> + e.getMessage());</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 关闭链接</span><br><span class="line">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">closeConnect</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (socket != <span class="keyword">null</span>)&#123;</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">              socket.close();</span><br><span class="line">              socket = <span class="keyword">null</span>;</span><br><span class="line">          &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">              e.printStackTrace();</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 保持心跳</span><br><span class="line">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">KeepAlive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="comment">// 判断socket是否已断开,断开就重连</span></span><br><span class="line">      <span class="keyword">if</span> (lastKeepAliveOkTime != <span class="keyword">null</span>) &#123;</span><br><span class="line">          LogUtil.d(mTag, <span class="string">"上次心跳成功时间:"</span>+ DateFormat.format(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>, lastKeepAliveOkTime));</span><br><span class="line">          Date now = Calendar.getInstance().getTime();</span><br><span class="line">          <span class="keyword">long</span> between = (now.getTime() - lastKeepAliveOkTime.getTime());<span class="comment">// 得到两者的毫秒数</span></span><br><span class="line">          <span class="keyword">if</span> (between &gt; <span class="number">60</span> * <span class="number">1000</span>) &#123;</span><br><span class="line">              LogUtil.d(mTag, <span class="string">"心跳异常超过40,重新连接:"</span>);</span><br><span class="line">              lastKeepAliveOkTime = <span class="keyword">null</span>;</span><br><span class="line">              socket = <span class="keyword">null</span>;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          lastKeepAliveOkTime = Calendar.getInstance().getTime();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (!checkIsAlive()) &#123;</span><br><span class="line">          LogUtil.d(mTag, <span class="string">"链接已断开,重新连接."</span>);</span><br><span class="line">          startConnect(mIpAddr, mPort);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 此方法是检测是否连接</span><br><span class="line">   * <span class="doctag">@return</span></span><br><span class="line">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkIsAlive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (socket == <span class="keyword">null</span>||!socket.isConnected())</span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 发送数据的方法</span><br><span class="line">   * <span class="doctag">@param</span> msg</span><br><span class="line">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendmessage</span><span class="params">(String msg)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">boolean</span> isAlive = checkIsAlive();</span><br><span class="line">      <span class="keyword">if</span> (!isAlive)</span><br><span class="line">          <span class="keyword">return</span>;</span><br><span class="line">      LogUtil.d(mTag, <span class="string">"准备发送消息:"</span> + msg);</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (socket != <span class="keyword">null</span> &amp;&amp; socket.isConnected()) &#123;</span><br><span class="line">              <span class="keyword">if</span> (!socket.isOutputShutdown()) &#123;</span><br><span class="line"></span><br><span class="line">                  <span class="comment">//2.得到socket读写流</span></span><br><span class="line">                  OutputStream os=socket.getOutputStream();</span><br><span class="line">                  <span class="comment">//true:是否自动flush</span></span><br><span class="line">                  PrintWriter outStream=<span class="keyword">new</span> PrintWriter(os, <span class="keyword">true</span>);</span><br><span class="line">                  outStream.print(msg);</span><br><span class="line">                  outStream.flush();</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          LogUtil.d(mTag, <span class="string">"发送成功!"</span>);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 设置接收数据监听器</span><br><span class="line">   * <span class="doctag">@param</span> mRecivedListener</span><br><span class="line">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setmRecivedListener</span><span class="params">(OnRecivedListener mRecivedListener)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.mRecivedListener = mRecivedListener;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 数据接收线程</span><br><span class="line">   */</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">ReceiveThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line"></span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">              <span class="keyword">try</span> &#123;</span><br><span class="line">                  sleep(<span class="number">2000</span>);</span><br><span class="line">                    <span class="comment">// 判断 Socket 是否处于连接状态</span></span><br><span class="line">                  <span class="keyword">if</span> (socket != <span class="keyword">null</span> &amp;&amp; socket.isConnected()) &#123;</span><br><span class="line">                      <span class="comment">// 客户端接收服务器端的响应，读取服务器端向客户端的输入流</span></span><br><span class="line">                      InputStream isRead = socket.getInputStream();</span><br><span class="line">                      <span class="comment">// 缓冲区</span></span><br><span class="line">                      <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[isRead.available()];</span><br><span class="line">                      <span class="comment">// 读取缓冲区</span></span><br><span class="line">                      isRead.read(buffer);</span><br><span class="line">                      <span class="comment">// 转换为字符串</span></span><br><span class="line">                      String responseInfo = <span class="keyword">new</span> String(buffer);</span><br><span class="line">                      <span class="comment">// 日志中输出</span></span><br><span class="line">                      <span class="keyword">if</span>(responseInfo != <span class="keyword">null</span>&amp;&amp;!responseInfo.equals(<span class="string">""</span>))&#123;</span><br><span class="line">                          LogUtil.d(<span class="string">"TcpManager"</span>, <span class="string">"返回："</span>+responseInfo);</span><br><span class="line">                          mRecivedListener.onRecived(responseInfo);</span><br><span class="line">                      &#125;</span><br><span class="line"></span><br><span class="line">                      lastKeepAliveOkTime = Calendar.getInstance().getTime();</span><br><span class="line">                      KeepAlive();</span><br><span class="line"></span><br><span class="line">                      <span class="keyword">continue</span>;</span><br><span class="line">                  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                      <span class="keyword">if</span> (socket != <span class="keyword">null</span>)</span><br><span class="line">                          LogUtil.d(mTag, <span class="string">"链接状态:"</span> + socket.isConnected());</span><br><span class="line">                  &#125;</span><br><span class="line"></span><br><span class="line">              &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                  LogUtil.d(mTag, <span class="string">"监听出错:"</span> + e.toString());</span><br><span class="line">                  e.printStackTrace();</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用,包装在一个后台service中，在service中实现TcpSocketHelper的onRecived方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  //tcp返回信息</span><br><span class="line">  @Override</span><br><span class="line">  public void onRecived(String data) &#123;</span><br><span class="line">      LogUtil.d(&quot;okHttpService&quot;, data);</span><br><span class="line">      //处理服务器发回的数据      </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">TcpSocketHelper tcpSocketHelper  = new TcpSocketHelper();</span><br><span class="line">tcpSocketHelper.startConnect(&quot;tcp.lewei50.com&quot;, 9960);</span><br><span class="line">//设置监听</span><br><span class="line">tcpSocketHelper.setmRecivedListener(this);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>发送心跳包<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">String value =</span><br><span class="line">          <span class="string">"    &#123;"</span> +</span><br><span class="line">                  <span class="string">"        \"method\":\"update\","</span> +</span><br><span class="line">                  <span class="string">"        \"gatewayNo\":\"01\","</span> +</span><br><span class="line">                  <span class="string">"        \"userkey\":\"你的userkey\""</span> +</span><br><span class="line">                  <span class="string">"    &#125;&amp;^!"</span>;</span><br><span class="line"> <span class="comment">//发送数据</span></span><br><span class="line"> tcpSocketHelper.sendmessage(value);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>处理数据 在service的onRecived中</p>
+</li>
+<li><p>本地处理完毕后，向服务器返回被控制器状态</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String value5 = <span class="string">"&#123;\"method\":\"response\",\"result\":&#123;\"successful\":true,\"message\":\"ok!\",\"data\":[&#123;\"id\":\"D1\",\"value \":\"1\"&#125;]&#125;&#125;&amp;^! "</span>;</span><br><span class="line"> </span><br><span class="line">tcpSocketHelper.sendmessage(value6);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android-Studio/" rel="tag">#Android Studio</a>
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/学习记录/" rel="tag">#学习记录</a>
+          
+            <a href="/tags/毕设/" rel="tag">#毕设</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/08/Android笔记-自用MVP框架/" rel="next" title="Android笔记-自用MVP框架">
+                <i class="fa fa-chevron-left"></i> Android笔记-自用MVP框架
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/v.png"
+               alt="Jasper" />
+          <p class="site-author-name" itemprop="name">Jasper</p>
+          <p class="site-description motion-element" itemprop="description">程序员 微尘 V</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jasper-1024" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#最终效果"><span class="nav-number">1.</span> <span class="nav-text">最终效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关教程"><span class="nav-number">2.</span> <span class="nav-text">相关教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上传数据"><span class="nav-number">3.</span> <span class="nav-text">上传数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tcp长连接，远程控制"><span class="nav-number">4.</span> <span class="nav-text">Tcp长连接，远程控制</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016.6.2 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jasper</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'jasper1024';
+      var disqus_identifier = '2017/06/11/Android笔记-乐联网上传数据 TCP长连接总结/';
+      var disqus_title = 'Android笔记—乐联网上传数据 TCP长连接总结';
+      var disqus_url = 'http://yoursite.com/2017/06/11/Android笔记-乐联网上传数据 TCP长连接总结/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("8AEPwU1rVoSnwxtOrX35u23j-gzGzoHsz", "SBLr7EMdL83IXCfJSbydMdll");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
