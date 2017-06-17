@@ -5,10 +5,10 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
@@ -27,18 +27,48 @@
 
 
 
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Hexo, NexT" />
@@ -52,7 +82,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -71,19 +101,35 @@
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
+    root: '/',
     scheme: 'Mist',
-    sidebar: {"position":"right","display":"post"},
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
+      userId: '0',
       author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/page/3/"/>
+
+
+
+
 
   <title> 默 </title>
 </head>
@@ -93,14 +139,18 @@
   
 
 
+
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-79641673-1', 'auto');
   ga('send', 'pageview');
 </script>
+
+
 
 
 
@@ -115,31 +165,35 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right 
+  <div class="container sidebar-position-right 
    page-home 
  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">默</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">默</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">为了生存，而一点点淡忘了最初的本意。</p>
+      
   </div>
-  <p class="site-subtitle">为了生存，而一点点淡忘了最初的本意。</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -152,7 +206,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -162,7 +216,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -172,7 +226,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -182,7 +236,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -192,7 +246,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
             关于
           </a>
@@ -202,7 +256,7 @@
         <li class="menu-item menu-item-guestbook">
           <a href="/guestbook" rel="section">
             
-              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             留言
           </a>
@@ -210,11 +264,47 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
   
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
 </nav>
+
+
 
  </div>
     </header>
@@ -229,13 +319,23 @@
       
 
   
-  
 
   
   
   
-
+  
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/27/VPS科学上网教程系列2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
 
     
       <header class="post-header">
@@ -257,24 +357,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-27T17:52:16+08:00" content="2016-06-27">
-              2016-06-27
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-27T17:52:16+08:00">
+                2016-06-27
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/科学上网/" itemprop="url" rel="index">
                     <span itemprop="name">科学上网</span>
                   </a>
@@ -282,7 +394,6 @@
 
                 
                 
-
               
             </span>
           
@@ -290,26 +401,66 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2016/06/27/VPS科学上网教程系列2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/27/VPS科学上网教程系列2/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/06/27/VPS科学上网教程系列2/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
              <span id="/2016/06/27/VPS科学上网教程系列2/" class="leancloud_visitors" data-flag-title="科学上网教程（二）——VPS优化加速">
-               &nbsp; | &nbsp;
+               <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  2,932
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  12m
+                </span>
+              
+            </div>
+          
+
           
 
         </div>
@@ -325,32 +476,32 @@
       
         
           
-            <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line"><span class="number">2016.06</span>.<span class="number">26</span>    与SSR有关部分基本完成。</span><br><span class="line"><span class="number">2016.06</span>.<span class="number">28</span>    TCP优化部分完成</span><br><span class="line"><span class="number">2016.06</span>.<span class="number">29</span>    gfw.press、FinalSpeed和锐速部分基本完成。</span><br><span class="line"><span class="number">2016.12</span>.<span class="number">11</span>    重新整理相关内容，增加SSR混淆</span><br><span class="line"><span class="number">2016.12</span>.<span class="number">15</span>    增加TCP-BBR</span><br><span class="line"><span class="number">2017.01</span>.<span class="number">11</span>    整理相关内容，增加锐速配置优化 </span><br><span class="line"><span class="number">2017.03</span>.<span class="number">28</span>    更新一部分配置内容，删除无效内容</span><br><span class="line"><span class="number">2017.04</span>.<span class="number">02</span>    因<span class="number">91</span>yun被爆隐私问题，删除其对应内容</span><br></pre></td></tr></table></figure>
+            <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">更新</div><div class="line"><span class="number">2016.06</span>.<span class="number">26</span>    与SSR有关部分基本完成。</div><div class="line"><span class="number">2016.06</span>.<span class="number">28</span>    TCP优化部分完成</div><div class="line"><span class="number">2016.06</span>.<span class="number">29</span>    gfw.press、FinalSpeed和锐速部分基本完成。</div><div class="line"><span class="number">2016.12</span>.<span class="number">11</span>    重新整理相关内容，增加SSR混淆</div><div class="line"><span class="number">2016.12</span>.<span class="number">15</span>    增加TCP-BBR</div><div class="line"><span class="number">2017.01</span>.<span class="number">11</span>    整理相关内容，增加锐速配置优化 </div><div class="line"><span class="number">2017.03</span>.<span class="number">28</span>    更新一部分配置内容，删除无效内容</div><div class="line"><span class="number">2017.04</span>.<span class="number">02</span>    因<span class="number">91</span>yun被爆隐私问题，删除其对应内容</div></pre></td></tr></table></figure>
 <h2 id="TCP优化"><a href="#TCP优化" class="headerlink" title="TCP优化"></a>TCP优化</h2><p><strong>适用场景：高延迟搞丢包线路</strong><br><strong>使用TCP-BBR可以略过此部分(已包含)</strong></p>
 <ul>
 <li><p>增加TCP连接数量</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/security/limits.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano /etc/security/limits.conf</div></pre></td></tr></table></figure>
 <p>添加两行：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* soft nofile <span class="number">51200</span></span><br><span class="line">* hard nofile <span class="number">51200</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">* soft nofile <span class="number">51200</span></div><div class="line">* hard nofile <span class="number">51200</span></div></pre></td></tr></table></figure>
 <p>保存(Ctrl + X —— y ——回车)</p>
 </li>
 <li><p>设置ulimit：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ulimit -n <span class="number">51200</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ulimit -n <span class="number">51200</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>修改内核参数适合的还是hybla（高延迟高丢包率环境）<br>首先看一下VPS现有算法：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl net.ipv4.tcp_available_congestion_control</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sysctl net.ipv4.tcp_available_congestion_control</div></pre></td></tr></table></figure>
 <p>没有hybla时，加载hybla算法.</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sbin/modprobe tcp_hybla</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/sbin/modprobe tcp_hybla</div></pre></td></tr></table></figure>
 <p>开始修改</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano /etc/sysctl.conf</div></pre></td></tr></table></figure>
 <p>复制代码：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#TCP配置优化(不然你自己根本不知道你在干什么)</span><br><span class="line">fs.file-max = 51200</span><br><span class="line">#提高整个系统的文件限制</span><br><span class="line">net.core.rmem_max = 67108864</span><br><span class="line">net.core.wmem_max = 67108864</span><br><span class="line">net.core.netdev_max_backlog = 250000</span><br><span class="line">net.core.somaxconn = 4096</span><br><span class="line"></span><br><span class="line">net.ipv4.tcp_syncookies = 1</span><br><span class="line">net.ipv4.tcp_tw_reuse = 1</span><br><span class="line">net.ipv4.tcp_tw_recycle = 0</span><br><span class="line">net.ipv4.tcp_fin_timeout = 30</span><br><span class="line">net.ipv4.tcp_keepalive_time = 1200</span><br><span class="line">net.ipv4.ip_local_port_range = 10000 65000</span><br><span class="line">net.ipv4.tcp_max_syn_backlog = 8192</span><br><span class="line">net.ipv4.tcp_max_tw_buckets = 5000</span><br><span class="line">net.ipv4.tcp_fastopen = 3</span><br><span class="line">net.ipv4.tcp_mem = 25600 51200 102400</span><br><span class="line">net.ipv4.tcp_rmem = 4096 87380 67108864</span><br><span class="line">net.ipv4.tcp_wmem = 4096 65536 67108864</span><br><span class="line">net.ipv4.tcp_mtu_probing = 1</span><br><span class="line">net.ipv4.tcp_congestion_control = hybla</span><br><span class="line">#END OF LINE</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#TCP配置优化(不然你自己根本不知道你在干什么)</div><div class="line">fs.file-max = 51200</div><div class="line">#提高整个系统的文件限制</div><div class="line">net.core.rmem_max = 67108864</div><div class="line">net.core.wmem_max = 67108864</div><div class="line">net.core.netdev_max_backlog = 250000</div><div class="line">net.core.somaxconn = 4096</div><div class="line"></div><div class="line">net.ipv4.tcp_syncookies = 1</div><div class="line">net.ipv4.tcp_tw_reuse = 1</div><div class="line">net.ipv4.tcp_tw_recycle = 0</div><div class="line">net.ipv4.tcp_fin_timeout = 30</div><div class="line">net.ipv4.tcp_keepalive_time = 1200</div><div class="line">net.ipv4.ip_local_port_range = 10000 65000</div><div class="line">net.ipv4.tcp_max_syn_backlog = 8192</div><div class="line">net.ipv4.tcp_max_tw_buckets = 5000</div><div class="line">net.ipv4.tcp_fastopen = 3</div><div class="line">net.ipv4.tcp_mem = 25600 51200 102400</div><div class="line">net.ipv4.tcp_rmem = 4096 87380 67108864</div><div class="line">net.ipv4.tcp_wmem = 4096 65536 67108864</div><div class="line">net.ipv4.tcp_mtu_probing = 1</div><div class="line">net.ipv4.tcp_congestion_control = hybla</div><div class="line">#END OF LINE</div></pre></td></tr></table></figure>
 <p>保存(Ctrl + X —— y ——回车)</p>
 <p>应用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sysctl -p</div></pre></td></tr></table></figure>
 </li>
 <li><p>重启SSR</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/shadowsocks restart</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/shadowsocks restart</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="锐速"><a href="#锐速" class="headerlink" title="锐速"></a>锐速</h2><ul>
@@ -376,16 +527,16 @@
 </ul>
 <ul>
 <li><p>~~ 脚本自行匹配相同或相近内核，自动安装完成。~~</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -<span class="keyword">N</span> --<span class="keyword">no</span>-check-certificate http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/<span class="number">91</span>yun/serverspeeder/master/serverspe eder-<span class="keyword">all</span>.<span class="keyword">sh</span> &amp;&amp; bash serverspeeder-<span class="keyword">all</span>.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -<span class="keyword">N</span> --<span class="keyword">no</span>-check-certificate http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/<span class="number">91</span>yun/serverspeeder/master/serverspe eder-<span class="keyword">all</span>.<span class="keyword">sh</span> &amp;&amp; bash serverspeeder-<span class="keyword">all</span>.<span class="keyword">sh</span></div></pre></td></tr></table></figure>
 <p><del>根据屏幕提示输入 serverSpeederInstaller 其他信息默认，遇到Y或者N的地方，全部选Y.</del><br><img src="http://cdn2.snapgram.co/imgs/2016/06/28/QQ.jpg" alt="QQ.jpg"></p>
 </li>
 <li><p><del>如果你安装没有效果，编辑一下命令</del></p>
-  <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">vi</span> /serverspeeder/etc/config</span><br></pre></td></tr></table></figure>
+  <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">vi</span> /serverspeeder/etc/config</div></pre></td></tr></table></figure>
 <p>  <del>然后rsc和maxmode设置参数修改为1.然后在进行重启</del></p>
-  <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> restart</span><br></pre></td></tr></table></figure>
+  <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> restart</div></pre></td></tr></table></figure>
 </li>
 <li><p><del>卸载</del></p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chattr -i /serverspeeder/etc/apx* &amp;&amp; /serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> uninstall -<span class="keyword">f</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chattr -i /serverspeeder/etc/apx* &amp;&amp; /serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> uninstall -<span class="keyword">f</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h4 id="锐速-手动安装"><a href="#锐速-手动安装" class="headerlink" title="锐速 手动安装"></a>锐速 手动安装</h4><p>参考</p>
@@ -402,10 +553,10 @@
 <li><p>lotServer是锐速的母公司，面向企业用户。大家比较熟悉的锐速其实是lotServer的马甲</p>
 </li>
 <li><p>安装</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Iwget --<span class="keyword">no</span>-check-certificate -O appex.<span class="keyword">sh</span> http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/<span class="number">0</span>oVicero0/serverSpeeser_Install/master/appex.<span class="keyword">sh</span> &amp;&amp; chmod +<span class="keyword">x</span> appex.<span class="keyword">sh</span> &amp;&amp; bash appex.<span class="keyword">sh</span> install</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Iwget --<span class="keyword">no</span>-check-certificate -O appex.<span class="keyword">sh</span> http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/<span class="number">0</span>oVicero0/serverSpeeser_Install/master/appex.<span class="keyword">sh</span> &amp;&amp; chmod +<span class="keyword">x</span> appex.<span class="keyword">sh</span> &amp;&amp; bash appex.<span class="keyword">sh</span> install</div></pre></td></tr></table></figure>
 </li>
 <li><p>卸载</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --<span class="keyword">no</span>-check-certificate -O appex.<span class="keyword">sh</span> http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/<span class="number">0</span>oVicero0/serverSpeeser_Install/master/appex.<span class="keyword">sh</span> &amp;&amp; chmod +<span class="keyword">x</span> appex.<span class="keyword">sh</span> &amp;&amp; bash appex.<span class="keyword">sh</span> unstall</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --<span class="keyword">no</span>-check-certificate -O appex.<span class="keyword">sh</span> http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/<span class="number">0</span>oVicero0/serverSpeeser_Install/master/appex.<span class="keyword">sh</span> &amp;&amp; chmod +<span class="keyword">x</span> appex.<span class="keyword">sh</span> &amp;&amp; bash appex.<span class="keyword">sh</span> unstall</div></pre></td></tr></table></figure>
 </li>
 <li><p>使用方法</p>
 <ul>
@@ -417,23 +568,23 @@
 </ul>
 <h3 id="常用命令-针对非企业版"><a href="#常用命令-针对非企业版" class="headerlink" title="常用命令(针对非企业版)"></a>常用命令(针对非企业版)</h3><ul>
 <li><p>启动锐速：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> start</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> start</div></pre></td></tr></table></figure>
 </li>
 <li><p>停止锐速：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> <span class="keyword">stop</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> <span class="keyword">stop</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>查看锐速是否正常运行</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service serverSpeeder status</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service serverSpeeder status</div></pre></td></tr></table></figure>
 </li>
 <li><p>重启锐速</p>
- <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> restart</span><br></pre></td></tr></table></figure>
+ <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> restart</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="1-11-锐速配置文件优化-针对非企业版"><a href="#1-11-锐速配置文件优化-针对非企业版" class="headerlink" title="(1.11)锐速配置文件优化(针对非企业版)"></a>(1.11)锐速配置文件优化(针对非企业版)</h3><ul>
 <li><p>配置文件在<code>/serverspeeder/etc/config</code></p>
 </li>
 <li><p>首先确保下面3个参数开启</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rsc=<span class="string">"1"</span></span><br><span class="line">advinacc=<span class="string">"1"</span></span><br><span class="line">maxmode=<span class="string">"1"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rsc=<span class="string">"1"</span></div><div class="line">advinacc=<span class="string">"1"</span></div><div class="line">maxmode=<span class="string">"1"</span></div></pre></td></tr></table></figure>
 <p>rsc=”1″ #RSC 网卡驱动模式<br>advinacc=”1″ #流量方向加速<br>maxmode=”1″ #最大传输模式</p>
 </li>
 <li><p>DO vps还要开启gso</p>
@@ -447,7 +598,7 @@
 <li><p>halfCwndMinSRtt=”500″<br>halfCwndLossRateShift=”3″<br>以上两个值用于判断网络拥塞，分别为延时和丢包率，丢包率默认值为 3，即1/2^3，当拥塞产生时，退出第三代 Learning-based TCP 算法，采用类似传统 TCP 的算法。<br>此处对于高丢包的线路来说，直接设置为1，即丢包百分之50以上时，才退出Learning-based TCP 算法(这会导致高丢包线路上增加流量消耗)</p>
 </li>
 <li><p>修改完成后，重启锐速</p>
- <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> restart</span><br></pre></td></tr></table></figure>
+ <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> restart</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="FinalSpeed"><a href="#FinalSpeed" class="headerlink" title="FinalSpeed"></a>FinalSpeed</h2><ul>
@@ -467,22 +618,22 @@
 </ul>
 <hr>
 <ul>
-<li>安装命令:<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rm -f install_fs.sh</span><br><span class="line">wget  https:<span class="comment">//github.com/dupontjoy/customization/raw/master/Rules/Shadowsocks/Finalspeed/install_fs.sh</span></span><br><span class="line">chmod +x install_fs.sh</span><br><span class="line">./install_fs.sh <span class="number">2</span>&gt;&amp;<span class="number">1</span> | tee install.log</span><br></pre></td></tr></table></figure>
+<li>安装命令:<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">rm -f install_fs.sh</div><div class="line">wget  https:<span class="comment">//github.com/dupontjoy/customization/raw/master/Rules/Shadowsocks/Finalspeed/install_fs.sh</span></div><div class="line">chmod +x install_fs.sh</div><div class="line">./install_fs.sh <span class="number">2</span>&gt;&amp;<span class="number">1</span> | tee install.log</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>一键安装完成后，vps会自动安装java环境。</p>
 <ul>
 <li><p>卸载：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh /fs/stop.sh ; rm -rf /fs</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sh /fs/stop.sh ; rm -rf /fs</div></pre></td></tr></table></figure>
 </li>
 <li><p>设置开机启动：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +<span class="keyword">x</span> /etc/rc.local</span><br><span class="line"><span class="keyword">vi</span> /etc/rc.local</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chmod +<span class="keyword">x</span> /etc/rc.local</div><div class="line"><span class="keyword">vi</span> /etc/rc.local</div></pre></td></tr></table></figure>
 </li>
 <li><p>然后加入</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sh</span> /fs/start.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">sh</span> /fs/start.<span class="keyword">sh</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>每天晚上1点自动重启：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">crontab -<span class="keyword">e</span></span><br><span class="line"><span class="number">0</span> <span class="number">1</span> * * * <span class="keyword">sh</span> /fs/restart.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">crontab -<span class="keyword">e</span></div><div class="line"><span class="number">0</span> <span class="number">1</span> * * * <span class="keyword">sh</span> /fs/restart.<span class="keyword">sh</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="FinalSpeed-windows客户端"><a href="#FinalSpeed-windows客户端" class="headerlink" title="FinalSpeed windows客户端"></a>FinalSpeed windows客户端</h3><p>官方最新版本为1.2 更新日志上表明cpu占用降低30%，但是稳定性较差，时常挂掉。推荐FinalSpeed1.12测试版 个人常用版本，很稳定。</p>
@@ -494,16 +645,16 @@
 </ul>
 <h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
 <li><p>启动：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sh</span> /fs/start.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">sh</span> /fs/start.<span class="keyword">sh</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>停止：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sh</span> /fs/<span class="keyword">stop</span>.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">sh</span> /fs/<span class="keyword">stop</span>.<span class="keyword">sh</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>重新启动：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sh</span> /fs/restart.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">sh</span> /fs/restart.<span class="keyword">sh</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>运行日志：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -<span class="keyword">f</span> /fs/server.<span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tail -<span class="keyword">f</span> /fs/server.<span class="built_in">log</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="gfw-press大杀器"><a href="#gfw-press大杀器" class="headerlink" title="gfw.press大杀器"></a>gfw.press大杀器</h2><ul>
@@ -525,31 +676,31 @@
 <hr>
 <h3 id="gfw-press一键安装"><a href="#gfw-press一键安装" class="headerlink" title="gfw.press一键安装"></a>gfw.press一键安装</h3><ul>
 <li><p>root账户登录vps</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget -O gfw3proxy.sh --no-check-certificate \</span><br><span class="line">https:<span class="comment">//www.dropbox.com/s/vuj2rpfpjlnkawu/gfw3proxy.sh?dl=0</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget -O gfw3proxy.sh --no-check-certificate \</div><div class="line">https:<span class="comment">//www.dropbox.com/s/vuj2rpfpjlnkawu/gfw3proxy.sh?dl=0</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>然后输入</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x gfw3proxy.sh &amp;&amp; ./gfw3proxy.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod +x gfw3proxy.sh &amp;&amp; ./gfw3proxy.sh</div></pre></td></tr></table></figure>
 </li>
 <li><p>执行</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gfw.press/server.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gfw.press/server.sh</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>安装完毕</p>
 <ul>
 <li><p>加入开机启动</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +<span class="keyword">x</span> /etc/rc.local</span><br><span class="line"><span class="keyword">vi</span> /etc/rc.local</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chmod +<span class="keyword">x</span> /etc/rc.local</div><div class="line"><span class="keyword">vi</span> /etc/rc.local</div></pre></td></tr></table></figure>
 </li>
 <li><p>加入</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gfw.press/server.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gfw.press/server.<span class="keyword">sh</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>增加用户/端口<br>编辑gfw.press/user.txt。格式是：<br>端口【空格一个】密码，每行代表一个用户。<br>例如3个用戶</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">14401</span> xyz123MN</span><br><span class="line"><span class="number">14402</span> XYZ456bc</span><br><span class="line"><span class="number">14403</span> <span class="number">789</span>lKpOH</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">14401</span> xyz123MN</div><div class="line"><span class="number">14402</span> XYZ456bc</div><div class="line"><span class="number">14403</span> <span class="number">789</span>lKpOH</div></pre></td></tr></table></figure>
 </li>
 <li><p>终止进程</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill $(<span class="keyword">ps</span> aux | <span class="keyword">grep</span> <span class="string">'java'</span> | <span class="keyword">grep</span> -v <span class="keyword">grep</span> | awk <span class="string">'&#123;print $2&#125;'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kill $(<span class="keyword">ps</span> aux | <span class="keyword">grep</span> <span class="string">'java'</span> | <span class="keyword">grep</span> -v <span class="keyword">grep</span> | awk <span class="string">'&#123;print $2&#125;'</span>)</div></pre></td></tr></table></figure>
 </li>
 <li><p>重启</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gfw.press/server.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gfw.press/server.<span class="keyword">sh</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>客户端可以如下网址中下载到。安装完成后设置浏览器http/https代理，本地端口默认1080.</p>
 <blockquote>
@@ -603,29 +754,29 @@
 <hr>
 <ul>
 <li><p>连接SSH，输入下面命令，更新内核</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh</span><br><span class="line">chmod +x bbr.sh</span><br><span class="line">./bbr.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh</div><div class="line">chmod +x bbr.sh</div><div class="line">./bbr.sh</div></pre></td></tr></table></figure>
 </li>
 <li><p>安装完成后，脚本会提示需要重启 VPS，输入 y 并回车后重启</p>
 </li>
 <li><p>重连SSH</p>
 </li>
 <li><p>验证 内核版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uname -r</div></pre></td></tr></table></figure>
 <p>(3.28)最新内核版本为 4.10</p>
 </li>
 </ul>
 <ul>
 <li><p>修改sysctl.conf</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano /etc/sysctl.conf</div></pre></td></tr></table></figure>
 <p>复制代码：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#TCP配置优化(不然你自己根本不知道你在干什么)</span><br><span class="line">fs.file-max = 51200</span><br><span class="line">#提高整个系统的文件限制</span><br><span class="line">net.core.rmem_max = 67108864</span><br><span class="line">net.core.wmem_max = 67108864</span><br><span class="line">net.core.netdev_max_backlog = 250000</span><br><span class="line">net.core.somaxconn = 4096</span><br><span class="line"></span><br><span class="line">net.ipv4.tcp_syncookies = 1</span><br><span class="line">net.ipv4.tcp_tw_reuse = 1</span><br><span class="line">net.ipv4.tcp_tw_recycle = 0</span><br><span class="line">net.ipv4.tcp_fin_timeout = 30</span><br><span class="line">net.ipv4.tcp_keepalive_time = 1200</span><br><span class="line">net.ipv4.ip_local_port_range = 10000 65000</span><br><span class="line">net.ipv4.tcp_max_syn_backlog = 8192</span><br><span class="line">net.ipv4.tcp_max_tw_buckets = 5000</span><br><span class="line">net.ipv4.tcp_fastopen = 3</span><br><span class="line">net.ipv4.tcp_mem = 25600 51200 102400</span><br><span class="line">net.ipv4.tcp_rmem = 4096 87380 67108864</span><br><span class="line">net.ipv4.tcp_wmem = 4096 65536 67108864</span><br><span class="line">net.ipv4.tcp_mtu_probing = 1</span><br><span class="line">net.ipv4.tcp_congestion_control = bbr</span><br><span class="line">#END OF LINE</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#TCP配置优化(不然你自己根本不知道你在干什么)</div><div class="line">fs.file-max = 51200</div><div class="line">#提高整个系统的文件限制</div><div class="line">net.core.rmem_max = 67108864</div><div class="line">net.core.wmem_max = 67108864</div><div class="line">net.core.netdev_max_backlog = 250000</div><div class="line">net.core.somaxconn = 4096</div><div class="line"></div><div class="line">net.ipv4.tcp_syncookies = 1</div><div class="line">net.ipv4.tcp_tw_reuse = 1</div><div class="line">net.ipv4.tcp_tw_recycle = 0</div><div class="line">net.ipv4.tcp_fin_timeout = 30</div><div class="line">net.ipv4.tcp_keepalive_time = 1200</div><div class="line">net.ipv4.ip_local_port_range = 10000 65000</div><div class="line">net.ipv4.tcp_max_syn_backlog = 8192</div><div class="line">net.ipv4.tcp_max_tw_buckets = 5000</div><div class="line">net.ipv4.tcp_fastopen = 3</div><div class="line">net.ipv4.tcp_mem = 25600 51200 102400</div><div class="line">net.ipv4.tcp_rmem = 4096 87380 67108864</div><div class="line">net.ipv4.tcp_wmem = 4096 65536 67108864</div><div class="line">net.ipv4.tcp_mtu_probing = 1</div><div class="line">net.ipv4.tcp_congestion_control = bbr</div><div class="line">#END OF LINE</div></pre></td></tr></table></figure>
 <p>保存(Ctrl + X —— y ——回车)</p>
 <p>应用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sysctl -p</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
-<li>重启SSR <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/shadowsocks restart</span><br></pre></td></tr></table></figure>
+<li>重启SSR <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/shadowsocks restart</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2>
@@ -634,11 +785,40 @@
       
     </div>
 
+	
+
+	
     <div>
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/3/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
     <footer class="post-footer">
+	
+	
+	
+      
+
       
 
       
@@ -655,13 +835,23 @@
       
 
   
-  
 
   
   
   
-
+  
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/26/VPS科学上网教程系列/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
 
     
       <header class="post-header">
@@ -683,24 +873,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-26T12:16:16+08:00" content="2016-06-26">
-              2016-06-26
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-26T12:16:16+08:00">
+                2016-06-26
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/科学上网/" itemprop="url" rel="index">
                     <span itemprop="name">科学上网</span>
                   </a>
@@ -708,7 +910,6 @@
 
                 
                 
-
               
             </span>
           
@@ -716,26 +917,66 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2016/06/26/VPS科学上网教程系列/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/26/VPS科学上网教程系列/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/06/26/VPS科学上网教程系列/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
              <span id="/2016/06/26/VPS科学上网教程系列/" class="leancloud_visitors" data-flag-title="科学上网教程（一）——VPS上搭建SSR">
-               &nbsp; | &nbsp;
+               <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  5,229
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  20m
+                </span>
+              
+            </div>
+          
+
           
 
         </div>
@@ -751,7 +992,7 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">更新</span><br><span class="line">2016.06.26  与SSR有关部分基本完成。  </span><br><span class="line">2016.09.29  更新SSR部分内容</span><br><span class="line">2016.10.09  更新SSR内容，更新Android端接入。</span><br><span class="line">2016.11.09  更新SSR混淆相关内容，更新SSR-Android，更新部分介绍。</span><br><span class="line">2016.11.20  整合一部分VPS优化内容</span><br><span class="line">2016.12.11  删减调整一部分内容</span><br><span class="line">2016.12.15  替换锐速优化为 BBR，整合TCP优化</span><br><span class="line">2016.12.26  更换TCP BBR 脚本，脚本来自@秋水逸冰 版本，测试通过 </span><br><span class="line">2017.01.11  同步更新一部分SSR内容</span><br><span class="line">2017.02.17  同步更新，调整删减内容，降低上手难度，增加VPS测速相关内容</span><br><span class="line">2017.03.28  调整一部分内容，更新Vps推荐</span><br><span class="line">2017.04.08  新增 VPS 安全加固</span><br><span class="line">2017.05.24  同步更新内容，更换协议，增加新内容。</span><br></pre></td></tr></table></figure>
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">更新</div><div class="line">2016.06.26  与SSR有关部分基本完成。  </div><div class="line">2016.09.29  更新SSR部分内容</div><div class="line">2016.10.09  更新SSR内容，更新Android端接入。</div><div class="line">2016.11.09  更新SSR混淆相关内容，更新SSR-Android，更新部分介绍。</div><div class="line">2016.11.20  整合一部分VPS优化内容</div><div class="line">2016.12.11  删减调整一部分内容</div><div class="line">2016.12.15  替换锐速优化为 BBR，整合TCP优化</div><div class="line">2016.12.26  更换TCP BBR 脚本，脚本来自@秋水逸冰 版本，测试通过 </div><div class="line">2017.01.11  同步更新一部分SSR内容</div><div class="line">2017.02.17  同步更新，调整删减内容，降低上手难度，增加VPS测速相关内容</div><div class="line">2017.03.28  调整一部分内容，更新Vps推荐</div><div class="line">2017.04.08  新增 VPS 安全加固</div><div class="line">2017.05.24  同步更新内容，更换协议，增加新内容。</div></pre></td></tr></table></figure>
 <h2 id="安装脚本说明：遇到失效等，请留言或邮件我！（3-28）"><a href="#安装脚本说明：遇到失效等，请留言或邮件我！（3-28）" class="headerlink" title="安装脚本说明：遇到失效等，请留言或邮件我！（3.28）"></a>安装脚本说明：遇到失效等，请留言或邮件我！（3.28）</h2><ul>
 <li>脚本来源 @秋水逸冰<br><a href="https://shadowsocks.be/9.html" target="_blank" rel="external">ShadowsocksR一键安装脚本</a></li>
 </ul>
@@ -856,7 +1097,7 @@
 <ul>
 <li>输入 ping  你需要测试的ip地址 </li>
 <li><p>这里是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping  hnd-jp-ping.vultr.com</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping  hnd-jp-ping.vultr.com</div></pre></td></tr></table></figure>
 </li>
 <li><p>应答如下<br><img src="http://cdn2.snapgram.co/imgs/2017/02/17/ScreenShot_20170217105236.png" alt="ScreenShot_20170217105236.png"></p>
 </li>
@@ -994,7 +1235,7 @@
 </ul>
 <h3 id="安装SSR"><a href="#安装SSR" class="headerlink" title="安装SSR"></a>安装SSR</h3><ul>
 <li><p>复制以下代码到登陆成功的securecrt</p>
-  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate	 https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh</span><br><span class="line">chmod +x shadowsocksR.sh</span><br><span class="line">./shadowsocksR.sh 2&gt;&amp;1 | tee shadowsocksR.log</span><br></pre></td></tr></table></figure>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate	 https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh</div><div class="line">chmod +x shadowsocksR.sh</div><div class="line">./shadowsocksR.sh 2&gt;&amp;1 | tee shadowsocksR.log</div></pre></td></tr></table></figure>
 </li>
 <li><p>如图，回车。<br><img src="http://cdn3.snapgram.co/imgs/2016/06/24/1189971.jpg" alt="1189971.jpg"></p>
 </li>
@@ -1036,15 +1277,15 @@
 </ul>
 <ul>
 <li><p>注释</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "server":"0.0.0.0",</span><br><span class="line">  "server_ipv6":"::",</span><br><span class="line">  "local_address":"127.0.0.1",</span><br><span class="line">  "local_port":1080,</span><br><span class="line">  "port_password":&#123;</span><br><span class="line">   #纯 SS 不带混淆 端口443 密码为123456.</span><br><span class="line">   "443":"123456",</span><br><span class="line">   #端口3389，密码123456 ，protocol选择auth_chain_a。obfs选择tls1.2_ticket_auth，具体插件的介绍如下参考资料中</span><br><span class="line">   "3389":&#123;"protocol":"auth_chain_a", "password":"123456", "obfs":"tls1.2_ticket_auth", "obfs_param":""&#125;,</span><br><span class="line">  #注意无论怎么变化，最后一个端口设置，不带逗号！</span><br><span class="line">   "25":&#123;"protocol":"auth_aes128_md5", "password":"123456", "obfs":"tls1.2_ticket_auth", "obfs_param":""&#125;#此处没有逗号！</span><br><span class="line">  &#125;,</span><br><span class="line">  "timeout":400,</span><br><span class="line">  #默认全局的加密方式，即上边各个端口的默认加密方式。一般为aes-256-cfb，		此处，选择为chacha20，移动设备性能较好。</span><br><span class="line">  "method":"chacha20",</span><br><span class="line">  #protocol.协议定义插件的默认值，origin即使用原版SS协议，不混淆。即上面端口配置中，你没有设置 protocol 和 obfs 情况下，使用的默认值。</span><br><span class="line">  "protocol": "origin",</span><br><span class="line">  "protocol_param": "",</span><br><span class="line">   #protocol.协议定义插件的默认值，plain即使用原协议，不混淆。</span><br><span class="line">  "obfs": "plain",</span><br><span class="line">  "obfs_param": "",</span><br><span class="line">  "redirect": "",</span><br><span class="line">  "dns_ipv6": false,</span><br><span class="line"> #TCP FAST OPEN ，打开</span><br><span class="line">  "fast_open": true,</span><br><span class="line"> "workers": 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  "server":"0.0.0.0",</div><div class="line">  "server_ipv6":"::",</div><div class="line">  "local_address":"127.0.0.1",</div><div class="line">  "local_port":1080,</div><div class="line">  "port_password":&#123;</div><div class="line">   #纯 SS 不带混淆 端口443 密码为123456.</div><div class="line">   "443":"123456",</div><div class="line">   #端口3389，密码123456 ，protocol选择auth_chain_a。obfs选择tls1.2_ticket_auth，具体插件的介绍如下参考资料中</div><div class="line">   "3389":&#123;"protocol":"auth_chain_a", "password":"123456", "obfs":"tls1.2_ticket_auth", "obfs_param":""&#125;,</div><div class="line">  #注意无论怎么变化，最后一个端口设置，不带逗号！</div><div class="line">   "25":&#123;"protocol":"auth_aes128_md5", "password":"123456", "obfs":"tls1.2_ticket_auth", "obfs_param":""&#125;#此处没有逗号！</div><div class="line">  &#125;,</div><div class="line">  "timeout":400,</div><div class="line">  #默认全局的加密方式，即上边各个端口的默认加密方式。一般为aes-256-cfb，		此处，选择为chacha20，移动设备性能较好。</div><div class="line">  "method":"chacha20",</div><div class="line">  #protocol.协议定义插件的默认值，origin即使用原版SS协议，不混淆。即上面端口配置中，你没有设置 protocol 和 obfs 情况下，使用的默认值。</div><div class="line">  "protocol": "origin",</div><div class="line">  "protocol_param": "",</div><div class="line">   #protocol.协议定义插件的默认值，plain即使用原协议，不混淆。</div><div class="line">  "obfs": "plain",</div><div class="line">  "obfs_param": "",</div><div class="line">  "redirect": "",</div><div class="line">  "dns_ipv6": false,</div><div class="line"> #TCP FAST OPEN ，打开</div><div class="line">  "fast_open": true,</div><div class="line"> "workers": 1</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>无注释版本，直接复制粘贴覆盖原始文件，或者在原文件上修改</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"server"</span>:<span class="string">"0.0.0.0"</span>,</span><br><span class="line">  <span class="attr">"server_ipv6"</span>:<span class="string">"::"</span>,</span><br><span class="line">  <span class="attr">"local_address"</span>:<span class="string">"127.0.0.1"</span>,</span><br><span class="line">  <span class="attr">"local_port"</span>:<span class="number">1080</span>,</span><br><span class="line">  <span class="attr">"port_password"</span>:&#123;</span><br><span class="line">      <span class="attr">"3389"</span>:&#123;<span class="attr">"protocol"</span>:<span class="string">"auth_chain_a"</span>, <span class="attr">"password"</span>:<span class="string">"123456"</span>, <span class="attr">"obfs"</span>:<span class="string">"tls1.2_ticket_auth"</span>, <span class="attr">"obfs_param"</span>:<span class="string">""</span>&#125;,</span><br><span class="line">      <span class="attr">"25"</span>:&#123;<span class="attr">"protocol"</span>:<span class="string">"auth_aes128_md5"</span>, <span class="attr">"password"</span>:<span class="string">"123456"</span>, <span class="attr">"obfs"</span>:<span class="string">"tls1.2_ticket_auth"</span>, <span class="attr">"obfs_param"</span>:<span class="string">""</span>&#125;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"timeout"</span>:<span class="number">400</span>,</span><br><span class="line">  <span class="attr">"method"</span>:<span class="string">"chacha20"</span>,</span><br><span class="line">  <span class="attr">"protocol"</span>: <span class="string">"origin"</span>,</span><br><span class="line">  <span class="attr">"protocol_param"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="attr">"obfs"</span>: <span class="string">"plain"</span>,</span><br><span class="line">  <span class="attr">"obfs_param"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="attr">"redirect"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="attr">"dns_ipv6"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">"fast_open"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"workers"</span>: <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"server"</span>:<span class="string">"0.0.0.0"</span>,</div><div class="line">  <span class="attr">"server_ipv6"</span>:<span class="string">"::"</span>,</div><div class="line">  <span class="attr">"local_address"</span>:<span class="string">"127.0.0.1"</span>,</div><div class="line">  <span class="attr">"local_port"</span>:<span class="number">1080</span>,</div><div class="line">  <span class="attr">"port_password"</span>:&#123;</div><div class="line">      <span class="attr">"3389"</span>:&#123;<span class="attr">"protocol"</span>:<span class="string">"auth_chain_a"</span>, <span class="attr">"password"</span>:<span class="string">"123456"</span>, <span class="attr">"obfs"</span>:<span class="string">"tls1.2_ticket_auth"</span>, <span class="attr">"obfs_param"</span>:<span class="string">""</span>&#125;,</div><div class="line">      <span class="attr">"25"</span>:&#123;<span class="attr">"protocol"</span>:<span class="string">"auth_aes128_md5"</span>, <span class="attr">"password"</span>:<span class="string">"123456"</span>, <span class="attr">"obfs"</span>:<span class="string">"tls1.2_ticket_auth"</span>, <span class="attr">"obfs_param"</span>:<span class="string">""</span>&#125;</div><div class="line"></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"timeout"</span>:<span class="number">400</span>,</div><div class="line">  <span class="attr">"method"</span>:<span class="string">"chacha20"</span>,</div><div class="line">  <span class="attr">"protocol"</span>: <span class="string">"origin"</span>,</div><div class="line">  <span class="attr">"protocol_param"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"obfs"</span>: <span class="string">"plain"</span>,</div><div class="line">  <span class="attr">"obfs_param"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"redirect"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"dns_ipv6"</span>: <span class="literal">false</span>,</div><div class="line">  <span class="attr">"fast_open"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"workers"</span>: <span class="number">1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="重启SSR"><a href="#重启SSR" class="headerlink" title="重启SSR"></a>重启SSR</h3><ul>
 <li><p>配置完成后，重启SSR,以root账户登陆securecrt，复制以下代码，重启ssr。</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/shadowsocks restart</span><br></pre></td></tr></table></figure>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/shadowsocks restart</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
@@ -1105,7 +1346,7 @@
 </ul>
 <h2 id="更新SSR"><a href="#更新SSR" class="headerlink" title="更新SSR"></a>更新SSR</h2><ul>
 <li><p>vps端，需要先令存 shadowsocks.json文件。再执行卸载</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./shadowsocksR.sh uninstall</span><br></pre></td></tr></table></figure>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./shadowsocksR.sh uninstall</div></pre></td></tr></table></figure>
 <p>  之后重新执行安装脚本即可</p>
 </li>
 </ul>
@@ -1115,13 +1356,13 @@
 </ul>
 <h3 id="TCP优化"><a href="#TCP优化" class="headerlink" title="TCP优化"></a>TCP优化</h3><ul>
 <li><p>增加TCP连接数量</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/security/limits.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano /etc/security/limits.conf</div></pre></td></tr></table></figure>
 <p>添加两行：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* soft nofile <span class="number">51200</span></span><br><span class="line">* hard nofile <span class="number">51200</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">* soft nofile <span class="number">51200</span></div><div class="line">* hard nofile <span class="number">51200</span></div></pre></td></tr></table></figure>
 <p>保存(Ctrl + X —— y ——回车)</p>
 </li>
 <li><p>设置ulimit：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ulimit -n <span class="number">51200</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ulimit -n <span class="number">51200</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="TCP-BBR-推荐"><a href="#TCP-BBR-推荐" class="headerlink" title="TCP-BBR(推荐)"></a>TCP-BBR(推荐)</h3><hr>
@@ -1148,7 +1389,7 @@
 <hr>
 <ul>
 <li><p>连接SSH，运行下面的命令</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh</span><br><span class="line">chmod +x bbr.sh</span><br><span class="line">./bbr.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh</div><div class="line">chmod +x bbr.sh</div><div class="line">./bbr.sh</div></pre></td></tr></table></figure>
 </li>
 <li><p>提示需要重启 VPS，输入 y 并回车后重启，重连SSH</p>
 </li>
@@ -1157,26 +1398,26 @@
 <li><p>验证</p>
 <ul>
 <li><p>输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uname -r</div></pre></td></tr></table></figure>
 <p>有4.9.0 以上就 表示 更新成功</p>
 </li>
 <li><p>输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsmod | grep bbr</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lsmod | grep bbr</div></pre></td></tr></table></figure>
 <p>返回值有 tcp<em>bbr </em>即bbr已启动。</p>
 </li>
 </ul>
 </li>
 <li><p>添加一些优化内容<br>修改sysctl.conf</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano /etc/sysctl.conf</div></pre></td></tr></table></figure>
 <p>复制代码：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#TCP配置优化(不然你自己根本不知道你在干什么)</span><br><span class="line">fs.file-max = 51200</span><br><span class="line">#提高整个系统的文件限制</span><br><span class="line">net.core.rmem_max = 67108864</span><br><span class="line">net.core.wmem_max = 67108864</span><br><span class="line">net.core.netdev_max_backlog = 250000</span><br><span class="line">net.core.somaxconn = 4096</span><br><span class="line"></span><br><span class="line">net.ipv4.tcp_syncookies = 1</span><br><span class="line">net.ipv4.tcp_tw_reuse = 1</span><br><span class="line">net.ipv4.tcp_tw_recycle = 0</span><br><span class="line">net.ipv4.tcp_fin_timeout = 30</span><br><span class="line">net.ipv4.tcp_keepalive_time = 1200</span><br><span class="line">net.ipv4.ip_local_port_range = 10000 65000</span><br><span class="line">net.ipv4.tcp_max_syn_backlog = 8192</span><br><span class="line">net.ipv4.tcp_max_tw_buckets = 5000</span><br><span class="line">net.ipv4.tcp_fastopen = 3</span><br><span class="line">net.ipv4.tcp_mem = 25600 51200 102400</span><br><span class="line">net.ipv4.tcp_rmem = 4096 87380 67108864</span><br><span class="line">net.ipv4.tcp_wmem = 4096 65536 67108864</span><br><span class="line">net.ipv4.tcp_mtu_probing = 1</span><br><span class="line">net.ipv4.tcp_congestion_control = bbr</span><br><span class="line">#END OF LINE</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#TCP配置优化(不然你自己根本不知道你在干什么)</div><div class="line">fs.file-max = 51200</div><div class="line">#提高整个系统的文件限制</div><div class="line">net.core.rmem_max = 67108864</div><div class="line">net.core.wmem_max = 67108864</div><div class="line">net.core.netdev_max_backlog = 250000</div><div class="line">net.core.somaxconn = 4096</div><div class="line"></div><div class="line">net.ipv4.tcp_syncookies = 1</div><div class="line">net.ipv4.tcp_tw_reuse = 1</div><div class="line">net.ipv4.tcp_tw_recycle = 0</div><div class="line">net.ipv4.tcp_fin_timeout = 30</div><div class="line">net.ipv4.tcp_keepalive_time = 1200</div><div class="line">net.ipv4.ip_local_port_range = 10000 65000</div><div class="line">net.ipv4.tcp_max_syn_backlog = 8192</div><div class="line">net.ipv4.tcp_max_tw_buckets = 5000</div><div class="line">net.ipv4.tcp_fastopen = 3</div><div class="line">net.ipv4.tcp_mem = 25600 51200 102400</div><div class="line">net.ipv4.tcp_rmem = 4096 87380 67108864</div><div class="line">net.ipv4.tcp_wmem = 4096 65536 67108864</div><div class="line">net.ipv4.tcp_mtu_probing = 1</div><div class="line">net.ipv4.tcp_congestion_control = bbr</div><div class="line">#END OF LINE</div></pre></td></tr></table></figure>
 <p>保存(Ctrl + X —— y ——回车)</p>
 <p>应用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sysctl -p</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
-<li>重启SSR <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/shadowsocks restart</span><br></pre></td></tr></table></figure>
+<li>重启SSR <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/shadowsocks restart</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="VPS安全加固-安全性是重中之重！"><a href="#VPS安全加固-安全性是重中之重！" class="headerlink" title="VPS安全加固( 安全性是重中之重！)"></a>VPS安全加固( 安全性是重中之重！)</h2><ul>
@@ -1241,11 +1482,40 @@
       
     </div>
 
+	
+
+	
     <div>
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/3/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
     <footer class="post-footer">
+	
+	
+	
+      
+
       
 
       
@@ -1262,13 +1532,23 @@
       
 
   
-  
 
   
   
   
-
+  
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/21/开端/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
 
     
       <header class="post-header">
@@ -1290,24 +1570,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-21T13:52:11+08:00" content="2016-06-21">
-              2016-06-21
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-21T13:52:11+08:00">
+                2016-06-21
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/随/" itemprop="url" rel="index">
                     <span itemprop="name">随</span>
                   </a>
@@ -1315,7 +1607,6 @@
 
                 
                 
-
               
             </span>
           
@@ -1323,26 +1614,66 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2016/06/21/开端/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/21/开端/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/06/21/开端/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
              <span id="/2016/06/21/开端/" class="leancloud_visitors" data-flag-title="开端，起始。">
-               &nbsp; | &nbsp;
+               <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  211
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1m
+                </span>
+              
+            </div>
+          
+
           
 
         </div>
@@ -1369,11 +1700,40 @@
       
     </div>
 
+	
+
+	
     <div>
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/3/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
     <footer class="post-footer">
+	
+	
+	
+      
+
       
 
       
@@ -1390,13 +1750,23 @@
       
 
   
-  
 
   
   
   
-
+  
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/21/初入树莓派1----安装系统+进入SSH/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
 
     
       <header class="post-header">
@@ -1418,24 +1788,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-21T10:17:11+08:00" content="2016-06-21">
-              2016-06-21
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-21T10:17:11+08:00">
+                2016-06-21
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/树莓派/" itemprop="url" rel="index">
                     <span itemprop="name">树莓派</span>
                   </a>
@@ -1443,7 +1825,6 @@
 
                 
                 
-
               
             </span>
           
@@ -1451,26 +1832,66 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2016/06/21/初入树莓派1----安装系统+进入SSH/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/21/初入树莓派1----安装系统+进入SSH/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/06/21/初入树莓派1----安装系统+进入SSH/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
              <span id="/2016/06/21/初入树莓派1----安装系统+进入SSH/" class="leancloud_visitors" data-flag-title="初入树莓派1安装系统+进入SSH">
-               &nbsp; | &nbsp;
+               <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  573
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2m
+                </span>
+              
+            </div>
+          
+
           
 
         </div>
@@ -1561,11 +1982,40 @@
       
     </div>
 
+	
+
+	
     <div>
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/3/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
     <footer class="post-footer">
+	
+	
+	
+      
+
       
 
       
@@ -1582,13 +2032,23 @@
       
 
   
-  
 
   
   
   
-
+  
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/18/hellowworld/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
 
     
       <header class="post-header">
@@ -1610,24 +2070,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-18T10:10:11+08:00" content="2016-06-18">
-              2016-06-18
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-18T10:10:11+08:00">
+                2016-06-18
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/随/" itemprop="url" rel="index">
                     <span itemprop="name">随</span>
                   </a>
@@ -1635,7 +2107,6 @@
 
                 
                 
-
               
             </span>
           
@@ -1643,26 +2114,66 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2016/06/18/hellowworld/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/18/hellowworld/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/06/18/hellowworld/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
              <span id="/2016/06/18/hellowworld/" class="leancloud_visitors" data-flag-title="Hello World">
-               &nbsp; | &nbsp;
+               <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  42
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1m
+                </span>
+              
+            </div>
+          
+
           
 
         </div>
@@ -1678,13 +2189,13 @@
       
         
           
-            <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+            <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 
           
@@ -1692,11 +2203,40 @@
       
     </div>
 
+	
+
+	
     <div>
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/3/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
     <footer class="post-footer">
+	
+	
+	
+      
+
       
 
       
@@ -1744,25 +2284,32 @@
 
       
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/v.png"
                alt="Jasper" />
           <p class="site-author-name" itemprop="name">Jasper</p>
-          <p class="site-description motion-element" itemprop="description">程序员 微尘 V</p>
+           
+              <p class="site-description motion-element" itemprop="description">程序员 微尘 V</p>
+          
         </div>
         <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">25</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
 
           
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
             <div class="site-state-item site-state-categories">
-              <a href="/categories">
+              <a href="/categories/index.html">
                 <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
@@ -1770,8 +2317,10 @@
           
 
           
+            
+            
             <div class="site-state-item site-state-tags">
-              <a href="/tags">
+              <a href="/tags/index.html">
                 <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
@@ -1793,9 +2342,9 @@
           
             
               <span class="links-of-author-item">
-                <a href="https://github.com/jasper-1024" target="_blank">
+                <a href="https://github.com/jasper-1024" target="_blank" title="GitHub">
                   
-                    <i class="fa fa-github"></i>
+                    <i class="fa fa-fw fa-github"></i>
                   
                   GitHub
                 </a>
@@ -1808,11 +2357,14 @@
         
 
         
-        <div class="links-of-blogroll motion-element">
-          
-        </div>
+        
+
+        
+
 
       </section>
+
+      
 
       
 
@@ -1829,41 +2381,31 @@
         <div class="copyright" >
   
   &copy;  2016.6.2 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2017.6.17</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Jasper</span>
 </div>
 
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
 
 
+        
 
+        
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
   </div>
 
   
-
-
-  
-
-
-
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
@@ -1872,70 +2414,237 @@
 </script>
 
 
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+  
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
+  
   <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
+  
   <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js"></script>
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js"></script>
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
-
-
-
-  
-
-
-
-  
-
-    <script type="text/javascript">
-      var disqus_shortname = 'jasper1024';
-      var disqus_identifier = 'page/3/index.html';
-      var disqus_title = '';
-      var disqus_url = '';
-
-      function run_disqus_script(disqus_script){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-      
-    </script>
-  
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
   
   
+
   
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://jasper1024.disqus.com/count.js" async></script>
+    
+
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
 
   
 
@@ -1970,6 +2679,14 @@
 
             $(element).find(COUNT_CONTAINER_REF).text(time);
           }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
         })
         .fail(function (object, error) {
           console.log("Error: " + error.code + " " + error.message);
@@ -2000,6 +2717,12 @@
             });
           } else {
             var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
             newcounter.set("title", title);
             newcounter.set("url", url);
             newcounter.set("time", 1);
@@ -2034,5 +2757,14 @@
 
   
 
+  
+
+  
+
+  
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+  
 </body>
 </html>

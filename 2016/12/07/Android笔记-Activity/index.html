@@ -5,10 +5,10 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
@@ -27,18 +27,48 @@
 
 
 
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Android Studio,Android,学习记录," />
@@ -52,29 +82,20 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
 
 
 
-<meta name="description" content="资料来源如下
-第一行代码(第二版)
-
-
-Activity基础Activity定义
-Activity 是Android四大组件之一，用户可与其提供的屏幕进行交互，以执行操作。 每个 Activity 都会获得一个用于绘制其用户界面的窗口。窗口可以充满屏幕，也可浮动。应用通常由多个彼此联系的 Activity 组成。应用中的某个 Activity 为“主”Activity，即首次启动应用时的Act">
+<meta name="description" content="资料来源如下 第一行代码(第二版)   Activity基础Activity定义 Activity 是Android四大组件之一，用户可与其提供的屏幕进行交互，以执行操作。 每个 Activity 都会获得一个用于绘制其用户界面的窗口。窗口可以充满屏幕，也可浮动。应用通常由多个彼此联系的 Activity 组成。应用中的某个 Activity 为“主”Activity，即首次启动应用时的Act">
+<meta name="keywords" content="Android Studio,Android,学习记录">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android笔记—Activity">
 <meta property="og:url" content="http://yoursite.com/2016/12/07/Android笔记-Activity/index.html">
 <meta property="og:site_name" content="默">
-<meta property="og:description" content="资料来源如下
-第一行代码(第二版)
-
-
-Activity基础Activity定义
-Activity 是Android四大组件之一，用户可与其提供的屏幕进行交互，以执行操作。 每个 Activity 都会获得一个用于绘制其用户界面的窗口。窗口可以充满屏幕，也可浮动。应用通常由多个彼此联系的 Activity 组成。应用中的某个 Activity 为“主”Activity，即首次启动应用时的Act">
+<meta property="og:description" content="资料来源如下 第一行代码(第二版)   Activity基础Activity定义 Activity 是Android四大组件之一，用户可与其提供的屏幕进行交互，以执行操作。 每个 Activity 都会获得一个用于绘制其用户界面的窗口。窗口可以充满屏幕，也可浮动。应用通常由多个彼此联系的 Activity 组成。应用中的某个 Activity 为“主”Activity，即首次启动应用时的Act">
 <meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/07/20/1.jpg">
 <meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/07/20/5ea429.jpg">
 <meta property="og:image" content="http://cdn4.snapgram.co/images/2016/07/20/toast.png">
@@ -85,29 +106,40 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
 <meta property="og:updated_time" content="2016-12-14T08:23:03.094Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android笔记—Activity">
-<meta name="twitter:description" content="资料来源如下
-第一行代码(第二版)
-
-
-Activity基础Activity定义
-Activity 是Android四大组件之一，用户可与其提供的屏幕进行交互，以执行操作。 每个 Activity 都会获得一个用于绘制其用户界面的窗口。窗口可以充满屏幕，也可浮动。应用通常由多个彼此联系的 Activity 组成。应用中的某个 Activity 为“主”Activity，即首次启动应用时的Act">
+<meta name="twitter:description" content="资料来源如下 第一行代码(第二版)   Activity基础Activity定义 Activity 是Android四大组件之一，用户可与其提供的屏幕进行交互，以执行操作。 每个 Activity 都会获得一个用于绘制其用户界面的窗口。窗口可以充满屏幕，也可浮动。应用通常由多个彼此联系的 Activity 组成。应用中的某个 Activity 为“主”Activity，即首次启动应用时的Act">
 <meta name="twitter:image" content="http://cdn2.snapgram.co/imgs/2016/07/20/1.jpg">
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
+    root: '/',
     scheme: 'Mist',
-    sidebar: {"position":"right","display":"post"},
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
+      userId: '0',
       author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/07/Android笔记-Activity/"/>
+
+
+
+
 
   <title> Android笔记—Activity | 默 </title>
 </head>
@@ -117,14 +149,18 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
   
 
 
+
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-79641673-1', 'auto');
   ga('send', 'pageview');
 </script>
+
+
 
 
 
@@ -139,29 +175,33 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
     
   
 
-  <div class="container one-collumn sidebar-position-right page-post-detail ">
+  <div class="container sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">默</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">默</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">为了生存，而一点点淡忘了最初的本意。</p>
+      
   </div>
-  <p class="site-subtitle">为了生存，而一点点淡忘了最初的本意。</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -174,7 +214,7 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -184,7 +224,7 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -194,7 +234,7 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -204,7 +244,7 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -214,7 +254,7 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
             关于
           </a>
@@ -224,7 +264,7 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
         <li class="menu-item menu-item-guestbook">
           <a href="/guestbook" rel="section">
             
-              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             留言
           </a>
@@ -232,11 +272,47 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
   
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
 </nav>
+
+
 
  </div>
     </header>
@@ -251,13 +327,23 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
     
 
   
-  
 
   
   
   
-
+  
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/07/Android笔记-Activity/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
 
     
       <header class="post-header">
@@ -276,24 +362,36 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-07T12:00:00+08:00" content="2016-12-07">
-              2016-12-07
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-07T12:00:00+08:00">
+                2016-12-07
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Android笔记/" itemprop="url" rel="index">
                     <span itemprop="name">Android笔记</span>
                   </a>
@@ -301,7 +399,6 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
 
                 
                 
-
               
             </span>
           
@@ -309,26 +406,66 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2016/12/07/Android笔记-Activity/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/07/Android笔记-Activity/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/12/07/Android笔记-Activity/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
              <span id="/2016/12/07/Android笔记-Activity/" class="leancloud_visitors" data-flag-title="Android笔记—Activity">
-               &nbsp; | &nbsp;
+               <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  3,223
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  14m
+                </span>
+              
+            </div>
+          
+
           
 
         </div>
@@ -353,18 +490,18 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
 </ul>
 <h3 id="创建Activity"><a href="#创建Activity" class="headerlink" title="创建Activity"></a>创建Activity</h3><ul>
 <li><p>新建FirstAtivity继承自AppCompatActivity</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span></span>&#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span>  <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">&#125; &#125;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span></span>&#123;</div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span>  <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">&#125; &#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>创建加载布局<br>  <a href="http://snapgr.am/image/LoY4" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/07/20/1.jpg" alt="1.jpg"></a></p>
 </li>
 <li><p>切换到first-layout</p>
-  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  &lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line">  &lt;LinearLayout</span><br><span class="line">  xmlns:android="http://schemas.android.com/apk/res/android"</span><br><span class="line">  android:layout_width="match_parent"</span><br><span class="line">  android:layout_height="match_parent"&gt;</span><br><span class="line">  &lt;Button</span><br><span class="line">      android:id="@+id/button_1"</span><br><span class="line">      android:text="button_1"</span><br><span class="line">      android:layout_width="wrap_content"</span><br><span class="line">      android:layout_height="wrap_content" /&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">  &lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line">  &lt;LinearLayout</div><div class="line">  xmlns:android="http://schemas.android.com/apk/res/android"</div><div class="line">  android:layout_width="match_parent"</div><div class="line">  android:layout_height="match_parent"&gt;</div><div class="line">  &lt;Button</div><div class="line">      android:id="@+id/button_1"</div><div class="line">      android:text="button_1"</div><div class="line">      android:layout_width="wrap_content"</div><div class="line">      android:layout_height="wrap_content" /&gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure>
 </li>
 <li><p>在FirestActivity中加载layout<br>  在onCreate中加入</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setContentView(R.layout.first_layout);</span><br></pre></td></tr></table></figure>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">setContentView(R.layout.first_layout);</div></pre></td></tr></table></figure>
 </li>
 <li><p>在AndroidMainfest文件中注册。</p>
-  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity</span><br><span class="line">           android:name=".FirstActivity"</span><br><span class="line">           android:label="This is FirstActivity"&gt;</span><br><span class="line">           &lt;intent-filter&gt;</span><br><span class="line">               &lt;action android:name="android.intent.action.MAIN"/&gt;</span><br><span class="line">               &lt;category android:name="android.intent.category.LAUNCHER"/&gt;</span><br><span class="line">           &lt;/intent-filter&gt;</span><br><span class="line">&lt;/activity&gt;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;activity</div><div class="line">           android:name=".FirstActivity"</div><div class="line">           android:label="This is FirstActivity"&gt;</div><div class="line">           &lt;intent-filter&gt;</div><div class="line">               &lt;action android:name="android.intent.action.MAIN"/&gt;</div><div class="line">               &lt;category android:name="android.intent.category.LAUNCHER"/&gt;</div><div class="line">           &lt;/intent-filter&gt;</div><div class="line">&lt;/activity&gt;</div></pre></td></tr></table></figure>
 </li>
 <li><p>在模拟器中启动apk<br>  <a href="http://snapgr.am/image/LogP" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/07/20/5ea429.jpg" alt="5ea429.jpg"></a></p>
 </li>
@@ -377,9 +514,9 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
 </blockquote>
 <ul>
 <li><p>使用方法</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Toast.makeText(context, text, duration).show();</span><br></pre></td></tr></table></figure>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Toast.makeText(context, text, duration).show();</div></pre></td></tr></table></figure>
 <p>  举例</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Toast.makeText(FirstActivity.<span class="keyword">this</span>, <span class="string">"you clicked button 1"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line"><span class="comment">/*                  activity.this   消息内容                显示时间设置   */</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Toast.makeText(FirstActivity.<span class="keyword">this</span>, <span class="string">"you clicked button 1"</span>, Toast.LENGTH_SHORT).show();</div><div class="line"><span class="comment">/*                  activity.this   消息内容                显示时间设置   */</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="使用Menu"><a href="#使用Menu" class="headerlink" title="使用Menu"></a>使用Menu</h3><ul>
@@ -387,11 +524,11 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
 <ul>
 <li>在res下新疆menu文件夹，右击menu文件夹—new—Menu resource file，创建main的菜单文件。</li>
 <li><p>main.xml中添加如下代码</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> &lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">menu</span>        <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">item</span></span><br><span class="line">     <span class="attr">android:id</span>=<span class="string">"@+id/add_item"</span></span><br><span class="line">     <span class="attr">android:title</span>=<span class="string">"Add"</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">item</span></span><br><span class="line">     <span class="attr">android:id</span>=<span class="string">"@+id/remove_item"</span></span><br><span class="line">     <span class="attr">android:title</span>=<span class="string">"Remove"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">menu</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"> &lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">menu</span>        <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">item</span></span></div><div class="line">     <span class="attr">android:id</span>=<span class="string">"@+id/add_item"</span></div><div class="line">     <span class="attr">android:title</span>=<span class="string">"Add"</span>/&gt;</div><div class="line">   <span class="tag">&lt;<span class="name">item</span></span></div><div class="line">     <span class="attr">android:id</span>=<span class="string">"@+id/remove_item"</span></div><div class="line">     <span class="attr">android:title</span>=<span class="string">"Remove"</span>/&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">menu</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>这里创建了两个菜单项 Add和Remove</p>
 </li>
 <li><p>在FirestActivity中重写 onCreateOptionsMenu()方法（快捷键 Ctrl+O）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  <span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onCreateOptionsMenu</span><span class="params">(Menu menu)</span> </span>&#123;</span><br><span class="line">    getMenuInflater().inflate(R.menu.main, menu);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  <span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onCreateOptionsMenu</span><span class="params">(Menu menu)</span> </span>&#123;</div><div class="line">    getMenuInflater().inflate(R.menu.main, menu);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><code>getMenuInflater()</code>可以得到MenuInflater对象，再调用.inflate就可以创建菜单。.inflat接受俩个参数，一是资源文件名，二是菜单项添加至那个对象中。onCreateOptionsMenu方法中返回true表示创建菜单并显示。</p>
 </li>
 <li>效果如下。<br><img src="http://cdn2.snapgram.co/imgs/2016/12/07/Screenshot_1481113497.png" alt="Screenshot_1481113497.png"></li>
@@ -400,7 +537,7 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
 <li><p>创建菜单点击响应事件</p>
 <ul>
 <li><p>重写onOptionsItemSelected方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onOptionsItemSelected</span><span class="params">(MenuItem item)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">switch</span> (item.getItemId()) &#123;</span><br><span class="line">       <span class="keyword">case</span> R.id.add_item:</span><br><span class="line">           Toast.makeText(<span class="keyword">this</span>, <span class="string">"Add"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">       <span class="keyword">case</span> R.id.remove_item:</span><br><span class="line">           Toast.makeText(<span class="keyword">this</span>, <span class="string">"Remove"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">       <span class="keyword">default</span>:</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onOptionsItemSelected</span><span class="params">(MenuItem item)</span> </span>&#123;</div><div class="line">   <span class="keyword">switch</span> (item.getItemId()) &#123;</div><div class="line">       <span class="keyword">case</span> R.id.add_item:</div><div class="line">           Toast.makeText(<span class="keyword">this</span>, <span class="string">"Add"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">           <span class="keyword">break</span>;</div><div class="line">       <span class="keyword">case</span> R.id.remove_item:</div><div class="line">           Toast.makeText(<span class="keyword">this</span>, <span class="string">"Remove"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">           <span class="keyword">break</span>;</div><div class="line">       <span class="keyword">default</span>:</div><div class="line">   &#125;</div><div class="line">   <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
 <p>通过item.getItemId()判断点击选项，弹出不同的Toast</p>
 </li>
 </ul>
@@ -410,24 +547,24 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
 <li>构建一个Intent<br>  <code>Intent intent = new Intent(this, DisplayMessageActivity.class);</code><br>  构造方法有两个参数：<br>  Context 是第一个参数，这里使用了this是因为Activity是Context的子类。<br>  Class 类是系统将要分发的APP组件，在这里，这个Activity将会被启动。</li>
 </ul>
 <ul>
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendMessage</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 创建一个新的intent对象，绑定DisplayMessageActivity</span></span><br><span class="line">    Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, DisplayMessageActivity.class);</span><br><span class="line">    <span class="comment">//创建一个editText对象，绑定xml中editText</span></span><br><span class="line">    EditText editText = (EditText) findViewById(R.id.edit_message);</span><br><span class="line">    <span class="comment">//获取editText中输入文字，转成字符串</span></span><br><span class="line">    String message = editText.getText().toString();</span><br><span class="line">    <span class="comment">//一个Intent对象可以携带被称为extras的键值对。</span></span><br><span class="line">    <span class="comment">// putExtra()方法将键放在第一个参数中，将值放在第二个参数中。</span></span><br><span class="line">    intent.putExtra(EXTRA_MESSAGE, message);</span><br><span class="line">    <span class="comment">//启动intent对应Activity</span></span><br><span class="line">    startActivity(intent);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendMessage</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">    <span class="comment">// 创建一个新的intent对象，绑定DisplayMessageActivity</span></div><div class="line">    Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, DisplayMessageActivity.class);</div><div class="line">    <span class="comment">//创建一个editText对象，绑定xml中editText</span></div><div class="line">    EditText editText = (EditText) findViewById(R.id.edit_message);</div><div class="line">    <span class="comment">//获取editText中输入文字，转成字符串</span></div><div class="line">    String message = editText.getText().toString();</div><div class="line">    <span class="comment">//一个Intent对象可以携带被称为extras的键值对。</span></div><div class="line">    <span class="comment">// putExtra()方法将键放在第一个参数中，将值放在第二个参数中。</span></div><div class="line">    intent.putExtra(EXTRA_MESSAGE, message);</div><div class="line">    <span class="comment">//启动intent对应Activity</span></div><div class="line">    startActivity(intent);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_display_message);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建本地intent</span></span><br><span class="line">    Intent intent = getIntent();</span><br><span class="line">    <span class="comment">//取出String类型数据，如果是Int类型就是getIntExtra，Boolean类型就是getBooleanExtra</span></span><br><span class="line">    String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);</span><br><span class="line">    <span class="comment">//显示String</span></span><br><span class="line">    <span class="comment">//创建新的TextView</span></span><br><span class="line">    TextView textView = <span class="keyword">new</span> TextView(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//设置文本大小</span></span><br><span class="line">    textView.setTextSize(<span class="number">40</span>);</span><br><span class="line">    <span class="comment">//设置显示内容</span></span><br><span class="line">    textView.setText(message);</span><br><span class="line">    <span class="comment">//绑定xml</span></span><br><span class="line">    ViewGroup layout = (ViewGroup) findViewById(R.id.activity_display_message);</span><br><span class="line">    <span class="comment">//ViewGroup中添加TextView</span></span><br><span class="line">    layout.addView(textView);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">    setContentView(R.layout.activity_display_message);</div><div class="line"></div><div class="line">    <span class="comment">//创建本地intent</span></div><div class="line">    Intent intent = getIntent();</div><div class="line">    <span class="comment">//取出String类型数据，如果是Int类型就是getIntExtra，Boolean类型就是getBooleanExtra</span></div><div class="line">    String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);</div><div class="line">    <span class="comment">//显示String</span></div><div class="line">    <span class="comment">//创建新的TextView</span></div><div class="line">    TextView textView = <span class="keyword">new</span> TextView(<span class="keyword">this</span>);</div><div class="line">    <span class="comment">//设置文本大小</span></div><div class="line">    textView.setTextSize(<span class="number">40</span>);</div><div class="line">    <span class="comment">//设置显示内容</span></div><div class="line">    textView.setText(message);</div><div class="line">    <span class="comment">//绑定xml</span></div><div class="line">    ViewGroup layout = (ViewGroup) findViewById(R.id.activity_display_message);</div><div class="line">    <span class="comment">//ViewGroup中添加TextView</span></div><div class="line">    layout.addView(textView);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="返回数据给上一个Activity"><a href="#返回数据给上一个Activity" class="headerlink" title="返回数据给上一个Activity"></a>返回数据给上一个Activity</h3><ul>
 <li><p>构建Intent使用startActivityForResult()方法传入请求码，启动下一个Activity<br>在下一个Activity中构建Intent，intent.putExtra存入键值-key，调用setResult()方法，传入finish()结束掉Activity<br>重写第一个Activity中的onActivityResult()方法，调用.getStringExtra取出key对应键值。</p>
 </li>
 <li><p>startActivityForResult(Intent, int Bundle) Intent与单纯启动Activity的Intent相同，第二个是请求码，下一级 回调提供相同的请求码，以便您应用可以正确识别结果。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(FirestActivity.<span class="keyword">this</span>,ScendActivity.class);</span><br><span class="line">startActivityForResult(intent,<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent(FirestActivity.<span class="keyword">this</span>,ScendActivity.class);</div><div class="line">startActivityForResult(intent,<span class="number">1</span>);</div></pre></td></tr></table></figure>
 </li>
 <li><p>setResult()方法，第一个参数向上级方法处理结果，一般使用RESULT_OK或RESULT_CANCELED，第二个参数 对应Intent</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新建显示Intent</span></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line"><span class="comment">//存入key-键值</span></span><br><span class="line">intent.putExtra(<span class="string">"data_return"</span>,<span class="string">"Hello Firest"</span>);</span><br><span class="line">setResult(RESULT_OK,intent);</span><br><span class="line"><span class="comment">//结束Activity</span></span><br><span class="line">finish();</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//新建显示Intent</span></div><div class="line">Intent intent = <span class="keyword">new</span> Intent();</div><div class="line"><span class="comment">//存入key-键值</span></div><div class="line">intent.putExtra(<span class="string">"data_return"</span>,<span class="string">"Hello Firest"</span>);</div><div class="line">setResult(RESULT_OK,intent);</div><div class="line"><span class="comment">//结束Activity</span></div><div class="line">finish();</div></pre></td></tr></table></figure>
 </li>
 <li><p>onActivityResult()三个参数.第一个startActivityForResult() 传递的请求代码。第二个 Activity 指定的结果代码。成功是 RESULT_OK；失败，则是 RESULT_CANCELED。第三个是传送结果数据的 Intent。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode,<span class="keyword">int</span> resultCode,Intent data)</span></span>&#123;</span><br><span class="line">    <span class="comment">//选择不同请求码对应处理逻辑</span></span><br><span class="line">    <span class="keyword">switch</span>(requestCode)&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            <span class="comment">//处理结果时候ok</span></span><br><span class="line">            <span class="keyword">if</span>(resultCode == RESULT_OK)&#123;</span><br><span class="line">                <span class="comment">//取出数据</span></span><br><span class="line">                String returnedData = data.getStringExtra(<span class="string">"data_return"</span>);</span><br><span class="line">                Log.d(<span class="string">"FirstActivity"</span>, returnedData);</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"> <span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode,<span class="keyword">int</span> resultCode,Intent data)</span></span>&#123;</div><div class="line">    <span class="comment">//选择不同请求码对应处理逻辑</span></div><div class="line">    <span class="keyword">switch</span>(requestCode)&#123;</div><div class="line">        <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">            <span class="comment">//处理结果时候ok</span></div><div class="line">            <span class="keyword">if</span>(resultCode == RESULT_OK)&#123;</div><div class="line">                <span class="comment">//取出数据</span></div><div class="line">                String returnedData = data.getStringExtra(<span class="string">"data_return"</span>);</div><div class="line">                Log.d(<span class="string">"FirstActivity"</span>, returnedData);</div><div class="line">            &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="Activity生命周期"><a href="#Activity生命周期" class="headerlink" title="Activity生命周期"></a>Activity生命周期</h2><p>  <img src="http://cdn2.snapgram.co/imgs/2016/12/07/basic-lifecycle.png" alt="basic-lifecycle.png"></p>
@@ -444,7 +581,7 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
 <li><p>主Activity：</p>
 <ul>
 <li>用户点击app图标，启动主Activity</li>
-<li>在AndroidManifest.xml中声明<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<li>在AndroidManifest.xml中声明<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -465,7 +602,7 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
 <li>提交未保存的更改，仅保存用户离开时希望永久性保存此类更改（比如电子邮件草稿）。</li>
 <li>释放系统资源，GPS/Camer等</li>
 <li><p>示例 (释放Camer)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">super</span>.onPause();  <span class="comment">// Always call the superclass method first</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Release the Camera because we don't need it when paused</span></span><br><span class="line"><span class="comment">// and other activities might need to use it.</span></span><br><span class="line"><span class="keyword">if</span> (mCamera != <span class="keyword">null</span>) &#123;</span><br><span class="line">   mCamera.release();</span><br><span class="line">   mCamera = <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;</div><div class="line"><span class="keyword">super</span>.onPause();  <span class="comment">// Always call the superclass method first</span></div><div class="line"></div><div class="line"><span class="comment">// Release the Camera because we don't need it when paused</span></div><div class="line"><span class="comment">// and other activities might need to use it.</span></div><div class="line"><span class="keyword">if</span> (mCamera != <span class="keyword">null</span>) &#123;</div><div class="line">   mCamera.release();</div><div class="line">   mCamera = <span class="keyword">null</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>注意事项：</p>
 <ul>
@@ -481,7 +618,7 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
 <li>onResume() 方法</li>
 <li>暂停状态回到继续状态，Activity第一次启动时也会调用这个方法。</li>
 <li>onResume() 以初始化在 onPause() 期间释放的组件。</li>
-<li>示例(重新获取Camera)<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">super</span>.onResume();  <span class="comment">// Always call the superclass method first</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// Get the Camera instance as the activity achieves full user focus</span></span><br><span class="line">  <span class="keyword">if</span> (mCamera == <span class="keyword">null</span>) &#123;</span><br><span class="line">      initializeCamera(); <span class="comment">// Local method to handle camera init</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<li>示例(重新获取Camera)<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</div><div class="line">  <span class="keyword">super</span>.onResume();  <span class="comment">// Always call the superclass method first</span></div><div class="line"></div><div class="line">  <span class="comment">// Get the Camera instance as the activity achieves full user focus</span></div><div class="line">  <span class="keyword">if</span> (mCamera == <span class="keyword">null</span>) &#123;</div><div class="line">      initializeCamera(); <span class="comment">// Local method to handle camera init</span></div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="停止-Activity"><a href="#停止-Activity" class="headerlink" title="停止 Activity"></a>停止 Activity</h3><ul>
@@ -500,13 +637,13 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
 </li>
 <li>onStop() 方法调用后，Activity不再可见，极端情况下，系统可能会仅终止应用进程，而不调用 onDestroy() ，因此需要使用 onStop() 释放几乎所有用户不使用时不需要的资源。</li>
 <li>尽管 onPause() 方法在 onStop()之前调用，在onStop() 执行更大、占用更多 CPU 的关闭操作，比如向数据库写入信息</li>
-<li>示例（草稿笔记内容保存在永久存储）<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">super</span>.onStop();  <span class="comment">// Always call the superclass method first</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// Save the note's current draft, because the activity is stopping</span></span><br><span class="line">  <span class="comment">// and we want to be sure the current note progress isn't lost.</span></span><br><span class="line">  ContentValues values = <span class="keyword">new</span> ContentValues();</span><br><span class="line">  values.put(NotePad.Notes.COLUMN_NAME_NOTE, getCurrentNoteText());</span><br><span class="line">  values.put(NotePad.Notes.COLUMN_NAME_TITLE, getCurrentNoteTitle());</span><br><span class="line"></span><br><span class="line">  getContentResolver().update(</span><br><span class="line">  mUri,    <span class="comment">// The URI for the note to update.</span></span><br><span class="line">  values,  <span class="comment">// The map of column names and new values to apply to them.</span></span><br><span class="line">   <span class="keyword">null</span>,    <span class="comment">// No SELECT criteria are used.</span></span><br><span class="line">   <span class="keyword">null</span>     <span class="comment">// No WHERE columns are used.</span></span><br><span class="line">   );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>示例（草稿笔记内容保存在永久存储）<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span> </span>&#123;</div><div class="line">  <span class="keyword">super</span>.onStop();  <span class="comment">// Always call the superclass method first</span></div><div class="line"></div><div class="line">  <span class="comment">// Save the note's current draft, because the activity is stopping</span></div><div class="line">  <span class="comment">// and we want to be sure the current note progress isn't lost.</span></div><div class="line">  ContentValues values = <span class="keyword">new</span> ContentValues();</div><div class="line">  values.put(NotePad.Notes.COLUMN_NAME_NOTE, getCurrentNoteText());</div><div class="line">  values.put(NotePad.Notes.COLUMN_NAME_TITLE, getCurrentNoteTitle());</div><div class="line"></div><div class="line">  getContentResolver().update(</div><div class="line">  mUri,    <span class="comment">// The URI for the note to update.</span></div><div class="line">  values,  <span class="comment">// The map of column names and new values to apply to them.</span></div><div class="line">   <span class="keyword">null</span>,    <span class="comment">// No SELECT criteria are used.</span></div><div class="line">   <span class="keyword">null</span>     <span class="comment">// No WHERE columns are used.</span></div><div class="line">   );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="启动-重启-Activity"><a href="#启动-重启-Activity" class="headerlink" title="启动/重启 Activity"></a>启动/重启 Activity</h3><ul>
 <li>onStart() 方法</li>
 <li>Activity 停止转换为继续状态时，系统回调onRestart() 方法+ onStart() 方法.onStop() 方法清理了所有 Activity 的资源，重启 Activity 需要重新实例化它们。同时 Activity 初次创建时重新实例化它们。 出于此，经常使用 onStart() 方法作为 onStop() 方法的对应</li>
-<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="keyword">super</span>.onStart();  <span class="comment">// Always call the superclass method first</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">// The activity is either being restarted or started for the first time</span></span><br><span class="line">   <span class="comment">// so this is where we should make sure that GPS is enabled</span></span><br><span class="line">   LocationManager locationManager =</span><br><span class="line">    (LocationManager) getSystemService(Context.LOCATION_SERVICE);</span><br><span class="line">   <span class="keyword">boolean</span> gpsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span> (!gpsEnabled) &#123;</span><br><span class="line">    <span class="comment">// Create a dialog here that requests the user to enable GPS, and use an intent</span></span><br><span class="line">    <span class="comment">// with the android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS action</span></span><br><span class="line">    <span class="comment">// to take the user to the Settings screen to enable GPS when they click "OK"</span></span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onRestart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="keyword">super</span>.onRestart();  <span class="comment">// Always call the superclass method first</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">// Activity being restarted from stopped state</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"> <span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span> </span>&#123;</div><div class="line">   <span class="keyword">super</span>.onStart();  <span class="comment">// Always call the superclass method first</span></div><div class="line"></div><div class="line">   <span class="comment">// The activity is either being restarted or started for the first time</span></div><div class="line">   <span class="comment">// so this is where we should make sure that GPS is enabled</span></div><div class="line">   LocationManager locationManager =</div><div class="line">    (LocationManager) getSystemService(Context.LOCATION_SERVICE);</div><div class="line">   <span class="keyword">boolean</span> gpsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);</div><div class="line"></div><div class="line">   <span class="keyword">if</span> (!gpsEnabled) &#123;</div><div class="line">    <span class="comment">// Create a dialog here that requests the user to enable GPS, and use an intent</span></div><div class="line">    <span class="comment">// with the android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS action</span></div><div class="line">    <span class="comment">// to take the user to the Settings screen to enable GPS when they click "OK"</span></div><div class="line">   	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onRestart</span><span class="params">()</span> </span>&#123;</div><div class="line">   <span class="keyword">super</span>.onRestart();  <span class="comment">// Always call the superclass method first</span></div><div class="line"></div><div class="line">   <span class="comment">// Activity being restarted from stopped state</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="保存-Activity-状态"><a href="#保存-Activity-状态" class="headerlink" title="保存 Activity 状态"></a>保存 Activity 状态</h3><ul>
@@ -520,7 +657,7 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
 <li>note:<br>旋转屏幕时，Activity 将被销毁并重新创建。原因：方向更改时可能需要时加载备用资源（比如布局）</li>
 </ul>
 <ul>
-<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> String STATE_SCORE = <span class="string">"playerScore"</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> String STATE_LEVEL = <span class="string">"playerLevel"</span>;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSaveInstanceState</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// Save the user's current game state</span></span><br><span class="line">   savedInstanceState.putInt(STATE_SCORE, mCurrentScore);</span><br><span class="line">   savedInstanceState.putInt(STATE_LEVEL, mCurrentLevel);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// Always call the superclass so it can save the view hierarchy state</span></span><br><span class="line">   <span class="keyword">super</span>.onSaveInstanceState(savedInstanceState);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> <span class="keyword">final</span> String STATE_SCORE = <span class="string">"playerScore"</span>;</div><div class="line"><span class="keyword">static</span> <span class="keyword">final</span> String STATE_LEVEL = <span class="string">"playerLevel"</span>;</div><div class="line">...</div><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSaveInstanceState</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">  <span class="comment">// Save the user's current game state</span></div><div class="line">   savedInstanceState.putInt(STATE_SCORE, mCurrentScore);</div><div class="line">   savedInstanceState.putInt(STATE_LEVEL, mCurrentLevel);</div><div class="line"></div><div class="line">   <span class="comment">// Always call the superclass so it can save the view hierarchy state</span></div><div class="line">   <span class="keyword">super</span>.onSaveInstanceState(savedInstanceState);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="恢复-Activity"><a href="#恢复-Activity" class="headerlink" title="恢复 Activity"></a>恢复 Activity</h3><ul>
@@ -528,12 +665,12 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
 <li>onCreate() 方法</li>
 <li>调用onCreate() 方法需要区分是创建 Activity 的新实例还是恢复先前的实例，判断 Bundle 是否为 null</li>
 <li><p>示例</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">super</span>.onCreate(savedInstanceState); <span class="comment">// Always call the superclass first</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">// Check whether we're recreating a previously destroyed instance</span></span><br><span class="line">   <span class="keyword">if</span> (savedInstanceState != <span class="keyword">null</span>) &#123;</span><br><span class="line">       <span class="comment">// Restore value of members from saved state</span></span><br><span class="line">       mCurrentScore = savedInstanceState.getInt(STATE_SCORE);</span><br><span class="line">       mCurrentLevel = savedInstanceState.getInt(STATE_LEVEL);</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">       <span class="comment">// Probably initialize members with default values for a new instance</span></span><br><span class="line">  	 &#125;</span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">   <span class="keyword">super</span>.onCreate(savedInstanceState); <span class="comment">// Always call the superclass first</span></div><div class="line"></div><div class="line">   <span class="comment">// Check whether we're recreating a previously destroyed instance</span></div><div class="line">   <span class="keyword">if</span> (savedInstanceState != <span class="keyword">null</span>) &#123;</div><div class="line">       <span class="comment">// Restore value of members from saved state</span></div><div class="line">       mCurrentScore = savedInstanceState.getInt(STATE_SCORE);</div><div class="line">       mCurrentLevel = savedInstanceState.getInt(STATE_LEVEL);</div><div class="line">   &#125; <span class="keyword">else</span> &#123;</div><div class="line">       <span class="comment">// Probably initialize members with default values for a new instance</span></div><div class="line">  	 &#125;</div><div class="line">   ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>onRestoreInstanceState()方法</p>
 </li>
 <li>只需要恢复的已保存的状态</li>
-<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRestoreInstanceState</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">   <span class="comment">// Always call the superclass so it can restore the view hierarchy</span></span><br><span class="line">   <span class="keyword">super</span>.onRestoreInstanceState(savedInstanceState);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// Restore state members from saved instance</span></span><br><span class="line">   mCurrentScore = savedInstanceState.getInt(STATE_SCORE);</span><br><span class="line">   mCurrentLevel = savedInstanceState.getInt(STATE_LEVEL);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRestoreInstanceState</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">   <span class="comment">// Always call the superclass so it can restore the view hierarchy</span></div><div class="line">   <span class="keyword">super</span>.onRestoreInstanceState(savedInstanceState);</div><div class="line"></div><div class="line">   <span class="comment">// Restore state members from saved instance</span></div><div class="line">   mCurrentScore = savedInstanceState.getInt(STATE_SCORE);</div><div class="line">   mCurrentLevel = savedInstanceState.getInt(STATE_LEVEL);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="重启Activity其他选择"><a href="#重启Activity其他选择" class="headerlink" title="重启Activity其他选择"></a>重启Activity其他选择</h3><ul>
@@ -546,7 +683,7 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
 <li><p>自定义BaseActivity继承自AppCompatActivity<br>重写onCreate方法，打印当前运行的Activity名<br>app类所有Activity改为继承BaseActivity</p>
 </li>
 <li><p>代码如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">      <span class="comment">//打印当前类名</span></span><br><span class="line">      Log.d(<span class="string">"BaseActivity"</span>, getClass().getSimpleName())；</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">      <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">      <span class="comment">//打印当前类名</span></div><div class="line">      Log.d(<span class="string">"BaseActivity"</span>, getClass().getSimpleName())；</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>效果如下<br><img src="http://cdn2.snapgram.co/imgs/2016/12/08/ScreenShot_20161208172740.png" alt="ScreenShot_20161208172740.png"></p>
 </li>
@@ -554,12 +691,12 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
 <h3 id="随时退出程序"><a href="#随时退出程序" class="headerlink" title="随时退出程序"></a>随时退出程序</h3><ul>
 <li>新建ActivityCollector类作为活动管理器，添加/删除Activity登记,在BaseActivity中添加对应代码。</li>
 <li><p>代码如下  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityCollector</span> </span>&#123;</span><br><span class="line"><span class="comment">//新建Activity的列表对象</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> List&lt;Activity&gt; activities = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="comment">//添加Activity进入列表</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addActivity</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">       activities.add(activity);</span><br><span class="line">   &#125;</span><br><span class="line"><span class="comment">//在列表中移除Activity</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">removeActivity</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">       activities.remove(activity);</span><br><span class="line">   &#125;</span><br><span class="line"><span class="comment">//for循环列表 结束所有Activity</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">finishAll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">for</span> (Activity activity : activities) &#123;</span><br><span class="line">           <span class="keyword">if</span> (!activity.isFinishing()) &#123;</span><br><span class="line">               activity.finish();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityCollector</span> </span>&#123;</div><div class="line"><span class="comment">//新建Activity的列表对象</span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> List&lt;Activity&gt; activities = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"><span class="comment">//添加Activity进入列表</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addActivity</span><span class="params">(Activity activity)</span> </span>&#123;</div><div class="line">       activities.add(activity);</div><div class="line">   &#125;</div><div class="line"><span class="comment">//在列表中移除Activity</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">removeActivity</span><span class="params">(Activity activity)</span> </span>&#123;</div><div class="line">       activities.remove(activity);</div><div class="line">   &#125;</div><div class="line"><span class="comment">//for循环列表 结束所有Activity</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">finishAll</span><span class="params">()</span> </span>&#123;</div><div class="line">       <span class="keyword">for</span> (Activity activity : activities) &#123;</div><div class="line">           <span class="keyword">if</span> (!activity.isFinishing()) &#123;</div><div class="line">               activity.finish();</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>BaseActivity<br>在onCreate()方法中添加</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Activity管理器中添加新的活动</span></span><br><span class="line">ActivityCollector.addActivity(<span class="keyword">this</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Activity管理器中添加新的活动</span></div><div class="line">ActivityCollector.addActivity(<span class="keyword">this</span>);</div></pre></td></tr></table></figure>
 <p>重写onDestroy()方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onDestroy();</span><br><span class="line">    <span class="comment">//Activity管理器中移除活动</span></span><br><span class="line">    ActivityCollector.removeActivity(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">super</span>.onDestroy();</div><div class="line">    <span class="comment">//Activity管理器中移除活动</span></div><div class="line">    ActivityCollector.removeActivity(<span class="keyword">this</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>在任何地方调用finishAll()方法即可。</p>
 </li>
@@ -567,7 +704,7 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
 <h3 id="启动活动的最近写法"><a href="#启动活动的最近写法" class="headerlink" title="启动活动的最近写法"></a>启动活动的最近写法</h3><ul>
 <li>启动下一个Activity并传递数据模块化</li>
 <li><p>在SecondActivity内增加actionStart()方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//调用的Activity，数据1，数据2</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">actionStart</span><span class="params">(Context context, String data1, String data2)</span></span>&#123;</span><br><span class="line">    <span class="comment">//新建Intent，绑定SecondActivity</span></span><br><span class="line">    Intent intent = <span class="keyword">new</span> Intent(context,ScendActivity.class);</span><br><span class="line">    <span class="comment">//存入data1，data2</span></span><br><span class="line">    intent.putExtra(<span class="string">"param1"</span>,data1);</span><br><span class="line">    intent.putExtra(<span class="string">"param2"</span>,data2);</span><br><span class="line">    <span class="comment">//启动Activity</span></span><br><span class="line">    context.startActivity(intent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">//调用的Activity，数据1，数据2</span></div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">actionStart</span><span class="params">(Context context, String data1, String data2)</span></span>&#123;</div><div class="line">    <span class="comment">//新建Intent，绑定SecondActivity</span></div><div class="line">    Intent intent = <span class="keyword">new</span> Intent(context,ScendActivity.class);</div><div class="line">    <span class="comment">//存入data1，data2</span></div><div class="line">    intent.putExtra(<span class="string">"param1"</span>,data1);</div><div class="line">    intent.putExtra(<span class="string">"param2"</span>,data2);</div><div class="line">    <span class="comment">//启动Activity</span></div><div class="line">    context.startActivity(intent);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>启动SecondActivity方式<br><code>ScendActivity.actionStart(FirestActivity.this,&quot;data1&quot;,&quot;data2&quot;);</code>  </p>
 </li>
@@ -576,23 +713,61 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
       
     </div>
 
+	
+
+	
     <div>
       
         
+
       
     </div>
 
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/2016/12/07/Android笔记-Activity/" title="Android笔记—Activity">http://yoursite.com/2016/12/07/Android笔记-Activity/</a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
     <footer class="post-footer">
+	
+	
+	
       
         <div class="post-tags">
           
-            <a href="/tags/Android-Studio/" rel="tag">#Android Studio</a>
+            <a href="/tags/Android-Studio/" rel="tag"># Android Studio</a>
           
-            <a href="/tags/Android/" rel="tag">#Android</a>
+            <a href="/tags/Android/" rel="tag"># Android</a>
           
-            <a href="/tags/学习记录/" rel="tag">#学习记录</a>
+            <a href="/tags/学习记录/" rel="tag"># 学习记录</a>
           
         </div>
+      
+
+      
+        
       
 
       
@@ -604,6 +779,8 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
               </a>
             
           </div>
+
+          <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
@@ -638,7 +815,7 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     
@@ -673,25 +850,32 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
         </ul>
       
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/v.png"
                alt="Jasper" />
           <p class="site-author-name" itemprop="name">Jasper</p>
-          <p class="site-description motion-element" itemprop="description">程序员 微尘 V</p>
+           
+              <p class="site-description motion-element" itemprop="description">程序员 微尘 V</p>
+          
         </div>
         <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">25</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
 
           
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
             <div class="site-state-item site-state-categories">
-              <a href="/categories">
+              <a href="/categories/index.html">
                 <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
@@ -699,8 +883,10 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
           
 
           
+            
+            
             <div class="site-state-item site-state-tags">
-              <a href="/tags">
+              <a href="/tags/index.html">
                 <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
@@ -722,9 +908,9 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
           
             
               <span class="links-of-author-item">
-                <a href="https://github.com/jasper-1024" target="_blank">
+                <a href="https://github.com/jasper-1024" target="_blank" title="GitHub">
                   
-                    <i class="fa fa-github"></i>
+                    <i class="fa fa-fw fa-github"></i>
                   
                   GitHub
                 </a>
@@ -737,23 +923,31 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
         
 
         
-        <div class="links-of-blogroll motion-element">
-          
-        </div>
+        
+
+        
+
 
       </section>
 
       
+      <!--noindex-->
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
+
             
               
             
+
             
               <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Activity基础"><span class="nav-number">1.</span> <span class="nav-text">Activity基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Activity定义"><span class="nav-number">1.1.</span> <span class="nav-text">Activity定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Activity"><span class="nav-number">1.2.</span> <span class="nav-text">创建Activity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Toast"><span class="nav-number">1.3.</span> <span class="nav-text">使用Toast</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Menu"><span class="nav-number">1.4.</span> <span class="nav-text">使用Menu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向一个activity-并传递字符串"><span class="nav-number">1.5.</span> <span class="nav-text">向一个activity 并传递字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回数据给上一个Activity"><span class="nav-number">1.6.</span> <span class="nav-text">返回数据给上一个Activity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Activity生命周期"><span class="nav-number">2.</span> <span class="nav-text">Activity生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#启动一个Activity"><span class="nav-number">2.1.</span> <span class="nav-text">启动一个Activity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#销毁Activity"><span class="nav-number">2.2.</span> <span class="nav-text">销毁Activity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#暂停Activity"><span class="nav-number">2.3.</span> <span class="nav-text">暂停Activity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继续-Activity"><span class="nav-number">2.4.</span> <span class="nav-text">继续 Activity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#停止-Activity"><span class="nav-number">2.5.</span> <span class="nav-text">停止 Activity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动-重启-Activity"><span class="nav-number">2.6.</span> <span class="nav-text">启动/重启 Activity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保存-Activity-状态"><span class="nav-number">2.7.</span> <span class="nav-text">保存 Activity 状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#恢复-Activity"><span class="nav-number">2.8.</span> <span class="nav-text">恢复 Activity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重启Activity其他选择"><span class="nav-number">2.9.</span> <span class="nav-text">重启Activity其他选择</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在配置变更期间保留对象"><span class="nav-number">2.9.1.</span> <span class="nav-text">在配置变更期间保留对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Activity最佳实践"><span class="nav-number">3.</span> <span class="nav-text">Activity最佳实践</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#知晓当前运行的活动"><span class="nav-number">3.1.</span> <span class="nav-text">知晓当前运行的活动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随时退出程序"><span class="nav-number">3.2.</span> <span class="nav-text">随时退出程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动活动的最近写法"><span class="nav-number">3.3.</span> <span class="nav-text">启动活动的最近写法</span></a></li></ol></li></ol></div>
             
+
           </div>
         </section>
+      <!--/noindex-->
+      
+
       
 
     </div>
@@ -769,41 +963,31 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
         <div class="copyright" >
   
   &copy;  2016.6.2 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2017.6.17</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Jasper</span>
 </div>
 
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
 
 
+        
 
+        
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
   </div>
 
   
-
-
-  
-
-
-
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
@@ -812,76 +996,253 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
 </script>
 
 
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+  
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
+  
   <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
+  
   <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js"></script>
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js"></script>
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
   
+  
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
   
 
 
-
-  
-
-    <script type="text/javascript">
-      var disqus_shortname = 'jasper1024';
-      var disqus_identifier = '2016/12/07/Android笔记-Activity/';
-      var disqus_title = 'Android笔记—Activity';
-      var disqus_url = 'http://yoursite.com/2016/12/07/Android笔记-Activity/';
-
-      function run_disqus_script(disqus_script){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-      
-        run_disqus_script('embed.js');
-      
-    </script>
-  
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
   
+
+
   
+
+    
+      <script id="dsq-count-scr" src="https://jasper1024.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2016/12/07/Android笔记-Activity/';
+          this.page.identifier = '2016/12/07/Android笔记-Activity/';
+          this.page.title = 'Android笔记—Activity';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://jasper1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
   
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
 
   
 
@@ -916,6 +1277,14 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
 
             $(element).find(COUNT_CONTAINER_REF).text(time);
           }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
         })
         .fail(function (object, error) {
           console.log("Error: " + error.code + " " + error.message);
@@ -946,6 +1315,12 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
             });
           } else {
             var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
             newcounter.set("title", title);
             newcounter.set("url", url);
             newcounter.set("time", 1);
@@ -980,5 +1355,14 @@ Activity 是Android四大组件之一，用户可与其提供的屏幕进行交�
 
   
 
+  
+
+  
+
+  
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+  
 </body>
 </html>

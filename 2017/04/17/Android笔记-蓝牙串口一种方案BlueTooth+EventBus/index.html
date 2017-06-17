@@ -5,10 +5,10 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
@@ -27,18 +27,48 @@
 
 
 
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Android Studio,Android,学习记录,毕设,BlueTooth," />
@@ -52,102 +82,56 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
 
 
 
-<meta name="description" content="资料来源如下
-
-第一行代码(第二版)
-
-编程环境
-
-Android Studio 2.2.3 
-
-导语
-
-毕设中的蓝牙部分,记录以供复习
-
-
-概述最终效果
-Android应用 与 Hc-05 蓝牙模块连接,单片机与 Android 端 可以通过串口正常收发数据.
-
-预留足够灵活的接口, Android 应用中可以在任意位置获取到蓝牙数据
-
-Activity切换时,蓝牙连接不断开.
-
-
-用到的开源">
+<meta name="description" content="资料来源如下  第一行代码(第二版)  编程环境  Android Studio 2.2.3   导语  毕设中的蓝牙部分,记录以供复习   概述最终效果 Android应用 与 Hc-05 蓝牙模块连接,单片机与 Android 端 可以通过串口正常收发数据.  预留足够灵活的接口, Android 应用中可以在任意位置获取到蓝牙数据  Activity切换时,蓝牙连接不断开.   用到的开源">
+<meta name="keywords" content="Android Studio,Android,学习记录,毕设,BlueTooth">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android笔记—蓝牙串口(BlueTooth+EventBus)">
 <meta property="og:url" content="http://yoursite.com/2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/index.html">
 <meta property="og:site_name" content="默">
-<meta property="og:description" content="资料来源如下
-
-第一行代码(第二版)
-
-编程环境
-
-Android Studio 2.2.3 
-
-导语
-
-毕设中的蓝牙部分,记录以供复习
-
-
-概述最终效果
-Android应用 与 Hc-05 蓝牙模块连接,单片机与 Android 端 可以通过串口正常收发数据.
-
-预留足够灵活的接口, Android 应用中可以在任意位置获取到蓝牙数据
-
-Activity切换时,蓝牙连接不断开.
-
-
-用到的开源">
+<meta property="og:description" content="资料来源如下  第一行代码(第二版)  编程环境  Android Studio 2.2.3   导语  毕设中的蓝牙部分,记录以供复习   概述最终效果 Android应用 与 Hc-05 蓝牙模块连接,单片机与 Android 端 可以通过串口正常收发数据.  预留足够灵活的接口, Android 应用中可以在任意位置获取到蓝牙数据  Activity切换时,蓝牙连接不断开.   用到的开源">
 <meta property="og:updated_time" content="2017-06-11T12:40:33.649Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android笔记—蓝牙串口(BlueTooth+EventBus)">
-<meta name="twitter:description" content="资料来源如下
-
-第一行代码(第二版)
-
-编程环境
-
-Android Studio 2.2.3 
-
-导语
-
-毕设中的蓝牙部分,记录以供复习
-
-
-概述最终效果
-Android应用 与 Hc-05 蓝牙模块连接,单片机与 Android 端 可以通过串口正常收发数据.
-
-预留足够灵活的接口, Android 应用中可以在任意位置获取到蓝牙数据
-
-Activity切换时,蓝牙连接不断开.
-
-
-用到的开源">
+<meta name="twitter:description" content="资料来源如下  第一行代码(第二版)  编程环境  Android Studio 2.2.3   导语  毕设中的蓝牙部分,记录以供复习   概述最终效果 Android应用 与 Hc-05 蓝牙模块连接,单片机与 Android 端 可以通过串口正常收发数据.  预留足够灵活的接口, Android 应用中可以在任意位置获取到蓝牙数据  Activity切换时,蓝牙连接不断开.   用到的开源">
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
+    root: '/',
     scheme: 'Mist',
-    sidebar: {"position":"right","display":"post"},
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
+      userId: '0',
       author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/"/>
+
+
+
+
 
   <title> Android笔记—蓝牙串口(BlueTooth+EventBus) | 默 </title>
 </head>
@@ -157,14 +141,18 @@ Activity切换时,蓝牙连接不断开.
   
 
 
+
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-79641673-1', 'auto');
   ga('send', 'pageview');
 </script>
+
+
 
 
 
@@ -179,29 +167,33 @@ Activity切换时,蓝牙连接不断开.
     
   
 
-  <div class="container one-collumn sidebar-position-right page-post-detail ">
+  <div class="container sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">默</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">默</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">为了生存，而一点点淡忘了最初的本意。</p>
+      
   </div>
-  <p class="site-subtitle">为了生存，而一点点淡忘了最初的本意。</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -214,7 +206,7 @@ Activity切换时,蓝牙连接不断开.
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -224,7 +216,7 @@ Activity切换时,蓝牙连接不断开.
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -234,7 +226,7 @@ Activity切换时,蓝牙连接不断开.
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -244,7 +236,7 @@ Activity切换时,蓝牙连接不断开.
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -254,7 +246,7 @@ Activity切换时,蓝牙连接不断开.
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
             关于
           </a>
@@ -264,7 +256,7 @@ Activity切换时,蓝牙连接不断开.
         <li class="menu-item menu-item-guestbook">
           <a href="/guestbook" rel="section">
             
-              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             留言
           </a>
@@ -272,11 +264,47 @@ Activity切换时,蓝牙连接不断开.
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
   
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
 </nav>
+
+
 
  </div>
     </header>
@@ -291,13 +319,23 @@ Activity切换时,蓝牙连接不断开.
     
 
   
-  
 
   
   
   
-
+  
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
 
     
       <header class="post-header">
@@ -316,24 +354,36 @@ Activity切换时,蓝牙连接不断开.
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-17T12:00:00+08:00" content="2017-04-17">
-              2017-04-17
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-17T12:00:00+08:00">
+                2017-04-17
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Android笔记/" itemprop="url" rel="index">
                     <span itemprop="name">Android笔记</span>
                   </a>
@@ -341,7 +391,6 @@ Activity切换时,蓝牙连接不断开.
 
                 
                 
-
               
             </span>
           
@@ -349,26 +398,66 @@ Activity切换时,蓝牙连接不断开.
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
              <span id="/2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/" class="leancloud_visitors" data-flag-title="Android笔记—蓝牙串口(BlueTooth+EventBus)">
-               &nbsp; | &nbsp;
+               <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,942
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  9m
+                </span>
+              
+            </div>
+          
+
           
 
         </div>
@@ -439,16 +528,16 @@ Activity切换时,蓝牙连接不断开.
 </ul>
 <h4 id="初始化蓝牙"><a href="#初始化蓝牙" class="headerlink" title="初始化蓝牙"></a>初始化蓝牙</h4><ul>
 <li><p>声明蓝牙权限<br>Android 应用使用蓝牙前都需要声明蓝牙权限<br>一般只需要  BLUETOOTH 权限即可,但是考虑到之后有更多的需求,需要更改系统蓝牙设置,由此需要 BLUETOOTH<em>ADMIN 权限</em>也一起声明</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;manifest ... &gt;</span><br><span class="line">&lt;uses-permission android:name="android.permission.BLUETOOTH" /&gt;</span><br><span class="line">&lt;uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /&gt;</span><br><span class="line">...</span><br><span class="line">&lt;/manifest&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;manifest ... &gt;</div><div class="line">&lt;uses-permission android:name="android.permission.BLUETOOTH" /&gt;</div><div class="line">&lt;uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /&gt;</div><div class="line">...</div><div class="line">&lt;/manifest&gt;</div></pre></td></tr></table></figure>
 </li>
 <li><p>蓝牙设备可用性  获取 BluetoothAdapter<br>获取 BluetoothAdapter，需要静态 getDefaultAdapter() 方法。getDefaultAdapter() 会返回一个表示设备自身的蓝牙适配器的 BluetoothAdapter 设备不支持蓝牙 则返回 null</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();</span><br><span class="line"><span class="keyword">if</span> (mBluetoothAdapter == <span class="keyword">null</span>) &#123;</span><br><span class="line">  <span class="comment">// 蓝牙不可用操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();</div><div class="line"><span class="keyword">if</span> (mBluetoothAdapter == <span class="keyword">null</span>) &#123;</div><div class="line">  <span class="comment">// 蓝牙不可用操作</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>开启蓝牙<br>BluetoothAdapter 的 .isEnabled() 可以判断系统蓝牙是否开启.<br>没有开启时 startActivityForResult() 发送包含  ACTION_REQUEST_ENABLE  的 Intent 请求系统开启蓝牙,并在 onActivityResult() 返回的数据中 RESULT_CANCELED 表示开启失败 RESULT_OK  表示开启成功,这里我们只检测开启失败情况,并提示用户 </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!mBluetoothAdapter.isEnabled()) &#123;</span><br><span class="line">  Intent enableBtIntent = <span class="keyword">new</span> Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);</span><br><span class="line">  startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (requestCode == REQUEST_ENABLE_BT &amp;&amp; resultCode == RESULT_CANCELED) &#123;</span><br><span class="line">          Toast.makeText(MyApplication.getContext(),R.string.Bluetooth_openfail, Toast.LENGTH_SHORT).show();</span><br><span class="line">      &#125;</span><br><span class="line">      BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();</span><br><span class="line">      <span class="keyword">if</span> (mBluetoothAdapter == <span class="keyword">null</span>) &#123;</span><br><span class="line">          <span class="comment">//设备不支持蓝牙时处理</span></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (!mBluetoothAdapter.isEnabled()) &#123;</div><div class="line">  Intent enableBtIntent = <span class="keyword">new</span> Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);</div><div class="line">  startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);</div><div class="line">&#125;</div><div class="line"></div><div class="line"> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data)</span> </span>&#123;</div><div class="line">      <span class="keyword">if</span> (requestCode == REQUEST_ENABLE_BT &amp;&amp; resultCode == RESULT_CANCELED) &#123;</div><div class="line">          Toast.makeText(MyApplication.getContext(),R.string.Bluetooth_openfail, Toast.LENGTH_SHORT).show();</div><div class="line">      &#125;</div><div class="line">      BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();</div><div class="line">      <span class="keyword">if</span> (mBluetoothAdapter == <span class="keyword">null</span>) &#123;</div><div class="line">          <span class="comment">//设备不支持蓝牙时处理</span></div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>查询已配对的设备<br>调用 getBondedDevices(),返回已配对设备的一组 BluetoothDevice.之后使用for循环遍历</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;BluetoothDevice&gt; pairedDevices = mBluetoothAdapter.getBondedDevices();</span><br><span class="line"><span class="keyword">if</span> (pairedDevices.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">//重新加载bluetoothDeviceList</span></span><br><span class="line">        bluetoothDeviceList.clear();</span><br><span class="line">        <span class="comment">//BluetoothDevice列表循环</span></span><br><span class="line">        <span class="keyword">for</span> (BluetoothDevice device : pairedDevices) &#123;</span><br><span class="line">          bluetoothDeviceList.add(device);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Set&lt;BluetoothDevice&gt; pairedDevices = mBluetoothAdapter.getBondedDevices();</div><div class="line"><span class="keyword">if</span> (pairedDevices.size() &gt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="comment">//重新加载bluetoothDeviceList</span></div><div class="line">        bluetoothDeviceList.clear();</div><div class="line">        <span class="comment">//BluetoothDevice列表循环</span></div><div class="line">        <span class="keyword">for</span> (BluetoothDevice device : pairedDevices) &#123;</div><div class="line">          bluetoothDeviceList.add(device);</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>扫描设备<br>查找设备是非常耗费系统资源的事项，需要安排在子线程中执行，这里没有用到，由需要请参考Google官方蓝牙教程</p>
 </li>
@@ -456,13 +545,13 @@ Activity切换时,蓝牙连接不断开.
 <ul>
 <li>首先获取远程设备的 BluetoothDevice 对象，即在选择设备阶段的BluetoothDevice</li>
 <li>调用 createRfcommSocketToServiceRecord(UUID) 获取 BluetoothSocket，UUID通用唯一识别码 在蓝牙中具体是什么没有很好的解释。这里的值取的是<br><code>&quot;00001101-0000-1000-8000-00805F9B34FB&quot;</code></li>
-<li>调用 connect() 发起连接,阻塞调用，需要在子线程中执行。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//蓝牙连接子线程</span></span><br><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//解析函数</span></span><br><span class="line">    ConnectThread(BluetoothDevice bluetoothDevice) &#123;</span><br><span class="line">        <span class="comment">// 使用一个中间变量 tmp</span></span><br><span class="line">        <span class="comment">// mmSocket 类型是 final</span></span><br><span class="line"></span><br><span class="line">        BluetoothSocket tmp = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">// 获取 BluetoothSocket</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// MY_UUID is the app's UUID string, also used by the server code</span></span><br><span class="line">            tmp = bluetoothDevice.createRfcommSocketToServiceRecord(UUID.fromString(MyApplication.MY_UUID));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//赋值给 mmSocket</span></span><br><span class="line">        mmSocket = tmp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 关闭蓝牙扫描</span></span><br><span class="line">        MyApplication.getBluetoothAdapter().cancelDiscovery();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 通过 socket 连接到设备. connect() 会一直执行直到成功连接或者抛出异常</span></span><br><span class="line">            mmSocket.connect();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException connectException) &#123;</span><br><span class="line">            <span class="comment">//无法连接到蓝牙,关闭连接并退出</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                mmSocket.close();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//没有正常关闭</span></span><br><span class="line">            <span class="keyword">catch</span> (IOException ignored) &#123;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// Do work to manage the connection (in a separate thread)</span></span><br><span class="line">        mConnectedThread = <span class="keyword">new</span> ConnectedThread(mmSocket);</span><br><span class="line">        mConnectedThread.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 关闭蓝牙连接</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            mmSocket.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>调用 connect() 发起连接,阻塞调用，需要在子线程中执行。<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//蓝牙连接子线程</span></div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</div><div class="line"></div><div class="line">    <span class="comment">//解析函数</span></div><div class="line">    ConnectThread(BluetoothDevice bluetoothDevice) &#123;</div><div class="line">        <span class="comment">// 使用一个中间变量 tmp</span></div><div class="line">        <span class="comment">// mmSocket 类型是 final</span></div><div class="line"></div><div class="line">        BluetoothSocket tmp = <span class="keyword">null</span>;</div><div class="line">        <span class="comment">// 获取 BluetoothSocket</span></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="comment">// MY_UUID is the app's UUID string, also used by the server code</span></div><div class="line">            tmp = bluetoothDevice.createRfcommSocketToServiceRecord(UUID.fromString(MyApplication.MY_UUID));</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//赋值给 mmSocket</span></div><div class="line">        mmSocket = tmp;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// 关闭蓝牙扫描</span></div><div class="line">        MyApplication.getBluetoothAdapter().cancelDiscovery();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="comment">// 通过 socket 连接到设备. connect() 会一直执行直到成功连接或者抛出异常</span></div><div class="line">            mmSocket.connect();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException connectException) &#123;</div><div class="line">            <span class="comment">//无法连接到蓝牙,关闭连接并退出</span></div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                mmSocket.close();</div><div class="line">            &#125;</div><div class="line">            <span class="comment">//没有正常关闭</span></div><div class="line">            <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// Do work to manage the connection (in a separate thread)</span></div><div class="line">        mConnectedThread = <span class="keyword">new</span> ConnectedThread(mmSocket);</div><div class="line">        mConnectedThread.start();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 关闭蓝牙连接</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            mmSocket.close();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ul>
 <ul>
-<li>管理连接<br>获取BluetoothSocket<br>获取 InputStream 和 OutputStream， getInputStream() 和 getOutputStream() 来处理数据传输。read(byte[]) 和 write(byte[]) 读取数据并写入到流式传输。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectedThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">      <span class="comment">//BluetoothSocket</span></span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</span><br><span class="line">      <span class="comment">//输入流</span></span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">final</span> InputStream mmInStream;</span><br><span class="line">      <span class="comment">//输出流</span></span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">final</span> OutputStream mmOutStream;</span><br><span class="line"></span><br><span class="line">      ConnectedThread(BluetoothSocket socket) &#123;</span><br><span class="line">          <span class="comment">//传入BluetoothSocket，实例化mmSocket</span></span><br><span class="line">          mmSocket = socket;</span><br><span class="line">          <span class="comment">//输入/输出流 中间变量</span></span><br><span class="line">          InputStream tmpIn = <span class="keyword">null</span>;</span><br><span class="line">          OutputStream tmpOut = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">          <span class="comment">// 输入输出流实例化</span></span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">              tmpIn = socket.getInputStream();</span><br><span class="line">              tmpOut = socket.getOutputStream();</span><br><span class="line">          &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">              e.printStackTrace();</span><br><span class="line">          &#125;</span><br><span class="line">          mmInStream = tmpIn;</span><br><span class="line">          mmOutStream = tmpOut;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">          <span class="keyword">int</span> bytes;</span><br><span class="line">          <span class="comment">// 连接成功时</span></span><br><span class="line">          <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">              <span class="keyword">try</span> &#123;</span><br><span class="line">                  <span class="comment">// 在InputStream读数据</span></span><br><span class="line">                  bytes = mmInStream.read();</span><br><span class="line">                  <span class="comment">//发送数据</span></span><br><span class="line">                  Events.bluetooth_Recycle bluetooth_recycle = <span class="keyword">new</span> Events.bluetooth_Recycle();</span><br><span class="line">                  bluetooth_recycle.s = bytes;</span><br><span class="line">                  bluetooth_recycle.bytes = String.valueOf((<span class="keyword">char</span>) bytes);</span><br><span class="line">                  EventBus.getDefault().post(bluetooth_recycle);</span><br><span class="line">              &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                  <span class="keyword">break</span>;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//写方法</span></span><br><span class="line">      <span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">              mmOutStream.write(bytes);</span><br><span class="line">          &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">              e.printStackTrace();</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//关闭流连接</span></span><br><span class="line">      <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">              mmSocket.close();</span><br><span class="line">          &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<li>管理连接<br>获取BluetoothSocket<br>获取 InputStream 和 OutputStream， getInputStream() 和 getOutputStream() 来处理数据传输。read(byte[]) 和 write(byte[]) 读取数据并写入到流式传输。<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectedThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">      <span class="comment">//BluetoothSocket</span></div><div class="line">      <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</div><div class="line">      <span class="comment">//输入流</span></div><div class="line">      <span class="keyword">private</span> <span class="keyword">final</span> InputStream mmInStream;</div><div class="line">      <span class="comment">//输出流</span></div><div class="line">      <span class="keyword">private</span> <span class="keyword">final</span> OutputStream mmOutStream;</div><div class="line"></div><div class="line">      ConnectedThread(BluetoothSocket socket) &#123;</div><div class="line">          <span class="comment">//传入BluetoothSocket，实例化mmSocket</span></div><div class="line">          mmSocket = socket;</div><div class="line">          <span class="comment">//输入/输出流 中间变量</span></div><div class="line">          InputStream tmpIn = <span class="keyword">null</span>;</div><div class="line">          OutputStream tmpOut = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">          <span class="comment">// 输入输出流实例化</span></div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              tmpIn = socket.getInputStream();</div><div class="line">              tmpOut = socket.getOutputStream();</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">              e.printStackTrace();</div><div class="line">          &#125;</div><div class="line">          mmInStream = tmpIn;</div><div class="line">          mmOutStream = tmpOut;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">          <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</div><div class="line">          <span class="keyword">int</span> bytes;</div><div class="line">          <span class="comment">// 连接成功时</span></div><div class="line">          <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">              <span class="keyword">try</span> &#123;</div><div class="line">                  <span class="comment">// 在InputStream读数据</span></div><div class="line">                  bytes = mmInStream.read();</div><div class="line">                  <span class="comment">//发送数据</span></div><div class="line">                  Events.bluetooth_Recycle bluetooth_recycle = <span class="keyword">new</span> Events.bluetooth_Recycle();</div><div class="line">                  bluetooth_recycle.s = bytes;</div><div class="line">                  bluetooth_recycle.bytes = String.valueOf((<span class="keyword">char</span>) bytes);</div><div class="line">                  EventBus.getDefault().post(bluetooth_recycle);</div><div class="line">              &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">                  <span class="keyword">break</span>;</div><div class="line">              &#125;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="comment">//写方法</span></div><div class="line">      <span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              mmOutStream.write(bytes);</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">              e.printStackTrace();</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="comment">//关闭流连接</span></div><div class="line">      <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              mmSocket.close();</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="EventBus"><a href="#EventBus" class="headerlink" title="EventBus"></a>EventBus</h3><ul>
@@ -473,23 +562,33 @@ Activity切换时,蓝牙连接不断开.
 </ul>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ul>
 <li><p>蓝牙连接子线程</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//解析函数</span></span><br><span class="line">      ConnectThread(BluetoothDevice bluetoothDevice) &#123;</span><br><span class="line">          <span class="comment">// 使用一个中间变量 tmp</span></span><br><span class="line">          <span class="comment">// mmSocket 类型是 final</span></span><br><span class="line"></span><br><span class="line">          BluetoothSocket tmp = <span class="keyword">null</span>;</span><br><span class="line">          <span class="comment">// 获取 BluetoothSocket</span></span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">              <span class="comment">// MY_UUID is the app's UUID string, also used by the server code</span></span><br><span class="line">              tmp = bluetoothDevice.createRfcommSocketToServiceRecord(UUID.fromString(MyApplication.MY_UUID));</span><br><span class="line">          &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">//赋值给 mmSocket</span></span><br><span class="line">          mmSocket = tmp;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          <span class="comment">// 关闭蓝牙扫描</span></span><br><span class="line">          MyApplication.getBluetoothAdapter().cancelDiscovery();</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">              <span class="comment">// 通过 socket 连接到设备. connect() 会一直执行直到成功连接或者抛出异常</span></span><br><span class="line">              mmSocket.connect();</span><br><span class="line">          &#125; <span class="keyword">catch</span> (IOException connectException) &#123;</span><br><span class="line">              <span class="comment">//无法连接到蓝牙,关闭连接并退出</span></span><br><span class="line">              <span class="keyword">try</span> &#123;</span><br><span class="line">                  mmSocket.close();</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="comment">//没有正常关闭</span></span><br><span class="line">              <span class="keyword">catch</span> (IOException ignored) &#123;</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">return</span>;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">// Do work to manage the connection (in a separate thread)</span></span><br><span class="line">          mConnectedThread = <span class="keyword">new</span> ConnectedThread(mmSocket);</span><br><span class="line">          mConnectedThread.start();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">/**</span><br><span class="line">       * 关闭蓝牙连接</span><br><span class="line">       */</span></span><br><span class="line">      <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">              mmSocket.close();</span><br><span class="line">          &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">      <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</div><div class="line"></div><div class="line">      <span class="comment">//解析函数</span></div><div class="line">      ConnectThread(BluetoothDevice bluetoothDevice) &#123;</div><div class="line">          <span class="comment">// 使用一个中间变量 tmp</span></div><div class="line">          <span class="comment">// mmSocket 类型是 final</span></div><div class="line"></div><div class="line">          BluetoothSocket tmp = <span class="keyword">null</span>;</div><div class="line">          <span class="comment">// 获取 BluetoothSocket</span></div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              <span class="comment">// MY_UUID is the app's UUID string, also used by the server code</span></div><div class="line">              tmp = bluetoothDevice.createRfcommSocketToServiceRecord(UUID.fromString(MyApplication.MY_UUID));</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">          &#125;</div><div class="line">          <span class="comment">//赋值给 mmSocket</span></div><div class="line">          mmSocket = tmp;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">          <span class="comment">// 关闭蓝牙扫描</span></div><div class="line">          MyApplication.getBluetoothAdapter().cancelDiscovery();</div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              <span class="comment">// 通过 socket 连接到设备. connect() 会一直执行直到成功连接或者抛出异常</span></div><div class="line">              mmSocket.connect();</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException connectException) &#123;</div><div class="line">              <span class="comment">//无法连接到蓝牙,关闭连接并退出</span></div><div class="line">              <span class="keyword">try</span> &#123;</div><div class="line">                  mmSocket.close();</div><div class="line">              &#125;</div><div class="line">              <span class="comment">//没有正常关闭</span></div><div class="line">              <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">              &#125;</div><div class="line">              <span class="keyword">return</span>;</div><div class="line">          &#125;</div><div class="line">          <span class="comment">// Do work to manage the connection (in a separate thread)</span></div><div class="line">          mConnectedThread = <span class="keyword">new</span> ConnectedThread(mmSocket);</div><div class="line">          mConnectedThread.start();</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="comment">/**</span></div><div class="line">       * 关闭蓝牙连接</div><div class="line">       */</div><div class="line">      <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              mmSocket.close();</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>管理连接子线程</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">//管理连接子线程</span></span><br><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectedThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="comment">//BluetoothSocket</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</span><br><span class="line">    <span class="comment">//输入流</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> InputStream mmInStream;</span><br><span class="line">    <span class="comment">//输出流</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> OutputStream mmOutStream;</span><br><span class="line"></span><br><span class="line">    ConnectedThread(BluetoothSocket socket) &#123;</span><br><span class="line">        <span class="comment">//传入BluetoothSocket，实例化mmSocket</span></span><br><span class="line">        mmSocket = socket;</span><br><span class="line">        <span class="comment">//输入/输出流 中间变量</span></span><br><span class="line">        InputStream tmpIn = <span class="keyword">null</span>;</span><br><span class="line">        OutputStream tmpOut = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 输入输出流实例化</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            tmpIn = socket.getInputStream();</span><br><span class="line">            tmpOut = socket.getOutputStream();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        mmInStream = tmpIn;</span><br><span class="line">        mmOutStream = tmpOut;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="keyword">int</span> bytes;</span><br><span class="line">        <span class="comment">// 连接成功时</span></span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">// 在InputStream读数据</span></span><br><span class="line">                bytes = mmInStream.read();</span><br><span class="line">                <span class="comment">//发送数据</span></span><br><span class="line">                Events.bluetooth_Recycle bluetooth_recycle = <span class="keyword">new</span> Events.bluetooth_Recycle();</span><br><span class="line">                bluetooth_recycle.s = bytes;</span><br><span class="line">                bluetooth_recycle.bytes = String.valueOf((<span class="keyword">char</span>) bytes);</span><br><span class="line">                EventBus.getDefault().post(bluetooth_recycle);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//写方法</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            mmOutStream.write(bytes);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//关闭流连接</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            mmSocket.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">//管理连接子线程</span></div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectedThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="comment">//BluetoothSocket</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</div><div class="line">    <span class="comment">//输入流</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> InputStream mmInStream;</div><div class="line">    <span class="comment">//输出流</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> OutputStream mmOutStream;</div><div class="line"></div><div class="line">    ConnectedThread(BluetoothSocket socket) &#123;</div><div class="line">        <span class="comment">//传入BluetoothSocket，实例化mmSocket</span></div><div class="line">        mmSocket = socket;</div><div class="line">        <span class="comment">//输入/输出流 中间变量</span></div><div class="line">        InputStream tmpIn = <span class="keyword">null</span>;</div><div class="line">        OutputStream tmpOut = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">        <span class="comment">// 输入输出流实例化</span></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            tmpIn = socket.getInputStream();</div><div class="line">            tmpOut = socket.getOutputStream();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        mmInStream = tmpIn;</div><div class="line">        mmOutStream = tmpOut;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</div><div class="line">        <span class="keyword">int</span> bytes;</div><div class="line">        <span class="comment">// 连接成功时</span></div><div class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                <span class="comment">// 在InputStream读数据</span></div><div class="line">                bytes = mmInStream.read();</div><div class="line">                <span class="comment">//发送数据</span></div><div class="line">                Events.bluetooth_Recycle bluetooth_recycle = <span class="keyword">new</span> Events.bluetooth_Recycle();</div><div class="line">                bluetooth_recycle.s = bytes;</div><div class="line">                bluetooth_recycle.bytes = String.valueOf((<span class="keyword">char</span>) bytes);</div><div class="line">                EventBus.getDefault().post(bluetooth_recycle);</div><div class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//写方法</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            mmOutStream.write(bytes);</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//关闭流连接</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            mmSocket.close();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
-<li>连接蓝牙<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//连接线程</span></span><br><span class="line"><span class="keyword">private</span> ConnectThread mConnectThread;</span><br><span class="line"><span class="comment">//管理连接进程</span></span><br><span class="line"><span class="keyword">private</span> ConnectedThread mConnectedThread;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建连接子线程</span></span><br><span class="line">mConnectThread = <span class="keyword">new</span> ConnectThread(bluetoothDevice);</span><br><span class="line"><span class="comment">//启动连接子线程</span></span><br><span class="line">mConnectThread.start();</span><br></pre></td></tr></table></figure>
+<li>连接蓝牙<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//连接线程</span></div><div class="line"><span class="keyword">private</span> ConnectThread mConnectThread;</div><div class="line"><span class="comment">//管理连接进程</span></div><div class="line"><span class="keyword">private</span> ConnectedThread mConnectedThread;</div><div class="line"></div><div class="line"><span class="comment">//创建连接子线程</span></div><div class="line">mConnectThread = <span class="keyword">new</span> ConnectThread(bluetoothDevice);</div><div class="line"><span class="comment">//启动连接子线程</span></div><div class="line">mConnectThread.start();</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
-<li>向蓝牙写入数据<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//发送数据String,        主线程            优先级4       非粘性事件</span></span><br><span class="line"><span class="meta">@Subscribe</span>(threadMode = ThreadMode.MAIN, priority = <span class="number">4</span>, sticky = <span class="keyword">false</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEvent</span><span class="params">(Events.bluetooth_Send bluetoothSend)</span> </span>&#123;</span><br><span class="line">    String bytes = bluetoothSend.bytes;</span><br><span class="line">    mConnectedThread.write(bytes.getBytes());</span><br><span class="line">    LogUtil.d(Tag, <span class="string">"onEvent:Send"</span> + bluetoothSend.bytes);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>向蓝牙写入数据<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">//发送数据String,        主线程            优先级4       非粘性事件</span></div><div class="line"><span class="meta">@Subscribe</span>(threadMode = ThreadMode.MAIN, priority = <span class="number">4</span>, sticky = <span class="keyword">false</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEvent</span><span class="params">(Events.bluetooth_Send bluetoothSend)</span> </span>&#123;</div><div class="line">    String bytes = bluetoothSend.bytes;</div><div class="line">    mConnectedThread.write(bytes.getBytes());</div><div class="line">    LogUtil.d(Tag, <span class="string">"onEvent:Send"</span> + bluetoothSend.bytes);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
-<li>接收数据处理<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">//数据转换                后台进程            优先级3       非粘性事件</span></span><br><span class="line"><span class="meta">@Subscribe</span>(threadMode = ThreadMode.BACKGROUND, priority = <span class="number">3</span>, sticky = <span class="keyword">false</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEvent</span><span class="params">(Events.bluetooth_Transformers bluetoothTransformers)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> bytes = bluetoothTransformers.bytes;</span><br><span class="line">    <span class="comment">//处理数据</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>接收数据处理<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">//数据转换                后台进程            优先级3       非粘性事件</span></div><div class="line"><span class="meta">@Subscribe</span>(threadMode = ThreadMode.BACKGROUND, priority = <span class="number">3</span>, sticky = <span class="keyword">false</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEvent</span><span class="params">(Events.bluetooth_Transformers bluetoothTransformers)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> bytes = bluetoothTransformers.bytes;</div><div class="line">    <span class="comment">//处理数据</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
 </ul>
+
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+        
 
       
     </div>
@@ -497,24 +596,52 @@ Activity切换时,蓝牙连接不断开.
     <div>
       
         
+
       
     </div>
 
+    <div>
+      
+        
+
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/" title="Android笔记—蓝牙串口(BlueTooth+EventBus)">http://yoursite.com/2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/</a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
     <footer class="post-footer">
+	
+	
+	
       
         <div class="post-tags">
           
-            <a href="/tags/Android-Studio/" rel="tag">#Android Studio</a>
+            <a href="/tags/Android-Studio/" rel="tag"># Android Studio</a>
           
-            <a href="/tags/Android/" rel="tag">#Android</a>
+            <a href="/tags/Android/" rel="tag"># Android</a>
           
-            <a href="/tags/学习记录/" rel="tag">#学习记录</a>
+            <a href="/tags/学习记录/" rel="tag"># 学习记录</a>
           
-            <a href="/tags/毕设/" rel="tag">#毕设</a>
+            <a href="/tags/毕设/" rel="tag"># 毕设</a>
           
-            <a href="/tags/BlueTooth/" rel="tag">#BlueTooth</a>
+            <a href="/tags/BlueTooth/" rel="tag"># BlueTooth</a>
           
         </div>
+      
+
+      
+        
       
 
       
@@ -526,6 +653,8 @@ Activity切换时,蓝牙连接不断开.
               </a>
             
           </div>
+
+          <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
@@ -560,7 +689,7 @@ Activity切换时,蓝牙连接不断开.
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     
@@ -595,25 +724,32 @@ Activity切换时,蓝牙连接不断开.
         </ul>
       
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/v.png"
                alt="Jasper" />
           <p class="site-author-name" itemprop="name">Jasper</p>
-          <p class="site-description motion-element" itemprop="description">程序员 微尘 V</p>
+           
+              <p class="site-description motion-element" itemprop="description">程序员 微尘 V</p>
+          
         </div>
         <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">25</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
 
           
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
             <div class="site-state-item site-state-categories">
-              <a href="/categories">
+              <a href="/categories/index.html">
                 <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
@@ -621,8 +757,10 @@ Activity切换时,蓝牙连接不断开.
           
 
           
+            
+            
             <div class="site-state-item site-state-tags">
-              <a href="/tags">
+              <a href="/tags/index.html">
                 <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
@@ -644,9 +782,9 @@ Activity切换时,蓝牙连接不断开.
           
             
               <span class="links-of-author-item">
-                <a href="https://github.com/jasper-1024" target="_blank">
+                <a href="https://github.com/jasper-1024" target="_blank" title="GitHub">
                   
-                    <i class="fa fa-github"></i>
+                    <i class="fa fa-fw fa-github"></i>
                   
                   GitHub
                 </a>
@@ -659,23 +797,31 @@ Activity切换时,蓝牙连接不断开.
         
 
         
-        <div class="links-of-blogroll motion-element">
-          
-        </div>
+        
+
+        
+
 
       </section>
 
       
+      <!--noindex-->
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
+
             
               
             
+
             
               <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最终效果"><span class="nav-number">1.1.</span> <span class="nav-text">最终效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用到的开源库-知识点资料-简介-来源"><span class="nav-number">1.2.</span> <span class="nav-text">用到的开源库/知识点资料 简介/来源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础部分"><span class="nav-number">2.</span> <span class="nav-text">基础部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BlueTooth"><span class="nav-number">2.1.</span> <span class="nav-text">BlueTooth</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#BlueTooth基础"><span class="nav-number">2.1.1.</span> <span class="nav-text">BlueTooth基础</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化蓝牙"><span class="nav-number">2.1.2.</span> <span class="nav-text">初始化蓝牙</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EventBus"><span class="nav-number">2.2.</span> <span class="nav-text">EventBus</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">3.</span> <span class="nav-text">正文</span></a></li></ol></div>
             
+
           </div>
         </section>
+      <!--/noindex-->
+      
+
       
 
     </div>
@@ -691,41 +837,31 @@ Activity切换时,蓝牙连接不断开.
         <div class="copyright" >
   
   &copy;  2016.6.2 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2017.6.17</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Jasper</span>
 </div>
 
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
 
 
+        
 
+        
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
   </div>
 
   
-
-
-  
-
-
-
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
@@ -734,76 +870,253 @@ Activity切换时,蓝牙连接不断开.
 </script>
 
 
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+  
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
+  
   <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
+  
   <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js"></script>
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js"></script>
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
   
+  
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
   
 
 
-
-  
-
-    <script type="text/javascript">
-      var disqus_shortname = 'jasper1024';
-      var disqus_identifier = '2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/';
-      var disqus_title = 'Android笔记—蓝牙串口(BlueTooth+EventBus)';
-      var disqus_url = 'http://yoursite.com/2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/';
-
-      function run_disqus_script(disqus_script){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-      
-        run_disqus_script('embed.js');
-      
-    </script>
-  
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
   
+
+
   
+
+    
+      <script id="dsq-count-scr" src="https://jasper1024.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/';
+          this.page.identifier = '2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/';
+          this.page.title = 'Android笔记—蓝牙串口(BlueTooth+EventBus)';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://jasper1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
   
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
 
   
 
@@ -838,6 +1151,14 @@ Activity切换时,蓝牙连接不断开.
 
             $(element).find(COUNT_CONTAINER_REF).text(time);
           }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
         })
         .fail(function (object, error) {
           console.log("Error: " + error.code + " " + error.message);
@@ -868,6 +1189,12 @@ Activity切换时,蓝牙连接不断开.
             });
           } else {
             var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
             newcounter.set("title", title);
             newcounter.set("url", url);
             newcounter.set("time", 1);
@@ -902,5 +1229,14 @@ Activity切换时,蓝牙连接不断开.
 
   
 
+  
+
+  
+
+  
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+  
 </body>
 </html>
