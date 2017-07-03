@@ -8,8 +8,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
         <tag>毕设</tag>
       </tags>
@@ -22,8 +22,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
       </tags>
   </entry>
@@ -35,8 +35,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
         <tag>毕设</tag>
         <tag>BlueTooth</tag>
@@ -62,8 +62,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
       </tags>
   </entry>
@@ -75,8 +75,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
       </tags>
   </entry>
@@ -88,8 +88,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
       </tags>
   </entry>
@@ -120,8 +120,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
       </tags>
   </entry>
@@ -133,8 +133,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
       </tags>
   </entry>
@@ -146,8 +146,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
       </tags>
   </entry>
@@ -159,8 +159,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
       </tags>
   </entry>
@@ -172,8 +172,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
       </tags>
   </entry>
@@ -185,8 +185,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
       </tags>
   </entry>
@@ -231,8 +231,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
       </tags>
   </entry>
@@ -251,7 +251,7 @@
   <entry>
     <title><![CDATA[科学上网教程（二）——VPS优化加速]]></title>
     <url>%2F2016%2F06%2F27%2FVPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%972%2F</url>
-    <content type="text"><![CDATA[12345678910更新2016.06.26 与SSR有关部分基本完成。2016.06.28 TCP优化部分完成2016.06.29 gfw.press、FinalSpeed和锐速部分基本完成。2016.12.11 重新整理相关内容，增加SSR混淆2016.12.15 增加TCP-BBR2017.01.11 整理相关内容，增加锐速配置优化 2017.03.28 更新一部分配置内容，删除无效内容2017.04.02 因91yun被爆隐私问题，删除其对应内容2017.07.03 更新大量锐速/bbr内容，移除GFW.Press和其他内容 TCP优化（非BBR适用）使用建议 建议科学上网服务器都进行一遍TCP优化 与其他加速手段兼容 使用 BBR 加速可以略过此部分(已包含) 具体步骤 适用场景：高延迟搞丢包线路 增加TCP连接数量 1nano /etc/security/limits.conf 添加两行： 12* soft nofile 51200* hard nofile 51200 保存(Ctrl + X —— y ——回车) 设置ulimit： 1ulimit -n 51200 修改内核参数适合的还是hybla（高延迟高丢包率环境）首先看一下VPS现有算法： 1sysctl net.ipv4.tcp_available_congestion_control 没有hybla时，加载hybla算法. 1/sbin/modprobe tcp_hybla 开始修改 1nano /etc/sysctl.conf 复制代码： 1234567891011121314151617181920212223#TCP配置优化(不然你自己根本不知道你在干什么)fs.file-max = 51200#提高整个系统的文件限制net.core.rmem_max = 67108864net.core.wmem_max = 67108864net.core.netdev_max_backlog = 250000net.core.somaxconn = 4096net.ipv4.tcp_syncookies = 1net.ipv4.tcp_tw_reuse = 1net.ipv4.tcp_tw_recycle = 0net.ipv4.tcp_fin_timeout = 30net.ipv4.tcp_keepalive_time = 1200net.ipv4.ip_local_port_range = 10000 65000net.ipv4.tcp_max_syn_backlog = 8192net.ipv4.tcp_max_tw_buckets = 5000net.ipv4.tcp_fastopen = 3net.ipv4.tcp_mem = 25600 51200 102400net.ipv4.tcp_rmem = 4096 87380 67108864net.ipv4.tcp_wmem = 4096 65536 67108864net.ipv4.tcp_mtu_probing = 1net.ipv4.tcp_congestion_control = hybla#END OF LINE 保存(Ctrl + X —— y ——回车) 应用 1sysctl -p 重启SSR 1/etc/init.d/shadowsocks restart 锐速 介绍锐速（ServerSpeeder）加速软件是一种基于ZETATCP加速引擎的软件，只需单边部署就可以起到 显著加速效果的 TCP 加速技术。 使用建议(7.03) 除非对隐私要求特别高，加速手段首先参数锐速 与 BBR 目前不兼容，二者取其一可满足大部分需要加速场景 默认参数即可满足大部分场景，除非很慢，否则不推荐更改配置文件 锐速目前已经基本停止运营，而且母公司LotServer面向企业用户还在运营 以下提供的破解版安装方式，收集自网络。仅供个人实验使用，请支持正版。 锐速安装 安装包来自 @Vicer 感谢原作者！ 锐速一键安装包 参考 https://github.com/0oVicero0/serverSpeeser_Install 安装 1wget --no-check-certificate -qO /tmp/appex.sh "https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh" &amp;&amp; bash /tmp/appex.sh 'install' 中间提示全部输入 y 即可，等待安装完成 卸载 1wget --no-check-certificate -qO /tmp/appex.sh "https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh" &amp;&amp; bash /tmp/appex.sh 'uninstall' 常用命令 启动命令 /appex/bin/lotServer.sh start 状态查询 /appex/bin/lotServer.sh status 停止加速 /appex/bin/lotServer.sh stop 更新许可 /appex/bin/serverSpeeder.sh renewLic 重新启动 /appex/bin/serverSpeeder.sh restart (7.03)锐速配置文件优化 详细配置文档 https://github.com/0oVicero0/serverSpeeder_Install/blob/master/lotServer.pdf 配置文件在/serverspeeder/etc/config 首先确保下面3个参数开启 123rsc="1"advinacc="1"maxmode="1" rsc=”1″ #RSC 网卡驱动模式advinacc=”1″ #流量方向加速maxmode=”1″ #最大传输模式 DO vps还要开启gso 下面是一些个人测试对加速有效果的选项，请结合网络环境自行测试 杂项 initialCwndWan=“64″初始 TCP 发送窗口能够发送的数据包的数量，该值设置的高会获得更好的加速效果，但是可能会造成网络的拥塞。使用值在60以下有效果 l2wQLimit=”1024 4096″从 LAN 到 WAN 加速引擎在缓冲池充满和空闲时分别能够缓存的数据包队列的长度的上限，该值设置的高会获得更好的加速效果，但是会消耗更多的内存。w2lQLimit=”1024 4096″从 WAN 到 LAN 加速引擎在缓冲池充满和空闲时分别能够缓存的数据包队列的长度的上限，该值设置的高会获得更好的加速效果，但是会消耗更多的内存。 halfCwndMinSRtt=”500″halfCwndLossRateShift=”3″以上两个值用于判断网络拥塞，分别为延时和丢包率，丢包率默认值为 3，即1/2^3，当拥塞产生时，退出第三代 Learning-based TCP 算法，采用类似传统 TCP 的算法。此处对于高丢包的线路来说，直接设置为1，即丢包百分之50以上时，才退出Learning-based TCP 算法(这会导致高丢包线路上增加流量消耗) 修改完成后，重启锐速 1/serverspeeder/bin/serverSpeeder.sh restart FinalSpeed 介绍FinalSpeed是高速双边加速软件,可加速所有基于tcp协议的网络服务,在高丢包和高延迟环境下,仍可达到90%的物理带宽利用率,即使高峰时段也能轻松跑满带宽。可以与锐速共存。 使用建议(7.03) FinalSpeed现在已停止更新,建议作为备选加速手段 OVZ虚拟化的vps上只可用udp模式，udp在国内被封杀较严重，导致链接中断等。 安装方法 FinalSpeed现在已停止更新，官方移除了安装方法，以下安装方式来自github备份。 安装命令: 1234rm -f install_fs.shwget https://github.com/dupontjoy/customization/raw/master/Rules/Shadowsocks/Finalspeed/install_fs.shchmod +x install_fs.sh./install_fs.sh 2&gt;&amp;1 | tee install.log 一键安装完成后，vps会自动安装java环境。 卸载： 1sh /fs/stop.sh ; rm -rf /fs 设置开机启动： 12chmod +x /etc/rc.localvi /etc/rc.local 然后加入 1sh /fs/start.sh 每天晚上1点自动重启： 12crontab -e0 1 * * * sh /fs/restart.sh FinalSpeed windows客户端官方最新版本为1.2 更新日志上表明cpu占用降低30%，但是稳定性较差，时常挂掉。推荐FinalSpeed1.12测试版 个人常用版本，很稳定。 这一部分请参考一下网站。 https://blog.kuoruan.com/82.html 常用命令 启动： 1sh /fs/start.sh 停止： 1sh /fs/stop.sh 重新启动： 1sh /fs/restart.sh 运行日志： 1tail -f /fs/server.log Kcptun 小内存VPS可用(64M内存服务器稳定运行)，OVZ架构可用， Go 语言编写 使用建议(7.03) 首次使用，建议作为备选加速手段 不当配置将带来大量流量消耗 安装 Kcptun 基于 KCP 协议的 UDP 隧道，它可以将 TCP 流转换为 KCP+UDP 流。而 KCP 是一个快速可靠协议，能以比 TCP 浪费10%-20%的带宽的代价，换取平均延迟降低 30%-40%，且最大延迟降低三倍的传输效果。 Kcptun 服务端安装繁琐，目前没有改为Kcptun加速的需求，收集网络一部分Kcptun搭建教程供参考。 小内存福音，Kcptun Shadowsocks加速方案 https://blog.kuoruan.com/102.html Kcptun 服务端一键安装脚本,喜闻乐见的多用户支持 https://blog.kuoruan.com/110.html SSR混淆参数 作者Jessica Lynn转载自 https://plus.google.com/113582246973758055268/posts/H51ZpzwUFDK?iem=4&amp;gpawv=1&amp;hl=zh-Hans-TW 一些混淆参数（域名） 国内： sz.btfs.mail.ftn.qq.com btrace.video.qq.com ossweb-img.qq.com 1234-wyfqdku4kcgcabalp6rdudo7–1042249034.cmos.greencompute.org aecpm.alicdn.com aldh5.tmall.com at.alicdn.com atanx.alicdn.com g.alicdn.com gtms03.alicdn.com gw.alicdn.com img.alicdn.com 国外： az813057.vo.msecnd.net az817829.vo.msecnd.net azureedge.net media.gettyimages.com origin.cdn77.com TCP-BBR(7.03) BBR (Bottleneck Bandwidth and RTT)是由google工程师编写的新的 TCP 拥塞控制算法，目的是要尽量跑满带宽, 并且尽量不要有排队的情况, 加速效果不比锐速差 使用建议(7.03) 开源，高效，强烈推荐首选！ 同一线路，BBR与锐速可分别试用取舍，一般满足需求！ 修改版 BBR 更为高效 不会造成流量大量浪费 安装 开源地址 测试环境 Debian 7 x64 Vultr 启用TCP-BBR涉及VPS更换内核，所以如果步骤错误，或者VPS不兼容最新的内核，会导致无法开机等错误， 锐速不支持，更换后的 &gt;4.9 内核 安装原版BBR* 脚本来自秋水逸冰 系统支持：CentOS 6+，Debian 7+，Ubuntu 12+ 虚拟技术：OpenVZ 以外的，比如 KVM、Xen、VMware 等 内存要求：≥128M 连接SSH，输入下面命令，更新内核 123wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.shchmod +x bbr.sh./bbr.sh 安装完成后，脚本会提示需要重启 VPS，输入 y 并回车后重启 重连SSH 验证 内核版本 1uname -r 最新内核版本大于4.9即可，最新4.12(7.03) 修改sysctl.conf 1nano /etc/sysctl.conf 复制代码： 1234567891011121314151617181920212223#TCP配置优化(不然你自己根本不知道你在干什么)fs.file-max = 51200#提高整个系统的文件限制net.core.rmem_max = 67108864net.core.wmem_max = 67108864net.core.netdev_max_backlog = 250000net.core.somaxconn = 4096net.ipv4.tcp_syncookies = 1net.ipv4.tcp_tw_reuse = 1net.ipv4.tcp_tw_recycle = 0net.ipv4.tcp_fin_timeout = 30net.ipv4.tcp_keepalive_time = 1200net.ipv4.ip_local_port_range = 10000 65000net.ipv4.tcp_max_syn_backlog = 8192net.ipv4.tcp_max_tw_buckets = 5000net.ipv4.tcp_fastopen = 3net.ipv4.tcp_mem = 25600 51200 102400net.ipv4.tcp_rmem = 4096 87380 67108864net.ipv4.tcp_wmem = 4096 65536 67108864net.ipv4.tcp_mtu_probing = 1net.ipv4.tcp_congestion_control = bbr#END OF LINE 保存(Ctrl + X —— y ——回车) 应用 1sysctl -p 重启SSR 1/etc/init.d/shadowsocks restart 修改版BBR 相对原版更为暴力，加速效果更好 提供 Vicer版 和 魔改版 两个试用后加速效果还不错的版本。 我的测试来看 魔改版 的最高速度高于 Vicer版 ，但 YOUTUBE 来看 Vicer版 高于 魔改版 * 注意：修改版BBR的一键脚本，支持系统较少，安装前需要确认自己的系统支持，如不在支持列表，自行Google即可，有大量第三方脚本。 支持系统： Debian 8 / Ubuntu16 + /Debian 7(需要手动安装gcc4.9) Debian 7手动安装gcc4.9(以root用户登陆，否则 命令前添加sudo) 修改系统更新源 1nano /etc/apt/sources.list 添加如下两个更新源 12deb http://ftp.cn.debian.org/debian/ jessie main non-free contribdeb http://ftp.uk.debian.org/debian/ jessie main non-free contrib 保存(Ctrl + X —— y ——回车) 执行更新apt-get update 检查可安装 gcc 版本列表apt-cache search gcc输出有gcc4.9 字样即可，数量无所谓 1234567891011121314151617181920libx32gcc-4.8-dev - GCC support library (x32 development files) cpp-4.9 - GNU C preprocessor gcc-4.9 - GNU C compiler gcc-4.9-base - GCC, the GNU Compiler Collection (base package) gcc-4.9-locales - GCC, the GNU compiler collection (native language support files) gcc-4.9-multilib - GNU C compiler (multilib files) gcc-4.9-plugin-dev - Files for GNU GCC plugin development. gcc-4.9-source - Source of the GNU Compiler Collection gccgo-4.9 - GNU Go compiler gccgo-4.9-multilib - GNU Go compiler (multilib files) gcj-4.9 - GCJ byte code and native compiler for Java(TM) gcj-4.9-jdk - GCJ and Classpath development tools for Java(TM) gcj-4.9-jre-lib - Java runtime library for use with gcj (jar files) gdc-4.9 - GNU D compiler (version 2), based on the GCC backend gfortran-4.9 - GNU Fortran compiler gfortran-4.9-multilib - GNU Fortran compiler (multilib files) gobjc++-4.9 - GNU Objective-C++ compiler gobjc++-4.9-multilib - GNU Objective-C++ compiler (multilib files) gobjc-4.9 - GNU Objective-C compiler gobjc-4.9-multilib - GNU Objective-C compiler (multilib files) 命令apt-get install g++-4.9 安装g++-4.9 Vicer版BBR 脚本来自Debian/Ubuntu TCP BBR 改进版/增强版 一键安装 1wget --no-check-certificate -qO &apos;BBR_POWERED.sh&apos; &apos;https://moeclub.org/attachment/LinuxShell/BBR_POWERED.sh&apos; &amp;&amp; chmod a+x BBR_POWERED.sh &amp;&amp; bash BBR_POWERED.sh 遇到 Error! Header not be matched by Linux Kernel. 参看Debian/Ubuntu 开启 TCP BBR 拥塞算法,依照 作者开启bbr 的脚本执行一遍即可。 遇到Error! Install gcc-4.9. debian 7 重新安装一遍 gcc-4.9 ，其他系统 执行 apt-get update 安装完成后 执行lsmod |grep &#39;bbr_powered&#39; 结果不为空,则加载模块成功 重启SSR /etc/init.d/shadowsocks restart 魔改版BBR 一键脚本 1wget -N --no-check-certificate https://raw.githubusercontent.com/FunctionClub/YankeeBBR/master/bbr.sh &amp;&amp; bash bbr.sh install 之后选择重启系统，重连SSH 输入命令 bash bbr.sh start 即可完成安装 验证 sysctl net.ipv4.tcp_available_congestion_control 返回命令有 tsunami 即可。 重启SSR /etc/init.d/shadowsocks restart 结束]]></content>
+    <content type="text"><![CDATA[12345678910更新2016.06.26 与SSR有关部分基本完成。2016.06.28 TCP优化部分完成2016.06.29 gfw.press、FinalSpeed和锐速部分基本完成。2016.12.11 重新整理相关内容，增加SSR混淆2016.12.15 增加TCP-BBR2017.01.11 整理相关内容，增加锐速配置优化 2017.03.28 更新一部分配置内容，删除无效内容2017.04.02 因91yun被爆隐私问题，删除其对应内容2017.07.03 更新大量锐速/bbr内容，移除GFW.Press和其他内容 TCP优化（非BBR适用）使用建议 建议科学上网服务器都进行一遍TCP优化 与其他加速手段兼容 使用 BBR 加速可以略过此部分(已包含) 具体步骤 适用场景：高延迟搞丢包线路 增加TCP连接数量 1nano /etc/security/limits.conf 添加两行： 12* soft nofile 51200* hard nofile 51200 保存(Ctrl + X —— y ——回车) 设置ulimit： 1ulimit -n 51200 修改内核参数适合的还是hybla（高延迟高丢包率环境）首先看一下VPS现有算法： 1sysctl net.ipv4.tcp_available_congestion_control 没有hybla时，加载hybla算法. 1/sbin/modprobe tcp_hybla 开始修改 1nano /etc/sysctl.conf 复制代码： 1234567891011121314151617181920212223#TCP配置优化(不然你自己根本不知道你在干什么)fs.file-max = 51200#提高整个系统的文件限制net.core.rmem_max = 67108864net.core.wmem_max = 67108864net.core.netdev_max_backlog = 250000net.core.somaxconn = 4096net.ipv4.tcp_syncookies = 1net.ipv4.tcp_tw_reuse = 1net.ipv4.tcp_tw_recycle = 0net.ipv4.tcp_fin_timeout = 30net.ipv4.tcp_keepalive_time = 1200net.ipv4.ip_local_port_range = 10000 65000net.ipv4.tcp_max_syn_backlog = 8192net.ipv4.tcp_max_tw_buckets = 5000net.ipv4.tcp_fastopen = 3net.ipv4.tcp_mem = 25600 51200 102400net.ipv4.tcp_rmem = 4096 87380 67108864net.ipv4.tcp_wmem = 4096 65536 67108864net.ipv4.tcp_mtu_probing = 1net.ipv4.tcp_congestion_control = hybla#END OF LINE 保存(Ctrl + X —— y ——回车) 应用 1sysctl -p 重启SSR 1/etc/init.d/shadowsocks restart 锐速 介绍锐速（ServerSpeeder）加速软件是一种基于ZETATCP加速引擎的软件，只需单边部署就可以起到 显著加速效果的 TCP 加速技术。 使用建议(7.03) 除非对隐私要求特别高，加速手段首先参数锐速 与 BBR 目前不兼容，二者取其一可满足大部分需要加速场景 默认参数即可满足大部分场景，除非很慢，否则不推荐更改配置文件 锐速目前已经基本停止运营，而且母公司LotServer面向企业用户还在运营 以下提供的破解版安装方式，收集自网络。仅供个人实验使用，请支持正版。 锐速安装 安装包来自 @Vicer 感谢原作者！ 锐速一键安装包 参考 https://github.com/0oVicero0/serverSpeeser_Install 安装 1wget --no-check-certificate -qO /tmp/appex.sh "https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh" &amp;&amp; bash /tmp/appex.sh 'install' 中间提示全部输入 y 即可，等待安装完成 卸载 1wget --no-check-certificate -qO /tmp/appex.sh "https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh" &amp;&amp; bash /tmp/appex.sh 'uninstall' 常用命令 启动命令 /appex/bin/lotServer.sh start 状态查询 /appex/bin/lotServer.sh status 停止加速 /appex/bin/lotServer.sh stop 更新许可 /appex/bin/serverSpeeder.sh renewLic 重新启动 /appex/bin/serverSpeeder.sh restart (7.03)锐速配置文件优化 详细配置文档 https://github.com/0oVicero0/serverSpeeder_Install/blob/master/lotServer.pdf 配置文件在/serverspeeder/etc/config 首先确保下面3个参数开启 123rsc="1"advinacc="1"maxmode="1" rsc=”1″ #RSC 网卡驱动模式advinacc=”1″ #流量方向加速maxmode=”1″ #最大传输模式 DO vps还要开启gso 下面是一些个人测试对加速有效果的选项，请结合网络环境自行测试 杂项 initialCwndWan=“64″初始 TCP 发送窗口能够发送的数据包的数量，该值设置的高会获得更好的加速效果，但是可能会造成网络的拥塞。使用值在60以下有效果 l2wQLimit=”1024 4096″从 LAN 到 WAN 加速引擎在缓冲池充满和空闲时分别能够缓存的数据包队列的长度的上限，该值设置的高会获得更好的加速效果，但是会消耗更多的内存。w2lQLimit=”1024 4096″从 WAN 到 LAN 加速引擎在缓冲池充满和空闲时分别能够缓存的数据包队列的长度的上限，该值设置的高会获得更好的加速效果，但是会消耗更多的内存。 halfCwndMinSRtt=”500″halfCwndLossRateShift=”3″以上两个值用于判断网络拥塞，分别为延时和丢包率，丢包率默认值为 3，即1/2^3，当拥塞产生时，退出第三代 Learning-based TCP 算法，采用类似传统 TCP 的算法。此处对于高丢包的线路来说，直接设置为1，即丢包百分之50以上时，才退出Learning-based TCP 算法(这会导致高丢包线路上增加流量消耗) 修改完成后，重启锐速 1/serverspeeder/bin/serverSpeeder.sh restart FinalSpeed 介绍FinalSpeed是高速双边加速软件,可加速所有基于tcp协议的网络服务,在高丢包和高延迟环境下,仍可达到90%的物理带宽利用率,即使高峰时段也能轻松跑满带宽。可以与锐速共存。 使用建议(7.03) FinalSpeed现在已停止更新,建议作为备选加速手段 OVZ虚拟化的vps上只可用udp模式，udp在国内被封杀较严重，导致链接中断等。 安装方法 FinalSpeed现在已停止更新，官方移除了安装方法，以下安装方式来自github备份。 安装命令: 1234rm -f install_fs.shwget https://github.com/dupontjoy/customization/raw/master/Rules/Shadowsocks/Finalspeed/install_fs.shchmod +x install_fs.sh./install_fs.sh 2&gt;&amp;1 | tee install.log 一键安装完成后，vps会自动安装java环境。 卸载： 1sh /fs/stop.sh ; rm -rf /fs 设置开机启动： 12chmod +x /etc/rc.localvi /etc/rc.local 然后加入 1sh /fs/start.sh 每天晚上1点自动重启： 12crontab -e0 1 * * * sh /fs/restart.sh FinalSpeed windows客户端官方最新版本为1.2 更新日志上表明cpu占用降低30%，但是稳定性较差，时常挂掉。推荐FinalSpeed1.12测试版 个人常用版本，很稳定。 这一部分请参考一下网站。 https://blog.kuoruan.com/82.html 常用命令 启动： 1sh /fs/start.sh 停止： 1sh /fs/stop.sh 重新启动： 1sh /fs/restart.sh 运行日志： 1tail -f /fs/server.log Kcptun 小内存VPS可用(64M内存服务器稳定运行)，OVZ架构可用， Go 语言编写 使用建议(7.03) 首次使用，建议作为备选加速手段 不当配置将带来大量流量消耗 安装 Kcptun 基于 KCP 协议的 UDP 隧道，它可以将 TCP 流转换为 KCP+UDP 流。而 KCP 是一个快速可靠协议，能以比 TCP 浪费10%-20%的带宽的代价，换取平均延迟降低 30%-40%，且最大延迟降低三倍的传输效果。 Kcptun 服务端安装繁琐，目前没有改为Kcptun加速的需求，收集网络一部分Kcptun搭建教程供参考。 小内存福音，Kcptun Shadowsocks加速方案 https://blog.kuoruan.com/102.html Kcptun 服务端一键安装脚本,喜闻乐见的多用户支持 https://blog.kuoruan.com/110.html SSR混淆参数 作者Jessica Lynn转载自 https://plus.google.com/113582246973758055268/posts/H51ZpzwUFDK?iem=4&amp;gpawv=1&amp;hl=zh-Hans-TW 一些混淆参数（域名） 国内： sz.btfs.mail.ftn.qq.com btrace.video.qq.com ossweb-img.qq.com 1234-wyfqdku4kcgcabalp6rdudo7–1042249034.cmos.greencompute.org aecpm.alicdn.com aldh5.tmall.com at.alicdn.com atanx.alicdn.com g.alicdn.com gtms03.alicdn.com gw.alicdn.com img.alicdn.com 国外： az813057.vo.msecnd.net az817829.vo.msecnd.net azureedge.net media.gettyimages.com origin.cdn77.com TCP-BBR(7.03) BBR (Bottleneck Bandwidth and RTT)是由google工程师编写的新的 TCP 拥塞控制算法，目的是要尽量跑满带宽, 并且尽量不要有排队的情况, 加速效果不比锐速差 使用建议(7.03) 开源，高效，强烈推荐首选！ 同一线路，BBR与锐速可分别试用取舍，一般满足需求！ 修改版 BBR 更为高效 不会造成流量大量浪费 安装 开源地址 测试环境 Debian 7 x64 Vultr 启用TCP-BBR涉及VPS更换内核，所以如果步骤错误，或者VPS不兼容最新的内核，会导致无法开机等错误， 锐速不支持，更换后的 &gt;4.9 内核 安装原版BBR 脚本来自秋水逸冰 系统支持：CentOS 6+，Debian 7+，Ubuntu 12+ 虚拟技术：OpenVZ 以外的，比如 KVM、Xen、VMware 等 内存要求：≥128M 连接SSH，输入下面命令，更新内核 123wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.shchmod +x bbr.sh./bbr.sh 安装完成后，脚本会提示需要重启 VPS，输入 y 并回车后重启 重连SSH 验证 内核版本 1uname -r 最新内核版本大于4.9即可，最新4.12(7.03) 修改sysctl.conf 1nano /etc/sysctl.conf 复制代码： 1234567891011121314151617181920212223#TCP配置优化(不然你自己根本不知道你在干什么)fs.file-max = 51200#提高整个系统的文件限制net.core.rmem_max = 67108864net.core.wmem_max = 67108864net.core.netdev_max_backlog = 250000net.core.somaxconn = 4096net.ipv4.tcp_syncookies = 1net.ipv4.tcp_tw_reuse = 1net.ipv4.tcp_tw_recycle = 0net.ipv4.tcp_fin_timeout = 30net.ipv4.tcp_keepalive_time = 1200net.ipv4.ip_local_port_range = 10000 65000net.ipv4.tcp_max_syn_backlog = 8192net.ipv4.tcp_max_tw_buckets = 5000net.ipv4.tcp_fastopen = 3net.ipv4.tcp_mem = 25600 51200 102400net.ipv4.tcp_rmem = 4096 87380 67108864net.ipv4.tcp_wmem = 4096 65536 67108864net.ipv4.tcp_mtu_probing = 1net.ipv4.tcp_congestion_control = bbr#END OF LINE 保存(Ctrl + X —— y ——回车) 应用 1sysctl -p 重启SSR 1/etc/init.d/shadowsocks restart 修改版BBR 相对原版更为暴力，加速效果更好 提供 Vicer版 和 魔改版 两个试用后加速效果还不错的版本。 我的测试来看 魔改版 的最高速度高于 Vicer版 ，但 YOUTUBE 来看 Vicer版 高于 魔改版 注意：修改版BBR的一键脚本，支持系统较少，安装前需要确认自己的系统支持，如不在支持列表，自行Google即可，有大量第三方脚本。 支持系统： Debian 8 / Ubuntu16 + /Debian 7(需要手动安装gcc4.9) Debian 7手动安装gcc4.9(以root用户登陆，否则 命令前添加sudo) 修改系统更新源 1nano /etc/apt/sources.list 添加如下两个更新源 12deb http://ftp.cn.debian.org/debian/ jessie main non-free contribdeb http://ftp.uk.debian.org/debian/ jessie main non-free contrib 保存(Ctrl + X —— y ——回车) 执行更新apt-get update 检查可安装 gcc 版本列表apt-cache search gcc输出有gcc4.9 字样即可，数量无所谓 1234567891011121314151617181920libx32gcc-4.8-dev - GCC support library (x32 development files) cpp-4.9 - GNU C preprocessor gcc-4.9 - GNU C compiler gcc-4.9-base - GCC, the GNU Compiler Collection (base package) gcc-4.9-locales - GCC, the GNU compiler collection (native language support files) gcc-4.9-multilib - GNU C compiler (multilib files) gcc-4.9-plugin-dev - Files for GNU GCC plugin development. gcc-4.9-source - Source of the GNU Compiler Collection gccgo-4.9 - GNU Go compiler gccgo-4.9-multilib - GNU Go compiler (multilib files) gcj-4.9 - GCJ byte code and native compiler for Java(TM) gcj-4.9-jdk - GCJ and Classpath development tools for Java(TM) gcj-4.9-jre-lib - Java runtime library for use with gcj (jar files) gdc-4.9 - GNU D compiler (version 2), based on the GCC backend gfortran-4.9 - GNU Fortran compiler gfortran-4.9-multilib - GNU Fortran compiler (multilib files) gobjc++-4.9 - GNU Objective-C++ compiler gobjc++-4.9-multilib - GNU Objective-C++ compiler (multilib files) gobjc-4.9 - GNU Objective-C compiler gobjc-4.9-multilib - GNU Objective-C compiler (multilib files) 命令apt-get install g++-4.9 安装g++-4.9 Vicer版BBR 脚本来自Debian/Ubuntu TCP BBR 改进版/增强版 一键安装 1wget --no-check-certificate -qO &apos;BBR_POWERED.sh&apos; &apos;https://moeclub.org/attachment/LinuxShell/BBR_POWERED.sh&apos; &amp;&amp; chmod a+x BBR_POWERED.sh &amp;&amp; bash BBR_POWERED.sh 遇到 Error! Header not be matched by Linux Kernel. 参看Debian/Ubuntu 开启 TCP BBR 拥塞算法,依照 作者开启bbr 的脚本执行一遍即可。 遇到Error! Install gcc-4.9. debian 7 重新安装一遍 gcc-4.9 ，其他系统 执行 apt-get update 安装完成后 执行lsmod |grep &#39;bbr_powered&#39; 结果不为空,则加载模块成功 重启SSR /etc/init.d/shadowsocks restart 魔改版BBR 一键脚本 1wget -N --no-check-certificate https://raw.githubusercontent.com/FunctionClub/YankeeBBR/master/bbr.sh &amp;&amp; bash bbr.sh install 之后选择重启系统，重连SSH 输入命令 bash bbr.sh start 即可完成安装 验证 sysctl net.ipv4.tcp_available_congestion_control 返回命令有 tsunami 即可。 重启SSR /etc/init.d/shadowsocks restart 结束]]></content>
       <categories>
         <category>科学上网</category>
       </categories>
