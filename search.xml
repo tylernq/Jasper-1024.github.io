@@ -231,8 +231,8 @@
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>python</tag>
         <tag>VPS</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -314,10 +314,10 @@
       <tags>
         <tag>Android</tag>
         <tag>Linux</tag>
+        <tag>VPS</tag>
         <tag>python</tag>
         <tag>单片机</tag>
         <tag>开源</tag>
-        <tag>VPS</tag>
       </tags>
   </entry>
 </search>

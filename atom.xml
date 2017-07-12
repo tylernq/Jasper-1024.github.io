@@ -2707,9 +2707,9 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
     
       <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
-    
       <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
     
   </entry>
   
