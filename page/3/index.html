@@ -325,6 +325,228 @@
   
   
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/09/单片机课程设计总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/09/单片机课程设计总结/" itemprop="url">
+                  单片机课程设计总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-09T20:10:11+08:00">
+                2016-07-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/电子类/" itemprop="url" rel="index">
+                    <span itemprop="name">电子类</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/07/09/单片机课程设计总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/07/09/单片机课程设计总结/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/07/09/单片机课程设计总结/" class="leancloud_visitors" data-flag-title="单片机课程设计总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,239
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>累死人的单片机课程设计终于结束了，忙了两天多。就是个数码管+ADC。看看自己两年多前写的程序。。这感觉。用了一天多重构。。。。之前写程序的那个乱啊。。。重新整理下，自己的库函数。记录于此。</p>
+<hr>
+<h1 id="1602库函数"><a href="#1602库函数" class="headerlink" title="1602库函数"></a>1602库函数</h1><h2 id="1602-h"><a href="#1602-h" class="headerlink" title="1602.h"></a>1602.h</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*模 块 名：                LCD1602      */</span></div><div class="line"></div><div class="line"><span class="comment">/*创 建 人：zyy        日期：2014-11-04  */</span></div><div class="line"></div><div class="line"><span class="comment">/*修 改 者：js         日期：2016-07-08	*/</span></div><div class="line"></div><div class="line"><span class="comment">/*版 本2.1	                            */</span></div><div class="line"></div><div class="line"><span class="comment">/*使用方法：首先调用LCD初始化函数void LcdInit()；</span></div><div class="line">  输入一个double类型数据调用void LcdDisplay(double temp);       </div><div class="line">  显示在第二行；如需修改第一行数据可在LcdDisplay函数中修改 */</div><div class="line"><span class="comment">/*  BUG   : 第二行double数据显示最后一位后，会跟随一位乱码 */</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stc12c5a60s2.h&gt;      </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;intrins.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span>  uint unsigned int</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span>  uchar unsigned char</span></div><div class="line"></div><div class="line">sbit lcdrs = P1^<span class="number">7</span>;</div><div class="line">sbit lcden = P2^<span class="number">4</span>;</div><div class="line">sbit    rw = P1^<span class="number">6</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> lcd_data_port P0</span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">sdelay</span><span class="params">(uint s)</span></span>;			 <span class="comment">//通用延迟函数</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_com</span><span class="params">(uchar com)</span></span>;	     <span class="comment">//并口写数据</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_data</span><span class="params">(uchar date)</span></span>;	 <span class="comment">//并口写数据</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">LcdInit</span><span class="params">()</span></span>;		             <span class="comment">//1602初始化</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">LcdDisplay</span><span class="params">(<span class="keyword">double</span> temp,uint t)</span></span>;	 <span class="comment">//显示函数</span></div></pre></td></tr></table></figure>
+<h2 id="1602-c"><a href="#1602-c" class="headerlink" title="1602.c"></a>1602.c</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1602.c</span></div><div class="line">include &lt;<span class="number">1602.</span>h&gt;</div><div class="line"></div><div class="line"><span class="comment">/*模 块 名：              LCD1602        */</span></div><div class="line"></div><div class="line"><span class="comment">/*创 建 人：zyy       日期：2014-11-04    */</span></div><div class="line"></div><div class="line"><span class="comment">/*修 改 者：js        日期：2016-07-08	*/</span></div><div class="line"></div><div class="line"><span class="comment">/*版 本2.1	                            */</span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">/**********************************************/</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">sdelay</span><span class="params">(uint s)</span>			   <span class="comment">//通用延迟函数</span></span></div><div class="line">&#123;</div><div class="line">	uint x,y;</div><div class="line">	<span class="keyword">for</span>(x=s;x&gt;<span class="number">0</span>;x--)</div><div class="line">	<span class="keyword">for</span>(y=<span class="number">250</span>;y&gt;<span class="number">0</span>;y--);</div><div class="line">&#125;</div><div class="line"><span class="comment">/**********************************************/</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_com</span><span class="params">(uchar com)</span>	   <span class="comment">//并口写数据</span></span></div><div class="line">&#123;</div><div class="line">	lcdrs=<span class="number">0</span>;</div><div class="line">	lcden=<span class="number">0</span>;</div><div class="line">	lcd_data_port=com;</div><div class="line">	sdelay(<span class="number">1</span>);</div><div class="line">	lcden=<span class="number">1</span>;</div><div class="line">	sdelay(<span class="number">1</span>);</div><div class="line">	lcden=<span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_data</span><span class="params">(uchar date)</span>	   <span class="comment">//并口写数据</span></span></div><div class="line">&#123;</div><div class="line">	lcdrs=<span class="number">1</span>;</div><div class="line">	lcden=<span class="number">0</span>;</div><div class="line">	lcd_data_port=date;</div><div class="line">	sdelay(<span class="number">1</span>);</div><div class="line">	lcden=<span class="number">1</span>;</div><div class="line">	sdelay(<span class="number">1</span>);</div><div class="line">	lcden=<span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">/*********************************************************************</span></div><div class="line">*</div><div class="line">* 函 数 名: LcdInit</div><div class="line">* 功能描述: LCD初始化</div><div class="line">* 函数说明: 初始化数据：0x38  0x0c	0x06  0x01</div><div class="line">* 调用函数: sdelay（），write_com（），	write_data（）</div><div class="line">* 输 入: 无</div><div class="line">* 返 回: 无</div><div class="line">* 设 计 者：zyy 日期：2014-12-23</div><div class="line">* 版 本：   1.0</div><div class="line">***********************************************************************/</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">LcdInit</span><span class="params">()</span>		     <span class="comment">//1602初始化</span></span></div><div class="line">&#123;</div><div class="line">	lcden=<span class="number">0</span>;</div><div class="line">	rw=<span class="number">0</span>;</div><div class="line">	write_com(<span class="number">0x38</span>);</div><div class="line">	write_com(<span class="number">0x0c</span>);</div><div class="line">	write_com(<span class="number">0x06</span>);</div><div class="line">	write_com(<span class="number">0x01</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*********************************************************************</span></div><div class="line">*</div><div class="line">* 函 数 名: LcdDisplay</div><div class="line">* 功能描述: LCD显示</div><div class="line">* 函数说明: double类型数据转化为字符串，在lcd第二行显示。</div><div class="line">* 调用函数: sprintf(),write_com(),sdelay()</div><div class="line">* 全局变量:	无</div><div class="line">* 输 入:    一个double类型变量值</div><div class="line">* 返 回:    无</div><div class="line">* 设 计 者：zyy 日期：2014-12-23</div><div class="line">* 修 改 者：js 日期：2016-07-08</div><div class="line">* 版 本：	2.0</div><div class="line">***********************************************************************/</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">LcdDisplay</span><span class="params">(<span class="keyword">double</span> temp,uint t)</span>	       		    <span class="comment">//显示函数</span></span></div><div class="line">&#123;</div><div class="line"><span class="keyword">static</span> uchar  table0[]=&#123;<span class="string">"pm              "</span>&#125;;		<span class="comment">//1602默认第一行</span></div><div class="line"><span class="keyword">static</span> uchar  table1[]=&#123;<span class="string">"00.0            "</span>&#125;;</div><div class="line"></div><div class="line">uchar  num=<span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="built_in">sprintf</span>(table1,<span class="string">"%f"</span>,(<span class="keyword">double</span>)temp);</div><div class="line"><span class="built_in">sprintf</span>(table1+<span class="number">8</span>,<span class="string">"%2d"</span>,(uint)t);</div><div class="line"></div><div class="line"></div><div class="line">   write_com(<span class="number">0x80</span>);</div><div class="line">	<span class="keyword">for</span>(num=<span class="number">0</span>;num&lt;<span class="number">15</span>;num++)	       <span class="comment">//第一行刷新</span></div><div class="line">	&#123;</div><div class="line">		write_data(table0[num]);</div><div class="line">		sdelay(<span class="number">5</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">   write_com(<span class="number">0x80</span>+<span class="number">0x40</span>);</div><div class="line">    <span class="keyword">for</span>(num=<span class="number">0</span>;num&lt;<span class="number">16</span>;num++)	       <span class="comment">//第二行显示</span></div><div class="line">	&#123;write_data(table1[num]);    <span class="comment">//0.0195</span></div><div class="line">		sdelay(<span class="number">5</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="数码管"><a href="#数码管" class="headerlink" title="数码管"></a>数码管</h1><ul>
+<li>对应电路图如下<br><img src="http://cdn1.snapgram.co/imgs/2016/07/09/QQ.jpg" alt="QQ.jpg"><h2 id="shu-h"><a href="#shu-h" class="headerlink" title="shu.h"></a>shu.h</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*模 块 名：           数码管           */</span></div><div class="line"></div><div class="line"><span class="comment">/*创 建 人：zy       日期：2014-07-01 */</span></div><div class="line"></div><div class="line"><span class="comment">/*版 本1.2	                            */</span></div><div class="line"></div><div class="line"><span class="comment">/*使用方法：调用 Shu_Display(double js)函数，输入一个double类型数据，</span></div><div class="line">  固定显示格式为小数点前4位及小数点后两位。                             */</div><div class="line"></div><div class="line"><span class="comment">/*BUG：显示小数点后第二位时，有时会与输入值小1.原因疑似与fmod()函数有关 */</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stc12c5a60s2.h&gt;      </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;intrins.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> uint unsigned int</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> uchar unsigned char</span></div><div class="line"> </div><div class="line"></div><div class="line"><span class="comment">//端口定义</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> io_dm P0         <span class="comment">//定义LED显示的段码数据脚</span></span></div><div class="line">sbit io_shu = P2^<span class="number">3</span>;      <span class="comment">//数码管开关低电平有效</span></div><div class="line">sbit io_A   = P2^<span class="number">0</span>;		 <span class="comment">//3-8译码器输入</span></div><div class="line">sbit io_B   = P2^<span class="number">1</span>;</div><div class="line">sbit io_C   = P2^<span class="number">2</span>;</div><div class="line"></div><div class="line">sbit io_DP  = P0^<span class="number">7</span>;		 <span class="comment">//dp点定义</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">extern</span> uchar du_num[<span class="number">15</span>];</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay_1ms</span><span class="params">(uchar x)</span></span>;    <span class="comment">//1ms延迟函数</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">wei</span><span class="params">(uchar i)</span></span>;			<span class="comment">//位选输出函数</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Shu_Display</span><span class="params">(<span class="keyword">double</span> js)</span></span>;<span class="comment">//数码管显示函数</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="shu-c"><a href="#shu-c" class="headerlink" title="shu.c"></a>shu.c</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;shu.h&gt;   </span></span></div><div class="line"></div><div class="line"><span class="comment">/*模 块 名：          数码管           */</span></div><div class="line"></div><div class="line"><span class="comment">/*创 建 人：zy       日期：2014-07-01 */</span></div><div class="line"></div><div class="line"><span class="comment">/*版 本1.2	                            */</span></div><div class="line"></div><div class="line"><span class="comment">//显示数字</span></div><div class="line">uchar du_num[]=&#123;<span class="number">0x3f</span>,<span class="number">0x06</span>,<span class="number">0x5b</span>,<span class="number">0x4f</span>,<span class="number">0x66</span>,<span class="number">0x6d</span>,<span class="number">0x7d</span>,<span class="number">0x07</span>,<span class="number">0x7f</span>,<span class="number">0x6f</span>,<span class="number">0x77</span>,<span class="number">0x7c</span>,<span class="number">0x39</span>,<span class="number">0x5e</span>,<span class="number">0x79</span>,<span class="number">0x71</span>&#125;;</div><div class="line"><span class="comment">//                0    1    2    3    4    5    6    7    8    9    a    b    c    d    e    f </span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay_1ms</span><span class="params">(uchar x)</span><span class="comment">//1ms延迟函数</span></span></div><div class="line">&#123;</div><div class="line">    uchar j;</div><div class="line">    <span class="keyword">while</span>(x--)&#123;</div><div class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">125</span>;j++)</div><div class="line">            &#123;;&#125;</div><div class="line">        &#125;   </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">wei</span><span class="params">(uchar i)</span>		<span class="comment">//位选信号输入</span></span></div><div class="line">&#123;	<span class="comment">//i=i+1;</span></div><div class="line">	<span class="keyword">switch</span> (i)</div><div class="line">	&#123; <span class="keyword">case</span> <span class="number">0</span>:&#123;io_A=<span class="number">0</span>;io_B=<span class="number">0</span>;io_C=<span class="number">0</span>;&#125;  <span class="keyword">break</span>;   </div><div class="line">      <span class="keyword">case</span> <span class="number">1</span>:&#123;io_A=<span class="number">1</span>;io_B=<span class="number">0</span>;io_C=<span class="number">0</span>;&#125;  <span class="keyword">break</span>; </div><div class="line">	  <span class="keyword">case</span> <span class="number">2</span>:&#123;io_A=<span class="number">0</span>;io_B=<span class="number">2</span>;io_C=<span class="number">0</span>;&#125;  <span class="keyword">break</span>; </div><div class="line">	  <span class="keyword">case</span> <span class="number">3</span>:&#123;io_A=<span class="number">1</span>;io_B=<span class="number">1</span>;io_C=<span class="number">0</span>;&#125;  <span class="keyword">break</span>; </div><div class="line">	  <span class="keyword">case</span> <span class="number">4</span>:&#123;io_A=<span class="number">0</span>;io_B=<span class="number">0</span>;io_C=<span class="number">1</span>;&#125;  <span class="keyword">break</span>; </div><div class="line">	  <span class="keyword">case</span> <span class="number">5</span>:&#123;io_A=<span class="number">1</span>;io_B=<span class="number">0</span>;io_C=<span class="number">1</span>;&#125;  <span class="keyword">break</span>; </div><div class="line">	  <span class="keyword">case</span> <span class="number">6</span>:&#123;io_A=<span class="number">0</span>;io_B=<span class="number">1</span>;io_C=<span class="number">1</span>;&#125;  <span class="keyword">break</span>; </div><div class="line">     </div><div class="line">	  <span class="keyword">default</span>: ; <span class="keyword">break</span>; </div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"> <span class="comment">/*********************************************************************</span></div><div class="line">*</div><div class="line">* 函 数 名: Shu_Display() </div><div class="line">* 功能描述: 将数字显示到数码管上，显示格式4+2</div><div class="line">* 函数说明: 段选位选，动态刷新数码管</div><div class="line">* 调用函数: delay_1ms  fmod()</div><div class="line">* 全局变量: 无</div><div class="line">* 输 入:    1个double类型数据</div><div class="line">* 返 回:    无</div><div class="line">* 设 计 者：zy 日期：2014-07-01 </div><div class="line">* 修 改 者：zy 日期：2016-07-08</div><div class="line">* 版 本：   1.2</div><div class="line">***********************************************************************/</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Shu_Display</span><span class="params">(<span class="keyword">double</span> js)</span></span></div><div class="line">&#123;uchar i;                  <span class="comment">//循环变量</span></div><div class="line"> <span class="keyword">static</span> uchar  suff[<span class="number">6</span>];	   <span class="comment">//数据处理暂存数组</span></div><div class="line"> <span class="keyword">static</span> uint   cuff[<span class="number">4</span>];	   <span class="comment">//提取各位有关</span></div><div class="line"> <span class="keyword">static</span> <span class="keyword">double</span>  n=<span class="number">1</span>,y; 	   <span class="comment">//与小数截取有关</span></div><div class="line"> <span class="keyword">static</span>  uint count;		   <span class="comment">//暂存</span></div><div class="line"> </div><div class="line"> y=<span class="built_in">fmod</span>(js,n);			   <span class="comment">//分离js小数部分 存在y中</span></div><div class="line"></div><div class="line"> count=js;				   <span class="comment">//强制类型转换，取js整数部分</span></div><div class="line"></div><div class="line"> suff[<span class="number">0</span>] = count/<span class="number">1000</span>;	   <span class="comment">//取千位</span></div><div class="line"> cuff[<span class="number">0</span>] = count%<span class="number">1000</span>;</div><div class="line"></div><div class="line"> suff[<span class="number">1</span>] = cuff[<span class="number">0</span>]/<span class="number">100</span>;	   <span class="comment">//取百位</span></div><div class="line"> cuff[<span class="number">1</span>] = cuff[<span class="number">0</span>]%<span class="number">100</span>;</div><div class="line"></div><div class="line"> suff[<span class="number">2</span>] = cuff[<span class="number">1</span>]/<span class="number">10</span>;	   <span class="comment">//取十位</span></div><div class="line"> suff[<span class="number">3</span>] = cuff[<span class="number">1</span>]%<span class="number">10</span>;	   <span class="comment">//取个位</span></div><div class="line"></div><div class="line"> count	 = y*<span class="number">1000</span>;		   <span class="comment">//小数部分。扩大1000倍提取。</span></div><div class="line"> </div><div class="line"> cuff[<span class="number">2</span>] = count%<span class="number">1000</span>;</div><div class="line"></div><div class="line"> suff[<span class="number">4</span>] = cuff[<span class="number">2</span>]/<span class="number">100</span>;	   <span class="comment">//小数点后一位</span></div><div class="line"> cuff[<span class="number">3</span>] = cuff[<span class="number">2</span>]%<span class="number">100</span>;</div><div class="line"></div><div class="line"> suff[<span class="number">5</span>] = cuff[<span class="number">3</span>]/<span class="number">10</span>;	  <span class="comment">//小数点后2位</span></div><div class="line"></div><div class="line"> io_shu=<span class="number">0</span>;			      <span class="comment">//打开3-8译码器</span></div><div class="line"></div><div class="line"> <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">6</span>;i++)</div><div class="line">   &#123;</div><div class="line">    wei(i);               <span class="comment">//位选</span></div><div class="line">	io_dm=du_num[suff[i]];<span class="comment">//段选</span></div><div class="line">	<span class="keyword">if</span>(i==<span class="number">3</span>) io_DP=<span class="number">1</span>;</div><div class="line">	delay_1ms(<span class="number">1</span>);	      <span class="comment">//延迟</span></div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/3/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/27/VPS科学上网教程系列2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -943,7 +1165,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  5,489
+                  5,506
                 </span>
               
 
@@ -980,7 +1202,7 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">更新</div><div class="line">2016.06.26  与SSR有关部分基本完成。  </div><div class="line">2016.09.29  更新SSR部分内容</div><div class="line">2016.10.09  更新SSR内容，更新Android端接入。</div><div class="line">2016.11.09  更新SSR混淆相关内容，更新SSR-Android，更新部分介绍。</div><div class="line">2016.11.20  整合一部分VPS优化内容</div><div class="line">2016.12.11  删减调整一部分内容</div><div class="line">2016.12.15  替换锐速优化为 BBR，整合TCP优化</div><div class="line">2016.12.26  更换TCP BBR 脚本，脚本来自@秋水逸冰 版本，测试通过 </div><div class="line">2017.01.11  同步更新一部分SSR内容</div><div class="line">2017.02.17  同步更新，调整删减内容，降低上手难度，增加VPS测速相关内容</div><div class="line">2017.03.28  调整一部分内容，更新Vps推荐</div><div class="line">2017.04.08  新增 VPS 安全加固</div><div class="line">2017.05.24  同步更新内容，更换协议，增加新内容。</div><div class="line">2017.06.28  删减过时内容，同步更新</div><div class="line">2017.07.03  更新BBR内容，VPS测速</div></pre></td></tr></table></figure>
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">更新</div><div class="line">2016.06.26  与SSR有关部分基本完成。  </div><div class="line">2016.09.29  更新SSR部分内容</div><div class="line">2016.10.09  更新SSR内容，更新Android端接入。</div><div class="line">2016.11.09  更新SSR混淆相关内容，更新SSR-Android，更新部分介绍。</div><div class="line">2016.11.20  整合一部分VPS优化内容</div><div class="line">2016.12.11  删减调整一部分内容</div><div class="line">2016.12.15  替换锐速优化为 BBR，整合TCP优化</div><div class="line">2016.12.26  更换TCP BBR 脚本，脚本来自@秋水逸冰 版本，测试通过 </div><div class="line">2017.01.11  同步更新一部分SSR内容</div><div class="line">2017.02.17  同步更新，调整删减内容，降低上手难度，增加VPS测速相关内容</div><div class="line">2017.03.28  调整一部分内容，更新Vps推荐</div><div class="line">2017.04.08  新增 VPS 安全加固</div><div class="line">2017.05.24  同步更新内容，更换协议，增加新内容。</div><div class="line">2017.06.28  删减过时内容，同步更新</div><div class="line">2017.07.03  更新BBR内容，VPS测速</div><div class="line">2017.07.12  更换过时截图，修正错误。</div></pre></td></tr></table></figure>
 <h2 id="安装脚本说明：遇到失效等，请留言或邮件我！"><a href="#安装脚本说明：遇到失效等，请留言或邮件我！" class="headerlink" title="安装脚本说明：遇到失效等，请留言或邮件我！"></a>安装脚本说明：遇到失效等，请留言或邮件我！</h2><ul>
 <li>脚本来源 @秋水逸冰<br><a href="https://shadowsocks.be/9.html" target="_blank" rel="external">ShadowsocksR一键安装脚本</a></li>
 </ul>
@@ -1278,10 +1500,10 @@
 </ul>
 <ul>
 <li><p>注释</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  "server":"0.0.0.0",</div><div class="line">  "server_ipv6":"::",</div><div class="line">  "local_address":"127.0.0.1",</div><div class="line">  "local_port":1080,</div><div class="line">  "port_password":&#123;</div><div class="line">   #纯 SS 不带混淆 端口443 密码为123456.</div><div class="line">   "443":"123456",</div><div class="line">   #端口3389，密码123456 ，protocol选择auth_chain_a。obfs选择tls1.2_ticket_auth，具体插件的介绍如下参考资料中</div><div class="line">   "3389":&#123;"protocol":"auth_chain_a", "password":"123456", "obfs":"tls1.2_ticket_auth", "obfs_param":""&#125;,</div><div class="line">  #注意无论怎么变化，最后一个端口设置，不带逗号！</div><div class="line">   "25":&#123;"protocol":"auth_aes128_md5", "password":"123456", "obfs":"tls1.2_ticket_auth", "obfs_param":""&#125;#此处没有逗号！</div><div class="line">  &#125;,</div><div class="line">  "timeout":400,</div><div class="line">  #默认全局的加密方式，即上边各个端口的默认加密方式。一般为aes-256-cfb，		此处，选择为chacha20，移动设备性能较好。</div><div class="line">  "method":"chacha20",</div><div class="line">  #protocol.协议定义插件的默认值，origin即使用原版SS协议，不混淆。即上面端口配置中，你没有设置 protocol 和 obfs 情况下，使用的默认值。</div><div class="line">  "protocol": "origin",</div><div class="line">  "protocol_param": "",</div><div class="line">   #protocol.协议定义插件的默认值，plain即使用原协议，不混淆。</div><div class="line">  "obfs": "plain",</div><div class="line">  "obfs_param": "",</div><div class="line">  "redirect": "",</div><div class="line">  "dns_ipv6": false,</div><div class="line"> #TCP FAST OPEN ，打开</div><div class="line">  "fast_open": true,</div><div class="line"> "workers": 1</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  "server":"0.0.0.0",</div><div class="line">  "server_ipv6":"::",</div><div class="line">  "local_address":"127.0.0.1",</div><div class="line">  "local_port":1080,</div><div class="line">  "port_password":&#123;</div><div class="line">   #纯 SS 不带混淆 端口25 密码为123456.</div><div class="line">   "25":"123456",</div><div class="line">   #端口443，密码123456 ，protocol选择auth_chain_a。obfs选择tls1.2_ticket_auth，具体插件的介绍如下参考资料中</div><div class="line">   "443":&#123;"protocol":"auth_chain_a", "password":"123456", "obfs":"tls1.2_ticket_auth", "obfs_param":""&#125;,</div><div class="line">  #注意无论怎么变化，最后一个端口设置，不带逗号！</div><div class="line">   "3389":&#123;"protocol":"auth_aes128_md5", "password":"123456", "obfs":"tls1.2_ticket_auth", "obfs_param":""&#125;#此处没有逗号！</div><div class="line">  &#125;,</div><div class="line">  "timeout":400,</div><div class="line">  #默认全局的加密方式，即上边各个端口的默认加密方式。一般为aes-256-cfb，		此处，选择为chacha20，移动设备性能较好。</div><div class="line">  "method":"chacha20",</div><div class="line">  #protocol.协议定义插件的默认值，origin即使用原版SS协议，不混淆。即上面端口配置中，你没有设置 protocol 和 obfs 情况下，使用的默认值。</div><div class="line">  "protocol": "origin",</div><div class="line">  "protocol_param": "",</div><div class="line">   #protocol.协议定义插件的默认值，plain即使用原协议，不混淆。</div><div class="line">  "obfs": "plain",</div><div class="line">  "obfs_param": "",</div><div class="line">  "redirect": "",</div><div class="line">  "dns_ipv6": true,</div><div class="line"> #TCP FAST OPEN ，打开</div><div class="line">  "fast_open": true,</div><div class="line"> "workers": 1</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>无注释版本，直接复制粘贴覆盖原始文件，或者在原文件上修改</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"server"</span>:<span class="string">"0.0.0.0"</span>,</div><div class="line">  <span class="attr">"server_ipv6"</span>:<span class="string">"::"</span>,</div><div class="line">  <span class="attr">"local_address"</span>:<span class="string">"127.0.0.1"</span>,</div><div class="line">  <span class="attr">"local_port"</span>:<span class="number">1080</span>,</div><div class="line">  <span class="attr">"port_password"</span>:&#123;</div><div class="line">      <span class="attr">"3389"</span>:&#123;<span class="attr">"protocol"</span>:<span class="string">"auth_chain_a"</span>, <span class="attr">"password"</span>:<span class="string">"123456"</span>, <span class="attr">"obfs"</span>:<span class="string">"tls1.2_ticket_auth"</span>, <span class="attr">"obfs_param"</span>:<span class="string">""</span>&#125;,</div><div class="line">      <span class="attr">"25"</span>:&#123;<span class="attr">"protocol"</span>:<span class="string">"auth_aes128_md5"</span>, <span class="attr">"password"</span>:<span class="string">"123456"</span>, <span class="attr">"obfs"</span>:<span class="string">"tls1.2_ticket_auth"</span>, <span class="attr">"obfs_param"</span>:<span class="string">""</span>&#125;</div><div class="line"></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"timeout"</span>:<span class="number">400</span>,</div><div class="line">  <span class="attr">"method"</span>:<span class="string">"chacha20"</span>,</div><div class="line">  <span class="attr">"protocol"</span>: <span class="string">"origin"</span>,</div><div class="line">  <span class="attr">"protocol_param"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"obfs"</span>: <span class="string">"plain"</span>,</div><div class="line">  <span class="attr">"obfs_param"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"redirect"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"dns_ipv6"</span>: <span class="literal">false</span>,</div><div class="line">  <span class="attr">"fast_open"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"workers"</span>: <span class="number">1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"server"</span>:<span class="string">"0.0.0.0"</span>,</div><div class="line">  <span class="attr">"server_ipv6"</span>:<span class="string">"::"</span>,</div><div class="line">  <span class="attr">"local_address"</span>:<span class="string">"127.0.0.1"</span>,</div><div class="line">  <span class="attr">"local_port"</span>:<span class="number">1080</span>,</div><div class="line">  <span class="attr">"port_password"</span>:&#123;</div><div class="line">   	<span class="attr">"25"</span>:<span class="string">"123456"</span>,</div><div class="line">      <span class="attr">"443"</span>:&#123;<span class="attr">"protocol"</span>:<span class="string">"auth_chain_a"</span>, <span class="attr">"password"</span>:<span class="string">"123456"</span>, <span class="attr">"obfs"</span>:<span class="string">"tls1.2_ticket_auth"</span>, <span class="attr">"obfs_param"</span>:<span class="string">""</span>&#125;,</div><div class="line">      <span class="attr">"3389"</span>:&#123;<span class="attr">"protocol"</span>:<span class="string">"auth_aes128_md5"</span>, <span class="attr">"password"</span>:<span class="string">"123456"</span>, <span class="attr">"obfs"</span>:<span class="string">"tls1.2_ticket_auth"</span>, <span class="attr">"obfs_param"</span>:<span class="string">""</span>&#125;</div><div class="line"></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"timeout"</span>:<span class="number">400</span>,</div><div class="line">  <span class="attr">"method"</span>:<span class="string">"chacha20"</span>,</div><div class="line">  <span class="attr">"protocol"</span>: <span class="string">"origin"</span>,</div><div class="line">  <span class="attr">"protocol_param"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"obfs"</span>: <span class="string">"plain"</span>,</div><div class="line">  <span class="attr">"obfs_param"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"redirect"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"dns_ipv6"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"fast_open"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"workers"</span>: <span class="number">1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="重启SSR"><a href="#重启SSR" class="headerlink" title="重启SSR"></a>重启SSR</h3><ul>
@@ -1291,6 +1513,12 @@
 </ul>
 <ul>
 <li>会提示shadowsocksr重启成功。（如图）<br><img src="http://cdn3.snapgram.co/imgs/2016/06/25/25.jpg" alt="25.jpg"></li>
+</ul>
+<h3 id="更新SSR"><a href="#更新SSR" class="headerlink" title="更新SSR"></a>更新SSR</h3><ul>
+<li><p>vps端，需要先令存 shadowsocks.json文件。再执行卸载</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./shadowsocksR.sh uninstall</div></pre></td></tr></table></figure>
+<p>  之后重新执行安装脚本即可</p>
+</li>
 </ul>
 <h3 id="混淆选择-新手可略过"><a href="#混淆选择-新手可略过" class="headerlink" title="混淆选择(新手可略过)"></a>混淆选择(新手可略过)</h3><h4 id="混淆插件简介"><a href="#混淆插件简介" class="headerlink" title="混淆插件简介"></a>混淆插件简介</h4><ul>
 <li><p>ShadowsocksR目前支持的混淆插件（此类型的插件用于定义加密后的通信协议）：<br>  plain ,http_simple ,http_post,random_head ,tls1.2_ticket<em>auth   
@@ -1345,16 +1573,10 @@
 </blockquote>
 </li>
 </ul>
-<h2 id="更新SSR"><a href="#更新SSR" class="headerlink" title="更新SSR"></a>更新SSR</h2><ul>
-<li><p>vps端，需要先令存 shadowsocks.json文件。再执行卸载</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./shadowsocksR.sh uninstall</div></pre></td></tr></table></figure>
-<p>  之后重新执行安装脚本即可</p>
-</li>
-</ul>
 <h2 id="VPS优化"><a href="#VPS优化" class="headerlink" title="VPS优化"></a>VPS优化</h2><ul>
 <li>详情在<a href="https://jasper-1024.github.io/2016/06/27/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%972/" target="_blank" rel="external">科学上网教程（二）——VPS优化加速</a></li>
 <li>这里只提及 原版BBR</li>
-<li>BBR目前有很多修改版本，效果很好，BBR属于内核级别，<strong>不推荐新手直接安装修改版BBR，内核挂掉，新手一般很难处理。</strong></li>
+<li>BBR目前有很多修改版本，效果很好，BBR属于内核级别，<strong>不推荐新手 安装修改版BBR，内核挂掉，新手一般很难处理。</strong></li>
 <li><strong>修改版BBR 详情见<a href="https://jasper-1024.github.io/2016/06/27/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%972/" target="_blank" rel="external">科学上网教程（二）——VPS优化加速</a></strong></li>
 </ul>
 <h3 id="TCP优化"><a href="#TCP优化" class="headerlink" title="TCP优化"></a>TCP优化</h3><ul>
@@ -1434,12 +1656,15 @@
 <p><a href="https://github.com/shadowsocksr/shadowsocksr-csharp/releases" target="_blank" rel="external">https://github.com/shadowsocksr/shadowsocksr-csharp/releases</a></p>
 </blockquote>
 </li>
-<li><p>解压ShadowsocksR-win-3.8.2e.7z（以具体客户端版本为准），打开。<br><img src="http://cdn2.snapgram.co/imgs/2016/06/25/3220191.jpg" alt="3220191.jpg"></p>
+<li><p>解压ShadowsocksR-win-4.6.1.7z（以具体客户端版本为准），打开。<br><img src="https://my.mixtape.moe/xlyrsc.png" alt="3220191.jpg"></p>
 </li>
 <li><p>对应上文中SSR服务端配置<br>输入对应端口配置，ip地址，密码等。</p>
 <ul>
-<li>443端口<br><img src="http://cdn1.snapgram.co/imgs/2016/06/25/334344b.jpg" alt="334344b.jpg"></li>
-<li>3389端口<br><img src="http://cdn3.snapgram.co/imgs/2016/06/25/342622e.jpg" alt="342622e.jpg"></li>
+<li>25端口（单SS）<br><img src="https://my.mixtape.moe/xoantd.png" alt="ScreenShot_20170712214431.png"></li>
+</ul>
+<ul>
+<li>443端口<br><img src="https://my.mixtape.moe/ubhyac.png" alt="334344b.jpg"></li>
+<li>3389端口<br><img src="https://my.mixtape.moe/fcntld.png" alt="342622e.jpg"></li>
 </ul>
 </li>
 </ul>
@@ -2302,7 +2527,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2313,7 +2538,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2324,7 +2549,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -2384,7 +2609,7 @@
         <div class="copyright" >
   
   &copy;  2016.6.2 - 
-  <span itemprop="copyrightYear">2017.7.4</span>
+  <span itemprop="copyrightYear">2017.7.12</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
