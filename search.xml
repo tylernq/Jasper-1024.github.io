@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Linux内核C语言中的面向对象]]></title>
     <url>%2F2017%2F07%2F11%2FLinux%E5%86%85%E6%A0%B8C%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%2F</url>
-    <content type="text"><![CDATA[转载自”Blog of UnicornX” (http://unicornx.github.io/) 面向对象的思想在c语言中的应用，第一次看到才知道c语言还能这么用。。。 前言 语言只是工具，重要的是思想。但是！！C语言用面向对象？？看了内核代码，真给那些写Linux、内核的大神跪了。。。 当然因为C语言的局限性，并非完全面向对象的实现，私有成员等就没有了。 封装 既类在C语言中的实现，实际上是 struct + 函数体 = 函数表结构体里不允许存在成员函数，但是换成指向函数的指针是可以滴。 示例 1234567891011 struct foo_operations &#123; void (*op_a) (struct foo *, loff_t, int); void (*op_b) (struct foo *, char __user *, size_t, loff_t *); void (*op_c) (struct foo *, const char __user *, size_t, loff_t *); ...... &#125;; ``` ### 继承* 这个简单点， struct 里面套 struct ，警告熟悉c语言的应该都清除。。。这里没有父类子类的严格区分，实际上是完全自由的。* 示例 struct foo { int a; int b; int c; struct foo_operations ops;}; 1234### 多态* 这个是最有意思的，c语言中严格规定同一个.c文件/工程中不能存在重名函数，但是c语言的精华-指针给了思路，借助结构体，我函数名不变，每指向不同的结构体变量就行了。。。虽然还是很麻烦。。* 示例 struct foo a;a-&gt;ops = ops1;a-&gt;ops-&gt;op_a(a);//切换a-&gt;ops = ops2;a-&gt;ops-&gt;op_a(a); 1234### 链表* 内核内大量运用链表，开始不清楚真是头晕。。* 示例 struct list_head { struct list_head next, prev;}; 12一个指向自身的结构体，包含下一个与自身的指针。使用 struct A_LIST { data_t data; struct list_head *list;}; 1* offsetof宏 #define offsetof(type, member) (size_t)&amp;(((type*)0)-&gt;member) 123 offsetof是用来判断结构体中成员的偏移位置* container_of_宏 #define container_of(ptr, type, member) ({ \ const typeof( ((type )0)-&gt;member ) mptr = (ptr); \ (type )( (char )mptr - offsetof(type,member) );})```根据一个结构体变量中的一个域成员变量的指针来获取指向整个结构体变量的指针..链表元素常用]]></content>
+    <content type="text"><![CDATA[转载自”Blog of UnicornX” (http://unicornx.github.io/) 面向对象的思想在c语言中的应用，第一次看到才知道c语言还能这么用。。。 前言 语言只是工具，重要的是思想。但是！！C语言用面向对象？？看了内核代码，真给那些写Linux、内核的大神跪了。。。 当然因为C语言的局限性，并非完全面向对象的实现，私有成员等就没有了。 封装 既类在C语言中的实现，实际上是 struct + 函数体 = 函数表结构体里不允许存在成员函数，但是换成指向函数的指针是可以滴。 示例12345struct foo_operations &#123; void (*op_a) (struct foo *, loff_t, int); void (*op_b) (struct foo *, char __user *, size_t, loff_t *); void (*op_c) (struct foo *, const char __user *, size_t, loff_t *); &#125;; 继承 这个简单点， struct 里面套 struct ，警告熟悉c语言的应该都清除。。。这里没有父类子类的严格区分，实际上是完全自由的。 示例123456struct foo &#123; int a; int b; int c; struct foo_operations ops;&#125;; 多态 这个是最有意思的，c语言中严格规定同一个.c文件/工程中不能存在重名函数，但是c语言的精华-指针给了思路，借助结构体，我函数名不变，每指向不同的结构体变量就行了。。。虽然还是很麻烦。。 示例123456struct foo a;a-&gt;ops = ops1;a-&gt;ops-&gt;op_a(a);//切换a-&gt;ops = ops2;a-&gt;ops-&gt;op_a(a); 链表 内核内大量运用链表，开始不清楚真是头晕。。 示例 123 struct list_head &#123;struct list_head *next, *prev; &#125;; 一个指向自身的结构体，包含下一个与自身的指针。使用 1234struct A_LIST &#123; data_t data; struct list_head *list;&#125;; offsetof宏 1#define offsetof(type, member) (size_t)&amp;(((type*)0)-&gt;member) offsetof是用来判断结构体中成员的偏移位置 containerof宏 123#define container_of(ptr, type, member) (&#123; \ const typeof( ((type *)0)-&gt;member ) *__mptr = (ptr); \ (type *)( (char *)__mptr - offsetof(type,member) );&#125;) 根据一个结构体变量中的一个域成员变量的指针来获取指向整个结构体变量的指针..链表元素常用]]></content>
       <categories>
         <category>Linux</category>
       </categories>
@@ -20,8 +20,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
         <tag>毕设</tag>
       </tags>
@@ -34,8 +34,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
       </tags>
   </entry>
@@ -47,8 +47,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
         <tag>毕设</tag>
         <tag>BlueTooth</tag>
@@ -74,8 +74,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
       </tags>
   </entry>
@@ -87,8 +87,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
       </tags>
   </entry>
@@ -100,8 +100,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
       </tags>
   </entry>
@@ -132,8 +132,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
       </tags>
   </entry>
@@ -145,8 +145,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
       </tags>
   </entry>
@@ -158,8 +158,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
       </tags>
   </entry>
@@ -171,8 +171,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
       </tags>
   </entry>
@@ -184,8 +184,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
       </tags>
   </entry>
@@ -197,8 +197,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
       </tags>
   </entry>
@@ -243,8 +243,8 @@
         <category>Android笔记</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>学习记录</tag>
       </tags>
   </entry>
