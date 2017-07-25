@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-25T14:14:06.534Z</updated>
+  <updated>2017-07-25T14:23:40.460Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/07/11/Linux%E5%86%85%E6%A0%B8C%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     <id>http://yoursite.com/2017/07/11/Linux内核C语言中的面向对象/</id>
     <published>2017-07-11T02:17:11.000Z</published>
-    <updated>2017-07-25T14:14:06.534Z</updated>
+    <updated>2017-07-25T14:23:40.460Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li><p>转载自”Blog of UnicornX” (<a href="http://unicornx.github.io/" target="_blank" rel="external">http://unicornx.github.io/</a>)</p>
@@ -36,7 +36,7 @@
 <h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><ul>
 <li>既类在C语言中的实现，实际上是 struct + 函数体 = 函数表<br>结构体里不允许存在成员函数，但是换成指向函数的指针是可以滴。</li>
 <li><p>示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">  struct foo_operations &#123;</div><div class="line">    void (*op_a) (struct foo *, loff_t, int);</div><div class="line">    void (*op_b) (struct foo *, char __user *, size_t, loff_t *);</div><div class="line">    void (*op_c) (struct foo *, const char __user *, size_t, loff_t *);</div><div class="line">    ......</div><div class="line">  &#125;;</div><div class="line">  ``` </div><div class="line"></div><div class="line">### 继承</div><div class="line">* 这个简单点， struct 里面套 struct ，警告熟悉c语言的应该都清除。。。这里没有父类子类的严格区分，实际上是完全自由的。</div><div class="line">* 示例</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">  struct foo_operations &#123;</div><div class="line">    void (*op_a) (struct foo *, loff_t, int);</div><div class="line">    void (*op_b) (struct foo *, char __user *, size_t, loff_t *);</div><div class="line">    void (*op_c) (struct foo *, const char __user *, size_t, loff_t *);</div><div class="line">    ......</div><div class="line">   &#125;;</div><div class="line">  ``` </div><div class="line"></div><div class="line">### 继承</div><div class="line">* 这个简单点， struct 里面套 struct ，警告熟悉c语言的应该都清除。。。这里没有父类子类的严格区分，实际上是完全自由的。</div><div class="line">* 示例</div></pre></td></tr></table></figure>
 <p>struct foo {<br>  int a;<br>  int b;<br>  int c;<br>  struct foo_operations ops;<br>};</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 多态</div><div class="line">* 这个是最有意思的，c语言中严格规定同一个.c文件/工程中不能存在重名函数，但是c语言的精华-指针给了思路，借助结构体，我函数名不变，每指向不同的结构体变量就行了。。。虽然还是很麻烦。。</div><div class="line">* 示例</div></pre></td></tr></table></figure>
 <p>struct foo a;<br>a-&gt;ops = ops1;<br>a-&gt;ops-&gt;op_a(a);<br>//切换<br>a-&gt;ops = ops2;<br>a-&gt;ops-&gt;op_a(a);</p>
