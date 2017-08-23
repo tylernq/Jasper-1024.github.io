@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content=",,," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -89,17 +89,15 @@
 
 
 
-<meta name="description" content="简介 Toolbar：Google在material design中为了取代ActionBar而发布的组件。Android 5.0以上版本支持，如需兼容API21以下系统，需要引入 support v7 官方文档入口 相比ActionBar更为灵活，本质上是一个ViewGroup容器。  A navigation button        导航按钮  A branded logo image">
-<meta name="keywords" content="Android,Android Studio,学习记录">
+<meta name="description" content="程序员 微尘 V">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Android学习笔记-UI-Toolbar">
-<meta property="og:url" content="http://yoursite.com/Android学习笔记-UI-Toolbar.html">
+<meta property="og:title" content="默">
+<meta property="og:url" content="http://yoursite.com/tags/Linux/page/2/index.html">
 <meta property="og:site_name" content="默">
-<meta property="og:description" content="简介 Toolbar：Google在material design中为了取代ActionBar而发布的组件。Android 5.0以上版本支持，如需兼容API21以下系统，需要引入 support v7 官方文档入口 相比ActionBar更为灵活，本质上是一个ViewGroup容器。  A navigation button        导航按钮  A branded logo image">
-<meta property="og:updated_time" content="2016-10-09T10:19:04.045Z">
+<meta property="og:description" content="程序员 微尘 V">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android学习笔记-UI-Toolbar">
-<meta name="twitter:description" content="简介 Toolbar：Google在material design中为了取代ActionBar而发布的组件。Android 5.0以上版本支持，如需兼容API21以下系统，需要引入 support v7 官方文档入口 相比ActionBar更为灵活，本质上是一个ViewGroup容器。  A navigation button        导航按钮  A branded logo image">
+<meta name="twitter:title" content="默">
+<meta name="twitter:description" content="程序员 微尘 V">
 
 
 
@@ -127,19 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/Android学习笔记-UI-Toolbar.html"/>
+  <link rel="canonical" href="http://yoursite.com/tags/Linux/page/2/"/>
 
 
 
 
 
-  <title>
-  
-
-  
-    Android学习笔记-UI-Toolbar | 默
-  
-</title>
+  <title> 标签: Linux | 默 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -321,34 +313,78 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-  <header class="post-header">
-
-	<h1 class="post-title" itemprop="name headline">Android学习笔记-UI-Toolbar</h1>
-
-
-
-</header>
+  <div id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        Linux
+        <small>标签</small>
+      </h2>
+    </div>
 
     
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2016/06/21/初入树莓派1----安装系统+进入SSH/" itemprop="url">
+              
+                <span itemprop="name">初入树莓派1安装系统+进入SSH</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-06-21T10:17:11+08:00"
+              content="2016-06-21" >
+          06-21
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
     
-      <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
-<li>Toolbar：Google在material design中为了取代ActionBar而发布的组件。Android 5.0以上版本支持，如需兼容API21以下系统，需要引入 support v7</li>
-<li><a href="https://developer.android.com/reference/android/widget/Toolbar.html" target="_blank" rel="external">官方文档</a>入口</li>
-<li><p>相比ActionBar更为灵活，本质上是一个ViewGroup容器。<br>  A navigation button        导航按钮<br>  A branded logo image    logo图片<br>  A title and subtitle    标题和子标题<br>  One or more custom views    一个或者多个自定义视图<br>  An action menu    操作菜单</p>
-</li>
-<li></li>
-</ul>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ul>
-<li><p>Android Studio中已经使用Toolbar代替了ActionBar。新建工程时直接直接创建ToolBar。代码如下(截取)：</p>
-  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">    <span class="tag">&lt;<span class="name">android.support.design.widget.AppBarLayout</span></span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">android:theme</span>=<span class="string">"@style/AppTheme.AppBarOverlay"</span>&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">android.support.v7.widget.Toolbar</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/toolbar"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"?attr/actionBarSize"</span></div><div class="line">        <span class="attr">android:background</span>=<span class="string">"?attr/colorPrimary"</span></div><div class="line">        <span class="attr">app:popupTheme</span>=<span class="string">"@style/AppTheme.PopupOverlay"</span> / &gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">android.support.design.widget.AppBarLayout</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>  AppBarLayout作为父容器</p>
-<h3 id="手动创建ToolBar"><a href="#手动创建ToolBar" class="headerlink" title="手动创建ToolBar"></a>手动创建ToolBar</h3></li>
-<li></li>
-</ul>
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2016/06/18/hellowworld/" itemprop="url">
+              
+                <span itemprop="name">Hello World</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-06-18T10:10:11+08:00"
+              content="2016-06-18" >
+          06-18
+        </time>
+      </div>
+
+    </header>
+  </article>
+
 
     
   </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/tags/Linux/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/tags/Linux/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
@@ -356,17 +392,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -402,7 +427,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -413,7 +438,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -424,7 +449,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -484,7 +509,7 @@
         <div class="copyright" >
   
   &copy;  2016.6.2 - 
-  <span itemprop="copyrightYear">2017.8.7</span>
+  <span itemprop="copyrightYear">2017.8.23</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -580,18 +605,6 @@
       <script id="dsq-count-scr" src="https://jasper1024.disqus.com/count.js" async></script>
     
 
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/Android学习笔记-UI-Toolbar.html';
-          this.page.identifier = 'Android学习笔记-UI-Toolbar.html';
-          this.page.title = 'Android学习笔记-UI-Toolbar';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://jasper1024.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
     
 
   

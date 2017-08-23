@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content=",,," />
+  <meta name="keywords" content="学习记录,Linux,timer," />
 
 
 
@@ -89,19 +89,17 @@
 
 
 
-<meta name="description" content="Fragments简介 Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI 设计提供支持。 可以将多个片段组合在一个 Activity 中来构建多窗格 UI，以及在多个 Activity 中重复使用某个片段。可以将片段视为 Activity 的模块化组成部分，它具有自己的生命周期，能接收自己的输">
-<meta name="keywords" content="Android,Android Studio,学习记录">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Android笔记—Fragments">
-<meta property="og:url" content="http://yoursite.com/Android笔记—Fragments.html">
+<meta name="description" content="ss">
+<meta name="keywords" content="学习记录,Linux,timer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="让人崩溃的linux——时间子系统（一）">
+<meta property="og:url" content="http://yoursite.com/2017/08/15/让人崩溃的linux——时间子系统（一）/index.html">
 <meta property="og:site_name" content="默">
-<meta property="og:description" content="Fragments简介 Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI 设计提供支持。 可以将多个片段组合在一个 Activity 中来构建多窗格 UI，以及在多个 Activity 中重复使用某个片段。可以将片段视为 Activity 的模块化组成部分，它具有自己的生命周期，能接收自己的输">
-<meta property="og:image" content="http://cdn5.snapgram.co/images/2016/10/10/Screenshot_1476109113.png">
-<meta property="og:updated_time" content="2016-11-20T02:38:25.347Z">
+<meta property="og:description" content="ss">
+<meta property="og:updated_time" content="2017-08-23T14:21:56.451Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android笔记—Fragments">
-<meta name="twitter:description" content="Fragments简介 Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI 设计提供支持。 可以将多个片段组合在一个 Activity 中来构建多窗格 UI，以及在多个 Activity 中重复使用某个片段。可以将片段视为 Activity 的模块化组成部分，它具有自己的生命周期，能接收自己的输">
-<meta name="twitter:image" content="http://cdn5.snapgram.co/images/2016/10/10/Screenshot_1476109113.png">
+<meta name="twitter:title" content="让人崩溃的linux——时间子系统（一）">
+<meta name="twitter:description" content="ss">
 
 
 
@@ -129,19 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/Android笔记—Fragments.html"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/15/让人崩溃的linux——时间子系统（一）/"/>
 
 
 
 
 
-  <title>
-  
-
-  
-    Android笔记—Fragments | 默
-  
-</title>
+  <title> 让人崩溃的linux——时间子系统（一） | 默 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -175,7 +167,7 @@
     
   
 
-  <div class="container sidebar-position-right  ">
+  <div class="container sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -324,66 +316,273 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
 
-	<h1 class="post-title" itemprop="name headline">Android笔记—Fragments</h1>
+  
 
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/15/让人崩溃的linux——时间子系统（一）/">
 
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
 
-</header>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                让人崩溃的linux——时间子系统（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-15T17:52:16+08:00">
+                2017-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux学习记录/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux学习记录</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/15/让人崩溃的linux——时间子系统（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/15/让人崩溃的linux——时间子系统（一）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/08/15/让人崩溃的linux——时间子系统（一）/" class="leancloud_visitors" data-flag-title="让人崩溃的linux——时间子系统（一）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
     
-      <h2 id="Fragments简介"><a href="#Fragments简介" class="headerlink" title="Fragments简介"></a>Fragments简介</h2><ul>
-<li>Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI 设计提供支持。</li>
-<li>可以将多个片段组合在一个 Activity 中来构建多窗格 UI，以及在多个 Activity 中重复使用某个片段。可以将片段视为 Activity 的模块化组成部分，它具有自己的生命周期，能接收自己的输入事件，可以在 Activity 运行时添加或删除片段（类似于不同 Activity 中重复使用的“子 Activity”）</li>
-<li><a href="https://developer.android.com/guide/components/fragments.html" target="_blank" rel="external">Google官方文档(中文)</a></li>
-</ul>
-<h2 id="创建Fragments"><a href="#创建Fragments" class="headerlink" title="创建Fragments"></a>创建Fragments</h2><ul>
-<li>fragment创建过程与Activity类似。<h3 id="创建一个Fragment类"><a href="#创建一个Fragment类" class="headerlink" title="创建一个Fragment类"></a>创建一个Fragment类</h3></li>
-<li>新建first_fragme 继承自Fragment </li>
-<li>Android Studio中 对应Fragment 包有两个，选择Android.app _</li>
-<li>当创建Fragment的时，必须重写onCreateView()回调方法.</li>
-<li>Fragment并非一定要绑定一个布局文件，下面会提到。</li>
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span> <span class="params">(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState)</span></span>&#123;</div><div class="line">       View view = inflater.inflate(R.layout.fragment_firest,container,<span class="keyword">false</span>);</div><div class="line">       <span class="keyword">return</span> view;</div><div class="line">   	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>与此对应的fragment<em>firest布局文件 </em><br>  LinearLayout加一个Button，背景颜色设置为了靛蓝色。<br>  具体代码就不多说了。</p>
-</li>
-</ul>
-<h3 id="在XML将fragment添加到activity"><a href="#在XML将fragment添加到activity" class="headerlink" title="在XML将fragment添加到activity"></a>在XML将fragment添加到activity</h3><ul>
-<li><p>在activity_main.xml中添加如下代码。跟添加一个layout没有太大区别。</p>
-  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">fragment</span></span></div><div class="line"><span class="attr">android:id</span>=<span class="string">"@+id/first_fragment"</span></div><div class="line"><span class="attr">android:name</span>=<span class="string">"layout.FirstFragment"</span></div><div class="line"><span class="attr">android:layout_width</span>=<span class="string">"0sp"</span></div><div class="line"><span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line"><span class="attr">android:layout_weight</span>=<span class="string">"1"</span> /&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>至此一个fragment添加完毕。为了对比，再新建一个second_fragment，背景颜色不同，两者同时添加进activity_main中。</p>
-</li>
-<li><img src="http://cdn5.snapgram.co/images/2016/10/10/Screenshot_1476109113.png" alt="Screenshot_1476109113.png"></li>
-</ul>
-<h3 id="在activity运行时添加fragment"><a href="#在activity运行时添加fragment" class="headerlink" title="在activity运行时添加fragment"></a>在activity运行时添加fragment</h3><ul>
-<li>添加或移除片段必须使用 FragmentManager 创建 FragmentTransaction， FragmentTransaction将提供添加、移除、替换片段以及执行其他片段事务所需的 API。</li>
-<li><p>处理片段时，请谨记：Activity 布局必须包含一个可以插入片段的容器 View。</p>
-</li>
-<li><p>Activity 内，调用 getSupportFragmentManager() 以获取 FragmentManager。然后，调用 beginTransaction() 创建一个 FragmentTransaction，并调用 add() 添加一个片段</p>
-</li>
-<li><p>可以在同一 FragmentTransaction 为 Activity 执行多片段事务。做好更改准备时，调用 commit()</p>
-</li>
-<li><p>示例：</p>
-<ul>
-<li><p>首先改造一下activity<em>main.xml</em><br>FrameLayout包含一个left_fragment</p>
- <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">  <span class="tag">&lt;<span class="name">FrameLayout</span>  </span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/right_layout"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_weight</span>=<span class="string">"1"</span>&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">fragment</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/left_fragment"</span></div><div class="line">        <span class="attr">android:name</span>=<span class="string">"com.example.fragment_text.leftfragment"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        /&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>在MainActivity的onCreate方法中添加fragment</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//新建准备替换的Fragment实例</span></div><div class="line">rightfragment right = <span class="keyword">new</span> rightfragment();</div><div class="line"> </div><div class="line"><span class="comment">//新建FragmentManager</span></div><div class="line">FragmentManager fragmentManager = getSupportFragmentManager();</div><div class="line"><span class="comment">// 调用beginTransaction() 创建FragmentTransaction</span></div><div class="line">FragmentTransaction transaction = fragmentManager.beginTransaction();</div><div class="line"></div><div class="line"><span class="comment">//FragmentTransaction内处理添加/替换等。</span></div><div class="line">transaction.replace(R.id.right_layout,right);</div><div class="line"></div><div class="line"><span class="comment">//可回退，</span></div><div class="line">transaction.addToBackStack(<span class="keyword">null</span>);</div><div class="line"><span class="comment">//最后执行commit()方法</span></div><div class="line">transaction.commit();</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>替换/添加 过程类似，replace/add</p>
-</li>
-</ul>
-<h3 id="fragment-之间的通信"><a href="#fragment-之间的通信" class="headerlink" title="fragment 之间的通信"></a>fragment 之间的通信</h3><ul>
-<li>占坑，待更新</li>
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>ss</li>
 </ul>
 
-    
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="https://my.mixtape.moe/pkqlqc.png" alt="Jasper Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/2017/08/15/让人崩溃的linux——时间子系统（一）/" title="让人崩溃的linux——时间子系统（一）">http://yoursite.com/2017/08/15/让人崩溃的linux——时间子系统（一）/</a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+        <div class="post-tags">
+          
+            <a href="/tags/学习记录/" rel="tag"># 学习记录</a>
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/timer/" rel="tag"># timer</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/11/Linux内核C语言中的面向对象/" rel="next" title="Linux内核C语言中的面向对象">
+                <i class="fa fa-chevron-left"></i> Linux内核C语言中的面向对象
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/19/崩溃的linux—rtc子系统/" rel="prev" title="让人崩溃的linux—rtc子系统">
+                让人崩溃的linux—rtc子系统 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -438,7 +637,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -449,7 +648,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -460,7 +659,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -520,7 +719,7 @@
         <div class="copyright" >
   
   &copy;  2016.6.2 - 
-  <span itemprop="copyrightYear">2017.8.7</span>
+  <span itemprop="copyrightYear">2017.8.23</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -599,6 +798,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
@@ -619,9 +822,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/Android笔记—Fragments.html';
-          this.page.identifier = 'Android笔记—Fragments.html';
-          this.page.title = 'Android笔记—Fragments';
+          this.page.url = 'http://yoursite.com/2017/08/15/让人崩溃的linux——时间子系统（一）/';
+          this.page.identifier = '2017/08/15/让人崩溃的linux——时间子系统（一）/';
+          this.page.title = '让人崩溃的linux——时间子系统（一）';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://jasper1024.disqus.com/embed.js';

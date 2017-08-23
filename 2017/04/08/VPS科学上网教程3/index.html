@@ -89,17 +89,17 @@
 
 
 
-<meta name="description" content="12更新2017.04.08  VPS日常一些安全措施   导语科学上网教程系列，很久没有更新新内容了。更新常用安全措施，至少保证，不会被轻易的当作肉鸡。都是一些常用的安全措施。  系统环境：CentOS    SSH 有两种方案 彻底关闭SSH登陆，改为密钥登陆，安全性最高，但配置较为复杂 修改SSH登陆端口，同时开放默认端口，将爆破 ssh 密码的 IP 封停密钥登陆   主要步骤在这里,有时">
+<meta name="description" content="123更新2017.04.08  VPS日常一些安全措施2017.08.22  更新安全措施，读者反馈，没有debian的，这里加上。   导语科学上网教程系列，很久没有更新新内容了。更新常用安全措施，至少保证，不会被轻易的当作肉鸡。都是一些常用的安全措施。  系统环境：CentOS/debian 7    SSH 有两种方案 彻底关闭SSH登陆，改为密钥登陆，安全性最高，但配置较为复杂 修改SS">
 <meta name="keywords" content="Linux,VPS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="科学上网教程（三）——VPS安全加固">
 <meta property="og:url" content="http://yoursite.com/2017/04/08/VPS科学上网教程3/index.html">
 <meta property="og:site_name" content="默">
-<meta property="og:description" content="12更新2017.04.08  VPS日常一些安全措施   导语科学上网教程系列，很久没有更新新内容了。更新常用安全措施，至少保证，不会被轻易的当作肉鸡。都是一些常用的安全措施。  系统环境：CentOS    SSH 有两种方案 彻底关闭SSH登陆，改为密钥登陆，安全性最高，但配置较为复杂 修改SSH登陆端口，同时开放默认端口，将爆破 ssh 密码的 IP 封停密钥登陆   主要步骤在这里,有时">
-<meta property="og:updated_time" content="2017-04-08T05:31:37.483Z">
+<meta property="og:description" content="123更新2017.04.08  VPS日常一些安全措施2017.08.22  更新安全措施，读者反馈，没有debian的，这里加上。   导语科学上网教程系列，很久没有更新新内容了。更新常用安全措施，至少保证，不会被轻易的当作肉鸡。都是一些常用的安全措施。  系统环境：CentOS/debian 7    SSH 有两种方案 彻底关闭SSH登陆，改为密钥登陆，安全性最高，但配置较为复杂 修改SS">
+<meta property="og:updated_time" content="2017-08-22T14:19:54.671Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="科学上网教程（三）——VPS安全加固">
-<meta name="twitter:description" content="12更新2017.04.08  VPS日常一些安全措施   导语科学上网教程系列，很久没有更新新内容了。更新常用安全措施，至少保证，不会被轻易的当作肉鸡。都是一些常用的安全措施。  系统环境：CentOS    SSH 有两种方案 彻底关闭SSH登陆，改为密钥登陆，安全性最高，但配置较为复杂 修改SSH登陆端口，同时开放默认端口，将爆破 ssh 密码的 IP 封停密钥登陆   主要步骤在这里,有时">
+<meta name="twitter:description" content="123更新2017.04.08  VPS日常一些安全措施2017.08.22  更新安全措施，读者反馈，没有debian的，这里加上。   导语科学上网教程系列，很久没有更新新内容了。更新常用安全措施，至少保证，不会被轻易的当作肉鸡。都是一些常用的安全措施。  系统环境：CentOS/debian 7    SSH 有两种方案 彻底关闭SSH登陆，改为密钥登陆，安全性最高，但配置较为复杂 修改SS">
 
 
 
@@ -436,7 +436,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  786
+                  1,151
                 </span>
               
 
@@ -452,7 +452,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  4m
+                  5m
                 </span>
               
             </div>
@@ -471,12 +471,12 @@
       
 
       
-        <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">更新</div><div class="line"><span class="number">2017.04</span>.<span class="number">08</span>  VPS日常一些安全措施</div></pre></td></tr></table></figure>
+        <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">更新</div><div class="line"><span class="number">2017.04</span>.<span class="number">08</span>  VPS日常一些安全措施</div><div class="line"><span class="number">2017.08</span>.<span class="number">22</span>  更新安全措施，读者反馈，没有debian的，这里加上。</div></pre></td></tr></table></figure>
 <hr>
 <ul>
 <li><p>导语<br>科学上网教程系列，很久没有更新新内容了。更新常用安全措施，至少保证，不会被轻易的当作肉鸡。都是一些常用的安全措施。</p>
 </li>
-<li><p>系统环境：CentOS</p>
+<li><p>系统环境：CentOS/debian 7</p>
 </li>
 </ul>
 <hr>
@@ -492,8 +492,11 @@
 </li>
 </ul>
 <h3 id="修改端口"><a href="#修改端口" class="headerlink" title="修改端口"></a>修改端口</h3><ul>
-<li><p>命令 如下，以下是将 SSH 端口改为 999 端口</p>
+<li><p>CentOS 命令 如下，以下是将 SSH 端口改为 999 端口</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed -i &apos;s/#Port 22/Port 999/g&apos; /etc/ssh/sshd_config</div></pre></td></tr></table></figure>
+<p>debian需要打开/etc/ssh/sshd<em>config </em>文件，修改其中的port后面的数字,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano /etc/ssh/sshd_config</div></pre></td></tr></table></figure>
+<p>修改其中的port后面的数字，为你要ssh登陆的端口，cltrl + x保存，回车退出。</p>
 </li>
 <li><p>安装 fail2ban 封掉 暴力破解ip</p>
 </li>
@@ -522,7 +525,7 @@
 </li>
 </ul>
 </li>
-<li><p>设置开机自启动</p>
+<li><p>设置开机自启动（debian不用前面验证完成，已加入开机启动）</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// CentOS/RHEL 6</div><div class="line">chkconfig fail2ban on</div><div class="line">// CentOS/RHEL 7</div><div class="line">systemctl enable fail2ban</div></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -551,15 +554,22 @@
 <li><p>允许 SSR端口 以888 xxx 为例 你有几个端口，就添加几个</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p tcp -s 0/0 --dport 888 -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport 888 -m state --state ESTABLISHED -j ACCEPT</div><div class="line"></div><div class="line">iptables -A INPUT -p tcp -s 0/0 --dport xxx -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport xxx -m state --state ESTABLISHED -j ACCEPT</div></pre></td></tr></table></figure>
 </li>
-<li><p>保存配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables-save &gt; /etc/sysconfig/iptables</div></pre></td></tr></table></figure>
-</li>
-<li><p>重载 iptables</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -L</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="安装-CSF-防火墙"><a href="#安装-CSF-防火墙" class="headerlink" title="安装 CSF 防火墙"></a>安装 CSF 防火墙</h2><ul>
-<li>命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">rm -fv csf.tgz</div><div class="line">wget http://download.configserver.com/csf.tgz</div><div class="line">tar -xzf csf.tgz</div><div class="line">cd csf</div><div class="line">sh install.sh</div><div class="line">//使用下边的命令来验证csf正确安装并已经运行</div><div class="line">perl /usr/local/csf/bin/csftest.pl</div></pre></td></tr></table></figure>
+<li><p>CentOS 保存配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">iptables-save &gt; /etc/sysconfig/iptables</div><div class="line">``` </div><div class="line">重载 iptables</div></pre></td></tr></table></figure>
+<p>iptables -L</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">* debian 7 保存配置</div></pre></td></tr></table></figure>
+<p>iptables-save &gt; /etc/iptables-rules<br>ip6tables-save &gt; /etc/ip6tables-rules</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">随后修改/etc/network/interfaces文件，最后加入</div></pre></td></tr></table></figure>
+<p>pre-up iptables-restore &lt; /etc/iptables-rules<br>pre-up ip6tables-restore &lt; /etc/ip6tables-rules</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  重启执行`iptables -L`，看到配置已生效。</div><div class="line"></div><div class="line">## 安装 CSF 防火墙</div><div class="line">* 命令</div></pre></td></tr></table></figure>
+<p>rm -fv csf.tgz<br>wget <a href="http://download.configserver.com/csf.tgz" target="_blank" rel="external">http://download.configserver.com/csf.tgz</a><br>tar -xzf csf.tgz<br>cd csf<br>sh install.sh<br>//使用下边的命令来验证csf正确安装并已经运行<br>perl /usr/local/csf/bin/csftest.pl</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">## autoban 补丁（8.22）推荐</div><div class="line">* 来自ss原作者@clowwindy 的补丁，ban掉那些尝试破译ss密码的ip，在此对原作者表示敬意！</div><div class="line">* 原理是同一个ip出现3次以上尝试破译ss密码会被永久ban掉，ssr也可用</div><div class="line">* 测试只在debian 7上进行，需要python环境，但是通过秋水逸冰脚本安装ssr 已经安装好了python环境。</div><div class="line"></div><div class="line">* 以下内容参考</div><div class="line">  &gt;https://plus.google.com/104980438521301094845/posts/9zypCffhdZu</div><div class="line"></div><div class="line">---</div><div class="line"></div><div class="line">* 下载脚本</div></pre></td></tr></table></figure>
+<p>wget <a href="https://raw.githubusercontent.com/Jasper-1024/shadowsocksr/manyuser/utils/autoban.py" target="_blank" rel="external">https://raw.githubusercontent.com/Jasper-1024/shadowsocksr/manyuser/utils/autoban.py</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">* ssr运行</div></pre></td></tr></table></figure>
+<p>python autoban.py &lt; /var/log/shadowsocksr.log</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  查看哪些ip试图连接破解ssr密码。原版ss将log文件路径替换即可。</div><div class="line">  </div><div class="line">* 自动ban ip</div><div class="line">  编辑/etc/init.d/rc.local，加入</div></pre></td></tr></table></figure>
+<p>python /root/autoban.py &lt; /var/log/shadowsocksr.log</p>
+<p>nohup tail -F /var/log/shadowsocksr.log | python /root/autoban.py &gt;log 2&gt;log &amp;<br>```<br>保存退出即可。</p>
 </li>
 </ul>
 
@@ -732,7 +742,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -743,7 +753,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -754,7 +764,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -807,7 +817,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH"><span class="nav-number">1.</span> <span class="nav-text">SSH</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#密钥登陆"><span class="nav-number">1.1.</span> <span class="nav-text">密钥登陆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改端口"><span class="nav-number">1.2.</span> <span class="nav-text">修改端口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#fail2ban"><span class="nav-number">1.2.1.</span> <span class="nav-text">fail2ban</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁用Linux多余端口"><span class="nav-number">2.</span> <span class="nav-text">禁用Linux多余端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-CSF-防火墙"><span class="nav-number">3.</span> <span class="nav-text">安装 CSF 防火墙</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH"><span class="nav-number">1.</span> <span class="nav-text">SSH</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#密钥登陆"><span class="nav-number">1.1.</span> <span class="nav-text">密钥登陆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改端口"><span class="nav-number">1.2.</span> <span class="nav-text">修改端口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#fail2ban"><span class="nav-number">1.2.1.</span> <span class="nav-text">fail2ban</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁用Linux多余端口"><span class="nav-number">2.</span> <span class="nav-text">禁用Linux多余端口</span></a></li></ol></div>
             
 
           </div>
@@ -830,7 +840,7 @@
         <div class="copyright" >
   
   &copy;  2016.6.2 - 
-  <span itemprop="copyrightYear">2017.8.7</span>
+  <span itemprop="copyrightYear">2017.8.23</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

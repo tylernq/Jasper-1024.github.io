@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content=",,," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -89,20 +89,15 @@
 
 
 
-<meta name="description" content="Dialog 对话框。官方文档如下(中文)  https://developer.android.com/guide/topics/ui/dialogs.html#AlertDialog   没有什么多说的，官方文档很清楚了。   12345678910111213AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.t">
-<meta name="keywords" content="Android,Android Studio,学习记录">
+<meta name="description" content="程序员 微尘 V">
 <meta property="og:type" content="website">
-<meta property="og:title" content="第一行代码AS跟刷-UI(二)">
-<meta property="og:url" content="http://yoursite.com/第一行代码AS跟刷-UI(二).html">
+<meta property="og:title" content="默">
+<meta property="og:url" content="http://yoursite.com/archives/2017/page/2/index.html">
 <meta property="og:site_name" content="默">
-<meta property="og:description" content="Dialog 对话框。官方文档如下(中文)  https://developer.android.com/guide/topics/ui/dialogs.html#AlertDialog   没有什么多说的，官方文档很清楚了。   12345678910111213AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.t">
-<meta property="og:image" content="http://cdn2.snapgram.co/imgs/2016/08/10/Screenshot_20160811-100654.png">
-<meta property="og:image" content="http://cdn1.snapgram.co/imgs/2016/08/10/Screenshot_20160811-102959.png">
-<meta property="og:updated_time" content="2016-08-11T11:53:32.138Z">
+<meta property="og:description" content="程序员 微尘 V">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第一行代码AS跟刷-UI(二)">
-<meta name="twitter:description" content="Dialog 对话框。官方文档如下(中文)  https://developer.android.com/guide/topics/ui/dialogs.html#AlertDialog   没有什么多说的，官方文档很清楚了。   12345678910111213AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.t">
-<meta name="twitter:image" content="http://cdn2.snapgram.co/imgs/2016/08/10/Screenshot_20160811-100654.png">
+<meta name="twitter:title" content="默">
+<meta name="twitter:description" content="程序员 微尘 V">
 
 
 
@@ -130,19 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/第一行代码AS跟刷-UI(二).html"/>
+  <link rel="canonical" href="http://yoursite.com/archives/2017/page/2/"/>
 
 
 
 
 
-  <title>
-  
-
-  
-    第一行代码AS跟刷-UI(二) | 默
-  
-</title>
+  <title> 归档 | 默 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -176,7 +165,7 @@
     
   
 
-  <div class="container sidebar-position-right  ">
+  <div class="container sidebar-position-right  page-archive  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -324,44 +313,107 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-  <header class="post-header">
+  <section id="posts" class="posts-collapse">
+    <span class="archive-move-on"></span>
 
-	<h1 class="post-title" itemprop="name headline">第一行代码AS跟刷-UI(二)</h1>
-
-
-
-</header>
-
-    
-    
-      <h3 id="Dialog"><a href="#Dialog" class="headerlink" title="Dialog"></a>Dialog</h3><ul>
-<li><p>对话框。官方文档如下(中文)</p>
-<blockquote>
-<p><a href="https://developer.android.com/guide/topics/ui/dialogs.html#AlertDialog" target="_blank" rel="external">https://developer.android.com/guide/topics/ui/dialogs.html#AlertDialog</a></p>
-</blockquote>
-</li>
-<li><p>没有什么多说的，官方文档很清楚了。</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">AlertDialog.Builder dialog = <span class="keyword">new</span> AlertDialog.Builder(MainActivity.<span class="keyword">this</span>);</div><div class="line">dialog.setTitle(<span class="string">"对话框"</span>);</div><div class="line">dialog.setMessage(<span class="string">"不小心出错"</span>);</div><div class="line">dialog.setCancelable(<span class="keyword">false</span>);</div><div class="line">dialog.setPositiveButton(<span class="string">"OK"</span>, <span class="keyword">new</span> DialogInterface.OnClickListener()&#123;</div><div class="line">   <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialog,<span class="keyword">int</span> which )</span></span>&#123;&#125;</div><div class="line">&#125;);</div><div class="line">dialog.setNegativeButton(<span class="string">"Cancel"</span>, <span class="keyword">new</span> DialogInterface.OnClickListener()&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialog,<span class="keyword">int</span> which )</span></span>&#123;&#125;</div><div class="line">&#125;);</div><div class="line">dialog.show();</div></pre></td></tr></table></figure>
-<p>  效果如下<br>  <img src="http://cdn2.snapgram.co/imgs/2016/08/10/Screenshot_20160811-100654.png" alt="Screenshot_20160811-100654.png"></p>
-</li>
-</ul>
-<h3 id="ProgressDialog"><a href="#ProgressDialog" class="headerlink" title="ProgressDialog"></a>ProgressDialog</h3><ul>
-<li><p>官方文档</p>
-<blockquote>
-<p><a href="https://developer.android.com/reference/android/app/ProgressDialog.html" target="_blank" rel="external">https://developer.android.com/reference/android/app/ProgressDialog.html</a></p>
-</blockquote>
-</li>
-<li><p>基本显示效果是对话框+进度条</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ProgressDialog progressDialog = <span class="keyword">new</span> ProgressDialog(MainActivity.<span class="keyword">this</span>);</div><div class="line">progressDialog.setTitle(<span class="string">"progressDialog"</span>);</div><div class="line">progressDialog.setMessage(<span class="string">"加载中"</span>);</div><div class="line">progressDialog.setCancelable(<span class="keyword">false</span>);</div><div class="line">progressDialog.show();</div></pre></td></tr></table></figure>
-<p>  效果如下<br>  <a href="http://snapgr.am/image/LQbG" target="_blank" rel="external"><img src="http://cdn1.snapgram.co/imgs/2016/08/10/Screenshot_20160811-102959.png" alt="Screenshot_20160811-102959.png"></a></p>
-</li>
-<li><p>setCancelable()；设置为false后不能通过back键返回上一个Activity  只能调用ProgressDialog.dismiss()；来关闭。</p>
-</li>
-</ul>
+    <span class="archive-page-counter">
+      
+      
+      
+        
+      
+      嗯..! 目前共计 30 篇日志。 继续努力。
+    </span>
 
     
-  </div>
+
+      
+      
+      
+
+      
+        
+        <div class="collection-title">
+          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
+        </div>
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2017/01/19/Android笔记-ContentResolver/" itemprop="url">
+              
+                <span itemprop="name">Android笔记—ContentResolver</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-01-19T12:00:00+08:00"
+              content="2017-01-19" >
+          01-19
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+    
+
+      
+      
+      
+
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2017/01/14/Android笔记-数据保存/" itemprop="url">
+              
+                <span itemprop="name">Android笔记—数据保存</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-01-14T12:00:00+08:00"
+              content="2017-01-14" >
+          01-14
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+    
+
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/archives/2017/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/2017/">1</a><span class="page-number current">2</span>
+  </nav>
+
+
 
 
           </div>
@@ -369,17 +421,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -415,7 +456,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -426,7 +467,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -437,7 +478,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -497,7 +538,7 @@
         <div class="copyright" >
   
   &copy;  2016.6.2 - 
-  <span itemprop="copyrightYear">2017.8.7</span>
+  <span itemprop="copyrightYear">2017.8.23</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -576,6 +617,12 @@
   
 
   
+  
+    <script type="text/javascript" id="motion.page.archive">
+      $('.archive-year').velocity('transition.slideLeftIn');
+    </script>
+  
+
 
   
 
@@ -593,18 +640,6 @@
       <script id="dsq-count-scr" src="https://jasper1024.disqus.com/count.js" async></script>
     
 
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/第一行代码AS跟刷-UI(二).html';
-          this.page.identifier = '第一行代码AS跟刷-UI(二).html';
-          this.page.title = '第一行代码AS跟刷-UI(二)';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://jasper1024.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
     
 
   

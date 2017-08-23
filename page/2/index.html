@@ -325,6 +325,1188 @@
   
   
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/19/Android笔记-ContentResolver/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/19/Android笔记-ContentResolver/" itemprop="url">
+                  Android笔记—ContentResolver
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-19T12:00:00+08:00">
+                2017-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/19/Android笔记-ContentResolver/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/01/19/Android笔记-ContentResolver/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/01/19/Android笔记-ContentResolver/" class="leancloud_visitors" data-flag-title="Android笔记—ContentResolver">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,159
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  5m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>资料来源如下</p>
+<ul>
+<li>第一行代码(第二版)</li>
+<li><a href="http://www.jianshu.com/p/57798618bd90" target="_blank" rel="external">android6.0运行时权限详解</a></li>
+</ul>
+<p>编程环境</p>
+<ul>
+<li>Android Studio 2.2.3 </li>
+</ul>
+<p>导语</p>
+<ul>
+<li>内容提供器是安全的应用间共享数据途径，在正式进入之前需要了解一下 Android 自6.0以来权限的变化</li>
+</ul>
+<hr>
+<h2 id="Android-权限详解"><a href="#Android-权限详解" class="headerlink" title="Android 权限详解"></a>Android 权限详解</h2><hr>
+<p>资料来源：</p>
+<ul>
+<li><a href="http://www.jianshu.com/p/57798618bd90" target="_blank" rel="external">android6.0运行时权限详解</a></li>
+<li><a href="https://developer.android.com/guide/topics/security/permissions.html" target="_blank" rel="external">Develop-API Guides-系统权限</a></li>
+<li>第一行代码(第二版)</li>
+</ul>
+<hr>
+<h3 id="Android权限介绍"><a href="#Android权限介绍" class="headerlink" title="Android权限介绍"></a>Android权限介绍</h3><ul>
+<li><p>Android 是一个权限分隔的操作系统<br>每个应用系统标识（Linux 用户 ID 和组 ID）不同。系统各部分标识亦不相同。Linux 据此将不同的应用以及应用与系统分隔开来。<br>更详细的安全功能通过“权限”提供，权限 会限制特定进程可以执行的具体操作，并且根据 URI 权限授权临时访问特定的数据段</p>
+</li>
+<li><p>权限声明<br>最常见的权限声明在 AndroidManifest.xml 文件中一个或多个uses-permission 标记, </p>
+<ul>
+<li>例如 声明短信权限 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">  <span class="attr">package</span>=<span class="string">"com.android.app.myapp"</span> &gt;</div><div class="line">  <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.RECEIVE_SMS"</span> /&gt;</span></div><div class="line">  ...</div><div class="line">  <span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>android 6.0 权限机制<br>android 6.0之前 权限及在安装的时候，根据权限声明产生一个权限列表，用户只有在同意之后才能完成app的安装。<br>android 6.0 以后 引入了  运行时权限 功能，应用所需权限不再一次性在安装时申请，而是在运行时需要用到那种权限向用户申请，同时用户也可以随时取消该授权</p>
+</li>
+<li><p>权限分类</p>
+<ul>
+<li>Normal Permissions(普通权限)<br>不涉及用户隐私，不需要用户进行授权的，例如 手机震动、访问网络等</li>
+<li>Dangerous Permission(危险权限)<br>涉及到用户隐私的，需要用户进行授权，例如 读取sdcard、访问通讯录等<br><a href="https://developer.android.com/guide/topics/security/permissions.html" target="_blank" rel="external">危险权限组</a>如表1</li>
+</ul>
+</li>
+</ul>
+<h3 id="应用运行时申请权限（适用于-Android6-0-及以上版本）"><a href="#应用运行时申请权限（适用于-Android6-0-及以上版本）" class="headerlink" title="应用运行时申请权限（适用于 Android6.0 及以上版本）"></a>应用运行时申请权限（适用于 Android6.0 及以上版本）</h3><ul>
+<li>通过一个简单的实例来说明过程<h4 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h4></li>
+<li><p>拨打电话 CALL<em>PHONE  </em>权限为例 </p>
+<ul>
+<li>权限声明<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.CALL_PHONE"</span>/&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>拨打10010</p>
+<ul>
+<li>代码如下 构建一个隐式intent 启动拨打电话<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_CALL);</div><div class="line">intent.setData(Uri.parse(<span class="string">"tel:10010"</span>));</div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>在主界面上添加一个Button 在其onClick方法中拨打电话，运行程序!</li>
+</ul>
+<hr>
+<ul>
+<li>在An’d’roid 6.0 以下版本中 电话都可以正常拨出。Android 6.0 以上版本中 则可能会应用崩溃/无反应，查看logcat的打印日志可以看到 “Permission Denial”权限被禁止的信息，接下来尝试使用 运行时申请权限</li>
+</ul>
+<hr>
+<ul>
+<li>检查是否已获得授权<br>int  checkSelfPermission(Context context, String permission)方法 <ul>
+<li>Context context context<br>String permission  权限具体名称<br>打电话对应 Manifest.permission.CALL<em>PHONE   </em></li>
+<li>方法返回  PERMISSION_GRANTED  /   PERMISSION_DENIED</li>
+<li>例程<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(ContextCompat.checkSelfPermission</div><div class="line">(MainActivity.<span class="keyword">this</span>,Manifest.permission.CALL_PHONE) </div><div class="line">!=PackageManager.PERMISSION_GRANTED)</div><div class="line">&#123;</div><div class="line">         ;</div><div class="line">&#125;<span class="keyword">else</span> &#123;</div><div class="line">         ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>申请权限<br>void ActivityCompat.requestPermissions (Activity activity, String[] permissions, int requestCode)方法</p>
+<ul>
+<li><p>Activity activity  Activity实例<br>String[] permissions  请求权限名<br>int requestCode 请求码，大于0即可，对应在onRequestPermissionsResult 回掉方法中的requestCode</p>
+</li>
+<li><p>例程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ActivityCompat.requestPermissions(MainActivity.<span class="keyword">this</span>,</div><div class="line"><span class="keyword">new</span> String[]&#123;Manifest.permission.CALL_PHONE&#125;,<span class="number">1</span> );</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>授权后回掉<br>无论用户是否授权都会进入回掉方法，需要重写该方法。<br>void onRequestPermissionsResult (int requestCode, String[] permissions, int[] grantResults)方法</p>
+<ul>
+<li><p>int requestCode    在 requestPermissions 中传入的请求码<br>String[] permissions   请求的权限，不为空<br>int[] grantResults        授权结果 只有 PERMISSION_GRANTED  / PERMISSION_DENIED 两个值</p>
+</li>
+<li><p>例程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, String[] permissions, <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</div><div class="line">    <span class="keyword">switch</span> (requestCode) &#123;</div><div class="line">    	<span class="comment">//请求码 1</span></div><div class="line">        <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">            <span class="comment">//授权结果(int) 的 长度是否大于0  与上 授权结果是否等于  PackageManager.PERMISSION_GRANTED </span></div><div class="line">            <span class="keyword">if</span> (grantResults.length &gt; <span class="number">0</span> &amp;&amp; grantResults[<span class="number">0</span>] == PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line">            <span class="comment">//授权通过执行</span></div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="comment">//授权没有通过  </span></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>当用户拒绝后再次询问<br>  boolean ActivityCompat.shouldShowRequestPermissionRationale(Activity activity, String permission)             （真心太长了）</p>
+<ul>
+<li>Activity activity  Activity实例<br>String permission   权限名称<br>应用第一次需要授权时,用户授权，该方法返回false。当用户拒绝授权,下次需要该权限时,该方法会返回true</li>
+<li>例程<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">if</span> (ActivityCompat.shouldShowRequestPermissionRationale</div><div class="line">(PermissionActivity.<span class="keyword">this</span>,Manifest.permission.READ_CONTACTS))</div><div class="line">&#123;</div><div class="line"><span class="comment">//第二次询问用户是否授权</span></div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line"><span class="comment">//用户依旧拒绝后操作</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>例程源码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">      <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">      setContentView(R.layout.activity_main);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Button</span><span class="params">(View view)</span></span>&#123;</div><div class="line">      <span class="keyword">if</span>(ContextCompat.checkSelfPermission(MainActivity.<span class="keyword">this</span>,Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED)&#123;</div><div class="line">          ActivityCompat.requestPermissions(MainActivity.<span class="keyword">this</span>, <span class="keyword">new</span> String[]&#123;Manifest.permission.CALL_PHONE&#125;,<span class="number">1</span> );</div><div class="line">      &#125;<span class="keyword">else</span> &#123;</div><div class="line">          call();</div><div class="line">      &#125;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">()</span> </span>&#123;</div><div class="line">      <span class="keyword">try</span> &#123;</div><div class="line">          Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_CALL);</div><div class="line">          intent.setData(Uri.parse(<span class="string">"tel:10010"</span>));</div><div class="line">          startActivity(intent);</div><div class="line">      &#125; <span class="keyword">catch</span> (SecurityException e) &#123;</div><div class="line">          e.printStackTrace();</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, String[] permissions, <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</div><div class="line">      <span class="keyword">switch</span> (requestCode) &#123;</div><div class="line">          <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">              <span class="keyword">if</span> (grantResults.length &gt; <span class="number">0</span> &amp;&amp; grantResults[<span class="number">0</span>] == PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line">                  call();</div><div class="line">              &#125; <span class="keyword">else</span> &#123;</div><div class="line">                  Toast.makeText(<span class="keyword">this</span>, <span class="string">"You denied the permission"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">              &#125;</div><div class="line">              <span class="keyword">break</span>;</div><div class="line">          <span class="keyword">default</span>:</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">     <span class="attr">android:onClick</span>=<span class="string">"Button"</span></div><div class="line">     <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">     <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">     <span class="attr">android:text</span>=<span class="string">"Hello World!"</span> /&gt;</div></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/2/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/14/Android笔记-数据保存/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/14/Android笔记-数据保存/" itemprop="url">
+                  Android笔记—数据保存
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-14T12:00:00+08:00">
+                2017-01-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/14/Android笔记-数据保存/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/01/14/Android笔记-数据保存/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/01/14/Android笔记-数据保存/" class="leancloud_visitors" data-flag-title="Android笔记—数据保存">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,482
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>资料来源如下</p>
+<ul>
+<li>第一行代码(第二版)</li>
+</ul>
+<p>编程环境</p>
+<ul>
+<li>Android Studio 2.2.3 </li>
+</ul>
+<hr>
+<h2 id="Android-中的主要数据存储"><a href="#Android-中的主要数据存储" class="headerlink" title="Android 中的主要数据存储"></a>Android 中的主要数据存储</h2><ul>
+<li><p>有三种</p>
+</li>
+<li><p>保存键值集<br> 要保存的相对较小键值集合，使用 SharedPreferences</p>
+</li>
+<li><p>保存文件<br>使用 Android 文件系统通过 File API 读取和写入文件，适合按开始到结束的顺序不跳过地读取或写入大量数据。 例如，图片文件或通过网络交换的任何内容</p>
+</li>
+<li><p>在 SQL 数据库中保存数据<br>Android内建的SQLite 数据库存储重复或结构化数据</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>PS：这里如果没有学过 SQL 数据库使用，推荐LitePal</li>
+<li>Android开源数据库<a href="https://github.com/LitePalFramework/LitePal#latest-downloads/" target="_blank" rel="external">LitePal</a>  ：郭霖(第一行代码作者)</li>
+<li>详细介绍在这里<a href="http://www.jianshu.com/p/557682e0a9f0" target="_blank" rel="external">（懒人必备）Android开源数据库LitePal</a></li>
+</ul>
+<hr>
+<h3 id="保存键值集"><a href="#保存键值集" class="headerlink" title="保存键值集"></a>保存键值集</h3><ul>
+<li>想要保存的相对较小键值集合</li>
+<li><p>调用SharedPreferences</p>
+</li>
+<li><p>首先：获取SharedPreferences的句柄<br>用户可以创建一个共享参数文件或访问一个已经存在的共享参数文件。<br>具体途径有三条</p>
+<ul>
+<li><p>getSharedPreferences (String name, int mode)</p>
+<ul>
+<li>第一个参数：SharedPreferences的名称，第二个：参数指定操作模式</li>
+<li>需要创建/读取 多个共享参数文件时使用，每个文件都拥有一个标识符，可以通过这个标识符通过该方法的第一个参数获得共享参数对象。可以通过APP中的任意Context对象调用它。</li>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//指定SharedPreferences名称为data  模式为MODE_PRIVATE：只有当前程序才有权限读取/修改</span></div><div class="line">SharedPreferences sharedPref = getSharedPreferences(<span class="string">"data"</span>, MODE_PRIVATE);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>getPreferences (int mode)</p>
+<ul>
+<li>参数：指定操作模式</li>
+<li>只创建 Activity 的一个SharedPreferences。在Activity 中使用。 方法会检索属于该 Activity 的默认共享首选项文件，无需提供名称</li>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//模式：MODE_PRIVATE：只有当前程序才有权限读取/修改</span></div><div class="line">SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>getDefaultSharedPreferences(context)</p>
+<ul>
+<li>参数：context</li>
+<li>自动以档期应用程序包名作为前缀命名SharedPreferences文件</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>写入数据到共享参数中<ul>
+<li>SharedPreferences 调用 edit() 创建一个 SharedPreferences.Editor<br>使用诸如 putInt() 和 putString() 方法写入的键和值<br>最后调用commit() 以保存更改<br>也可调用apply() 保存更改</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>commit() 与 apply() 相同/区别</li>
+<li>相同<ul>
+<li>都是提交preference修改数据</li>
+</ul>
+</li>
+<li>区别<ul>
+<li>apply没有返回值  commit返回boolean表明修改是否提交成功</li>
+<li>apply是将操作提交到内存，而后异步真正提交到文件<br> commit是同步的提交到文件<br> 多个commit同时提交，互相等待，效率较低<br> apply直接覆盖，效率较高<ul>
+<li>apply没有任何错误提示，只是提交的动作</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建 .edit()</span></div><div class="line">SharedPreferences.Editor editor = sharedPref.edit();</div><div class="line"><span class="comment">//写入字符串。key-值 TextView</span></div><div class="line">editor.putString(<span class="string">"TextView"</span>,<span class="string">"hello"</span>);</div><div class="line"><span class="comment">//保存更改</span></div><div class="line">editor.commit();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>从共享参数中读取数据<ul>
+<li>获取SharedPreferences的句柄<br>方式同上</li>
+<li>调用比如getInt()或getString()方法，然后传入键值，如果键不存在，则会返回一个默认值</li>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取SharedPreferences的句柄</span></div><div class="line">SharedPreferences sharedPreferences = getSharedPreferences(<span class="string">"data"</span>,MODE_PRIVATE);</div><div class="line"><span class="comment">//读取键值对应数据</span></div><div class="line">String text = sharedPreferences.getString(<span class="string">"TextView"</span>,<span class="string">""</span>);</div><div class="line"><span class="comment">//打印到log中 验证</span></div><div class="line">Log.d(<span class="string">"data"</span>,text);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="保存到文件"><a href="#保存到文件" class="headerlink" title="保存到文件"></a>保存到文件</h3><ul>
+<li>Android 设备有两个文件存储区域： 内部存储 和 外部存储<br>Android 设备早期内置的非易失性内存（内部存储），以及移动存储介质 微型 SD 卡等（外部存储）<br>任何Android设备始终有两个存储空间，并且无论外部存储设备是否可移动，API 的行为均一致</li>
+</ul>
+<ul>
+<li>Android的文件存储是以java流为基础，并优化了一些操作。java流不属于本文范围。</li>
+<li>涉及java流部分参考<a href="http://androidtoast.iteye.com/blog/1172673" target="_blank" rel="external">Android文件IO详解</a></li>
+</ul>
+<h4 id="内部存储"><a href="#内部存储" class="headerlink" title="内部存储"></a>内部存储</h4><h4 id="保存到内部存储"><a href="#保存到内部存储" class="headerlink" title="保存到内部存储"></a>保存到内部存储</h4><ul>
+<li>某一应用对其内部存储 始终具有 进行读写的权限，而无需声明任何权限，在 Android N之前，内部文件可以通过放宽权限让其他应用访问。<strong>但是极不推荐以这种方式共享文件</strong></li>
+</ul>
+<ul>
+<li><p>简单实例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">(String inputText)</span></span>&#123;</div><div class="line">      <span class="comment">//新建一个FileOutputStream对象(字节流)</span></div><div class="line">      FileOutputStream out = <span class="keyword">null</span>;</div><div class="line">      <span class="comment">//新建一个BufferedWriter (字符流)</span></div><div class="line">      BufferedWriter writer = <span class="keyword">null</span>;</div><div class="line">      <span class="keyword">try</span>&#123;</div><div class="line">          <span class="comment">//out 实例化</span></div><div class="line">          out = openFileOutput(<span class="string">"data"</span>,Context.MODE_PRIVATE);</div><div class="line">          <span class="comment">//OutputStreamWrit  字节流转换为字符流</span></div><div class="line">          <span class="comment">//字符流绑定BufferedWriter(缓冲区)</span></div><div class="line">          writer = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> OutputStreamWriter(out));</div><div class="line">          <span class="comment">//写入到文件</span></div><div class="line">          writer.write(inputText);</div><div class="line">      &#125;<span class="keyword">catch</span> (IOException e )&#123;</div><div class="line">          e.printStackTrace();</div><div class="line">      &#125; <span class="keyword">finally</span> &#123;</div><div class="line">          <span class="keyword">try</span>&#123;</div><div class="line">              <span class="comment">//如果写入成功</span></div><div class="line">              <span class="keyword">if</span> (writer != <span class="keyword">null</span>) &#123;</div><div class="line">              	<span class="comment">//关闭流</span></div><div class="line">                  writer.close();</div><div class="line">              &#125;</div><div class="line">          &#125;<span class="keyword">catch</span> (IOException e)&#123;</div><div class="line">              e.printStackTrace();</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>FileOutputStream：</p>
+<ul>
+<li>继承自 OutputStream 用于文件处理的节点流</li>
+<li>用于写入原始字节流到文件</li>
+</ul>
+</li>
+<li><p>FileOutputStream openFileOutput (String name, int mode)</p>
+<ul>
+<li>返回FileOutputStream对象</li>
+<li>第一个参数是文件名</li>
+<li>第二个参数是操作模式，有4种取值<ul>
+<li>MODE<em>PRIVATE(默认)</em>当同一文件名存在时覆盖原文件</li>
+<li>MODE<em>APPEND  </em>当同名文件存在时，在原文件末尾追加</li>
+<li>其余两种均在android4.2及以上版本中废弃</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>OutputStreamWrit</p>
+<ul>
+<li>继承自 Writer </li>
+<li>将字节流转换为字符流</li>
+</ul>
+</li>
+<li><p>BufferedWriter </p>
+<ul>
+<li>继承自Writer </li>
+<li>绑定字符输出流，提高具体的流对象的效率</li>
+<li>.flush()方法 对缓冲区进行刷新，让数据到目的地</li>
+<li>.close();方法 关闭缓冲区，即关闭绑定的流</li>
+</ul>
+</li>
+</ul>
+<h5 id="从内部存储读取文件"><a href="#从内部存储读取文件" class="headerlink" title="从内部存储读取文件"></a>从内部存储读取文件</h5><ul>
+<li><p>简单实例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">load</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="comment">//新建FileInputStream对象</span></div><div class="line">     FileInputStream in = <span class="keyword">null</span>;</div><div class="line">     <span class="comment">//新建 BufferedReader对象</span></div><div class="line">     BufferedReader reader = <span class="keyword">null</span>;</div><div class="line">     <span class="comment">//新建一个StringBuilder 空</span></div><div class="line">      content = <span class="keyword">new</span> StringBuilder();</div><div class="line">     <span class="keyword">try</span>&#123;</div><div class="line">     	<span class="comment">//FileInputStream对象实例化</span></div><div class="line">         in = openFileInput(<span class="string">"data"</span>);</div><div class="line">         <span class="comment">//字节流转换为字符流</span></div><div class="line">         <span class="comment">//缓冲流绑定字符流</span></div><div class="line">         reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(in));</div><div class="line">         <span class="comment">//空 String</span></div><div class="line">         String line = <span class="string">""</span>;</div><div class="line">         <span class="comment">//读取文件内容，并判断是否读取完成</span></div><div class="line">         <span class="keyword">while</span>((line = reader.readLine())!=<span class="keyword">null</span>)&#123;</div><div class="line">         	<span class="comment">//读取内容添加到 StringBuilder 对象中   </span></div><div class="line">             content.append(line);</div><div class="line">         &#125;</div><div class="line">     &#125;<span class="keyword">catch</span> (IOException e)&#123;</div><div class="line">         e.printStackTrace();</div><div class="line">     &#125;</div><div class="line">     <span class="keyword">finally</span> &#123;</div><div class="line">         <span class="keyword">if</span>(reader != <span class="keyword">null</span>)&#123;</div><div class="line">             <span class="keyword">try</span>&#123;</div><div class="line">             	<span class="comment">//关闭流</span></div><div class="line">                 reader.close();</div><div class="line">             &#125;<span class="keyword">catch</span> (IOException e)&#123;</div><div class="line">                 e.printStackTrace();</div><div class="line">             &#125;</div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line">     <span class="comment">//将读取结果 由StringBuilder转换为String 并返回</span></div><div class="line">     <span class="keyword">return</span> content.toString();</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>FileInputStream</p>
+<ul>
+<li>继承自 InputStream，用于文件处理的节点流</li>
+<li>从文件中读取</li>
+</ul>
+</li>
+<li><p>FileInputStream openFileInput(String filename)</p>
+<ul>
+<li>返回FileInputStream对象</li>
+<li>参数为 读取的文件名</li>
+</ul>
+</li>
+<li><p>InputStreamRead</p>
+<ul>
+<li>将字节流转换为字符流</li>
+</ul>
+</li>
+<li><p>BufferedReader</p>
+<ul>
+<li>缓冲流</li>
+</ul>
+</li>
+</ul>
+<h4 id="外部存储"><a href="#外部存储" class="headerlink" title="外部存储"></a>外部存储</h4><ul>
+<li>占坑</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/2/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/31/2016总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/31/2016总结/" itemprop="url">
+                  2016总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-31T12:00:11+08:00">
+                2016-12-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/随/" itemprop="url" rel="index">
+                    <span itemprop="name">随</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/12/31/2016总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/12/31/2016总结/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/12/31/2016总结/" class="leancloud_visitors" data-flag-title="2016总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  169
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="2016"><a href="#2016" class="headerlink" title="2016"></a>2016</h3><ul>
+<li>找到了兴趣-Android开始正式学习。</li>
+<li>搭建了自己的blog，虽然周围人没人关注，有一篇日子的阅读量过了1万，还是很惊喜的</li>
+<li>嵌入式工作没用找到满意的，只能说等春招 Andoid的实习，这段时间努力提高自己，</li>
+<li>放弃了考研</li>
+<li>心情走过了类似抑郁的经历，对体制种种各有看法，是对是错，让时间见证</li>
+</ul>
+<hr>
+<h3 id="2017"><a href="#2017" class="headerlink" title="2017"></a>2017</h3><ul>
+<li>希望有自己的收入，经济相对自由一点</li>
+<li>谈一段恋爱，遇到合适的女孩吧</li>
+<li>Android的路上，顺利一点吧</li>
+<li>不给自己设定限制，走一步再走一步</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/2/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/25/Android Studio优化编译速度/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/25/Android Studio优化编译速度/" itemprop="url">
+                  Android Studio优化编译速度
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-25T12:00:00+08:00">
+                2016-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/12/25/Android Studio优化编译速度/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/12/25/Android Studio优化编译速度/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/12/25/Android Studio优化编译速度/" class="leancloud_visitors" data-flag-title="Android Studio优化编译速度">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  326
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>资料来源如下</p>
+<ul>
+<li><a href="http://www.jianshu.com/p/1c878c10a6bb" target="_blank" rel="external">http://www.jianshu.com/p/1c878c10a6bb</a></li>
+<li><a href="http://www.jianshu.com/p/9b8ef61b7cdb" target="_blank" rel="external">http://www.jianshu.com/p/9b8ef61b7cdb</a></li>
+<li><a href="http://www.jianshu.com/p/64d9a52aebbf" target="_blank" rel="external">http://www.jianshu.com/p/64d9a52aebbf</a></li>
+</ul>
+<p>编程环境</p>
+<ul>
+<li>Android Studio 2.2.3</li>
+</ul>
+<p>导语</p>
+<ul>
+<li>ssd盘容量不够了，重装系统，随便重新安装了Android Studio 记录一边优化过程</li>
+</ul>
+<hr>
+<h2 id="最重要的-有一个良好的梯子-全局翻墙"><a href="#最重要的-有一个良好的梯子-全局翻墙" class="headerlink" title="最重要的 有一个良好的梯子+全局翻墙"></a>最重要的 有一个良好的梯子+全局翻墙</h2><ul>
+<li>大部分Android Studio安装的问题,就基本不会出现</li>
+</ul>
+<h4 id="开启gradle单独的守护进程"><a href="#开启gradle单独的守护进程" class="headerlink" title="开启gradle单独的守护进程"></a>开启gradle单独的守护进程</h4><ul>
+<li><p>在C:\Users.gradle目录(user目录即当前用户不同电脑一般不同)下新建 gradle.properties文件<br>复制下面的代码</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">org.gradle.daemon=true  </div><div class="line">org.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=800m  </div><div class="line">-XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8</div><div class="line">org.gradle.parallel=true  </div><div class="line">org.gradle.configureondemand=true</div></pre></td></tr></table></figure>
+<p>应该是增大了gradle 运行的 java 虚拟机的大小，我的电脑是8g内存，这个配置效果最好</p>
+</li>
+</ul>
+<h4 id="扩大Android-Studio-运行内存"><a href="#扩大Android-Studio-运行内存" class="headerlink" title="扩大Android Studio 运行内存"></a>扩大Android Studio 运行内存</h4><ul>
+<li><p>找到Android Studio安装目录下的bin文件夹<br>找到studio64.exe.vmoptions和studio.exe.vmoptions文件(64位)<br>studio.exe.vmoptions和studio.exe.vmoptions文件(32位)</p>
+</li>
+<li><p>分别编辑文件,改动3个地方如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-Xms1024m</div><div class="line">-Xmx2048m</div><div class="line">-XX:MaxPermSize=800m</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Android-Studio-设置"><a href="#Android-Studio-设置" class="headerlink" title="Android Studio 设置"></a>Android Studio 设置</h4><ul>
+<li><p>Command-line Option不填<br><img src="http://cdn2.snapgram.co/imgs/2016/12/25/ScreenShot_20161225224242.png" alt="ScreenShot_20161225224242.png"></p>
+</li>
+<li><p>gradle 离线模式<br>勾选Office Work，我这里测试是速度基本不变，但是网上有人测试是效果相差很多，原因不明，可能是网络一直全局翻墙的关系<br><img src="http://cdn1.snapgram.co/imgs/2016/12/25/ScreenShot_20161225224455.png" alt="ScreenShot_20161225224455.png"></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/2/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/23/Android笔记-Broadcast广播/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2688,1030 +3870,6 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
 
 
     
-      
-
-  
-
-  
-  
-  
-  
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/27/初入树莓派2----常规初始化+远程桌面/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jasper">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/v.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="默">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/27/初入树莓派2----常规初始化+远程桌面/" itemprop="url">
-                  初入树莓派2---初始化+远程桌面
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-27T10:17:11+08:00">
-                2016-11-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/树莓派/" itemprop="url" rel="index">
-                    <span itemprop="name">树莓派</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/11/27/初入树莓派2----常规初始化+远程桌面/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/27/初入树莓派2----常规初始化+远程桌面/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/11/27/初入树莓派2----常规初始化+远程桌面/" class="leancloud_visitors" data-flag-title="初入树莓派2---初始化+远程桌面">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  511
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  2m
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><h3 id="启用树莓派root用户"><a href="#启用树莓派root用户" class="headerlink" title="启用树莓派root用户"></a>启用树莓派root用户</h3><ul>
-<li>不做物联网终端时启用root用户比较方便</li>
-<li>SSH连接树莓派</li>
-<li><p>在命令行下执行</p>
-<ul>
-<li><p>启用root用户</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo passwd root</div></pre></td></tr></table></figure>
-</li>
-<li><p>执行后输入两遍你要设定的root密码</p>
-</li>
-<li>在输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo passwd –unlock root</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>root用户解锁完成</p>
-</li>
-<li><p>执行完毕后依旧无法登陆</p>
-<ul>
-<li><p>执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nano /etc/ssh/sshd_config</div></pre></td></tr></table></figure>
-</li>
-<li><p>找到<code>PermitRootLogin without-password</code><br> 改为<code>PermitRootLogin yes</code></p>
-</li>
-<li>Ctrl + X 、 Y 、 回车 保存</li>
-<li><code>sudo reboot</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="更换国内镜像地址"><a href="#更换国内镜像地址" class="headerlink" title="更换国内镜像地址"></a>更换国内镜像地址</h3><hr>
-<h2 id="gt-http-blog-lxx1-com-2040"><a href="#gt-http-blog-lxx1-com-2040" class="headerlink" title="&gt; http://blog.lxx1.com/2040"></a>&gt; <a href="http://blog.lxx1.com/2040" target="_blank" rel="external">http://blog.lxx1.com/2040</a></h2><ul>
-<li>由于众所周知的原因，树莓派链接官方更新源实在太过缓慢，国内有一批不错的镜像地址，可以解决系统/软件更新问题。</li>
-<li><p>收集的树莓派镜像一般使用比较频繁的有下面几个<br>1.<a href="http://mirrors.aliyun.com/" target="_blank" rel="external">阿里云</a>  首推镜像地址，移动/联通/电信网络都有不错的访问速度。<br>2.<a href="http://mirrors.neusoft.edu.cn/raspbian/raspbian/" target="_blank" rel="external">大连东软信息学院</a>  北方用户比较友好<br>3.<a href="http://mirrors.ustc.edu.cn/raspbian/raspbian/" target="_blank" rel="external">中国科学技术大学</a>  教育网有加成，非教育网就慢多了</p>
-</li>
-<li><p>这里选择 阿里云的镜像</p>
-</li>
-</ul>
-<ul>
-<li><p>更新 sources.list</p>
-<ul>
-<li><p>执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nano /etc/apt/sources.list</div></pre></td></tr></table></figure>
-</li>
-<li><p>删除官方内容或者用#注释掉，添加以下内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">deb http://mirrors.aliyun.com/raspbian/raspbian/ jessie main non-free contrib</div><div class="line">deb-src http://mirrors.aliyun.com/raspbian/raspbian/ jessie main non-free contrib</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>删除raspi.list备用更新源(可选)</p>
-<ul>
-<li>通常更新sources.list后依旧缓慢，大多是raspi.list的锅</li>
-<li><code>rm /etc/apt/sources.list.d/raspi.list</code>    </li>
-</ul>
-</li>
-</ul>
-<h3 id="设置中文字体"><a href="#设置中文字体" class="headerlink" title="设置中文字体"></a>设置中文字体</h3><ul>
-<li><p>系统中缺少中文字库 首先更新字库和输入法</p>
-<ul>
-<li><p>执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install ttf-wqy-zenhei</div><div class="line">sudo apt-get install scim-pinyin</div></pre></td></tr></table></figure>
-</li>
-<li><p>接下来 都点 y</p>
-</li>
-<li><p>执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo raspi-config</div></pre></td></tr></table></figure>
-</li>
-<li><p>选择change_locale</p>
-</li>
-<li><img src="http://cdn2.snapgram.co/imgs/2016/11/27/950743-20160520171916373-887591767.png" alt="950743-20160520171916373-887591767.png"><br>空格键在前面打勾或去掉勾（星号=勾） Tab选择OK</li>
-<li>去掉en_GB.UTF-8 UTF-8<br>勾选：”en_US.UTF-8 UTF-8”、”zh_CN.UTF-8 UTF-8”、”zh_CN.GBK GBK”</li>
-<li>OK，下一屏幕,</li>
-<li><img src="http://cdn1.snapgram.co/imgs/2016/11/27/950743-20160520171919435-1542955508.png" alt="950743-20160520171919435-1542955508.png"><br>默认语言选zh_CN.UTF-8</li>
-</ul>
-</li>
-</ul>
-<h2 id="远程桌面"><a href="#远程桌面" class="headerlink" title="远程桌面"></a>远程桌面</h2><ul>
-<li><p>终端执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install xrdp</div></pre></td></tr></table></figure>
-</li>
-<li><p>windows端 CMD 执行  <code>mstsc</code></p>
-</li>
-<li>输入树莓派ip地址 用户名 密码 </li>
-<li><a href="http://snapgr.am/image/L7lS" target="_blank" rel="external"><img src="http://cdn4.snapgram.co/images/2016/11/27/950743-20160520171926529-1842218984.png" alt="950743-20160520171926529-1842218984.png"></a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-	
-
-	
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-	
-	
-	<div>
-	    <p id="div-border-left-blue">
-	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
-	    <span>
-	    <b>本文地址：</b><a href="/page/2/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
-	    </span>
-	    </p>
-	</div>
-	
-
-	
-    <footer class="post-footer">
-	
-	
-	
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-  
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/08/GitHub-Pages更新导致Next主题-博客主页空白，解决方案/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jasper">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/v.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="默">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/08/GitHub-Pages更新导致Next主题-博客主页空白，解决方案/" itemprop="url">
-                  GitHub-Pages更新导致Next主题-博客主页空白，解决方案
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-08T10:10:11+08:00">
-                2016-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/点滴/" itemprop="url" rel="index">
-                    <span itemprop="name">点滴</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/11/08/GitHub-Pages更新导致Next主题-博客主页空白，解决方案/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/11/08/GitHub-Pages更新导致Next主题-博客主页空白，解决方案/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/11/08/GitHub-Pages更新导致Next主题-博客主页空白，解决方案/" class="leancloud_visitors" data-flag-title="GitHub-Pages更新导致Next主题-博客主页空白，解决方案">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  220
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1m
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>倒腾了俩小时，以为梯子坏了，结果。。。GitHub-Pages更新了！！！</strong> </p>
-<hr>
-<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><ul>
-<li>GitHub-Pages更新，  过滤掉了 source/vendors 目录的访问。</li>
-<li><a href="https://github.com/iissnan/hexo-theme-next/issues/1214" target="_blank" rel="external">issues入口</a></li>
-</ul>
-<h3 id="解决1更新主题"><a href="#解决1更新主题" class="headerlink" title="解决1更新主题"></a>解决1更新主题</h3><ul>
-<li>作者更新了到最新的master分支，解决了这个问题，<br>  So：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="解决2更新本地设置（Next最新版）"><a href="#解决2更新本地设置（Next最新版）" class="headerlink" title="解决2更新本地设置（Next最新版）"></a>解决2更新本地设置（Next最新版）</h3><ul>
-<li>将 source/vendors 目录修改成 source/lib （或者其他的名称，只是 lib 我测试了可以使用）；同时，修改下主题配置文件_config.yml， 将 _internal: vendors 改成你所修改的名字，例如  _internal: lib。</li>
-</ul>
-<h3 id="解决3更新本地设置（Next5-0及以下版本）"><a href="#解决3更新本地设置（Next5-0及以下版本）" class="headerlink" title="解决3更新本地设置（Next5.0及以下版本）"></a>解决3更新本地设置（Next5.0及以下版本）</h3><ul>
-<li>将 source/vendors 目录修改成 source/lib （或者其他的名称，只是 lib 我测试了可以使用）；同时，修改下主题配置文件_config.yml， <strong>vendors: vendors </strong>改成你所修改的名字，例如  _internal: lib。</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-	
-
-	
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-	
-	
-	<div>
-	    <p id="div-border-left-blue">
-	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
-	    <span>
-	    <b>本文地址：</b><a href="/page/2/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
-	    </span>
-	    </p>
-	</div>
-	
-
-	
-    <footer class="post-footer">
-	
-	
-	
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-  
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/09/自建DNS解决运营商DNS污染/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jasper">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/v.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="默">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/09/自建DNS解决运营商DNS污染/" itemprop="url">
-                  自建DNS服务器(dnsmasq)，对抗DNS污染
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-09T12:00:00+08:00">
-                2016-10-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/树莓派/" itemprop="url" rel="index">
-                    <span itemprop="name">树莓派</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/10/09/自建DNS解决运营商DNS污染/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/10/09/自建DNS解决运营商DNS污染/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/10/09/自建DNS解决运营商DNS污染/" class="leancloud_visitors" data-flag-title="自建DNS服务器(dnsmasq)，对抗DNS污染">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  945
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  4m
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ul>
-<li>学校网络出口劫持严重，上淘宝加返利———-等等等等等等</li>
-<li>一直更新hosts不方便，要上google，全平台不好弄</li>
-<li>项目组需要</li>
-</ul>
-<hr>
-<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><ul>
-<li>搭建一个可访问个人公网DNS服务器</li>
-<li>提高DNS加载速度</li>
-<li>规避运营商的DNS劫持</li>
-<li>不影响学校内网访问</li>
-<li>简单的能上google</li>
-</ul>
-<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><ul>
-<li>一台有公网IP的vps，开放了53端口（<a href="http://tool.chinaz.com/port/" target="_blank" rel="external">端口扫描</a>显示开放了53端口）</li>
-<li>装的是linux系统（以    CentOS 6.4 为例）</li>
-<li>WinSCP（或其他文件管理）</li>
-<li>putty.exe（或者其他SSH登陆工具）</li>
-<li>没了。。。。</li>
-</ul>
-<h3 id="DNSmasq原理和说明"><a href="#DNSmasq原理和说明" class="headerlink" title="DNSmasq原理和说明"></a>DNSmasq原理和说明</h3><ul>
-<li>DNSmasq是一个小巧且方便地用于配置DNS和DHCP的工具，适用于小型网络。作为域名解析服务器(DNS)，dnsmasq可以通过缓存 DNS 请求来提高对访问过的网址的连接速度。</li>
-<li>通过设置DNSmasq的上游DNS地址为无污染DNS来解决运营商的DNS污染。</li>
-<li>DNSmasq可以对单独的网址设置DNS服务器。对于学校内网地址设置为学校教育网的DNS解析。对于类似于youtube这种由于DNS污染没法访问的地址，可以先收集无污染的DNS地址，然后交与无污染DNS解析得到正确地址。</li>
-<li>DNSmasq再对网址提交上游DNS解析前，可以先通过本地hosts匹配。设置合适hosts可以实现科学上网。</li>
-</ul>
-<hr>
-<p><strong>开始！</strong></p>
-<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><h4 id="安装dnsmasq"><a href="#安装dnsmasq" class="headerlink" title="安装dnsmasq"></a>安装dnsmasq</h4><ul>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install dnsmasq -y</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="配置Dnsmasq"><a href="#配置Dnsmasq" class="headerlink" title="配置Dnsmasq"></a>配置Dnsmasq</h4><ul>
-<li><p>Dnsmasq的配置文件是 /etc/dnsmasq.conf .通过WinSCP加载修改。</p>
-</li>
-<li><p><a href="http://www.jianshu.com/p/71ccc79aaa9e" target="_blank" rel="external">dnsmasq.conf设置项说明</a></p>
-</li>
-<li><p>此次使用的配置如下</p>
-  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> #指定给dnsmasq使用的hosts</div><div class="line"> addn-hosts=/etc/dnsmasq.host</div><div class="line"> #不使用/etc/resolv.conf(VPS默认DNS)来进行上游dns服务器解析需要配置的比较少直接写在dnsmasq.conf文件里了</div><div class="line"> no-resolv</div><div class="line">   </div><div class="line">#上游DNS地址这里为腾讯DNS和中科大DNS</div><div class="line">server=119.29.29.29</div><div class="line">server=202.141.162.123</div><div class="line">server=/google.com/202.141.162.123</div><div class="line">   #这一行是针对学校内网访问，学校内地址使用学校内网DNS。具体地区调整。</div><div class="line">server=/.edu.cn/202.141.162.123</div></pre></td></tr></table></figure>
-</li>
-<li><p>上游DNS推荐<br>  这里需要在VPS上测试各个DNS后决定。</p>
-<ul>
-<li>常用靠谱DNS<br>  阿里DNS        223.5.5.5               223.6.6.6<br>  114DNS          114.114.114.114<br>  腾讯DNS        119.29.29.29<br>  V2EX DNS    199.91.73.222       178.79.131.110（访问苹果商店有buff加速）</li>
-<li>无污染DNS<br>  目前比较稳定的只有中科大DNS和一些自建的小型DNS。小型DNS通过反带来访问google等，会带来一些隐私和安全风险，还是推荐自建DNS/hosts访问。<br>  中科大DNS<br>  202.38.93.153   （教育网）<br>  202.141.176.93  （中国移动）<br>  202.141.162.123 （中国电信）</li>
-<li>其他DNS请自行GOOGLE</li>
-</ul>
-</li>
-<li><p><strong>千万注意！！！</strong> 配置文件中有<strong>listen-address</strong>配置，网络大多数教程中有<code>listen-address=127.0.0.1</code>这是指Dnsmasq只服务于本机的DNS请求。如果需要搭建公网DNS服务，<strong>这个绝对不能有！！</strong></p>
-</li>
-</ul>
-<h4 id="创建-修改-etc-dnsmasq-host文件"><a href="#创建-修改-etc-dnsmasq-host文件" class="headerlink" title="创建/修改/etc/dnsmasq.host文件"></a>创建/修改/etc/dnsmasq.host文件</h4><ul>
-<li>一些常用去广告hosts/科学上网hosts的内容，<br>  具体不多说hosts科学上网是一天比一天死的快。没有找到靠谱的地址推荐。自行搜索把！</li>
-</ul>
-<h4 id="重启Dnsmasq服务"><a href="#重启Dnsmasq服务" class="headerlink" title="重启Dnsmasq服务"></a>重启Dnsmasq服务</h4><ul>
-<li><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service dnsmasq restart</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="测试53端口"><a href="#测试53端口" class="headerlink" title="测试53端口"></a>测试53端口</h4><ul>
-<li><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -tunlp|grep 53</div></pre></td></tr></table></figure>
-</li>
-<li><p>如果正常应该如下</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@VM_27_70_centos ~]# netstat -tunlp|grep 53</div><div class="line">tcp        0      0 0.0.0.0:53                  0.0.0.0:*                   LIST                    EN      4226/dnsmasq</div><div class="line">udp        0      0 0.0.0.0:53                  0.0.0.0:*                                                   4226/dnsmasq</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="修改本地DNS地址"><a href="#修改本地DNS地址" class="headerlink" title="修改本地DNS地址"></a>修改本地DNS地址</h4><ul>
-<li>这个不多说了，不会的自行google了。。</li>
-</ul>
-<hr>
-<p><strong>结束语</strong><br>创建完了，本地DNS快多了，访问淘宝再也没有了牛皮癣。</p>
-<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><blockquote>
-<p><a href="http://blog.antior.cn/posts/2015_29.html" target="_blank" rel="external">http://blog.antior.cn/posts/2015_29.html</a><br><a href="http://www.jianshu.com/p/71ccc79aaa9e" target="_blank" rel="external">http://www.jianshu.com/p/71ccc79aaa9e</a><br><a href="http://www.linuxdown.net/install/soft/2016/0520/5566.html" target="_blank" rel="external">http://www.linuxdown.net/install/soft/2016/0520/5566.html</a><br><a href="http://blog.cnwyhx.com/centos-linux-dnsmasq-install-dns/" target="_blank" rel="external">http://blog.cnwyhx.com/centos-linux-dnsmasq-install-dns/</a></p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-	
-
-	
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-	
-	
-	<div>
-	    <p id="div-border-left-blue">
-	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
-	    <span>
-	    <b>本文地址：</b><a href="/page/2/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
-	    </span>
-	    </p>
-	</div>
-	
-
-	
-    <footer class="post-footer">
-	
-	
-	
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-  
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/17/Android汇总/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jasper">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/v.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="默">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/17/Android汇总/" itemprop="url">
-                  Android
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-17T10:11:11+08:00">
-                2016-07-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">Android笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/07/17/Android汇总/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/07/17/Android汇总/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/07/17/Android汇总/" class="leancloud_visitors" data-flag-title="Android">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  255
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1m
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Andorid笔记系列"><a href="#Andorid笔记系列" class="headerlink" title="Andorid笔记系列"></a>Andorid笔记系列</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">更新</div><div class="line"><span class="number">2016.07</span>.<span class="number">20</span>    第一行代码Activity创建部分完成</div><div class="line"><span class="number">2016.07</span>.<span class="number">21</span>    完成添加了button和<span class="keyword">menu</span>部分，对应P39页</div><div class="line"><span class="number">2016.07</span>.<span class="number">22</span>    完成了P55页之前的activity部分。对于activity（二）</div><div class="line"><span class="number">2016.08</span>.<span class="number">10</span>    基本搞定，UI除ListView以外的部分。<span class="number">4</span>种布局比较熟悉，不再折腾。</div><div class="line"><span class="number">2016.08</span>.<span class="number">11</span>    开始ListView部分</div><div class="line"><span class="number">2016.08</span>.<span class="number">14</span>    停更半月</div><div class="line"><span class="number">2016.09</span>.<span class="number">02</span>    恢复更新</div><div class="line"><span class="number">2016.09</span>.<span class="number">03</span>    Broadcast部分开坑。</div><div class="line"><span class="number">2016.09</span>.<span class="number">07</span>    ListView部分除BaseAdapter外完成。BaseAdapter内容，什么时候理解深一点再补上。</div><div class="line"><span class="number">2016.09</span>.<span class="number">13</span>    完成了Broadcast对应部分</div><div class="line"><span class="number">2016.10</span>.<span class="number">03</span>    重新按照google的文档查漏补缺.</div><div class="line"><span class="number">2016.10</span>.<span class="number">03</span>    更名Android笔记，重新开始更新。</div><div class="line"><span class="number">2016.12</span>.<span class="number">05</span>    第二行代码开始！</div><div class="line"><span class="number">2016.12</span>.<span class="number">07</span>    重新整理Android系列笔记，从<span class="number">0</span>整合</div><div class="line"><span class="number">2016.12</span>.<span class="number">08</span>    Activity部分整合完成</div><div class="line"><span class="number">2016.12</span>.<span class="number">13</span>    UI部分基础完成，LIstView部分完成</div><div class="line"><span class="number">2016.12</span>.<span class="number">16</span>    RecycleView部分，基础完成，有待进一步填坑 </div><div class="line"><span class="number">2016.12</span>.<span class="number">22</span>    Fragment完成，有一个占坑</div><div class="line"><span class="number">2016.12</span>.<span class="number">23</span>    Broadcast完成</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-	
-
-	
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-	
-	
-	<div>
-	    <p id="div-border-left-blue">
-	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
-	    <span>
-	    <b>本文地址：</b><a href="/page/2/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
-	    </span>
-	    </p>
-	</div>
-	
-
-	
-    <footer class="post-footer">
-	
-	
-	
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -3761,7 +3919,7 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -3772,7 +3930,7 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -3783,7 +3941,7 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -3843,7 +4001,7 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
         <div class="copyright" >
   
   &copy;  2016.6.2 - 
-  <span itemprop="copyrightYear">2017.8.7</span>
+  <span itemprop="copyrightYear">2017.8.23</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -325,6 +325,1377 @@
   
   
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/23/让人崩溃的linux—看门狗内核API文档翻译/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/08/23/让人崩溃的linux—看门狗内核API文档翻译/" itemprop="url">
+                  让人崩溃的linux——看门狗内核API文档翻译
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-23T17:52:16+08:00">
+                2017-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux学习记录/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux学习记录</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/23/让人崩溃的linux—看门狗内核API文档翻译/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/23/让人崩溃的linux—看门狗内核API文档翻译/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/08/23/让人崩溃的linux—看门狗内核API文档翻译/" class="leancloud_visitors" data-flag-title="让人崩溃的linux——看门狗内核API文档翻译">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  2,948
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  11m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>wdt第二弹，内核API，勉强翻译下来了，还需要进一步整理</li>
+</ul>
+<hr>
+<h2 id="看门狗定时器驱动内核API"><a href="#看门狗定时器驱动内核API" class="headerlink" title="看门狗定时器驱动内核API"></a>看门狗定时器驱动内核API</h2><ul>
+<li>最后更新时间 2013.2.12</li>
+<li>Wim Van Sebroeck <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#111;&#x3a;&#119;&#105;&#x6d;&#x40;&#x69;&#103;&#117;&#x61;&#x6e;&#x61;&#46;&#x62;&#x65;">&#119;&#105;&#x6d;&#x40;&#x69;&#103;&#117;&#x61;&#x6e;&#x61;&#46;&#x62;&#x65;</a></li>
+</ul>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul>
+<li>本文档没有描述看门狗设备或驱动。也不涉及那些在用户空间调用的API，对应在 Documentation/watchdog/watchdog-api.txt （也就是<a href="">上一篇</a>）</li>
+<li>本文档描述的是，利用看门狗子系统框架方式进行看门狗驱动编写时所使用到的API。看门狗子系统框架提供了所有与用户空间交互的接口，不需要每次编写重复的代码。这意味这驱动程序只需要提供几个不同的操作函数，就可以控制WDT了。</li>
+</ul>
+<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><ul>
+<li><p>每一个想要使用看门狗核心子系统的驱动程序都必须包含<code>#include&lt;linux/watchdog.h&gt;</code>(编写驱动程序是不得不做的工作)。<code>linux/watchdog.h</code>包含以下两个注册/卸载函数：</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">extern int watchdog_register_device(struct watchdog_device *);</div><div class="line">extern void watchdog_unregister_device(struct watchdog_device *);</div></pre></td></tr></table></figure>
+</li>
+<li><p>注册函数将wdt设备注册进wdt子系统，函数的参数是一个指向struct watchdog<em>device的结构体</em>。当注册成功时返回0.注册失败返回一个负值。</p>
+</li>
+<li>卸载函数是将wdt设备从wdt子系统卸载，函数参数是一个指向struct watchdog<em>device的结构体</em></li>
+<li>看门子系统包含了注册时间调整机制（原文是 an registration deferral mechanism 一种延期机制？上下文不太对啊），允许在开机阶段，你可以按照你设定的尽可早的注册一个看门狗设备。</li>
+</ul>
+<h3 id="struct-watchdogdevice"><a href="#struct-watchdogdevice" class="headerlink" title="struct watchdogdevice"></a>struct watchdog<em>device</em></h3><ul>
+<li>这里粘贴的是linux4.1里定义的watchdog_device，原文的watchdog_device更长但跟源码对不起来，所以这里就以内核4.1里定义的为准了😑：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"> struct watchdog_device &#123;</div><div class="line">int id;</div><div class="line">struct cdev cdev;</div><div class="line">struct device *dev;</div><div class="line">struct device *parent;</div><div class="line">const struct watchdog_info *info;</div><div class="line">const struct watchdog_ops *ops;</div><div class="line">unsigned int bootstatus;</div><div class="line">unsigned int timeout;</div><div class="line">unsigned int min_timeout;</div><div class="line">unsigned int max_timeout;</div><div class="line">void *driver_data;</div><div class="line">struct mutex lock;</div><div class="line">unsigned long status;</div><div class="line">/* Bit numbers for status flags */</div><div class="line">#define WDOG_ACTIVE		0	/* Is the watchdog running/active */</div><div class="line">#define WDOG_DEV_OPEN		1	/* Opened via /dev/watchdog ? */</div><div class="line">#define WDOG_ALLOW_RELEASE	2	/* Did we receive the magic char ? */</div><div class="line">#define WDOG_NO_WAY_OUT		3	/* Is &apos;nowayout&apos; feature set ? */</div><div class="line">#define WDOG_UNREGISTERED	4	/* Has the device been unregistered */</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>包含以下字段：<ul>
+<li>id：由watchdog_register_device函数注册。id 0是一个特殊的，id 0 有/dev/watchdog0 cdev（动态主设备号，次设备号0） 和 /dev/watchdog miscdev。id 在调用到watchdog_register_device时自动注册。<ul>
+<li><strong>NOTE</strong>看源码，wdt子系统是基于misc子系统的，注册wdt设备调用的是<code>misc_register(&amp;watchdog_miscdev);</code>而misc设备主设备号只能为10,这里结论有冲突，等待解决中。。。<ul>
+<li>parent：在调用watchdog_register_device函数前，设置父设备（或者设置为null）</li>
+<li>info：指向watchdog_info结构体的指针，watchdog_info提供了看门狗本身的一些附加信息（像是看门狗独有的名称之类的）</li>
+<li>ops：指向watchdog_ops结构体的指针，watchdog_ops是看门狗支持操作(函数)的集合。</li>
+<li>bootstatus:启动后设备状态(与看门狗WDIOF<em>* 标志位一同开启)</em></li>
+<li>timeout:看门狗超时的时间(秒为单位).如果设置了WDOG<em>ACTIVE </em>启用了看门狗,在这个时间长度后,用户空间还没有发送心跳包,看门狗会将系统复位重启.</li>
+<li>min<em>timeout:</em>可设置的看门狗最小超时时间</li>
+<li>max<em>timeout:</em>可设置的看门狗最大超时时间</li>
+<li>driver<em>data:</em>指向看门狗设备私有数据的指针,这个data只能由watchdog_set_drvdata 和 watchdog_get_drvdata routines函数访问.</li>
+<li>struct mutex lock; <strong>原文档没有🙄</strong></li>
+<li>status:这个字段包含了许多状态位,提供有关设备的额外信息(例如:看门狗的活动状态\限制,现在nowayout 位设置与否)(括号里翻译是否准确存疑)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="struct-watchdog-ops"><a href="#struct-watchdog-ops" class="headerlink" title="struct watchdog_ops"></a>struct watchdog_ops</h3><ul>
+<li><p>watchdog<em>ops</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"> struct watchdog_ops &#123;</div><div class="line">struct module *owner;</div><div class="line">/* mandatory operations */</div><div class="line">int (*start)(struct watchdog_device *);</div><div class="line">int (*stop)(struct watchdog_device *);</div><div class="line">/* optional operations */</div><div class="line">int (*ping)(struct watchdog_device *);</div><div class="line">unsigned int (*status)(struct watchdog_device *);</div><div class="line">int (*set_timeout)(struct watchdog_device *, unsigned int);</div><div class="line">unsigned int (*get_timeleft)(struct watchdog_device *);</div><div class="line">void (*ref)(struct watchdog_device *);</div><div class="line">void (*unref)(struct watchdog_device *);</div><div class="line">long (*ioctl)(struct watchdog_device *, unsigned int, unsigned long);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>你一开始定义的看门狗的module owner是非常重要的,module owner 在使用看门狗时会同时锁定看门狗设备.(这样避免了在卸载模块时/dev/watchdog依然是打开状态引起的系统崩溃)</p>
+</li>
+<li><p>某些函数是必须实现的,其他是可选的,必须实现的函数如下:</p>
+<ul>
+<li><em>start  :</em>指向看门狗设备启动函数的指针.这个函数参数为一个 struct watchdog<em>device,</em>成功返回0,失败返回负数.</li>
+<li><em>stop :</em>通过这个函数关闭看门狗设备.这个函数参数为一个 struct watchdog<em>device,</em>成功返回0,失败返回负数.<ul>
+<li>一些硬件看门狗设备只能启动,没有关闭选项.对应这些设备的驱动,不用实现 <em>stop  ,</em>如果驱动程序没有关闭设备功能,看门狗核心层会在设备关闭后设置 WDOG_HW_RUNNING 并调用驱动程序的 keepalive pings功能.</li>
+<li>如果看门狗驱动没有实现<em>stop  </em>必须设置max_hw_heartbeat<em>ms</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>不是所有的硬件看门狗都有相同的功能,这就是为什么会有可选函数了,只有但这项功能被硬件看门🐶支持时,才编写对应函数.</p>
+<ul>
+<li>ping:这是看门狗驱动实现的喂狗函数,这个函数的参数时一个指向struct watchdog<em>device的指针</em>.函数执行成功返回0,失败返回负数.<ul>
+<li>大多数的硬件不支持直接喂狗的特殊功能,一般是直接重启硬件看门狗.</li>
+<li>看门狗子系统的核心层也是这样做的:但定期喂狗的操作转发到硬件看门狗时,核心层在 <em>ping 实现</em>时调用喂狗函数,但喂狗函数没有实现时,使用 start  对应函数</li>
+<li>( WDIOC_KEEPALIVE对应的 ioctl命令只有在i看门狗info里的WDIOF_KEEPALIVEPING被设置为1后才会生效 )</li>
+</ul>
+</li>
+<li>status: 这个函数用来检查看门狗设备的状态,通过看门狗的WDIOF<em>*</em>状态标志位报告.WDIOF_MAGICCLOSE and WDIOF_KEEPALIVEPING由看门狗核心层报告.没有必要在驱动程序中报告.此外如果驱动程序没有实现该函数,看门狗核心层会返回 struct watchdog<em>device</em>中的bootstatus状态位.</li>
+<li>set_timeout:这个函数设置和检查 超时时间的变化,返回0表示成功,返回-EINVAL表示超出范围,返回-EIO表示无法写入看门狗.设置成功后,函数应该将设定的超时时间写入看门狗.(或许与通过接口获取的超时时间不同,因为看门狗的分辨率不一定能到1s). <ul>
+<li>实现了max_hw_heartbeat_ms的驱动将硬件看门狗心跳值设置为超时时间和max_hw_heartbeat_ms之间的最小值.Those drivers set the timeout value of the watchdog_device either to the requested timeout value (if it is larger than max_hw_heartbeat_ms), or to the achieved timeout value.</li>
+<li>如果看门狗驱动程序没有执行任何操作,但设置了watchdog<em>device.timeout</em>,此回掉函数忽略.</li>
+<li>如果没有设置 set_timeout,但设置了WDIOF_SETTIMEOUT,看门狗架构会将 watchdog_device中timeout值更新为请求的值.</li>
+<li>如果使用了pretimeout feature (WDIOF_PRETIMEOUT),那么set_timeout 必须同时检查 pretimeout 是否有效 ,设置相应定时器. 这些操作在核心层没有races无法完成,所以必须在驱动中完成.</li>
+</ul>
+</li>
+<li>set<em>pretimeout</em>:这个函数支持检查/改变看门狗中pretimeout值(pretimeout详情见wdt用户层api翻译).这个函数是可选支持的,因为不是所有的看门狗都支持这个功能.pretimeout 不是绝对时间,其数值是在超时时间之前几秒发生.<ul>
+<li>返回0表示执行成功,返回-EINVAL,表示超出范围,返回-EIO表示未能成功向看门狗写入.</li>
+<li>设置pretimeou为0值,代表禁用pretimeout功能.(WDIOF<em>PRETIMEOUT</em>需要在看门狗的info 结构体中设置)</li>
+<li>如果驱动没有实现任何功能,但设定了 watchdog<em>device.pretimeout</em>,此回掉函数忽略.这意味这,如果没有提供set<em>pretimeout</em>函数,但设定了WDIOF<em>PRETIMEOUT</em>,看门狗架构会将pretimeout的值更新为请求值.</li>
+</ul>
+</li>
+<li>get<em>timeleft:</em>这个函数返回复位前剩余时间.</li>
+<li>restart:此函数重启看门狗硬件,返回0表示成功,失败返回对应错误码.</li>
+<li>ioctl:如果这个函数存在,在系统进行内部ioctl命令处理前,会首先调用此函数.如果不支持ioctrl命令,应该返回 -ENOIOCTLCMD .这个函数的参数为(watchdog<em>device, cmd and arg)</em></li>
+<li>ref和unref 已经不再被支持.</li>
+</ul>
+</li>
+<li><p>The status bits should (preferably) be set with the set_bit and clear_bit alike bit-operations. The status bits that are defined are:</p>
+<ul>
+<li>WDOG<em>ACTIVE:</em>这个状态位标识着从用户空间看一个看门狗设备是否被激活,如果被激活,用户空间需要执行喂狗动作</li>
+<li>WDOG_NO_WAY<em>OUT:</em>这个状态位标识这nowayout的设置,如果被激活,那看门狗启动后,无法被停止.</li>
+<li>WDOG_HW_RUNNING:如果硬件看门狗运行,此状态位被置1.<ul>
+<li>当硬件看门狗不能被停止时,这个状态位必须被置1.</li>
+<li>如果系统启动后自动启动看门狗,在看门狗打开前,必须设置此状态位.</li>
+<li>当此状态位被置1,即使WDOG<em>ACTIVE为0</em>.看门狗架构也会执行喂狗动作.</li>
+<li>(当你直接注册设置了 WDOG_HW_RUNNING位的看门狗设备时,执行open /dev/watchdog动作,系统会直接跳过启动操作,直接执行喂狗操作 )</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>要设置WDOG_NO_WAY<em>OUT</em>状态位(在注册看门狗设备前)你可以:</p>
+<ul>
+<li><p>在watchdog<em>device</em>的结构体中设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.status = WATCHDOG_NOWAYOUT_INIT_STATUS,</div></pre></td></tr></table></figure>
+<p>这样等同于将WDOG_NO_WAY<em>OUT</em>值设置为CONFIG_WATCHDOG_NOWAYOUT</p>
+</li>
+<li>使用下面的函数<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">static inline void watchdog_set_nowayout(struct watchdog_device *wdd, int nowayout)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>(note:)   wdt驱动程序核心支持magic close和 nowayout功能.要使用magic close,需要在看门狗的 info中设置WDIOF<em>MAGICCLOSE </em>位.开启 nowayout 会覆盖magic close.</p>
+</li>
+<li><p>获取或设定驱动程序特殊数据,应该使用以下两个函数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">static inline void watchdog_set_drvdata(struct watchdog_device *wdd, void *data)</div><div class="line">static inline void *watchdog_get_drvdata(struct watchdog_device *wdd)</div></pre></td></tr></table></figure>
+<ul>
+<li>watchdog_set_drvdata函数允许你添加向驱动程序添加特殊数据,此函数的参数为指向看门狗设备的指针,和指向需要添加数据的指针.</li>
+<li>watchdog_get_drvdata函数运行你读取驱动程序中的特殊数据,此函数的参数为指向你想读取的看门狗设备的指针.</li>
+</ul>
+</li>
+<li><p>初始化 timeout ,会用到下面的函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">  extern int watchdog_init_timeout(struct watchdog_device *wdd,</div><div class="line">                                  unsigned int timeout_parm, struct device *dev);</div><div class="line">  ``` </div><div class="line">  * watchdog_init_timeout允许使用模块的 timeout 字段初始化 timeout ,当模块的 timeout 字段无效时,设备树中的timeout-sec也可.最好的做法是将watchdog_device_中timeout的值,设置为初始默认值,然后使用到函数的用户可以分别设置自定义值.</div><div class="line"></div><div class="line">* 重启后禁用看门狗,需要使用以下函数:</div></pre></td></tr></table></figure>
+<p>static inline void watchdog_stop_on_reboot(struct watchdog_device *wdd);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 卸载看门狗设备时禁用看门狗,必须调用此函数,如果 nowayout 没有设置,这个函数只会停止看门狗.</div></pre></td></tr></table></figure>
+<p>static inline void watchdog_stop_on_unregister(struct watchdog_device *wdd);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">    </div><div class="line">* 更改重启处理程序的优先级,(猜测是不同看门狗的优先级)调用下面的函数:</div></pre></td></tr></table></figure>
+<p>oid watchdog_set_restart_priority(struct watchdog_device *wdd, int priority);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">  * 设定优先级时,用户需要遵循以下规则</div><div class="line">    * 0:优先级最低,非常有限的重启能力</div><div class="line">    * 128:重启处理的默认选择,如果没有其他的重启处理程序可用,或者没有重启整个系统的重启处理程序可用.</div><div class="line">    * 255:最高优先级,会覆盖其他所有重启处理程序</div><div class="line"></div><div class="line">* 使用pretimeout 通知功能,需要利用以下函数:</div></pre></td></tr></table></figure>
+<p>void watchdog_notify_pretimeout(struct watchdog_device *wdd)<br>```</p>
+<ul>
+<li>这个函数可以在中断上下文中调用,如果启用了watchdog pretimeout governor 框架(kbuild CONFIG_WATCHDOG_PRETIMEOUT_GOV),就会采用进入驱动程序分配好的处理程序,如果没有启用watchdog pretimeout governor 框架,watchdog_notify_pretimeout()会将信息输出到内核日志缓存.</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/22/让人崩溃的linux—看门狗API文档翻译/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/08/22/让人崩溃的linux—看门狗API文档翻译/" itemprop="url">
+                  让人崩溃的linux—看门狗API文档翻译
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-22T17:52:16+08:00">
+                2017-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux学习记录/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux学习记录</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/22/让人崩溃的linux—看门狗API文档翻译/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/22/让人崩溃的linux—看门狗API文档翻译/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/08/22/让人崩溃的linux—看门狗API文档翻译/" class="leancloud_visitors" data-flag-title="让人崩溃的linux—看门狗API文档翻译">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,662
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  7m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<ul>
+<li>随手翻译的文档，要看懂linux内核，内核附带的文档自然是逃不过😂，全英文配合Google翻译也得上。。。。</li>
+</ul>
+<hr>
+<ul>
+<li><p>最后更新时间 10/05/2007</p>
+</li>
+<li><p>linux看门狗设备API</p>
+</li>
+<li>Copyright 2002 Christer Weingel <a href="&#x6d;&#97;&#x69;&#108;&#116;&#111;&#58;&#119;&#x69;&#110;&#103;&#x65;&#108;&#x40;&#x6e;&#x61;&#110;&#x6f;&#45;&#x73;&#x79;&#x73;&#116;&#101;&#x6d;&#x2e;&#99;&#x6f;&#109;">&#119;&#x69;&#110;&#103;&#x65;&#108;&#x40;&#x6e;&#x61;&#110;&#x6f;&#45;&#x73;&#x79;&#x73;&#116;&#101;&#x6d;&#x2e;&#99;&#x6f;&#109;</a></li>
+<li><p>本文档的一些内容来自 sbc60xxwdt ，版权属于 Copyright 2000 Jakob Oestergaard <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#106;&#x61;&#107;&#x6f;&#x62;&#x40;&#111;&#x73;&#x74;&#x65;&#110;&#102;&#101;&#x6c;&#100;&#46;&#x64;&#x6b;">&#106;&#x61;&#107;&#x6f;&#x62;&#x40;&#111;&#x73;&#x74;&#x65;&#110;&#102;&#101;&#x6c;&#100;&#46;&#x64;&#x6b;</a></p>
+</li>
+<li><p>本文档基于linux内核 2.4.18</p>
+</li>
+</ul>
+<hr>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul>
+<li>你应该已经知道了，看门狗定时器（WDT）是一个硬件复位电路，在系统软件出现故障时复位系统。</li>
+<li>通常，用户空间的定期喂狗程序通过/dev/watchdog的设备文件通知内核看门狗驱动程序。驱动收到通知，会告知硬件看门狗一切正常，硬件看门狗需要等一会再复位系统。如果用户空间通知失败（RAM错误、内核漏洞等等），通知将停止。超时后，硬件看门狗将复位系统（重启）。</li>
+<li>linux看门狗的API是相当特殊的结构，不同的驱动程序对API的执行各不相同，有时会碰到不兼容的情况。本文档参数记录现有的情况，以供未来的驱动开发参考。<h3 id="最简单的API"><a href="#最简单的API" class="headerlink" title="最简单的API"></a>最简单的API</h3></li>
+<li>所有驱动都支持的基本操作模式。/dev/watchdog被打开后，看门狗被激活并复位系统，除非在一小段时间内被ping通？（喂狗），这段时间被称为超时时间或间断时间。简单的喂狗的方式是向驱动程序写入一些数据，一个非常简单的实例在<code>see samples/watchdog/watchdog-simple.c</code>下.</li>
+<li>更高级的驱动程序可以做到例如检查一个http服务器，在执行喂狗操作之前，做出回应。</li>
+<li>/dev/下设备节点被关闭后，看门狗也同时被禁用，除非支持“Magic Close”（见下文），这并不是个好办法。因为如果看看门狗demo有bug导致系统崩溃，但系统不会重启。因为这样一些驱动支持”Disable watchdog shutdown on close”, CONFIG_WATCHDOG_NOWAYOUT”这样的配置选项。一旦编译内核时候启用这些选项，一旦看门狗程序激活，就不可能禁用看门狗。如果看门狗demo崩溃，系统会在超时后自动重启。看门狗驱动通常也支持nowayout module parameter，以便在运行时控制nowayout module。</li>
+</ul>
+<h3 id="Magic-Close-feature"><a href="#Magic-Close-feature" class="headerlink" title="Magic Close feature"></a>Magic Close feature</h3><ul>
+<li>如果驱动程序支持<code>Magic Close</code>,那么设备将不支持禁用看门狗，除非在关闭设备文件前，向/dev/watchdog下设备文件写入特定的magic 字符 ‘V’。如果用户空间的 daemon关闭了看门的设备文件，但是没有发送那个特定的字符，驱动会认为daemon进程已经被杀，并且停止了定期喂狗行为。这样会导致超时后系统重启。<h3 id="ioctl-API"><a href="#ioctl-API" class="headerlink" title="ioctl API"></a>ioctl API</h3></li>
+<li>所有的驱动程序都支持ioctl API</li>
+<li><strong>喂狗操作使用ioctl完成</strong></li>
+<li>所有的驱动都要支持一个KEEPALIVE的ioctl命令，这个命令可以起到向驱动写入数据一样的作用。所以watchdog daemon的主函数循环可以这样实现<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> while (1) &#123;</div><div class="line">	ioctl(fd, WDIOC_KEEPALIVE, 0);</div><div class="line">	sleep(10);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Setting-and-getting-the-timeout"><a href="#Setting-and-getting-the-timeout" class="headerlink" title="Setting and getting the timeout"></a>Setting and getting the timeout</h3><ul>
+<li>某些驱动支持运行时通过SETTIMEOUT ioctl命令修改超时时间，这些驱动都有WDIOF<em>SETTIMEOUT的标志位</em>。超时时间是一个单位为秒的整数，驱动程序会返回这个变量实际设置的数值，但是由于硬件限制，返回的数值可能与设置数值不同。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">int timeout = 45;</div><div class="line">ioctl(fd, WDIOC_SETTIMEOUT, &amp;timeout);</div><div class="line">printf(&quot;The timeout was set to %d seconds\n&quot;, timeout);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>这个实例或许会输出”The timeout was set to 60 seconds”，如果设备超时时间为分钟。</p>
+</li>
+<li><p>自从2.4.18内核开始，可以使用GETTIMEOUT ioctl命令，获取超时时间。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ioctl(fd, WDIOC_GETTIMEOUT, &amp;timeout);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"The timeout was is %d seconds\n"</span>, timeout);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Pretimeouts"><a href="#Pretimeouts" class="headerlink" title="Pretimeouts"></a>Pretimeouts</h3><ul>
+<li><p>一些看门狗定时器可以在系统重启前一段时间设置一个触发器。这样运行linux在系统从前记录一些重要的信息（像panic信息和kernel coredumps），具体可以通过NMT、中断等机制实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pretimeout = 10;</div><div class="line">ioctl(fd, WDIOC_SETPRETIMEOUT, &amp;pretimeout);</div></pre></td></tr></table></figure>
+</li>
+<li><p>请注意，pretimeout 时间是在 超时关闭系统 之前的秒数。不是直到发生pretimeout 事件的秒数。例如设定的超时时间是60s， pretimeout是10s。pretimeout事件会在50s时发生。pretimeout设置为0代表禁用pretimeout。</p>
+</li>
+<li><p>同样存在一个获取pretimeout的ioctl命令。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ioctl(fd, WDIOC_GETPRETIMEOUT, &amp;timeout);</div><div class="line">printf(&quot;The pretimeout was is %d seconds\n&quot;, timeout);</div></pre></td></tr></table></figure>
+</li>
+<li><p>不是所有看门狗驱动都支持 pretimeout</p>
+</li>
+</ul>
+<h3 id="获取重启前秒数"><a href="#获取重启前秒数" class="headerlink" title="获取重启前秒数"></a>获取重启前秒数</h3><ul>
+<li>一些看门狗驱动支持获取系统重启前秒数。通过WDIOC<em>GETTIMELEFT  ioctl  </em>命令可以返回系统重启前秒数。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ioctl(fd, WDIOC_GETTIMELEFT, &amp;timeleft);</div><div class="line">printf(&quot;The timeout was is %d seconds\n&quot;, timeleft);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="环境监测"><a href="#环境监测" class="headerlink" title="环境监测"></a>环境监测</h3><ul>
+<li><p>所有的看门狗驱动都被要求返回更多关于系统最后一次重启的信息，像是温度、风扇转速、电源等。GETSUPPORT ioctl 的命令可以返回 设备可以支持的信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">struct watchdog_info ident;</div><div class="line">ioctl(fd, WDIOC_GETSUPPORT, &amp;ident);</div></pre></td></tr></table></figure>
+</li>
+<li><p>返回的结构ident中的字段如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">   identity		描述watchdog driver的字符串</div><div class="line">firmware_version	the firmware version of the card if available</div><div class="line">options			设备支持情况的标志位</div></pre></td></tr></table></figure>
+</li>
+<li><p>options描述了GET_STATUS 和GET_BOOT<em>STATUS ioctl命令</em>可以返回那些信息。并且可以设置。（）<strong>??无法理解什么意思??</strong></p>
+</li>
+</ul>
+<ul>
+<li>WDIOF<em>OVERHEAT     cpu过热复位</em><br>系统重启因为，超过了温度限制上限。</li>
+<li><p>WDIOF<em>FANFAULT        风扇失效复位</em></p>
+</li>
+<li><p>WDIOF<em>EXTERN1        External relay 1 </em><br>外部监控电源1被触发，？？？Controllers intended for real world applications include external monitoring pins that will trigger a reset.？？（不明白什么意思）</p>
+</li>
+<li><p>WDIOF_EXTERN2        External relay 2<br>外部监控电源2被触发</p>
+</li>
+<li><p>WDIOF_POWERUNDER    电源坏了，电源带不动了<br>机器显示欠压。</p>
+</li>
+</ul>
+<hr>
+<h2 id="后面一点不翻了，有时间再添坑"><a href="#后面一点不翻了，有时间再添坑" class="headerlink" title="* 后面一点不翻了，有时间再添坑"></a>* 后面一点不翻了，有时间再添坑</h2><ul>
+<li><p>WDIOF_CARDRESET        Card previously reset the CPU<br>The last reboot was caused by the watchdog card</p>
+</li>
+<li><p>WDIOF_POWEROVER        Power over voltage<br>The machine is showing an overvoltage status. Note that if one level is under and one over both bits will be set - this may seem odd but makes sense.</p>
+</li>
+<li><p>WDIOF_KEEPALIVEPING    Keep alive ping reply<br>The watchdog saw a keepalive ping since it was last queried.</p>
+</li>
+<li><p>WDIOF_SETTIMEOUT    Can set/get the timeout<br>The watchdog can do pretimeouts.</p>
+</li>
+<li><p>WDIOF_PRETIMEOUT    Pretimeout (in seconds), get/set<br>For those drivers that return any bits set in the option field, the GETSTATUS and GETBOOTSTATUS ioctls can be used to ask for the current status, and the status at the last reboot, respectively.  </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">int flags;</div><div class="line">ioctl(fd, WDIOC_GETSTATUS, &amp;flags);</div></pre></td></tr></table></figure>
+<p>  or</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ioctl(fd, WDIOC_GETBOOTSTATUS, &amp;flags);</div></pre></td></tr></table></figure>
+</li>
+<li><p>Note that not all devices support these two calls, and some only support the GETBOOTSTATUS call.</p>
+</li>
+<li><p>Some drivers can measure the temperature using the GETTEMP ioctl.  The returned value is the temperature in degrees fahrenheit.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">int temperature;</div><div class="line">ioctl(fd, WDIOC_GETTEMP, &amp;temperature);</div></pre></td></tr></table></figure>
+</li>
+<li><p>Finally the SETOPTIONS ioctl can be used to control some aspects of the cards operation.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">int options = 0;</div><div class="line">ioctl(fd, WDIOC_SETOPTIONS, &amp;options);</div></pre></td></tr></table></figure>
+</li>
+<li><p>The following options are available:</p>
+<ul>
+<li>WDIOS_DISABLECARD    Turn off the watchdog timer</li>
+<li>WDIOS_ENABLECARD    Turn on the watchdog timer</li>
+<li>WDIOS_TEMPPANIC        Kernel panic on temperature trip</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/崩溃的linux—rtc子系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/08/19/崩溃的linux—rtc子系统/" itemprop="url">
+                  让人崩溃的linux—rtc子系统
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-19T10:17:11+08:00">
+                2017-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/让人崩溃的linux/" itemprop="url" rel="index">
+                    <span itemprop="name">让人崩溃的linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/19/崩溃的linux—rtc子系统/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/19/崩溃的linux—rtc子系统/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/08/19/崩溃的linux—rtc子系统/" class="leancloud_visitors" data-flag-title="让人崩溃的linux—rtc子系统">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  4,057
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  16m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>正式开始让人崩溃的linux系列，希望自己能写完。<br>先拿rtc开刀。</li>
+<li><p>这里我尽可能记录下思维的细节，而不是仅局限于代码，希望自己能领会Linux内核开发者的想法。</p>
+</li>
+<li><p>内核版本：linux4.1</p>
+</li>
+<li>需要了解：简略了解字符驱动 和 Linux设备驱动模型</li>
+</ul>
+<hr>
+<h3 id="RTC"><a href="#RTC" class="headerlink" title="RTC"></a>RTC</h3><ul>
+<li>rtc即real time clock，实时时钟。</li>
+<li>rtc一般负责系统关机后计时，面对繁多的Linux RTC设备，内核干脆提供了一个rtc子系统，来支持所有的rtc设备。</li>
+<li>参考资料 </li>
+</ul>
+<h3 id="rtc子系统"><a href="#rtc子系统" class="headerlink" title="rtc子系统"></a>rtc子系统</h3><ul>
+<li>rtc设备本质上是一个字符设备，rtc子系统在字符设备的基础上抽象与硬件无关的部分，并在这个基础上拓展sysfs和proc文件系统下的访问。</li>
+<li>分析时候始终记住两点：<ul>
+<li>rtc子系统是为了让rtc设备驱动编写更为简单，与硬件无关部分已被抽离。</li>
+<li>rtc子系统是基于字符设备而来的。<h3 id="文件框架"><a href="#文件框架" class="headerlink" title="文件框架"></a>文件框架</h3></li>
+</ul>
+</li>
+<li><p>rtc子系统的源码在 /drivers/rtc<br><img src="https://my.mixtape.moe/anynhb.jpg" alt="1.jpg"><br>删减了很多rtc-xxx.c的驱动，只留下了ds1307作为示例，这里看到实际上代码并不多。</p>
+</li>
+<li><p>具体文件分析</p>
+<ul>
+<li><p>rtc.h：定义与RTC有关的数据结构。</p>
+</li>
+<li><p>class.c：向内核注册RTC类，为底层驱动提供rtc_device_register与rtc_device_unregister接口用于RTC设备的注册/注销。初始化RTC设备结构、sysfs、proc。</p>
+</li>
+<li>Interface.c：提供用户程序与RTC的接口函数，其中包括ioctl命令。</li>
+<li>rtc-dev.c：将RTC设备抽象为通用的字符设备，提供文件操作函数集。</li>
+<li>rtc-sysfs.c：管理RTC设备的sysfs属性，获取RTC设备名、日期、时间等。</li>
+<li>rtc-proc.c：管理RTC设备的procfs属性，提供中断状态和标志查询。</li>
+<li>rtc-lib.c：提供RTC、Data和Time之间的转换函数。</li>
+<li>rtc-xxx,c：RTC设备的实际驱动，此处以rtc-ds1307为例。</li>
+<li>hctosys.c：开机时获取RTC时间。</li>
+</ul>
+</li>
+<li><p>整个文件系统框架<br><img src="https://my.mixtape.moe/fdixml.jpg" alt=""></p>
+</li>
+<li><p>RTC子系统具体可分为3层：</p>
+<ul>
+<li>用户层：RTC子系统向上层提供了接口，用户通过虚拟文件系统，间接调用RTC设备，具体有3种方式。<ul>
+<li>/dev/rtc  RTC设备抽象而来的字符设备，常规文件操作集合。</li>
+<li>/sys/class/rtc/rtcx 通过sysfs文件系统进行RTC操作，也是最常用的方式。</li>
+<li>/proc/driver/rtc  通过proc文件系统获取RTC相关信息。</li>
+</ul>
+</li>
+<li>RTC核心层：与硬件无关，用于管理RTC设备注册/注销、提供上层文件操作的接口等。</li>
+<li>RTC驱动：特定RTC设备的驱动程序，实现RTC核心层的回掉函数。编写RTC驱动需要按照RTC子系统的接口填写对应函数并建立映射即可。RTC核心层函数实现的过程和数量与特定硬件紧密相关。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>初看linux系统的人来说，这个图够头晕的了，但是呢，实际上没那么麻烦。由浅入深，一点一点来分析。</li>
+</ul>
+<h3 id="rtc子系统分析"><a href="#rtc子系统分析" class="headerlink" title="rtc子系统分析"></a>rtc子系统分析</h3><h4 id="rtc-dev"><a href="#rtc-dev" class="headerlink" title="rtc-dev"></a>rtc-dev</h4><ul>
+<li>rtc子系统基于字符设备，字符设备对应的肯定是rtc-dev.c了，我们的分析由rtc-dev起步。</li>
+<li><p>rtc-dev.c<br><img src="https://my.mixtape.moe/ukpdro.jpg" alt=""></p>
+</li>
+<li><p>典型的字符设备，模块的初始化/卸载自然是 rtc_dev_init(void) 和  rtc_dev_exit(void)。<br>设备接入，添加/删除设备 rtc_dev_add_device(struct rtc_device <em>rtc) 和  e)    void rtc_dev_del_device(struct rtc_device </em>rtc)<br>还有ioctl和open等函数，熟悉字符设备驱动的不用多说。</p>
+</li>
+<li><p>追踪一下这两组函数在哪里调用的。</p>
+<ul>
+<li>rtc_dev_init(void)对应在 class.c的rtc_init(void)函数</li>
+<li>rtc_dev_add_device对应在class.c的 rtc_device_register()函数。</li>
+</ul>
+</li>
+<li><p>rtc_dev_init(void)对应实在系统初始化时使用，对应rtc_init(void)也是在系统初始化之后调用。</p>
+</li>
+<li>rtc_dev_add_device()是在驱动匹配后调用，rtc_device_register()也是在驱动匹配后调用。打开rtc-ds1307.c&gt;-prob函数，能找到rtc_device_register()也就证实了这个思路。</li>
+<li>接下来转入class.c</li>
+</ul>
+<h4 id="class-c"><a href="#class-c" class="headerlink" title="class.c"></a>class.c</h4><ul>
+<li><p>linux驱动模型中class.c对应类的意思，是rtc类。<br>每个class对应都有自己核心数据结果，对应rtc类就是rtc-device</p>
+</li>
+<li><p>rtc_device<br> rtc_device代表 RTC设备基础的数据结构</p>
+<ul>
+<li>数据结构<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">rtc_device</span>  &#123;</span>  </div><div class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">device</span> <span class="title">dev</span>;</span>  </div><div class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">module</span> *<span class="title">owner</span>;</span>  </div><div class="line">   <span class="keyword">int</span> id;                                   <span class="comment">//RTC设备的次设备号  </span></div><div class="line">   <span class="keyword">char</span> name[RTC_DEVICE_NAME_SIZE];  </div><div class="line">   <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">rtc_class_ops</span> *<span class="title">ops</span>;</span>  </div><div class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">mutex</span> <span class="title">ops_lock</span>;</span>  </div><div class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">cdev</span> <span class="title">char_dev</span>;</span>  </div><div class="line">   <span class="keyword">unsigned</span> <span class="keyword">long</span> flags;  </div><div class="line">   <span class="keyword">unsigned</span> <span class="keyword">long</span> irq_data;  </div><div class="line">   <span class="keyword">spinlock_t</span> irq_lock;  </div><div class="line">   <span class="keyword">wait_queue_head_t</span> irq_queue;  </div><div class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">fasync_struct</span> *<span class="title">async_queue</span>;</span>  </div><div class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">rtc_task</span> *<span class="title">irq_task</span>;</span>  </div><div class="line">   <span class="keyword">spinlock_t</span> irq_task_lock;  </div><div class="line">   <span class="keyword">int</span> irq_freq;  </div><div class="line">   <span class="keyword">int</span> max_user_freq;  </div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> CONFIG_RTC_INTF_DEV_UIE_EMUL  </span></div><div class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">work_struct</span> <span class="title">uie_task</span>;</span>  </div><div class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">timer_list</span> <span class="title">uie_timer</span>;</span>  </div><div class="line">   <span class="comment">/* Those fields are protected by rtc-&gt;irq_lock */</span>  </div><div class="line">   <span class="keyword">unsigned</span> <span class="keyword">int</span> oldsecs;  </div><div class="line">   <span class="keyword">unsigned</span> <span class="keyword">int</span> uie_irq_active:<span class="number">1</span>;  </div><div class="line">   <span class="keyword">unsigned</span> <span class="keyword">int</span> stop_uie_polling:<span class="number">1</span>;  </div><div class="line">   <span class="keyword">unsigned</span> <span class="keyword">int</span> uie_task_active:<span class="number">1</span>;  </div><div class="line">   <span class="keyword">unsigned</span> <span class="keyword">int</span> uie_timer_active:<span class="number">1</span>;  </div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span>  </span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>很长？很😵对不对？只要关注一点就行_</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">int id;                                              //代表是那个rtc设备  </div><div class="line">char name[RTC_DEVICE_NAME_SIZE];                     //代表rtc设备的名称  </div><div class="line">const struct rtc_class_ops *ops;                     //rtc操作函数集，需要驱动实现  </div><div class="line">struct mutex ops_lock;                               //操作函数集的互斥锁  </div><div class="line">  </div><div class="line">struct cdev char_dev;                                //代表rtc字符设备，因为rtc就是个字符设备  </div><div class="line">unsigned long flags;                                 //rtc的状态标志，例如RTC_DEV_BUSY</div></pre></td></tr></table></figure>
+</li>
+<li><p>上文书说到，驱动程序的prob函数里面调用了rtc_device_register()这货的类型就是rtc_device。参加驱动程序怎样调用rtc_device<em>register(),</em>与其他核心的基本结构不同的是，驱动程序以不是以rtc-device为参数注册设备到子系统，而是注册函数会返回一个rtc<em>deivce的结构给驱动。</em></p>
+</li>
+</ul>
+</li>
+<li><p>rtc_class_ops<br>  这个是rtc<em>device的一部分。</em></p>
+<ul>
+<li><p>数据结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">   struct rtc_class_ops &#123;  </div><div class="line">   int (*open)(struct device *);     //打开设备时的回调函数，这个函数应该初始化硬件并申请资源  </div><div class="line">   void (*release)(struct device *); //这个函数是设备关闭时被调用的，应该注销申请的资源  </div><div class="line">   int (*ioctl)(struct device *, unsigned int, unsigned long); //ioctl函数，对想让RTC自己实现的命令应返回ENOIOCTLCMD  </div><div class="line">   int (*read_time)(struct device *, struct rtc_time *);       //读取时间  </div><div class="line">   int (*set_time)(struct device *, struct rtc_time *);        //设置时间  </div><div class="line">   int (*read_alarm)(struct device *, struct rtc_wkalrm *);    //读取下一次定时中断的时间  </div><div class="line">   int (*set_alarm)(struct device *, struct rtc_wkalrm *);     //设置下一次定时中断的时间  </div><div class="line">   int (*proc)(struct device *, struct seq_file *);            //procfs接口  </div><div class="line">   int (*set_mmss)(struct device *, unsigned long secs);       //将传入的参数secs转换为struct rtc_time然后调用set_time函数。程序员可以不实现这个函数，但  前提是定义好了read_time/set_time，因为RTC框架需要用这两个函数来实现这个功能。  </div><div class="line">   int (*irq_set_state)(struct device *, int enabled);         //周期采样中断的开关，根据enabled的值来设置  </div><div class="line">   int (*irq_set_freq)(struct device *, int freq);             //设置周期中断的频率  </div><div class="line">   int (*read_callback)(struct device *, int data);            ///用户空间获得数据后会传入读取的数据，并用这个函数返回的数据更新数据。  </div><div class="line">   int (*alarm_irq_enable)(struct device *, unsigned int enabled);  //alarm中断使能开关，根据enabled的值来设置  </div><div class="line">   int (*update_irq_enable)(struct device *, unsigned int enabled); //更新中断使能开关，根据enabled的值来设置  </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>该结构体中函数大多数都是和rtc芯片的操作有关，需要驱动程序实现。<br>所有RTC驱动都必须实现read_time、set_time函数，其他函数可选。</p>
+</li>
+</ul>
+</li>
+<li><p>参考其他的资料，class的分析如下<br><img src="https://my.mixtape.moe/xrsnkw.jpg" alt=""></p>
+</li>
+<li><p>static int __init rtc_init(void)</p>
+<ul>
+<li>调用class_create创建RTC类，创建/sys/class/rtc目录，初始化RTC类相关成员，向用户空间提供设备信息。</li>
+<li>调用rtc-dev.c实现的rtc_dev_init();动态分配RTC字符设备的设备号。</li>
+<li>调用rtc_sysfs_init(rtc<em>class)；创建/sys/class/rtc下属性文件</em></li>
+</ul>
+</li>
+<li><p>static void __exit rtc<em>exit(void)</em></p>
+<ul>
+<li>调用rtc-dev.c实现的rtc_dev_exit()；注销设备号。</li>
+<li>调用class_destroy(rtc_class)；注销/sys/class下的rtc目录</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>struct rtc_device <em>rtc_device_register(const char </em>name, struct device <em>dev,const struct rtc_class_ops </em>ops,struct module *owner）_<ul>
+<li>申请一个idr整数ID管理机制结构体，并且初始化相关成员</li>
+<li>将设备dev关联sysfs下的rtc类</li>
+<li>初始化rtc结构体的信号量</li>
+<li>初始化rtc结构体中的中断</li>
+<li>设置rtc的名字</li>
+<li>初始化rtc字符设备的设备号，然后注册rtc设备,自动创建/dev/rtc(n)设备节点文件</li>
+<li>注册字符设备</li>
+<li>在/sys/rtc/目录下创建一个闹钟属性文件</li>
+<li>创建/proc/driver/rtc目录</li>
+</ul>
+</li>
+<li>void rtc_device_unregister(struct rtc_device *rtc)<ul>
+<li>删除sysfs中的rtc设备,即删除/sys/class/rtc目录</li>
+<li>删除dev下的/dev/rtc(n)设备节点文件</li>
+<li>删除虚拟文件系统接口,即删除/proc/driver/rtc目录</li>
+<li>卸载字符设备</li>
+<li>清空rtc的操作函数指针rtc-&gt;ops</li>
+<li>释放rtc的device结构体_</li>
+</ul>
+</li>
+<li>static void rtc_device_release(struct device <em>dev)    </em><ul>
+<li>卸载idr数字管理机制结构体</li>
+<li>释放rtc结构体的内存</li>
+</ul>
+</li>
+</ul>
+<h4 id="Rtc子系统初始化"><a href="#Rtc子系统初始化" class="headerlink" title="Rtc子系统初始化"></a>Rtc子系统初始化</h4><ul>
+<li>上图<br><img src="https://my.mixtape.moe/driyxr.jpg" alt=""></li>
+</ul>
+<ul>
+<li>使用rtc子系统首先需要在内核编译选项中启用RTC子系统支持。<ul>
+<li>必须启用Real Time Clock</li>
+<li>使用/dev下的设备文件对应开启CONFIG_RTC_INTF_DEV</li>
+<li>使用/proc下的接口对应开启CONFIG_RTC_INTF_PROC</li>
+<li>使用/sysfs下的接口对应开启CONFIG_RTC_INTF_SYSFS</li>
+</ul>
+</li>
+<li>_系统启动后，如配置启用rtc子系统，则会首先执行rtc<em>init</em>函数，创建rtc类、初始化相关成员、分配设备号等</li>
+<li>创建rtc类后，之后调用rtc_dev_init()动态分配rtc字符设备的设备号。之后调用rtc_sysfs_init()初始化/sys/class/rtc目录中的属性文件</li>
+</ul>
+<h4 id="Rtc设备注册"><a href="#Rtc设备注册" class="headerlink" title="Rtc设备注册"></a>Rtc设备注册</h4><ul>
+<li>Rtc设备本质上属于字符设备，依附于系统内总线。一般来说cpu内部rtc依附于platform总线，外置rtc芯片则依附于通信方式对应总线。其过程与通用字符设备相似，rtc子系统在设备注册过程中附加了prob和sysfs相关的注册和初始化操作。</li>
+<li><p>上图<br><img src="https://my.mixtape.moe/urumgu.jpg" alt=""></p>
+<ul>
+<li>Rtc设备挂载后，相应总线会搜索匹配的驱动程序，驱动程序成功match后，进入驱动实现的probe函数，执行设备注册等操作。</li>
+</ul>
+</li>
+<li>完成总线设备注册后，probe会跳转到rtc_device_register()函数，将设备注册到rtc子系统。</li>
+<li>Rtc设备本质属于字符设备，会调用rtc_dev_prepare()函数，初始化字符设备，设置rtc相关的file operation函数集合。</li>
+<li>之后依次调用rtc_dev_add_device(rtc)、rtc_sysfs_add_device(rtc)、rtc_proc_add_device(rtc) ，进行注册字符设备、在/sys/rtc/目录下创建一个闹钟属性文件、创建/proc/driver/rtc目录等操作。</li>
+<li>rtc_device_register()会将驱动实现的rtc_class_ops结构体与具体设备联系起来。</li>
+</ul>
+<h4 id="interface-c"><a href="#interface-c" class="headerlink" title="interface.c"></a>interface.c</h4><ul>
+<li>在rtc-proc.c、rtc_sysfs和ioctl命令中，所有的操作调用的都是interface.c提供的接口，这里以ioctl的一个例子说明整个调用的过程</li>
+<li><p>上图<br><img src="https://my.mixtape.moe/bvtlqf.jpg" alt=""></p>
+</li>
+<li><p>以icotl命令RTC_RD_TIME为例，说明命令调用的流程。</p>
+<ul>
+<li>RTC_RD_TIME对应的是/dev下ioctl命令，调用被转发至/rtc-dev.c</li>
+<li>rtc-dev.c-&gt;rtc_dev_ioctl(struct file *file,unsigned int cmd, unsigned long arg)函数中。RTC_RD_TIME对应的代码为err = rtc_read_time(rtc, &amp;tm); rtc_read_time是interface.c文件提供的接口之一。</li>
+<li>interface.c-&gt;rtc_read_time(struct rtc_device <em>rtc, struct rtc_time </em>tm)函数中对应rtc_class_ops转发代码为err = rtc-&gt;ops-&gt;read_time(rtc-&gt;dev.parent, tm);将操作转发至匹配的rtc设备。</li>
+<li><p>设备驱动这里以rtc-ds1307为例，但设备注册时通过mcp794xx_rtc_ops结构体将rtc_class_ops对应函数与驱动程序实现的函数绑定</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">static const struct rtc_class_ops mcp794xx_rtc_ops = &#123;</div><div class="line">.read_time  = ds1307_get_time,</div><div class="line">.set_time   = ds1307_set_time,</div><div class="line">.read_alarm = mcp794xx_read_alarm,</div><div class="line">.set_alarm  = mcp794xx_set_alarm,</div><div class="line">.alarm_irq_enable = mcp794xx_alarm_irq_enable,</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>最终执行转入ds1307.c-&gt; ds1307_get_time函数，执行与硬件相关的操作。</p>
+<h4 id="rtc-sysfs-c"><a href="#rtc-sysfs-c" class="headerlink" title="rtc-sysfs.c"></a>rtc-sysfs.c</h4></li>
+</ul>
+</li>
+<li><p>由前半部分可知，/sys/class/rtc/是在rtc-init调用rtc_sysfs_init后生成。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">void __init rtc_sysfs_init(struct class *rtc_class) &#123;</div><div class="line">	rtc_class-&gt;dev_groups = rtc_groups;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>这里的rtc_groups是rtc-sysfs.c中定义了这样一个attribute函数指针数组：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">static struct attribute *rtc_attrs[] = &#123;</div><div class="line">&amp;dev_attr_name.attr,</div><div class="line">&amp;dev_attr_date.attr,</div><div class="line">&amp;dev_attr_time.attr,</div><div class="line">&amp;dev_attr_since_epoch.attr,</div><div class="line">&amp;dev_attr_max_user_freq.attr,</div><div class="line">&amp;dev_attr_hctosys.attr,</div><div class="line">NULL,</div><div class="line">&#125;;</div><div class="line">ATTRIBUTE_GROUPS(rtc);</div></pre></td></tr></table></figure>
+</li>
+<li><p>_在rtc_sysfs_init函数调用后绑定了sysfs节点操作函数的集合，使得设备匹配驱动程序后而生成对应的rtcn文件夹。</p>
+</li>
+<li><code>dev_attr_name和dev_attr_data</code>由宏<code>DEVICE_ATTR_RO</code>和DEVICE_ATTR_RW生成，他们分别定义了只读的和可读可写的attribute节点。每个属性函数下都有DEVICE_ATTR_XX()宏声明，绑定到对应attribute节点。</li>
+</ul>
+<h4 id="rtc-proc-c"><a href="#rtc-proc-c" class="headerlink" title="rtc-proc.c"></a>rtc-proc.c</h4><ul>
+<li>proc文件系统是软件创建的文件系统，内核通过他向外界导出信息，下面的每一个文件都绑定一个函数，当用户读取这个文件的时候，这个函数会向文件写入信息。</li>
+<li><p>rtc-proc.c中初始化了file_operations结构体：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">static const struct file_operations rtc_proc_fops = &#123;  </div><div class="line">  .open       = rtc_proc_open,  </div><div class="line">  .read       = seq_read,  </div><div class="line">  .llseek     = seq_lseek,  </div><div class="line">  .release    = rtc_proc_release,  </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>_RTC驱动在向RTC核心注册自己的时候，由注册函数rtc_device_resgister调用rtc_proc_add_device来实现proc接口的初始化，这个函数如下定义：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">void rtc_proc_add_device(struct rtc_device *rtc)  </div><div class="line">&#123;	  </div><div class="line">   	if (rtc-&gt;id == 0)  </div><div class="line">       	proc_create_data(&quot;driver/rtc&quot;, 0, NULL, &amp;rtc_proc_fops, rtc);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>主要是完成创建文件节点，并将文件的操作函数与节点联系起来。调用这个函数后，在/proc/driver目录下就会有一个文件rtc</p>
+</li>
+</ul>
+<h3 id="rtc设备访问"><a href="#rtc设备访问" class="headerlink" title="rtc设备访问"></a>rtc设备访问</h3><ul>
+<li>rtc子系统最多可以支持16个rtc设备，多个rtc设备会在/dev/和 /sys/class/rtc/下生成rtc0、rtc1…等不同节点(下文以rtcn代称)。而系统启动时会选择一个rtc设备读取计时，在/dev下有rtc文件，rtc文件指向系统选择的rtc设备对应的rtcn（一般为rtc0）。</li>
+<li>用户层访问rtc设备有3种途径：<ul>
+<li>/dev/rtcn open等字符设备操作和ioctl命令。</li>
+<li>/sys/class/rtc/rtcn   sysfs 属性，一些属性是只读。</li>
+<li>/proc/driver/rtc 第一个rtc会占用procfs接口，在procfs下暴露更多信息。</li>
+</ul>
+</li>
+</ul>
+<h4 id="dev"><a href="#dev" class="headerlink" title="/dev"></a>/dev</h4><ul>
+<li>在/dev下用户可以通过两种方式访问rtc设备，第一个是通过字符设备定义的open、read等函数（需要驱动程序实现）、另一个是通过定义的ioctl命令。第一种方式是直接打开rtc-dev.c定义的open等函数，在open等中直接调用驱动程序实现的函数。通过ioctl命令访问则是将操作转发到了interface.c定义的接口，间接调用驱动程序实现的函数。</li>
+<li><p>ioctl()函数访问/dev下的设备。以下是典型函数：_</p>
+<ul>
+<li><p>ioctl(fd,RTC_ALM_SET, &amp;rtc_tm);<br>设置alarm中断的触发时刻，不超过24小时。第三个参数为structrtc_time结构体，读取时会忽略年月日信息。alarm中断与wakeupalarm中断只能同时使用1个，以最后一次设定为准。</p>
+<ul>
+<li>ioctl(fd,RTC_ALM_READ, &amp;rtc_tm)<br>读取alarm中断的触发时刻。</li>
+</ul>
+</li>
+<li><p>ioctl(fd,RTC_WKALM_SET, &amp;alarm);<br>设置wakeupalarm中断的触发时刻， wakeupalarm中断的触发时刻可以在未来的任意时刻。alarm中断与wakeupalarm中断只能同时使用1个，以最后一次设定为准。</p>
+</li>
+<li><p>ioctl(fd,RTC_WKALM_RD, &amp;alarm);<br>读取wakeupalarm中断的触发时刻。</p>
+</li>
+<li><p>ioctl(fd,RTC_IRQP_SET, tmp);<br>设置周期中断的频率，tmp的值必须是2的幂，非Root用户无法使用64HZ以上的周期中断。</p>
+</li>
+<li><p>ioctl(fd,RTC_IRQP_READ, &amp;tmp);<br>读取周期中断的频率。</p>
+</li>
+<li><p>ioctl(fd,RTC_SET_TIME, &amp;rtc_tm)<br>更新RTC芯片的当前时间。</p>
+</li>
+<li><p>ioctl(fd,RTC_RD_TIME, &amp;rtc_tm);<br>读取RTC硬件中的当前时间。</p>
+</li>
+</ul>
+</li>
+<li><p>以open操作为例，在用户层对/dev下设备执行open会被转发至<code>rtc_dev_open(struct inode *inode, struct file *file)</code>函数，通过err<code>= ops-&gt;open ? ops-&gt;open(rtc-&gt;dev.parent) : 0;</code>判断驱动程序是否通过连接的rtc_class_ops结构体实现了open函数，驱动程序实现了open函数，则将open操作转发至驱动程序。</p>
+</li>
+</ul>
+<h4 id="sys"><a href="#sys" class="headerlink" title="/sys"></a>/sys</h4><ul>
+<li>/sys/class/rtc/rtcn下面的sysfs接口提供了操作rtc属性的方法，所有的日期时间都是墙上时间，而不是系统时间。<ul>
+<li>date:    RTC提供的日期</li>
+<li>hctosys:    如果在内核配置选项中配置了CONFIG_RTC_HCTOSYS，RTC会在系统启动的时候提供系统时间，这种情况下这个位就是1,否则为0</li>
+<li>max_user_freq:    非特权用户可以从RTC得到的最大中断频</li>
+<li>name:     RTC的名字，与sysfs目录相关</li>
+<li>since_epoch:    从纪元开始所经历的秒数</li>
+<li>time:    RTC提供的时间</li>
+<li>wakealarm:    唤醒时间的时间事件。 这是一种单次的唤醒事件，所以如果还需要唤醒，在唤醒发生后必须复位。这个域的数据结构或者是从纪元开始经历的妙数，或者是相对的秒数</li>
+</ul>
+</li>
+</ul>
+<h4 id="proc"><a href="#proc" class="headerlink" title="/proc"></a>/proc</h4><ul>
+<li>/proc/driver/rtc下只对应第一个rtc设备，与sysfs下相比，该设备暴露更多信息</li>
+<li>对应截图<br><img src="https://my.mixtape.moe/qbuavl.jpg" alt=""></li>
+</ul>
+<h3 id="RTC子系统测试"><a href="#RTC子系统测试" class="headerlink" title="RTC子系统测试"></a>RTC子系统测试</h3><p><strong>Hwclock命令或使用测试文件。</strong></p>
+<ul>
+<li>Hwclock命令可以执行最简单的RTC测试。常用命令示例如下<ul>
+<li>hwclock #查看RTC时间</li>
+<li>hwclock -set -date=”07/07/17 10:10” #设置硬件RTC时间（月/日/年 时:分:秒）</li>
+<li>hwclock -w #系统时间同步至RTC</li>
+<li>hwclock -s #同步RTC到系统时间</li>
+</ul>
+</li>
+<li>Linux内核提供了RTC子系统的测试示例文件，位于tools/testing/selftests/timers/rtctest.c，包含了基于ioctl命令的完整测试。</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/15/让人崩溃的linux——时间子系统（一）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/08/15/让人崩溃的linux——时间子系统（一）/" itemprop="url">
+                  让人崩溃的linux——时间子系统（一）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-15T17:52:16+08:00">
+                2017-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux学习记录/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux学习记录</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/15/让人崩溃的linux——时间子系统（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/15/让人崩溃的linux——时间子系统（一）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/08/15/让人崩溃的linux——时间子系统（一）/" class="leancloud_visitors" data-flag-title="让人崩溃的linux——时间子系统（一）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>ss</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/11/Linux内核C语言中的面向对象/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -387,8 +1758,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/Linux学习记录/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux学习记录</span>
                   </a>
                 </span>
 
@@ -1630,7 +3001,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  786
+                  1,151
                 </span>
               
 
@@ -1646,7 +3017,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  4m
+                  5m
                 </span>
               
             </div>
@@ -1667,12 +3038,12 @@
       
         
           
-            <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">更新</div><div class="line"><span class="number">2017.04</span>.<span class="number">08</span>  VPS日常一些安全措施</div></pre></td></tr></table></figure>
+            <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">更新</div><div class="line"><span class="number">2017.04</span>.<span class="number">08</span>  VPS日常一些安全措施</div><div class="line"><span class="number">2017.08</span>.<span class="number">22</span>  更新安全措施，读者反馈，没有debian的，这里加上。</div></pre></td></tr></table></figure>
 <hr>
 <ul>
 <li><p>导语<br>科学上网教程系列，很久没有更新新内容了。更新常用安全措施，至少保证，不会被轻易的当作肉鸡。都是一些常用的安全措施。</p>
 </li>
-<li><p>系统环境：CentOS</p>
+<li><p>系统环境：CentOS/debian 7</p>
 </li>
 </ul>
 <hr>
@@ -1688,8 +3059,11 @@
 </li>
 </ul>
 <h3 id="修改端口"><a href="#修改端口" class="headerlink" title="修改端口"></a>修改端口</h3><ul>
-<li><p>命令 如下，以下是将 SSH 端口改为 999 端口</p>
+<li><p>CentOS 命令 如下，以下是将 SSH 端口改为 999 端口</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed -i &apos;s/#Port 22/Port 999/g&apos; /etc/ssh/sshd_config</div></pre></td></tr></table></figure>
+<p>debian需要打开/etc/ssh/sshd<em>config </em>文件，修改其中的port后面的数字,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano /etc/ssh/sshd_config</div></pre></td></tr></table></figure>
+<p>修改其中的port后面的数字，为你要ssh登陆的端口，cltrl + x保存，回车退出。</p>
 </li>
 <li><p>安装 fail2ban 封掉 暴力破解ip</p>
 </li>
@@ -1718,7 +3092,7 @@
 </li>
 </ul>
 </li>
-<li><p>设置开机自启动</p>
+<li><p>设置开机自启动（debian不用前面验证完成，已加入开机启动）</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// CentOS/RHEL 6</div><div class="line">chkconfig fail2ban on</div><div class="line">// CentOS/RHEL 7</div><div class="line">systemctl enable fail2ban</div></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -1747,15 +3121,22 @@
 <li><p>允许 SSR端口 以888 xxx 为例 你有几个端口，就添加几个</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p tcp -s 0/0 --dport 888 -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport 888 -m state --state ESTABLISHED -j ACCEPT</div><div class="line"></div><div class="line">iptables -A INPUT -p tcp -s 0/0 --dport xxx -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport xxx -m state --state ESTABLISHED -j ACCEPT</div></pre></td></tr></table></figure>
 </li>
-<li><p>保存配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables-save &gt; /etc/sysconfig/iptables</div></pre></td></tr></table></figure>
-</li>
-<li><p>重载 iptables</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -L</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="安装-CSF-防火墙"><a href="#安装-CSF-防火墙" class="headerlink" title="安装 CSF 防火墙"></a>安装 CSF 防火墙</h2><ul>
-<li>命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">rm -fv csf.tgz</div><div class="line">wget http://download.configserver.com/csf.tgz</div><div class="line">tar -xzf csf.tgz</div><div class="line">cd csf</div><div class="line">sh install.sh</div><div class="line">//使用下边的命令来验证csf正确安装并已经运行</div><div class="line">perl /usr/local/csf/bin/csftest.pl</div></pre></td></tr></table></figure>
+<li><p>CentOS 保存配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">iptables-save &gt; /etc/sysconfig/iptables</div><div class="line">``` </div><div class="line">重载 iptables</div></pre></td></tr></table></figure>
+<p>iptables -L</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">* debian 7 保存配置</div></pre></td></tr></table></figure>
+<p>iptables-save &gt; /etc/iptables-rules<br>ip6tables-save &gt; /etc/ip6tables-rules</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">随后修改/etc/network/interfaces文件，最后加入</div></pre></td></tr></table></figure>
+<p>pre-up iptables-restore &lt; /etc/iptables-rules<br>pre-up ip6tables-restore &lt; /etc/ip6tables-rules</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  重启执行`iptables -L`，看到配置已生效。</div><div class="line"></div><div class="line">## 安装 CSF 防火墙</div><div class="line">* 命令</div></pre></td></tr></table></figure>
+<p>rm -fv csf.tgz<br>wget <a href="http://download.configserver.com/csf.tgz" target="_blank" rel="external">http://download.configserver.com/csf.tgz</a><br>tar -xzf csf.tgz<br>cd csf<br>sh install.sh<br>//使用下边的命令来验证csf正确安装并已经运行<br>perl /usr/local/csf/bin/csftest.pl</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">## autoban 补丁（8.22）推荐</div><div class="line">* 来自ss原作者@clowwindy 的补丁，ban掉那些尝试破译ss密码的ip，在此对原作者表示敬意！</div><div class="line">* 原理是同一个ip出现3次以上尝试破译ss密码会被永久ban掉，ssr也可用</div><div class="line">* 测试只在debian 7上进行，需要python环境，但是通过秋水逸冰脚本安装ssr 已经安装好了python环境。</div><div class="line"></div><div class="line">* 以下内容参考</div><div class="line">  &gt;https://plus.google.com/104980438521301094845/posts/9zypCffhdZu</div><div class="line"></div><div class="line">---</div><div class="line"></div><div class="line">* 下载脚本</div></pre></td></tr></table></figure>
+<p>wget <a href="https://raw.githubusercontent.com/Jasper-1024/shadowsocksr/manyuser/utils/autoban.py" target="_blank" rel="external">https://raw.githubusercontent.com/Jasper-1024/shadowsocksr/manyuser/utils/autoban.py</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">* ssr运行</div></pre></td></tr></table></figure>
+<p>python autoban.py &lt; /var/log/shadowsocksr.log</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  查看哪些ip试图连接破解ssr密码。原版ss将log文件路径替换即可。</div><div class="line">  </div><div class="line">* 自动ban ip</div><div class="line">  编辑/etc/init.d/rc.local，加入</div></pre></td></tr></table></figure>
+<p>python /root/autoban.py &lt; /var/log/shadowsocksr.log</p>
+<p>nohup tail -F /var/log/shadowsocksr.log | python /root/autoban.py &gt;log 2&gt;log &amp;<br>```<br>保存退出即可。</p>
 </li>
 </ul>
 
@@ -2151,1188 +3532,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-  
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/19/Android笔记-ContentResolver/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jasper">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/v.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="默">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/19/Android笔记-ContentResolver/" itemprop="url">
-                  Android笔记—ContentResolver
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-19T12:00:00+08:00">
-                2017-01-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">Android笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/01/19/Android笔记-ContentResolver/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/01/19/Android笔记-ContentResolver/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/01/19/Android笔记-ContentResolver/" class="leancloud_visitors" data-flag-title="Android笔记—ContentResolver">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  1,159
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  5m
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<p>资料来源如下</p>
-<ul>
-<li>第一行代码(第二版)</li>
-<li><a href="http://www.jianshu.com/p/57798618bd90" target="_blank" rel="external">android6.0运行时权限详解</a></li>
-</ul>
-<p>编程环境</p>
-<ul>
-<li>Android Studio 2.2.3 </li>
-</ul>
-<p>导语</p>
-<ul>
-<li>内容提供器是安全的应用间共享数据途径，在正式进入之前需要了解一下 Android 自6.0以来权限的变化</li>
-</ul>
-<hr>
-<h2 id="Android-权限详解"><a href="#Android-权限详解" class="headerlink" title="Android 权限详解"></a>Android 权限详解</h2><hr>
-<p>资料来源：</p>
-<ul>
-<li><a href="http://www.jianshu.com/p/57798618bd90" target="_blank" rel="external">android6.0运行时权限详解</a></li>
-<li><a href="https://developer.android.com/guide/topics/security/permissions.html" target="_blank" rel="external">Develop-API Guides-系统权限</a></li>
-<li>第一行代码(第二版)</li>
-</ul>
-<hr>
-<h3 id="Android权限介绍"><a href="#Android权限介绍" class="headerlink" title="Android权限介绍"></a>Android权限介绍</h3><ul>
-<li><p>Android 是一个权限分隔的操作系统<br>每个应用系统标识（Linux 用户 ID 和组 ID）不同。系统各部分标识亦不相同。Linux 据此将不同的应用以及应用与系统分隔开来。<br>更详细的安全功能通过“权限”提供，权限 会限制特定进程可以执行的具体操作，并且根据 URI 权限授权临时访问特定的数据段</p>
-</li>
-<li><p>权限声明<br>最常见的权限声明在 AndroidManifest.xml 文件中一个或多个uses-permission 标记, </p>
-<ul>
-<li>例如 声明短信权限 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">  <span class="attr">package</span>=<span class="string">"com.android.app.myapp"</span> &gt;</div><div class="line">  <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.RECEIVE_SMS"</span> /&gt;</span></div><div class="line">  ...</div><div class="line">  <span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>android 6.0 权限机制<br>android 6.0之前 权限及在安装的时候，根据权限声明产生一个权限列表，用户只有在同意之后才能完成app的安装。<br>android 6.0 以后 引入了  运行时权限 功能，应用所需权限不再一次性在安装时申请，而是在运行时需要用到那种权限向用户申请，同时用户也可以随时取消该授权</p>
-</li>
-<li><p>权限分类</p>
-<ul>
-<li>Normal Permissions(普通权限)<br>不涉及用户隐私，不需要用户进行授权的，例如 手机震动、访问网络等</li>
-<li>Dangerous Permission(危险权限)<br>涉及到用户隐私的，需要用户进行授权，例如 读取sdcard、访问通讯录等<br><a href="https://developer.android.com/guide/topics/security/permissions.html" target="_blank" rel="external">危险权限组</a>如表1</li>
-</ul>
-</li>
-</ul>
-<h3 id="应用运行时申请权限（适用于-Android6-0-及以上版本）"><a href="#应用运行时申请权限（适用于-Android6-0-及以上版本）" class="headerlink" title="应用运行时申请权限（适用于 Android6.0 及以上版本）"></a>应用运行时申请权限（适用于 Android6.0 及以上版本）</h3><ul>
-<li>通过一个简单的实例来说明过程<h4 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h4></li>
-<li><p>拨打电话 CALL<em>PHONE  </em>权限为例 </p>
-<ul>
-<li>权限声明<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.CALL_PHONE"</span>/&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>拨打10010</p>
-<ul>
-<li>代码如下 构建一个隐式intent 启动拨打电话<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_CALL);</div><div class="line">intent.setData(Uri.parse(<span class="string">"tel:10010"</span>));</div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>在主界面上添加一个Button 在其onClick方法中拨打电话，运行程序!</li>
-</ul>
-<hr>
-<ul>
-<li>在An’d’roid 6.0 以下版本中 电话都可以正常拨出。Android 6.0 以上版本中 则可能会应用崩溃/无反应，查看logcat的打印日志可以看到 “Permission Denial”权限被禁止的信息，接下来尝试使用 运行时申请权限</li>
-</ul>
-<hr>
-<ul>
-<li>检查是否已获得授权<br>int  checkSelfPermission(Context context, String permission)方法 <ul>
-<li>Context context context<br>String permission  权限具体名称<br>打电话对应 Manifest.permission.CALL<em>PHONE   </em></li>
-<li>方法返回  PERMISSION_GRANTED  /   PERMISSION_DENIED</li>
-<li>例程<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(ContextCompat.checkSelfPermission</div><div class="line">(MainActivity.<span class="keyword">this</span>,Manifest.permission.CALL_PHONE) </div><div class="line">!=PackageManager.PERMISSION_GRANTED)</div><div class="line">&#123;</div><div class="line">         ;</div><div class="line">&#125;<span class="keyword">else</span> &#123;</div><div class="line">         ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>申请权限<br>void ActivityCompat.requestPermissions (Activity activity, String[] permissions, int requestCode)方法</p>
-<ul>
-<li><p>Activity activity  Activity实例<br>String[] permissions  请求权限名<br>int requestCode 请求码，大于0即可，对应在onRequestPermissionsResult 回掉方法中的requestCode</p>
-</li>
-<li><p>例程</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ActivityCompat.requestPermissions(MainActivity.<span class="keyword">this</span>,</div><div class="line"><span class="keyword">new</span> String[]&#123;Manifest.permission.CALL_PHONE&#125;,<span class="number">1</span> );</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>授权后回掉<br>无论用户是否授权都会进入回掉方法，需要重写该方法。<br>void onRequestPermissionsResult (int requestCode, String[] permissions, int[] grantResults)方法</p>
-<ul>
-<li><p>int requestCode    在 requestPermissions 中传入的请求码<br>String[] permissions   请求的权限，不为空<br>int[] grantResults        授权结果 只有 PERMISSION_GRANTED  / PERMISSION_DENIED 两个值</p>
-</li>
-<li><p>例程</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, String[] permissions, <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</div><div class="line">    <span class="keyword">switch</span> (requestCode) &#123;</div><div class="line">    	<span class="comment">//请求码 1</span></div><div class="line">        <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">            <span class="comment">//授权结果(int) 的 长度是否大于0  与上 授权结果是否等于  PackageManager.PERMISSION_GRANTED </span></div><div class="line">            <span class="keyword">if</span> (grantResults.length &gt; <span class="number">0</span> &amp;&amp; grantResults[<span class="number">0</span>] == PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line">            <span class="comment">//授权通过执行</span></div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="comment">//授权没有通过  </span></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>当用户拒绝后再次询问<br>  boolean ActivityCompat.shouldShowRequestPermissionRationale(Activity activity, String permission)             （真心太长了）</p>
-<ul>
-<li>Activity activity  Activity实例<br>String permission   权限名称<br>应用第一次需要授权时,用户授权，该方法返回false。当用户拒绝授权,下次需要该权限时,该方法会返回true</li>
-<li>例程<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">if</span> (ActivityCompat.shouldShowRequestPermissionRationale</div><div class="line">(PermissionActivity.<span class="keyword">this</span>,Manifest.permission.READ_CONTACTS))</div><div class="line">&#123;</div><div class="line"><span class="comment">//第二次询问用户是否授权</span></div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line"><span class="comment">//用户依旧拒绝后操作</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>例程源码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">      <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">      setContentView(R.layout.activity_main);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Button</span><span class="params">(View view)</span></span>&#123;</div><div class="line">      <span class="keyword">if</span>(ContextCompat.checkSelfPermission(MainActivity.<span class="keyword">this</span>,Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED)&#123;</div><div class="line">          ActivityCompat.requestPermissions(MainActivity.<span class="keyword">this</span>, <span class="keyword">new</span> String[]&#123;Manifest.permission.CALL_PHONE&#125;,<span class="number">1</span> );</div><div class="line">      &#125;<span class="keyword">else</span> &#123;</div><div class="line">          call();</div><div class="line">      &#125;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">()</span> </span>&#123;</div><div class="line">      <span class="keyword">try</span> &#123;</div><div class="line">          Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_CALL);</div><div class="line">          intent.setData(Uri.parse(<span class="string">"tel:10010"</span>));</div><div class="line">          startActivity(intent);</div><div class="line">      &#125; <span class="keyword">catch</span> (SecurityException e) &#123;</div><div class="line">          e.printStackTrace();</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, String[] permissions, <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</div><div class="line">      <span class="keyword">switch</span> (requestCode) &#123;</div><div class="line">          <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">              <span class="keyword">if</span> (grantResults.length &gt; <span class="number">0</span> &amp;&amp; grantResults[<span class="number">0</span>] == PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line">                  call();</div><div class="line">              &#125; <span class="keyword">else</span> &#123;</div><div class="line">                  Toast.makeText(<span class="keyword">this</span>, <span class="string">"You denied the permission"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">              &#125;</div><div class="line">              <span class="keyword">break</span>;</div><div class="line">          <span class="keyword">default</span>:</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">     <span class="attr">android:onClick</span>=<span class="string">"Button"</span></div><div class="line">     <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">     <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">     <span class="attr">android:text</span>=<span class="string">"Hello World!"</span> /&gt;</div></pre></td></tr></table></figure></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-	
-
-	
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-	
-	
-	<div>
-	    <p id="div-border-left-blue">
-	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
-	    <span>
-	    <b>本文地址：</b><a href="/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
-	    </span>
-	    </p>
-	</div>
-	
-
-	
-    <footer class="post-footer">
-	
-	
-	
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-  
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/14/Android笔记-数据保存/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jasper">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/v.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="默">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/14/Android笔记-数据保存/" itemprop="url">
-                  Android笔记—数据保存
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-14T12:00:00+08:00">
-                2017-01-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">Android笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/01/14/Android笔记-数据保存/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/01/14/Android笔记-数据保存/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/01/14/Android笔记-数据保存/" class="leancloud_visitors" data-flag-title="Android笔记—数据保存">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  1,482
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  6m
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<p>资料来源如下</p>
-<ul>
-<li>第一行代码(第二版)</li>
-</ul>
-<p>编程环境</p>
-<ul>
-<li>Android Studio 2.2.3 </li>
-</ul>
-<hr>
-<h2 id="Android-中的主要数据存储"><a href="#Android-中的主要数据存储" class="headerlink" title="Android 中的主要数据存储"></a>Android 中的主要数据存储</h2><ul>
-<li><p>有三种</p>
-</li>
-<li><p>保存键值集<br> 要保存的相对较小键值集合，使用 SharedPreferences</p>
-</li>
-<li><p>保存文件<br>使用 Android 文件系统通过 File API 读取和写入文件，适合按开始到结束的顺序不跳过地读取或写入大量数据。 例如，图片文件或通过网络交换的任何内容</p>
-</li>
-<li><p>在 SQL 数据库中保存数据<br>Android内建的SQLite 数据库存储重复或结构化数据</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li>PS：这里如果没有学过 SQL 数据库使用，推荐LitePal</li>
-<li>Android开源数据库<a href="https://github.com/LitePalFramework/LitePal#latest-downloads/" target="_blank" rel="external">LitePal</a>  ：郭霖(第一行代码作者)</li>
-<li>详细介绍在这里<a href="http://www.jianshu.com/p/557682e0a9f0" target="_blank" rel="external">（懒人必备）Android开源数据库LitePal</a></li>
-</ul>
-<hr>
-<h3 id="保存键值集"><a href="#保存键值集" class="headerlink" title="保存键值集"></a>保存键值集</h3><ul>
-<li>想要保存的相对较小键值集合</li>
-<li><p>调用SharedPreferences</p>
-</li>
-<li><p>首先：获取SharedPreferences的句柄<br>用户可以创建一个共享参数文件或访问一个已经存在的共享参数文件。<br>具体途径有三条</p>
-<ul>
-<li><p>getSharedPreferences (String name, int mode)</p>
-<ul>
-<li>第一个参数：SharedPreferences的名称，第二个：参数指定操作模式</li>
-<li>需要创建/读取 多个共享参数文件时使用，每个文件都拥有一个标识符，可以通过这个标识符通过该方法的第一个参数获得共享参数对象。可以通过APP中的任意Context对象调用它。</li>
-<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//指定SharedPreferences名称为data  模式为MODE_PRIVATE：只有当前程序才有权限读取/修改</span></div><div class="line">SharedPreferences sharedPref = getSharedPreferences(<span class="string">"data"</span>, MODE_PRIVATE);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>getPreferences (int mode)</p>
-<ul>
-<li>参数：指定操作模式</li>
-<li>只创建 Activity 的一个SharedPreferences。在Activity 中使用。 方法会检索属于该 Activity 的默认共享首选项文件，无需提供名称</li>
-<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//模式：MODE_PRIVATE：只有当前程序才有权限读取/修改</span></div><div class="line">SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>getDefaultSharedPreferences(context)</p>
-<ul>
-<li>参数：context</li>
-<li>自动以档期应用程序包名作为前缀命名SharedPreferences文件</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>写入数据到共享参数中<ul>
-<li>SharedPreferences 调用 edit() 创建一个 SharedPreferences.Editor<br>使用诸如 putInt() 和 putString() 方法写入的键和值<br>最后调用commit() 以保存更改<br>也可调用apply() 保存更改</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li>commit() 与 apply() 相同/区别</li>
-<li>相同<ul>
-<li>都是提交preference修改数据</li>
-</ul>
-</li>
-<li>区别<ul>
-<li>apply没有返回值  commit返回boolean表明修改是否提交成功</li>
-<li>apply是将操作提交到内存，而后异步真正提交到文件<br> commit是同步的提交到文件<br> 多个commit同时提交，互相等待，效率较低<br> apply直接覆盖，效率较高<ul>
-<li>apply没有任何错误提示，只是提交的动作</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建 .edit()</span></div><div class="line">SharedPreferences.Editor editor = sharedPref.edit();</div><div class="line"><span class="comment">//写入字符串。key-值 TextView</span></div><div class="line">editor.putString(<span class="string">"TextView"</span>,<span class="string">"hello"</span>);</div><div class="line"><span class="comment">//保存更改</span></div><div class="line">editor.commit();</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>从共享参数中读取数据<ul>
-<li>获取SharedPreferences的句柄<br>方式同上</li>
-<li>调用比如getInt()或getString()方法，然后传入键值，如果键不存在，则会返回一个默认值</li>
-<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取SharedPreferences的句柄</span></div><div class="line">SharedPreferences sharedPreferences = getSharedPreferences(<span class="string">"data"</span>,MODE_PRIVATE);</div><div class="line"><span class="comment">//读取键值对应数据</span></div><div class="line">String text = sharedPreferences.getString(<span class="string">"TextView"</span>,<span class="string">""</span>);</div><div class="line"><span class="comment">//打印到log中 验证</span></div><div class="line">Log.d(<span class="string">"data"</span>,text);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="保存到文件"><a href="#保存到文件" class="headerlink" title="保存到文件"></a>保存到文件</h3><ul>
-<li>Android 设备有两个文件存储区域： 内部存储 和 外部存储<br>Android 设备早期内置的非易失性内存（内部存储），以及移动存储介质 微型 SD 卡等（外部存储）<br>任何Android设备始终有两个存储空间，并且无论外部存储设备是否可移动，API 的行为均一致</li>
-</ul>
-<ul>
-<li>Android的文件存储是以java流为基础，并优化了一些操作。java流不属于本文范围。</li>
-<li>涉及java流部分参考<a href="http://androidtoast.iteye.com/blog/1172673" target="_blank" rel="external">Android文件IO详解</a></li>
-</ul>
-<h4 id="内部存储"><a href="#内部存储" class="headerlink" title="内部存储"></a>内部存储</h4><h4 id="保存到内部存储"><a href="#保存到内部存储" class="headerlink" title="保存到内部存储"></a>保存到内部存储</h4><ul>
-<li>某一应用对其内部存储 始终具有 进行读写的权限，而无需声明任何权限，在 Android N之前，内部文件可以通过放宽权限让其他应用访问。<strong>但是极不推荐以这种方式共享文件</strong></li>
-</ul>
-<ul>
-<li><p>简单实例</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">(String inputText)</span></span>&#123;</div><div class="line">      <span class="comment">//新建一个FileOutputStream对象(字节流)</span></div><div class="line">      FileOutputStream out = <span class="keyword">null</span>;</div><div class="line">      <span class="comment">//新建一个BufferedWriter (字符流)</span></div><div class="line">      BufferedWriter writer = <span class="keyword">null</span>;</div><div class="line">      <span class="keyword">try</span>&#123;</div><div class="line">          <span class="comment">//out 实例化</span></div><div class="line">          out = openFileOutput(<span class="string">"data"</span>,Context.MODE_PRIVATE);</div><div class="line">          <span class="comment">//OutputStreamWrit  字节流转换为字符流</span></div><div class="line">          <span class="comment">//字符流绑定BufferedWriter(缓冲区)</span></div><div class="line">          writer = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> OutputStreamWriter(out));</div><div class="line">          <span class="comment">//写入到文件</span></div><div class="line">          writer.write(inputText);</div><div class="line">      &#125;<span class="keyword">catch</span> (IOException e )&#123;</div><div class="line">          e.printStackTrace();</div><div class="line">      &#125; <span class="keyword">finally</span> &#123;</div><div class="line">          <span class="keyword">try</span>&#123;</div><div class="line">              <span class="comment">//如果写入成功</span></div><div class="line">              <span class="keyword">if</span> (writer != <span class="keyword">null</span>) &#123;</div><div class="line">              	<span class="comment">//关闭流</span></div><div class="line">                  writer.close();</div><div class="line">              &#125;</div><div class="line">          &#125;<span class="keyword">catch</span> (IOException e)&#123;</div><div class="line">              e.printStackTrace();</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>FileOutputStream：</p>
-<ul>
-<li>继承自 OutputStream 用于文件处理的节点流</li>
-<li>用于写入原始字节流到文件</li>
-</ul>
-</li>
-<li><p>FileOutputStream openFileOutput (String name, int mode)</p>
-<ul>
-<li>返回FileOutputStream对象</li>
-<li>第一个参数是文件名</li>
-<li>第二个参数是操作模式，有4种取值<ul>
-<li>MODE<em>PRIVATE(默认)</em>当同一文件名存在时覆盖原文件</li>
-<li>MODE<em>APPEND  </em>当同名文件存在时，在原文件末尾追加</li>
-<li>其余两种均在android4.2及以上版本中废弃</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>OutputStreamWrit</p>
-<ul>
-<li>继承自 Writer </li>
-<li>将字节流转换为字符流</li>
-</ul>
-</li>
-<li><p>BufferedWriter </p>
-<ul>
-<li>继承自Writer </li>
-<li>绑定字符输出流，提高具体的流对象的效率</li>
-<li>.flush()方法 对缓冲区进行刷新，让数据到目的地</li>
-<li>.close();方法 关闭缓冲区，即关闭绑定的流</li>
-</ul>
-</li>
-</ul>
-<h5 id="从内部存储读取文件"><a href="#从内部存储读取文件" class="headerlink" title="从内部存储读取文件"></a>从内部存储读取文件</h5><ul>
-<li><p>简单实例</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">load</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="comment">//新建FileInputStream对象</span></div><div class="line">     FileInputStream in = <span class="keyword">null</span>;</div><div class="line">     <span class="comment">//新建 BufferedReader对象</span></div><div class="line">     BufferedReader reader = <span class="keyword">null</span>;</div><div class="line">     <span class="comment">//新建一个StringBuilder 空</span></div><div class="line">      content = <span class="keyword">new</span> StringBuilder();</div><div class="line">     <span class="keyword">try</span>&#123;</div><div class="line">     	<span class="comment">//FileInputStream对象实例化</span></div><div class="line">         in = openFileInput(<span class="string">"data"</span>);</div><div class="line">         <span class="comment">//字节流转换为字符流</span></div><div class="line">         <span class="comment">//缓冲流绑定字符流</span></div><div class="line">         reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(in));</div><div class="line">         <span class="comment">//空 String</span></div><div class="line">         String line = <span class="string">""</span>;</div><div class="line">         <span class="comment">//读取文件内容，并判断是否读取完成</span></div><div class="line">         <span class="keyword">while</span>((line = reader.readLine())!=<span class="keyword">null</span>)&#123;</div><div class="line">         	<span class="comment">//读取内容添加到 StringBuilder 对象中   </span></div><div class="line">             content.append(line);</div><div class="line">         &#125;</div><div class="line">     &#125;<span class="keyword">catch</span> (IOException e)&#123;</div><div class="line">         e.printStackTrace();</div><div class="line">     &#125;</div><div class="line">     <span class="keyword">finally</span> &#123;</div><div class="line">         <span class="keyword">if</span>(reader != <span class="keyword">null</span>)&#123;</div><div class="line">             <span class="keyword">try</span>&#123;</div><div class="line">             	<span class="comment">//关闭流</span></div><div class="line">                 reader.close();</div><div class="line">             &#125;<span class="keyword">catch</span> (IOException e)&#123;</div><div class="line">                 e.printStackTrace();</div><div class="line">             &#125;</div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line">     <span class="comment">//将读取结果 由StringBuilder转换为String 并返回</span></div><div class="line">     <span class="keyword">return</span> content.toString();</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>FileInputStream</p>
-<ul>
-<li>继承自 InputStream，用于文件处理的节点流</li>
-<li>从文件中读取</li>
-</ul>
-</li>
-<li><p>FileInputStream openFileInput(String filename)</p>
-<ul>
-<li>返回FileInputStream对象</li>
-<li>参数为 读取的文件名</li>
-</ul>
-</li>
-<li><p>InputStreamRead</p>
-<ul>
-<li>将字节流转换为字符流</li>
-</ul>
-</li>
-<li><p>BufferedReader</p>
-<ul>
-<li>缓冲流</li>
-</ul>
-</li>
-</ul>
-<h4 id="外部存储"><a href="#外部存储" class="headerlink" title="外部存储"></a>外部存储</h4><ul>
-<li>占坑</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-	
-
-	
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-	
-	
-	<div>
-	    <p id="div-border-left-blue">
-	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
-	    <span>
-	    <b>本文地址：</b><a href="/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
-	    </span>
-	    </p>
-	</div>
-	
-
-	
-    <footer class="post-footer">
-	
-	
-	
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-  
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/31/2016总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jasper">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/v.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="默">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/31/2016总结/" itemprop="url">
-                  2016总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-31T12:00:11+08:00">
-                2016-12-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随/" itemprop="url" rel="index">
-                    <span itemprop="name">随</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/31/2016总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/12/31/2016总结/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/12/31/2016总结/" class="leancloud_visitors" data-flag-title="2016总结">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  169
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1m
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="2016"><a href="#2016" class="headerlink" title="2016"></a>2016</h3><ul>
-<li>找到了兴趣-Android开始正式学习。</li>
-<li>搭建了自己的blog，虽然周围人没人关注，有一篇日子的阅读量过了1万，还是很惊喜的</li>
-<li>嵌入式工作没用找到满意的，只能说等春招 Andoid的实习，这段时间努力提高自己，</li>
-<li>放弃了考研</li>
-<li>心情走过了类似抑郁的经历，对体制种种各有看法，是对是错，让时间见证</li>
-</ul>
-<hr>
-<h3 id="2017"><a href="#2017" class="headerlink" title="2017"></a>2017</h3><ul>
-<li>希望有自己的收入，经济相对自由一点</li>
-<li>谈一段恋爱，遇到合适的女孩吧</li>
-<li>Android的路上，顺利一点吧</li>
-<li>不给自己设定限制，走一步再走一步</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-	
-
-	
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-	
-	
-	<div>
-	    <p id="div-border-left-blue">
-	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
-	    <span>
-	    <b>本文地址：</b><a href="/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
-	    </span>
-	    </p>
-	</div>
-	
-
-	
-    <footer class="post-footer">
-	
-	
-	
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-  
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/25/Android Studio优化编译速度/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jasper">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/v.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="默">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/25/Android Studio优化编译速度/" itemprop="url">
-                  Android Studio优化编译速度
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-25T12:00:00+08:00">
-                2016-12-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">Android笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/25/Android Studio优化编译速度/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/12/25/Android Studio优化编译速度/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/12/25/Android Studio优化编译速度/" class="leancloud_visitors" data-flag-title="Android Studio优化编译速度">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  326
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1m
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<p>资料来源如下</p>
-<ul>
-<li><a href="http://www.jianshu.com/p/1c878c10a6bb" target="_blank" rel="external">http://www.jianshu.com/p/1c878c10a6bb</a></li>
-<li><a href="http://www.jianshu.com/p/9b8ef61b7cdb" target="_blank" rel="external">http://www.jianshu.com/p/9b8ef61b7cdb</a></li>
-<li><a href="http://www.jianshu.com/p/64d9a52aebbf" target="_blank" rel="external">http://www.jianshu.com/p/64d9a52aebbf</a></li>
-</ul>
-<p>编程环境</p>
-<ul>
-<li>Android Studio 2.2.3</li>
-</ul>
-<p>导语</p>
-<ul>
-<li>ssd盘容量不够了，重装系统，随便重新安装了Android Studio 记录一边优化过程</li>
-</ul>
-<hr>
-<h2 id="最重要的-有一个良好的梯子-全局翻墙"><a href="#最重要的-有一个良好的梯子-全局翻墙" class="headerlink" title="最重要的 有一个良好的梯子+全局翻墙"></a>最重要的 有一个良好的梯子+全局翻墙</h2><ul>
-<li>大部分Android Studio安装的问题,就基本不会出现</li>
-</ul>
-<h4 id="开启gradle单独的守护进程"><a href="#开启gradle单独的守护进程" class="headerlink" title="开启gradle单独的守护进程"></a>开启gradle单独的守护进程</h4><ul>
-<li><p>在C:\Users.gradle目录(user目录即当前用户不同电脑一般不同)下新建 gradle.properties文件<br>复制下面的代码</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">org.gradle.daemon=true  </div><div class="line">org.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=800m  </div><div class="line">-XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8</div><div class="line">org.gradle.parallel=true  </div><div class="line">org.gradle.configureondemand=true</div></pre></td></tr></table></figure>
-<p>应该是增大了gradle 运行的 java 虚拟机的大小，我的电脑是8g内存，这个配置效果最好</p>
-</li>
-</ul>
-<h4 id="扩大Android-Studio-运行内存"><a href="#扩大Android-Studio-运行内存" class="headerlink" title="扩大Android Studio 运行内存"></a>扩大Android Studio 运行内存</h4><ul>
-<li><p>找到Android Studio安装目录下的bin文件夹<br>找到studio64.exe.vmoptions和studio.exe.vmoptions文件(64位)<br>studio.exe.vmoptions和studio.exe.vmoptions文件(32位)</p>
-</li>
-<li><p>分别编辑文件,改动3个地方如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-Xms1024m</div><div class="line">-Xmx2048m</div><div class="line">-XX:MaxPermSize=800m</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="Android-Studio-设置"><a href="#Android-Studio-设置" class="headerlink" title="Android Studio 设置"></a>Android Studio 设置</h4><ul>
-<li><p>Command-line Option不填<br><img src="http://cdn2.snapgram.co/imgs/2016/12/25/ScreenShot_20161225224242.png" alt="ScreenShot_20161225224242.png"></p>
-</li>
-<li><p>gradle 离线模式<br>勾选Office Work，我这里测试是速度基本不变，但是网上有人测试是效果相差很多，原因不明，可能是网络一直全局翻墙的关系<br><img src="http://cdn1.snapgram.co/imgs/2016/12/25/ScreenShot_20161225224455.png" alt="ScreenShot_20161225224455.png"></p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-	
-
-	
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-	
-	
-	<div>
-	    <p id="div-border-left-blue">
-	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
-	    <span>
-	    <b>本文地址：</b><a href="/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
-	    </span>
-	    </p>
-	</div>
-	
-
-	
-    <footer class="post-footer">
-	
-	
-	
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -3382,7 +3581,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -3393,7 +3592,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -3404,7 +3603,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -3464,7 +3663,7 @@
         <div class="copyright" >
   
   &copy;  2016.6.2 - 
-  <span itemprop="copyrightYear">2017.8.7</span>
+  <span itemprop="copyrightYear">2017.8.23</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

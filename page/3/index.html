@@ -325,6 +325,1030 @@
   
   
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/27/初入树莓派2----常规初始化+远程桌面/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/27/初入树莓派2----常规初始化+远程桌面/" itemprop="url">
+                  初入树莓派2---初始化+远程桌面
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-27T10:17:11+08:00">
+                2016-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/树莓派/" itemprop="url" rel="index">
+                    <span itemprop="name">树莓派</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/27/初入树莓派2----常规初始化+远程桌面/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/27/初入树莓派2----常规初始化+远程桌面/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/11/27/初入树莓派2----常规初始化+远程桌面/" class="leancloud_visitors" data-flag-title="初入树莓派2---初始化+远程桌面">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  511
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><h3 id="启用树莓派root用户"><a href="#启用树莓派root用户" class="headerlink" title="启用树莓派root用户"></a>启用树莓派root用户</h3><ul>
+<li>不做物联网终端时启用root用户比较方便</li>
+<li>SSH连接树莓派</li>
+<li><p>在命令行下执行</p>
+<ul>
+<li><p>启用root用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo passwd root</div></pre></td></tr></table></figure>
+</li>
+<li><p>执行后输入两遍你要设定的root密码</p>
+</li>
+<li>在输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo passwd –unlock root</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>root用户解锁完成</p>
+</li>
+<li><p>执行完毕后依旧无法登陆</p>
+<ul>
+<li><p>执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nano /etc/ssh/sshd_config</div></pre></td></tr></table></figure>
+</li>
+<li><p>找到<code>PermitRootLogin without-password</code><br> 改为<code>PermitRootLogin yes</code></p>
+</li>
+<li>Ctrl + X 、 Y 、 回车 保存</li>
+<li><code>sudo reboot</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="更换国内镜像地址"><a href="#更换国内镜像地址" class="headerlink" title="更换国内镜像地址"></a>更换国内镜像地址</h3><hr>
+<h2 id="gt-http-blog-lxx1-com-2040"><a href="#gt-http-blog-lxx1-com-2040" class="headerlink" title="&gt; http://blog.lxx1.com/2040"></a>&gt; <a href="http://blog.lxx1.com/2040" target="_blank" rel="external">http://blog.lxx1.com/2040</a></h2><ul>
+<li>由于众所周知的原因，树莓派链接官方更新源实在太过缓慢，国内有一批不错的镜像地址，可以解决系统/软件更新问题。</li>
+<li><p>收集的树莓派镜像一般使用比较频繁的有下面几个<br>1.<a href="http://mirrors.aliyun.com/" target="_blank" rel="external">阿里云</a>  首推镜像地址，移动/联通/电信网络都有不错的访问速度。<br>2.<a href="http://mirrors.neusoft.edu.cn/raspbian/raspbian/" target="_blank" rel="external">大连东软信息学院</a>  北方用户比较友好<br>3.<a href="http://mirrors.ustc.edu.cn/raspbian/raspbian/" target="_blank" rel="external">中国科学技术大学</a>  教育网有加成，非教育网就慢多了</p>
+</li>
+<li><p>这里选择 阿里云的镜像</p>
+</li>
+</ul>
+<ul>
+<li><p>更新 sources.list</p>
+<ul>
+<li><p>执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nano /etc/apt/sources.list</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除官方内容或者用#注释掉，添加以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">deb http://mirrors.aliyun.com/raspbian/raspbian/ jessie main non-free contrib</div><div class="line">deb-src http://mirrors.aliyun.com/raspbian/raspbian/ jessie main non-free contrib</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>删除raspi.list备用更新源(可选)</p>
+<ul>
+<li>通常更新sources.list后依旧缓慢，大多是raspi.list的锅</li>
+<li><code>rm /etc/apt/sources.list.d/raspi.list</code>    </li>
+</ul>
+</li>
+</ul>
+<h3 id="设置中文字体"><a href="#设置中文字体" class="headerlink" title="设置中文字体"></a>设置中文字体</h3><ul>
+<li><p>系统中缺少中文字库 首先更新字库和输入法</p>
+<ul>
+<li><p>执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install ttf-wqy-zenhei</div><div class="line">sudo apt-get install scim-pinyin</div></pre></td></tr></table></figure>
+</li>
+<li><p>接下来 都点 y</p>
+</li>
+<li><p>执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo raspi-config</div></pre></td></tr></table></figure>
+</li>
+<li><p>选择change_locale</p>
+</li>
+<li><img src="http://cdn2.snapgram.co/imgs/2016/11/27/950743-20160520171916373-887591767.png" alt="950743-20160520171916373-887591767.png"><br>空格键在前面打勾或去掉勾（星号=勾） Tab选择OK</li>
+<li>去掉en_GB.UTF-8 UTF-8<br>勾选：”en_US.UTF-8 UTF-8”、”zh_CN.UTF-8 UTF-8”、”zh_CN.GBK GBK”</li>
+<li>OK，下一屏幕,</li>
+<li><img src="http://cdn1.snapgram.co/imgs/2016/11/27/950743-20160520171919435-1542955508.png" alt="950743-20160520171919435-1542955508.png"><br>默认语言选zh_CN.UTF-8</li>
+</ul>
+</li>
+</ul>
+<h2 id="远程桌面"><a href="#远程桌面" class="headerlink" title="远程桌面"></a>远程桌面</h2><ul>
+<li><p>终端执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install xrdp</div></pre></td></tr></table></figure>
+</li>
+<li><p>windows端 CMD 执行  <code>mstsc</code></p>
+</li>
+<li>输入树莓派ip地址 用户名 密码 </li>
+<li><a href="http://snapgr.am/image/L7lS" target="_blank" rel="external"><img src="http://cdn4.snapgram.co/images/2016/11/27/950743-20160520171926529-1842218984.png" alt="950743-20160520171926529-1842218984.png"></a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/3/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/08/GitHub-Pages更新导致Next主题-博客主页空白，解决方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/08/GitHub-Pages更新导致Next主题-博客主页空白，解决方案/" itemprop="url">
+                  GitHub-Pages更新导致Next主题-博客主页空白，解决方案
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-08T10:10:11+08:00">
+                2016-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/点滴/" itemprop="url" rel="index">
+                    <span itemprop="name">点滴</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/08/GitHub-Pages更新导致Next主题-博客主页空白，解决方案/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/08/GitHub-Pages更新导致Next主题-博客主页空白，解决方案/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/11/08/GitHub-Pages更新导致Next主题-博客主页空白，解决方案/" class="leancloud_visitors" data-flag-title="GitHub-Pages更新导致Next主题-博客主页空白，解决方案">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  220
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>倒腾了俩小时，以为梯子坏了，结果。。。GitHub-Pages更新了！！！</strong> </p>
+<hr>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><ul>
+<li>GitHub-Pages更新，  过滤掉了 source/vendors 目录的访问。</li>
+<li><a href="https://github.com/iissnan/hexo-theme-next/issues/1214" target="_blank" rel="external">issues入口</a></li>
+</ul>
+<h3 id="解决1更新主题"><a href="#解决1更新主题" class="headerlink" title="解决1更新主题"></a>解决1更新主题</h3><ul>
+<li>作者更新了到最新的master分支，解决了这个问题，<br>  So：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="解决2更新本地设置（Next最新版）"><a href="#解决2更新本地设置（Next最新版）" class="headerlink" title="解决2更新本地设置（Next最新版）"></a>解决2更新本地设置（Next最新版）</h3><ul>
+<li>将 source/vendors 目录修改成 source/lib （或者其他的名称，只是 lib 我测试了可以使用）；同时，修改下主题配置文件_config.yml， 将 _internal: vendors 改成你所修改的名字，例如  _internal: lib。</li>
+</ul>
+<h3 id="解决3更新本地设置（Next5-0及以下版本）"><a href="#解决3更新本地设置（Next5-0及以下版本）" class="headerlink" title="解决3更新本地设置（Next5.0及以下版本）"></a>解决3更新本地设置（Next5.0及以下版本）</h3><ul>
+<li>将 source/vendors 目录修改成 source/lib （或者其他的名称，只是 lib 我测试了可以使用）；同时，修改下主题配置文件_config.yml， <strong>vendors: vendors </strong>改成你所修改的名字，例如  _internal: lib。</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/3/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/09/自建DNS解决运营商DNS污染/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/09/自建DNS解决运营商DNS污染/" itemprop="url">
+                  自建DNS服务器(dnsmasq)，对抗DNS污染
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-09T12:00:00+08:00">
+                2016-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/树莓派/" itemprop="url" rel="index">
+                    <span itemprop="name">树莓派</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/10/09/自建DNS解决运营商DNS污染/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/10/09/自建DNS解决运营商DNS污染/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/10/09/自建DNS解决运营商DNS污染/" class="leancloud_visitors" data-flag-title="自建DNS服务器(dnsmasq)，对抗DNS污染">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  945
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ul>
+<li>学校网络出口劫持严重，上淘宝加返利———-等等等等等等</li>
+<li>一直更新hosts不方便，要上google，全平台不好弄</li>
+<li>项目组需要</li>
+</ul>
+<hr>
+<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><ul>
+<li>搭建一个可访问个人公网DNS服务器</li>
+<li>提高DNS加载速度</li>
+<li>规避运营商的DNS劫持</li>
+<li>不影响学校内网访问</li>
+<li>简单的能上google</li>
+</ul>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><ul>
+<li>一台有公网IP的vps，开放了53端口（<a href="http://tool.chinaz.com/port/" target="_blank" rel="external">端口扫描</a>显示开放了53端口）</li>
+<li>装的是linux系统（以    CentOS 6.4 为例）</li>
+<li>WinSCP（或其他文件管理）</li>
+<li>putty.exe（或者其他SSH登陆工具）</li>
+<li>没了。。。。</li>
+</ul>
+<h3 id="DNSmasq原理和说明"><a href="#DNSmasq原理和说明" class="headerlink" title="DNSmasq原理和说明"></a>DNSmasq原理和说明</h3><ul>
+<li>DNSmasq是一个小巧且方便地用于配置DNS和DHCP的工具，适用于小型网络。作为域名解析服务器(DNS)，dnsmasq可以通过缓存 DNS 请求来提高对访问过的网址的连接速度。</li>
+<li>通过设置DNSmasq的上游DNS地址为无污染DNS来解决运营商的DNS污染。</li>
+<li>DNSmasq可以对单独的网址设置DNS服务器。对于学校内网地址设置为学校教育网的DNS解析。对于类似于youtube这种由于DNS污染没法访问的地址，可以先收集无污染的DNS地址，然后交与无污染DNS解析得到正确地址。</li>
+<li>DNSmasq再对网址提交上游DNS解析前，可以先通过本地hosts匹配。设置合适hosts可以实现科学上网。</li>
+</ul>
+<hr>
+<p><strong>开始！</strong></p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><h4 id="安装dnsmasq"><a href="#安装dnsmasq" class="headerlink" title="安装dnsmasq"></a>安装dnsmasq</h4><ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install dnsmasq -y</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="配置Dnsmasq"><a href="#配置Dnsmasq" class="headerlink" title="配置Dnsmasq"></a>配置Dnsmasq</h4><ul>
+<li><p>Dnsmasq的配置文件是 /etc/dnsmasq.conf .通过WinSCP加载修改。</p>
+</li>
+<li><p><a href="http://www.jianshu.com/p/71ccc79aaa9e" target="_blank" rel="external">dnsmasq.conf设置项说明</a></p>
+</li>
+<li><p>此次使用的配置如下</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> #指定给dnsmasq使用的hosts</div><div class="line"> addn-hosts=/etc/dnsmasq.host</div><div class="line"> #不使用/etc/resolv.conf(VPS默认DNS)来进行上游dns服务器解析需要配置的比较少直接写在dnsmasq.conf文件里了</div><div class="line"> no-resolv</div><div class="line">   </div><div class="line">#上游DNS地址这里为腾讯DNS和中科大DNS</div><div class="line">server=119.29.29.29</div><div class="line">server=202.141.162.123</div><div class="line">server=/google.com/202.141.162.123</div><div class="line">   #这一行是针对学校内网访问，学校内地址使用学校内网DNS。具体地区调整。</div><div class="line">server=/.edu.cn/202.141.162.123</div></pre></td></tr></table></figure>
+</li>
+<li><p>上游DNS推荐<br>  这里需要在VPS上测试各个DNS后决定。</p>
+<ul>
+<li>常用靠谱DNS<br>  阿里DNS        223.5.5.5               223.6.6.6<br>  114DNS          114.114.114.114<br>  腾讯DNS        119.29.29.29<br>  V2EX DNS    199.91.73.222       178.79.131.110（访问苹果商店有buff加速）</li>
+<li>无污染DNS<br>  目前比较稳定的只有中科大DNS和一些自建的小型DNS。小型DNS通过反带来访问google等，会带来一些隐私和安全风险，还是推荐自建DNS/hosts访问。<br>  中科大DNS<br>  202.38.93.153   （教育网）<br>  202.141.176.93  （中国移动）<br>  202.141.162.123 （中国电信）</li>
+<li>其他DNS请自行GOOGLE</li>
+</ul>
+</li>
+<li><p><strong>千万注意！！！</strong> 配置文件中有<strong>listen-address</strong>配置，网络大多数教程中有<code>listen-address=127.0.0.1</code>这是指Dnsmasq只服务于本机的DNS请求。如果需要搭建公网DNS服务，<strong>这个绝对不能有！！</strong></p>
+</li>
+</ul>
+<h4 id="创建-修改-etc-dnsmasq-host文件"><a href="#创建-修改-etc-dnsmasq-host文件" class="headerlink" title="创建/修改/etc/dnsmasq.host文件"></a>创建/修改/etc/dnsmasq.host文件</h4><ul>
+<li>一些常用去广告hosts/科学上网hosts的内容，<br>  具体不多说hosts科学上网是一天比一天死的快。没有找到靠谱的地址推荐。自行搜索把！</li>
+</ul>
+<h4 id="重启Dnsmasq服务"><a href="#重启Dnsmasq服务" class="headerlink" title="重启Dnsmasq服务"></a>重启Dnsmasq服务</h4><ul>
+<li><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service dnsmasq restart</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="测试53端口"><a href="#测试53端口" class="headerlink" title="测试53端口"></a>测试53端口</h4><ul>
+<li><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -tunlp|grep 53</div></pre></td></tr></table></figure>
+</li>
+<li><p>如果正常应该如下</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@VM_27_70_centos ~]# netstat -tunlp|grep 53</div><div class="line">tcp        0      0 0.0.0.0:53                  0.0.0.0:*                   LIST                    EN      4226/dnsmasq</div><div class="line">udp        0      0 0.0.0.0:53                  0.0.0.0:*                                                   4226/dnsmasq</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="修改本地DNS地址"><a href="#修改本地DNS地址" class="headerlink" title="修改本地DNS地址"></a>修改本地DNS地址</h4><ul>
+<li>这个不多说了，不会的自行google了。。</li>
+</ul>
+<hr>
+<p><strong>结束语</strong><br>创建完了，本地DNS快多了，访问淘宝再也没有了牛皮癣。</p>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><blockquote>
+<p><a href="http://blog.antior.cn/posts/2015_29.html" target="_blank" rel="external">http://blog.antior.cn/posts/2015_29.html</a><br><a href="http://www.jianshu.com/p/71ccc79aaa9e" target="_blank" rel="external">http://www.jianshu.com/p/71ccc79aaa9e</a><br><a href="http://www.linuxdown.net/install/soft/2016/0520/5566.html" target="_blank" rel="external">http://www.linuxdown.net/install/soft/2016/0520/5566.html</a><br><a href="http://blog.cnwyhx.com/centos-linux-dnsmasq-install-dns/" target="_blank" rel="external">http://blog.cnwyhx.com/centos-linux-dnsmasq-install-dns/</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/3/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/17/Android汇总/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/17/Android汇总/" itemprop="url">
+                  Android
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-17T10:11:11+08:00">
+                2016-07-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/07/17/Android汇总/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/07/17/Android汇总/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/07/17/Android汇总/" class="leancloud_visitors" data-flag-title="Android">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  255
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Andorid笔记系列"><a href="#Andorid笔记系列" class="headerlink" title="Andorid笔记系列"></a>Andorid笔记系列</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">更新</div><div class="line"><span class="number">2016.07</span>.<span class="number">20</span>    第一行代码Activity创建部分完成</div><div class="line"><span class="number">2016.07</span>.<span class="number">21</span>    完成添加了button和<span class="keyword">menu</span>部分，对应P39页</div><div class="line"><span class="number">2016.07</span>.<span class="number">22</span>    完成了P55页之前的activity部分。对于activity（二）</div><div class="line"><span class="number">2016.08</span>.<span class="number">10</span>    基本搞定，UI除ListView以外的部分。<span class="number">4</span>种布局比较熟悉，不再折腾。</div><div class="line"><span class="number">2016.08</span>.<span class="number">11</span>    开始ListView部分</div><div class="line"><span class="number">2016.08</span>.<span class="number">14</span>    停更半月</div><div class="line"><span class="number">2016.09</span>.<span class="number">02</span>    恢复更新</div><div class="line"><span class="number">2016.09</span>.<span class="number">03</span>    Broadcast部分开坑。</div><div class="line"><span class="number">2016.09</span>.<span class="number">07</span>    ListView部分除BaseAdapter外完成。BaseAdapter内容，什么时候理解深一点再补上。</div><div class="line"><span class="number">2016.09</span>.<span class="number">13</span>    完成了Broadcast对应部分</div><div class="line"><span class="number">2016.10</span>.<span class="number">03</span>    重新按照google的文档查漏补缺.</div><div class="line"><span class="number">2016.10</span>.<span class="number">03</span>    更名Android笔记，重新开始更新。</div><div class="line"><span class="number">2016.12</span>.<span class="number">05</span>    第二行代码开始！</div><div class="line"><span class="number">2016.12</span>.<span class="number">07</span>    重新整理Android系列笔记，从<span class="number">0</span>整合</div><div class="line"><span class="number">2016.12</span>.<span class="number">08</span>    Activity部分整合完成</div><div class="line"><span class="number">2016.12</span>.<span class="number">13</span>    UI部分基础完成，LIstView部分完成</div><div class="line"><span class="number">2016.12</span>.<span class="number">16</span>    RecycleView部分，基础完成，有待进一步填坑 </div><div class="line"><span class="number">2016.12</span>.<span class="number">22</span>    Fragment完成，有一个占坑</div><div class="line"><span class="number">2016.12</span>.<span class="number">23</span>    Broadcast完成</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/3/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/09/单片机课程设计总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2532,7 +3556,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2543,7 +3567,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2554,7 +3578,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -2614,7 +3638,7 @@
         <div class="copyright" >
   
   &copy;  2016.6.2 - 
-  <span itemprop="copyrightYear">2017.8.7</span>
+  <span itemprop="copyrightYear">2017.8.23</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
