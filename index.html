@@ -489,11 +489,11 @@
 <li><p>首先需要安装qemu gcc, ubuntu16.04中自带的gcc版本较低,这里我们安装书中推荐的gcc-arm-linux-gnueabi .</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  sudo apt-get install qemu libncurses5-dev gcc-arm-linux-gnueabi build-essential</div><div class="line">  ``` </div><div class="line"></div><div class="line">* 下载busybox源码</div><div class="line">  * 书中推荐版本是1.24,但最新版本已经到了busybox-1.27.2.这里我们使用最新版</div></pre></td></tr></table></figure>
 <p>  wget <a href="https://busybox.net/downloads/busybox-1.27.2.tar.bz2" target="_blank" rel="external">https://busybox.net/downloads/busybox-1.27.2.tar.bz2</a></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 解压到 busybox 文件夹</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">* 解压到 busybox 文件夹</div></pre></td></tr></table></figure>
 <p>  tar -jxvf busybox-1.27.2.tar.bz2</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">* 下载linux内核源码</div><div class="line">  * 还是以配套的4.0源码为例,(提醒:内核解压后大约占800MB,请预留出足够空间)</div></pre></td></tr></table></figure>
 <p>  wget <a href="https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.gz" target="_blank" rel="external">https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.gz</a></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 解压到linux文件夹</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">* 解压到linux文件夹</div></pre></td></tr></table></figure>
 <p>  tar -jxvf linux-4.0.tar.gz</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 编译最小文件系统</div><div class="line">* 别问我最小文件系统是什么,我也有点😵,但是先用起来.</div><div class="line">---</div><div class="line"></div><div class="line">* 首先利用 busybox 手工编译一个最小文件系统。</div><div class="line">  在busybox文件夹下</div></pre></td></tr></table></figure>
 <p>export ARCH=ARM<br>export CROSS_COMPILE=arm-linux-gnueabi-<br>make menuconfig<br>make install </p>
@@ -752,7 +752,7 @@
 <hr>
 <h2 id="看门狗定时器驱动内核API"><a href="#看门狗定时器驱动内核API" class="headerlink" title="看门狗定时器驱动内核API"></a>看门狗定时器驱动内核API</h2><ul>
 <li>最后更新时间 2013.2.12</li>
-<li>Wim Van Sebroeck <a href="&#109;&#x61;&#105;&#108;&#x74;&#x6f;&#x3a;&#119;&#x69;&#109;&#64;&#105;&#x67;&#x75;&#x61;&#x6e;&#x61;&#x2e;&#98;&#x65;">&#119;&#x69;&#109;&#64;&#105;&#x67;&#x75;&#x61;&#x6e;&#x61;&#x2e;&#98;&#x65;</a></li>
+<li>Wim Van Sebroeck <a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#111;&#x3a;&#x77;&#105;&#x6d;&#64;&#105;&#x67;&#x75;&#97;&#110;&#97;&#46;&#x62;&#x65;">&#x77;&#105;&#x6d;&#64;&#105;&#x67;&#x75;&#97;&#110;&#97;&#46;&#x62;&#x65;</a></li>
 </ul>
 <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul>
 <li>本文档没有描述看门狗设备或驱动。也不涉及那些在用户空间调用的API，对应在 Documentation/watchdog/watchdog-api.txt （也就是<a href="">上一篇</a>）</li>
@@ -1110,8 +1110,8 @@
 </li>
 <li><p>linux看门狗设备API</p>
 </li>
-<li>Copyright 2002 Christer Weingel <a href="&#x6d;&#x61;&#105;&#108;&#x74;&#111;&#58;&#119;&#x69;&#x6e;&#x67;&#101;&#108;&#64;&#x6e;&#97;&#x6e;&#x6f;&#x2d;&#x73;&#x79;&#x73;&#116;&#101;&#109;&#46;&#x63;&#111;&#109;">&#119;&#x69;&#x6e;&#x67;&#101;&#108;&#64;&#x6e;&#97;&#x6e;&#x6f;&#x2d;&#x73;&#x79;&#x73;&#116;&#101;&#109;&#46;&#x63;&#111;&#109;</a></li>
-<li><p>本文档的一些内容来自 sbc60xxwdt ，版权属于 Copyright 2000 Jakob Oestergaard <a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#106;&#x61;&#107;&#x6f;&#x62;&#64;&#x6f;&#115;&#x74;&#x65;&#110;&#102;&#x65;&#x6c;&#100;&#46;&#100;&#107;">&#106;&#x61;&#107;&#x6f;&#x62;&#64;&#x6f;&#115;&#x74;&#x65;&#110;&#102;&#x65;&#x6c;&#100;&#46;&#100;&#107;</a></p>
+<li>Copyright 2002 Christer Weingel <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#x77;&#105;&#110;&#103;&#x65;&#x6c;&#x40;&#110;&#97;&#x6e;&#111;&#45;&#115;&#121;&#x73;&#x74;&#101;&#109;&#x2e;&#x63;&#111;&#x6d;">&#x77;&#105;&#110;&#103;&#x65;&#x6c;&#x40;&#110;&#97;&#x6e;&#111;&#45;&#115;&#121;&#x73;&#x74;&#101;&#109;&#x2e;&#x63;&#111;&#x6d;</a></li>
+<li><p>本文档的一些内容来自 sbc60xxwdt ，版权属于 Copyright 2000 Jakob Oestergaard <a href="&#109;&#97;&#x69;&#108;&#116;&#x6f;&#58;&#x6a;&#x61;&#x6b;&#x6f;&#98;&#x40;&#111;&#115;&#116;&#101;&#110;&#x66;&#x65;&#108;&#x64;&#46;&#100;&#x6b;">&#x6a;&#x61;&#x6b;&#x6f;&#98;&#x40;&#111;&#115;&#116;&#101;&#110;&#x66;&#x65;&#108;&#x64;&#46;&#100;&#x6b;</a></p>
 </li>
 <li><p>本文档基于linux内核 2.4.18</p>
 </li>

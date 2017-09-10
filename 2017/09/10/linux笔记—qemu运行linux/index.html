@@ -96,7 +96,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/09/10/linux笔记—qemu运行linux/index.html">
 <meta property="og:site_name" content="默">
 <meta property="og:description" content="ubuntu16.04 使用busybox编译最小文件系统，使用qemu运行起来。 内容来自 奔跑吧linux内核第6章 这里将输入代码过程集合到了几个.sh文件,不做重复的工作 ! 当然网好是前提,最好挂代理.   安装工具 首先需要安装qemu gcc, ubuntu16.04中自带的gcc版本较低,这里我们安装书中推荐的gcc-arm-linux-gnueabi . 12345  sud">
-<meta property="og:updated_time" content="2017-09-10T01:44:02.051Z">
+<meta property="og:updated_time" content="2017-09-10T01:46:10.417Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux笔记—qemu运行linux">
 <meta name="twitter:description" content="ubuntu16.04 使用busybox编译最小文件系统，使用qemu运行起来。 内容来自 奔跑吧linux内核第6章 这里将输入代码过程集合到了几个.sh文件,不做重复的工作 ! 当然网好是前提,最好挂代理.   安装工具 首先需要安装qemu gcc, ubuntu16.04中自带的gcc版本较低,这里我们安装书中推荐的gcc-arm-linux-gnueabi . 12345  sud">
@@ -484,11 +484,11 @@
 <li><p>首先需要安装qemu gcc, ubuntu16.04中自带的gcc版本较低,这里我们安装书中推荐的gcc-arm-linux-gnueabi .</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  sudo apt-get install qemu libncurses5-dev gcc-arm-linux-gnueabi build-essential</div><div class="line">  ``` </div><div class="line"></div><div class="line">* 下载busybox源码</div><div class="line">  * 书中推荐版本是1.24,但最新版本已经到了busybox-1.27.2.这里我们使用最新版</div></pre></td></tr></table></figure>
 <p>  wget <a href="https://busybox.net/downloads/busybox-1.27.2.tar.bz2" target="_blank" rel="external">https://busybox.net/downloads/busybox-1.27.2.tar.bz2</a></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 解压到 busybox 文件夹</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">* 解压到 busybox 文件夹</div></pre></td></tr></table></figure>
 <p>  tar -jxvf busybox-1.27.2.tar.bz2</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">* 下载linux内核源码</div><div class="line">  * 还是以配套的4.0源码为例,(提醒:内核解压后大约占800MB,请预留出足够空间)</div></pre></td></tr></table></figure>
 <p>  wget <a href="https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.gz" target="_blank" rel="external">https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.gz</a></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 解压到linux文件夹</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">* 解压到linux文件夹</div></pre></td></tr></table></figure>
 <p>  tar -jxvf linux-4.0.tar.gz</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 编译最小文件系统</div><div class="line">* 别问我最小文件系统是什么,我也有点😵,但是先用起来.</div><div class="line">---</div><div class="line"></div><div class="line">* 首先利用 busybox 手工编译一个最小文件系统。</div><div class="line">  在busybox文件夹下</div></pre></td></tr></table></figure>
 <p>export ARCH=ARM<br>export CROSS_COMPILE=arm-linux-gnueabi-<br>make menuconfig<br>make install </p>
