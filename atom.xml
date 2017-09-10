@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-09-10T01:46:10.417Z</updated>
+  <updated>2017-09-10T01:50:57.632Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/09/10/linux%E7%AC%94%E8%AE%B0%E2%80%94qemu%E8%BF%90%E8%A1%8Clinux/"/>
     <id>http://yoursite.com/2017/09/10/linux笔记—qemu运行linux/</id>
     <published>2017-09-10T02:17:11.000Z</published>
-    <updated>2017-09-10T01:46:10.417Z</updated>
+    <updated>2017-09-10T01:50:57.632Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <ul>
@@ -32,51 +32,88 @@
 </ul>
 <hr>
 <h2 id="安装工具"><a href="#安装工具" class="headerlink" title="安装工具"></a>安装工具</h2><ul>
-<li><p>首先需要安装qemu gcc, ubuntu16.04中自带的gcc版本较低,这里我们安装书中推荐的gcc-arm-linux-gnueabi .</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  sudo apt-get install qemu libncurses5-dev gcc-arm-linux-gnueabi build-essential</div><div class="line">  ``` </div><div class="line"></div><div class="line">* 下载busybox源码</div><div class="line">  * 书中推荐版本是1.24,但最新版本已经到了busybox-1.27.2.这里我们使用最新版</div></pre></td></tr></table></figure>
-<p>  wget <a href="https://busybox.net/downloads/busybox-1.27.2.tar.bz2" target="_blank" rel="external">https://busybox.net/downloads/busybox-1.27.2.tar.bz2</a></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">* 解压到 busybox 文件夹</div></pre></td></tr></table></figure>
-<p>  tar -jxvf busybox-1.27.2.tar.bz2</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">* 下载linux内核源码</div><div class="line">  * 还是以配套的4.0源码为例,(提醒:内核解压后大约占800MB,请预留出足够空间)</div></pre></td></tr></table></figure>
-<p>  wget <a href="https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.gz" target="_blank" rel="external">https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.gz</a></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">* 解压到linux文件夹</div></pre></td></tr></table></figure>
-<p>  tar -jxvf linux-4.0.tar.gz</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 编译最小文件系统</div><div class="line">* 别问我最小文件系统是什么,我也有点😵,但是先用起来.</div><div class="line">---</div><div class="line"></div><div class="line">* 首先利用 busybox 手工编译一个最小文件系统。</div><div class="line">  在busybox文件夹下</div></pre></td></tr></table></figure>
-<p>export ARCH=ARM<br>export CROSS_COMPILE=arm-linux-gnueabi-<br>make menuconfig<br>make install </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 进入menuconfig后,配置静态编译</div></pre></td></tr></table></figure>
-<p>Busybox Settings —&gt;<br>Build Options —&gt;<br>[*] Build BusyBox as a static binary (no shared libs)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">* 然后 make install 编译完成。编译完成后,把 busybox 根目录下面的_install 目录拷贝到 linux-4.0 下。</div><div class="line">* 进入_install 目录，创建 etc、dev 等目录。</div></pre></td></tr></table></figure>
-<p>mkdir etc<br>mkdir dev<br>mkdir mnt<br>mkdir -p etc/init.d/</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 在_install /etc/init.d/目录下创建 文件名rcS 的文件，写入以下内容：</div></pre></td></tr></table></figure>
-<p>mkdir –p /proc<br>mkdir –p /tmp<br>mkdir -p /sys<br>mkdir –p /mnt<br>/bin/mount -a<br>mkdir -p /dev/pts<br>mount -t devpts devpts /dev/pts<br>echo /sbin/mdev &gt; /proc/sys/kernel/hotplug<br>mdev –s</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  同时使用 `chmod +x rcS`修改rcS的可执行权限.</div><div class="line">* 在_install /etc 目录创建文件名 fstab 的文件，并写入以下内容。</div></pre></td></tr></table></figure>
-<p>proc /proc proc defaults 0 0<br>tmpfs /tmp tmpfs defaults 0 0<br>sysfs /sys sysfs defaults 0 0<br>tmpfs /dev tmpfs defaults 0 0<br>debugfs /sys/kernel/debug debugfs defaults 0 0</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 在_install /etc 目录创建文件名 inittab 的文件，并写入如下内容。</div></pre></td></tr></table></figure>
-<p>::sysinit:/etc/init.d/rcS<br>::respawn:-/bin/sh<br>::askfirst:-/bin/sh<br>::ctrlaltdel:/bin/umount -a –r</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 在_install/dev 目录下创建如下设备节点，以root权限执行</div></pre></td></tr></table></figure>
-<p>cd _install/dev/<br>sudo mknod console c 5 1<br>sudo mknod null c 1 3</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">### .sh(配合chmod +x使用)</div><div class="line">* build.sh: 编译busybox</div></pre></td></tr></table></figure>
-<p>export ARCH=ARM<br>export CROSS_COMPILE=arm-linux-gnueabi-<br>make menuconfig<br>make install</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* creat.sh: _install文件夹下处理</div></pre></td></tr></table></figure>
-<p>rm -rf etc<br>rm -rf dev<br>rm -rf mnt<br>mkdir etc<br>mkdir dev<br>mkdir mnt<br>mkdir -p etc/init.d/</p>
-<p>echo “mkdir -p /proc<br>mkdir -p /tmp<br>mkdir -p /sys<br>mkdir -p /mnt<br>/bin/mount -a<br>mkdir -p /dev/pts<br>mount -t devpts devpts /dev/pts<br>echo /sbin/mdev &gt; /proc/sys/kernel/hotplug<br>mdev -s<br>“ &gt; etc/init.d/rcS<br>chmod +x etc/init.d/rcS</p>
-<p>echo “proc /proc proc defaults 0 0<br>tmpfs /tmp tmpfs defaults 0 0<br>sysfs /sys sysfs defaults 0 0<br>tmpfs /dev tmpfs defaults 0 0<br>debugfs /sys/kernel/debug debugfs defaults 0 0<br>“ &gt; etc/fstab</p>
-<p>echo “::sysinit:/etc/init.d/rcS<br>::respawn:-/bin/sh<br>::askfirst:-/bin/sh<br>::ctrlaltdel:/bin/umount -a -r<br>“ &gt; etc/inittab</p>
-<p>cd dev/<br>sudo mknod console c 5 1<br>sudo mknod null c 1 3</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 编译内核 </div><div class="line">* 编译内核</div></pre></td></tr></table></figure>
-<p>cd linux-4.0<br>export ARCH=arm<br>export CROSS_COMPILE=arm-linux-gnueabi-<br>make vexpress_defconfig<br>make menuconfig</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 配置 initramfs，在 initramfs source file 中填入_install。另外需要把 Default kernel command string 清空。</div></pre></td></tr></table></figure>
-<p>General setup —&gt;<br>[*] Initial RAM filesystem and RAM disk (initramfs/initrd) support<br>(_install) Initramfs source file(s)<br>Boot options –&gt;<br>()Default kernel command string</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 配置 memory split 为“3G/1G user/kernel split”以及打开高端内存。</div></pre></td></tr></table></figure>
-<p>Kernel Features —&gt;<br>Memory split (3G/1G user/kernel split) —&gt;<br>[ *] High Memory Support</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">* 开始编译 kernel</div></pre></td></tr></table></figure>
-<p>make bzImage -j4 ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-<br>make dtbs</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 运行 QEMU 来模拟 4 核 Cortex-A9 的 Versatile Express 开发平台。</div></pre></td></tr></table></figure>
-<p>qemu-system-arm -M vexpress-a9 -smp 4 -m 1024M -kernel arch/arm/boot/zImage -append “rdinit=/linuxrc console=ttyAMA0 loglevel=8” -dtb arch/arm/boot/dts/vexpress-v2p-ca9.dtb -nographic</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### .sh(配合chmod +x)</div><div class="line">* build.sh : 编译内核</div></pre></td></tr></table></figure>
-<p>export ARCH=arm<br>export CROSS_COMPILE=arm-linux-gnueabi-<br>make vexpress_defconfig<br>make menuconfig<br>make bzImage -j4 ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-<br>make dtbs</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* run.sh : 运行arm内核</div></pre></td></tr></table></figure>
-<p>qemu-system-arm -M vexpress-a9 -smp 4 -m 1024M -kernel arch/arm/boot/zImage -append “rdinit=/linuxrc console=ttyAMA0 loglevel=8” -dtb arch/arm/boot/dts/vexpress-v2p-ca9.dtb -nographicyun<br>```</p>
+<li><p>首先需要安装qemu gcc, ubuntu16.04中自带的gcc版本较低,这里我们安装书中推荐的gcc-arm-linux-gnueabi </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install qemu libncurses5-dev gcc-arm-linux-gnueabi build-essential</div></pre></td></tr></table></figure>
+</li>
+<li><p>下载busybox源码</p>
+<ul>
+<li>书中推荐版本是1.24,但最新版本已经到了busybox-1.27.2.这里我们使用最新版<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://busybox.net/downloads/busybox-1.27.2.tar.bz2</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>解压到 busybox 文件夹<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -jxvf busybox-1.27.2.tar.bz2</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>下载linux内核源码<ul>
+<li>还是以配套的4.0源码为例,(提醒:内核解压后大约占800MB,请预留出足够空间)<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.gz</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>解压到linux文件夹<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -jxvf linux-4.0.tar.gz</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="编译最小文件系统"><a href="#编译最小文件系统" class="headerlink" title="编译最小文件系统"></a>编译最小文件系统</h2><h2 id="别问我最小文件系统是什么-我也有点😵-但是先用起来"><a href="#别问我最小文件系统是什么-我也有点😵-但是先用起来" class="headerlink" title="* 别问我最小文件系统是什么,我也有点😵,但是先用起来."></a>* 别问我最小文件系统是什么,我也有点😵,但是先用起来.</h2><ul>
+<li><p>首先利用 busybox 手工编译一个最小文件系统。<br>在busybox文件夹下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">export ARCH=ARM</div><div class="line">export CROSS_COMPILE=arm-linux-gnueabi-</div><div class="line">make menuconfig</div><div class="line">make install</div></pre></td></tr></table></figure>
+</li>
+<li><p>进入menuconfig后,配置静态编译</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Busybox Settings ---&gt;</div><div class="line">Build Options ---&gt;</div><div class="line">[*] Build BusyBox as a static binary (no shared libs)</div></pre></td></tr></table></figure>
+</li>
+<li><p>然后 make install 编译完成。编译完成后,把 busybox 根目录下面的_install 目录拷贝到 linux-4.0 下。</p>
+</li>
+<li><p>进入_install 目录，创建 etc、dev 等目录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir etc</div><div class="line">mkdir dev</div><div class="line">mkdir mnt</div><div class="line">mkdir -p etc/init.d/</div></pre></td></tr></table></figure>
+</li>
+<li><p>在_install /etc/init.d/目录下创建 文件名rcS 的文件，写入以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mkdir –p /proc</div><div class="line">mkdir –p /tmp</div><div class="line">mkdir -p /sys</div><div class="line">mkdir –p /mnt</div><div class="line">/bin/mount -a</div><div class="line">mkdir -p /dev/pts</div><div class="line">mount -t devpts devpts /dev/pts</div><div class="line">echo /sbin/mdev &gt; /proc/sys/kernel/hotplug</div><div class="line">mdev –s</div></pre></td></tr></table></figure>
+<p>同时使用 <code>chmod +x rcS</code>修改rcS的可执行权限.</p>
+</li>
+<li><p>在_install /etc 目录创建文件名 fstab 的文件，并写入以下内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">proc /proc proc defaults 0 0</div><div class="line">tmpfs /tmp tmpfs defaults 0 0</div><div class="line">sysfs /sys sysfs defaults 0 0</div><div class="line">tmpfs /dev tmpfs defaults 0 0</div><div class="line">debugfs /sys/kernel/debug debugfs defaults 0 0</div></pre></td></tr></table></figure>
+</li>
+<li><p>在_install /etc 目录创建文件名 inittab 的文件，并写入如下内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">::sysinit:/etc/init.d/rcS</div><div class="line">::respawn:-/bin/sh</div><div class="line">::askfirst:-/bin/sh</div><div class="line">::ctrlaltdel:/bin/umount -a –r</div></pre></td></tr></table></figure>
+</li>
+<li><p>在_install/dev 目录下创建如下设备节点，以root权限执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd _install/dev/</div><div class="line">sudo mknod console c 5 1</div><div class="line">sudo mknod null c 1 3</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="sh-配合chmod-x使用"><a href="#sh-配合chmod-x使用" class="headerlink" title=".sh(配合chmod +x使用)"></a>.sh(配合chmod +x使用)</h3><ul>
+<li><p>build.sh: 编译busybox</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">export ARCH=ARM</div><div class="line">export CROSS_COMPILE=arm-linux-gnueabi-</div><div class="line">make menuconfig</div><div class="line">make install</div></pre></td></tr></table></figure>
+</li>
+<li><p>creat.sh: _install文件夹下处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">rm -rf etc </div><div class="line">rm -rf dev </div><div class="line">rm -rf mnt </div><div class="line">mkdir etc</div><div class="line">mkdir dev</div><div class="line">mkdir mnt</div><div class="line">mkdir -p etc/init.d/</div><div class="line"></div><div class="line">echo &quot;mkdir -p /proc</div><div class="line">mkdir -p /tmp</div><div class="line">mkdir -p /sys</div><div class="line">mkdir -p /mnt</div><div class="line">/bin/mount -a</div><div class="line">mkdir -p /dev/pts</div><div class="line">mount -t devpts devpts /dev/pts</div><div class="line">echo /sbin/mdev &gt; /proc/sys/kernel/hotplug</div><div class="line">mdev -s</div><div class="line">&quot; &gt; etc/init.d/rcS</div><div class="line">chmod +x etc/init.d/rcS</div><div class="line"></div><div class="line">echo &quot;proc /proc proc defaults 0 0</div><div class="line">tmpfs /tmp tmpfs defaults 0 0</div><div class="line">sysfs /sys sysfs defaults 0 0</div><div class="line">tmpfs /dev tmpfs defaults 0 0</div><div class="line">debugfs /sys/kernel/debug debugfs defaults 0 0</div><div class="line">&quot; &gt; etc/fstab</div><div class="line"></div><div class="line">echo &quot;::sysinit:/etc/init.d/rcS</div><div class="line">::respawn:-/bin/sh</div><div class="line">::askfirst:-/bin/sh</div><div class="line">::ctrlaltdel:/bin/umount -a -r</div><div class="line">&quot; &gt; etc/inittab</div><div class="line"></div><div class="line">cd dev/</div><div class="line">sudo mknod console c 5 1</div><div class="line">sudo mknod null c 1 3</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="编译内核"><a href="#编译内核" class="headerlink" title="编译内核"></a>编译内核</h2><ul>
+<li><p>编译内核</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cd linux-4.0</div><div class="line">export ARCH=arm</div><div class="line">export CROSS_COMPILE=arm-linux-gnueabi-</div><div class="line">make vexpress_defconfig</div><div class="line">make menuconfig</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置 initramfs，在 initramfs source file 中填入_install。另外需要把 Default kernel command string 清空。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">General setup ---&gt;</div><div class="line">[*] Initial RAM filesystem and RAM disk (initramfs/initrd) support</div><div class="line">(_install) Initramfs source file(s)</div><div class="line">Boot options --&gt;</div><div class="line">()Default kernel command string</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置 memory split 为“3G/1G user/kernel split”以及打开高端内存。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Kernel Features ---&gt;</div><div class="line">Memory split (3G/1G user/kernel split) ---&gt;</div><div class="line">[ *] High Memory Support</div></pre></td></tr></table></figure>
+</li>
+<li><p>开始编译 kernel</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">make bzImage -j4 ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-</div><div class="line">make dtbs</div></pre></td></tr></table></figure>
+</li>
+<li><p>运行 QEMU 来模拟 4 核 Cortex-A9 的 Versatile Express 开发平台。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">qemu-system-arm -M vexpress-a9 -smp 4 -m 1024M -kernel arch/arm/boot/zImage -append &quot;rdinit=/linuxrc console=ttyAMA0 loglevel=8&quot; -dtb arch/arm/boot/dts/vexpress-v2p-ca9.dtb -nographic</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="sh-配合chmod-x"><a href="#sh-配合chmod-x" class="headerlink" title=".sh(配合chmod +x)"></a>.sh(配合chmod +x)</h3><ul>
+<li><p>build.sh : 编译内核</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">export ARCH=arm</div><div class="line">export CROSS_COMPILE=arm-linux-gnueabi-</div><div class="line">make vexpress_defconfig</div><div class="line">make menuconfig</div><div class="line">make bzImage -j4 ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-</div><div class="line">make dtbs</div></pre></td></tr></table></figure>
+</li>
+<li><p>run.sh : 运行arm内核</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">qemu-system-arm -M vexpress-a9 -smp 4 -m 1024M -kernel arch/arm/boot/zImage -append &quot;rdinit=/linuxrc console=ttyAMA0 loglevel=8&quot; -dtb arch/arm/boot/dts/vexpress-v2p-ca9.dtb -nographicyun</div></pre></td></tr></table></figure>
 </li>
 </ul>
 ]]></content>
@@ -93,7 +130,7 @@
     
     </summary>
     
-      <category term="linux笔记" scheme="http://yoursite.com/categories/linux%E7%AC%94%E8%AE%B0/"/>
+      <category term="Linux笔记" scheme="http://yoursite.com/categories/Linux%E7%AC%94%E8%AE%B0/"/>
     
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
@@ -117,7 +154,7 @@
 <hr>
 <h2 id="看门狗定时器驱动内核API"><a href="#看门狗定时器驱动内核API" class="headerlink" title="看门狗定时器驱动内核API"></a>看门狗定时器驱动内核API</h2><ul>
 <li>最后更新时间 2013.2.12</li>
-<li>Wim Van Sebroeck <a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#111;&#x3a;&#x77;&#105;&#x6d;&#64;&#105;&#x67;&#x75;&#97;&#110;&#97;&#46;&#x62;&#x65;">&#x77;&#105;&#x6d;&#64;&#105;&#x67;&#x75;&#97;&#110;&#97;&#46;&#x62;&#x65;</a></li>
+<li>Wim Van Sebroeck <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#x77;&#x69;&#109;&#64;&#105;&#103;&#x75;&#97;&#110;&#x61;&#x2e;&#98;&#101;">&#x77;&#x69;&#109;&#64;&#105;&#103;&#x75;&#97;&#110;&#x61;&#x2e;&#98;&#101;</a></li>
 </ul>
 <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul>
 <li>本文档没有描述看门狗设备或驱动。也不涉及那些在用户空间调用的API，对应在 Documentation/watchdog/watchdog-api.txt （也就是<a href="">上一篇</a>）</li>
@@ -294,8 +331,8 @@
 </li>
 <li><p>linux看门狗设备API</p>
 </li>
-<li>Copyright 2002 Christer Weingel <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#x77;&#105;&#110;&#103;&#x65;&#x6c;&#x40;&#110;&#97;&#x6e;&#111;&#45;&#115;&#121;&#x73;&#x74;&#101;&#109;&#x2e;&#x63;&#111;&#x6d;">&#x77;&#105;&#110;&#103;&#x65;&#x6c;&#x40;&#110;&#97;&#x6e;&#111;&#45;&#115;&#121;&#x73;&#x74;&#101;&#109;&#x2e;&#x63;&#111;&#x6d;</a></li>
-<li><p>本文档的一些内容来自 sbc60xxwdt ，版权属于 Copyright 2000 Jakob Oestergaard <a href="&#109;&#97;&#x69;&#108;&#116;&#x6f;&#58;&#x6a;&#x61;&#x6b;&#x6f;&#98;&#x40;&#111;&#115;&#116;&#101;&#110;&#x66;&#x65;&#108;&#x64;&#46;&#100;&#x6b;">&#x6a;&#x61;&#x6b;&#x6f;&#98;&#x40;&#111;&#115;&#116;&#101;&#110;&#x66;&#x65;&#108;&#x64;&#46;&#100;&#x6b;</a></p>
+<li>Copyright 2002 Christer Weingel <a href="&#109;&#97;&#x69;&#108;&#116;&#x6f;&#x3a;&#x77;&#x69;&#x6e;&#103;&#x65;&#x6c;&#x40;&#x6e;&#x61;&#110;&#x6f;&#x2d;&#115;&#121;&#115;&#x74;&#x65;&#109;&#46;&#x63;&#111;&#x6d;">&#x77;&#x69;&#x6e;&#103;&#x65;&#x6c;&#x40;&#x6e;&#x61;&#110;&#x6f;&#x2d;&#115;&#121;&#115;&#x74;&#x65;&#109;&#46;&#x63;&#111;&#x6d;</a></li>
+<li><p>本文档的一些内容来自 sbc60xxwdt ，版权属于 Copyright 2000 Jakob Oestergaard <a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#58;&#x6a;&#97;&#x6b;&#111;&#x62;&#x40;&#x6f;&#115;&#x74;&#101;&#110;&#x66;&#x65;&#x6c;&#100;&#x2e;&#100;&#107;">&#x6a;&#97;&#x6b;&#111;&#x62;&#x40;&#x6f;&#115;&#x74;&#101;&#110;&#x66;&#x65;&#x6c;&#100;&#x2e;&#100;&#107;</a></p>
 </li>
 <li><p>本文档基于linux内核 2.4.18</p>
 </li>
@@ -433,7 +470,7 @@
     <link href="http://yoursite.com/2017/08/19/linux%E7%AC%94%E8%AE%B0%E2%80%94rtc%E5%AD%90%E7%B3%BB%E7%BB%9F/"/>
     <id>http://yoursite.com/2017/08/19/linux笔记—rtc子系统/</id>
     <published>2017-08-19T02:17:11.000Z</published>
-    <updated>2017-09-10T01:35:52.664Z</updated>
+    <updated>2017-09-10T01:51:07.106Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li>正式开始让人崩溃的linux系列，希望自己能写完。<br>先拿rtc开刀。</li>
@@ -713,7 +750,7 @@
     
     </summary>
     
-      <category term="linux笔记" scheme="http://yoursite.com/categories/linux%E7%AC%94%E8%AE%B0/"/>
+      <category term="Linux笔记" scheme="http://yoursite.com/categories/Linux%E7%AC%94%E8%AE%B0/"/>
     
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
@@ -958,9 +995,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1082,9 +1119,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1227,9 +1264,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1513,9 +1550,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1650,9 +1687,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1857,9 +1894,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -2181,9 +2218,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -2403,9 +2440,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -2570,9 +2607,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -2710,9 +2747,9 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -2978,9 +3015,9 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
