@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="学习记录,Linux,timer," />
+  <meta name="keywords" content="学习记录,Linux,翻译,wdt," />
 
 
 
@@ -89,17 +89,17 @@
 
 
 
-<meta name="description" content="ss">
-<meta name="keywords" content="学习记录,Linux,timer">
+<meta name="description" content="随手翻译的文档，要看懂linux内核，内核附带的文档自然是逃不过😂，全英文配合Google翻译也得上。。。。    最后更新时间 10/05/2007  linux看门狗设备API  Copyright 2002 Christer Weingel &amp;#119;&amp;#105;&amp;#x6e;&amp;#103;&amp;#101;&amp;#x6c;&amp;#x40;&amp;#110;&amp;#x61;&amp;#110;&amp;#111;&amp;#x2d;&amp;">
+<meta name="keywords" content="学习记录,Linux,翻译,wdt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="让人崩溃的linux——时间子系统（一）">
-<meta property="og:url" content="http://yoursite.com/2017/08/15/让人崩溃的linux——时间子系统（一）/index.html">
+<meta property="og:title" content="linux笔记—看门狗API文档翻译">
+<meta property="og:url" content="http://yoursite.com/2017/08/22/linux笔记—看门狗API文档翻译/index.html">
 <meta property="og:site_name" content="默">
-<meta property="og:description" content="ss">
-<meta property="og:updated_time" content="2017-08-23T14:21:56.451Z">
+<meta property="og:description" content="随手翻译的文档，要看懂linux内核，内核附带的文档自然是逃不过😂，全英文配合Google翻译也得上。。。。    最后更新时间 10/05/2007  linux看门狗设备API  Copyright 2002 Christer Weingel &amp;#119;&amp;#105;&amp;#x6e;&amp;#103;&amp;#101;&amp;#x6c;&amp;#x40;&amp;#110;&amp;#x61;&amp;#110;&amp;#111;&amp;#x2d;&amp;">
+<meta property="og:updated_time" content="2017-09-10T01:35:42.263Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="让人崩溃的linux——时间子系统（一）">
-<meta name="twitter:description" content="ss">
+<meta name="twitter:title" content="linux笔记—看门狗API文档翻译">
+<meta name="twitter:description" content="随手翻译的文档，要看懂linux内核，内核附带的文档自然是逃不过😂，全英文配合Google翻译也得上。。。。    最后更新时间 10/05/2007  linux看门狗设备API  Copyright 2002 Christer Weingel &amp;#119;&amp;#105;&amp;#x6e;&amp;#103;&amp;#101;&amp;#x6c;&amp;#x40;&amp;#110;&amp;#x61;&amp;#110;&amp;#111;&amp;#x2d;&amp;">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/15/让人崩溃的linux——时间子系统（一）/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/22/linux笔记—看门狗API文档翻译/"/>
 
 
 
 
 
-  <title> 让人崩溃的linux——时间子系统（一） | 默 </title>
+  <title> linux笔记—看门狗API文档翻译 | 默 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -325,7 +325,7 @@
   
   
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/15/让人崩溃的linux——时间子系统（一）/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/22/linux笔记—看门狗API文档翻译/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jasper">
@@ -346,7 +346,7 @@
             
             
               
-                让人崩溃的linux——时间子系统（一）
+                linux笔记—看门狗API文档翻译
               
             
           </h1>
@@ -361,8 +361,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-15T17:52:16+08:00">
-                2017-08-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-22T17:52:16+08:00">
+                2017-08-22
               </time>
             
 
@@ -384,8 +384,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux学习记录/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux学习记录</span>
+                  <a href="/categories/Linux笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux笔记</span>
                   </a>
                 </span>
 
@@ -402,9 +402,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/08/15/让人崩溃的linux——时间子系统（一）/#comments" itemprop="discussionUrl">
+                <a href="/2017/08/22/linux笔记—看门狗API文档翻译/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/15/让人崩溃的linux——时间子系统（一）/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/08/22/linux笔记—看门狗API文档翻译/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -412,7 +412,7 @@
 
           
           
-             <span id="/2017/08/15/让人崩溃的linux——时间子系统（一）/" class="leancloud_visitors" data-flag-title="让人崩溃的linux——时间子系统（一）">
+             <span id="/2017/08/22/linux笔记—看门狗API文档翻译/" class="leancloud_visitors" data-flag-title="linux笔记—看门狗API文档翻译">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -436,7 +436,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1
+                  1,662
                 </span>
               
 
@@ -452,7 +452,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1m
+                  7m
                 </span>
               
             </div>
@@ -471,8 +471,120 @@
       
 
       
-        <ul>
-<li>ss</li>
+        <hr>
+<ul>
+<li>随手翻译的文档，要看懂linux内核，内核附带的文档自然是逃不过😂，全英文配合Google翻译也得上。。。。</li>
+</ul>
+<hr>
+<ul>
+<li><p>最后更新时间 10/05/2007</p>
+</li>
+<li><p>linux看门狗设备API</p>
+</li>
+<li>Copyright 2002 Christer Weingel <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#111;&#58;&#119;&#105;&#x6e;&#103;&#101;&#x6c;&#x40;&#110;&#x61;&#110;&#111;&#x2d;&#x73;&#x79;&#x73;&#x74;&#x65;&#109;&#x2e;&#99;&#x6f;&#x6d;">&#119;&#105;&#x6e;&#103;&#101;&#x6c;&#x40;&#110;&#x61;&#110;&#111;&#x2d;&#x73;&#x79;&#x73;&#x74;&#x65;&#109;&#x2e;&#99;&#x6f;&#x6d;</a></li>
+<li><p>本文档的一些内容来自 sbc60xxwdt ，版权属于 Copyright 2000 Jakob Oestergaard <a href="&#x6d;&#97;&#105;&#108;&#116;&#x6f;&#58;&#106;&#97;&#x6b;&#x6f;&#x62;&#x40;&#111;&#115;&#x74;&#x65;&#x6e;&#102;&#101;&#x6c;&#100;&#x2e;&#100;&#107;">&#106;&#97;&#x6b;&#x6f;&#x62;&#x40;&#111;&#115;&#x74;&#x65;&#x6e;&#102;&#101;&#x6c;&#100;&#x2e;&#100;&#107;</a></p>
+</li>
+<li><p>本文档基于linux内核 2.4.18</p>
+</li>
+</ul>
+<hr>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul>
+<li>你应该已经知道了，看门狗定时器（WDT）是一个硬件复位电路，在系统软件出现故障时复位系统。</li>
+<li>通常，用户空间的定期喂狗程序通过/dev/watchdog的设备文件通知内核看门狗驱动程序。驱动收到通知，会告知硬件看门狗一切正常，硬件看门狗需要等一会再复位系统。如果用户空间通知失败（RAM错误、内核漏洞等等），通知将停止。超时后，硬件看门狗将复位系统（重启）。</li>
+<li>linux看门狗的API是相当特殊的结构，不同的驱动程序对API的执行各不相同，有时会碰到不兼容的情况。本文档参数记录现有的情况，以供未来的驱动开发参考。<h3 id="最简单的API"><a href="#最简单的API" class="headerlink" title="最简单的API"></a>最简单的API</h3></li>
+<li>所有驱动都支持的基本操作模式。/dev/watchdog被打开后，看门狗被激活并复位系统，除非在一小段时间内被ping通？（喂狗），这段时间被称为超时时间或间断时间。简单的喂狗的方式是向驱动程序写入一些数据，一个非常简单的实例在<code>see samples/watchdog/watchdog-simple.c</code>下.</li>
+<li>更高级的驱动程序可以做到例如检查一个http服务器，在执行喂狗操作之前，做出回应。</li>
+<li>/dev/下设备节点被关闭后，看门狗也同时被禁用，除非支持“Magic Close”（见下文），这并不是个好办法。因为如果看看门狗demo有bug导致系统崩溃，但系统不会重启。因为这样一些驱动支持”Disable watchdog shutdown on close”, CONFIG_WATCHDOG_NOWAYOUT”这样的配置选项。一旦编译内核时候启用这些选项，一旦看门狗程序激活，就不可能禁用看门狗。如果看门狗demo崩溃，系统会在超时后自动重启。看门狗驱动通常也支持nowayout module parameter，以便在运行时控制nowayout module。</li>
+</ul>
+<h3 id="Magic-Close-feature"><a href="#Magic-Close-feature" class="headerlink" title="Magic Close feature"></a>Magic Close feature</h3><ul>
+<li>如果驱动程序支持<code>Magic Close</code>,那么设备将不支持禁用看门狗，除非在关闭设备文件前，向/dev/watchdog下设备文件写入特定的magic 字符 ‘V’。如果用户空间的 daemon关闭了看门的设备文件，但是没有发送那个特定的字符，驱动会认为daemon进程已经被杀，并且停止了定期喂狗行为。这样会导致超时后系统重启。<h3 id="ioctl-API"><a href="#ioctl-API" class="headerlink" title="ioctl API"></a>ioctl API</h3></li>
+<li>所有的驱动程序都支持ioctl API</li>
+<li><strong>喂狗操作使用ioctl完成</strong></li>
+<li>所有的驱动都要支持一个KEEPALIVE的ioctl命令，这个命令可以起到向驱动写入数据一样的作用。所以watchdog daemon的主函数循环可以这样实现<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> while (1) &#123;</div><div class="line">	ioctl(fd, WDIOC_KEEPALIVE, 0);</div><div class="line">	sleep(10);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Setting-and-getting-the-timeout"><a href="#Setting-and-getting-the-timeout" class="headerlink" title="Setting and getting the timeout"></a>Setting and getting the timeout</h3><ul>
+<li>某些驱动支持运行时通过SETTIMEOUT ioctl命令修改超时时间，这些驱动都有WDIOF<em>SETTIMEOUT的标志位</em>。超时时间是一个单位为秒的整数，驱动程序会返回这个变量实际设置的数值，但是由于硬件限制，返回的数值可能与设置数值不同。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">int timeout = 45;</div><div class="line">ioctl(fd, WDIOC_SETTIMEOUT, &amp;timeout);</div><div class="line">printf(&quot;The timeout was set to %d seconds\n&quot;, timeout);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>这个实例或许会输出”The timeout was set to 60 seconds”，如果设备超时时间为分钟。</p>
+</li>
+<li><p>自从2.4.18内核开始，可以使用GETTIMEOUT ioctl命令，获取超时时间。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ioctl(fd, WDIOC_GETTIMEOUT, &amp;timeout);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"The timeout was is %d seconds\n"</span>, timeout);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Pretimeouts"><a href="#Pretimeouts" class="headerlink" title="Pretimeouts"></a>Pretimeouts</h3><ul>
+<li><p>一些看门狗定时器可以在系统重启前一段时间设置一个触发器。这样运行linux在系统从前记录一些重要的信息（像panic信息和kernel coredumps），具体可以通过NMT、中断等机制实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pretimeout = 10;</div><div class="line">ioctl(fd, WDIOC_SETPRETIMEOUT, &amp;pretimeout);</div></pre></td></tr></table></figure>
+</li>
+<li><p>请注意，pretimeout 时间是在 超时关闭系统 之前的秒数。不是直到发生pretimeout 事件的秒数。例如设定的超时时间是60s， pretimeout是10s。pretimeout事件会在50s时发生。pretimeout设置为0代表禁用pretimeout。</p>
+</li>
+<li><p>同样存在一个获取pretimeout的ioctl命令。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ioctl(fd, WDIOC_GETPRETIMEOUT, &amp;timeout);</div><div class="line">printf(&quot;The pretimeout was is %d seconds\n&quot;, timeout);</div></pre></td></tr></table></figure>
+</li>
+<li><p>不是所有看门狗驱动都支持 pretimeout</p>
+</li>
+</ul>
+<h3 id="获取重启前秒数"><a href="#获取重启前秒数" class="headerlink" title="获取重启前秒数"></a>获取重启前秒数</h3><ul>
+<li>一些看门狗驱动支持获取系统重启前秒数。通过WDIOC<em>GETTIMELEFT  ioctl  </em>命令可以返回系统重启前秒数。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ioctl(fd, WDIOC_GETTIMELEFT, &amp;timeleft);</div><div class="line">printf(&quot;The timeout was is %d seconds\n&quot;, timeleft);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="环境监测"><a href="#环境监测" class="headerlink" title="环境监测"></a>环境监测</h3><ul>
+<li><p>所有的看门狗驱动都被要求返回更多关于系统最后一次重启的信息，像是温度、风扇转速、电源等。GETSUPPORT ioctl 的命令可以返回 设备可以支持的信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">struct watchdog_info ident;</div><div class="line">ioctl(fd, WDIOC_GETSUPPORT, &amp;ident);</div></pre></td></tr></table></figure>
+</li>
+<li><p>返回的结构ident中的字段如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">   identity		描述watchdog driver的字符串</div><div class="line">firmware_version	the firmware version of the card if available</div><div class="line">options			设备支持情况的标志位</div></pre></td></tr></table></figure>
+</li>
+<li><p>options描述了GET_STATUS 和GET_BOOT<em>STATUS ioctl命令</em>可以返回那些信息。并且可以设置。（）<strong>??无法理解什么意思??</strong></p>
+</li>
+</ul>
+<ul>
+<li>WDIOF<em>OVERHEAT     cpu过热复位</em><br>系统重启因为，超过了温度限制上限。</li>
+<li><p>WDIOF<em>FANFAULT        风扇失效复位</em></p>
+</li>
+<li><p>WDIOF<em>EXTERN1        External relay 1 </em><br>外部监控电源1被触发，？？？Controllers intended for real world applications include external monitoring pins that will trigger a reset.？？（不明白什么意思）</p>
+</li>
+<li><p>WDIOF_EXTERN2        External relay 2<br>外部监控电源2被触发</p>
+</li>
+<li><p>WDIOF_POWERUNDER    电源坏了，电源带不动了<br>机器显示欠压。</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>后面一点不翻了，有时间再添坑</li>
+</ul>
+<hr>
+<ul>
+<li><p>WDIOF_CARDRESET        Card previously reset the CPU<br>The last reboot was caused by the watchdog card</p>
+</li>
+<li><p>WDIOF_POWEROVER        Power over voltage<br>The machine is showing an overvoltage status. Note that if one level is under and one over both bits will be set - this may seem odd but makes sense.</p>
+</li>
+<li><p>WDIOF_KEEPALIVEPING    Keep alive ping reply<br>The watchdog saw a keepalive ping since it was last queried.</p>
+</li>
+<li><p>WDIOF_SETTIMEOUT    Can set/get the timeout<br>The watchdog can do pretimeouts.</p>
+</li>
+<li><p>WDIOF_PRETIMEOUT    Pretimeout (in seconds), get/set<br>For those drivers that return any bits set in the option field, the GETSTATUS and GETBOOTSTATUS ioctls can be used to ask for the current status, and the status at the last reboot, respectively.  </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">int flags;</div><div class="line">ioctl(fd, WDIOC_GETSTATUS, &amp;flags);</div></pre></td></tr></table></figure>
+<p>  or</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ioctl(fd, WDIOC_GETBOOTSTATUS, &amp;flags);</div></pre></td></tr></table></figure>
+</li>
+<li><p>Note that not all devices support these two calls, and some only support the GETBOOTSTATUS call.</p>
+</li>
+<li><p>Some drivers can measure the temperature using the GETTEMP ioctl.  The returned value is the temperature in degrees fahrenheit.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">int temperature;</div><div class="line">ioctl(fd, WDIOC_GETTEMP, &amp;temperature);</div></pre></td></tr></table></figure>
+</li>
+<li><p>Finally the SETOPTIONS ioctl can be used to control some aspects of the cards operation.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">int options = 0;</div><div class="line">ioctl(fd, WDIOC_SETOPTIONS, &amp;options);</div></pre></td></tr></table></figure>
+</li>
+<li><p>The following options are available:</p>
+<ul>
+<li>WDIOS_DISABLECARD    Turn off the watchdog timer</li>
+<li>WDIOS_ENABLECARD    Turn on the watchdog timer</li>
+<li>WDIOS_TEMPPANIC        Kernel panic on temperature trip</li>
+</ul>
+</li>
 </ul>
 
       
@@ -524,7 +636,7 @@
 	    <p id="div-border-left-blue">
 	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
 	    <span>
-	    <b>本文地址：</b><a href="/2017/08/15/让人崩溃的linux——时间子系统（一）/" title="让人崩溃的linux——时间子系统（一）">http://yoursite.com/2017/08/15/让人崩溃的linux——时间子系统（一）/</a><br/><b>转载请注明出处，谢谢！</b>
+	    <b>本文地址：</b><a href="/2017/08/22/linux笔记—看门狗API文档翻译/" title="linux笔记—看门狗API文档翻译">http://yoursite.com/2017/08/22/linux笔记—看门狗API文档翻译/</a><br/><b>转载请注明出处，谢谢！</b>
 	    </span>
 	    </p>
 	</div>
@@ -542,7 +654,9 @@
           
             <a href="/tags/Linux/" rel="tag"># Linux</a>
           
-            <a href="/tags/timer/" rel="tag"># timer</a>
+            <a href="/tags/翻译/" rel="tag"># 翻译</a>
+          
+            <a href="/tags/wdt/" rel="tag"># wdt</a>
           
         </div>
       
@@ -555,8 +669,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/11/Linux内核C语言中的面向对象/" rel="next" title="Linux内核C语言中的面向对象">
-                <i class="fa fa-chevron-left"></i> Linux内核C语言中的面向对象
+              <a href="/2017/08/19/linux笔记—qemu运行linux/" rel="next" title="linux笔记—qemu运行linux">
+                <i class="fa fa-chevron-left"></i> linux笔记—qemu运行linux
               </a>
             
           </div>
@@ -565,8 +679,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/19/崩溃的linux—rtc子系统/" rel="prev" title="让人崩溃的linux—rtc子系统">
-                让人崩溃的linux—rtc子系统 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/08/23/linux笔记—看门狗内核API文档翻译/" rel="prev" title="linux笔记——看门狗内核API文档翻译">
+                linux笔记——看门狗内核API文档翻译 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -621,8 +735,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/v.png"
@@ -637,7 +760,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -659,7 +782,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -703,6 +826,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最简单的API"><span class="nav-number">2.</span> <span class="nav-text">最简单的API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Magic-Close-feature"><span class="nav-number">3.</span> <span class="nav-text">Magic Close feature</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ioctl-API"><span class="nav-number">4.</span> <span class="nav-text">ioctl API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setting-and-getting-the-timeout"><span class="nav-number">5.</span> <span class="nav-text">Setting and getting the timeout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pretimeouts"><span class="nav-number">6.</span> <span class="nav-text">Pretimeouts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取重启前秒数"><span class="nav-number">7.</span> <span class="nav-text">获取重启前秒数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境监测"><span class="nav-number">8.</span> <span class="nav-text">环境监测</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -719,7 +858,7 @@
         <div class="copyright" >
   
   &copy;  2016.6.2 - 
-  <span itemprop="copyrightYear">2017.8.23</span>
+  <span itemprop="copyrightYear">2017.9.10</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -822,9 +961,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/08/15/让人崩溃的linux——时间子系统（一）/';
-          this.page.identifier = '2017/08/15/让人崩溃的linux——时间子系统（一）/';
-          this.page.title = '让人崩溃的linux——时间子系统（一）';
+          this.page.url = 'http://yoursite.com/2017/08/22/linux笔记—看门狗API文档翻译/';
+          this.page.identifier = '2017/08/22/linux笔记—看门狗API文档翻译/';
+          this.page.title = 'linux笔记—看门狗API文档翻译';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://jasper1024.disqus.com/embed.js';

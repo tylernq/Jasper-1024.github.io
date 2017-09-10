@@ -1,0 +1,1276 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="学习记录,Linux,翻译,wdt," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="默" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="wdt第二弹，内核API，勉强翻译下来了，还需要进一步整理   看门狗定时器驱动内核API 最后更新时间 2013.2.12 Wim Van Sebroeck &amp;#119;&amp;#x69;&amp;#x6d;&amp;#x40;&amp;#x69;&amp;#x67;&amp;#117;&amp;#97;&amp;#110;&amp;#x61;&amp;#x2e;&amp;#x62;&amp;#101;  介绍 本文档没有描述看门狗设备或驱动。也不涉及那些在用户空间调用的API，对应在">
+<meta name="keywords" content="学习记录,Linux,翻译,wdt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux笔记——看门狗内核API文档翻译">
+<meta property="og:url" content="http://yoursite.com/2017/08/23/linux笔记—看门狗内核API文档翻译/index.html">
+<meta property="og:site_name" content="默">
+<meta property="og:description" content="wdt第二弹，内核API，勉强翻译下来了，还需要进一步整理   看门狗定时器驱动内核API 最后更新时间 2013.2.12 Wim Van Sebroeck &amp;#119;&amp;#x69;&amp;#x6d;&amp;#x40;&amp;#x69;&amp;#x67;&amp;#117;&amp;#97;&amp;#110;&amp;#x61;&amp;#x2e;&amp;#x62;&amp;#101;  介绍 本文档没有描述看门狗设备或驱动。也不涉及那些在用户空间调用的API，对应在">
+<meta property="og:updated_time" content="2017-09-10T01:35:25.036Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux笔记——看门狗内核API文档翻译">
+<meta name="twitter:description" content="wdt第二弹，内核API，勉强翻译下来了，还需要进一步整理   看门狗定时器驱动内核API 最后更新时间 2013.2.12 Wim Van Sebroeck &amp;#119;&amp;#x69;&amp;#x6d;&amp;#x40;&amp;#x69;&amp;#x67;&amp;#117;&amp;#97;&amp;#110;&amp;#x61;&amp;#x2e;&amp;#x62;&amp;#101;  介绍 本文档没有描述看门狗设备或驱动。也不涉及那些在用户空间调用的API，对应在">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/23/linux笔记—看门狗内核API文档翻译/"/>
+
+
+
+
+
+  <title> linux笔记——看门狗内核API文档翻译 | 默 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-79641673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">默</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">为了生存，而一点点淡忘了最初的本意。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/23/linux笔记—看门狗内核API文档翻译/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                linux笔记——看门狗内核API文档翻译
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-23T17:52:16+08:00">
+                2017-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/23/linux笔记—看门狗内核API文档翻译/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/23/linux笔记—看门狗内核API文档翻译/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/08/23/linux笔记—看门狗内核API文档翻译/" class="leancloud_visitors" data-flag-title="linux笔记——看门狗内核API文档翻译">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  2,948
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  11m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>wdt第二弹，内核API，勉强翻译下来了，还需要进一步整理</li>
+</ul>
+<hr>
+<h2 id="看门狗定时器驱动内核API"><a href="#看门狗定时器驱动内核API" class="headerlink" title="看门狗定时器驱动内核API"></a>看门狗定时器驱动内核API</h2><ul>
+<li>最后更新时间 2013.2.12</li>
+<li>Wim Van Sebroeck <a href="&#109;&#x61;&#x69;&#108;&#x74;&#111;&#58;&#119;&#x69;&#x6d;&#x40;&#x69;&#x67;&#117;&#97;&#110;&#x61;&#x2e;&#x62;&#101;">&#119;&#x69;&#x6d;&#x40;&#x69;&#x67;&#117;&#97;&#110;&#x61;&#x2e;&#x62;&#101;</a></li>
+</ul>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul>
+<li>本文档没有描述看门狗设备或驱动。也不涉及那些在用户空间调用的API，对应在 Documentation/watchdog/watchdog-api.txt （也就是<a href="">上一篇</a>）</li>
+<li>本文档描述的是，利用看门狗子系统框架方式进行看门狗驱动编写时所使用到的API。看门狗子系统框架提供了所有与用户空间交互的接口，不需要每次编写重复的代码。这意味这驱动程序只需要提供几个不同的操作函数，就可以控制WDT了。</li>
+</ul>
+<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><ul>
+<li><p>每一个想要使用看门狗核心子系统的驱动程序都必须包含<code>#include&lt;linux/watchdog.h&gt;</code>(编写驱动程序是不得不做的工作)。<code>linux/watchdog.h</code>包含以下两个注册/卸载函数：</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">extern int watchdog_register_device(struct watchdog_device *);</div><div class="line">extern void watchdog_unregister_device(struct watchdog_device *);</div></pre></td></tr></table></figure>
+</li>
+<li><p>注册函数将wdt设备注册进wdt子系统，函数的参数是一个指向struct watchdog<em>device的结构体</em>。当注册成功时返回0.注册失败返回一个负值。</p>
+</li>
+<li>卸载函数是将wdt设备从wdt子系统卸载，函数参数是一个指向struct watchdog<em>device的结构体</em></li>
+<li>看门子系统包含了注册时间调整机制（原文是 an registration deferral mechanism 一种延期机制？上下文不太对啊），允许在开机阶段，你可以按照你设定的尽可早的注册一个看门狗设备。</li>
+</ul>
+<h3 id="struct-watchdogdevice"><a href="#struct-watchdogdevice" class="headerlink" title="struct watchdogdevice"></a>struct watchdog<em>device</em></h3><ul>
+<li>这里粘贴的是linux4.1里定义的watchdog_device，原文的watchdog_device更长但跟源码对不起来，所以这里就以内核4.1里定义的为准了😑：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"> struct watchdog_device &#123;</div><div class="line">int id;</div><div class="line">struct cdev cdev;</div><div class="line">struct device *dev;</div><div class="line">struct device *parent;</div><div class="line">const struct watchdog_info *info;</div><div class="line">const struct watchdog_ops *ops;</div><div class="line">unsigned int bootstatus;</div><div class="line">unsigned int timeout;</div><div class="line">unsigned int min_timeout;</div><div class="line">unsigned int max_timeout;</div><div class="line">void *driver_data;</div><div class="line">struct mutex lock;</div><div class="line">unsigned long status;</div><div class="line">/* Bit numbers for status flags */</div><div class="line">#define WDOG_ACTIVE		0	/* Is the watchdog running/active */</div><div class="line">#define WDOG_DEV_OPEN		1	/* Opened via /dev/watchdog ? */</div><div class="line">#define WDOG_ALLOW_RELEASE	2	/* Did we receive the magic char ? */</div><div class="line">#define WDOG_NO_WAY_OUT		3	/* Is &apos;nowayout&apos; feature set ? */</div><div class="line">#define WDOG_UNREGISTERED	4	/* Has the device been unregistered */</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>包含以下字段：<ul>
+<li>id：由watchdog_register_device函数注册。id 0是一个特殊的，id 0 有/dev/watchdog0 cdev（动态主设备号，次设备号0） 和 /dev/watchdog miscdev。id 在调用到watchdog_register_device时自动注册。<ul>
+<li><strong>NOTE</strong>看源码，wdt子系统是基于misc子系统的，注册wdt设备调用的是<code>misc_register(&amp;watchdog_miscdev);</code>而misc设备主设备号只能为10,这里结论有冲突，等待解决中。。。<ul>
+<li>parent：在调用watchdog_register_device函数前，设置父设备（或者设置为null）</li>
+<li>info：指向watchdog_info结构体的指针，watchdog_info提供了看门狗本身的一些附加信息（像是看门狗独有的名称之类的）</li>
+<li>ops：指向watchdog_ops结构体的指针，watchdog_ops是看门狗支持操作(函数)的集合。</li>
+<li>bootstatus:启动后设备状态(与看门狗WDIOF<em>* 标志位一同开启)</em></li>
+<li>timeout:看门狗超时的时间(秒为单位).如果设置了WDOG<em>ACTIVE </em>启用了看门狗,在这个时间长度后,用户空间还没有发送心跳包,看门狗会将系统复位重启.</li>
+<li>min<em>timeout:</em>可设置的看门狗最小超时时间</li>
+<li>max<em>timeout:</em>可设置的看门狗最大超时时间</li>
+<li>driver<em>data:</em>指向看门狗设备私有数据的指针,这个data只能由watchdog_set_drvdata 和 watchdog_get_drvdata routines函数访问.</li>
+<li>struct mutex lock; <strong>原文档没有🙄</strong></li>
+<li>status:这个字段包含了许多状态位,提供有关设备的额外信息(例如:看门狗的活动状态\限制,现在nowayout 位设置与否)(括号里翻译是否准确存疑)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="struct-watchdog-ops"><a href="#struct-watchdog-ops" class="headerlink" title="struct watchdog_ops"></a>struct watchdog_ops</h3><ul>
+<li><p>watchdog<em>ops</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"> struct watchdog_ops &#123;</div><div class="line">struct module *owner;</div><div class="line">/* mandatory operations */</div><div class="line">int (*start)(struct watchdog_device *);</div><div class="line">int (*stop)(struct watchdog_device *);</div><div class="line">/* optional operations */</div><div class="line">int (*ping)(struct watchdog_device *);</div><div class="line">unsigned int (*status)(struct watchdog_device *);</div><div class="line">int (*set_timeout)(struct watchdog_device *, unsigned int);</div><div class="line">unsigned int (*get_timeleft)(struct watchdog_device *);</div><div class="line">void (*ref)(struct watchdog_device *);</div><div class="line">void (*unref)(struct watchdog_device *);</div><div class="line">long (*ioctl)(struct watchdog_device *, unsigned int, unsigned long);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>你一开始定义的看门狗的module owner是非常重要的,module owner 在使用看门狗时会同时锁定看门狗设备.(这样避免了在卸载模块时/dev/watchdog依然是打开状态引起的系统崩溃)</p>
+</li>
+<li><p>某些函数是必须实现的,其他是可选的,必须实现的函数如下:</p>
+<ul>
+<li><em>start  :</em>指向看门狗设备启动函数的指针.这个函数参数为一个 struct watchdog<em>device,</em>成功返回0,失败返回负数.</li>
+<li><em>stop :</em>通过这个函数关闭看门狗设备.这个函数参数为一个 struct watchdog<em>device,</em>成功返回0,失败返回负数.<ul>
+<li>一些硬件看门狗设备只能启动,没有关闭选项.对应这些设备的驱动,不用实现 <em>stop  ,</em>如果驱动程序没有关闭设备功能,看门狗核心层会在设备关闭后设置 WDOG_HW_RUNNING 并调用驱动程序的 keepalive pings功能.</li>
+<li>如果看门狗驱动没有实现<em>stop  </em>必须设置max_hw_heartbeat<em>ms</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>不是所有的硬件看门狗都有相同的功能,这就是为什么会有可选函数了,只有但这项功能被硬件看门🐶支持时,才编写对应函数.</p>
+<ul>
+<li>ping:这是看门狗驱动实现的喂狗函数,这个函数的参数时一个指向struct watchdog<em>device的指针</em>.函数执行成功返回0,失败返回负数.<ul>
+<li>大多数的硬件不支持直接喂狗的特殊功能,一般是直接重启硬件看门狗.</li>
+<li>看门狗子系统的核心层也是这样做的:但定期喂狗的操作转发到硬件看门狗时,核心层在 <em>ping 实现</em>时调用喂狗函数,但喂狗函数没有实现时,使用 start  对应函数</li>
+<li>( WDIOC_KEEPALIVE对应的 ioctl命令只有在i看门狗info里的WDIOF_KEEPALIVEPING被设置为1后才会生效 )</li>
+</ul>
+</li>
+<li>status: 这个函数用来检查看门狗设备的状态,通过看门狗的WDIOF<em>*</em>状态标志位报告.WDIOF_MAGICCLOSE and WDIOF_KEEPALIVEPING由看门狗核心层报告.没有必要在驱动程序中报告.此外如果驱动程序没有实现该函数,看门狗核心层会返回 struct watchdog<em>device</em>中的bootstatus状态位.</li>
+<li>set_timeout:这个函数设置和检查 超时时间的变化,返回0表示成功,返回-EINVAL表示超出范围,返回-EIO表示无法写入看门狗.设置成功后,函数应该将设定的超时时间写入看门狗.(或许与通过接口获取的超时时间不同,因为看门狗的分辨率不一定能到1s). <ul>
+<li>实现了max_hw_heartbeat_ms的驱动将硬件看门狗心跳值设置为超时时间和max_hw_heartbeat_ms之间的最小值.Those drivers set the timeout value of the watchdog_device either to the requested timeout value (if it is larger than max_hw_heartbeat_ms), or to the achieved timeout value.</li>
+<li>如果看门狗驱动程序没有执行任何操作,但设置了watchdog<em>device.timeout</em>,此回掉函数忽略.</li>
+<li>如果没有设置 set_timeout,但设置了WDIOF_SETTIMEOUT,看门狗架构会将 watchdog_device中timeout值更新为请求的值.</li>
+<li>如果使用了pretimeout feature (WDIOF_PRETIMEOUT),那么set_timeout 必须同时检查 pretimeout 是否有效 ,设置相应定时器. 这些操作在核心层没有races无法完成,所以必须在驱动中完成.</li>
+</ul>
+</li>
+<li>set<em>pretimeout</em>:这个函数支持检查/改变看门狗中pretimeout值(pretimeout详情见wdt用户层api翻译).这个函数是可选支持的,因为不是所有的看门狗都支持这个功能.pretimeout 不是绝对时间,其数值是在超时时间之前几秒发生.<ul>
+<li>返回0表示执行成功,返回-EINVAL,表示超出范围,返回-EIO表示未能成功向看门狗写入.</li>
+<li>设置pretimeou为0值,代表禁用pretimeout功能.(WDIOF<em>PRETIMEOUT</em>需要在看门狗的info 结构体中设置)</li>
+<li>如果驱动没有实现任何功能,但设定了 watchdog<em>device.pretimeout</em>,此回掉函数忽略.这意味这,如果没有提供set<em>pretimeout</em>函数,但设定了WDIOF<em>PRETIMEOUT</em>,看门狗架构会将pretimeout的值更新为请求值.</li>
+</ul>
+</li>
+<li>get<em>timeleft:</em>这个函数返回复位前剩余时间.</li>
+<li>restart:此函数重启看门狗硬件,返回0表示成功,失败返回对应错误码.</li>
+<li>ioctl:如果这个函数存在,在系统进行内部ioctl命令处理前,会首先调用此函数.如果不支持ioctrl命令,应该返回 -ENOIOCTLCMD .这个函数的参数为(watchdog<em>device, cmd and arg)</em></li>
+<li>ref和unref 已经不再被支持.</li>
+</ul>
+</li>
+<li><p>The status bits should (preferably) be set with the set_bit and clear_bit alike bit-operations. The status bits that are defined are:</p>
+<ul>
+<li>WDOG<em>ACTIVE:</em>这个状态位标识着从用户空间看一个看门狗设备是否被激活,如果被激活,用户空间需要执行喂狗动作</li>
+<li>WDOG_NO_WAY<em>OUT:</em>这个状态位标识这nowayout的设置,如果被激活,那看门狗启动后,无法被停止.</li>
+<li>WDOG_HW_RUNNING:如果硬件看门狗运行,此状态位被置1.<ul>
+<li>当硬件看门狗不能被停止时,这个状态位必须被置1.</li>
+<li>如果系统启动后自动启动看门狗,在看门狗打开前,必须设置此状态位.</li>
+<li>当此状态位被置1,即使WDOG<em>ACTIVE为0</em>.看门狗架构也会执行喂狗动作.</li>
+<li>(当你直接注册设置了 WDOG_HW_RUNNING位的看门狗设备时,执行open /dev/watchdog动作,系统会直接跳过启动操作,直接执行喂狗操作 )</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>要设置WDOG_NO_WAY<em>OUT</em>状态位(在注册看门狗设备前)你可以:</p>
+<ul>
+<li><p>在watchdog<em>device</em>的结构体中设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.status = WATCHDOG_NOWAYOUT_INIT_STATUS,</div></pre></td></tr></table></figure>
+<p>这样等同于将WDOG_NO_WAY<em>OUT</em>值设置为CONFIG_WATCHDOG_NOWAYOUT</p>
+</li>
+<li>使用下面的函数<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">static inline void watchdog_set_nowayout(struct watchdog_device *wdd, int nowayout)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>(note:)   wdt驱动程序核心支持magic close和 nowayout功能.要使用magic close,需要在看门狗的 info中设置WDIOF<em>MAGICCLOSE </em>位.开启 nowayout 会覆盖magic close.</p>
+</li>
+<li><p>获取或设定驱动程序特殊数据,应该使用以下两个函数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">static inline void watchdog_set_drvdata(struct watchdog_device *wdd, void *data)</div><div class="line">static inline void *watchdog_get_drvdata(struct watchdog_device *wdd)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>watchdog_set_drvdata函数允许你添加向驱动程序添加特殊数据,此函数的参数为指向看门狗设备的指针,和指向需要添加数据的指针.</li>
+<li>watchdog_get_drvdata函数运行你读取驱动程序中的特殊数据,此函数的参数为指向你想读取的看门狗设备的指针.</li>
+</ul>
+<ul>
+<li><p>初始化 timeout ,会用到下面的函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">  extern int watchdog_init_timeout(struct watchdog_device *wdd,unsigned int timeout_parm, struct device *dev);</div><div class="line">  ``` </div><div class="line">  </div><div class="line">  * watchdog_init_timeout允许使用模块的 timeout 字段初始化 timeout ,当模块的 timeout 字段无效时,设备树中的timeout-sec也可.最好的做法是将watchdog_device_中timeout的值,设置为初始默认值,然后使用到函数的用户可以分别设置自定义值.</div><div class="line"></div><div class="line">* 重启后禁用看门狗,需要使用以下函数:</div></pre></td></tr></table></figure>
+<p>static inline void watchdog_stop_on_reboot(struct watchdog_device *wdd);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 卸载看门狗设备时禁用看门狗,必须调用此函数,如果 nowayout 没有设置,这个函数只会停止看门狗.</div></pre></td></tr></table></figure>
+<p>static inline void watchdog_stop_on_unregister(struct watchdog_device *wdd);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">    </div><div class="line">* 更改重启处理程序的优先级,(猜测是不同看门狗的优先级)调用下面的函数:</div></pre></td></tr></table></figure>
+<p>oid watchdog_set_restart_priority(struct watchdog_device *wdd, int priority);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">  * 设定优先级时,用户需要遵循以下规则</div><div class="line">    * 0:优先级最低,非常有限的重启能力</div><div class="line">    * 128:重启处理的默认选择,如果没有其他的重启处理程序可用,或者没有重启整个系统的重启处理程序可用.</div><div class="line">    * 255:最高优先级,会覆盖其他所有重启处理程序</div><div class="line"></div><div class="line">* 使用pretimeout 通知功能,需要利用以下函数:</div></pre></td></tr></table></figure>
+<p>void watchdog_notify_pretimeout(struct watchdog_device *wdd)<br>```</p>
+<ul>
+<li>这个函数可以在中断上下文中调用,如果启用了watchdog pretimeout governor 框架(kbuild CONFIG_WATCHDOG_PRETIMEOUT_GOV),就会采用进入驱动程序分配好的处理程序,如果没有启用watchdog pretimeout governor 框架,watchdog_notify_pretimeout()会将信息输出到内核日志缓存.</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="https://my.mixtape.moe/pkqlqc.png" alt="Jasper Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/2017/08/23/linux笔记—看门狗内核API文档翻译/" title="linux笔记——看门狗内核API文档翻译">http://yoursite.com/2017/08/23/linux笔记—看门狗内核API文档翻译/</a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+        <div class="post-tags">
+          
+            <a href="/tags/学习记录/" rel="tag"># 学习记录</a>
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/翻译/" rel="tag"># 翻译</a>
+          
+            <a href="/tags/wdt/" rel="tag"># wdt</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/22/linux笔记—看门狗API文档翻译/" rel="next" title="linux笔记—看门狗API文档翻译">
+                <i class="fa fa-chevron-left"></i> linux笔记—看门狗API文档翻译
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/v.png"
+               alt="Jasper" />
+          <p class="site-author-name" itemprop="name">Jasper</p>
+           
+              <p class="site-description motion-element" itemprop="description">程序员 微尘 V</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jasper-1024" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#看门狗定时器驱动内核API"><span class="nav-number">1.</span> <span class="nav-text">看门狗定时器驱动内核API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#API"><span class="nav-number">1.2.</span> <span class="nav-text">API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#struct-watchdogdevice"><span class="nav-number">1.3.</span> <span class="nav-text">struct watchdogdevice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#struct-watchdog-ops"><span class="nav-number">1.4.</span> <span class="nav-text">struct watchdog_ops</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016.6.2 - 
+  <span itemprop="copyrightYear">2017.9.10</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jasper</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://jasper1024.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/08/23/linux笔记—看门狗内核API文档翻译/';
+          this.page.identifier = '2017/08/23/linux笔记—看门狗内核API文档翻译/';
+          this.page.title = 'linux笔记——看门狗内核API文档翻译';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://jasper1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("8AEPwU1rVoSnwxtOrX35u23j-gzGzoHsz", "SBLr7EMdL83IXCfJSbydMdll");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
