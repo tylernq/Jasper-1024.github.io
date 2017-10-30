@@ -154,7 +154,7 @@
 <hr>
 <h2 id="看门狗定时器驱动内核API"><a href="#看门狗定时器驱动内核API" class="headerlink" title="看门狗定时器驱动内核API"></a>看门狗定时器驱动内核API</h2><ul>
 <li>最后更新时间 2013.2.12</li>
-<li>Wim Van Sebroeck <a href="&#109;&#x61;&#105;&#108;&#x74;&#111;&#58;&#x77;&#x69;&#x6d;&#x40;&#x69;&#103;&#117;&#x61;&#x6e;&#x61;&#46;&#x62;&#101;">&#x77;&#x69;&#x6d;&#x40;&#x69;&#103;&#117;&#x61;&#x6e;&#x61;&#46;&#x62;&#101;</a></li>
+<li>Wim Van Sebroeck <a href="&#109;&#97;&#105;&#x6c;&#116;&#111;&#x3a;&#119;&#x69;&#109;&#64;&#105;&#x67;&#x75;&#x61;&#x6e;&#x61;&#x2e;&#x62;&#101;">&#119;&#x69;&#109;&#64;&#105;&#x67;&#x75;&#x61;&#x6e;&#x61;&#x2e;&#x62;&#101;</a></li>
 </ul>
 <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul>
 <li>本文档没有描述看门狗设备或驱动。也不涉及那些在用户空间调用的API，对应在 Documentation/watchdog/watchdog-api.txt （也就是<a href="">上一篇</a>）</li>
@@ -331,8 +331,8 @@
 </li>
 <li><p>linux看门狗设备API</p>
 </li>
-<li>Copyright 2002 Christer Weingel <a href="&#109;&#x61;&#x69;&#108;&#x74;&#x6f;&#58;&#119;&#105;&#110;&#103;&#x65;&#x6c;&#64;&#110;&#97;&#x6e;&#x6f;&#45;&#x73;&#x79;&#x73;&#116;&#101;&#x6d;&#46;&#x63;&#x6f;&#109;">&#119;&#105;&#110;&#103;&#x65;&#x6c;&#64;&#110;&#97;&#x6e;&#x6f;&#45;&#x73;&#x79;&#x73;&#116;&#101;&#x6d;&#46;&#x63;&#x6f;&#109;</a></li>
-<li><p>本文档的一些内容来自 sbc60xxwdt ，版权属于 Copyright 2000 Jakob Oestergaard <a href="&#109;&#x61;&#105;&#108;&#x74;&#x6f;&#x3a;&#106;&#97;&#x6b;&#111;&#98;&#x40;&#x6f;&#x73;&#x74;&#101;&#x6e;&#102;&#x65;&#108;&#x64;&#x2e;&#100;&#107;">&#106;&#97;&#x6b;&#111;&#98;&#x40;&#x6f;&#x73;&#x74;&#101;&#x6e;&#102;&#x65;&#108;&#x64;&#x2e;&#100;&#107;</a></p>
+<li>Copyright 2002 Christer Weingel <a href="&#x6d;&#97;&#105;&#108;&#x74;&#111;&#58;&#x77;&#105;&#x6e;&#103;&#101;&#108;&#x40;&#x6e;&#x61;&#x6e;&#111;&#x2d;&#x73;&#121;&#x73;&#116;&#101;&#x6d;&#x2e;&#99;&#111;&#109;">&#x77;&#105;&#x6e;&#103;&#101;&#108;&#x40;&#x6e;&#x61;&#x6e;&#111;&#x2d;&#x73;&#121;&#x73;&#116;&#101;&#x6d;&#x2e;&#99;&#111;&#109;</a></li>
+<li><p>本文档的一些内容来自 sbc60xxwdt ，版权属于 Copyright 2000 Jakob Oestergaard <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x6a;&#x61;&#107;&#111;&#x62;&#x40;&#111;&#115;&#116;&#x65;&#x6e;&#102;&#x65;&#x6c;&#100;&#x2e;&#100;&#107;">&#x6a;&#x61;&#107;&#111;&#x62;&#x40;&#111;&#115;&#116;&#x65;&#x6e;&#102;&#x65;&#x6c;&#100;&#x2e;&#100;&#107;</a></p>
 </li>
 <li><p>本文档基于linux内核 2.4.18</p>
 </li>
@@ -995,9 +995,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1119,9 +1119,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1264,9 +1264,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1281,9 +1281,9 @@
     <link href="http://yoursite.com/2017/04/08/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B3/"/>
     <id>http://yoursite.com/2017/04/08/VPS科学上网教程3/</id>
     <published>2017-04-08T09:52:16.000Z</published>
-    <updated>2017-08-22T14:19:54.671Z</updated>
+    <updated>2017-10-30T15:15:01.464Z</updated>
     
-    <content type="html"><![CDATA[<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">更新</div><div class="line"><span class="number">2017.04</span>.<span class="number">08</span>  VPS日常一些安全措施</div><div class="line"><span class="number">2017.08</span>.<span class="number">22</span>  更新安全措施，读者反馈，没有debian的，这里加上。</div></pre></td></tr></table></figure>
+    <content type="html"><![CDATA[<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">更新</div><div class="line"><span class="number">2017.04</span>.<span class="number">08</span>  VPS日常一些安全措施</div><div class="line"><span class="number">2017.08</span>.<span class="number">22</span>  更新安全措施，读者反馈，没有debian的，这里加上。</div><div class="line"><span class="number">2017.10</span>.<span class="number">30</span>  纠正错误,排版.</div></pre></td></tr></table></figure>
 <hr>
 <ul>
 <li><p>导语<br>科学上网教程系列，很久没有更新新内容了。更新常用安全措施，至少保证，不会被轻易的当作肉鸡。都是一些常用的安全措施。</p>
@@ -1306,14 +1306,15 @@
 <h3 id="修改端口"><a href="#修改端口" class="headerlink" title="修改端口"></a>修改端口</h3><ul>
 <li><p>CentOS 命令 如下，以下是将 SSH 端口改为 999 端口</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed -i &apos;s/#Port 22/Port 999/g&apos; /etc/ssh/sshd_config</div></pre></td></tr></table></figure>
-<p>debian需要打开/etc/ssh/sshd<em>config </em>文件，修改其中的port后面的数字,</p>
+<ul>
+<li><p>debian需要打开/etc/ssh/sshd<em>config </em>文件，修改其中的port后面的数字,</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano /etc/ssh/sshd_config</div></pre></td></tr></table></figure>
 <p>修改其中的port后面的数字，为你要ssh登陆的端口，cltrl + x保存，回车退出。</p>
 </li>
-<li><p>安装 fail2ban 封掉 暴力破解ip</p>
+</ul>
 </li>
 </ul>
-<h4 id="fail2ban"><a href="#fail2ban" class="headerlink" title="fail2ban"></a>fail2ban</h4><ul>
+<h2 id="fail2ban"><a href="#fail2ban" class="headerlink" title="fail2ban"></a>fail2ban</h2><ul>
 <li><p>fail2ban 是 Linux 上的一个著名的入侵保护的开源框架，它会监控多个系统的日志文件，并根据检测到的任何可疑的行为自动触发不同的防御动作。将尝试爆破 ssh 密码的 IP 封停，默认10分钟。</p>
 </li>
 <li><p>详细配置安装方法在如下网址，这里使用默认配置即可。</p>
@@ -1357,8 +1358,10 @@
 <li><p>允许本机访问本机</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT</div><div class="line">iptables -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT</div></pre></td></tr></table></figure>
 </li>
+</ul>
+<ul>
 <li><p><strong>允许真正 SSH 端口</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p tcp -s 0/0 --dport 999 -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport 99 -m state --state ESTABLISHED -j ACCEPT</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p tcp -s 0/0 --dport 999 -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport 999 -m state --state ESTABLISHED -j ACCEPT</div></pre></td></tr></table></figure>
 </li>
 <li><p>允许 80 443 端口，http 和 https</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p tcp -s 0/0 --dport 80 -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport 80 -m state --state ESTABLISHED -j ACCEPT</div><div class="line">iptables -A INPUT -p tcp -s 0/0 --dport 443 -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport 443 -m state --state ESTABLISHED -j ACCEPT</div></pre></td></tr></table></figure>
@@ -1550,9 +1553,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1687,9 +1690,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1894,9 +1897,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -2218,9 +2221,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -2440,9 +2443,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -2607,9 +2610,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -2747,9 +2750,9 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -3015,9 +3018,9 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
