@@ -325,6 +325,404 @@
   
   
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/06/Android笔记—Rxjava2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/11/06/Android笔记—Rxjava2/" itemprop="url">
+                  Android笔记—Rxjava2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-06T12:00:00+08:00">
+                2017-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/06/Android笔记—Rxjava2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/06/Android笔记—Rxjava2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/06/Android笔记—Rxjava2/" class="leancloud_visitors" data-flag-title="Android笔记—Rxjava2">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  2,687
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  12m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>资料来源如下<br><a href="http://www.jianshu.com/u/c50b715ccaeb" target="_blank" rel="external">给初学者的RxJava2.0教程</a>(demo代码来源)</p>
+<blockquote>
+<p><a href="http://www.jianshu.com/u/c50b715ccaeb" target="_blank" rel="external">http://www.jianshu.com/u/c50b715ccaeb</a></p>
+</blockquote>
+<p>编程环境</p>
+<ul>
+<li>Android Studio 2.2.3 </li>
+</ul>
+<hr>
+<ul>
+<li>在Gradle配置:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">compile &apos;io.reactivex.rxjava2:rxjava:2.0.1&apos;</div><div class="line">compile &apos;io.reactivex.rxjava2:rxandroid:2.0.1&apos;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2><ul>
+<li>在Eventbus中亦涉及了相关概念,比较简单.包括Observable(被观察者)、Observer(观察者)、subscribe().事件由Observable(被观察者)开始发出,通过subscribe()最终被传递到Observer(观察者).而整个过程中你是站在Observer(观察者)的位置,也就是事件的末尾,观察Observable(被观察者).</li>
+<li><p>上图</p>
+</li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public void subscribe(ObservableEmitter&lt;Integer&gt; emitter) throws Exception &#123;</div><div class="line">              emitter.onNext(1);</div><div class="line">              emitter.onComplete();</div><div class="line">          &#125;</div><div class="line">      &#125;).subscribe(new Observer&lt;Integer&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public void onSubscribe(Disposable d) &#123;</div><div class="line">              Log.d(TAG, &quot;subscribe&quot;);</div><div class="line">          &#125;</div><div class="line"></div><div class="line">          @Override</div><div class="line">          public void onNext(Integer value) &#123;</div><div class="line">              Log.d(TAG, &quot;&quot; + value);</div><div class="line">          &#125;</div><div class="line"></div><div class="line">          @Override</div><div class="line">          public void onError(Throwable e) &#123;</div><div class="line">              Log.d(TAG, &quot;error&quot;);</div><div class="line">          &#125;</div><div class="line"></div><div class="line">          @Override</div><div class="line">          public void onComplete() &#123;</div><div class="line">              Log.d(TAG, &quot;complete&quot;);</div><div class="line">          &#125;</div><div class="line">      &#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>事件由<code>emitter.onNext(1);</code>开始,最终被<code>public void onNext(Integer value)</code>相应.被观察者事件发送结束调用<code>emitter.onComplete();</code>,同时观察者最终以<code>public void onComplete()</code>相应.</p>
+</li>
+</ul>
+<hr>
+<h2 id="note-上下游以-subscribe建立连接后-事件才会开始发送"><a href="#note-上下游以-subscribe建立连接后-事件才会开始发送" class="headerlink" title="* note: 上下游以.subscribe建立连接后,事件才会开始发送."></a>* note: 上下游以<code>.subscribe</code>建立连接后,事件才会开始发送.</h2><h3 id="Observable-被观察者-Observer-观察者"><a href="#Observable-被观察者-Observer-观察者" class="headerlink" title="Observable(被观察者) Observer(观察者)"></a>Observable(被观察者) Observer(观察者)</h3><ul>
+<li>ObservableEmitter<br>ObservableEmitter： Emitter意为发射器,事件发送.onNext(T value)、onComplete()和onError(Throwable error)分别对应next事件、complete事件和error事件。</li>
+<li>Observer<integer>中onNext(Integer value)、onError(Throwable e)、onComplete()对应接受next事件、complete事件和error事件</integer></li>
+<li>被观察者发送complete事件和error事件后,观察者接受后不再继续响应事件,即使被观察者还在发送事件.<strong>complete事件和error事件互斥.</strong></li>
+<li>在Observer<integer>中,调用Disposable.dispose(),切断管道.被观察者继续发送,但观察者不再响应.</integer></li>
+</ul>
+<h3 id="subscribe"><a href="#subscribe" class="headerlink" title="subscribe"></a>subscribe</h3><ul>
+<li>建立Observable(被观察者) Observer(观察者)之间的管道.有多个重载.</li>
+<li><p>重载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public final Disposable subscribe() &#123;&#125;</div><div class="line"></div><div class="line">public final Disposable subscribe(Consumer&lt;? super T&gt; onNext) &#123;&#125;</div><div class="line"></div><div class="line">public final Disposable subscribe(Consumer&lt;? super T&gt; onNext, Consumer&lt;? super Throwable&gt; onError) &#123;&#125; </div><div class="line"></div><div class="line">public final Disposable subscribe(Consumer&lt;? super T&gt; onNext, Consumer&lt;? super Throwable&gt; onError, Action onComplete) &#123;&#125;</div><div class="line"></div><div class="line">public final Disposable subscribe(Consumer&lt;? super T&gt; onNext, Consumer&lt;? super Throwable&gt; onError, Action onComplete, Consumer&lt;? super Disposable&gt; onSubscribe) &#123;&#125;</div><div class="line"></div><div class="line">public final void subscribe(Observer&lt;? super T&gt; observer) &#123;&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>重载说明</p>
+<ul>
+<li>不带参数 : 观察者不关心任何事件(有卵用😵)</li>
+<li>只带onNext : 观察者只响应next事件.</li>
+<li>其他类似….演绎推理….</li>
+<li>最后一个是传入完整的Observer对象.(demo就是🙃)</li>
+</ul>
+</li>
+</ul>
+<h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><ul>
+<li>基于Rxjava的观察者模式可以拆分大多数的业务逻辑,即使再增加很多功能整体也不会过于混乱.</li>
+<li>但Rxjava的强大并不局限在拆分逻辑.由被观察者到观察者的整个事件传递过程,基于Rxjava我们可以<strong>任意拆分 合并 转换 事件、切换线程等.</strong></li>
+</ul>
+<hr>
+<h2 id="note-操作符搭配-Lambda-表达式食用更佳-🤣"><a href="#note-操作符搭配-Lambda-表达式食用更佳-🤣" class="headerlink" title="* note: 操作符搭配 Lambda 表达式食用更佳 🤣"></a>* note: 操作符搭配 Lambda 表达式食用更佳 🤣</h2><h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><ul>
+<li>产生并发送 Obserable 事件.</li>
+<li>仅常用,详细在<a href="https://maxwell-nc.github.io/android/rxjava2-2.html#timer" target="_blank" rel="external"> RxJava 2.x 使用详解(二) 创建操作符</a> <h4 id="creat"><a href="#creat" class="headerlink" title=".creat"></a>.creat</h4></li>
+<li>前面demo中已经实际使用过了</li>
+<li>用于产生一个 Obserable 被观察者对象,demo如上所示.</li>
+</ul>
+<h4 id="just"><a href="#just" class="headerlink" title=".just"></a>.just</h4><ul>
+<li>对于简单的几个数据,直接使用just发送即可,无需创建 Obserable 对象.just最多可以接收 <strong>10</strong> 个参数.</li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Observable.just(&quot;test&quot;,&quot;test2&quot;)</div><div class="line">      .subscribe(str -&gt; Log.i(&quot;tag&quot;, str));</div></pre></td></tr></table></figure>
+<p>相当于顺序调用onNext(“test”)和onNext(“test2”)，最后调用onComplete方法。</p>
+</li>
+</ul>
+<h4 id="fromArray"><a href="#fromArray" class="headerlink" title=".fromArray"></a>.fromArray</h4><ul>
+<li>功能与just类似但fromArray来接收任意长度的数据数组,也可以直接传入数组<code>fromArray(new int[]{1, 2, 3})</code></li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Observable.fromArray(1, 2, 3, 4, 5)</div><div class="line">      .subscribe(integer -&gt; Log.i(&quot;tag&quot;, String.valueOf(integer)));</div></pre></td></tr></table></figure>
+<p>fromArray不支持直接传入list进，list会被当作一个整体发送.</p>
+</li>
+</ul>
+<h4 id="fromIterable"><a href="#fromIterable" class="headerlink" title=".fromIterable"></a>.fromIterable</h4><ul>
+<li>功能与fromArray类似,但是可以接收 list 类型,遍历可迭代数据集合.</li>
+<li>demo<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; list = new ArrayList&lt;&gt;();</div><div class="line">list.add(&quot;a&quot;);</div><div class="line">list.add(&quot;b&quot;);</div><div class="line">list.add(&quot;c&quot;);</div><div class="line"></div><div class="line">Flowable.fromIterable(list).subscribe(</div><div class="line">      s -&gt; Log.i(&quot;tag&quot;, s)</div><div class="line">);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="timer"><a href="#timer" class="headerlink" title=".timer"></a>.timer</h4><ul>
+<li>指定一段时间间隔后发送数据(一次性),不太常用.</li>
+</ul>
+<h3 id="线程切换"><a href="#线程切换" class="headerlink" title="线程切换"></a>线程切换</h3><ul>
+<li>默认事件传递的双方在同一线程工作.</li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">observable.subscribeOn(Schedulers.newThread())     </div><div class="line">       .subscribeOn(Schedulers.io())              </div><div class="line">       .observeOn(AndroidSchedulers.mainThread()) </div><div class="line">       .observeOn(Schedulers.io())                </div><div class="line">       .subscribe(consumer);</div></pre></td></tr></table></figure>
+</li>
+<li><p>方法:</p>
+<ul>
+<li>.subscribeOn() : 指定被观察者发送事件线程,<strong>仅第一次调用时有效!</strong>  </li>
+<li>.observeOn() : 指定观察者/流变换(对发送的事件处理🖖)线程,<strong>多次调用,多次切换有效</strong></li>
+</ul>
+</li>
+<li><p>参数:</p>
+<ul>
+<li>Schedulers.io() : 适用于io密集型操作,网络通信、磁盘操作等.</li>
+<li>Schedulers.computation() : CPU密集操作,需要大量CPU计算的操作.</li>
+<li>Schedulers.newThread() : 创建新线程.</li>
+<li>AndroidSchedulers.mainThread() : Android主线程,通常为更新UI等.</li>
+</ul>
+</li>
+</ul>
+<h3 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h3><ul>
+<li>对 Obserable 事件筛选.</li>
+<li>仅常用,详细在<a href="https://maxwell-nc.github.io/android/rxjava2-3.html#filter" target="_blank" rel="external">RxJava 2.x 使用详解(三) 过滤操作符</a></li>
+</ul>
+<h4 id="filter"><a href="#filter" class="headerlink" title=".filter"></a>.filter</h4><ul>
+<li>基本过滤操作符,按照任意自定规则过滤.</li>
+</ul>
+<h3 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h3><h3 id="转换"><a href="#转换" class="headerlink" title="转换"></a>转换</h3><h4 id="map"><a href="#map" class="headerlink" title=".map"></a>.map</h4><ul>
+<li>处理前后事件数量之比<strong>1:1</strong>,事件变换前后顺序<strong>不变</strong></li>
+<li>map作用是对Observable发送的每一个事件,应用处理变换函数,再继续像下游发送.中间过程可以转换事件类型、改变事件内容等等.<strong>只需要变换后的事件类型与下游接收的类型匹配即可.</strong></li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public void subscribe(ObservableEmitter&lt;Integer&gt; emitter) throws Exception &#123;</div><div class="line">              emitter.onNext(1);</div><div class="line">              emitter.onNext(2);</div><div class="line">              emitter.onNext(3);</div><div class="line">          &#125;</div><div class="line">      &#125;).map(new Function&lt;Integer, String&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public String apply(Integer integer) throws Exception &#123;</div><div class="line">              return &quot;This is result &quot; + integer;</div><div class="line">          &#125;</div><div class="line">      &#125;).subscribe(new Consumer&lt;String&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public void accept(String s) throws Exception &#123;</div><div class="line">              Log.d(TAG, s);</div><div class="line">          &#125;</div><div class="line">      &#125;);</div></pre></td></tr></table></figure>
+<p>这里是把int类型转换为了string类型,与观察者接收的类型匹配即可.</p>
+</li>
+</ul>
+<h4 id="flatMap"><a href="#flatMap" class="headerlink" title=".flatMap"></a>.flatMap</h4><ul>
+<li>处理前后事件数量之比 <strong>1:n</strong>,事件变换前后顺序<strong>不保证</strong></li>
+<li>flatMap,通俗点就是把Observable发送的事件拆散变换再,继续像下游发送.1个Observable事件可拆成任意个.<strong>只需要变换后的事件类型与下游接收的类型匹配即可.</strong></li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public void subscribe(ObservableEmitter&lt;Integer&gt; emitter) throws Exception &#123;</div><div class="line">              emitter.onNext(1);</div><div class="line">              emitter.onNext(2);</div><div class="line">              emitter.onNext(3);</div><div class="line">          &#125;</div><div class="line">      &#125;).flatMap(new Function&lt;Integer, ObservableSource&lt;String&gt;&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public ObservableSource&lt;String&gt; apply(Integer integer) throws Exception &#123;</div><div class="line">              final List&lt;String&gt; list = new ArrayList&lt;&gt;();</div><div class="line">              for (int i = 0; i &lt; 3; i++) &#123;</div><div class="line">                  list.add(&quot;I am value &quot; + integer);</div><div class="line">              &#125;</div><div class="line">              return Observable.fromIterable(list).delay(10,TimeUnit.MILLISECONDS);</div><div class="line">          &#125;</div><div class="line">      &#125;).subscribe(new Consumer&lt;String&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public void accept(String s) throws Exception &#123;</div><div class="line">              Log.d(TAG, s);</div><div class="line">          &#125;</div><div class="line">      &#125;);</div></pre></td></tr></table></figure>
+<p>这里是flatMap把一个int类型事件拆成了3个String类型,运行结果看,最终事件到达顺序与onNext(1);onNext(2);的发送顺序无关</p>
+</li>
+</ul>
+<h4 id="concatMap"><a href="#concatMap" class="headerlink" title=".concatMap"></a>.concatMap</h4><ul>
+<li>处理前后事件数量之比 <strong>1:n</strong>,事件变换前后顺序<strong>按顺序</strong></li>
+<li>与flatMap作用相同,只是保证了事件严格按顺序达到下游.</li>
+<li>demo 就不上了,直接替换flatMap的位置就好.</li>
+</ul>
+<h4 id="zip"><a href="#zip" class="headerlink" title=".zip"></a>.zip</h4><ul>
+<li>处理前后事件数量之比 <strong>n:1</strong>,事件变换前后顺序<strong>严格按顺序</strong></li>
+<li>zip.最常见的压缩文件格式,在这里也是类似的意思,zip可以严格按照顺序合并多个 <strong>不同类型</strong> Observable发送的事件.总的发送事件数量与上游Observable发送最少的那个数量相同.</li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line">Observable&lt;Integer&gt; observable1 = Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() &#123;         </div><div class="line">  @Override                                                                                      </div><div class="line">  public void subscribe(ObservableEmitter&lt;Integer&gt; emitter) throws Exception &#123;                   </div><div class="line">      Log.d(TAG, &quot;emit 1&quot;);                                                                      </div><div class="line">      emitter.onNext(1);                                                                         </div><div class="line">      Thread.sleep(1000);                                                                        </div><div class="line"></div><div class="line">      Log.d(TAG, &quot;emit 2&quot;);                                                                      </div><div class="line">      emitter.onNext(2);                                                                         </div><div class="line">      Thread.sleep(1000);                                                                        </div><div class="line"></div><div class="line">      Log.d(TAG, &quot;emit 3&quot;);                                                                      </div><div class="line">      emitter.onNext(3);                                                                         </div><div class="line">      Thread.sleep(1000);                                                                        </div><div class="line"></div><div class="line">      Log.d(TAG, &quot;emit 4&quot;);                                                                      </div><div class="line">      emitter.onNext(4);                                                                         </div><div class="line">      Thread.sleep(1000);                                                                        </div><div class="line"></div><div class="line">      Log.d(TAG, &quot;emit complete1&quot;);                                                              </div><div class="line">      emitter.onComplete();                                                                      </div><div class="line">  &#125;                                                                                              </div><div class="line">&#125;).subscribeOn(Schedulers.io());                                                                   </div><div class="line"></div><div class="line">Observable&lt;String&gt; observable2 = Observable.create(new ObservableOnSubscribe&lt;String&gt;() &#123;           </div><div class="line">  @Override                                                 public void subscribe(ObservableEmitter&lt;String&gt; emitter) throws Exception &#123;                    </div><div class="line">      Log.d(TAG, &quot;emit A&quot;);                                                                  </div><div class="line">      emitter.onNext(&quot;A&quot;);                                                                       </div><div class="line">      Thread.sleep(1000);                                                                        </div><div class="line"></div><div class="line">      Log.d(TAG, &quot;emit B&quot;);                                                                      </div><div class="line">      emitter.onNext(&quot;B&quot;);                                                                       </div><div class="line">      Thread.sleep(1000);                                                                        </div><div class="line"></div><div class="line">      Log.d(TAG, &quot;emit C&quot;);                                                                      </div><div class="line">      emitter.onNext(&quot;C&quot;);                                                                       </div><div class="line">      Thread.sleep(1000);                                                                        </div><div class="line"></div><div class="line">      Log.d(TAG, &quot;emit complete2&quot;);                                                              </div><div class="line">      emitter.onComplete();                                                                      </div><div class="line">  &#125;                                                                                              </div><div class="line">&#125;).subscribeOn(Schedulers.io());                                                                   </div><div class="line"></div><div class="line">Observable.zip(observable1, observable2, new BiFunction&lt;Integer, String, String&gt;() &#123;               </div><div class="line">  @Override                                                                                      </div><div class="line">  public String apply(Integer integer, String s) throws Exception &#123;                              </div><div class="line">      return integer + s;                                                                        </div><div class="line">  &#125;                                                                                              </div><div class="line">&#125;).subscribe(new Observer&lt;String&gt;() &#123;                    </div><div class="line">  @Override                                                                                      </div><div class="line">  public void onSubscribe(Disposable d) &#123;                                                        </div><div class="line">      Log.d(TAG, &quot;onSubscribe&quot;);                                                                 </div><div class="line">  &#125;                                                                                              </div><div class="line"></div><div class="line">  @Override                                                                                      </div><div class="line">  public void onNext(String value) &#123;                                                             </div><div class="line">      Log.d(TAG, &quot;onNext: &quot; + value);                                                            </div><div class="line">  &#125;                                                                                              </div><div class="line"></div><div class="line">  @Override                                                                                      </div><div class="line">  public void onError(Throwable e) &#123;                                                             </div><div class="line">      Log.d(TAG, &quot;onError&quot;);                                                                     </div><div class="line">  &#125;                                                                                              </div><div class="line"></div><div class="line">  @Override                                                                                      </div><div class="line">  public void onComplete() &#123;                                                                     </div><div class="line">      Log.d(TAG, &quot;onComplete&quot;);                                                                  </div><div class="line">  &#125;                                                                                              </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>这里两个事件发送在同一线程中.当两个事件发送不再同一线程时,情况类似,不过当异步时,数量较少的事件发送完成,发送Complete事件后,通道随即被切断.</p>
+</li>
+</ul>
+<h4 id="Concat"><a href="#Concat" class="headerlink" title=".Concat"></a>.Concat</h4><ul>
+<li>处理前后事件数量之比 <strong>n:1</strong>,事件变换前后顺序<strong>严格按顺序</strong></li>
+<li>Concat,可以严格按照顺序合并 <strong>相同类型</strong> Observable发送的事件.</li>
+</ul>
+<h2 id="Backpressure"><a href="#Backpressure" class="headerlink" title="Backpressure"></a>Backpressure</h2><hr>
+<h2 id="被翻译为背压…-如此文不达意的直译-能忍-往下都是因为原文-😈"><a href="#被翻译为背压…-如此文不达意的直译-能忍-往下都是因为原文-😈" class="headerlink" title="* 被翻译为背压…(如此文不达意的直译,能忍?往下都是因为原文..😈)"></a>* 被翻译为背压…(如此文不达意的直译,能忍?往下都是因为原文..😈)</h2><ul>
+<li>其实概念有够简单:将整个事件产生/传递/处理的过程想象为一条河流由上而下, Backpressure 指的是上游产生的事件太快,远远超过了下游的处理速度,以至于缓冲区溢出.上游来了洪水,下游径流量不够,以至于中间河道跨过了堤岸,溢出.</li>
+</ul>
+<h3 id="Flowable基础"><a href="#Flowable基础" class="headerlink" title="Flowable基础"></a>Flowable基础</h3><ul>
+<li><p>Rxjava 1.x中需要自行通过操作符处理,到了2.0中,则有了专门对付发洪水上游的被观察者- Flowable .我们常用的 observable 在2.x中一般用于不涉及 Backpressure 的情况.而对应与 observable 的 Observer ,改为了  Subscriber .</p>
+</li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">Flowable&lt;Integer&gt; upstream = Flowable.create(new FlowableOnSubscribe&lt;Integer&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public void subscribe(FlowableEmitter&lt;Integer&gt; emitter) throws Exception &#123;</div><div class="line">              Log.d(TAG, &quot;emit 1&quot;);</div><div class="line">              emitter.onNext(1);</div><div class="line">              Log.d(TAG, &quot;emit 2&quot;);</div><div class="line">              emitter.onNext(2);</div><div class="line">              Log.d(TAG, &quot;emit 3&quot;);</div><div class="line">              emitter.onNext(3);</div><div class="line">              Log.d(TAG, &quot;emit complete&quot;);</div><div class="line">              emitter.onComplete();</div><div class="line">          &#125;</div><div class="line">      &#125;, BackpressureStrategy.ERROR); //增加了一个参数</div><div class="line"></div><div class="line">      Subscriber&lt;Integer&gt; downstream = new Subscriber&lt;Integer&gt;() &#123;</div><div class="line"></div><div class="line">          @Override</div><div class="line">          public void onSubscribe(Subscription s) &#123;</div><div class="line">              Log.d(TAG, &quot;onSubscribe&quot;);</div><div class="line">              s.request(Long.MAX_VALUE);  //注意这句代码</div><div class="line">          &#125;</div><div class="line"></div><div class="line">          @Override</div><div class="line">          public void onNext(Integer integer) &#123;</div><div class="line">              Log.d(TAG, &quot;onNext: &quot; + integer);</div><div class="line"></div><div class="line">          &#125;</div><div class="line"></div><div class="line">          @Override</div><div class="line">          public void onError(Throwable t) &#123;</div><div class="line">               Log.w(TAG, &quot;onError: &quot;, t);</div><div class="line">          &#125;</div><div class="line"></div><div class="line">          @Override</div><div class="line">          public void onComplete() &#123;</div><div class="line">              Log.d(TAG, &quot;onComplete&quot;);</div><div class="line">          &#125;</div><div class="line">      &#125;;</div><div class="line"></div><div class="line">      upstream.subscribe(downstream);</div></pre></td></tr></table></figure>
+</li>
+<li><p>注意两个地方</p>
+<ul>
+<li>Flowable创建时比 observable 多了一个参数.(参数作用下节说明)</li>
+<li>Subscriber中调用了 s.request .</li>
+</ul>
+</li>
+<li><p>Flowable 与 Observable 最大的不同就是 Flowable再次发送事件需要等待 Subscriber 中调用 .request </p>
+</li>
+<li><p>.request() 实质上是下游告知上游自己的处理能力,使得上游根据下游处理能力发送事件.<strong>多次调用,上游表示处理能力的数字会叠加</strong>,上游每发送一个事件,该数字减一,到0抛出异常</p>
+<ul>
+<li>上下游在同一线程时,下游没有或没有及时调用 .request ,上游会抛出异常</li>
+<li>异步线程时,下游即使没有调用 .request 会有128个事件的缓存区.上游可继续发出事件,缓存区超出128个事件后,抛出异常.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Flowable拓展"><a href="#Flowable拓展" class="headerlink" title="Flowable拓展"></a>Flowable拓展</h3><h2 id="这里对-Flowable-多的参数进行说明"><a href="#这里对-Flowable-多的参数进行说明" class="headerlink" title="* 这里对 Flowable 多的参数进行说明."></a>* 这里对 Flowable 多的参数进行说明.</h2><ul>
+<li>参数<ul>
+<li>BackpressureStrategy.BUFFER : 默认缓存区128,这个参数极大拓展了缓存区,使得 Flowable 表现与 Observable 差不多.</li>
+<li>BackpressureStrategy.DROP : 128缓存区满了,就丢弃上游事件,直到下游处理了一个事件,缓存区 -1 ,再允许存入新的上游事件.</li>
+<li>BackpressureStrategy.LATEST : 永远保存最后达到的128个上游事件,上游有新的事件到达满载的缓存区时,丢弃第一个存入缓存区的上游事件.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>对于不是由我们编写的 Flowable 也可以通过 interval 操作符来加工.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Flowable.interval(1, TimeUnit.MICROSECONDS)</div><div class="line">              .onBackpressureDrop()  //加上 Backpressure 策略</div></pre></td></tr></table></figure>
+</li>
+<li><p>对应上文,指定参数有3,意思同上.</p>
+<ul>
+<li>onBackpressureBuffer()</li>
+<li>onBackpressureDrop()</li>
+<li>onBackpressureLatest()</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/04/Android随手记-Glide加载Drawable对象/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1032,7 +1430,7 @@
 <hr>
 <h2 id="看门狗定时器驱动内核API"><a href="#看门狗定时器驱动内核API" class="headerlink" title="看门狗定时器驱动内核API"></a>看门狗定时器驱动内核API</h2><ul>
 <li>最后更新时间 2013.2.12</li>
-<li>Wim Van Sebroeck <a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#119;&#105;&#109;&#x40;&#105;&#103;&#x75;&#x61;&#x6e;&#x61;&#x2e;&#x62;&#x65;">&#119;&#105;&#109;&#x40;&#105;&#103;&#x75;&#x61;&#x6e;&#x61;&#x2e;&#x62;&#x65;</a></li>
+<li>Wim Van Sebroeck <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#x3a;&#119;&#x69;&#x6d;&#64;&#105;&#103;&#x75;&#97;&#110;&#x61;&#x2e;&#98;&#101;">&#119;&#x69;&#x6d;&#64;&#105;&#103;&#x75;&#97;&#110;&#x61;&#x2e;&#98;&#101;</a></li>
 </ul>
 <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul>
 <li>本文档没有描述看门狗设备或驱动。也不涉及那些在用户空间调用的API，对应在 Documentation/watchdog/watchdog-api.txt （也就是<a href="">上一篇</a>）</li>
@@ -1390,8 +1788,8 @@
 </li>
 <li><p>linux看门狗设备API</p>
 </li>
-<li>Copyright 2002 Christer Weingel <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#x6f;&#58;&#119;&#105;&#x6e;&#x67;&#101;&#108;&#x40;&#x6e;&#97;&#110;&#111;&#x2d;&#x73;&#x79;&#x73;&#x74;&#101;&#x6d;&#46;&#x63;&#x6f;&#x6d;">&#119;&#105;&#x6e;&#x67;&#101;&#108;&#x40;&#x6e;&#97;&#110;&#111;&#x2d;&#x73;&#x79;&#x73;&#x74;&#101;&#x6d;&#46;&#x63;&#x6f;&#x6d;</a></li>
-<li><p>本文档的一些内容来自 sbc60xxwdt ，版权属于 Copyright 2000 Jakob Oestergaard <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#106;&#x61;&#107;&#111;&#98;&#x40;&#x6f;&#115;&#116;&#101;&#110;&#x66;&#101;&#108;&#100;&#x2e;&#100;&#x6b;">&#106;&#x61;&#107;&#111;&#98;&#x40;&#x6f;&#115;&#116;&#101;&#110;&#x66;&#101;&#108;&#100;&#x2e;&#100;&#x6b;</a></p>
+<li>Copyright 2002 Christer Weingel <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#111;&#58;&#119;&#x69;&#x6e;&#103;&#x65;&#108;&#64;&#x6e;&#97;&#110;&#x6f;&#45;&#115;&#x79;&#115;&#116;&#x65;&#109;&#46;&#x63;&#111;&#x6d;">&#119;&#x69;&#x6e;&#103;&#x65;&#108;&#64;&#x6e;&#97;&#110;&#x6f;&#45;&#115;&#x79;&#115;&#116;&#x65;&#109;&#46;&#x63;&#111;&#x6d;</a></li>
+<li><p>本文档的一些内容来自 sbc60xxwdt ，版权属于 Copyright 2000 Jakob Oestergaard <a href="&#109;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#x6a;&#97;&#107;&#111;&#x62;&#x40;&#x6f;&#x73;&#116;&#101;&#x6e;&#x66;&#101;&#108;&#x64;&#46;&#100;&#x6b;">&#x6a;&#97;&#107;&#111;&#x62;&#x40;&#x6f;&#x73;&#116;&#101;&#x6e;&#x66;&#101;&#108;&#x64;&#46;&#100;&#x6b;</a></p>
 </li>
 <li><p>本文档基于linux内核 2.4.18</p>
 </li>
@@ -3059,327 +3457,6 @@
 </ul>
 <ul>
 <li>LogUtil<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LogUtil</span> </span>&#123;</div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> VERBOSE = <span class="number">1</span>;<span class="comment">//啰嗦，等级最低的</span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEBUG = <span class="number">2</span>;<span class="comment">//调试</span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> INFO = <span class="number">3</span>;<span class="comment">//信息</span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> WARN = <span class="number">4</span>;<span class="comment">//警告</span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> ERROR = <span class="number">5</span>;<span class="comment">//错误</span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> NOTHING = <span class="number">6</span>;<span class="comment">//什么也不打印出来</span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> level = VERBOSE;<span class="comment">//LEVEL:标准</span></div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">v</span><span class="params">(String tag, String msg)</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (level &lt;= VERBOSE) &#123;<span class="comment">//如果大于或者等于定义的标准就打印出来</span></div><div class="line">           Log.v(tag, msg);</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">d</span><span class="params">(String tag, String msg)</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (level &lt;= DEBUG) &#123;</div><div class="line">           Log.d(tag, msg);</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">i</span><span class="params">(String tag, String msg)</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (level &lt;= INFO) &#123;</div><div class="line">           Log.i(tag, msg);</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">w</span><span class="params">(String tag, String msg)</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (level &lt;= WARN) &#123;</div><div class="line">           Log.w(tag, msg);</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">e</span><span class="params">(String tag, String msg)</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (level &lt;= ERROR) &#123;</div><div class="line">           Log.e(tag, msg);</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-	
-
-	
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-	
-	
-	<div>
-	    <p id="div-border-left-blue">
-	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
-	    <span>
-	    <b>本文地址：</b><a href="/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
-	    </span>
-	    </p>
-	</div>
-	
-
-	
-    <footer class="post-footer">
-	
-	
-	
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-  
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jasper">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/v.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="默">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/" itemprop="url">
-                  Android笔记—蓝牙串口(BlueTooth+EventBus)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-17T12:00:00+08:00">
-                2017-04-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">Android笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/" class="leancloud_visitors" data-flag-title="Android笔记—蓝牙串口(BlueTooth+EventBus)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  1,942
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  9m
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<p>资料来源如下</p>
-<ul>
-<li>第一行代码(第二版)</li>
-</ul>
-<p>编程环境</p>
-<ul>
-<li>Android Studio 2.2.3 </li>
-</ul>
-<p>导语</p>
-<ul>
-<li>毕设中的蓝牙部分,记录以供复习</li>
-</ul>
-<hr>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h3><ul>
-<li><p>Android应用 与 Hc-05 蓝牙模块连接,单片机与 Android 端 可以通过串口正常收发数据.</p>
-</li>
-<li><p>预留足够灵活的接口, Android 应用中可以在任意位置获取到蓝牙数据</p>
-</li>
-<li><p>Activity切换时,蓝牙连接不断开.</p>
-</li>
-</ul>
-<h3 id="用到的开源库-知识点资料-简介-来源"><a href="#用到的开源库-知识点资料-简介-来源" class="headerlink" title="用到的开源库/知识点资料 简介/来源"></a>用到的开源库/知识点资料 简介/来源</h3><ul>
-<li><p>蓝牙:<br><a href="https://developer.android.com/guide/topics/connectivity/bluetooth.html" target="_blank" rel="external">Android API 指南</a></p>
-<blockquote>
-<p><a href="https://developer.android.com/guide/topics/connectivity/bluetooth.html" target="_blank" rel="external">https://developer.android.com/guide/topics/connectivity/bluetooth.html</a></p>
-</blockquote>
-</li>
-<li><p>EventBus:<br><a href="https://github.com/greenrobot/EventBus" target="_blank" rel="external">EventBus-GitHub</a> 是一个Android端优化的publish/subscribe消息总线,用来替代 Intent 、   Handler 、 Broadcast 等在 Actvity 、 Fragment 、 Service 等组件之间传递信息 . EventBus 可以传递一个完整的对象,简单高效, <strong>注意 EventBus 只能在多线程之间传递消息,无法在不同进程之间传递消息</strong> ,EventBus 3.0 以后进一步简化了传递方式,真的是很值得学习的一个开源库!</p>
-<p>参考资料如下:</p>
-<p><a href="http://www.jianshu.com/p/acfe78296bb5" target="_blank" rel="external">EventBus 3.0初探: 入门使用及其使用 完全解析</a></p>
-<p> <a href="http://www.jianshu.com/p/1eaca34e5314" target="_blank" rel="external">EventBus3(3.0.0)源码解析</a></p>
-</li>
-</ul>
-<hr>
-<h2 id="基础部分"><a href="#基础部分" class="headerlink" title="基础部分"></a>基础部分</h2><ul>
-<li>蓝牙 与 EventBus 基础部分</li>
-</ul>
-<h3 id="BlueTooth"><a href="#BlueTooth" class="headerlink" title="BlueTooth"></a>BlueTooth</h3><hr>
-<ul>
-<li>备注 : 这里使用的是 传统蓝牙 即 蓝牙4.0以前版本, 而不是 蓝牙4.0 ( ble低功耗蓝牙)及以后版本 </li>
-</ul>
-<hr>
-<ul>
-<li>Android 对 Bluetooth 做了很好的封装,我们可以比较轻松的在 Android Bluetooth API 上进行开发.</li>
-<li>Android中所有蓝牙API均来自 android.bluetooth 包</li>
-</ul>
-<h4 id="BlueTooth基础"><a href="#BlueTooth基础" class="headerlink" title="BlueTooth基础"></a>BlueTooth基础</h4><ul>
-<li><p>BluetoothAdapter 本地蓝牙适配器<br>BluetoothAdapter 是所有蓝牙交互的入口点, 在初始化蓝牙及蓝牙配对阶段使用<br>1.发现其他蓝牙设备<br>2.查询绑定（配对）设备的列表<br>3.使用已知的 MAC 地址实例化 BluetoothDevice<br>4.创建 BluetoothServerSocket 侦听来自其他设备的通信。</p>
-</li>
-<li><p>BluetoothDevice 远程蓝牙设备<br>含有该设备的信息，例如设备的名称、地址、类和绑定状态等。</p>
-</li>
-<li><p>BluetoothSocket 蓝牙套接字接口（与 TCP Socket 相似）<br>与 BluetoothDevice 配合建立远程连接,允许应用通过 InputStream 和 OutputStream 与其他蓝牙设备交换数据.</p>
-</li>
-</ul>
-<h4 id="初始化蓝牙"><a href="#初始化蓝牙" class="headerlink" title="初始化蓝牙"></a>初始化蓝牙</h4><ul>
-<li><p>声明蓝牙权限<br>Android 应用使用蓝牙前都需要声明蓝牙权限<br>一般只需要  BLUETOOTH 权限即可,但是考虑到之后有更多的需求,需要更改系统蓝牙设置,由此需要 BLUETOOTH<em>ADMIN 权限</em>也一起声明</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;manifest ... &gt;</div><div class="line">&lt;uses-permission android:name="android.permission.BLUETOOTH" /&gt;</div><div class="line">&lt;uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /&gt;</div><div class="line">...</div><div class="line">&lt;/manifest&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>蓝牙设备可用性  获取 BluetoothAdapter<br>获取 BluetoothAdapter，需要静态 getDefaultAdapter() 方法。getDefaultAdapter() 会返回一个表示设备自身的蓝牙适配器的 BluetoothAdapter 设备不支持蓝牙 则返回 null</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();</div><div class="line"><span class="keyword">if</span> (mBluetoothAdapter == <span class="keyword">null</span>) &#123;</div><div class="line">  <span class="comment">// 蓝牙不可用操作</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>开启蓝牙<br>BluetoothAdapter 的 .isEnabled() 可以判断系统蓝牙是否开启.<br>没有开启时 startActivityForResult() 发送包含  ACTION_REQUEST_ENABLE  的 Intent 请求系统开启蓝牙,并在 onActivityResult() 返回的数据中 RESULT_CANCELED 表示开启失败 RESULT_OK  表示开启成功,这里我们只检测开启失败情况,并提示用户 </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (!mBluetoothAdapter.isEnabled()) &#123;</div><div class="line">  Intent enableBtIntent = <span class="keyword">new</span> Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);</div><div class="line">  startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);</div><div class="line">&#125;</div><div class="line"></div><div class="line"> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data)</span> </span>&#123;</div><div class="line">      <span class="keyword">if</span> (requestCode == REQUEST_ENABLE_BT &amp;&amp; resultCode == RESULT_CANCELED) &#123;</div><div class="line">          Toast.makeText(MyApplication.getContext(),R.string.Bluetooth_openfail, Toast.LENGTH_SHORT).show();</div><div class="line">      &#125;</div><div class="line">      BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();</div><div class="line">      <span class="keyword">if</span> (mBluetoothAdapter == <span class="keyword">null</span>) &#123;</div><div class="line">          <span class="comment">//设备不支持蓝牙时处理</span></div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>查询已配对的设备<br>调用 getBondedDevices(),返回已配对设备的一组 BluetoothDevice.之后使用for循环遍历</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Set&lt;BluetoothDevice&gt; pairedDevices = mBluetoothAdapter.getBondedDevices();</div><div class="line"><span class="keyword">if</span> (pairedDevices.size() &gt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="comment">//重新加载bluetoothDeviceList</span></div><div class="line">        bluetoothDeviceList.clear();</div><div class="line">        <span class="comment">//BluetoothDevice列表循环</span></div><div class="line">        <span class="keyword">for</span> (BluetoothDevice device : pairedDevices) &#123;</div><div class="line">          bluetoothDeviceList.add(device);</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>扫描设备<br>查找设备是非常耗费系统资源的事项，需要安排在子线程中执行，这里没有用到，由需要请参考Google官方蓝牙教程</p>
-</li>
-<li><p>连接设备<br>蓝牙分主从机，链接为服务器/客户端。这里使用的是连接为客户端。</p>
-<ul>
-<li>首先获取远程设备的 BluetoothDevice 对象，即在选择设备阶段的BluetoothDevice</li>
-<li>调用 createRfcommSocketToServiceRecord(UUID) 获取 BluetoothSocket，UUID通用唯一识别码 在蓝牙中具体是什么没有很好的解释。这里的值取的是<br><code>&quot;00001101-0000-1000-8000-00805F9B34FB&quot;</code></li>
-<li>调用 connect() 发起连接,阻塞调用，需要在子线程中执行。<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//蓝牙连接子线程</span></div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</div><div class="line"></div><div class="line">    <span class="comment">//解析函数</span></div><div class="line">    ConnectThread(BluetoothDevice bluetoothDevice) &#123;</div><div class="line">        <span class="comment">// 使用一个中间变量 tmp</span></div><div class="line">        <span class="comment">// mmSocket 类型是 final</span></div><div class="line"></div><div class="line">        BluetoothSocket tmp = <span class="keyword">null</span>;</div><div class="line">        <span class="comment">// 获取 BluetoothSocket</span></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="comment">// MY_UUID is the app's UUID string, also used by the server code</span></div><div class="line">            tmp = bluetoothDevice.createRfcommSocketToServiceRecord(UUID.fromString(MyApplication.MY_UUID));</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//赋值给 mmSocket</span></div><div class="line">        mmSocket = tmp;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// 关闭蓝牙扫描</span></div><div class="line">        MyApplication.getBluetoothAdapter().cancelDiscovery();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="comment">// 通过 socket 连接到设备. connect() 会一直执行直到成功连接或者抛出异常</span></div><div class="line">            mmSocket.connect();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException connectException) &#123;</div><div class="line">            <span class="comment">//无法连接到蓝牙,关闭连接并退出</span></div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                mmSocket.close();</div><div class="line">            &#125;</div><div class="line">            <span class="comment">//没有正常关闭</span></div><div class="line">            <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// Do work to manage the connection (in a separate thread)</span></div><div class="line">        mConnectedThread = <span class="keyword">new</span> ConnectedThread(mmSocket);</div><div class="line">        mConnectedThread.start();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 关闭蓝牙连接</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            mmSocket.close();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>管理连接<br>获取BluetoothSocket<br>获取 InputStream 和 OutputStream， getInputStream() 和 getOutputStream() 来处理数据传输。read(byte[]) 和 write(byte[]) 读取数据并写入到流式传输。<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectedThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">      <span class="comment">//BluetoothSocket</span></div><div class="line">      <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</div><div class="line">      <span class="comment">//输入流</span></div><div class="line">      <span class="keyword">private</span> <span class="keyword">final</span> InputStream mmInStream;</div><div class="line">      <span class="comment">//输出流</span></div><div class="line">      <span class="keyword">private</span> <span class="keyword">final</span> OutputStream mmOutStream;</div><div class="line"></div><div class="line">      ConnectedThread(BluetoothSocket socket) &#123;</div><div class="line">          <span class="comment">//传入BluetoothSocket，实例化mmSocket</span></div><div class="line">          mmSocket = socket;</div><div class="line">          <span class="comment">//输入/输出流 中间变量</span></div><div class="line">          InputStream tmpIn = <span class="keyword">null</span>;</div><div class="line">          OutputStream tmpOut = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">          <span class="comment">// 输入输出流实例化</span></div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              tmpIn = socket.getInputStream();</div><div class="line">              tmpOut = socket.getOutputStream();</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">              e.printStackTrace();</div><div class="line">          &#125;</div><div class="line">          mmInStream = tmpIn;</div><div class="line">          mmOutStream = tmpOut;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">          <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</div><div class="line">          <span class="keyword">int</span> bytes;</div><div class="line">          <span class="comment">// 连接成功时</span></div><div class="line">          <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">              <span class="keyword">try</span> &#123;</div><div class="line">                  <span class="comment">// 在InputStream读数据</span></div><div class="line">                  bytes = mmInStream.read();</div><div class="line">                  <span class="comment">//发送数据</span></div><div class="line">                  Events.bluetooth_Recycle bluetooth_recycle = <span class="keyword">new</span> Events.bluetooth_Recycle();</div><div class="line">                  bluetooth_recycle.s = bytes;</div><div class="line">                  bluetooth_recycle.bytes = String.valueOf((<span class="keyword">char</span>) bytes);</div><div class="line">                  EventBus.getDefault().post(bluetooth_recycle);</div><div class="line">              &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">                  <span class="keyword">break</span>;</div><div class="line">              &#125;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="comment">//写方法</span></div><div class="line">      <span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              mmOutStream.write(bytes);</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">              e.printStackTrace();</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="comment">//关闭流连接</span></div><div class="line">      <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              mmSocket.close();</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="EventBus"><a href="#EventBus" class="headerlink" title="EventBus"></a>EventBus</h3><ul>
-<li>直接放链接了<blockquote>
-<p><a href="http://www.jianshu.com/p/a040955194fc" target="_blank" rel="external">http://www.jianshu.com/p/a040955194fc</a><br><a href="http://www.jianshu.com/p/acfe78296bb5" target="_blank" rel="external">http://www.jianshu.com/p/acfe78296bb5</a><br><a href="http://www.ff50.net/view/40565212977623506063.html" target="_blank" rel="external">http://www.ff50.net/view/40565212977623506063.html</a></p>
-</blockquote>
-</li>
-</ul>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ul>
-<li><p>蓝牙连接子线程</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">      <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</div><div class="line"></div><div class="line">      <span class="comment">//解析函数</span></div><div class="line">      ConnectThread(BluetoothDevice bluetoothDevice) &#123;</div><div class="line">          <span class="comment">// 使用一个中间变量 tmp</span></div><div class="line">          <span class="comment">// mmSocket 类型是 final</span></div><div class="line"></div><div class="line">          BluetoothSocket tmp = <span class="keyword">null</span>;</div><div class="line">          <span class="comment">// 获取 BluetoothSocket</span></div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              <span class="comment">// MY_UUID is the app's UUID string, also used by the server code</span></div><div class="line">              tmp = bluetoothDevice.createRfcommSocketToServiceRecord(UUID.fromString(MyApplication.MY_UUID));</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">          &#125;</div><div class="line">          <span class="comment">//赋值给 mmSocket</span></div><div class="line">          mmSocket = tmp;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">          <span class="comment">// 关闭蓝牙扫描</span></div><div class="line">          MyApplication.getBluetoothAdapter().cancelDiscovery();</div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              <span class="comment">// 通过 socket 连接到设备. connect() 会一直执行直到成功连接或者抛出异常</span></div><div class="line">              mmSocket.connect();</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException connectException) &#123;</div><div class="line">              <span class="comment">//无法连接到蓝牙,关闭连接并退出</span></div><div class="line">              <span class="keyword">try</span> &#123;</div><div class="line">                  mmSocket.close();</div><div class="line">              &#125;</div><div class="line">              <span class="comment">//没有正常关闭</span></div><div class="line">              <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">              &#125;</div><div class="line">              <span class="keyword">return</span>;</div><div class="line">          &#125;</div><div class="line">          <span class="comment">// Do work to manage the connection (in a separate thread)</span></div><div class="line">          mConnectedThread = <span class="keyword">new</span> ConnectedThread(mmSocket);</div><div class="line">          mConnectedThread.start();</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="comment">/**</span></div><div class="line">       * 关闭蓝牙连接</div><div class="line">       */</div><div class="line">      <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              mmSocket.close();</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>管理连接子线程</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">//管理连接子线程</span></div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectedThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="comment">//BluetoothSocket</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</div><div class="line">    <span class="comment">//输入流</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> InputStream mmInStream;</div><div class="line">    <span class="comment">//输出流</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> OutputStream mmOutStream;</div><div class="line"></div><div class="line">    ConnectedThread(BluetoothSocket socket) &#123;</div><div class="line">        <span class="comment">//传入BluetoothSocket，实例化mmSocket</span></div><div class="line">        mmSocket = socket;</div><div class="line">        <span class="comment">//输入/输出流 中间变量</span></div><div class="line">        InputStream tmpIn = <span class="keyword">null</span>;</div><div class="line">        OutputStream tmpOut = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">        <span class="comment">// 输入输出流实例化</span></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            tmpIn = socket.getInputStream();</div><div class="line">            tmpOut = socket.getOutputStream();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        mmInStream = tmpIn;</div><div class="line">        mmOutStream = tmpOut;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</div><div class="line">        <span class="keyword">int</span> bytes;</div><div class="line">        <span class="comment">// 连接成功时</span></div><div class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                <span class="comment">// 在InputStream读数据</span></div><div class="line">                bytes = mmInStream.read();</div><div class="line">                <span class="comment">//发送数据</span></div><div class="line">                Events.bluetooth_Recycle bluetooth_recycle = <span class="keyword">new</span> Events.bluetooth_Recycle();</div><div class="line">                bluetooth_recycle.s = bytes;</div><div class="line">                bluetooth_recycle.bytes = String.valueOf((<span class="keyword">char</span>) bytes);</div><div class="line">                EventBus.getDefault().post(bluetooth_recycle);</div><div class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//写方法</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            mmOutStream.write(bytes);</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//关闭流连接</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            mmSocket.close();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>连接蓝牙<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//连接线程</span></div><div class="line"><span class="keyword">private</span> ConnectThread mConnectThread;</div><div class="line"><span class="comment">//管理连接进程</span></div><div class="line"><span class="keyword">private</span> ConnectedThread mConnectedThread;</div><div class="line"></div><div class="line"><span class="comment">//创建连接子线程</span></div><div class="line">mConnectThread = <span class="keyword">new</span> ConnectThread(bluetoothDevice);</div><div class="line"><span class="comment">//启动连接子线程</span></div><div class="line">mConnectThread.start();</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>向蓝牙写入数据<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">//发送数据String,        主线程            优先级4       非粘性事件</span></div><div class="line"><span class="meta">@Subscribe</span>(threadMode = ThreadMode.MAIN, priority = <span class="number">4</span>, sticky = <span class="keyword">false</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEvent</span><span class="params">(Events.bluetooth_Send bluetoothSend)</span> </span>&#123;</div><div class="line">    String bytes = bluetoothSend.bytes;</div><div class="line">    mConnectedThread.write(bytes.getBytes());</div><div class="line">    LogUtil.d(Tag, <span class="string">"onEvent:Send"</span> + bluetoothSend.bytes);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>接收数据处理<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">//数据转换                后台进程            优先级3       非粘性事件</span></div><div class="line"><span class="meta">@Subscribe</span>(threadMode = ThreadMode.BACKGROUND, priority = <span class="number">3</span>, sticky = <span class="keyword">false</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEvent</span><span class="params">(Events.bluetooth_Transformers bluetoothTransformers)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> bytes = bluetoothTransformers.bytes;</div><div class="line">    <span class="comment">//处理数据</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
 </ul>
 
           
