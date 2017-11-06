@@ -1,0 +1,1322 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android Studio,Android,学习记录," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="默" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="资料来源如下给初学者的RxJava2.0教程(demo代码来源)  http://www.jianshu.com/u/c50b715ccaeb  编程环境  Android Studio 2.2.3     在Gradle配置:12compile &amp;apos;io.reactivex.rxjava2:rxjava:2.0.1&amp;apos;compile &amp;apos;io.reactivex.rxj">
+<meta name="keywords" content="Android Studio,Android,学习记录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android笔记—Rxjava2">
+<meta property="og:url" content="http://yoursite.com/2017/03/07/Android笔记—Rxjava2/index.html">
+<meta property="og:site_name" content="默">
+<meta property="og:description" content="资料来源如下给初学者的RxJava2.0教程(demo代码来源)  http://www.jianshu.com/u/c50b715ccaeb  编程环境  Android Studio 2.2.3     在Gradle配置:12compile &amp;apos;io.reactivex.rxjava2:rxjava:2.0.1&amp;apos;compile &amp;apos;io.reactivex.rxj">
+<meta property="og:updated_time" content="2017-11-06T15:06:47.610Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android笔记—Rxjava2">
+<meta name="twitter:description" content="资料来源如下给初学者的RxJava2.0教程(demo代码来源)  http://www.jianshu.com/u/c50b715ccaeb  编程环境  Android Studio 2.2.3     在Gradle配置:12compile &amp;apos;io.reactivex.rxjava2:rxjava:2.0.1&amp;apos;compile &amp;apos;io.reactivex.rxj">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/07/Android笔记—Rxjava2/"/>
+
+
+
+
+
+  <title> Android笔记—Rxjava2 | 默 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-79641673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">默</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">为了生存，而一点点淡忘了最初的本意。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/07/Android笔记—Rxjava2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android笔记—Rxjava2
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-07T12:00:00+08:00">
+                2017-03-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/07/Android笔记—Rxjava2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/03/07/Android笔记—Rxjava2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/03/07/Android笔记—Rxjava2/" class="leancloud_visitors" data-flag-title="Android笔记—Rxjava2">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  2,687
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  12m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>资料来源如下<br><a href="http://www.jianshu.com/u/c50b715ccaeb" target="_blank" rel="external">给初学者的RxJava2.0教程</a>(demo代码来源)</p>
+<blockquote>
+<p><a href="http://www.jianshu.com/u/c50b715ccaeb" target="_blank" rel="external">http://www.jianshu.com/u/c50b715ccaeb</a></p>
+</blockquote>
+<p>编程环境</p>
+<ul>
+<li>Android Studio 2.2.3 </li>
+</ul>
+<hr>
+<ul>
+<li>在Gradle配置:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">compile &apos;io.reactivex.rxjava2:rxjava:2.0.1&apos;</div><div class="line">compile &apos;io.reactivex.rxjava2:rxandroid:2.0.1&apos;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2><ul>
+<li>在Eventbus中亦涉及了相关概念,比较简单.包括Observable(被观察者)、Observer(观察者)、subscribe().事件由Observable(被观察者)开始发出,通过subscribe()最终被传递到Observer(观察者).而整个过程中你是站在Observer(观察者)的位置,也就是事件的末尾,观察Observable(被观察者).</li>
+<li><p>上图</p>
+</li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public void subscribe(ObservableEmitter&lt;Integer&gt; emitter) throws Exception &#123;</div><div class="line">              emitter.onNext(1);</div><div class="line">              emitter.onComplete();</div><div class="line">          &#125;</div><div class="line">      &#125;).subscribe(new Observer&lt;Integer&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public void onSubscribe(Disposable d) &#123;</div><div class="line">              Log.d(TAG, &quot;subscribe&quot;);</div><div class="line">          &#125;</div><div class="line"></div><div class="line">          @Override</div><div class="line">          public void onNext(Integer value) &#123;</div><div class="line">              Log.d(TAG, &quot;&quot; + value);</div><div class="line">          &#125;</div><div class="line"></div><div class="line">          @Override</div><div class="line">          public void onError(Throwable e) &#123;</div><div class="line">              Log.d(TAG, &quot;error&quot;);</div><div class="line">          &#125;</div><div class="line"></div><div class="line">          @Override</div><div class="line">          public void onComplete() &#123;</div><div class="line">              Log.d(TAG, &quot;complete&quot;);</div><div class="line">          &#125;</div><div class="line">      &#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>事件由<code>emitter.onNext(1);</code>开始,最终被<code>public void onNext(Integer value)</code>相应.被观察者事件发送结束调用<code>emitter.onComplete();</code>,同时观察者最终以<code>public void onComplete()</code>相应.</p>
+</li>
+</ul>
+<hr>
+<h2 id="note-上下游以-subscribe建立连接后-事件才会开始发送"><a href="#note-上下游以-subscribe建立连接后-事件才会开始发送" class="headerlink" title="* note: 上下游以.subscribe建立连接后,事件才会开始发送."></a>* note: 上下游以<code>.subscribe</code>建立连接后,事件才会开始发送.</h2><h3 id="Observable-被观察者-Observer-观察者"><a href="#Observable-被观察者-Observer-观察者" class="headerlink" title="Observable(被观察者) Observer(观察者)"></a>Observable(被观察者) Observer(观察者)</h3><ul>
+<li>ObservableEmitter<br>ObservableEmitter： Emitter意为发射器,事件发送.onNext(T value)、onComplete()和onError(Throwable error)分别对应next事件、complete事件和error事件。</li>
+<li>Observer<integer>中onNext(Integer value)、onError(Throwable e)、onComplete()对应接受next事件、complete事件和error事件</integer></li>
+<li>被观察者发送complete事件和error事件后,观察者接受后不再继续响应事件,即使被观察者还在发送事件.<strong>complete事件和error事件互斥.</strong></li>
+<li>在Observer<integer>中,调用Disposable.dispose(),切断管道.被观察者继续发送,但观察者不再响应.</integer></li>
+</ul>
+<h3 id="subscribe"><a href="#subscribe" class="headerlink" title="subscribe"></a>subscribe</h3><ul>
+<li>建立Observable(被观察者) Observer(观察者)之间的管道.有多个重载.</li>
+<li><p>重载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public final Disposable subscribe() &#123;&#125;</div><div class="line"></div><div class="line">public final Disposable subscribe(Consumer&lt;? super T&gt; onNext) &#123;&#125;</div><div class="line"></div><div class="line">public final Disposable subscribe(Consumer&lt;? super T&gt; onNext, Consumer&lt;? super Throwable&gt; onError) &#123;&#125; </div><div class="line"></div><div class="line">public final Disposable subscribe(Consumer&lt;? super T&gt; onNext, Consumer&lt;? super Throwable&gt; onError, Action onComplete) &#123;&#125;</div><div class="line"></div><div class="line">public final Disposable subscribe(Consumer&lt;? super T&gt; onNext, Consumer&lt;? super Throwable&gt; onError, Action onComplete, Consumer&lt;? super Disposable&gt; onSubscribe) &#123;&#125;</div><div class="line"></div><div class="line">public final void subscribe(Observer&lt;? super T&gt; observer) &#123;&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>重载说明</p>
+<ul>
+<li>不带参数 : 观察者不关心任何事件(有卵用😵)</li>
+<li>只带onNext : 观察者只响应next事件.</li>
+<li>其他类似….演绎推理….</li>
+<li>最后一个是传入完整的Observer对象.(demo就是🙃)</li>
+</ul>
+</li>
+</ul>
+<h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><ul>
+<li>基于Rxjava的观察者模式可以拆分大多数的业务逻辑,即使再增加很多功能整体也不会过于混乱.</li>
+<li>但Rxjava的强大并不局限在拆分逻辑.由被观察者到观察者的整个事件传递过程,基于Rxjava我们可以<strong>任意拆分 合并 转换 事件、切换线程等.</strong></li>
+</ul>
+<hr>
+<h2 id="note-操作符搭配-Lambda-表达式食用更佳-🤣"><a href="#note-操作符搭配-Lambda-表达式食用更佳-🤣" class="headerlink" title="* note: 操作符搭配 Lambda 表达式食用更佳 🤣"></a>* note: 操作符搭配 Lambda 表达式食用更佳 🤣</h2><h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><ul>
+<li>产生并发送 Obserable 事件.</li>
+<li>仅常用,详细在<a href="https://maxwell-nc.github.io/android/rxjava2-2.html#timer" target="_blank" rel="external"> RxJava 2.x 使用详解(二) 创建操作符</a> <h4 id="creat"><a href="#creat" class="headerlink" title=".creat"></a>.creat</h4></li>
+<li>前面demo中已经实际使用过了</li>
+<li>用于产生一个 Obserable 被观察者对象,demo如上所示.</li>
+</ul>
+<h4 id="just"><a href="#just" class="headerlink" title=".just"></a>.just</h4><ul>
+<li>对于简单的几个数据,直接使用just发送即可,无需创建 Obserable 对象.just最多可以接收 <strong>10</strong> 个参数.</li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Observable.just(&quot;test&quot;,&quot;test2&quot;)</div><div class="line">      .subscribe(str -&gt; Log.i(&quot;tag&quot;, str));</div></pre></td></tr></table></figure>
+<p>相当于顺序调用onNext(“test”)和onNext(“test2”)，最后调用onComplete方法。</p>
+</li>
+</ul>
+<h4 id="fromArray"><a href="#fromArray" class="headerlink" title=".fromArray"></a>.fromArray</h4><ul>
+<li>功能与just类似但fromArray来接收任意长度的数据数组,也可以直接传入数组<code>fromArray(new int[]{1, 2, 3})</code></li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Observable.fromArray(1, 2, 3, 4, 5)</div><div class="line">      .subscribe(integer -&gt; Log.i(&quot;tag&quot;, String.valueOf(integer)));</div></pre></td></tr></table></figure>
+<p>fromArray不支持直接传入list进，list会被当作一个整体发送.</p>
+</li>
+</ul>
+<h4 id="fromIterable"><a href="#fromIterable" class="headerlink" title=".fromIterable"></a>.fromIterable</h4><ul>
+<li>功能与fromArray类似,但是可以接收 list 类型,遍历可迭代数据集合.</li>
+<li>demo<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; list = new ArrayList&lt;&gt;();</div><div class="line">list.add(&quot;a&quot;);</div><div class="line">list.add(&quot;b&quot;);</div><div class="line">list.add(&quot;c&quot;);</div><div class="line"></div><div class="line">Flowable.fromIterable(list).subscribe(</div><div class="line">      s -&gt; Log.i(&quot;tag&quot;, s)</div><div class="line">);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="timer"><a href="#timer" class="headerlink" title=".timer"></a>.timer</h4><ul>
+<li>指定一段时间间隔后发送数据(一次性),不太常用.</li>
+</ul>
+<h3 id="线程切换"><a href="#线程切换" class="headerlink" title="线程切换"></a>线程切换</h3><ul>
+<li>默认事件传递的双方在同一线程工作.</li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">observable.subscribeOn(Schedulers.newThread())     </div><div class="line">       .subscribeOn(Schedulers.io())              </div><div class="line">       .observeOn(AndroidSchedulers.mainThread()) </div><div class="line">       .observeOn(Schedulers.io())                </div><div class="line">       .subscribe(consumer);</div></pre></td></tr></table></figure>
+</li>
+<li><p>方法:</p>
+<ul>
+<li>.subscribeOn() : 指定被观察者发送事件线程,<strong>仅第一次调用时有效!</strong>  </li>
+<li>.observeOn() : 指定观察者/流变换(对发送的事件处理🖖)线程,<strong>多次调用,多次切换有效</strong></li>
+</ul>
+</li>
+<li><p>参数:</p>
+<ul>
+<li>Schedulers.io() : 适用于io密集型操作,网络通信、磁盘操作等.</li>
+<li>Schedulers.computation() : CPU密集操作,需要大量CPU计算的操作.</li>
+<li>Schedulers.newThread() : 创建新线程.</li>
+<li>AndroidSchedulers.mainThread() : Android主线程,通常为更新UI等.</li>
+</ul>
+</li>
+</ul>
+<h3 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h3><ul>
+<li>对 Obserable 事件筛选.</li>
+<li>仅常用,详细在<a href="https://maxwell-nc.github.io/android/rxjava2-3.html#filter" target="_blank" rel="external">RxJava 2.x 使用详解(三) 过滤操作符</a></li>
+</ul>
+<h4 id="filter"><a href="#filter" class="headerlink" title=".filter"></a>.filter</h4><ul>
+<li>基本过滤操作符,按照任意自定规则过滤.</li>
+</ul>
+<h3 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h3><h3 id="转换"><a href="#转换" class="headerlink" title="转换"></a>转换</h3><h4 id="map"><a href="#map" class="headerlink" title=".map"></a>.map</h4><ul>
+<li>处理前后事件数量之比<strong>1:1</strong>,事件变换前后顺序<strong>不变</strong></li>
+<li>map作用是对Observable发送的每一个事件,应用处理变换函数,再继续像下游发送.中间过程可以转换事件类型、改变事件内容等等.<strong>只需要变换后的事件类型与下游接收的类型匹配即可.</strong></li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public void subscribe(ObservableEmitter&lt;Integer&gt; emitter) throws Exception &#123;</div><div class="line">              emitter.onNext(1);</div><div class="line">              emitter.onNext(2);</div><div class="line">              emitter.onNext(3);</div><div class="line">          &#125;</div><div class="line">      &#125;).map(new Function&lt;Integer, String&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public String apply(Integer integer) throws Exception &#123;</div><div class="line">              return &quot;This is result &quot; + integer;</div><div class="line">          &#125;</div><div class="line">      &#125;).subscribe(new Consumer&lt;String&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public void accept(String s) throws Exception &#123;</div><div class="line">              Log.d(TAG, s);</div><div class="line">          &#125;</div><div class="line">      &#125;);</div></pre></td></tr></table></figure>
+<p>这里是把int类型转换为了string类型,与观察者接收的类型匹配即可.</p>
+</li>
+</ul>
+<h4 id="flatMap"><a href="#flatMap" class="headerlink" title=".flatMap"></a>.flatMap</h4><ul>
+<li>处理前后事件数量之比 <strong>1:n</strong>,事件变换前后顺序<strong>不保证</strong></li>
+<li>flatMap,通俗点就是把Observable发送的事件拆散变换再,继续像下游发送.1个Observable事件可拆成任意个.<strong>只需要变换后的事件类型与下游接收的类型匹配即可.</strong></li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public void subscribe(ObservableEmitter&lt;Integer&gt; emitter) throws Exception &#123;</div><div class="line">              emitter.onNext(1);</div><div class="line">              emitter.onNext(2);</div><div class="line">              emitter.onNext(3);</div><div class="line">          &#125;</div><div class="line">      &#125;).flatMap(new Function&lt;Integer, ObservableSource&lt;String&gt;&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public ObservableSource&lt;String&gt; apply(Integer integer) throws Exception &#123;</div><div class="line">              final List&lt;String&gt; list = new ArrayList&lt;&gt;();</div><div class="line">              for (int i = 0; i &lt; 3; i++) &#123;</div><div class="line">                  list.add(&quot;I am value &quot; + integer);</div><div class="line">              &#125;</div><div class="line">              return Observable.fromIterable(list).delay(10,TimeUnit.MILLISECONDS);</div><div class="line">          &#125;</div><div class="line">      &#125;).subscribe(new Consumer&lt;String&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public void accept(String s) throws Exception &#123;</div><div class="line">              Log.d(TAG, s);</div><div class="line">          &#125;</div><div class="line">      &#125;);</div></pre></td></tr></table></figure>
+<p>这里是flatMap把一个int类型事件拆成了3个String类型,运行结果看,最终事件到达顺序与onNext(1);onNext(2);的发送顺序无关</p>
+</li>
+</ul>
+<h4 id="concatMap"><a href="#concatMap" class="headerlink" title=".concatMap"></a>.concatMap</h4><ul>
+<li>处理前后事件数量之比 <strong>1:n</strong>,事件变换前后顺序<strong>按顺序</strong></li>
+<li>与flatMap作用相同,只是保证了事件严格按顺序达到下游.</li>
+<li>demo 就不上了,直接替换flatMap的位置就好.</li>
+</ul>
+<h4 id="zip"><a href="#zip" class="headerlink" title=".zip"></a>.zip</h4><ul>
+<li>处理前后事件数量之比 <strong>n:1</strong>,事件变换前后顺序<strong>严格按顺序</strong></li>
+<li>zip.最常见的压缩文件格式,在这里也是类似的意思,zip可以严格按照顺序合并多个 <strong>不同类型</strong> Observable发送的事件.总的发送事件数量与上游Observable发送最少的那个数量相同.</li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line">Observable&lt;Integer&gt; observable1 = Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() &#123;         </div><div class="line">  @Override                                                                                      </div><div class="line">  public void subscribe(ObservableEmitter&lt;Integer&gt; emitter) throws Exception &#123;                   </div><div class="line">      Log.d(TAG, &quot;emit 1&quot;);                                                                      </div><div class="line">      emitter.onNext(1);                                                                         </div><div class="line">      Thread.sleep(1000);                                                                        </div><div class="line"></div><div class="line">      Log.d(TAG, &quot;emit 2&quot;);                                                                      </div><div class="line">      emitter.onNext(2);                                                                         </div><div class="line">      Thread.sleep(1000);                                                                        </div><div class="line"></div><div class="line">      Log.d(TAG, &quot;emit 3&quot;);                                                                      </div><div class="line">      emitter.onNext(3);                                                                         </div><div class="line">      Thread.sleep(1000);                                                                        </div><div class="line"></div><div class="line">      Log.d(TAG, &quot;emit 4&quot;);                                                                      </div><div class="line">      emitter.onNext(4);                                                                         </div><div class="line">      Thread.sleep(1000);                                                                        </div><div class="line"></div><div class="line">      Log.d(TAG, &quot;emit complete1&quot;);                                                              </div><div class="line">      emitter.onComplete();                                                                      </div><div class="line">  &#125;                                                                                              </div><div class="line">&#125;).subscribeOn(Schedulers.io());                                                                   </div><div class="line"></div><div class="line">Observable&lt;String&gt; observable2 = Observable.create(new ObservableOnSubscribe&lt;String&gt;() &#123;           </div><div class="line">  @Override                                                 public void subscribe(ObservableEmitter&lt;String&gt; emitter) throws Exception &#123;                    </div><div class="line">      Log.d(TAG, &quot;emit A&quot;);                                                                  </div><div class="line">      emitter.onNext(&quot;A&quot;);                                                                       </div><div class="line">      Thread.sleep(1000);                                                                        </div><div class="line"></div><div class="line">      Log.d(TAG, &quot;emit B&quot;);                                                                      </div><div class="line">      emitter.onNext(&quot;B&quot;);                                                                       </div><div class="line">      Thread.sleep(1000);                                                                        </div><div class="line"></div><div class="line">      Log.d(TAG, &quot;emit C&quot;);                                                                      </div><div class="line">      emitter.onNext(&quot;C&quot;);                                                                       </div><div class="line">      Thread.sleep(1000);                                                                        </div><div class="line"></div><div class="line">      Log.d(TAG, &quot;emit complete2&quot;);                                                              </div><div class="line">      emitter.onComplete();                                                                      </div><div class="line">  &#125;                                                                                              </div><div class="line">&#125;).subscribeOn(Schedulers.io());                                                                   </div><div class="line"></div><div class="line">Observable.zip(observable1, observable2, new BiFunction&lt;Integer, String, String&gt;() &#123;               </div><div class="line">  @Override                                                                                      </div><div class="line">  public String apply(Integer integer, String s) throws Exception &#123;                              </div><div class="line">      return integer + s;                                                                        </div><div class="line">  &#125;                                                                                              </div><div class="line">&#125;).subscribe(new Observer&lt;String&gt;() &#123;                    </div><div class="line">  @Override                                                                                      </div><div class="line">  public void onSubscribe(Disposable d) &#123;                                                        </div><div class="line">      Log.d(TAG, &quot;onSubscribe&quot;);                                                                 </div><div class="line">  &#125;                                                                                              </div><div class="line"></div><div class="line">  @Override                                                                                      </div><div class="line">  public void onNext(String value) &#123;                                                             </div><div class="line">      Log.d(TAG, &quot;onNext: &quot; + value);                                                            </div><div class="line">  &#125;                                                                                              </div><div class="line"></div><div class="line">  @Override                                                                                      </div><div class="line">  public void onError(Throwable e) &#123;                                                             </div><div class="line">      Log.d(TAG, &quot;onError&quot;);                                                                     </div><div class="line">  &#125;                                                                                              </div><div class="line"></div><div class="line">  @Override                                                                                      </div><div class="line">  public void onComplete() &#123;                                                                     </div><div class="line">      Log.d(TAG, &quot;onComplete&quot;);                                                                  </div><div class="line">  &#125;                                                                                              </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>这里两个事件发送在同一线程中.当两个事件发送不再同一线程时,情况类似,不过当异步时,数量较少的事件发送完成,发送Complete事件后,通道随即被切断.</p>
+</li>
+</ul>
+<h4 id="Concat"><a href="#Concat" class="headerlink" title=".Concat"></a>.Concat</h4><ul>
+<li>处理前后事件数量之比 <strong>n:1</strong>,事件变换前后顺序<strong>严格按顺序</strong></li>
+<li>Concat,可以严格按照顺序合并 <strong>相同类型</strong> Observable发送的事件.</li>
+</ul>
+<h2 id="Backpressure"><a href="#Backpressure" class="headerlink" title="Backpressure"></a>Backpressure</h2><hr>
+<h2 id="被翻译为背压…-如此文不达意的直译-能忍-往下都是因为原文-😈"><a href="#被翻译为背压…-如此文不达意的直译-能忍-往下都是因为原文-😈" class="headerlink" title="* 被翻译为背压…(如此文不达意的直译,能忍?往下都是因为原文..😈)"></a>* 被翻译为背压…(如此文不达意的直译,能忍?往下都是因为原文..😈)</h2><ul>
+<li>其实概念有够简单:将整个事件产生/传递/处理的过程想象为一条河流由上而下, Backpressure 指的是上游产生的事件太快,远远超过了下游的处理速度,以至于缓冲区溢出.上游来了洪水,下游径流量不够,以至于中间河道跨过了堤岸,溢出.</li>
+</ul>
+<h3 id="Flowable基础"><a href="#Flowable基础" class="headerlink" title="Flowable基础"></a>Flowable基础</h3><ul>
+<li><p>Rxjava 1.x中需要自行通过操作符处理,到了2.0中,则有了专门对付发洪水上游的被观察者- Flowable .我们常用的 observable 在2.x中一般用于不涉及 Backpressure 的情况.而对应与 observable 的 Observer ,改为了  Subscriber .</p>
+</li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">Flowable&lt;Integer&gt; upstream = Flowable.create(new FlowableOnSubscribe&lt;Integer&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public void subscribe(FlowableEmitter&lt;Integer&gt; emitter) throws Exception &#123;</div><div class="line">              Log.d(TAG, &quot;emit 1&quot;);</div><div class="line">              emitter.onNext(1);</div><div class="line">              Log.d(TAG, &quot;emit 2&quot;);</div><div class="line">              emitter.onNext(2);</div><div class="line">              Log.d(TAG, &quot;emit 3&quot;);</div><div class="line">              emitter.onNext(3);</div><div class="line">              Log.d(TAG, &quot;emit complete&quot;);</div><div class="line">              emitter.onComplete();</div><div class="line">          &#125;</div><div class="line">      &#125;, BackpressureStrategy.ERROR); //增加了一个参数</div><div class="line"></div><div class="line">      Subscriber&lt;Integer&gt; downstream = new Subscriber&lt;Integer&gt;() &#123;</div><div class="line"></div><div class="line">          @Override</div><div class="line">          public void onSubscribe(Subscription s) &#123;</div><div class="line">              Log.d(TAG, &quot;onSubscribe&quot;);</div><div class="line">              s.request(Long.MAX_VALUE);  //注意这句代码</div><div class="line">          &#125;</div><div class="line"></div><div class="line">          @Override</div><div class="line">          public void onNext(Integer integer) &#123;</div><div class="line">              Log.d(TAG, &quot;onNext: &quot; + integer);</div><div class="line"></div><div class="line">          &#125;</div><div class="line"></div><div class="line">          @Override</div><div class="line">          public void onError(Throwable t) &#123;</div><div class="line">               Log.w(TAG, &quot;onError: &quot;, t);</div><div class="line">          &#125;</div><div class="line"></div><div class="line">          @Override</div><div class="line">          public void onComplete() &#123;</div><div class="line">              Log.d(TAG, &quot;onComplete&quot;);</div><div class="line">          &#125;</div><div class="line">      &#125;;</div><div class="line"></div><div class="line">      upstream.subscribe(downstream);</div></pre></td></tr></table></figure>
+</li>
+<li><p>注意两个地方</p>
+<ul>
+<li>Flowable创建时比 observable 多了一个参数.(参数作用下节说明)</li>
+<li>Subscriber中调用了 s.request .</li>
+</ul>
+</li>
+<li><p>Flowable 与 Observable 最大的不同就是 Flowable再次发送事件需要等待 Subscriber 中调用 .request </p>
+</li>
+<li><p>.request() 实质上是下游告知上游自己的处理能力,使得上游根据下游处理能力发送事件.<strong>多次调用,上游表示处理能力的数字会叠加</strong>,上游每发送一个事件,该数字减一,到0抛出异常</p>
+<ul>
+<li>上下游在同一线程时,下游没有或没有及时调用 .request ,上游会抛出异常</li>
+<li>异步线程时,下游即使没有调用 .request 会有128个事件的缓存区.上游可继续发出事件,缓存区超出128个事件后,抛出异常.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Flowable拓展"><a href="#Flowable拓展" class="headerlink" title="Flowable拓展"></a>Flowable拓展</h3><h2 id="这里对-Flowable-多的参数进行说明"><a href="#这里对-Flowable-多的参数进行说明" class="headerlink" title="* 这里对 Flowable 多的参数进行说明."></a>* 这里对 Flowable 多的参数进行说明.</h2><ul>
+<li>参数<ul>
+<li>BackpressureStrategy.BUFFER : 默认缓存区128,这个参数极大拓展了缓存区,使得 Flowable 表现与 Observable 差不多.</li>
+<li>BackpressureStrategy.DROP : 128缓存区满了,就丢弃上游事件,直到下游处理了一个事件,缓存区 -1 ,再允许存入新的上游事件.</li>
+<li>BackpressureStrategy.LATEST : 永远保存最后达到的128个上游事件,上游有新的事件到达满载的缓存区时,丢弃第一个存入缓存区的上游事件.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>对于不是由我们编写的 Flowable 也可以通过 interval 操作符来加工.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Flowable.interval(1, TimeUnit.MICROSECONDS)</div><div class="line">              .onBackpressureDrop()  //加上 Backpressure 策略</div></pre></td></tr></table></figure>
+</li>
+<li><p>对应上文,指定参数有3,意思同上.</p>
+<ul>
+<li>onBackpressureBuffer()</li>
+<li>onBackpressureDrop()</li>
+<li>onBackpressureLatest()</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="https://my.mixtape.moe/pkqlqc.png" alt="Jasper Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/2017/03/07/Android笔记—Rxjava2/" title="Android笔记—Rxjava2">http://yoursite.com/2017/03/07/Android笔记—Rxjava2/</a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android-Studio/" rel="tag"># Android Studio</a>
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/学习记录/" rel="tag"># 学习记录</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/07/Android笔记—仿绿色守护嗜睡模式通知/" rel="next" title="Android笔记—仿绿色守护嗜睡模式通知">
+                <i class="fa fa-chevron-left"></i> Android笔记—仿绿色守护嗜睡模式通知
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/08/VPS科学上网教程3/" rel="prev" title="科学上网教程（三）——VPS安全加固">
+                科学上网教程（三）——VPS安全加固 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/v.png"
+               alt="Jasper" />
+          <p class="site-author-name" itemprop="name">Jasper</p>
+           
+              <p class="site-description motion-element" itemprop="description">程序员 微尘 V</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jasper-1024" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#观察者模式"><span class="nav-number">1.</span> <span class="nav-text">观察者模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#note-上下游以-subscribe建立连接后-事件才会开始发送"><span class="nav-number">2.</span> <span class="nav-text">* note: 上下游以.subscribe建立连接后,事件才会开始发送.</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Observable-被观察者-Observer-观察者"><span class="nav-number">2.1.</span> <span class="nav-text">Observable(被观察者) Observer(观察者)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#subscribe"><span class="nav-number">2.2.</span> <span class="nav-text">subscribe</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作符"><span class="nav-number">3.</span> <span class="nav-text">操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#note-操作符搭配-Lambda-表达式食用更佳-🤣"><span class="nav-number">4.</span> <span class="nav-text">* note: 操作符搭配 Lambda 表达式食用更佳 🤣</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建"><span class="nav-number">4.1.</span> <span class="nav-text">创建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#creat"><span class="nav-number">4.1.1.</span> <span class="nav-text">.creat</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#just"><span class="nav-number">4.1.2.</span> <span class="nav-text">.just</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fromArray"><span class="nav-number">4.1.3.</span> <span class="nav-text">.fromArray</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fromIterable"><span class="nav-number">4.1.4.</span> <span class="nav-text">.fromIterable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#timer"><span class="nav-number">4.1.5.</span> <span class="nav-text">.timer</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程切换"><span class="nav-number">4.2.</span> <span class="nav-text">线程切换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤"><span class="nav-number">4.3.</span> <span class="nav-text">过滤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#filter"><span class="nav-number">4.3.1.</span> <span class="nav-text">.filter</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合"><span class="nav-number">4.4.</span> <span class="nav-text">组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转换"><span class="nav-number">4.5.</span> <span class="nav-text">转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#map"><span class="nav-number">4.5.1.</span> <span class="nav-text">.map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flatMap"><span class="nav-number">4.5.2.</span> <span class="nav-text">.flatMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#concatMap"><span class="nav-number">4.5.3.</span> <span class="nav-text">.concatMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#zip"><span class="nav-number">4.5.4.</span> <span class="nav-text">.zip</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Concat"><span class="nav-number">4.5.5.</span> <span class="nav-text">.Concat</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Backpressure"><span class="nav-number">5.</span> <span class="nav-text">Backpressure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#被翻译为背压…-如此文不达意的直译-能忍-往下都是因为原文-😈"><span class="nav-number">6.</span> <span class="nav-text">* 被翻译为背压…(如此文不达意的直译,能忍?往下都是因为原文..😈)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flowable基础"><span class="nav-number">6.1.</span> <span class="nav-text">Flowable基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flowable拓展"><span class="nav-number">6.2.</span> <span class="nav-text">Flowable拓展</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这里对-Flowable-多的参数进行说明"><span class="nav-number">7.</span> <span class="nav-text">* 这里对 Flowable 多的参数进行说明.</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016.6.2 - 
+  <span itemprop="copyrightYear">2017.11.6</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jasper</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://jasper1024.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/03/07/Android笔记—Rxjava2/';
+          this.page.identifier = '2017/03/07/Android笔记—Rxjava2/';
+          this.page.title = 'Android笔记—Rxjava2';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://jasper1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("8AEPwU1rVoSnwxtOrX35u23j-gzGzoHsz", "SBLr7EMdL83IXCfJSbydMdll");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

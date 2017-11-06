@@ -325,6 +325,249 @@
   
   
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/04/Android随手记-Glide加载Drawable对象/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/11/04/Android随手记-Glide加载Drawable对象/" itemprop="url">
+                  Android随手记—Glide加载Drawable对象
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-04T12:00:00+08:00">
+                2017-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android随手记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android随手记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/04/Android随手记-Glide加载Drawable对象/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/04/Android随手记-Glide加载Drawable对象/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/04/Android随手记-Glide加载Drawable对象/" class="leancloud_visitors" data-flag-title="Android随手记—Glide加载Drawable对象">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  194
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>编程环境</p>
+<ul>
+<li>Android Studio 3.0</li>
+</ul>
+<hr>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ul>
+<li><p>Glide是一个通用的图片缓存框架,但是在MyPrivacy显示appIcon时,传入 一个Drawable对象,提示类型不匹配. </p>
+</li>
+<li><p>(注意: 这里是直接传入Drawable对象,不是经过 R.xx 引用 !)</p>
+</li>
+</ul>
+<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><ul>
+<li>查阅资料后,确认Glide不支持直接加载传入的Drawable对象,转换为bitDrawable类型也不可.</li>
+<li><p>解决思路来自</p>
+<blockquote>
+<p><a href="https://github.com/bumptech/glide/issues/588" target="_blank" rel="external">https://github.com/bumptech/glide/issues/588</a></p>
+</blockquote>
+</li>
+<li><p>不支持直接加载,但Glide的.error(Icon)错误时显示   .placeholder(Icon)占位符,支持Drawable对象</p>
+</li>
+</ul>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><ul>
+<li>不再直接加载 .load 传入空字符串, 通过 .placeholder 简洁加载.</li>
+<li>demo <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Drawable Icon　＝　ｘｘｘ；</div><div class="line"></div><div class="line">RequestOptions options = new RequestOptions()</div><div class="line">             .error(Icon)</div><div class="line">             .placeholder(Icon);</div><div class="line"></div><div class="line"> Glide.with(context)</div><div class="line">             .load(&quot;&quot;)</div><div class="line">             .apply(options)</div><div class="line">             .into(imageView);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><ul>
+<li>placeholder 在Glide 4.x版本中,移入了 RequestOptions 对象中.</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/10/linux笔记—qemu运行linux/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -789,7 +1032,7 @@
 <hr>
 <h2 id="看门狗定时器驱动内核API"><a href="#看门狗定时器驱动内核API" class="headerlink" title="看门狗定时器驱动内核API"></a>看门狗定时器驱动内核API</h2><ul>
 <li>最后更新时间 2013.2.12</li>
-<li>Wim Van Sebroeck <a href="&#109;&#97;&#105;&#x6c;&#116;&#111;&#x3a;&#119;&#x69;&#109;&#64;&#105;&#x67;&#x75;&#x61;&#x6e;&#x61;&#x2e;&#x62;&#101;">&#119;&#x69;&#109;&#64;&#105;&#x67;&#x75;&#x61;&#x6e;&#x61;&#x2e;&#x62;&#101;</a></li>
+<li>Wim Van Sebroeck <a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#119;&#105;&#109;&#x40;&#105;&#103;&#x75;&#x61;&#x6e;&#x61;&#x2e;&#x62;&#x65;">&#119;&#105;&#109;&#x40;&#105;&#103;&#x75;&#x61;&#x6e;&#x61;&#x2e;&#x62;&#x65;</a></li>
 </ul>
 <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul>
 <li>本文档没有描述看门狗设备或驱动。也不涉及那些在用户空间调用的API，对应在 Documentation/watchdog/watchdog-api.txt （也就是<a href="">上一篇</a>）</li>
@@ -1147,8 +1390,8 @@
 </li>
 <li><p>linux看门狗设备API</p>
 </li>
-<li>Copyright 2002 Christer Weingel <a href="&#x6d;&#97;&#105;&#108;&#x74;&#111;&#58;&#x77;&#105;&#x6e;&#103;&#101;&#108;&#x40;&#x6e;&#x61;&#x6e;&#111;&#x2d;&#x73;&#121;&#x73;&#116;&#101;&#x6d;&#x2e;&#99;&#111;&#109;">&#x77;&#105;&#x6e;&#103;&#101;&#108;&#x40;&#x6e;&#x61;&#x6e;&#111;&#x2d;&#x73;&#121;&#x73;&#116;&#101;&#x6d;&#x2e;&#99;&#111;&#109;</a></li>
-<li><p>本文档的一些内容来自 sbc60xxwdt ，版权属于 Copyright 2000 Jakob Oestergaard <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x6a;&#x61;&#107;&#111;&#x62;&#x40;&#111;&#115;&#116;&#x65;&#x6e;&#102;&#x65;&#x6c;&#100;&#x2e;&#100;&#107;">&#x6a;&#x61;&#107;&#111;&#x62;&#x40;&#111;&#115;&#116;&#x65;&#x6e;&#102;&#x65;&#x6c;&#100;&#x2e;&#100;&#107;</a></p>
+<li>Copyright 2002 Christer Weingel <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#x6f;&#58;&#119;&#105;&#x6e;&#x67;&#101;&#108;&#x40;&#x6e;&#97;&#110;&#111;&#x2d;&#x73;&#x79;&#x73;&#x74;&#101;&#x6d;&#46;&#x63;&#x6f;&#x6d;">&#119;&#105;&#x6e;&#x67;&#101;&#108;&#x40;&#x6e;&#97;&#110;&#111;&#x2d;&#x73;&#x79;&#x73;&#x74;&#101;&#x6d;&#46;&#x63;&#x6f;&#x6d;</a></li>
+<li><p>本文档的一些内容来自 sbc60xxwdt ，版权属于 Copyright 2000 Jakob Oestergaard <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#106;&#x61;&#107;&#111;&#98;&#x40;&#x6f;&#115;&#116;&#101;&#110;&#x66;&#101;&#108;&#100;&#x2e;&#100;&#x6b;">&#106;&#x61;&#107;&#111;&#98;&#x40;&#x6f;&#115;&#116;&#101;&#110;&#x66;&#101;&#108;&#100;&#x2e;&#100;&#x6b;</a></p>
 </li>
 <li><p>本文档基于linux内核 2.4.18</p>
 </li>
@@ -3191,323 +3434,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-  
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/08/VPS科学上网教程3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jasper">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/v.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="默">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/08/VPS科学上网教程3/" itemprop="url">
-                  科学上网教程（三）——VPS安全加固
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-08T17:52:16+08:00">
-                2017-04-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/科学上网/" itemprop="url" rel="index">
-                    <span itemprop="name">科学上网</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/04/08/VPS科学上网教程3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/04/08/VPS科学上网教程3/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/04/08/VPS科学上网教程3/" class="leancloud_visitors" data-flag-title="科学上网教程（三）——VPS安全加固">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  1,150
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  5m
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">更新</div><div class="line"><span class="number">2017.04</span>.<span class="number">08</span>  VPS日常一些安全措施</div><div class="line"><span class="number">2017.08</span>.<span class="number">22</span>  更新安全措施，读者反馈，没有debian的，这里加上。</div><div class="line"><span class="number">2017.10</span>.<span class="number">30</span>  纠正错误,排版.</div></pre></td></tr></table></figure>
-<hr>
-<ul>
-<li><p>导语<br>科学上网教程系列，很久没有更新新内容了。更新常用安全措施，至少保证，不会被轻易的当作肉鸡。都是一些常用的安全措施。</p>
-</li>
-<li><p>系统环境：CentOS/debian 7</p>
-</li>
-</ul>
-<hr>
-<h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h2><ul>
-<li>有两种方案<ul>
-<li>彻底关闭SSH登陆，改为密钥登陆，安全性最高，但配置较为复杂</li>
-<li>修改SSH登陆端口，同时开放默认端口，将爆破 ssh 密码的 IP 封停<h3 id="密钥登陆"><a href="#密钥登陆" class="headerlink" title="密钥登陆"></a>密钥登陆</h3></li>
-</ul>
-</li>
-<li>主要步骤在这里,有时间再更新<blockquote>
-<p><a href="https://ttt.tt/104/" target="_blank" rel="external">https://ttt.tt/104/</a></p>
-</blockquote>
-</li>
-</ul>
-<h3 id="修改端口"><a href="#修改端口" class="headerlink" title="修改端口"></a>修改端口</h3><ul>
-<li><p>CentOS 命令 如下，以下是将 SSH 端口改为 999 端口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed -i &apos;s/#Port 22/Port 999/g&apos; /etc/ssh/sshd_config</div></pre></td></tr></table></figure>
-<ul>
-<li><p>debian需要打开/etc/ssh/sshd<em>config </em>文件，修改其中的port后面的数字,</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano /etc/ssh/sshd_config</div></pre></td></tr></table></figure>
-<p>修改其中的port后面的数字，为你要ssh登陆的端口，cltrl + x保存，回车退出。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="fail2ban"><a href="#fail2ban" class="headerlink" title="fail2ban"></a>fail2ban</h2><ul>
-<li><p>fail2ban 是 Linux 上的一个著名的入侵保护的开源框架，它会监控多个系统的日志文件，并根据检测到的任何可疑的行为自动触发不同的防御动作。将尝试爆破 ssh 密码的 IP 封停，默认10分钟。</p>
-</li>
-<li><p>详细配置安装方法在如下网址，这里使用默认配置即可。</p>
-<blockquote>
-<p><a href="https://linux.cn/article-5067-1.html" target="_blank" rel="external">https://linux.cn/article-5067-1.html</a></p>
-</blockquote>
-</li>
-<li><p>安装 fail2ban<br>CentOS 需要提前 <a href="https://linux.cn/article-2324-1.html" target="_blank" rel="external"> 设置 EPEL 仓库 </a><br>以 root 用户登陆，非 root 用户需要 命令前 增加 sudo</p>
-<p>安装命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//CentOS</div><div class="line">yum install fail2ban</div><div class="line">//Debian / ubuntu</div><div class="line">apt-get install fail2ban</div></pre></td></tr></table></figure>
-</li>
-<li><p>其他命令</p>
-<ul>
-<li><p>重启</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service fail2ban restart</div></pre></td></tr></table></figure>
-</li>
-<li><p>验证状态</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fail2ban-client ping</div></pre></td></tr></table></figure>
-<p>返回</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Server replied: pong</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>设置开机自启动（debian不用前面验证完成，已加入开机启动）</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// CentOS/RHEL 6</div><div class="line">chkconfig fail2ban on</div><div class="line">// CentOS/RHEL 7</div><div class="line">systemctl enable fail2ban</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="禁用Linux多余端口"><a href="#禁用Linux多余端口" class="headerlink" title="禁用Linux多余端口"></a>禁用Linux多余端口</h2><ul>
-<li>关闭多余端口是永远正确的选择！只留下常用端口 和 SSR端口</li>
-<li><p>配置  iptables <strong>警告 iptables 配置不是一般的复杂，谨慎操作</strong></p>
-</li>
-<li><p>清空默认规则</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -F</div></pre></td></tr></table></figure>
-</li>
-<li><p>允许22端口，给暴力破解留点空间 //doge</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p tcp --dport 22 -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT</div></pre></td></tr></table></figure>
-</li>
-<li><p>允许53端口 udp ，一般用做DNS服务器，如果你不需要则忽略此条</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">iptables -A OUTPUT -p udp --dport 53 -j ACCEPT</div><div class="line">iptables -A INPUT -p udp --sport 53 -j ACCEPT</div></pre></td></tr></table></figure>
-</li>
-<li><p>允许本机访问本机</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT</div><div class="line">iptables -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><p><strong>允许真正 SSH 端口</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p tcp -s 0/0 --dport 999 -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport 999 -m state --state ESTABLISHED -j ACCEPT</div></pre></td></tr></table></figure>
-</li>
-<li><p>允许 80 443 端口，http 和 https</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p tcp -s 0/0 --dport 80 -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport 80 -m state --state ESTABLISHED -j ACCEPT</div><div class="line">iptables -A INPUT -p tcp -s 0/0 --dport 443 -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport 443 -m state --state ESTABLISHED -j ACCEPT</div></pre></td></tr></table></figure>
-</li>
-<li><p>允许 SSR端口 以888 xxx 为例 你有几个端口，就添加几个</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p tcp -s 0/0 --dport 888 -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport 888 -m state --state ESTABLISHED -j ACCEPT</div><div class="line"></div><div class="line">iptables -A INPUT -p tcp -s 0/0 --dport xxx -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport xxx -m state --state ESTABLISHED -j ACCEPT</div></pre></td></tr></table></figure>
-</li>
-<li><p>CentOS 保存配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">iptables-save &gt; /etc/sysconfig/iptables</div><div class="line">``` </div><div class="line">重载 iptables</div></pre></td></tr></table></figure>
-<p>iptables -L</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">* debian 7 保存配置</div></pre></td></tr></table></figure>
-<p>iptables-save &gt; /etc/iptables-rules<br>ip6tables-save &gt; /etc/ip6tables-rules</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">随后修改/etc/network/interfaces文件，最后加入</div></pre></td></tr></table></figure>
-<p>pre-up iptables-restore &lt; /etc/iptables-rules<br>pre-up ip6tables-restore &lt; /etc/ip6tables-rules</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  重启执行`iptables -L`，看到配置已生效。</div><div class="line"></div><div class="line">## 安装 CSF 防火墙</div><div class="line">* 命令</div></pre></td></tr></table></figure>
-<p>rm -fv csf.tgz<br>wget <a href="http://download.configserver.com/csf.tgz" target="_blank" rel="external">http://download.configserver.com/csf.tgz</a><br>tar -xzf csf.tgz<br>cd csf<br>sh install.sh<br>//使用下边的命令来验证csf正确安装并已经运行<br>perl /usr/local/csf/bin/csftest.pl</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">## autoban 补丁（8.22）推荐</div><div class="line">* 来自ss原作者@clowwindy 的补丁，ban掉那些尝试破译ss密码的ip，在此对原作者表示敬意！</div><div class="line">* 原理是同一个ip出现3次以上尝试破译ss密码会被永久ban掉，ssr也可用</div><div class="line">* 测试只在debian 7上进行，需要python环境，但是通过秋水逸冰脚本安装ssr 已经安装好了python环境。</div><div class="line"></div><div class="line">* 以下内容参考</div><div class="line">  &gt;https://plus.google.com/104980438521301094845/posts/9zypCffhdZu</div><div class="line"></div><div class="line">---</div><div class="line"></div><div class="line">* 下载脚本</div></pre></td></tr></table></figure>
-<p>wget <a href="https://raw.githubusercontent.com/Jasper-1024/shadowsocksr/manyuser/utils/autoban.py" target="_blank" rel="external">https://raw.githubusercontent.com/Jasper-1024/shadowsocksr/manyuser/utils/autoban.py</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">* ssr运行</div></pre></td></tr></table></figure>
-<p>python autoban.py &lt; /var/log/shadowsocksr.log</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  查看哪些ip试图连接破解ssr密码。原版ss将log文件路径替换即可。</div><div class="line">  </div><div class="line">* 自动ban ip</div><div class="line">  编辑/etc/init.d/rc.local，加入</div></pre></td></tr></table></figure>
-<p>python /root/autoban.py &lt; /var/log/shadowsocksr.log</p>
-<p>nohup tail -F /var/log/shadowsocksr.log | python /root/autoban.py &gt;log 2&gt;log &amp;<br>```<br>保存退出即可。</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-	
-
-	
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-	
-	
-	<div>
-	    <p id="div-border-left-blue">
-	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
-	    <span>
-	    <b>本文地址：</b><a href="/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
-	    </span>
-	    </p>
-	</div>
-	
-
-	
-    <footer class="post-footer">
-	
-	
-	
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -3557,7 +3483,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -3568,7 +3494,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -3639,7 +3565,7 @@
         <div class="copyright" >
   
   &copy;  2016.6.2 - 
-  <span itemprop="copyrightYear">2017.10.30</span>
+  <span itemprop="copyrightYear">2017.11.6</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

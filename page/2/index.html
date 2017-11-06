@@ -325,6 +325,721 @@
   
   
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/08/VPS科学上网教程3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/08/VPS科学上网教程3/" itemprop="url">
+                  科学上网教程（三）——VPS安全加固
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-08T17:52:16+08:00">
+                2017-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/科学上网/" itemprop="url" rel="index">
+                    <span itemprop="name">科学上网</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/08/VPS科学上网教程3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/04/08/VPS科学上网教程3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/04/08/VPS科学上网教程3/" class="leancloud_visitors" data-flag-title="科学上网教程（三）——VPS安全加固">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,150
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  5m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">更新</div><div class="line"><span class="number">2017.04</span>.<span class="number">08</span>  VPS日常一些安全措施</div><div class="line"><span class="number">2017.08</span>.<span class="number">22</span>  更新安全措施，读者反馈，没有debian的，这里加上。</div><div class="line"><span class="number">2017.10</span>.<span class="number">30</span>  纠正错误,排版.</div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li><p>导语<br>科学上网教程系列，很久没有更新新内容了。更新常用安全措施，至少保证，不会被轻易的当作肉鸡。都是一些常用的安全措施。</p>
+</li>
+<li><p>系统环境：CentOS/debian 7</p>
+</li>
+</ul>
+<hr>
+<h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h2><ul>
+<li>有两种方案<ul>
+<li>彻底关闭SSH登陆，改为密钥登陆，安全性最高，但配置较为复杂</li>
+<li>修改SSH登陆端口，同时开放默认端口，将爆破 ssh 密码的 IP 封停<h3 id="密钥登陆"><a href="#密钥登陆" class="headerlink" title="密钥登陆"></a>密钥登陆</h3></li>
+</ul>
+</li>
+<li>主要步骤在这里,有时间再更新<blockquote>
+<p><a href="https://ttt.tt/104/" target="_blank" rel="external">https://ttt.tt/104/</a></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="修改端口"><a href="#修改端口" class="headerlink" title="修改端口"></a>修改端口</h3><ul>
+<li><p>CentOS 命令 如下，以下是将 SSH 端口改为 999 端口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed -i &apos;s/#Port 22/Port 999/g&apos; /etc/ssh/sshd_config</div></pre></td></tr></table></figure>
+<ul>
+<li><p>debian需要打开/etc/ssh/sshd<em>config </em>文件，修改其中的port后面的数字,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano /etc/ssh/sshd_config</div></pre></td></tr></table></figure>
+<p>修改其中的port后面的数字，为你要ssh登陆的端口，cltrl + x保存，回车退出。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="fail2ban"><a href="#fail2ban" class="headerlink" title="fail2ban"></a>fail2ban</h2><ul>
+<li><p>fail2ban 是 Linux 上的一个著名的入侵保护的开源框架，它会监控多个系统的日志文件，并根据检测到的任何可疑的行为自动触发不同的防御动作。将尝试爆破 ssh 密码的 IP 封停，默认10分钟。</p>
+</li>
+<li><p>详细配置安装方法在如下网址，这里使用默认配置即可。</p>
+<blockquote>
+<p><a href="https://linux.cn/article-5067-1.html" target="_blank" rel="external">https://linux.cn/article-5067-1.html</a></p>
+</blockquote>
+</li>
+<li><p>安装 fail2ban<br>CentOS 需要提前 <a href="https://linux.cn/article-2324-1.html" target="_blank" rel="external"> 设置 EPEL 仓库 </a><br>以 root 用户登陆，非 root 用户需要 命令前 增加 sudo</p>
+<p>安装命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//CentOS</div><div class="line">yum install fail2ban</div><div class="line">//Debian / ubuntu</div><div class="line">apt-get install fail2ban</div></pre></td></tr></table></figure>
+</li>
+<li><p>其他命令</p>
+<ul>
+<li><p>重启</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service fail2ban restart</div></pre></td></tr></table></figure>
+</li>
+<li><p>验证状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fail2ban-client ping</div></pre></td></tr></table></figure>
+<p>返回</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Server replied: pong</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>设置开机自启动（debian不用前面验证完成，已加入开机启动）</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// CentOS/RHEL 6</div><div class="line">chkconfig fail2ban on</div><div class="line">// CentOS/RHEL 7</div><div class="line">systemctl enable fail2ban</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="禁用Linux多余端口"><a href="#禁用Linux多余端口" class="headerlink" title="禁用Linux多余端口"></a>禁用Linux多余端口</h2><ul>
+<li>关闭多余端口是永远正确的选择！只留下常用端口 和 SSR端口</li>
+<li><p>配置  iptables <strong>警告 iptables 配置不是一般的复杂，谨慎操作</strong></p>
+</li>
+<li><p>清空默认规则</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -F</div></pre></td></tr></table></figure>
+</li>
+<li><p>允许22端口，给暴力破解留点空间 //doge</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p tcp --dport 22 -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT</div></pre></td></tr></table></figure>
+</li>
+<li><p>允许53端口 udp ，一般用做DNS服务器，如果你不需要则忽略此条</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">iptables -A OUTPUT -p udp --dport 53 -j ACCEPT</div><div class="line">iptables -A INPUT -p udp --sport 53 -j ACCEPT</div></pre></td></tr></table></figure>
+</li>
+<li><p>允许本机访问本机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT</div><div class="line">iptables -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p><strong>允许真正 SSH 端口</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p tcp -s 0/0 --dport 999 -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport 999 -m state --state ESTABLISHED -j ACCEPT</div></pre></td></tr></table></figure>
+</li>
+<li><p>允许 80 443 端口，http 和 https</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p tcp -s 0/0 --dport 80 -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport 80 -m state --state ESTABLISHED -j ACCEPT</div><div class="line">iptables -A INPUT -p tcp -s 0/0 --dport 443 -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport 443 -m state --state ESTABLISHED -j ACCEPT</div></pre></td></tr></table></figure>
+</li>
+<li><p>允许 SSR端口 以888 xxx 为例 你有几个端口，就添加几个</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p tcp -s 0/0 --dport 888 -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport 888 -m state --state ESTABLISHED -j ACCEPT</div><div class="line"></div><div class="line">iptables -A INPUT -p tcp -s 0/0 --dport xxx -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport xxx -m state --state ESTABLISHED -j ACCEPT</div></pre></td></tr></table></figure>
+</li>
+<li><p>CentOS 保存配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">iptables-save &gt; /etc/sysconfig/iptables</div><div class="line">``` </div><div class="line">重载 iptables</div></pre></td></tr></table></figure>
+<p>iptables -L</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">* debian 7 保存配置</div></pre></td></tr></table></figure>
+<p>iptables-save &gt; /etc/iptables-rules<br>ip6tables-save &gt; /etc/ip6tables-rules</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">随后修改/etc/network/interfaces文件，最后加入</div></pre></td></tr></table></figure>
+<p>pre-up iptables-restore &lt; /etc/iptables-rules<br>pre-up ip6tables-restore &lt; /etc/ip6tables-rules</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  重启执行`iptables -L`，看到配置已生效。</div><div class="line"></div><div class="line">## 安装 CSF 防火墙</div><div class="line">* 命令</div></pre></td></tr></table></figure>
+<p>rm -fv csf.tgz<br>wget <a href="http://download.configserver.com/csf.tgz" target="_blank" rel="external">http://download.configserver.com/csf.tgz</a><br>tar -xzf csf.tgz<br>cd csf<br>sh install.sh<br>//使用下边的命令来验证csf正确安装并已经运行<br>perl /usr/local/csf/bin/csftest.pl</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">## autoban 补丁（8.22）推荐</div><div class="line">* 来自ss原作者@clowwindy 的补丁，ban掉那些尝试破译ss密码的ip，在此对原作者表示敬意！</div><div class="line">* 原理是同一个ip出现3次以上尝试破译ss密码会被永久ban掉，ssr也可用</div><div class="line">* 测试只在debian 7上进行，需要python环境，但是通过秋水逸冰脚本安装ssr 已经安装好了python环境。</div><div class="line"></div><div class="line">* 以下内容参考</div><div class="line">  &gt;https://plus.google.com/104980438521301094845/posts/9zypCffhdZu</div><div class="line"></div><div class="line">---</div><div class="line"></div><div class="line">* 下载脚本</div></pre></td></tr></table></figure>
+<p>wget <a href="https://raw.githubusercontent.com/Jasper-1024/shadowsocksr/manyuser/utils/autoban.py" target="_blank" rel="external">https://raw.githubusercontent.com/Jasper-1024/shadowsocksr/manyuser/utils/autoban.py</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">* ssr运行</div></pre></td></tr></table></figure>
+<p>python autoban.py &lt; /var/log/shadowsocksr.log</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  查看哪些ip试图连接破解ssr密码。原版ss将log文件路径替换即可。</div><div class="line">  </div><div class="line">* 自动ban ip</div><div class="line">  编辑/etc/init.d/rc.local，加入</div></pre></td></tr></table></figure>
+<p>python /root/autoban.py &lt; /var/log/shadowsocksr.log</p>
+<p>nohup tail -F /var/log/shadowsocksr.log | python /root/autoban.py &gt;log 2&gt;log &amp;<br>```<br>保存退出即可。</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/2/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/07/Android笔记—Rxjava2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/07/Android笔记—Rxjava2/" itemprop="url">
+                  Android笔记—Rxjava2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-07T12:00:00+08:00">
+                2017-03-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/07/Android笔记—Rxjava2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/03/07/Android笔记—Rxjava2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/03/07/Android笔记—Rxjava2/" class="leancloud_visitors" data-flag-title="Android笔记—Rxjava2">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  2,687
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  12m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>资料来源如下<br><a href="http://www.jianshu.com/u/c50b715ccaeb" target="_blank" rel="external">给初学者的RxJava2.0教程</a>(demo代码来源)</p>
+<blockquote>
+<p><a href="http://www.jianshu.com/u/c50b715ccaeb" target="_blank" rel="external">http://www.jianshu.com/u/c50b715ccaeb</a></p>
+</blockquote>
+<p>编程环境</p>
+<ul>
+<li>Android Studio 2.2.3 </li>
+</ul>
+<hr>
+<ul>
+<li>在Gradle配置:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">compile &apos;io.reactivex.rxjava2:rxjava:2.0.1&apos;</div><div class="line">compile &apos;io.reactivex.rxjava2:rxandroid:2.0.1&apos;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2><ul>
+<li>在Eventbus中亦涉及了相关概念,比较简单.包括Observable(被观察者)、Observer(观察者)、subscribe().事件由Observable(被观察者)开始发出,通过subscribe()最终被传递到Observer(观察者).而整个过程中你是站在Observer(观察者)的位置,也就是事件的末尾,观察Observable(被观察者).</li>
+<li><p>上图</p>
+</li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public void subscribe(ObservableEmitter&lt;Integer&gt; emitter) throws Exception &#123;</div><div class="line">              emitter.onNext(1);</div><div class="line">              emitter.onComplete();</div><div class="line">          &#125;</div><div class="line">      &#125;).subscribe(new Observer&lt;Integer&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public void onSubscribe(Disposable d) &#123;</div><div class="line">              Log.d(TAG, &quot;subscribe&quot;);</div><div class="line">          &#125;</div><div class="line"></div><div class="line">          @Override</div><div class="line">          public void onNext(Integer value) &#123;</div><div class="line">              Log.d(TAG, &quot;&quot; + value);</div><div class="line">          &#125;</div><div class="line"></div><div class="line">          @Override</div><div class="line">          public void onError(Throwable e) &#123;</div><div class="line">              Log.d(TAG, &quot;error&quot;);</div><div class="line">          &#125;</div><div class="line"></div><div class="line">          @Override</div><div class="line">          public void onComplete() &#123;</div><div class="line">              Log.d(TAG, &quot;complete&quot;);</div><div class="line">          &#125;</div><div class="line">      &#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>事件由<code>emitter.onNext(1);</code>开始,最终被<code>public void onNext(Integer value)</code>相应.被观察者事件发送结束调用<code>emitter.onComplete();</code>,同时观察者最终以<code>public void onComplete()</code>相应.</p>
+</li>
+</ul>
+<hr>
+<h2 id="note-上下游以-subscribe建立连接后-事件才会开始发送"><a href="#note-上下游以-subscribe建立连接后-事件才会开始发送" class="headerlink" title="* note: 上下游以.subscribe建立连接后,事件才会开始发送."></a>* note: 上下游以<code>.subscribe</code>建立连接后,事件才会开始发送.</h2><h3 id="Observable-被观察者-Observer-观察者"><a href="#Observable-被观察者-Observer-观察者" class="headerlink" title="Observable(被观察者) Observer(观察者)"></a>Observable(被观察者) Observer(观察者)</h3><ul>
+<li>ObservableEmitter<br>ObservableEmitter： Emitter意为发射器,事件发送.onNext(T value)、onComplete()和onError(Throwable error)分别对应next事件、complete事件和error事件。</li>
+<li>Observer<integer>中onNext(Integer value)、onError(Throwable e)、onComplete()对应接受next事件、complete事件和error事件</integer></li>
+<li>被观察者发送complete事件和error事件后,观察者接受后不再继续响应事件,即使被观察者还在发送事件.<strong>complete事件和error事件互斥.</strong></li>
+<li>在Observer<integer>中,调用Disposable.dispose(),切断管道.被观察者继续发送,但观察者不再响应.</integer></li>
+</ul>
+<h3 id="subscribe"><a href="#subscribe" class="headerlink" title="subscribe"></a>subscribe</h3><ul>
+<li>建立Observable(被观察者) Observer(观察者)之间的管道.有多个重载.</li>
+<li><p>重载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public final Disposable subscribe() &#123;&#125;</div><div class="line"></div><div class="line">public final Disposable subscribe(Consumer&lt;? super T&gt; onNext) &#123;&#125;</div><div class="line"></div><div class="line">public final Disposable subscribe(Consumer&lt;? super T&gt; onNext, Consumer&lt;? super Throwable&gt; onError) &#123;&#125; </div><div class="line"></div><div class="line">public final Disposable subscribe(Consumer&lt;? super T&gt; onNext, Consumer&lt;? super Throwable&gt; onError, Action onComplete) &#123;&#125;</div><div class="line"></div><div class="line">public final Disposable subscribe(Consumer&lt;? super T&gt; onNext, Consumer&lt;? super Throwable&gt; onError, Action onComplete, Consumer&lt;? super Disposable&gt; onSubscribe) &#123;&#125;</div><div class="line"></div><div class="line">public final void subscribe(Observer&lt;? super T&gt; observer) &#123;&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>重载说明</p>
+<ul>
+<li>不带参数 : 观察者不关心任何事件(有卵用😵)</li>
+<li>只带onNext : 观察者只响应next事件.</li>
+<li>其他类似….演绎推理….</li>
+<li>最后一个是传入完整的Observer对象.(demo就是🙃)</li>
+</ul>
+</li>
+</ul>
+<h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><ul>
+<li>基于Rxjava的观察者模式可以拆分大多数的业务逻辑,即使再增加很多功能整体也不会过于混乱.</li>
+<li>但Rxjava的强大并不局限在拆分逻辑.由被观察者到观察者的整个事件传递过程,基于Rxjava我们可以<strong>任意拆分 合并 转换 事件、切换线程等.</strong></li>
+</ul>
+<hr>
+<h2 id="note-操作符搭配-Lambda-表达式食用更佳-🤣"><a href="#note-操作符搭配-Lambda-表达式食用更佳-🤣" class="headerlink" title="* note: 操作符搭配 Lambda 表达式食用更佳 🤣"></a>* note: 操作符搭配 Lambda 表达式食用更佳 🤣</h2><h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><ul>
+<li>产生并发送 Obserable 事件.</li>
+<li>仅常用,详细在<a href="https://maxwell-nc.github.io/android/rxjava2-2.html#timer" target="_blank" rel="external"> RxJava 2.x 使用详解(二) 创建操作符</a> <h4 id="creat"><a href="#creat" class="headerlink" title=".creat"></a>.creat</h4></li>
+<li>前面demo中已经实际使用过了</li>
+<li>用于产生一个 Obserable 被观察者对象,demo如上所示.</li>
+</ul>
+<h4 id="just"><a href="#just" class="headerlink" title=".just"></a>.just</h4><ul>
+<li>对于简单的几个数据,直接使用just发送即可,无需创建 Obserable 对象.just最多可以接收 <strong>10</strong> 个参数.</li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Observable.just(&quot;test&quot;,&quot;test2&quot;)</div><div class="line">      .subscribe(str -&gt; Log.i(&quot;tag&quot;, str));</div></pre></td></tr></table></figure>
+<p>相当于顺序调用onNext(“test”)和onNext(“test2”)，最后调用onComplete方法。</p>
+</li>
+</ul>
+<h4 id="fromArray"><a href="#fromArray" class="headerlink" title=".fromArray"></a>.fromArray</h4><ul>
+<li>功能与just类似但fromArray来接收任意长度的数据数组,也可以直接传入数组<code>fromArray(new int[]{1, 2, 3})</code></li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Observable.fromArray(1, 2, 3, 4, 5)</div><div class="line">      .subscribe(integer -&gt; Log.i(&quot;tag&quot;, String.valueOf(integer)));</div></pre></td></tr></table></figure>
+<p>fromArray不支持直接传入list进，list会被当作一个整体发送.</p>
+</li>
+</ul>
+<h4 id="fromIterable"><a href="#fromIterable" class="headerlink" title=".fromIterable"></a>.fromIterable</h4><ul>
+<li>功能与fromArray类似,但是可以接收 list 类型,遍历可迭代数据集合.</li>
+<li>demo<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; list = new ArrayList&lt;&gt;();</div><div class="line">list.add(&quot;a&quot;);</div><div class="line">list.add(&quot;b&quot;);</div><div class="line">list.add(&quot;c&quot;);</div><div class="line"></div><div class="line">Flowable.fromIterable(list).subscribe(</div><div class="line">      s -&gt; Log.i(&quot;tag&quot;, s)</div><div class="line">);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="timer"><a href="#timer" class="headerlink" title=".timer"></a>.timer</h4><ul>
+<li>指定一段时间间隔后发送数据(一次性),不太常用.</li>
+</ul>
+<h3 id="线程切换"><a href="#线程切换" class="headerlink" title="线程切换"></a>线程切换</h3><ul>
+<li>默认事件传递的双方在同一线程工作.</li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">observable.subscribeOn(Schedulers.newThread())     </div><div class="line">       .subscribeOn(Schedulers.io())              </div><div class="line">       .observeOn(AndroidSchedulers.mainThread()) </div><div class="line">       .observeOn(Schedulers.io())                </div><div class="line">       .subscribe(consumer);</div></pre></td></tr></table></figure>
+</li>
+<li><p>方法:</p>
+<ul>
+<li>.subscribeOn() : 指定被观察者发送事件线程,<strong>仅第一次调用时有效!</strong>  </li>
+<li>.observeOn() : 指定观察者/流变换(对发送的事件处理🖖)线程,<strong>多次调用,多次切换有效</strong></li>
+</ul>
+</li>
+<li><p>参数:</p>
+<ul>
+<li>Schedulers.io() : 适用于io密集型操作,网络通信、磁盘操作等.</li>
+<li>Schedulers.computation() : CPU密集操作,需要大量CPU计算的操作.</li>
+<li>Schedulers.newThread() : 创建新线程.</li>
+<li>AndroidSchedulers.mainThread() : Android主线程,通常为更新UI等.</li>
+</ul>
+</li>
+</ul>
+<h3 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h3><ul>
+<li>对 Obserable 事件筛选.</li>
+<li>仅常用,详细在<a href="https://maxwell-nc.github.io/android/rxjava2-3.html#filter" target="_blank" rel="external">RxJava 2.x 使用详解(三) 过滤操作符</a></li>
+</ul>
+<h4 id="filter"><a href="#filter" class="headerlink" title=".filter"></a>.filter</h4><ul>
+<li>基本过滤操作符,按照任意自定规则过滤.</li>
+</ul>
+<h3 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h3><h3 id="转换"><a href="#转换" class="headerlink" title="转换"></a>转换</h3><h4 id="map"><a href="#map" class="headerlink" title=".map"></a>.map</h4><ul>
+<li>处理前后事件数量之比<strong>1:1</strong>,事件变换前后顺序<strong>不变</strong></li>
+<li>map作用是对Observable发送的每一个事件,应用处理变换函数,再继续像下游发送.中间过程可以转换事件类型、改变事件内容等等.<strong>只需要变换后的事件类型与下游接收的类型匹配即可.</strong></li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public void subscribe(ObservableEmitter&lt;Integer&gt; emitter) throws Exception &#123;</div><div class="line">              emitter.onNext(1);</div><div class="line">              emitter.onNext(2);</div><div class="line">              emitter.onNext(3);</div><div class="line">          &#125;</div><div class="line">      &#125;).map(new Function&lt;Integer, String&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public String apply(Integer integer) throws Exception &#123;</div><div class="line">              return &quot;This is result &quot; + integer;</div><div class="line">          &#125;</div><div class="line">      &#125;).subscribe(new Consumer&lt;String&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public void accept(String s) throws Exception &#123;</div><div class="line">              Log.d(TAG, s);</div><div class="line">          &#125;</div><div class="line">      &#125;);</div></pre></td></tr></table></figure>
+<p>这里是把int类型转换为了string类型,与观察者接收的类型匹配即可.</p>
+</li>
+</ul>
+<h4 id="flatMap"><a href="#flatMap" class="headerlink" title=".flatMap"></a>.flatMap</h4><ul>
+<li>处理前后事件数量之比 <strong>1:n</strong>,事件变换前后顺序<strong>不保证</strong></li>
+<li>flatMap,通俗点就是把Observable发送的事件拆散变换再,继续像下游发送.1个Observable事件可拆成任意个.<strong>只需要变换后的事件类型与下游接收的类型匹配即可.</strong></li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public void subscribe(ObservableEmitter&lt;Integer&gt; emitter) throws Exception &#123;</div><div class="line">              emitter.onNext(1);</div><div class="line">              emitter.onNext(2);</div><div class="line">              emitter.onNext(3);</div><div class="line">          &#125;</div><div class="line">      &#125;).flatMap(new Function&lt;Integer, ObservableSource&lt;String&gt;&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public ObservableSource&lt;String&gt; apply(Integer integer) throws Exception &#123;</div><div class="line">              final List&lt;String&gt; list = new ArrayList&lt;&gt;();</div><div class="line">              for (int i = 0; i &lt; 3; i++) &#123;</div><div class="line">                  list.add(&quot;I am value &quot; + integer);</div><div class="line">              &#125;</div><div class="line">              return Observable.fromIterable(list).delay(10,TimeUnit.MILLISECONDS);</div><div class="line">          &#125;</div><div class="line">      &#125;).subscribe(new Consumer&lt;String&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public void accept(String s) throws Exception &#123;</div><div class="line">              Log.d(TAG, s);</div><div class="line">          &#125;</div><div class="line">      &#125;);</div></pre></td></tr></table></figure>
+<p>这里是flatMap把一个int类型事件拆成了3个String类型,运行结果看,最终事件到达顺序与onNext(1);onNext(2);的发送顺序无关</p>
+</li>
+</ul>
+<h4 id="concatMap"><a href="#concatMap" class="headerlink" title=".concatMap"></a>.concatMap</h4><ul>
+<li>处理前后事件数量之比 <strong>1:n</strong>,事件变换前后顺序<strong>按顺序</strong></li>
+<li>与flatMap作用相同,只是保证了事件严格按顺序达到下游.</li>
+<li>demo 就不上了,直接替换flatMap的位置就好.</li>
+</ul>
+<h4 id="zip"><a href="#zip" class="headerlink" title=".zip"></a>.zip</h4><ul>
+<li>处理前后事件数量之比 <strong>n:1</strong>,事件变换前后顺序<strong>严格按顺序</strong></li>
+<li>zip.最常见的压缩文件格式,在这里也是类似的意思,zip可以严格按照顺序合并多个 <strong>不同类型</strong> Observable发送的事件.总的发送事件数量与上游Observable发送最少的那个数量相同.</li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line">Observable&lt;Integer&gt; observable1 = Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() &#123;         </div><div class="line">  @Override                                                                                      </div><div class="line">  public void subscribe(ObservableEmitter&lt;Integer&gt; emitter) throws Exception &#123;                   </div><div class="line">      Log.d(TAG, &quot;emit 1&quot;);                                                                      </div><div class="line">      emitter.onNext(1);                                                                         </div><div class="line">      Thread.sleep(1000);                                                                        </div><div class="line"></div><div class="line">      Log.d(TAG, &quot;emit 2&quot;);                                                                      </div><div class="line">      emitter.onNext(2);                                                                         </div><div class="line">      Thread.sleep(1000);                                                                        </div><div class="line"></div><div class="line">      Log.d(TAG, &quot;emit 3&quot;);                                                                      </div><div class="line">      emitter.onNext(3);                                                                         </div><div class="line">      Thread.sleep(1000);                                                                        </div><div class="line"></div><div class="line">      Log.d(TAG, &quot;emit 4&quot;);                                                                      </div><div class="line">      emitter.onNext(4);                                                                         </div><div class="line">      Thread.sleep(1000);                                                                        </div><div class="line"></div><div class="line">      Log.d(TAG, &quot;emit complete1&quot;);                                                              </div><div class="line">      emitter.onComplete();                                                                      </div><div class="line">  &#125;                                                                                              </div><div class="line">&#125;).subscribeOn(Schedulers.io());                                                                   </div><div class="line"></div><div class="line">Observable&lt;String&gt; observable2 = Observable.create(new ObservableOnSubscribe&lt;String&gt;() &#123;           </div><div class="line">  @Override                                                 public void subscribe(ObservableEmitter&lt;String&gt; emitter) throws Exception &#123;                    </div><div class="line">      Log.d(TAG, &quot;emit A&quot;);                                                                  </div><div class="line">      emitter.onNext(&quot;A&quot;);                                                                       </div><div class="line">      Thread.sleep(1000);                                                                        </div><div class="line"></div><div class="line">      Log.d(TAG, &quot;emit B&quot;);                                                                      </div><div class="line">      emitter.onNext(&quot;B&quot;);                                                                       </div><div class="line">      Thread.sleep(1000);                                                                        </div><div class="line"></div><div class="line">      Log.d(TAG, &quot;emit C&quot;);                                                                      </div><div class="line">      emitter.onNext(&quot;C&quot;);                                                                       </div><div class="line">      Thread.sleep(1000);                                                                        </div><div class="line"></div><div class="line">      Log.d(TAG, &quot;emit complete2&quot;);                                                              </div><div class="line">      emitter.onComplete();                                                                      </div><div class="line">  &#125;                                                                                              </div><div class="line">&#125;).subscribeOn(Schedulers.io());                                                                   </div><div class="line"></div><div class="line">Observable.zip(observable1, observable2, new BiFunction&lt;Integer, String, String&gt;() &#123;               </div><div class="line">  @Override                                                                                      </div><div class="line">  public String apply(Integer integer, String s) throws Exception &#123;                              </div><div class="line">      return integer + s;                                                                        </div><div class="line">  &#125;                                                                                              </div><div class="line">&#125;).subscribe(new Observer&lt;String&gt;() &#123;                    </div><div class="line">  @Override                                                                                      </div><div class="line">  public void onSubscribe(Disposable d) &#123;                                                        </div><div class="line">      Log.d(TAG, &quot;onSubscribe&quot;);                                                                 </div><div class="line">  &#125;                                                                                              </div><div class="line"></div><div class="line">  @Override                                                                                      </div><div class="line">  public void onNext(String value) &#123;                                                             </div><div class="line">      Log.d(TAG, &quot;onNext: &quot; + value);                                                            </div><div class="line">  &#125;                                                                                              </div><div class="line"></div><div class="line">  @Override                                                                                      </div><div class="line">  public void onError(Throwable e) &#123;                                                             </div><div class="line">      Log.d(TAG, &quot;onError&quot;);                                                                     </div><div class="line">  &#125;                                                                                              </div><div class="line"></div><div class="line">  @Override                                                                                      </div><div class="line">  public void onComplete() &#123;                                                                     </div><div class="line">      Log.d(TAG, &quot;onComplete&quot;);                                                                  </div><div class="line">  &#125;                                                                                              </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>这里两个事件发送在同一线程中.当两个事件发送不再同一线程时,情况类似,不过当异步时,数量较少的事件发送完成,发送Complete事件后,通道随即被切断.</p>
+</li>
+</ul>
+<h4 id="Concat"><a href="#Concat" class="headerlink" title=".Concat"></a>.Concat</h4><ul>
+<li>处理前后事件数量之比 <strong>n:1</strong>,事件变换前后顺序<strong>严格按顺序</strong></li>
+<li>Concat,可以严格按照顺序合并 <strong>相同类型</strong> Observable发送的事件.</li>
+</ul>
+<h2 id="Backpressure"><a href="#Backpressure" class="headerlink" title="Backpressure"></a>Backpressure</h2><hr>
+<h2 id="被翻译为背压…-如此文不达意的直译-能忍-往下都是因为原文-😈"><a href="#被翻译为背压…-如此文不达意的直译-能忍-往下都是因为原文-😈" class="headerlink" title="* 被翻译为背压…(如此文不达意的直译,能忍?往下都是因为原文..😈)"></a>* 被翻译为背压…(如此文不达意的直译,能忍?往下都是因为原文..😈)</h2><ul>
+<li>其实概念有够简单:将整个事件产生/传递/处理的过程想象为一条河流由上而下, Backpressure 指的是上游产生的事件太快,远远超过了下游的处理速度,以至于缓冲区溢出.上游来了洪水,下游径流量不够,以至于中间河道跨过了堤岸,溢出.</li>
+</ul>
+<h3 id="Flowable基础"><a href="#Flowable基础" class="headerlink" title="Flowable基础"></a>Flowable基础</h3><ul>
+<li><p>Rxjava 1.x中需要自行通过操作符处理,到了2.0中,则有了专门对付发洪水上游的被观察者- Flowable .我们常用的 observable 在2.x中一般用于不涉及 Backpressure 的情况.而对应与 observable 的 Observer ,改为了  Subscriber .</p>
+</li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">Flowable&lt;Integer&gt; upstream = Flowable.create(new FlowableOnSubscribe&lt;Integer&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public void subscribe(FlowableEmitter&lt;Integer&gt; emitter) throws Exception &#123;</div><div class="line">              Log.d(TAG, &quot;emit 1&quot;);</div><div class="line">              emitter.onNext(1);</div><div class="line">              Log.d(TAG, &quot;emit 2&quot;);</div><div class="line">              emitter.onNext(2);</div><div class="line">              Log.d(TAG, &quot;emit 3&quot;);</div><div class="line">              emitter.onNext(3);</div><div class="line">              Log.d(TAG, &quot;emit complete&quot;);</div><div class="line">              emitter.onComplete();</div><div class="line">          &#125;</div><div class="line">      &#125;, BackpressureStrategy.ERROR); //增加了一个参数</div><div class="line"></div><div class="line">      Subscriber&lt;Integer&gt; downstream = new Subscriber&lt;Integer&gt;() &#123;</div><div class="line"></div><div class="line">          @Override</div><div class="line">          public void onSubscribe(Subscription s) &#123;</div><div class="line">              Log.d(TAG, &quot;onSubscribe&quot;);</div><div class="line">              s.request(Long.MAX_VALUE);  //注意这句代码</div><div class="line">          &#125;</div><div class="line"></div><div class="line">          @Override</div><div class="line">          public void onNext(Integer integer) &#123;</div><div class="line">              Log.d(TAG, &quot;onNext: &quot; + integer);</div><div class="line"></div><div class="line">          &#125;</div><div class="line"></div><div class="line">          @Override</div><div class="line">          public void onError(Throwable t) &#123;</div><div class="line">               Log.w(TAG, &quot;onError: &quot;, t);</div><div class="line">          &#125;</div><div class="line"></div><div class="line">          @Override</div><div class="line">          public void onComplete() &#123;</div><div class="line">              Log.d(TAG, &quot;onComplete&quot;);</div><div class="line">          &#125;</div><div class="line">      &#125;;</div><div class="line"></div><div class="line">      upstream.subscribe(downstream);</div></pre></td></tr></table></figure>
+</li>
+<li><p>注意两个地方</p>
+<ul>
+<li>Flowable创建时比 observable 多了一个参数.(参数作用下节说明)</li>
+<li>Subscriber中调用了 s.request .</li>
+</ul>
+</li>
+<li><p>Flowable 与 Observable 最大的不同就是 Flowable再次发送事件需要等待 Subscriber 中调用 .request </p>
+</li>
+<li><p>.request() 实质上是下游告知上游自己的处理能力,使得上游根据下游处理能力发送事件.<strong>多次调用,上游表示处理能力的数字会叠加</strong>,上游每发送一个事件,该数字减一,到0抛出异常</p>
+<ul>
+<li>上下游在同一线程时,下游没有或没有及时调用 .request ,上游会抛出异常</li>
+<li>异步线程时,下游即使没有调用 .request 会有128个事件的缓存区.上游可继续发出事件,缓存区超出128个事件后,抛出异常.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Flowable拓展"><a href="#Flowable拓展" class="headerlink" title="Flowable拓展"></a>Flowable拓展</h3><h2 id="这里对-Flowable-多的参数进行说明"><a href="#这里对-Flowable-多的参数进行说明" class="headerlink" title="* 这里对 Flowable 多的参数进行说明."></a>* 这里对 Flowable 多的参数进行说明.</h2><ul>
+<li>参数<ul>
+<li>BackpressureStrategy.BUFFER : 默认缓存区128,这个参数极大拓展了缓存区,使得 Flowable 表现与 Observable 差不多.</li>
+<li>BackpressureStrategy.DROP : 128缓存区满了,就丢弃上游事件,直到下游处理了一个事件,缓存区 -1 ,再允许存入新的上游事件.</li>
+<li>BackpressureStrategy.LATEST : 永远保存最后达到的128个上游事件,上游有新的事件到达满载的缓存区时,丢弃第一个存入缓存区的上游事件.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>对于不是由我们编写的 Flowable 也可以通过 interval 操作符来加工.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Flowable.interval(1, TimeUnit.MICROSECONDS)</div><div class="line">              .onBackpressureDrop()  //加上 Backpressure 策略</div></pre></td></tr></table></figure>
+</li>
+<li><p>对应上文,指定参数有3,意思同上.</p>
+<ul>
+<li>onBackpressureBuffer()</li>
+<li>onBackpressureDrop()</li>
+<li>onBackpressureLatest()</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/2/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/07/Android笔记—仿绿色守护嗜睡模式通知/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2995,778 +3710,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-  
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/13/Android笔记-UI-ListView/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jasper">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/v.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="默">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/13/Android笔记-UI-ListView/" itemprop="url">
-                  Android笔记-UI-ListView
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-13T18:00:00+08:00">
-                2016-12-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">Android笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/13/Android笔记-UI-ListView/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/12/13/Android笔记-UI-ListView/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/12/13/Android笔记-UI-ListView/" class="leancloud_visitors" data-flag-title="Android笔记-UI-ListView">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  1,885
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  8m
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<ul>
-<li>资料来源如下</li>
-<li>第一行代码(第二版)</li>
-<li><a href="https://developer.android.com/reference/android/widget/ListView.html" target="_blank" rel="external">ListView</a></li>
-<li><a href="http://blog.csdn.net/guolin_blog/article/details/44996879" target="_blank" rel="external"> Android ListView工作原理完全解析，带你从源码的角度彻底理解</a></li>
-</ul>
-<hr>
-<ul>
-<li>ListView是所有原生控件中使用频率最高和最复杂的，涉及知识点也较多，专门抽出一篇来记录，涉及一些过程分析，希望自己能写完</li>
-</ul>
-<hr>
-<h3 id="ListView的简单使用"><a href="#ListView的简单使用" class="headerlink" title="ListView的简单使用"></a>ListView的简单使用</h3><ul>
-<li><p>先来看一下一个简单的实例<br>代码如下</p>
-<ul>
-<li><p>在activity_main.xml中添加_ListView</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ListView</span></span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/list_view"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">ListView</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>修改MainActivity的代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">//要显示的数组，屏幕长了点，为了显示滑动效果多增加了几项。</span></div><div class="line">   <span class="keyword">private</span> String[] data = &#123;<span class="string">"apple"</span>,<span class="string">"banana"</span>,<span class="string">"orange"</span>,<span class="string">"watermelon"</span>,<span class="string">"pear"</span>,<span class="string">"grape"</span>,<span class="string">"pineapple"</span>,<span class="string">"strawberry"</span>,<span class="string">"cherry"</span>,<span class="string">"mango"</span>,<span class="string">"A"</span>,<span class="string">"B"</span>,<span class="string">"C"</span>,<span class="string">"D"</span>,<span class="string">"E"</span>,<span class="string">"F"</span>&#125;;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">      <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">      setContentView(R.layout.activity_main);</div><div class="line">      Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);</div><div class="line">      setSupportActionBar(toolbar);</div><div class="line"></div><div class="line"><span class="comment">//为适配器绑定数据</span></div><div class="line">	ArrayAdapter&lt;String&gt; adapter = <span class="keyword">new</span> ArrayAdapter&lt;String&gt;(MainActivity.<span class="keyword">this</span>,android.R.layout.simple_list_item_single_choice,data);</div><div class="line"><span class="comment">//得到ListView对象的引用</span></div><div class="line">ListView listView = (ListView) findViewById(R.id.list_view);</div><div class="line"><span class="comment">//适配器内容传递</span></div><div class="line">listView.setAdapter(adapter);   </div><div class="line">      &#125;);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>效果如图<br><img src="http://cdn1.snapgram.co/imgs/2016/12/14/Screenshot_20160812-170816.png" alt="Screenshot_20160812-170816.png">    </p>
-</li>
-<li><p>步骤其实比较简单</p>
-<ul>
-<li>准备要显示的数据 ——String[] data数组</li>
-<li>构建适配器  ——ArrayAdapter<string> adapter</string></li>
-<li>将适配器添加到ListView ——listView.setAdapter(adapter);   </li>
-</ul>
-</li>
-<li><p>详解</p>
-<ul>
-<li>ListView首先是用来展现大量数据的，<br>数据源的来源可以是网络下载，程序内置、数据库提取等，本例中则是简单的定义了一个String类型 data数组。<br>数据源的类型/种类繁多，使得ListView无法直接适配数据源，直接适配数据源将导致代码的臃肿和效率的低下。ListView与数据源之间需要一个过度</li>
-<li>适配器：Adapter，Adapter在ListView和数据源之间起到了一个桥梁的作用。正是Adapter的使用ListView的使用变得要比其它控件复杂得多。</li>
-</ul>
-</li>
-</ul>
-<h3 id="Adapter适配器"><a href="#Adapter适配器" class="headerlink" title="Adapter适配器"></a>Adapter适配器</h3><ul>
-<li><p>Adapter适配器在ListView和数据源之间起到了一个桥梁的作用Adapter的接口都是统一的，因此ListView不用担心任何适配方面的问题。</p>
-<p>Adapter又是一个接口(interface)，它可以去实现各种各样的子类，每个子类都能通过自己的逻辑来去完成特定的功能，以及与特定数据源的适配操作，比如说ArrayAdapter可以用于数组和List类型的数据源适配，SimpleCursorAdapter可以用于游标类型的数据源适配</p>
-<p>这样就解决了数据源适配的难题，并且还拥有相当不错的扩展性</p>
-</li>
-<li><p>简易的示图(来自  郭霖的博客)<br><img src="http://cdn3.snapgram.co/imgs/2016/12/14/SouthEast.png" alt="SouthEast.png"></p>
-</li>
-<li><p>常用Adapter</p>
-<p>ArrayAdapter<t>——用来绑定一个数组，支持泛型操作</t></p>
-<p>SimpleAdapter——用来绑定在xml中定义的控件对应的数据</p>
-<p>SimpleCursorAdapter——用来绑定游标得到的数据</p>
-<p>BaseAdapter——通用的基础适配器</p>
-</li>
-<li><p>实例中使用的是ArrayAdapter，ArrayAdapter具有多个构造函数重载，这里使用的是字符串类型，</p>
-</li>
-<li>ArrayAdapter的构造函数<ul>
-<li>当前上下文</li>
-<li>ListView子项的id，本例中使用的是android.R.layout.simple_list_item 这是Android内置的一个布局文件</li>
-<li>需要适配的数据<br>之后适配器就构建完成，最后传递进LIstView中即可</li>
-</ul>
-</li>
-</ul>
-<h4 id="自定义适配器"><a href="#自定义适配器" class="headerlink" title="自定义适配器"></a>自定义适配器</h4><ul>
-<li>从第一行代码第二版的源码LiseViewTest目录下拷贝drawble<em>hdpi </em>到你的工程下</li>
-<li><p>新建Fruit类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Fruit</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> String name;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">int</span> imageId;</div><div class="line">  <span class="comment">//构造函数   水果名称/水果对应图片资源ID</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Fruit</span><span class="params">(String name, <span class="keyword">int</span> imageId)</span> </span>&#123;</div><div class="line">      <span class="keyword">this</span>.name = name;</div><div class="line">      <span class="keyword">this</span>.imageId = imageId;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">      <span class="keyword">return</span> name;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getImageId</span><span class="params">()</span> </span>&#123;</div><div class="line">      <span class="keyword">return</span> imageId;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>在layout目录下新建fruit<em>item.xml  </em></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">  <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span></div><div class="line">  <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">  <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">ImageView</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/fruit_image"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span> /&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/fruit_name"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_gravity</span>=<span class="string">"center_vertical"</span></div><div class="line">      <span class="attr">android:layout_marginLeft</span>=<span class="string">"10dp"</span> /&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>一个ImageView和TextView ，水平居中显示</p>
-</li>
-<li><p>自定义适配器继承自ArrayAdapter 泛型指定为fruit类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">//继承自ArrayAdapter</span></div><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FruitAdapter</span> <span class="keyword">extends</span> <span class="title">ArrayAdapter</span>&lt;<span class="title">Fruit</span>&gt; </span>&#123;</div><div class="line">   <span class="keyword">private</span> <span class="keyword">int</span> resourceId;</div><div class="line"><span class="comment">//构造函数  /上下文  ListView子项布局id    数据</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="title">FruitAdapter</span><span class="params">(Context context, <span class="keyword">int</span> textViewResourceId,</span></span></div><div class="line">                       List&lt;Fruit&gt; objects) &#123;</div><div class="line">       <span class="keyword">super</span>(context, textViewResourceId, objects);</div><div class="line">       resourceId = textViewResourceId;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="comment">//当前子元素的的位置，</span></div><div class="line">   <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span></span>&#123;</div><div class="line">       Fruit fruit = getItem(position); <span class="comment">// 获取当前项的Fruit实例</span></div><div class="line">       View view = LayoutInflater.from(getContext()).inflate(resourceId,parent,<span class="keyword">false</span>);</div><div class="line">       ImageView fruitImage = (ImageView)view.findViewById(R.id.fruit_image);</div><div class="line">       TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</div><div class="line">       fruitImage.setImageResource(fruit.getImageId());</div><div class="line">       fruitName.setText(fruit.getName());</div><div class="line">       <span class="keyword">return</span> view;</div><div class="line">   &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>getView()方法接受的三个参数，第一个参数position代表当前子元素的的位置，我们可以通过具体的位置来获取与其相关的数据。第二个参数convertView</li>
-<li>LayoutInflater.inflate()方法来去加载布局。接收3个参数，第三个参数为false表示只在父布局声明的layout属性有效，但不会为这个view添加父布局，最后设定为接下来会对这个view进行一些属性和值的设定，最后将view返回。</li>
-</ul>
-</li>
-<li><p>修改MainActivity的代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="comment">//新建Fruit类的数组</span></div><div class="line">  <span class="keyword">private</span> List&lt;Fruit&gt; fruitList = <span class="keyword">new</span> ArrayList&lt;Fruit&gt;();</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">      <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">      setContentView(R.layout.activity_main);</div><div class="line"></div><div class="line"><span class="comment">// 初始化水果数据</span></div><div class="line">      initFruits();</div><div class="line">      <span class="comment">//设置FruitAdapter适配器</span></div><div class="line">      FruitAdapter adapter = <span class="keyword">new</span> FruitAdapter(MainActivity.<span class="keyword">this</span>, R.layout.fruit_item, fruitList);</div><div class="line">      <span class="comment">//得到ListView的引用</span></div><div class="line">      ListView listView = (ListView) findViewById(R.id.list_view);</div><div class="line">      listView.setAdapter(adapter);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// 初始化水果数据</span></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initFruits</span><span class="params">()</span> </span>&#123;</div><div class="line">      <span class="comment">//填充两遍，占满屏幕</span></div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</div><div class="line">          Fruit apple = <span class="keyword">new</span> Fruit(<span class="string">"Apple"</span>, R.drawable.apple_pic);</div><div class="line">          fruitList.add(apple);</div><div class="line">          Fruit banana = <span class="keyword">new</span> Fruit(<span class="string">"Banana"</span>, R.drawable.banana_pic);</div><div class="line">          fruitList.add(banana);</div><div class="line">          Fruit orange = <span class="keyword">new</span> Fruit(<span class="string">"Orange"</span>, R.drawable.orange_pic);</div><div class="line">          fruitList.add(orange);</div><div class="line">          Fruit watermelon = <span class="keyword">new</span> Fruit(<span class="string">"Watermelon"</span>, R.drawable.watermelon_pic);</div><div class="line">          fruitList.add(watermelon);</div><div class="line">          Fruit pear = <span class="keyword">new</span> Fruit(<span class="string">"Pear"</span>, R.drawable.pear_pic);</div><div class="line">          fruitList.add(pear);</div><div class="line">          Fruit grape = <span class="keyword">new</span> Fruit(<span class="string">"Grape"</span>, R.drawable.grape_pic);</div><div class="line">          fruitList.add(grape);</div><div class="line">          Fruit pineapple = <span class="keyword">new</span> Fruit(<span class="string">"Pineapple"</span>, R.drawable.pineapple_pic);</div><div class="line">          fruitList.add(pineapple);</div><div class="line">          Fruit strawberry = <span class="keyword">new</span> Fruit(<span class="string">"Strawberry"</span>, R.drawable.strawberry_pic);</div><div class="line">          fruitList.add(strawberry);</div><div class="line">          Fruit cherry = <span class="keyword">new</span> Fruit(<span class="string">"Cherry"</span>, R.drawable.cherry_pic);</div><div class="line">          fruitList.add(cherry);</div><div class="line">          Fruit mango = <span class="keyword">new</span> Fruit(<span class="string">"Mango"</span>, R.drawable.mango_pic);</div><div class="line">          fruitList.add(mango);</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>只需要修改fruit<em>item.xml，即可定制界面</em></p>
-</li>
-</ul>
-<h3 id="提升ListView的效率"><a href="#提升ListView的效率" class="headerlink" title="提升ListView的效率"></a>提升ListView的效率</h3><h4 id="convertView参数"><a href="#convertView参数" class="headerlink" title="convertView参数"></a>convertView参数</h4><ul>
-<li>针对  <code>Fruit fruit = getItem(position); // 获取当前项的Fruit实例</code><br>每次滑动ListView时，getView()方法都会将布局都会重新加载一边</li>
-<li>convertView参数：将之前加载完成的布局进行缓存。</li>
-<li>借助convertView参数，在每次加载View之前查询convertView是否为空，为空则重新加载，不为空则从convertView中取</li>
-<li><p>代码部分如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">View view;</div><div class="line">Fruit fruit = getItem(position); <span class="comment">// 获取当前项的Fruit实例</span></div><div class="line"></div><div class="line"> <span class="keyword">if</span> (convertView == <span class="keyword">null</span>) &#123;</div><div class="line">      view = LayoutInflater.from(getContext()).inflate(resourceId,parent,<span class="keyword">false</span>);</div><div class="line"> &#125;<span class="keyword">else</span> &#123;</div><div class="line">      view = convertView;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>ListView不会再重复加载布局了</p>
-<h4 id="ViewHolder"><a href="#ViewHolder" class="headerlink" title="ViewHolder"></a>ViewHolder</h4></li>
-<li>ViewHolder不是Android的开发API，而是一种设计方法</li>
-<li><p>针对<br><code>ImageView fruitImage = (ImageView)view.findViewById(R.id.fruit_image);
-TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每次布局实例化后，findViewById都会重新执行获取控件实例</p>
-</li>
-<li><p>新增内部类 ViewHolder，利用Tag附加到对应View中，即每次加载布局时，对应的  获取控件实例的操作也一并执行，并储存在View中。这样 获取控件实例的操作直接缓存在View中，不会再重复执行</p>
-</li>
-<li><p>代码如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"> <span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</div><div class="line">       Fruit fruit = getItem(position); <span class="comment">// 获取当前项的Fruit实例</span></div><div class="line">       View view;</div><div class="line">       ViewHolder viewHolder;</div><div class="line">       <span class="keyword">if</span> (convertView == <span class="keyword">null</span>) &#123;</div><div class="line">           <span class="comment">//加载布局</span></div><div class="line">           view = LayoutInflater.from(getContext()).inflate(resourceId, parent, <span class="keyword">false</span>);</div><div class="line">           viewHolder = <span class="keyword">new</span> ViewHolder();</div><div class="line">           viewHolder.fruitImage = (ImageView) view.findViewById (R.id.fruit_image);</div><div class="line">           viewHolder.fruitName = (TextView) view.findViewById (R.id.fruit_name);</div><div class="line">           view.setTag(viewHolder); <span class="comment">// 将ViewHolder存储在View中</span></div><div class="line">       &#125; <span class="keyword">else</span> &#123;</div><div class="line">           view = convertView;</div><div class="line">           viewHolder = (ViewHolder) view.getTag(); <span class="comment">// 重新获取ViewHolder</span></div><div class="line">       &#125;</div><div class="line">       viewHolder.fruitImage.setImageResource(fruit.getImageId());</div><div class="line">       viewHolder.fruitName.setText(fruit.getName());</div><div class="line">       <span class="keyword">return</span> view;</div><div class="line">   &#125;</div><div class="line"><span class="comment">//ViewHolder 内部类</span></div><div class="line">   <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> </span>&#123;</div><div class="line"></div><div class="line">       ImageView fruitImage;</div><div class="line"></div><div class="line">       TextView fruitName;</div><div class="line"></div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="ListView中的点击事件"><a href="#ListView中的点击事件" class="headerlink" title="ListView中的点击事件"></a>ListView中的点击事件</h3><ul>
-<li>比较简单,再MainActivty的onCreate方法中添加</li>
-<li><p>代码如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">listView.setOnItemClickListener(<span class="keyword">new</span> AdapterView.OnItemClickListener() &#123;</div><div class="line">          <span class="meta">@Override</span></div><div class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemClick</span><span class="params">(AdapterView&lt;?&gt; parent, View view,</span></span></div><div class="line">                                  <span class="keyword">int</span> position, <span class="keyword">long</span> id) &#123;</div><div class="line">              Fruit fruit = fruitList.get(position);</div><div class="line">              Toast.makeText(MainActivity.<span class="keyword">this</span>, fruit.getName(), Toast.LENGTH_SHORT).show();</div></pre></td></tr></table></figure>
-</li>
-<li><p>setOnItemClickListener为ListView注册了一个监听器，点击发生时回掉 onItemClick()方法，该方法通过position参数判断具体子项。该处是执行Toast</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-	
-
-	
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-	
-	
-	<div>
-	    <p id="div-border-left-blue">
-	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
-	    <span>
-	    <b>本文地址：</b><a href="/page/2/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
-	    </span>
-	    </p>
-	</div>
-	
-
-	
-    <footer class="post-footer">
-	
-	
-	
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-  
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/09/Android笔记-UI(一)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jasper">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/v.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="默">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/09/Android笔记-UI(一)/" itemprop="url">
-                  Android笔记—UI(一)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-09T12:00:00+08:00">
-                2016-12-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">Android笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/09/Android笔记-UI(一)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/12/09/Android笔记-UI(一)/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/12/09/Android笔记-UI(一)/" class="leancloud_visitors" data-flag-title="Android笔记—UI(一)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  2,512
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  12m
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<ul>
-<li>资料来源如下</li>
-<li>第一行代码(第二版)</li>
-</ul>
-<hr>
-<h2 id="常用控件"><a href="#常用控件" class="headerlink" title="常用控件"></a>常用控件</h2><h3 id="TextView"><a href="#TextView" class="headerlink" title="TextView"></a>TextView</h3><ul>
-<li><a href="https://developer.android.com/reference/android/widget/TextView.html" target="_blank" rel="external">TextView</a>  显示文本信息</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;TextView</div><div class="line">      android:id=&quot;@+id/text_view&quot;</div><div class="line">      android:layout_width=&quot;match_parent&quot;</div><div class="line">      android:layout_height=&quot;wrap_content&quot;</div><div class="line">      android:gravity=&quot;center&quot;</div><div class="line">      android:textSize=&quot;24sp&quot;</div><div class="line">      android:textColor=&quot;#00ff00&quot;</div><div class="line">      android:text=&quot;This is TextView&quot; /&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>效果如下<br><img src="http://cdn4.snapgram.co/images/2016/12/09/ScreenShot_20161209145323.png" alt="ScreenShot_20161209145323.png"></p>
-</li>
-</ul>
-<h4 id="常用属性详解"><a href="#常用属性详解" class="headerlink" title="常用属性详解"></a>常用属性详解</h4><ul>
-<li>android:id 指定当前控件唯一标识符</li>
-<li><p>android:layout_width    android:layout_height<br>指定控件的宽度和高度，取值有</p>
-<ul>
-<li>match_parent 匹配父布局  </li>
-<li>wrap_content自适应内容  </li>
-<li>fill_parent与match_parent 相同</li>
-</ul>
-</li>
-<li><p>android:gravity 文字对齐方式，<br>可取值 top bottom left right center  可以使用 | 同时使用多个属性</p>
-</li>
-<li><p>android:text  文本内容</p>
-</li>
-<li><p>android:textSize    android:textColor  文本的大小/颜色</p>
-</li>
-</ul>
-<h3 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h3><ul>
-<li><a href="https://developer.android.com/reference/android/widget/Button.html" target="_blank" rel="external">Button</a>  按钮</li>
-<li><p>代码</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button"</span></div><div class="line">      <span class="attr">android:textAllCaps</span>=<span class="string">"false"</span>/&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>效果如下<br><img src="http://cdn2.snapgram.co/imgs/2016/12/09/2.png" alt="2.png"></p>
-</li>
-</ul>
-<h4 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h4><ul>
-<li>android:textAllCaps 系统自动转换文本为大写  true/false</li>
-</ul>
-<h4 id="按钮响应-3种"><a href="#按钮响应-3种" class="headerlink" title="按钮响应(3种)"></a>按钮响应(3种)</h4><ul>
-<li><p>匿名类注册监听器</p>
-<ul>
-<li>代码如下<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//新建Button对象 //强制类型转换</span></div><div class="line">Button button = (Button)findViewById(R.id.button);</div><div class="line">button.setOnClickListener(<span class="keyword">new</span> View.OnClickListener()&#123;</div><div class="line">      <span class="meta">@Override</span></div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span></span>&#123;</div><div class="line">          <span class="comment">//添加逻辑</span></div><div class="line">      &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>接口方式实现</p>
-<ul>
-<li>代码<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">   <span class="comment">//继承接口</span></div><div class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span></span>&#123;</div><div class="line"></div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">       <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">       setContentView(R.layout.activity_main);</div><div class="line">	<span class="comment">//注册监听器</span></div><div class="line">       Button button = (Button)findViewById(R.id.button);</div><div class="line">       button.setOnClickListener(<span class="keyword">this</span>);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="comment">//根据button id处理不同逻辑</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span></span>&#123;</div><div class="line">       <span class="keyword">switch</span> (view.getId())&#123;</div><div class="line">           <span class="keyword">case</span> R.id.button:</div><div class="line">               <span class="comment">//处理逻辑</span></div><div class="line">               <span class="keyword">break</span>;</div><div class="line">           <span class="keyword">default</span>:</div><div class="line">               <span class="keyword">break</span>;</div><div class="line">       	&#125;</div><div class="line">   	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>android:onClick 匹配<br>在xml中指定android:onClick 指定的方法名称匹配，签名必须完全相同<br>方法要求：</p>
-<ul>
-<li>是公共方法  public</li>
-<li>具有空返回值 void</li>
-<li>以 View 作为唯一参数（这将是之前点击的 View）</li>
-</ul>
-<ul>
-<li><p>代码如下</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:onClick="Button_onClick"</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Button_onClick</span><span class="params">(View view)</span></span>&#123;</div><div class="line">    <span class="comment">//处理逻辑</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="EditText"><a href="#EditText" class="headerlink" title="EditText"></a>EditText</h3><ul>
-<li><a href="https://developer.android.com/reference/android/widget/EditText.html" target="_blank" rel="external">EditText</a></li>
-<li><p>代码如下</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">EditText</span></span></div><div class="line">     <span class="attr">android:id</span>=<span class="string">"@+id/edit_text"</span></div><div class="line">     <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">     <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">     <span class="attr">android:hint</span>=<span class="string">"输入文字"</span></div><div class="line">     <span class="attr">android:maxLines</span>=<span class="string">"2"</span>/&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>效果<br><img src="http://cdn2.snapgram.co/imgs/2016/12/10/ScreenShot_20161210102606.png" alt="ScreenShot_20161210102606.png"></p>
-<h4 id="常用属性-1"><a href="#常用属性-1" class="headerlink" title="常用属性"></a>常用属性</h4></li>
-<li>android:hint  指定一些提示性文字，再用户未输入时提示。</li>
-<li>android:maxLines  输入内容最大占用行数</li>
-</ul>
-<h4 id="提取输入文本"><a href="#提取输入文本" class="headerlink" title="提取输入文本"></a>提取输入文本</h4><ul>
-<li>通过findViewById找到EditText 实例，在处理逻辑中调用EditText.getText方法得到输入内容，再由toString转换为字符串。</li>
-<li>代码如下<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//新建EditTExt对象</span></div><div class="line"><span class="keyword">private</span> EditText editText;</div><div class="line"></div><div class="line"><span class="comment">//绑定EditText实例</span></div><div class="line">editText = (EditText)findViewById(R.id.edit_text);</div><div class="line"></div><div class="line"><span class="comment">//提取文本</span></div><div class="line">String inputText = editText.getText().toString();</div><div class="line"><span class="comment">//Toast显示</span></div><div class="line">Toast.makeText(MainActivity.<span class="keyword">this</span>,inputText,Toast.LENGTH_SHORT).show();</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="ImageView"><a href="#ImageView" class="headerlink" title="ImageView"></a>ImageView</h3><ul>
-<li>将图片放入drawable-xhdpi文件夹</li>
-<li><a href="https://developer.android.com/reference/android/widget/ImageView.html" target="_blank" rel="external">ImageView</a></li>
-<li><p>代码</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ImageView</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/image_view"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:src</span>=<span class="string">"@drawable/img_1"</span>/&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>效果如下<br><img src="http://cdn2.snapgram.co/imgs/2016/12/11/ScreenShot_20161211142408.png" alt="ScreenShot_20161211142408.png"></p>
-</li>
-</ul>
-<h4 id="常用属性-2"><a href="#常用属性-2" class="headerlink" title="常用属性"></a>常用属性</h4><ul>
-<li>android:src  引用资源位置</li>
-</ul>
-<h4 id="更改ImageView图片"><a href="#更改ImageView图片" class="headerlink" title="更改ImageView图片"></a>更改ImageView图片</h4><ul>
-<li>调用 imageView.setImageResource()方法</li>
-<li>代码如下<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> ImageView imageView;</div><div class="line"></div><div class="line">imageView = (ImageView)findViewById(R.id.image_view);</div><div class="line"></div><div class="line">imageView.setImageResource(R.drawable.img_2);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="ProgressBar"><a href="#ProgressBar" class="headerlink" title="ProgressBar"></a>ProgressBar</h3><ul>
-<li><a href="https://developer.android.com/reference/android/widget/ProgressBar.html" target="_blank" rel="external">ProgressBar</a></li>
-<li><p>代码如下</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ProgressBar</span></span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/progress_bar"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">style</span>=<span class="string">"?android:attr/progressBarStyleHorizontal"</span></div><div class="line">    <span class="attr">android:max</span>=<span class="string">"100"</span>/&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p><img src="http://cdn4.snapgram.co/images/2016/12/11/ScreenShot_20161211143148.png" alt="ScreenShot_20161211143148.png"></p>
-</li>
-</ul>
-<h4 id="常用属性-3"><a href="#常用属性-3" class="headerlink" title="常用属性"></a>常用属性</h4><ul>
-<li>android：visibility 是否可见 取值 visible  invisible  gone</li>
-<li>style=”?android:attr/progressBarStyleHorizontal”<br>android:max=”100”<br>设定显示方式为横向进度条，进度条最大值100</li>
-</ul>
-<h4 id="进度条有关设置"><a href="#进度条有关设置" class="headerlink" title="进度条有关设置"></a>进度条有关设置</h4><ul>
-<li><p>显示/隐藏进度条<br>progressBar.setVisibility()方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> ProgressBar progressBar;</div><div class="line"></div><div class="line">progressBar = (ProgressBar)findViewById(R.id.progress_bar);</div><div class="line"></div><div class="line"><span class="comment">//设置ProgressBar</span></div><div class="line"><span class="keyword">if</span>(progressBar.getVisibility() == View.GONE)&#123;</div><div class="line">	progressBar.setVisibility(View.VISIBLE);</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">	progressBar.setVisibility(View.GONE);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>设置进度条进度</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> progress = progressBar.getProgress();</div><div class="line">progress +=<span class="number">10</span>;</div><div class="line">progressBar.setProgress(progress);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="AlertDialog"><a href="#AlertDialog" class="headerlink" title="AlertDialog"></a>AlertDialog</h3><ul>
-<li><a href="https://developer.android.com/reference/android/app/AlertDialog.html" target="_blank" rel="external">AlertDialog</a></li>
-<li><p>代码如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">AlertDialog.Builder dialog = <span class="keyword">new</span> AlertDialog.Builder(MainActivity.<span class="keyword">this</span>);</div><div class="line">dialog.setTitle(<span class="string">"This is Dialog"</span>);</div><div class="line">dialog.setMessage(<span class="string">"something important"</span>);</div><div class="line">dialog.setCancelable(<span class="keyword">false</span>);</div><div class="line"><span class="comment">//setPositiveButton设定OK点击事件</span></div><div class="line">dialog.setPositiveButton(<span class="string">"OK"</span>,<span class="keyword">new</span> DialogInterface.OnClickListener()&#123;</div><div class="line"><span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialog,<span class="keyword">int</span> which)</span></span>&#123;</div><div class="line">     &#125;</div><div class="line">&#125;);</div><div class="line"><span class="comment">//setNegativeButton设定Canncel点击事件</span></div><div class="line">dialog.setNegativeButton(<span class="string">"Canncel"</span>,<span class="keyword">new</span> DialogInterface.OnClickListener()&#123;</div><div class="line"><span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialog,<span class="keyword">int</span> which)</span></span>&#123;</div><div class="line">   &#125;</div><div class="line">&#125;);</div><div class="line"><span class="comment">//显示 AlertDialog</span></div><div class="line">dialog.show();</div></pre></td></tr></table></figure>
-</li>
-<li><p><img src="http://cdn1.snapgram.co/imgs/2016/12/11/ScreenShot_20161211195720.png" alt="ScreenShot_20161211195720.png"></p>
-</li>
-</ul>
-<h3 id="ProgressDialog"><a href="#ProgressDialog" class="headerlink" title="ProgressDialog"></a>ProgressDialog</h3><ul>
-<li><a href="https://developer.android.com/reference/android/app/ProgressDialog.html" target="_blank" rel="external">ProgressDialog</a>与AlertDialog类似，但是会额外显示一个进度条</li>
-<li><p>代码如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//新建ProgressDialog对象</span></div><div class="line">ProgressDialog progressDialog = <span class="keyword">new</span> ProgressDialog(MainActivity.<span class="keyword">this</span>);</div><div class="line"><span class="comment">//设置标题</span></div><div class="line">progressDialog.setTitle(<span class="string">"This is ProgressDialog"</span>);</div><div class="line"><span class="comment">//设置内容</span></div><div class="line">progressDialog.setMessage(<span class="string">"Loading..."</span>);</div><div class="line"><span class="comment">//是否可以返回键取消</span></div><div class="line">progressDialog.setCancelable(<span class="keyword">false</span>);</div><div class="line"><span class="comment">//显示</span></div><div class="line">progressDialog.show();</div></pre></td></tr></table></figure>
-</li>
-<li><p>效果如图<br><img src="http://cdn4.snapgram.co/images/2016/12/11/ScreenShot_20161211200629.png" alt="ScreenShot_20161211200629.png"></p>
-</li>
-<li><p><code>PS：progressDialog.setCancelable();属性设置为false时表示ProgressDialog无法通过Back键取消。只能通过progressDialog.dismiss()方法取消</code></p>
-</li>
-</ul>
-<h2 id="四种基本布局"><a href="#四种基本布局" class="headerlink" title="四种基本布局"></a>四种基本布局</h2><h3 id="LinearLayout-线性布局"><a href="#LinearLayout-线性布局" class="headerlink" title="LinearLayout 线性布局"></a>LinearLayout 线性布局</h3><ul>
-<li>线性方向上依次排列</li>
-<li>基础效果如下<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">  <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></div><div class="line">  <span class="attr">android:id</span>=<span class="string">"@+id/activity_main"</span></div><div class="line">  <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span></div><div class="line">  <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">  <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">  <span class="attr">tools:context</span>=<span class="string">"ljy.com.uilayouttest.MainActivity"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_1"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button_1"</span>/&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_2"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button_2"</span>/&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_3"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button_3"</span>/&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="基础属性"><a href="#基础属性" class="headerlink" title="基础属性"></a>基础属性</h4><ul>
-<li>android：orientation     LinearLayout 的排列方向，取值有两种 horizontal横向和vertical竖向，不指定 android：orientation时，默认 horizontal</li>
-<li>android:layout<em>gravity  </em>指定控件在布局中的对齐方式。该属性与 LinearLayout 的排列方向有很大关系。</li>
-<li><p>android:layout<em>weight    </em>允许使用比例方式指定控件大小,计算控件大小时，系统非将所有控件的android:layout<em>weight  </em>值相加，当作基底，计算指定的大小比例</p>
-<ul>
-<li><p>EditText和Button<br>常见用法</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">    <span class="tag">&lt;<span class="name">EditText</span></span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/button_1"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></div><div class="line">    <span class="attr">android:hint</span>=<span class="string">"Button_1"</span>/&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/button_2"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></div><div class="line">    <span class="attr">android:text</span>=<span class="string">"Button_2"</span>/&gt;</div></pre></td></tr></table></figure>
-<p><img src="http://cdn1.snapgram.co/imgs/2016/12/13/ScreenShot_20161213100420.png" alt="ScreenShot_20161213100420.png"><br>指定android:layout<em>width   </em>为0dp，android:layout<em>weight=”1”均为1 </em>平分大小</p>
-</li>
-<li><p>另一种用法</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">    <span class="tag">&lt;<span class="name">EditText</span></span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/button_1"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></div><div class="line">    <span class="attr">android:hint</span>=<span class="string">"Button_1"</span>/&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/button_2"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">android:text</span>=<span class="string">"Button_2"</span>/&gt;</div></pre></td></tr></table></figure>
-<p>将Button的android:layout_width设定为wrap_content，EditText 的android:layout<em>weight=”1”，EditText会占满整个屏幕剩余部分，在适配屏幕时较常用</em></p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="RelativeLayout相对布局"><a href="#RelativeLayout相对布局" class="headerlink" title="RelativeLayout相对布局"></a>RelativeLayout相对布局</h3><ul>
-<li>属性较多，以代码形式说明<h4 id="相对父布局位置"><a href="#相对父布局位置" class="headerlink" title="相对父布局位置"></a>相对父布局位置</h4></li>
-<li><p>代码如下</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">  <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></div><div class="line">  <span class="attr">android:id</span>=<span class="string">"@+id/activity_main"</span></div><div class="line">  <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span></div><div class="line">  <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">  <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">  <span class="attr">tools:context</span>=<span class="string">"ljy.com.uilayouttest.MainActivity"</span>&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_1"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_alignParentLeft</span>=<span class="string">"true"</span></div><div class="line">      <span class="attr">android:layout_alignParentTop</span>=<span class="string">"true"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button 1"</span>/&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_2"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_alignParentRight</span>=<span class="string">"true"</span></div><div class="line">      <span class="attr">android:layout_alignParentTop</span>=<span class="string">"true"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button 2"</span>/&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_3"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_centerInParent</span>=<span class="string">"true"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button 3"</span>/&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_4"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_alignParentBottom</span>=<span class="string">"true"</span></div><div class="line">      <span class="attr">android:layout_alignParentLeft</span>=<span class="string">"true"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button 4"</span>/&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_5"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_alignParentBottom</span>=<span class="string">"true"</span></div><div class="line">      <span class="attr">android:layout_alignParentRight</span>=<span class="string">"true"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button 5"</span>/&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p><img src="http://cdn3.snapgram.co/imgs/2016/12/13/ScreenShot_20161213102007.png" alt="ScreenShot_20161213102007.png"></p>
-</li>
-<li>android:layout_alignParentLeft=”true”<br>android:layout_alignParentTop=”true”<br>android:layout_centerInParent=”true”<br>android:layout_alignParentBottom=”true”<br>android:layout<em>alignParentRight=”true”
-</em>简而言之这些属性指定了控件相对父布局的位置</li>
-</ul>
-<h4 id="相对控件位置"><a href="#相对控件位置" class="headerlink" title="相对控件位置"></a>相对控件位置</h4><ul>
-<li><p>代码如下</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">  <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></div><div class="line">  <span class="attr">android:id</span>=<span class="string">"@+id/activity_main"</span></div><div class="line">  <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span></div><div class="line">  <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">  <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">  <span class="attr">tools:context</span>=<span class="string">"ljy.com.uilayouttest.MainActivity"</span>&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_3"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_centerInParent</span>=<span class="string">"true"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button 3"</span>/&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_1"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_above</span>=<span class="string">"@id/button_3"</span></div><div class="line">      <span class="attr">android:layout_toLeftOf</span>=<span class="string">"@id/button_3"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button 1"</span>/&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_2"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_above</span>=<span class="string">"@id/button_3"</span></div><div class="line">      <span class="attr">android:layout_toRightOf</span>=<span class="string">"@id/button_3"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button 2"</span>/&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_4"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_below</span>=<span class="string">"@id/button_3"</span></div><div class="line">      <span class="attr">android:layout_toLeftOf</span>=<span class="string">"@id/button_3"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button 4"</span>/&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_5"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_below</span>=<span class="string">"@id/button_3"</span></div><div class="line">      <span class="attr">android:layout_toRightOf</span>=<span class="string">"@id/button_3"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button 5"</span>/&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p><img src="http://cdn4.snapgram.co/images/2016/12/13/ScreenShot_20161213103016.png" alt="ScreenShot_20161213103016.png"></p>
-</li>
-<li><p>说明</p>
-<ul>
-<li>android:layout_above 可以指定一个控件位于指定控件的上方，需要指定ID引用</li>
-<li>android:layout_below 指定一个控件位于指定控件的下方，id引用</li>
-<li>android:layout_toLeftOf 指定一个控件位于指定控件的左侧，id引用</li>
-<li>android:layout_toRightOf 指定一个控件位于指定控件的右侧，id引用。</li>
-</ul>
-</li>
-<li><p><strong>NOTE：当控件去引用另一个控件的ID时，引用控件一定要在前</strong>本例中是id/button<em>3在最前面</em></p>
-</li>
-</ul>
-<h3 id="FrameLayout帧布局"><a href="#FrameLayout帧布局" class="headerlink" title="FrameLayout帧布局"></a>FrameLayout帧布局</h3><ul>
-<li>所有控件默认左上角</li>
-<li><p>代码如下<br>两个控件重合</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">FrameLayout</span>  <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">  <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">  <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/text_view"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"TextView"</span>/&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">ImageView</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/image_view"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:src</span>=<span class="string">"@mipmap/ic_launcher"</span>/&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></div></pre></td></tr></table></figure>
-<p><img src="http://cdn2.snapgram.co/imgs/2016/12/13/ScreenShot_20161213113149.png" alt="ScreenShot_20161213113149.png"></p>
-</li>
-<li><p>android:layout<em>gravity  </em>同样可以应用于FrameLayout中，指定对齐方式</p>
-</li>
-</ul>
-<h3 id="PercentFrameLayout百分比布局"><a href="#PercentFrameLayout百分比布局" class="headerlink" title="PercentFrameLayout百分比布局"></a>PercentFrameLayout百分比布局</h3><ul>
-<li>PercentFrameLayout并非内置于系统SDK中，使用前要在build.gradle中添加百分比布局的依赖。</li>
-<li><p>修改app/build.gradle文件，在dependencies闭包中增加依赖。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">  <span class="function">compile <span class="title">fileTree</span><span class="params">(dir: <span class="string">'libs'</span>, include: [<span class="string">'*.jar'</span>])</span></span></div><div class="line">  <span class="title">androidTestCompile</span><span class="params">(<span class="string">'com.android.support.test.espresso:espresso-core:2.2.2'</span>, &#123;</span></div><div class="line">      exclude group: <span class="string">'com.android.support'</span>, <span class="keyword">module</span>: <span class="string">'support-annotations'</span></div><div class="line">  &#125;)</div><div class="line">  compile 'com.android.support:appcompat-v7:25.0.1'</div><div class="line">  <span class="comment">//下面一行为增加内容，要与上面的版本号保持一致</span></div><div class="line">  compile 'com.android.support:percent:25.0.1'</div><div class="line">  testCompile 'junit:junit:4.12'</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>修改完成后，as会开始同步，同步完成即可。</p>
-</li>
-</ul>
-<ul>
-<li>PercentFrameLayout继承了FrameLayout的特性，所有控件默认左上角，需要通过android:layout<em>gravity </em>来调整位置</li>
-<li><p>源码如下</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"># PercentFrameLayout 并非系统内置SDK，需要声明完整包路径</div><div class="line"><span class="tag">&lt;<span class="name">android.support.percent.PercentFrameLayout</span></span></div><div class="line"># 随后定义<span class="attr">app</span>的命名空间</div><div class="line">  <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">  <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></div><div class="line">  <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">  <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button1"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button1"</span></div><div class="line">      <span class="attr">android:layout_gravity</span>=<span class="string">"left|top"</span></div><div class="line">      <span class="attr">app:layout_widthPercent</span>=<span class="string">"50%"</span></div><div class="line">      <span class="attr">app:layout_heightPercent</span>=<span class="string">"50%"</span>/&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button2"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button2"</span></div><div class="line">      <span class="attr">android:layout_gravity</span>=<span class="string">"right|top"</span></div><div class="line">      <span class="attr">app:layout_widthPercent</span>=<span class="string">"50%"</span></div><div class="line">      <span class="attr">app:layout_heightPercent</span>=<span class="string">"50%"</span>/&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button3"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button3"</span></div><div class="line">      <span class="attr">android:layout_gravity</span>=<span class="string">"left|bottom"</span></div><div class="line">      <span class="attr">app:layout_widthPercent</span>=<span class="string">"50%"</span></div><div class="line">      <span class="attr">app:layout_heightPercent</span>=<span class="string">"50%"</span>/&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button4"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button4"</span></div><div class="line">      <span class="attr">android:layout_gravity</span>=<span class="string">"right|bottom"</span></div><div class="line">      <span class="attr">app:layout_widthPercent</span>=<span class="string">"50%"</span></div><div class="line">      <span class="attr">app:layout_heightPercent</span>=<span class="string">"50%"</span>/&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">android.support.percent.PercentFrameLayout</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>效果如图<br><img src="http://cdn4.snapgram.co/images/2016/12/13/ScreenShot_20161213145134.png" alt="ScreenShot_20161213145134.png"></p>
-</li>
-<li><p>与之类似的还有 PercentRelativeLayout，用法不加累赘</p>
-</li>
-</ul>
-<h2 id="自定义控件"><a href="#自定义控件" class="headerlink" title="自定义控件"></a>自定义控件</h2><h3 id="引入布局"><a href="#引入布局" class="headerlink" title="引入布局"></a>引入布局</h3><ul>
-<li><p>新建title.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">  <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">  <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">  <span class="attr">android:background</span>=<span class="string">"@drawable/title_bg"</span>&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/title_back"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_gravity</span>=<span class="string">"center"</span></div><div class="line">      <span class="attr">android:layout_margin</span>=<span class="string">"5dp"</span></div><div class="line">      <span class="attr">android:background</span>=<span class="string">"@drawable/back_bg"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Back"</span></div><div class="line">      <span class="attr">android:textColor</span>=<span class="string">"#fff"</span> /&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/title_text"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_gravity</span>=<span class="string">"center"</span></div><div class="line">      <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></div><div class="line">      <span class="attr">android:gravity</span>=<span class="string">"center"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Title Text"</span></div><div class="line">      <span class="attr">android:textColor</span>=<span class="string">"#fff"</span></div><div class="line">      <span class="attr">android:textSize</span>=<span class="string">"24sp"</span> /&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/title_edit"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_gravity</span>=<span class="string">"center"</span></div><div class="line">      <span class="attr">android:layout_margin</span>=<span class="string">"5dp"</span></div><div class="line">      <span class="attr">android:background</span>=<span class="string">"@drawable/edit_bg"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Edit"</span></div><div class="line">      <span class="attr">android:textColor</span>=<span class="string">"#fff"</span> /&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>在activity<em>main.xml  </em>中使用title.xml<br> <code>&lt;include layout=&quot;@layout/title&quot;/&gt;</code>   </p>
-</li>
-<li><p>隐藏系统自带标题栏,在mainActivity的onCreat中添加如下代码。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  ActionBar actionBar = getSupportActionBar();</div><div class="line"><span class="keyword">if</span> (actionBar != <span class="keyword">null</span>)</div><div class="line">    actionBar.hide();</div></pre></td></tr></table></figure>
-</li>
-<li><p>效果如下<br><img src="http://cdn2.snapgram.co/imgs/2016/12/13/ScreenShot_20161213182554.png" alt="ScreenShot_20161213182554.png"></p>
-<h3 id="自定义控件-1"><a href="#自定义控件-1" class="headerlink" title="自定义控件"></a>自定义控件</h3><ul>
-<li>创建TitleLayout继承自LinearLayout ，代码如下<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TitleLayout</span> <span class="keyword">extends</span> <span class="title">LinearLayout</span> </span>&#123;</div><div class="line"><span class="comment">//构造函数</span></div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="title">TitleLayout</span><span class="params">(Context context, AttributeSet attributeSet)</span></span>&#123;</div><div class="line">     <span class="keyword">super</span>(context,attributeSet);</div><div class="line">     <span class="comment">//调用LayoutInflater.from方法构建LayoutInflater对象，</span></div><div class="line">     <span class="comment">//再调用inflate加载布局文件</span></div><div class="line">     LayoutInflater.from(context).inflate(R.layout.title,<span class="keyword">this</span>);</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>再activity<em>main.xml  </em>中 添加自定义控件,<br><strong>添加自定义控件时要指明控件的完整类名</strong></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ljy.com.uicustomviews.TitleLayout</span></span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>/&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>效果与引入布局文件相同</p>
-</li>
-</ul>
-<h4 id="注册按钮点击事件"><a href="#注册按钮点击事件" class="headerlink" title="注册按钮点击事件"></a>注册按钮点击事件</h4><ul>
-<li>在TitleLayout的构造函数添加按钮注册点击事件<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Button titleBack = (Button)findViewById(R.id.title_back);</div><div class="line">Button titleEdit = (Button)findViewById(R.id.title_edit);</div><div class="line">titleBack.setOnClickListener(<span class="keyword">new</span> OnClickListener() &#123;</div><div class="line">         <span class="meta">@Override</span></div><div class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">             <span class="comment">//模拟返回键</span></div><div class="line">             ((Activity)getContext()).finish();</div><div class="line">         &#125;</div><div class="line">     &#125;);</div><div class="line"></div><div class="line">     titleEdit.setOnClickListener(<span class="keyword">new</span> OnClickListener() &#123;</div><div class="line">         <span class="meta">@Override</span></div><div class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">             <span class="comment">//Toast通知</span></div><div class="line">             Toast.makeText(getContext(),<span class="string">"clik"</span>,Toast.LENGTH_SHORT).show();</div><div class="line">         &#125;</div><div class="line">     &#125;);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-	
-
-	
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-	
-	
-	<div>
-	    <p id="div-border-left-blue">
-	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
-	    <span>
-	    <b>本文地址：</b><a href="/page/2/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
-	    </span>
-	    </p>
-	</div>
-	
-
-	
-    <footer class="post-footer">
-	
-	
-	
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -3816,7 +3759,7 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -3827,7 +3770,7 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -3898,7 +3841,7 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
         <div class="copyright" >
   
   &copy;  2016.6.2 - 
-  <span itemprop="copyrightYear">2017.10.30</span>
+  <span itemprop="copyrightYear">2017.11.6</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
