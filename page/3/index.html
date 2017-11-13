@@ -325,6 +325,356 @@
   
   
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/16/Android笔记-UI-RecyclerView/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/16/Android笔记-UI-RecyclerView/" itemprop="url">
+                  Android笔记—UI-RecyclerView
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-16T12:00:00+08:00">
+                2016-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/12/16/Android笔记-UI-RecyclerView/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/12/16/Android笔记-UI-RecyclerView/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/12/16/Android笔记-UI-RecyclerView/" class="leancloud_visitors" data-flag-title="Android笔记—UI-RecyclerView">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,659
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  8m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>资料来源如下</p>
+<ul>
+<li>第一行代码(第二版)</li>
+<li><a href="http://blog.cgsdream.org/2015/06/11/recyclerview/" target="_blank" rel="external">RecyclerView使用详解—六和敬</a></li>
+<li><a href="http://jinyudong.com/2014/11/13/Introduce-RecyclerView-%E4%B8%80/" target="_blank" rel="external">RecyclerView使用介绍— Jin Yudong</a></li>
+<li><a href="http://blog.csdn.net/lmj623565791/article/details/45059587" target="_blank" rel="external">Android RecyclerView 使用完全解析 体验艺术般的控件—鸿洋_</a></li>
+<li><a href="https://developer.android.com/training/material/lists-cards.html#RecyclerView" target="_blank" rel="external">创建列表与卡片—Android Developer</a></li>
+</ul>
+<p>编程环境</p>
+<ul>
+<li>Android Studio 2.2.3 </li>
+</ul>
+<p>导语</p>
+<ul>
+<li>RecyclerView内容较ListView更多，初期只能更新一些基础内容，高级的用法随时更新，长期跟进</li>
+</ul>
+<hr>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ul>
+<li><a href="https://developer.android.com/reference/android/support/v7/widget/RecyclerView.html" target="_blank" rel="external">RecyclerView</a>是用于取代ListView的组件,第一次出现是在2014年google I/O大会，内置在是Android L及以上版本的SDK中。</li>
+<li>对比与ListView，RecyclerView弥补了ListView中的效率问题，同时支持更多的显示效果，代码逻辑更为清晰</li>
+</ul>
+<h3 id="基本使用步骤"><a href="#基本使用步骤" class="headerlink" title="基本使用步骤"></a>基本使用步骤</h3><hr>
+<ul>
+<li>RecyclerView定义在support库中，使用RecyclerView之前必须在添加依赖</li>
+<li>build.gradle中添加<br> <code>compile &#39;com.android.support:recyclerview-v7:25.1.0&#39;</code></li>
+</ul>
+<hr>
+<ul>
+<li><p>RecyclerView项目结构如下：<br><img src="http://cdn1.snapgram.co/imgs/2016/12/16/RecyclerView.png" alt="RecyclerView.png"></p>
+</li>
+<li><p>要使用RecyclerView，需要指定<strong>一个Adapter适配器</strong>和一个<strong>LayoutManager布局管理器</strong></p>
+</li>
+<li><p><strong>Adapter适配器</strong>：作用与ListView中使用的Adapter相同，都是将数据与对应item的界面进行绑定<br>所不同的是：RecyclerView中适配器必须继承自RecyclerView.Adapter，且 强制使用了ViewHolder</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>LayoutManager布局管理器</strong>：每一个item如何进行排列，何时展示和隐藏。<br>重用View时，LayoutManager会向Adapter适配器请求新的数据替换旧的数据，避免了View的冗余和频繁调用findViewById</p>
+<p>LayoutManager的引入 使得各种布局排列编写，变的格外容易，这也是RecyclerView优于ListView的一个地方</p>
+</li>
+<li><p>目前RecyclerView 内置3种LayoutManager：</p>
+<ul>
+<li>LinearLayoutManager 横向/竖向布局</li>
+<li>GridLayoutManager  网格布局</li>
+<li>StaggeredGridLayoutManager  瀑布流布局</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>MainActivity中 RecyclerView 设置  </p>
+<ol>
+<li><p>创建RecyclerView对象<br><code>RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycle_view);</code></p>
+</li>
+<li><p>设置LayoutManager显示规则</p>
+</li>
+<li><p>设置适配器<br><code>recyclerview.setAdapter(adapter);</code></p>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="简单实例"><a href="#简单实例" class="headerlink" title="简单实例"></a>简单实例</h4><p>由一个简单的实例+详细分析</p>
+<ul>
+<li><p>添加依赖<br>打开app/build.gradle文件，在dependencies闭包下添加依赖库<br>版本与你工程的<code>com.android.support:appcompat-v7:25.1.0</code>版本对应</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile <span class="string">'com.android.support:recyclerview-v7:25.1.0'</span></div></pre></td></tr></table></figure>
+<p>之后AndroidStudio会开始同步</p>
+</li>
+<li><p>添加RecyclerView到xml文件,基本与ListView一致，不过RecyclerView并非内置在SDK中，这里需要写出完整的包路径</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">android.support.v7.widget.RecyclerView</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/recycle_view"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">      /&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>要展示的依旧是水果+图片形式，<br>图片资源在第一行代码第二版源码 /chapter3/ListViewTest\app\src\main\res\drawable-hdpi下，同时将Fruit类和fruit<em>item.xml一并复制，这里给出两者源码，不再加分析</em></p>
+<ul>
+<li><p>Fruit类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Fruit</span> </span>&#123;</div><div class="line"><span class="keyword">private</span> String name;</div><div class="line"><span class="keyword">private</span> <span class="keyword">int</span> imageId;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Fruit</span><span class="params">(String name, <span class="keyword">int</span> imageId)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.imageId = imageId;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> name;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getImageId</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> imageId;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>fruit<em>item.xml  </em></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="attr">android:orientation</span>=<span class="string">"horizontal"</span></div><div class="line"><span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line"><span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">ImageView</span></span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/fruit_image"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span> /&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/fruit_name"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">android:layout_gravity</span>=<span class="string">"center_vertical"</span></div><div class="line">    <span class="attr">android:layout_marginLeft</span>=<span class="string">"10dp"</span> /&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>准备RecyclerView适配器，适配器需要继承自  RecyclerView.Adapter，将泛型指定为   .ViewHolder，(ViewHolder为在适配器的一个内部类)，并重写3个方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public ViewHolder onCreateViewHolder(ViewGroup parent,int viewType)//创建返回ViewHolder实例</div><div class="line">public void onBindViewHolder(ViewHolder holder,int pisition)//数据与界面绑定</div><div class="line">public int getItemCount()  // 返回数据的数量</div></pre></td></tr></table></figure>
+<p> 新建 FruitAdapter 继承自  RecyclerView.Adapter</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">//继承自RecyclerView.Adapter，泛型为  FruitAdapter .ViewHolder</span></div><div class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FruitAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">FruitAdapter</span>.<span class="title">ViewHolder</span>&gt; </span>&#123;</div><div class="line">   <span class="comment">//私有Fruit列表</span></div><div class="line">   <span class="keyword">private</span> List&lt;Fruit&gt; mFruitList;</div><div class="line"></div><div class="line"><span class="comment">//新建内部类ViewHolder继承自RecyclerView.ViewHolde有每个Item的的所有界面元素</span></div><div class="line">   <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span></span>&#123;</div><div class="line">       ImageView fruitImage;</div><div class="line">       TextView fruitName;</div><div class="line">       <span class="comment">//ViewHolder构造函数，传入View，通常为RecyclerView子项的外层布局(本例为fruit_item.xml)</span></div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="title">ViewHolder</span><span class="params">(View view)</span></span>&#123;</div><div class="line">           <span class="keyword">super</span>(view);</div><div class="line">           <span class="comment">//findViewById获取  Image/Name实例</span></div><div class="line">           fruitImage = (ImageView)view.findViewById(R.id.fruit_image);</div><div class="line">           fruitName = (TextView)view.findViewById(R.id.fruit_name);</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line"><span class="comment">//FruitAdapter构造函数，将数据源传入全局变量mFruitList</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="title">FruitAdapter</span><span class="params">(List&lt;Fruit&gt;fruitList)</span></span>&#123;</div><div class="line">       mFruitList = fruitList;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="comment">//创建ViewHolder实例</span></div><div class="line">   <span class="function"><span class="keyword">public</span> ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup parent,<span class="keyword">int</span> viewType)</span></span>&#123;</div><div class="line">       <span class="comment">//加载布局文件</span></div><div class="line">       View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fruit_item,parent,<span class="keyword">false</span>);</div><div class="line">       <span class="comment">//调用ViewHolder构造函数</span></div><div class="line">       ViewHolder holder = <span class="keyword">new</span> ViewHolder(view);</div><div class="line">       <span class="comment">//返回ViewHolder实例</span></div><div class="line">       <span class="keyword">return</span> holder;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="comment">//对 RecyclerView子项进行赋值，有新的子项进入屏幕显示范围时调用</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(ViewHolder holder,<span class="keyword">int</span> pisition)</span></span>&#123;</div><div class="line">       Fruit fruit = mFruitList.get(pisition);</div><div class="line">       holder.fruitImage.setImageResource(fruit.getImageId());</div><div class="line">       holder.fruitName.setText(fruit.getName());</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="comment">//返回 RecyclerView子项数量</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span></span>&#123;</div><div class="line">       <span class="keyword">return</span> mFruitList.size();</div><div class="line">   &#125;</div><div class="line"></div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>MainActivity中使用RecyclerView</p>
+<ul>
+<li><p>创建RecyclerView对象</p>
+</li>
+<li><p>设置LayoutManager显示规则（默认竖向滚动）</p>
+</li>
+<li><p>设置适配器</p>
+</li>
+</ul>
+<p>代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line"><span class="comment">//私有列表</span></div><div class="line">   <span class="keyword">private</span> List&lt;Fruit&gt; fruitList = <span class="keyword">new</span> ArrayList&lt;Fruit&gt;();</div><div class="line">   </div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">       <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">       setContentView(R.layout.activity_main);</div><div class="line">	</div><div class="line">       <span class="comment">//初始化Fruits数据</span></div><div class="line">       initFruits();</div><div class="line">       <span class="comment">//获取RecyclerView实例</span></div><div class="line">       RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycle_view);</div><div class="line">       </div><div class="line">       <span class="comment">//创建LinearLayoutManager，并设置入recyclerView</span></div><div class="line">       LinearLayoutManager layoutManager = <span class="keyword">new</span> LinearLayoutManager(<span class="keyword">this</span>);</div><div class="line">       recyclerView.setLayoutManager(layoutManager);</div><div class="line">       </div><div class="line">       <span class="comment">//新建适配器，并传入</span></div><div class="line">       FruitAdapter adapter = <span class="keyword">new</span> FruitAdapter(fruitList);</div><div class="line">       recyclerView.setAdapter(adapter);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="comment">//初始化Fruits类</span></div><div class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initFruits</span><span class="params">()</span> </span>&#123;</div><div class="line">       <span class="comment">//循环两遍 怕占不满屏幕</span></div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</div><div class="line">           Fruit apple = <span class="keyword">new</span> Fruit(<span class="string">"Apple"</span>, R.drawable.apple_pic);</div><div class="line">           fruitList.add(apple);</div><div class="line">           Fruit banana = <span class="keyword">new</span> Fruit(<span class="string">"Banana"</span>, R.drawable.banana_pic);</div><div class="line">           fruitList.add(banana);</div><div class="line">           Fruit orange = <span class="keyword">new</span> Fruit(<span class="string">"Orange"</span>, R.drawable.orange_pic);</div><div class="line">           fruitList.add(orange);</div><div class="line">           Fruit watermelon = <span class="keyword">new</span> Fruit(<span class="string">"Watermelon"</span>, R.drawable.watermelon_pic);</div><div class="line">           fruitList.add(watermelon);</div><div class="line">           Fruit pear = <span class="keyword">new</span> Fruit(<span class="string">"Pear"</span>, R.drawable.pear_pic);</div><div class="line">           fruitList.add(pear);</div><div class="line">           Fruit grape = <span class="keyword">new</span> Fruit(<span class="string">"Grape"</span>, R.drawable.grape_pic);</div><div class="line">           fruitList.add(grape);</div><div class="line">           Fruit pineapple = <span class="keyword">new</span> Fruit(<span class="string">"Pineapple"</span>, R.drawable.pineapple_pic);</div><div class="line">           fruitList.add(pineapple);</div><div class="line">           Fruit strawberry = <span class="keyword">new</span> Fruit(<span class="string">"Strawberry"</span>, R.drawable.strawberry_pic);</div><div class="line">           fruitList.add(strawberry);</div><div class="line">           Fruit cherry = <span class="keyword">new</span> Fruit(<span class="string">"Cherry"</span>, R.drawable.cherry_pic);</div><div class="line">           fruitList.add(cherry);</div><div class="line">           Fruit mango = <span class="keyword">new</span> Fruit(<span class="string">"Mango"</span>, R.drawable.mango_pic);</div><div class="line">           fruitList.add(mango);</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>这样最简单的 RecyclerView 就搭建完了效果如下<br><img src="http://cdn5.snapgram.co/images/2016/12/16/ScreenShot_20161216105246.png" alt="ScreenShot_20161216105246.png"></p>
+</li>
+<li><p>代码比ListView稍多，但是逻辑比较清晰。</p>
+</li>
+</ul>
+<h3 id="横向-瀑布流-网格布局"><a href="#横向-瀑布流-网格布局" class="headerlink" title="横向/瀑布流/网格布局"></a>横向/瀑布流/网格布局</h3><ul>
+<li>只需要设置相应LayoutManager即可   /手动滑稽  <h4 id="横向"><a href="#横向" class="headerlink" title="横向"></a>横向</h4></li>
+<li><p>在 LinearLayoutManager 中修改几行代码即可</p>
+</li>
+<li><p>修改 LinearLayoutManager 代码，添加一行，搞定！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>当然需要简单修改一下item的布局文件，LinearLayout改为垂直排列，宽度固定100dp，图片/文字居中<br>效果如下<br><img src="http://cdn2.snapgram.co/imgs/2016/12/16/ScreenShot_20161216105723.png" alt="ScreenShot_20161216105723.png"></li>
+</ul>
+<h4 id="瀑布流"><a href="#瀑布流" class="headerlink" title="瀑布流"></a>瀑布流</h4><ul>
+<li>这需要 StaggeredGridLayoutManager 布局管理器，可以 竖向/横向 滚动</li>
+<li>代码如下<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//瀑布流布局，3行，竖向</span></div><div class="line">StaggeredGridLayoutManager layoutManager = <span class="keyword">new</span> StaggeredGridLayoutManager(<span class="number">3</span>, StaggeredGridLayoutManager.VERTICAL);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>调整布局文件，效果如下<br><img src="http://cdn1.snapgram.co/imgs/2016/12/16/ScreenShot_20161216215538.png" alt="ScreenShot_20161216215538.png"></li>
+</ul>
+<h4 id="网格"><a href="#网格" class="headerlink" title="网格"></a>网格</h4><ul>
+<li>这需要 GridLayoutManager 布局管理器</li>
+<li><p>代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//网格布局，两行</span></div><div class="line">GridLayoutManager layoutManager = <span class="keyword">new</span> GridLayoutManager(<span class="keyword">this</span>,<span class="number">3</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>调整布局文件后，效果如下<br><img src="http://cdn4.snapgram.co/images/2016/12/16/ScreenShot_20161216220321.png" alt="ScreenShot_20161216220321.png"></p>
+</li>
+</ul>
+<h3 id="注册点击事件"><a href="#注册点击事件" class="headerlink" title="注册点击事件"></a>注册点击事件</h3><ul>
+<li>RecyclerView 中并没有提供注册监听器的方法，需要子项View自行注册</li>
+<li>部分代码如下<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">  <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</div><div class="line">    View fruitView;</div><div class="line">    ImageView fruitImage;</div><div class="line">    TextView fruitName;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ViewHolder</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(view);</div><div class="line">        fruitView = view;</div><div class="line">        fruitImage = (ImageView) view.findViewById(R.id.fruit_image);</div><div class="line">        fruitName = (TextView) view.findViewById(R.id.fruit_name);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</div><div class="line">    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fruit_item, parent, <span class="keyword">false</span>);</div><div class="line">    <span class="keyword">final</span> ViewHolder holder = <span class="keyword">new</span> ViewHolder(view);</div><div class="line">    holder.fruitView.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">            <span class="keyword">int</span> position = holder.getAdapterPosition();</div><div class="line">            Fruit fruit = mFruitList.get(position);</div><div class="line">            Toast.makeText(v.getContext(), <span class="string">"you clicked view "</span> + fruit.getName(), Toast.LENGTH_SHORT).show();</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    holder.fruitImage.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">            <span class="keyword">int</span> position = holder.getAdapterPosition();</div><div class="line">            Fruit fruit = mFruitList.get(position);</div><div class="line">            Toast.makeText(v.getContext(), <span class="string">"you clicked image "</span> + fruit.getName(), Toast.LENGTH_SHORT).show();</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    <span class="keyword">return</span> holder;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/3/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/13/Android笔记-UI-ListView/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3281,713 +3631,6 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
 
 
     
-      
-
-  
-
-  
-  
-  
-  
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/26/VPS科学上网教程系列/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jasper">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/v.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="默">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/26/VPS科学上网教程系列/" itemprop="url">
-                  科学上网教程（一）——VPS上搭建SSR
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-26T12:16:16+08:00">
-                2016-06-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/科学上网/" itemprop="url" rel="index">
-                    <span itemprop="name">科学上网</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/06/26/VPS科学上网教程系列/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/06/26/VPS科学上网教程系列/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/06/26/VPS科学上网教程系列/" class="leancloud_visitors" data-flag-title="科学上网教程（一）——VPS上搭建SSR">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  5,469
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  21m
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">更新</div><div class="line">2016.06.26  与SSR有关部分基本完成。  </div><div class="line">2016.09.29  更新SSR部分内容</div><div class="line">2016.10.09  更新SSR内容，更新Android端接入。</div><div class="line">2016.11.09  更新SSR混淆相关内容，更新SSR-Android，更新部分介绍。</div><div class="line">2016.11.20  整合一部分VPS优化内容</div><div class="line">2016.12.11  删减调整一部分内容</div><div class="line">2016.12.15  替换锐速优化为 BBR，整合TCP优化</div><div class="line">2016.12.26  更换TCP BBR 脚本，脚本来自@秋水逸冰 版本，测试通过 </div><div class="line">2017.01.11  同步更新一部分SSR内容</div><div class="line">2017.02.17  同步更新，调整删减内容，降低上手难度，增加VPS测速相关内容</div><div class="line">2017.03.28  调整一部分内容，更新Vps推荐</div><div class="line">2017.04.08  新增 VPS 安全加固</div><div class="line">2017.05.24  同步更新内容，更换协议，增加新内容。</div><div class="line">2017.06.28  删减过时内容，同步更新</div><div class="line">2017.07.03  更新BBR内容，VPS测速</div><div class="line">2017.07.12  更换过时截图，修正错误。</div><div class="line">2017.07.28  更换失效链接，可能是最后一次更新了</div><div class="line">2017.10.18  更新vps内容,缩减无效信息.</div></pre></td></tr></table></figure>
-<hr>
-<ul>
-<li>SSR原作者已删除代码库,应该不会再更新此教程，这个教程开始到现在1年多，基本没有停更，收获了50000多的没加水的阅读量，谢谢大家！</li>
-<li>我开始有些明白GFW的不断强化并不是最可怕。或者说GFW的存在并不重要.人心的墙永远有人在无偿加固。</li>
-</ul>
-<hr>
-<h2 id="安装脚本说明：遇到失效等，请留言或邮件我！"><a href="#安装脚本说明：遇到失效等，请留言或邮件我！" class="headerlink" title="安装脚本说明：遇到失效等，请留言或邮件我！"></a>安装脚本说明：遇到失效等，请留言或邮件我！</h2><ul>
-<li><p>脚本来源 @秋水逸冰<br><a href="https://shadowsocks.be/9.html" target="_blank" rel="external">ShadowsocksR一键安装脚本</a></p>
-</li>
-<li><p>隐私/后门：(这个结论仅对本文使用脚本负责)<br>文章中所使用的脚本，除默认用户名/密码外，没有任何夹带私货。脚本亦开源，不放心可以下载后自行审计！</p>
-<blockquote>
-<p><a href="https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh" target="_blank" rel="external">https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh</a></p>
-</blockquote>
-</li>
-<li><p>SSR 服务器端更新：<br>使用此一键脚本安装的，不能使用其他命令更新，只能通过 备份配置文件，卸载再重新安装！也都不是事，备份一下配置文件，重新安装，覆盖配置文件，重启即可。</p>
-</li>
-</ul>
-<h2 id="基本从0开始的教程，当作自己的备份了。"><a href="#基本从0开始的教程，当作自己的备份了。" class="headerlink" title="基本从0开始的教程，当作自己的备份了。"></a>基本从0开始的教程，当作自己的备份了。</h2><ul>
-<li><strong>吐槽</strong><br>作为一个伪程序员，每次最苦恼的就是Android SDK的更新，当初安装Android Studio时候就因为防火墙折腾了整整2周，简直就是把自学Android的那点耐心都磨没了。各种的搜索文档，离了google效率下降70%！科学上网简直成了程序员的必备生存技能了。</li>
-</ul>
-<hr>
-<h2 id="谁比较需要单独购买VPS科学上网？"><a href="#谁比较需要单独购买VPS科学上网？" class="headerlink" title="谁比较需要单独购买VPS科学上网？"></a>谁比较需要单独购买VPS科学上网？</h2><ul>
-<li>只是翻墙简单浏览网页，就不必要再单独花费人民币了，蓝灯、和各个网站的免费ss账户，是你的主菜。</li>
-<li>偶尔看看视频、不想画太多精力在寻找免费资源上。可以直接购买现成的ss/vpn账户，在G+相应的社区可以找到很多比较靠谱的提供商。</li>
-<li>常年泡视频网站又受不了国内视频网站乱七八糟、24h使用google服务、对稳定性和流量有一定要求、愿意使用一点时间来折腾VPS。比较适合单独购买VPS来科学上网。VPS选择如下会提及。</li>
-<li><del>搜索文档，更新软件源、折腾个人网站又不想备案的、折腾开源的  <code>这部分大神谁会来看这个啊，早自己分分钟写个轮子了</code></del></li>
-</ul>
-<h2 id="VPS选择"><a href="#VPS选择" class="headerlink" title="VPS选择"></a>VPS选择</h2><p>选择VPS看那几点<br> <strong>一定要根据自己的具体使用场景和网络环境来选择VPS服务。</strong></p>
-<p> 选择VPS的一般要注意的几点</p>
-<h3 id="自己的具体网络环境"><a href="#自己的具体网络环境" class="headerlink" title="自己的具体网络环境"></a>自己的具体网络环境</h3><ul>
-<li>简单来说，一般联通的国际出口稳定性大于电信、移动的国际出口看心情有的地区甩电信联通几条街，坏的时候根本没速度。电信网路比较特殊，国际出口充足，但是限速到不能忍，不挤的时候嗖嗖的，高峰期渣到爆炸.移动出口不错,但墙中墙..</li>
-<li>其他二级宽带商忽略不计</li>
-</ul>
-<h3 id="VPS地点。"><a href="#VPS地点。" class="headerlink" title="VPS地点。"></a>VPS地点。</h3><ul>
-<li><del>日本VPS电信网络访问要绕道美国绕道ping一般在200到300了</del>，（9.29）联通直连日本，ping在100！联通目前也分地区有限速。(2.17)联通因为16年年底海底光缆故障损失了30％的国际出口，导致新年到现在出口路由并不稳定，联通-日本ntt延迟有时200有时100.（6.28）目前读者反映ntt比较稳定。已放弃亚洲地区vps(10.18),不稳定相比其他地区.</li>
-</ul>
-<ul>
-<li><p>美国的VPS联通/电信访问延迟基本相当。一般选择靠近美国西海岸节点旧金山、洛杉矶、纽约等地点。电信限速很厉害，所以一般电信网需要开混淆配合FinaSppeed等加速。可以选择便宜cn2线路vps,会好很多.</p>
-</li>
-<li><p>新加坡节点，在靠近南方地区，可以ping在100以内稳定！youtube 4k不卡。但在偏北一些地区ping不稳定</p>
-</li>
-<li><p>香港VPS，这个比较特殊，香港的VPS ping值可以低到20几，但是香港本身的国际出口就小，VPS价格也偏高，另外香港毕竟也在政府的直接管辖内，隐私方面风险比其他地区节点要大一些。建议土豪级别的游戏玩家使用。</p>
-</li>
-</ul>
-<h3 id="VPS虚拟化架构-具体解释请自行google，只说明对科学上网的影响"><a href="#VPS虚拟化架构-具体解释请自行google，只说明对科学上网的影响" class="headerlink" title="VPS虚拟化架构 (具体解释请自行google，只说明对科学上网的影响)"></a>VPS虚拟化架构 (具体解释请自行google，只说明对科学上网的影响)</h3><ul>
-<li>OpenVZ（简称OVZ） 便宜！但是没法进行修改内核、加锐速之类的优化操作。访问速度基本取决于你的本地网络环境优化的可能性。（不是没有可以加速的手段，就是在基本相同情况下，不如其他架构的vps可以榨干VPS的传输性能）。加速手段：Finaspeed（已停止更新） 和net-speeder。</li>
-<li>Xen性能较好，实际用的不多，不做更多评论</li>
-<li>Hyper-VH完美支持Windows系统，Hyper-V同样可以超售内存和硬盘，如果服务商超卖较多可能会有性能问题，Linux操作系统性能较低。</li>
-<li>KVM全功能虚拟化架构，可上传ISO手动安装系统。KVM VPS相对其它架构的VPS较为自由。虚拟化性能比Xen略低。可以使用TCP优化和锐速，价格比一半OVZ的要高一些。（<code>本教程以KVM为例</code>。。速度需求大的最好使用KVM）</li>
-</ul>
-<h3 id="VPS提供商"><a href="#VPS提供商" class="headerlink" title="VPS提供商"></a>VPS提供商</h3><ul>
-<li><p>这个就比较多了，尽量选择购买人较多的，而且<del>一般支持支付宝的服务商被国人玩半残居多（比如搬瓦工。。超售严重）</del>，所以<code>购买不支持支付宝的vps提供商</code> (相对) 要靠谱一点。注册<a href="https://www.paypal.com/c2/cgi-bin/webscr?cmd=_registration-run" target="_blank" rel="external">paypal国际版</a>（<strong>注：是国际版paypal 不是国内的贝宝！</strong>）一般的vps提供商都支持paypal付款。与使用信用卡相比，具体的优惠政策不同.</p>
-</li>
-<li><p>支持支付宝/微信的服务商良莠不齐，第一次购买需要注意退款政策，虚拟化架构等，最好按月支付。现在使用的是洛杉矶的KVM机器，配合BBR基本3网通吃，除个别时段非常稳定。电信推荐洛杉矶C3机房,虽然为半程cn2,但足够便宜稳定.</p>
-</li>
-<li><p>推荐几个 VPS 的评测网站，相对更新很快。</p>
-<blockquote>
-<p><a href="http://www.laozuo.org/myvps" target="_blank" rel="external">http://www.laozuo.org/myvps</a><br><a href="https://doub.io/" target="_blank" rel="external">https://doub.io/</a><br><a href="https://www.91yun.org/" target="_blank" rel="external">https://www.91yun.org/</a></p>
-</blockquote>
-</li>
-</ul>
-<h2 id="VPS测速"><a href="#VPS测速" class="headerlink" title="VPS测速"></a>VPS测速</h2><ul>
-<li>决定科学上网质量的主要是由vps回城的线路决定.</li>
-</ul>
-<h3 id="常用VPS提供商测速地址"><a href="#常用VPS提供商测速地址" class="headerlink" title="常用VPS提供商测速地址"></a>常用VPS提供商测速地址</h3><ul>
-<li><p><a href="http://www.vultrvps.com/test-server" target="_blank" rel="external">vultr</a>     </p>
-<blockquote>
-<p><a href="http://www.vultrvps.com/test-server" target="_blank" rel="external">http://www.vultrvps.com/test-server</a></p>
-</blockquote>
-</li>
-<li><p><a href="http://www.64mb.biz/tips/4ip.html" target="_blank" rel="external">搬瓦工</a></p>
-<blockquote>
-<p><a href="http://www.64mb.biz/tips/4ip.html" target="_blank" rel="external">http://www.64mb.biz/tips/4ip.html</a></p>
-</blockquote>
-</li>
-<li><p>其他待更新，其实只要搜索 测速地址+vps提供商名称就好</p>
-</li>
-</ul>
-<h3 id="以vultr东京节点为例"><a href="#以vultr东京节点为例" class="headerlink" title="以vultr东京节点为例"></a>以vultr东京节点为例</h3><ul>
-<li>有的vps提供商只提供测速网址，而测速大多以ip地址为主，<br><strong>ping命令可以获取 测速网址 对应的ip地址</strong></li>
-</ul>
-<h3 id="最简单的命令-PING-延迟测试"><a href="#最简单的命令-PING-延迟测试" class="headerlink" title="最简单的命令 PING (延迟测试)"></a>最简单的命令 PING (延迟测试)</h3><ul>
-<li>win+r组合键打开运行栏</li>
-<li>输入cmd，回车</li>
-<li>如图<img src="http://cdn5.snapgram.co/images/2017/02/17/Windows_Command_Prompt_running_on_Windows_8.1.png" alt="Windows_Command_Prompt_running_on_Windows_8.1.png"></li>
-</ul>
-<ul>
-<li>输入 ping  你需要测试的ip地址 </li>
-<li><p>这里是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping  hnd-jp-ping.vultr.com</div></pre></td></tr></table></figure>
-</li>
-<li><p>应答如下<br><img src="http://cdn2.snapgram.co/imgs/2017/02/17/ScreenShot_20170217105236.png" alt="ScreenShot_20170217105236.png"></p>
-</li>
-<li><p>这里可以看到具体的测速ip地址为 <code>108.61.201.151</code> 选中 Ctrl + C复制下来</p>
-</li>
-<li>延迟141 左右，还在接受范围内。丢包大致作为参考即可，只有4个包发送，不足以作为结果<br><strong>注意这里的延迟只是ping检测的结果，可以作为实际访问延迟的参考值，而不是绝对准确！</strong></li>
-</ul>
-<h3 id="测速相关网站"><a href="#测速相关网站" class="headerlink" title="测速相关网站"></a>测速相关网站</h3><ul>
-<li><p>查询ip地址归属地<br><strong>不要使用 百度搜索查询ip地址</strong> 那些数据国内尚可，vps一般对应国外网站，百度等则错误不少，推荐：<br><a href="https://www.ipip.net/ip.html" target="_blank" rel="external">ipip.net</a></p>
-<blockquote>
-<p><a href="https://www.ipip.net/ip.html" target="_blank" rel="external">https://www.ipip.net/ip.html</a></p>
-</blockquote>
-</li>
-<li><p>全国ping检测<br>有时ss属于合租服务器，可能在不同省份，需要评估ip到不同省份的延迟，这个时候就需要 全国范围内的ping检测<br>首推：<br><a href="http://ping.chinaz.com/" target="_blank" rel="external">站长之家ping检测</a></p>
-<blockquote>
-<p><a href="http://ping.chinaz.com/" target="_blank" rel="external">http://ping.chinaz.com/</a></p>
-</blockquote>
-</li>
-</ul>
-<h3 id="路由追踪-Best-Trace"><a href="#路由追踪-Best-Trace" class="headerlink" title="路由追踪 Best Trace"></a>路由追踪 Best Trace</h3><ul>
-<li><p>Best Trace是由 IPIP.NET 开发的路由追踪检测工具<br><a href="https://www.ipip.net/download.html#ip_trace" target="_blank" rel="external">官方地址下载</a></p>
-</li>
-<li><p>路由追踪 即 检测数据 从你的本地宽带开始 到 vps 的整个过程中走的路径，例如 北京联通 到 vultr东京 从北京直接连到日本，而 河南电信到 vultr东京 则是先到美国，再去日本。</p>
-</li>
-<li><p>上图说话(图片来自<a href="https://www.91yun.org/zh/archives/1699" target="_blank" rel="external">91yun</a>)<br><img src="http://cdn1.snapgram.co/imgs/2017/02/17/001.jpg" alt="001.jpg"></p>
-</li>
-<li><p>这款软件几乎没有上手难度 具体介绍如下</p>
-<blockquote>
-<p><a href="http://www.laozuo.org/8277.html" target="_blank" rel="external">http://www.laozuo.org/8277.html</a></p>
-</blockquote>
-</li>
-</ul>
-<h3 id="丢包率-WinMTR"><a href="#丢包率-WinMTR" class="headerlink" title="丢包率  WinMTR"></a>丢包率  WinMTR</h3><ul>
-<li>具体介绍如下，91yun介绍很详细，并附带下载地址，此处就不多言了<blockquote>
-<p><a href="https://www.91yun.org/zh/archives/1120" target="_blank" rel="external">https://www.91yun.org/zh/archives/1120</a></p>
-</blockquote>
-</li>
-</ul>
-<h3 id="VPS自身测试（7-03）"><a href="#VPS自身测试（7-03）" class="headerlink" title="VPS自身测试（7.03）"></a>VPS自身测试（7.03）</h3><ul>
-<li><p>vps网络测试</p>
-<blockquote>
-<p><a href="https://teddysun.com/444.html" target="_blank" rel="external">https://teddysun.com/444.html</a></p>
-</blockquote>
-<p>vps性能测试</p>
-<blockquote>
-<p><a href="https://teddysun.com/245.html" target="_blank" rel="external">https://teddysun.com/245.html</a></p>
-</blockquote>
-</li>
-</ul>
-<h2 id="vps部署"><a href="#vps部署" class="headerlink" title="vps部署"></a>vps部署</h2><ul>
-<li>我选择的是<code>Vultr VPS</code>。2.5刀/月，500G流量 怎么折腾都够了。</li>
-<li>本节内容转载/删节/修正自<blockquote>
-<p><a href="https://mpc2008cn.github.io/2015/10/22/vps/" target="_blank" rel="external">https://mpc2008cn.github.io/2015/10/22/vps/</a><br>就是从这开始折腾的，有删减和修改。</p>
-<h3 id="Vultr"><a href="#Vultr" class="headerlink" title="Vultr"></a>Vultr</h3></blockquote>
-</li>
-<li>通过下面链接注册，你可以免费获得 10美元<br>同时 也能帮助我获得一些奖励，<strong>谢谢！</strong></li>
-<li><a href="http://www.vultr.com/?ref=6876482" target="_blank" rel="external"><strong>Vultr地址</strong></a></li>
-</ul>
-<h3 id="服务器选择"><a href="#服务器选择" class="headerlink" title="服务器选择"></a>服务器选择</h3><ul>
-<li>选择<code>东京或者美国西海岸</code>的服务器,速度相对比较快<br><a href="http://snapgr.am/image/LOQ3" target="_blank" rel="external"><img src="http://cdn1.snapgram.co/imgs/2016/06/24/1.jpg" alt="1.jpg"></a></li>
-</ul>
-<h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h3><ul>
-<li>推荐选择Debian 7 x64<br>此版本搭建SSR/锐速/bbr基本没有遇到故障<br>其他版本也可，请自行选择<br><img src="http://cdn3.snapgram.co/imgs/2016/06/24/2cef26.jpg" alt="2cef26.jpg"></li>
-</ul>
-<h3 id="选择硬件"><a href="#选择硬件" class="headerlink" title="选择硬件"></a>选择硬件</h3><ul>
-<li><p>一个月可以免费用$5的配置,科学上网就够了，建站等需求需要更大的。</p>
-</li>
-<li><p>创建vps 等待完成。<br><a href="http://snapgr.am/image/LOsE" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/06/24/981aa04579703c60.jpg" alt=""></a></p>
-</li>
-</ul>
-<h3 id="VPS测试-可忽略，但是推荐进行"><a href="#VPS测试-可忽略，但是推荐进行" class="headerlink" title="VPS测试(可忽略，但是推荐进行)"></a>VPS测试(可忽略，但是推荐进行)</h3><ul>
-<li>你可以使用上面提到的 VPS测试软件，来查看 自己的vps到本地的 路由追踪 时候与 官方测试地址 相同，丢包率/延迟如何等</li>
-<li>现在几乎所有的vps运营商 都有大量的国人涌入，有一点概率你开到的IP 是被 长城防火墙 阻断过，被废弃的ip。在正式搭建 科学上网 服务之前，请确保自己 VPS 的可访问性</li>
-</ul>
-<h3 id="配置securecrt-不必在意ip地址"><a href="#配置securecrt-不必在意ip地址" class="headerlink" title="配置securecrt(不必在意ip地址)"></a>配置securecrt(不必在意ip地址)</h3><ol>
-<li><p>下载<a href="https://drive.google.com/open?id=0ByuNnrUBU_n3ZkRMZGhpeXlFYVU" target="_blank" rel="external">securecrt</a></p>
-</li>
-<li><p>复制服务器的IP地址,初始用户名,初始密码<br><img src="http://cdn1.snapgram.co/imgs/2016/06/24/4ecb6e.jpg" alt=""><br><a href="http://snapgr.am/image/LOsI" target="_blank" rel="external"><img src="http://cdn3.snapgram.co/imgs/2016/06/24/6.jpg" alt="6.jpg"></a></p>
-</li>
-<li><p>securecrt连接vps</p>
-<ul>
-<li><p>解压下载的secure crt,双击\SecureCRT_EN\SecureCRT\中的SecureCRT.exe</p>
-</li>
-<li><p>输入IP地址,用户名,点击connect<br><img src="http://cdn3.snapgram.co/imgs/2016/06/24/crt1.png" alt="crt1.png"></p>
-</li>
-<li><p>弹出框点击Accept&amp;Save<br><img src="http://cdn4.snapgram.co/images/2016/06/24/crt2.png" alt="crt2.png"></p>
-</li>
-<li><p>输入密码,勾选save password,OK<br><img src="http://cdn2.snapgram.co/imgs/2016/06/24/crt3.png" alt="crt3.png"></p>
-</li>
-<li><p>出现如图所示,标签变绿就说明连接成功啦.<br><img src="http://cdn1.snapgram.co/imgs/2016/06/24/crt4.png" alt="crt4.png"></p>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="部署ShadowSocksR"><a href="#部署ShadowSocksR" class="headerlink" title="部署ShadowSocksR"></a>部署ShadowSocksR</h2><ul>
-<li>为什么选择SSR而不是原版的SS<br>主要原因如下<ul>
-<li>可以直接启用chacha20加密，在移动设备上比较好使</li>
-<li>TFO(TCP Fast Open)直接自带，减少握手次数。</li>
-<li>二次混淆和抗重放等附加功能</li>
-</ul>
-</li>
-</ul>
-<p><strong>shadowsocksR的相关争论在以下网址中，至于用户而言，现在ssr开源，一定的网络环境下比原版的ss稳定就够了。</strong></p>
-<ul>
-<li>一些争议如下<blockquote>
-<p><a href="https://www.librehat.com/about-shadowsocks-r-and-the-security-of-shadowsocks/" target="_blank" rel="external">https://www.librehat.com/about-shadowsocks-r-and-the-security-of-shadowsocks/</a></p>
-</blockquote>
-</li>
-</ul>
-<h3 id="SSR有关网址"><a href="#SSR有关网址" class="headerlink" title="SSR有关网址"></a>SSR有关网址</h3><ul>
-<li><p>(2.17)在2016.12月之前很长一段时间SSR只在 ZeroNet 中更新，<strong>17年以后到现在恢复在github上更新！望周知！**</strong>SSR已删除库，但还可以安装**</p>
-</li>
-<li><p><a href="https://github.com/breakwa11/shadowsocks-rss" target="_blank" rel="external">ShadowsocksR github主页</a></p>
-<blockquote>
-<p><a href="https://github.com/breakwa11/shadowsocks-rss" target="_blank" rel="external">https://github.com/breakwa11/shadowsocks-rss</a></p>
-</blockquote>
-</li>
-<li><p><a href="https://github.com/shadowsocksr/shadowsocksr-csharp/releases" target="_blank" rel="external">ShadowsocksR C#(windows版)下载地址</a> </p>
-<blockquote>
-<p><a href="https://github.com/shadowsocksr/shadowsocksr-csharp/releases" target="_blank" rel="external">https://github.com/shadowsocksr/shadowsocksr-csharp/releases</a></p>
-</blockquote>
-</li>
-<li><p><a href="https://github.com/shadowsocksr/shadowsocksr-android/releases" target="_blank" rel="external">shadowsocksr-android版下载地址</a> </p>
-<blockquote>
-<p><a href="https://github.com/shadowsocksr/shadowsocksr-android/releases" target="_blank" rel="external">https://github.com/shadowsocksr/shadowsocksr-android/releases</a></p>
-</blockquote>
-</li>
-<li><p>用到的一键安装脚本@秋水逸冰(感谢！)</p>
-<blockquote>
-<p><a href="https://shadowsocks.be/9.html" target="_blank" rel="external">https://shadowsocks.be/9.html</a></p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li>ZeroNet(目前更新状态未知)<ul>
-<li>SSR-ZeroNet<blockquote>
-<p><a href="http://127.0.0.1:43110/shadowsocksr.bit" target="_blank" rel="external">http://127.0.0.1:43110/shadowsocksr.bit</a><br>（10.9）不安装ZeroNet，直接访问地址<br><a href="https://bit.no.com:43110/shadowsocksr.bit/" target="_blank" rel="external">https://bit.no.com:43110/shadowsocksr.bit/</a></p>
-</blockquote>
-</li>
-<li>ZeroNet简介和接入<blockquote>
-<p><a href="http://www.williamlong.info/archives/4574.html" target="_blank" rel="external">http://www.williamlong.info/archives/4574.html</a></p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="安装SSR"><a href="#安装SSR" class="headerlink" title="安装SSR"></a>安装SSR</h3><ul>
-<li><p>复制以下代码到登陆成功的securecrt</p>
-  <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate	 https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh</div><div class="line">chmod +x shadowsocksR.sh</div><div class="line">./shadowsocksR.sh 2&gt;&amp;1 | tee shadowsocksR.log</div></pre></td></tr></table></figure>
-</li>
-<li><p>如图，回车。<br><img src="http://cdn3.snapgram.co/imgs/2016/06/24/1189971.jpg" alt="1189971.jpg"></p>
-</li>
-<li><p>输入设定初始密码，也可以直接回车。<br><img src="http://cdn4.snapgram.co/images/2016/06/24/12.jpg" alt="12.jpg"></p>
-</li>
-<li><p>输入初始端口，也直接回车<br><img src="http://cdn2.snapgram.co/imgs/2016/06/24/13.jpg" alt="13.jpg"></p>
-</li>
-<li><p>嗯，回车<br><img src="http://cdn1.snapgram.co/imgs/2016/06/24/14.jpg" alt="14.jpg"> </p>
-</li>
-<li><p>等待一段时间的滚屏，<br>最后会提示——成功<br><img src="http://cdn3.snapgram.co/imgs/2016/06/24/15.jpg" alt="15.jpg">  </p>
-</li>
-</ul>
-<h3 id="shadowsocks-json配置文件"><a href="#shadowsocks-json配置文件" class="headerlink" title="shadowsocks.json配置文件"></a>shadowsocks.json配置文件</h3><ul>
-<li>shadowsocks.json文件中定义SSR的访问端口，加密方式等，我们使用 WinSCP软件进行编辑修改(更为友好)，直接使用 securecrt 等工具 使用 vim 命令修改也可，此文中暂不涉及</li>
-</ul>
-<ul>
-<li><p>WinSCP 是一个 Windows 环境下使用的 SSH 的开源图形化 SFTP 客户端。同时支持 SCP 协议。它的主要功能是在本地与远程计算机间安全地复制文件，并且可以直接编辑文件.</p>
-</li>
-<li><p>下载<a href="http://www.3xiazai.com/view/soft_199.html#dnl" target="_blank" rel="external">WinSCP</a>绿色中文版。</p>
-</li>
-<li><p>解压缩打开winscp，保持默认配置不变，输入VPS的ip地址、用户名、密码。点击登陆。<br>  <a href="http://snapgr.am/image/LORO" target="_blank" rel="external"><img src="http://cdn4.snapgram.co/images/2016/06/25/21.jpg" alt="21.jpg"></a></p>
-</li>
-<li><p>默认在/root文件夹下，要进入/etc文件夹下找到shadowsocks.json<br> <a href="http://snapgr.am/image/LORT" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/06/25/22.jpg" alt="22.jpg"></a><br> <img src="http://cdn1.snapgram.co/imgs/2016/06/25/23.jpg" alt="23.jpg"><br> <img src="http://cdn3.snapgram.co/imgs/2016/06/25/24.jpg" alt="24.jpg"></p>
-</li>
-</ul>
-<h3 id="编辑shadowsocks-json文件"><a href="#编辑shadowsocks-json文件" class="headerlink" title="编辑shadowsocks.json文件"></a>编辑shadowsocks.json文件</h3><ul>
-<li><p>下面是一个 shadowsocks.json的注释模板<br><strong>直接复制粘贴 无注释版本 覆盖原始文件即可</strong>，或者在原文件上修改<br>（建议先看一下注释，了解一下shadowsocks.json的大致内容）</p>
-</li>
-<li><p>参考资料网址<br>shadowsocks.json文件各项配置说明</p>
-<blockquote>
-<p><a href="https://github.com/breakwa11/shadowsocks-rss/wiki/Server-Setup" target="_blank" rel="external">https://github.com/breakwa11/shadowsocks-rss/wiki/Server-Setup</a></p>
-</blockquote>
-</li>
-<li><p>混淆插件说明</p>
-<blockquote>
-<p><a href="https://github.com/breakwa11/shadowsocks-rss/wiki/obfs" target="_blank" rel="external">https://github.com/breakwa11/shadowsocks-rss/wiki/obfs</a></p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p>注释</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  "server":"0.0.0.0",</div><div class="line">  "server_ipv6":"::",</div><div class="line">  "local_address":"127.0.0.1",</div><div class="line">  "local_port":1080,</div><div class="line">  "port_password":&#123;</div><div class="line">   #纯 SS 不带混淆 端口25 密码为123456.</div><div class="line">   "25":"123456",</div><div class="line">   #端口443，密码123456 ，protocol选择auth_chain_a。obfs选择tls1.2_ticket_auth，具体插件的介绍如下参考资料中</div><div class="line">   "443":&#123;"protocol":"auth_chain_a", "password":"123456", "obfs":"tls1.2_ticket_auth", "obfs_param":""&#125;,</div><div class="line">  #注意无论怎么变化，最后一个端口设置，不带逗号！</div><div class="line">   "3389":&#123;"protocol":"auth_aes128_md5", "password":"123456", "obfs":"tls1.2_ticket_auth", "obfs_param":""&#125;#此处没有逗号！</div><div class="line">  &#125;,</div><div class="line">  "timeout":400,</div><div class="line">  #默认全局的加密方式，即上边各个端口的默认加密方式。一般为aes-256-cfb，		此处，选择为chacha20，移动设备性能较好。</div><div class="line">  "method":"chacha20",</div><div class="line">  #protocol.协议定义插件的默认值，origin即使用原版SS协议，不混淆。即上面端口配置中，你没有设置 protocol 和 obfs 情况下，使用的默认值。</div><div class="line">  "protocol": "origin",</div><div class="line">  "protocol_param": "",</div><div class="line">   #protocol.协议定义插件的默认值，plain即使用原协议，不混淆。</div><div class="line">  "obfs": "plain",</div><div class="line">  "obfs_param": "",</div><div class="line">  "redirect": "",</div><div class="line">  "dns_ipv6": true,</div><div class="line"> #TCP FAST OPEN ，打开</div><div class="line">  "fast_open": true,</div><div class="line"> "workers": 1</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>无注释版本，直接复制粘贴覆盖原始文件，或者在原文件上修改</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"server"</span>:<span class="string">"0.0.0.0"</span>,</div><div class="line">  <span class="attr">"server_ipv6"</span>:<span class="string">"::"</span>,</div><div class="line">  <span class="attr">"local_address"</span>:<span class="string">"127.0.0.1"</span>,</div><div class="line">  <span class="attr">"local_port"</span>:<span class="number">1080</span>,</div><div class="line">  <span class="attr">"port_password"</span>:&#123;</div><div class="line">   	<span class="attr">"25"</span>:<span class="string">"123456"</span>,</div><div class="line">      <span class="attr">"443"</span>:&#123;<span class="attr">"protocol"</span>:<span class="string">"auth_chain_a"</span>, <span class="attr">"password"</span>:<span class="string">"123456"</span>, <span class="attr">"obfs"</span>:<span class="string">"tls1.2_ticket_auth"</span>, <span class="attr">"obfs_param"</span>:<span class="string">""</span>&#125;,</div><div class="line">      <span class="attr">"3389"</span>:&#123;<span class="attr">"protocol"</span>:<span class="string">"auth_aes128_md5"</span>, <span class="attr">"password"</span>:<span class="string">"123456"</span>, <span class="attr">"obfs"</span>:<span class="string">"tls1.2_ticket_auth"</span>, <span class="attr">"obfs_param"</span>:<span class="string">""</span>&#125;</div><div class="line"></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"timeout"</span>:<span class="number">400</span>,</div><div class="line">  <span class="attr">"method"</span>:<span class="string">"chacha20"</span>,</div><div class="line">  <span class="attr">"protocol"</span>: <span class="string">"origin"</span>,</div><div class="line">  <span class="attr">"protocol_param"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"obfs"</span>: <span class="string">"plain"</span>,</div><div class="line">  <span class="attr">"obfs_param"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"redirect"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"dns_ipv6"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"fast_open"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"workers"</span>: <span class="number">1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="重启SSR"><a href="#重启SSR" class="headerlink" title="重启SSR"></a>重启SSR</h3><ul>
-<li><p>配置完成后，重启SSR,以root账户登陆securecrt，复制以下代码，重启ssr。</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/shadowsocks restart</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>会提示shadowsocksr重启成功。（如图）<br><img src="http://cdn3.snapgram.co/imgs/2016/06/25/25.jpg" alt="25.jpg"></li>
-</ul>
-<h3 id="更新SSR"><a href="#更新SSR" class="headerlink" title="更新SSR"></a>更新SSR</h3><ul>
-<li><p>vps端，需要先令存 shadowsocks.json文件。再执行卸载</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./shadowsocksR.sh uninstall</div></pre></td></tr></table></figure>
-<p>  之后重新执行安装脚本即可</p>
-</li>
-</ul>
-<h3 id="混淆选择-新手可略过"><a href="#混淆选择-新手可略过" class="headerlink" title="混淆选择(新手可略过)"></a>混淆选择(新手可略过)</h3><h4 id="混淆插件简介"><a href="#混淆插件简介" class="headerlink" title="混淆插件简介"></a>混淆插件简介</h4><ul>
-<li><p>ShadowsocksR目前支持的混淆插件（此类型的插件用于定义加密后的通信协议）：<br>  plain ,http_simple ,http_post,random_head ,tls1.2_ticket<em>auth   
-  </em>协议定义插件(用于定义加密前的协议):          origin, auth_sha1, auth_sha1_v2, auth_sha1_v4, auth_aes128_md5/auth_aes128_sha1</p>
-</li>
-<li><p>auth_aes128_md5/auth_aes128_sha1 支持 单端口多用户，即一个端口 可以配置 几个不同的密码，稍后更新。</p>
-</li>
-<li><p><a href="https://github.com/breakwa11/shadowsocks-rss/blob/master/ssr.md" target="_blank" rel="external">ShadowsocksR 协议插件文档</a></p>
-</li>
-</ul>
-<h4 id="混淆插件选择-5-24"><a href="#混淆插件选择-5-24" class="headerlink" title="混淆插件选择(5.24)"></a>混淆插件选择(5.24)</h4><hr>
-<ul>
-<li>通用</li>
-<li><p><strong>推荐auth_chain_a+tls1.2_ticket_auth</strong><br>这种组合目前混淆效果最好，有利于个人VPS的长时间使用。</p>
-</li>
-<li><p>（5.24）auth_chain_a可不使用用加密，即加密方式None（SSR作者语），但是吧，性能差不多的情况下，加个密没毛病。</p>
-</li>
-<li><p>auth_aes128_md5或auth_aes128_sha1+随意，即使使用rc4加密亦可（SSR作者语） </p>
-</li>
-<li><p>玩游戏，或对延迟有要求，不要使用tls1.2_ticket_auth</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li>网络封锁/监控环境下</li>
-<li>例如学校教育网/公司内网/广电宽带等等，封杀了BT/禁止访问网盘等等等等。</li>
-<li>使用http_simple、http_post或tls1.2_ticket_auth 混淆访问的目标网址。再配合443/80端口通常可以解决问题。</li>
-</ul>
-<hr>
-<ul>
-<li>Android</li>
-<li>(5.24)最好使用auth_chain_a。</li>
-<li>如果之前使用的是auth_aes128_md5，推荐以auth_chain_a替换</li>
-<li>手机运算能力较差的推荐使用auth_sha1_v4替换auth_aes128_md5</li>
-</ul>
-<hr>
-<h4 id="单端口多用户"><a href="#单端口多用户" class="headerlink" title="单端口多用户"></a>单端口多用户</h4><ul>
-<li><p>适用场景:<br>多人合租,减少vps开放端口.</p>
-<blockquote>
-<p><a href="https://breakwa11.blogspot.ru/2017/01/shadowsocksr-mu.html?m=1" target="_blank" rel="external">https://breakwa11.blogspot.ru/2017/01/shadowsocksr-mu.html?m=1</a><br> 官方 ShadowsocksR单端口多用户配置方法</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="伪装正常网站-推荐"><a href="#伪装正常网站-推荐" class="headerlink" title="伪装正常网站(推荐)"></a>伪装正常网站(推荐)</h4><ul>
-<li><p>适用场景<br>最大程度减少GFW主动扫描,被发现的可能性. (伪装网站后,无法使用单端口多用户)</p>
-</li>
-<li><blockquote>
-<p><a href="https://doub.io/ss-jc48/" target="_blank" rel="external">https://doub.io/ss-jc48/</a><br> 逗比根据地的介绍，很详细，搭配最新的auth_chain_a 混淆，很好用。</p>
-</blockquote>
-</li>
-<li><p>http网站对应混淆选择http 或 post </p>
-</li>
-<li><p>https 网站选择tls1.2</p>
-</li>
-<li><p>域名申请，免费！</p>
-<blockquote>
-<p><a href="https://my.freenom.com/clientarea.php" target="_blank" rel="external">https://my.freenom.com/clientarea.php</a></p>
-</blockquote>
-</li>
-<li><p>DNS解析(目前国内网站 域名 CDN DNS解析 均需备案实名,故放弃)</p>
-<blockquote>
-<p><a href="https://www.cloudflare.com/" target="_blank" rel="external">https://www.cloudflare.com/</a></p>
-</blockquote>
-</li>
-</ul>
-<h2 id="VPS优化"><a href="#VPS优化" class="headerlink" title="VPS优化"></a>VPS优化</h2><ul>
-<li>详情在<a href="https://jasper-1024.github.io/2016/06/27/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%972/" target="_blank" rel="external">科学上网教程（二）——VPS优化加速</a></li>
-<li>这里只提及 原版BBR</li>
-<li>BBR目前有很多修改版本，效果很好，BBR属于内核级别，<strong>不推荐新手 安装修改版BBR，内核挂掉，新手一般很难处理。</strong></li>
-<li><strong>修改版BBR 详情见<a href="https://jasper-1024.github.io/2016/06/27/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%972/" target="_blank" rel="external">科学上网教程（二）——VPS优化加速</a></strong></li>
-</ul>
-<h3 id="TCP优化"><a href="#TCP优化" class="headerlink" title="TCP优化"></a>TCP优化</h3><ul>
-<li><p>增加TCP连接数量</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano /etc/security/limits.conf</div></pre></td></tr></table></figure>
-<p>添加两行：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">* soft nofile <span class="number">51200</span></div><div class="line">* hard nofile <span class="number">51200</span></div></pre></td></tr></table></figure>
-<p>保存(Ctrl + X —— y ——回车)</p>
-</li>
-<li><p>设置ulimit：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ulimit -n <span class="number">51200</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="TCP-BBR-推荐"><a href="#TCP-BBR-推荐" class="headerlink" title="TCP-BBR(推荐)"></a>TCP-BBR(推荐)</h3><hr>
-<ul>
-<li><p>脚本来自于@秋水逸冰</p>
-</li>
-<li><p><strong>敬告</strong>：</p>
-<ul>
-<li>锐速不支持，更换后的 4.9及以后 内核</li>
-<li>加速效果与具体网络状态有关</li>
-<li>不推荐新手直接安装修改版BBR，挂掉后很难恢复。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>BBR (Bottleneck Bandwidth and RTT)是由google工程师编写的新的 TCP 拥塞控制算法，目的是要尽量跑满带宽, 并且尽量不要有排队的情况, 加速效果不比锐速差，<br>完全开源，对隐匿性要求高而无法使用锐速的人士，也可以放心使用<br><a href="https://github.com/google/bbr" target="_blank" rel="external">开源地址</a></p>
-</li>
-<li><p>启用TCP-BBR涉及VPS更换内核，所以如果步骤错误，或者VPS不兼容最新的内核，会导致无法开机等错误</p>
-</li>
-<li><p>目前在 Vultr / DO 上测试通过。其他主机提供商，请自行测试</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>连接SSH，运行下面的命令</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh</div><div class="line">chmod +x bbr.sh</div><div class="line">./bbr.sh</div></pre></td></tr></table></figure>
-</li>
-<li><p>提示需要重启 VPS，输入 y 并回车后重启，重连SSH</p>
-</li>
-<li><p>脚本会自动更新匹配的4.xx版本内核(6.28  目前是4.11），并启用TCP BBR</p>
-</li>
-<li><p>验证</p>
-<ul>
-<li><p>输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uname -r</div></pre></td></tr></table></figure>
-<p>有4.9.0 以上就 表示 更新成功</p>
-</li>
-<li><p>输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lsmod | grep bbr</div></pre></td></tr></table></figure>
-<p>返回值有 tcp<em>bbr </em>即bbr已启动。</p>
-</li>
-</ul>
-</li>
-<li><p>添加一些优化内容<br>修改sysctl.conf</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano /etc/sysctl.conf</div></pre></td></tr></table></figure>
-<p>复制代码：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#TCP配置优化(不然你自己根本不知道你在干什么)</div><div class="line">fs.file-max = 51200</div><div class="line">#提高整个系统的文件限制</div><div class="line">net.core.rmem_max = 67108864</div><div class="line">net.core.wmem_max = 67108864</div><div class="line">net.core.netdev_max_backlog = 250000</div><div class="line">net.core.somaxconn = 4096</div><div class="line"></div><div class="line">net.ipv4.tcp_syncookies = 1</div><div class="line">net.ipv4.tcp_tw_reuse = 1</div><div class="line">net.ipv4.tcp_tw_recycle = 0</div><div class="line">net.ipv4.tcp_fin_timeout = 30</div><div class="line">net.ipv4.tcp_keepalive_time = 1200</div><div class="line">net.ipv4.ip_local_port_range = 10000 65000</div><div class="line">net.ipv4.tcp_max_syn_backlog = 8192</div><div class="line">net.ipv4.tcp_max_tw_buckets = 5000</div><div class="line">net.ipv4.tcp_fastopen = 3</div><div class="line">net.ipv4.tcp_mem = 25600 51200 102400</div><div class="line">net.ipv4.tcp_rmem = 4096 87380 67108864</div><div class="line">net.ipv4.tcp_wmem = 4096 65536 67108864</div><div class="line">net.ipv4.tcp_mtu_probing = 1</div><div class="line">net.ipv4.tcp_congestion_control = bbr</div><div class="line">#END OF LINE</div></pre></td></tr></table></figure>
-<p>保存(Ctrl + X —— y ——回车)</p>
-<p>应用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sysctl -p</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>重启SSR <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/shadowsocks restart</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="VPS安全加固-安全性是重中之重！"><a href="#VPS安全加固-安全性是重中之重！" class="headerlink" title="VPS安全加固( 安全性是重中之重！)"></a>VPS安全加固( 安全性是重中之重！)</h2><ul>
-<li>必须进行的步骤，安全性是重中之重！<br>详情在<a href="https://jasper-1024.github.io/2017/04/08/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B3/" target="_blank" rel="external">科学上网教程（三）——VPS安全加固</a></li>
-</ul>
-<h2 id="shadowsocksR-客户端配置"><a href="#shadowsocksR-客户端配置" class="headerlink" title="shadowsocksR 客户端配置"></a>shadowsocksR 客户端配置</h2><h3 id="shadowsocksR-C-windows版本"><a href="#shadowsocksR-C-windows版本" class="headerlink" title="shadowsocksR C# windows版本"></a>shadowsocksR C# windows版本</h3><ul>
-<li><p>(6.28)最新的4.6.0客户端(注意MD5校验) 支持hosts文件实验性质，稳定后加入</p>
-</li>
-<li><p><a href="https://github.com/Jasper-1024/shadowsocksr-csharp/releases" target="_blank" rel="external">shadowsocksR C# windows版本</a> 来源于github备份。</p>
-</li>
-<li><p>解压ShadowsocksR-win-4.6.1.7z（以具体客户端版本为准），打开。<br><img src="https://my.mixtape.moe/xlyrsc.png" alt="3220191.jpg"></p>
-</li>
-<li><p>对应上文中SSR服务端配置<br>输入对应端口配置，ip地址，密码等。</p>
-<ul>
-<li>25端口（单SS）<br><img src="https://my.mixtape.moe/xoantd.png" alt="ScreenShot_20170712214431.png"></li>
-</ul>
-<ul>
-<li>443端口<br><img src="https://my.mixtape.moe/ubhyac.png" alt="334344b.jpg"></li>
-<li>3389端口<br><img src="https://my.mixtape.moe/fcntld.png" alt="342622e.jpg"></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>右键shadowsocks快捷图标,选择启用系统代理<br><img src="http://cdn4.snapgram.co/images/2016/06/25/36.jpg" alt="36.jpg"><br>现在应该可以访问 谷歌了:)</li>
-</ul>
-<h4 id="使用Chrome-SwitchyOmega-推荐！！"><a href="#使用Chrome-SwitchyOmega-推荐！！" class="headerlink" title="使用Chrome+SwitchyOmega 推荐！！"></a>使用Chrome+SwitchyOmega 推荐！！</h4><ul>
-<li><p>Chrome下插件SwitchyOmega可以根据要访问的网址判断是否需要经过代理，做到智能的科学上网。并且现在这个插件的配置可以云同步，再也不用本地保存了！具体教程如下<br>SwitchyOmega使用ss代理</p>
-<blockquote>
-<p><a href="http://www.ihacksoft.com/chrome-switchyomega.html" target="_blank" rel="external">http://www.ihacksoft.com/chrome-switchyomega.html</a></p>
-</blockquote>
-<p>配合gfwlist</p>
-<blockquote>
-<p><a href="https://github.com/FelisCatus/SwitchyOmega/wiki/GFWList" target="_blank" rel="external">https://github.com/FelisCatus/SwitchyOmega/wiki/GFWList</a></p>
-</blockquote>
-</li>
-</ul>
-<h3 id="SSR-Android"><a href="#SSR-Android" class="headerlink" title="SSR-Android"></a>SSR-Android</h3><ul>
-<li>SSR-Android</li>
-<li><p>SSR-Android端(注意MD5校验)</p>
-<blockquote>
-<p><a href="https://github.com/Jasper-1024/shadowsocksr-android-1/releases" target="_blank" rel="external">https://github.com/Jasper-1024/shadowsocksr-android-1/releases</a></p>
-</blockquote>
-<ul>
-<li>(12.11)<br> <del>ssr-android更新到3.2.7.14.版，增加auth_aes128_md5和auth_aes128_sha1,推荐更新！</del></li>
-<li>(1.11)<br><del>ssr-android更新到3.3.3.1推荐更新！</del><ul>
-<li>(2.17)<br><del>ssr-android更新到3.3.4.5 推荐更新!</del></li>
-<li>(6.28)<br>SSR-android更新3.4.0.5</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>android端使用</p>
-<ol>
-<li>可以直接输入SSR配置，较为繁琐</li>
-<li>在SSR C#版本，中输入完毕，保存。直接扫描二维码即可！<br><strong>二维码必须在光标移到 SSR链接 处才会出现</strong></li>
-</ol>
-</li>
-</ul>
-<hr>
-<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2>
-          
-        
-      
-    </div>
-
-	
-
-	
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-	
-	
-	<div>
-	    <p id="div-border-left-blue">
-	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
-	    <span>
-	    <b>本文地址：</b><a href="/page/3/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
-	    </span>
-	    </p>
-	</div>
-	
-
-	
-    <footer class="post-footer">
-	
-	
-	
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -4037,7 +3680,7 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -4119,7 +3762,7 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
         <div class="copyright" >
   
   &copy;  2016.6.2 - 
-  <span itemprop="copyrightYear">2017.11.6</span>
+  <span itemprop="copyrightYear">2017.11.14</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
