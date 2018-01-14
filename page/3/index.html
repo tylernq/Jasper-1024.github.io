@@ -325,6 +325,813 @@
   
   
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/23/Android笔记-Broadcast广播/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/23/Android笔记-Broadcast广播/" itemprop="url">
+                  Android笔记—Broadcast广播
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-23T12:00:00+08:00">
+                2016-12-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/12/23/Android笔记-Broadcast广播/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/12/23/Android笔记-Broadcast广播/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/12/23/Android笔记-Broadcast广播/" class="leancloud_visitors" data-flag-title="Android笔记—Broadcast广播">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  2,632
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  11m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>资料来源如下</p>
+<ul>
+<li>第一行代码(第二版)</li>
+</ul>
+<p>编程环境</p>
+<ul>
+<li>Android Studio 2.2.3</li>
+</ul>
+<hr>
+<h2 id="BroadcastReceiver基础"><a href="#BroadcastReceiver基础" class="headerlink" title="BroadcastReceiver基础"></a>BroadcastReceiver基础</h2><ul>
+<li>首先祭出官方文档及<strong>中文翻译</strong><blockquote>
+<p><a href="https://developer.android.com/reference/android/content/BroadcastReceiver.html" target="_blank" rel="external">https://developer.android.com/reference/android/content/BroadcastReceiver.html</a><br><a href="http://www.jianshu.com/p/1b56172b0c77" target="_blank" rel="external">http://www.jianshu.com/p/1b56172b0c77</a></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="BroadcastReceiver概述"><a href="#BroadcastReceiver概述" class="headerlink" title="BroadcastReceiver概述"></a>BroadcastReceiver概述</h3><ol>
+<li><a href="http://www.cnblogs.com/qiuscut/articles/2212064.html" target="_blank" rel="external">@别路寻忆</a><br>Android中的四大组件是 Activity、Service、Broadcast和Content Provider。而Intent是一个对动作和行为的抽象描述，负责组件之间程序之间进行消息传递。那么Broadcast Receiver组件就提供了一种把Intent作为一个消息广播出去，由所有对其感兴趣的程序对其作出反应的机制。</li>
+<li><p><a href="http://blog.csdn.net/zuolongsnail/article/details/6450156" target="_blank" rel="external">@zuolongsnail专栏</a></p>
+<ul>
+<li><p>广播接收器是一个专注于接收广播通知信息，并做出对应处理的组件。很多广播是源自于系统代码的──比如，通知时区改变、电池电量低、拍摄了一张照片或者用户改变了语言选项。应用程序也可以进行广播──比如说，通知其它应用程序一些数据下载完成并处于可用状态。</p>
+</li>
+<li><p>应用程序可以拥有任意数量的广播接收器以对所有它感兴趣的通知信息予以响应。所有的接收器均继承自BroadcastReceiver基类。</p>
+</li>
+<li><p>广播接收器没有用户界面。然而，它们可以启动一个activity来响应它们收到的信息，或者用NotificationManager来通知用户。通知可以用很多种方式来吸引用户的注意力──闪动背灯、震动、播放声音等等。一般来说是在状态栏上放一个持久的图标，用户可以打开它并获取消息。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="广播分类"><a href="#广播分类" class="headerlink" title="广播分类"></a>广播分类</h3><ul>
+<li>触发广播发生的事件分类有两种<ol>
+<li>Android系统广播事件<br> 由android设备状态变化而触发的系统广播如：<br> Intent.ACTION_POWER_CONNECTED;<br> //插上外部电源时发出的广播<br> Intent.ACTION_SCREEN_ON;<br> //屏幕被打开之后的广播<br> ACTION_TIME_CHANGED<br>//系统时间改变而触发的广播</li>
+<li>自定义的广播事件<br> 这个比较好理解了，比如qq当我们再另外一台手机上登陆时，手头的这个手机qq就会自动下线。腾讯的服务器通过后台服务启用了自定义广播来终结正在运行的Activity，详情之后会有例程，不再累赘。</li>
+</ol>
+</li>
+<li><p>能够被接收的广播类型</p>
+<ol>
+<li><p>普通广播（Normal broadcasts）：<br> （由 Context.sendBroadcast发出）异步发出。所有广播接收器都可以在同一时间接收广播。广播接收者无法接收广播的处理结果或者阻断广播的传递。</p>
+</li>
+<li><p>有序广播（Ordered broadcasts）：<br> （由 Context.sendOrderedBroadcast发出）每次只发送给一个广播接收器。当每个广播接收器依次执行时，它可以向下一个广播接收器传播结果，或者阻断该广播，使得该广播不能被下一个广播接收器接收到。</p>
+</li>
+</ol>
+<ul>
+<li>通俗解释：<br>  普通广播就相当于小区/村委会的大喇叭，有事发生（触发广播）通知所有的人（广播接收器），全功率的大喊大叫确保所有人（广播接收器）都能听到。而有人（广播接收器）在睡觉被吵醒但是又没办法砸了那个大喇叭，只能继续听着（无法接收广播的处理结果或者阻断广播的传递）。<br>  有序广播 就相当于间谍机关的绝密消息传递。绝密到手（触发广播）间谍秘密汇总给上线A（广播接收器A）。本来 上线（广播接收器A）应该  听取完毕重新整理情向首长B（广播接收器B）报告（向广播接收器B传播 广播接收器A修改的结果）,但是A被收买，将情报隐匿了，没有向首长B汇报（广播接收器A阻断该广播，使得该广播不能被下一个广播接收器B接收到）。（PS结局首长B错误带人炸了村委会，该睡觉的人终于可以安生睡觉了！）</li>
+</ul>
+</li>
+<li><p>广播事件注册有两种</p>
+<ol>
+<li>静态注册，就是在AndroidManifest.xml文件中定义，注册的广播接收器必须要继承BroadcastReceiver.</li>
+<li>动态注册，是在程序中使用Context.registerReceiver注册，注册的广播接收器相当于一个匿名类。两种方式都需要IntentFIlter。</li>
+</ol>
+<ul>
+<li>例程见下节。</li>
+</ul>
+</li>
+</ul>
+<h2 id="动态注册（在代码中注册）"><a href="#动态注册（在代码中注册）" class="headerlink" title="动态注册（在代码中注册）"></a>动态注册（在代码中注册）</h2><ul>
+<li><p>在代码中通过registerReceiver()注册。app关闭后,该接收器也会随之销毁。</p>
+</li>
+<li><p>首先定义一个内部子类NetworkChangeReceiver继承自 BroadcastReceiver</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">NetworkChangeReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>&#123;</div><div class="line"><span class="meta">@Override</span></div><div class="line"></div><div class="line"><span class="comment">//重写onReceive，接收到广播后提示消息</span></div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</div><div class="line"> 	Toast.makeText(context, <span class="string">"network is available网络已变化"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">    &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在onCreate()方法中创建IntentFilter实例和NetworkChangeReceiver实例。并在IntentFilter实例中添加网络变化时系统广播对应值。随后传入registerReceiver()中注册。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">    setContentView(R.layout.activity_main);</div><div class="line"> <span class="comment">//创建IntentFilter实例</span></div><div class="line">    intentFilter = <span class="keyword">new</span> IntentFilter();</div><div class="line">    <span class="comment">//添加对应系统广播</span></div><div class="line">    intentFilter.addAction(<span class="string">"android.net.conn.CONNECTIVITY_CHANGE"</span>);</div><div class="line">    <span class="comment">//添加NetworkChangeReceiver实例</span></div><div class="line">    networkChangeReceiver = <span class="keyword">new</span> NetworkChangeReceiver();</div><div class="line">    <span class="comment">//动态注册</span></div><div class="line">    registerReceiver(networkChangeReceiver, intentFilter);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>动态注册的广播接收器最后要取消注册。在onDestroy()方法中调用unregisterReceiver()销毁动态注册的广播接收器。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">super</span>.onDestroy();</div><div class="line">    unregisterReceiver(networkChangeReceiver);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>最后要在AndroidMainfest.xml中声明查询系统网络状态的权限。</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_NETWORK_STATE"</span>/&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>运行效果如如所示（模拟器）<br>  <img src="http://ww2.sinaimg.cn/large/6153fc0cjw1f7j04rqb85j20u01hcjv9.jpg" alt=""></p>
+</li>
+</ul>
+<h2 id="静态注册（xml中注册）"><a href="#静态注册（xml中注册）" class="headerlink" title="静态注册（xml中注册）"></a>静态注册（xml中注册）</h2><ul>
+<li>直接在Manifest.xml文件中配置广播接收者</li>
+<li>例程为了方便同样以<code>android.net.conn.CONNECTIVITY_CHANGE</code>为例，与动态注册相同。<h3 id="不使用内部子类（第一行代码）"><a href="#不使用内部子类（第一行代码）" class="headerlink" title="不使用内部子类（第一行代码）"></a>不使用内部子类（第一行代码）</h3></li>
+<li><p>新建名称为BootCompleteReceiver的java class  代码如下</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">   <span class="keyword">public</span>  <span class="class"><span class="keyword">class</span> <span class="title">BootCompleteReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>&#123;</div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span></span>&#123;</div><div class="line">       Toast.makeText(context, <span class="string">"网络改变"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">  		 &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在AndroidManifest.xml文件中注册广播接收器<br>  代码如下</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">".BootCompleteReceiver"</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></div><div class="line">           <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.net.conn.CONNECTIVITY_CHANGE"</span>/&gt;</span></div><div class="line">       <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>在AndroidManifest.xml中声明权限</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span>&gt;</span><span class="tag">&lt;/<span class="name">uses-permission</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_NETWORK_STATE"</span>&gt;</span><span class="tag">&lt;/<span class="name">uses-permission</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="使用内部子类（在Activity中定义）"><a href="#使用内部子类（在Activity中定义）" class="headerlink" title="使用内部子类（在Activity中定义）"></a>使用内部子类（在Activity中定义）</h3><hr>
+<p><strong>在这晕圈了一下午，找不出毛病。看书多仔细吧，书上说了不用内部子类。</strong><br>详细资料在这里</p>
+<blockquote>
+<p><a href="http://blog.csdn.net/chdjj/article/details/19496567" target="_blank" rel="external">http://blog.csdn.net/chdjj/article/details/19496567</a></p>
+</blockquote>
+<hr>
+<ul>
+<li><strong>清单文件注册广播接收者时，广播接收者的名字格式需要注意因为是内部类，所以需要在内部类所在的类与内部类之间加上$符号</strong>(这一点在AndroidStudio中输入时有提示)</li>
+<li><strong>内部类在声明时一定要写成静态内部类（class关键字前加上static）。否则会抛出异常</strong>（广播发生时，应用停止运行）</li>
+</ul>
+<hr>
+<ul>
+<li><p>在MainActivity中新建子类</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">BootCompleteReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span></span>&#123;</div><div class="line">        Toast.makeText(context, <span class="string">"Boot complete"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在AndroidManifest.xml中注册广播接收器</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">".MainActivity$BootCompleteReceiver"</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></div><div class="line">           <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.net.conn.CONNECTIVITY_CHANGE"</span>/&gt;</span></div><div class="line">       <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>在AndroidManifest.xml中声明权限</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span>&gt;</span><span class="tag">&lt;/<span class="name">uses-permission</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_NETWORK_STATE"</span>&gt;</span><span class="tag">&lt;/<span class="name">uses-permission</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>运行效果同动态注册</p>
+</li>
+</ul>
+<h2 id="使用广播接收器注意事项"><a href="#使用广播接收器注意事项" class="headerlink" title="使用广播接收器注意事项"></a>使用广播接收器注意事项</h2><ul>
+<li>在onReceive()方法中不宜添加过多逻辑/耗时操作，广播接收器没有多线程，一旦时间过长，程序就会报错。</li>
+<li>广播接收器一般为启动其他组件作用。</li>
+</ul>
+<h2 id="发送标准广播"><a href="#发送标准广播" class="headerlink" title="发送标准广播"></a>发送标准广播</h2><hr>
+<ul>
+<li><p>发送标准广播之前，首先要注册一个作为目标的广播接收器。（过程略，只上代码）<br>  新建MyBroadcastReceiver.class</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBroadcastReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span></span>&#123;</div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span></span></div><div class="line">   &#123;</div><div class="line">    Toast.makeText(context,<span class="string">"MyBroadcastReceiver"</span>,Toast.LENGTH_SHORT).show();</div><div class="line">   	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>  在Xml中注册（静态）</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">".MyBroadcastReceiver"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.example.broadcasttest.MyBroad"</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>xml中注册一个Button</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">   <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">   <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">   <span class="attr">android:onClick</span>=<span class="string">"SendBroad"</span></div><div class="line">   <span class="attr">android:text</span>=<span class="string">"SendBroad"</span> /&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>MainActivity中新建 SendBroad()函数<br>  首先构建一个 Intent对象，将自定义的广播值填入。再调用sendBroadcast方法将广播发送出去。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SendBroad</span><span class="params">(View view)</span></span></div><div class="line">&#123;</div><div class="line">    Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.example.broadcasttest.MyBroad"</span>);</div><div class="line">    sendBroadcast(intent);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>发送的是标准广播。运行效果如下图。<br>  <a href="http://snapgr.am/image/L2ou" target="_blank" rel="external"><img src="http://cdn4.snapgram.co/images/2016/09/10/Screenshot_20160910-220121.png" alt="Screenshot_20160910-220121.png"></a></p>
+</li>
+</ul>
+<h2 id="发送有序广播"><a href="#发送有序广播" class="headerlink" title="发送有序广播"></a>发送有序广播</h2><hr>
+<ul>
+<li><p>首先新建一个Broad2 的工程。同样接收Broad发送的广播。<br>  代码如下</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AnotherBroadcast</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>&#123;</div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span></span></div><div class="line">   &#123;</div><div class="line">       Toast.makeText(context,<span class="string">" AnotherBroadcast"</span>,Toast.LENGTH_SHORT).show();</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">".AnotherBroadcast"</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">intent-filter</span> <span class="attr">android:priority</span>=<span class="string">"10"</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.example.broadcasttest.MyBroad"</span>/&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>测试效果：当摁下发送广播按钮后，弹出两个提示。</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>修改Broad项目中onClick对应事件。将sendBroadcast(）改为sendOrderedBroadcast();发送有序广播。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SendBroad</span><span class="params">(View view)</span></span></div><div class="line">&#123;</div><div class="line">    Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.example.broadcasttest.MyBroad"</span>);</div><div class="line">    sendOrderedBroadcast(intent,<span class="keyword">null</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>效果与发送标准广播相同（还未定义优先级/截断等）</p>
+</li>
+<li><p>定义优先级，再Broad的AndroidMainfest.xml中修改注册的广播添加android:priority=”100”优先级100</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">".MyBroadcastReceiver"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">intent-filter</span> <span class="attr">android:priority</span>=<span class="string">"100"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.example.broadcasttest.MyBroad"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>在Broad2的AndroidMainfest.xml中添加android:priority=”10”优先级10</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">".AnotherBroadcast"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">intent-filter</span> <span class="attr">android:priority</span>=<span class="string">"10"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.example.broadcasttest.MyBroad"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>发送广播后MyBroadcastReceiver最先收到广播。</p>
+</li>
+<li><p>截断广播。有序广播中前一个广播接收器可以截断广播传播。添加 abortBroadcast();即可。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBroadcastReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span></span>&#123;</div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span></span></div><div class="line">   &#123;</div><div class="line">       Toast.makeText(context,<span class="string">"MyBroadcastReceiver"</span>,Toast.LENGTH_SHORT).show();</div><div class="line">       abortBroadcast();</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>再次点击按钮发送广播，只有MyBroadcastReceiver可以接收到发送的广播。</p>
+</li>
+</ul>
+<h2 id="本地广播"><a href="#本地广播" class="headerlink" title="本地广播"></a>本地广播</h2><ul>
+<li><p>只在app应用内部传递的广播。注册过程类似于动态注册。</p>
+</li>
+<li><p>定义一个内部类LocalReceiver继承自BroadcastReceiver</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">LocalReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span></span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span></span>&#123;</div><div class="line">        Toast.makeText(context, <span class="string">"received local broadcast"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>首先在onCreate()方法中通过localBroadcastManager.getInstan得到一个LocalBroadcastManager的实例，再创建IntentFilter实例和LocalReceiver实例。并在IntentFilter实例中添加广播。随后传入localBroadcastManager.registerReceiver()中注册本地广播。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">private</span> IntentFilter intentFilter;</div><div class="line"><span class="keyword">private</span> LocalReceiver localReceiver;</div><div class="line"><span class="keyword">private</span> LocalBroadcastManager localBroadcastManager;</div><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">    setContentView(R.layout.activity_main);</div><div class="line">    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);</div><div class="line"></div><div class="line">    localBroadcastManager = localBroadcastManager.getInstance(<span class="keyword">this</span>);</div><div class="line"></div><div class="line">    intentFilter = <span class="keyword">new</span> IntentFilter();</div><div class="line">    intentFilter.addAction(<span class="string">"com.example.broadcasttest.LOCAL_BROADCAST"</span>);</div><div class="line">    localReceiver = <span class="keyword">new</span> LocalReceiver();</div><div class="line">    localBroadcastManager.registerReceiver(localReceiver, intentFilter);       </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在Activity的onDestroy()中销毁注册。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">super</span>.onDestroy();</div><div class="line">    localBroadcastManager.unregisterReceiver(localReceiver);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在Button对应的函数中调用localBroadcastManager.sendBroadcast发送本地广播。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SendBroad</span><span class="params">(View view)</span></span></div><div class="line">&#123;</div><div class="line">      Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.example.broadcasttest.LOCAL_BROADCAST"</span>);</div><div class="line">      localBroadcastManager.sendBroadcast(intent);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>效果基本同上，不加累赘。不过在Broad2中是怎样都搜不到广播了。</p>
+</li>
+<li><p>本地广播特点</p>
+<ul>
+<li>明确广播只在应用内部，传递数据无需担心泄密。</li>
+<li>其他程序广播无法发送至程序内部。</li>
+<li>本地广播比全局广播更为高效。</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/3/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/18/Android笔记-Fragments/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/18/Android笔记-Fragments/" itemprop="url">
+                  Android笔记—Fragments
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-18T12:00:00+08:00">
+                2016-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/12/18/Android笔记-Fragments/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/12/18/Android笔记-Fragments/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/12/18/Android笔记-Fragments/" class="leancloud_visitors" data-flag-title="Android笔记—Fragments">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,925
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  8m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>资料来源如下</p>
+<ul>
+<li>第一行代码(第二版)</li>
+<li><a href="http://blog.csdn.net/vanpersie_9987/article/details/51311808" target="_blank" rel="external"> Android官方文档之App Components（Fragments）</a></li>
+</ul>
+<p>编程环境</p>
+<ul>
+<li>Android Studio 2.2.3</li>
+</ul>
+<p>导语</p>
+<ul>
+<li>Fragments的艺术之旅</li>
+</ul>
+<hr>
+<h2 id="Fragments简介"><a href="#Fragments简介" class="headerlink" title="Fragments简介"></a>Fragments简介</h2><ul>
+<li>Fragment—片段 是Android 在 Android 3.0（API 11 级）中引入了，主要是为了给大屏幕（如平板电脑）上更加动态和灵活的 UI 设计提供支持。</li>
+<li>可以将多个片段组合在一个 Activity 中来构建多窗格 UI，以及在多个 Activity 中重复使用某个片段。可以将片段视为 Activity 的模块化组成部分，它具有自己的生命周期，能接收自己的输入事件，可以在 Activity 运行时添加或删除片段（类似于不同 Activity 中重复使用的“子 Activity”）</li>
+<li><a href="https://developer.android.com/guide/components/fragments.html" target="_blank" rel="external">Google官方文档(中文)</a></li>
+</ul>
+<h2 id="创建Fragments"><a href="#创建Fragments" class="headerlink" title="创建Fragments"></a>创建Fragments</h2><ul>
+<li>fragment创建过程与Activity类似。</li>
+</ul>
+<ul>
+<li>创建Fragment，需要继承一个Fragment类，并实现Fragment的生命周期回调方法，如onCreate(), onStart(), onPause(), onStop()等</li>
+</ul>
+<ul>
+<li>一般来说，在Fragment中应至少重写以下这些生命周期方法<br><strong>必须重写的时onCreateView()方法.</strong><ul>
+<li>onCreate()：创建Fragment实例时，系统回调的方法。在该方法中，对一些必要的组件进行初始化</li>
+<li>onCreateView()：Fragment上绘制UI时，回掉该方法。返回一个View对象，表示Fragment的根视图；若Fragment不需要绑定示图，可以返回null</li>
+<li>onPause()：当用户离开Fragment时回调。在该方法中，对Fragment的数据信息做持久化的保存工作</li>
+</ul>
+</li>
+</ul>
+<h3 id="创建一个Fragment类"><a href="#创建一个Fragment类" class="headerlink" title="创建一个Fragment类"></a>创建一个Fragment类</h3><ul>
+<li>新建first_fragme 继承自Fragment</li>
+<li><p>Android Studio中 对应Fragment 包有两个，选择support-v4 _(这个版本可以再Android版本中保持Fragment特性一致)</p>
+</li>
+<li><p>Fragment并非一定要绑定一个布局文件，下面会提到。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span> <span class="params">(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState)</span></span>&#123;</div><div class="line">       View view = inflater.inflate(R.layout.fragment_firest,container,<span class="keyword">false</span>);</div><div class="line">       <span class="keyword">return</span> view;</div><div class="line">   	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>与此对应的fragment<em>firest布局文件 </em><br>LinearLayout加一个Button，背景颜色设置为了靛蓝色。</li>
+</ul>
+</li>
+<li><p>onCreateView()方法</p>
+<ul>
+<li>ViewGroup来自宿主Activity容器布局，Fragment的布局将其作为根视图插入至该视图中。</li>
+<li>Bundle用于回传之前占据该位置的Fragment实例所保存的Bundle信息，当该Fragment的新实例处于resume状态时，该参数被回传</li>
+</ul>
+</li>
+<li><p>inflate() 方法</p>
+<ul>
+<li><p>参数1（int）：需要绑定的Layout的资源ID；</p>
+</li>
+<li><p>参数2（ViewGroup）：绑定的Layout布局的父视图；</p>
+</li>
+<li><p>参数3（boolean）：是否需要将参数1的Layout资源依附于，参数2的ViewGroup上，false，表示不依附。（系统已经默认将Layout插入至ViewGroup中，若为true，将添加一层冗余的视图</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="在XML将fragment添加到activity"><a href="#在XML将fragment添加到activity" class="headerlink" title="在XML将fragment添加到activity"></a>在XML将fragment添加到activity</h3><ul>
+<li><p>在activity_main.xml中添加如下代码。跟添加一个layout没有太大区别。</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">fragment</span></span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/left_fragment"</span></div><div class="line">    <span class="attr">android:name</span>=<span class="string">"ljy.com.fragmenttest.fragment_firest"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_weight</span>=<span class="string">"1"</span>/&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>至此一个fragment添加完毕。为了对比，再新建一个second_fragment，背景颜色不同，两者同时添加进activity_main中。</p>
+</li>
+<li><p><img src="http://cdn5.snapgram.co/images/2016/10/10/Screenshot_1476109113.png" alt="Screenshot_1476109113.png"></p>
+</li>
+<li><p>一般来说必须为fragment设定唯一的身份标识，以便当宿主Activity为restart状态时可以恢复fragment</p>
+<ul>
+<li>android:id属性为fragment指定唯一ID</li>
+<li>android:tag属性为fragment指定唯一字符串标识</li>
+<li>未指定，则该fragment的标识为其父容器控件的ID</li>
+</ul>
+</li>
+</ul>
+<h3 id="动态添加碎片"><a href="#动态添加碎片" class="headerlink" title="动态添加碎片"></a>动态添加碎片</h3><hr>
+<ul>
+<li><strong>处理片段时，请谨记：Activity 布局必须包含一个可以插入片段的容器 View</strong></li>
+</ul>
+<hr>
+<ul>
+<li><p>添加或移除片段必须使用 FragmentManager 创建 FragmentTransaction， FragmentTransaction将提供添加、移除、替换片段以及执行其他片段事务所需的 API。Activity 内调用 getSupportFragmentManager() 以获取 FragmentManager</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rightfragment right = <span class="keyword">new</span> rightfragment();</div><div class="line">FragmentManager fragmentManager = getSupportFragmentManager();</div></pre></td></tr></table></figure>
+</li>
+<li><p>调用 beginTransaction() 创建一个 FragmentTransaction事务，并调用 add() 添加一个片段，做好更改准备时，调用 commit()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">FragmentTransaction transaction = fragmentManager.beginTransaction();</div><div class="line">transaction.replace(R.id.right_layout,right);</div><div class="line">transaction.commit();</div></pre></td></tr></table></figure>
+</li>
+<li><p>示例：</p>
+<ul>
+<li><p>首先改造一下activity<em>main.xml</em><br>FrameLayout包含一个left_fragment</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">  <span class="tag">&lt;<span class="name">FrameLayout</span>  </span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/right_layout"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_weight</span>=<span class="string">"1"</span>&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">fragment</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/left_fragment"</span></div><div class="line">        <span class="attr">android:name</span>=<span class="string">"com.example.fragment_text.leftfragment"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        /&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>在MainActivity的onCreate方法中添加fragment</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//新建准备替换的Fragment实例</span></div><div class="line">rightfragment right = <span class="keyword">new</span> rightfragment();</div><div class="line"></div><div class="line"><span class="comment">//新建FragmentManager</span></div><div class="line">FragmentManager fragmentManager = getSupportFragmentManager();</div><div class="line"><span class="comment">// 调用beginTransaction() 创建FragmentTransaction</span></div><div class="line">FragmentTransaction transaction = fragmentManager.beginTransaction();</div><div class="line"></div><div class="line"><span class="comment">//FragmentTransaction内处理添加/替换等。</span></div><div class="line">transaction.replace(R.id.right_layout,right);</div><div class="line"></div><div class="line"><span class="comment">//最后执行commit()方法</span></div><div class="line">transaction.commit();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="管理Fragments-执行Fragment事务"><a href="#管理Fragments-执行Fragment事务" class="headerlink" title="管理Fragments/执行Fragment事务"></a>管理Fragments/执行Fragment事务</h2><ul>
+<li><p>Activity中管理Fragment，使用FragmentManager(</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">FragmentManager fragmentManager = getFragmentManager();</div></pre></td></tr></table></figure>
+<p>可以实现的操作</p>
+<ul>
+<li>findFragmentById()方法获取由Activity管辖的绑定了UI的Fragment实例</li>
+<li>popBackStack()方法将Fragment从后退栈中弹出</li>
+<li>addOnBackStackChangedListener()方法注册监听器，用于监听后退栈的变化</li>
+</ul>
+</li>
+<li><p>Fragment可实现动态添加、删除、替换 等 操作，每一组向Activity提交的变化称为事务，使用FragmentTransaction这操作事务,调用beginTransaction(）开启一个事务</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">FragmentManager fragmentManager = getFragmentManager();</div><div class="line">FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();</div></pre></td></tr></table></figure>
+<p>可实现对Feagment的操作</p>
+<ul>
+<li>add()  //添加</li>
+<li>remove()   //移除</li>
+<li>replace()   //替换</li>
+</ul>
+</li>
+<li><p>事务要在Activity中生效，调用commit()方法提交</p>
+</li>
+<li><p>commit()方法之前，调用addToBackStack()方法，可以将该事物添加到由Activity管辖的Fragment返回栈中。点击Back键即撤销该事物提交的更改</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>使用FragmentTransaction操作事务时注意</p>
+<ul>
+<li>commit()必须在最后调用</li>
+<li>一个布局容器中添加多个Fragment，加入的顺序决定了这些Fragment绑定的UI视图在View树中的层级顺序</li>
+</ul>
+</li>
+<li><p>commit()方法提交后，并不会立即执行事务，UI更新只能在主线程中进行，主线程空闲时，才会执行事务操作<br>Android也提供了 在UI线程中调用executePendingTransactions()方法，使commit()方法调用后立即执行提交的事务（一般用不到）</p>
+</li>
+</ul>
+<hr>
+<h2 id="与-Activity-通信"><a href="#与-Activity-通信" class="headerlink" title="与 Activity 通信"></a>与 Activity 通信</h2><ul>
+<li><p>Fragment 中获取 Activity 实例<br> getActivity()方法可以获取到 Activity 实例</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MainActivity activity = (MainActivity) getActivity();</div></pre></td></tr></table></figure>
+<p> 调用Activity中的试图也很简单，使用findViewById()即可，getActivity()方法返回的既是一个Context对象</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">View listView = getActivity().findViewById(R.id.list);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<ul>
+<li>在Fragment中使用Context对象，getActivity()方法，只能是在fragment已经依附于Activity后才能调用。当fragment未依附于某个Activity、或fragment已经处于其生命周期的末尾而不再依附于某个Activity时，调用getActivity()方法会直接返回null</li>
+</ul>
+<hr>
+<ul>
+<li><p>Activity 中获取 Fragment 实例()<br>FragmentManger提供了findFragmentById()方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">RightFragment fragment = (RightFragment) getFragmentManager().findFragmentById(R.id.example_fragment);</div></pre></td></tr></table></figure>
+<p>如果使用的使support-V4包，则 getFragmentManager()改为getSupportFragmentManager()，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">RightFragment fragment = (RightFragment)getSupportFragmentManager().findFragmentById(R.id.example_fragment);</div></pre></td></tr></table></figure>
+</li>
+<li><p>Fragment与Frangment之间也可以通过宿主Activity，获取到另一个Fragment实例，调用另一个Fragment中的方法</p>
+</li>
+</ul>
+<h3 id="为Activity创建事件回调"><a href="#为Activity创建事件回调" class="headerlink" title="为Activity创建事件回调"></a>为Activity创建事件回调</h3><ul>
+<li>占坑，</li>
+</ul>
+<h2 id="Frangment的生命周期"><a href="#Frangment的生命周期" class="headerlink" title="Frangment的生命周期"></a>Frangment的生命周期</h2><ul>
+<li><p>与Activity极为相似，且 Frangment的生命周期与宿主Activity有很大关联</p>
+</li>
+<li><p>有3种状态</p>
+<ul>
+<li>Resumed继续：宿主Activity处于running，Fragment处于可见状态</li>
+<li>Paused暂停：另一个Activity处于前台并获得了焦点，该Fragment的宿主Activity并未被全部遮挡</li>
+<li>Stopped停止：Fragment不可见或Fragment已被Activity移除，宿主Activity被回收时，Fragment也将被回收</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><img src="http://cdn3.snapgram.co/imgs/2016/12/22/fragment_lifecycle.png" alt="fragment_lifecycle.png"></li>
+</ul>
+<h3 id="宿主Activity的影响"><a href="#宿主Activity的影响" class="headerlink" title="宿主Activity的影响"></a>宿主Activity的影响</h3><ul>
+<li><a href="http://snapgr.am/image/L5KP" target="_blank" rel="external"><img src="http://cdn1.snapgram.co/imgs/2016/12/22/activity_fragment_lifecycle.png" alt="activity_fragment_lifecycle.png"></a></li>
+</ul>
+<hr>
+<h4 id="重要回调方法"><a href="#重要回调方法" class="headerlink" title="重要回调方法"></a>重要回调方法</h4><ul>
+<li>onAttach()：fragment关联Activity时回调</li>
+<li>onCreateView()：fragment绑定UI视图(加载布局)时回调</li>
+<li>onActivityCreated()：宿主Activity创建完毕  (宿主Activity的onCreate()方法返回)  后调用</li>
+<li>onDestroyView()：与fragment绑定的UI视图被移除时回调</li>
+<li>onDetach()：fragment不再依附于Activity时回调</li>
+</ul>
+<hr>
+<ul>
+<li><p>Activity 与Fragment在生命周期之间的最显著差异在于它们在其各自返回栈中的存储方式。<br>默认情况下，Activity 停止时会被放入由系统管理的 Activity 返回栈（以便用户通过返回按钮回退到 Activity），<br>Frament仅当您在移除片段的事务执行期间通过调用 addToBackStack() 请求保存实例时，系统才会将Fragment放入由宿主 Activity 管理的返回栈。</p>
+</li>
+<li><p>一旦Activity处于resume状态时，可以自由地添加或移除fragment，也就是说，只有当Activity的状态为resume时，fragment才能够自由地控制自己的生命周期</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/3/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/16/Android笔记-UI-RecyclerView/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2905,732 +3712,6 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
 
 
     
-      
-
-  
-
-  
-  
-  
-  
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/09/单片机课程设计总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jasper">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/v.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="默">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/09/单片机课程设计总结/" itemprop="url">
-                  单片机课程设计总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-09T20:10:11+08:00">
-                2016-07-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/电子类/" itemprop="url" rel="index">
-                    <span itemprop="name">电子类</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/07/09/单片机课程设计总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/07/09/单片机课程设计总结/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/07/09/单片机课程设计总结/" class="leancloud_visitors" data-flag-title="单片机课程设计总结">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  1,239
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  6m
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>累死人的单片机课程设计终于结束了，忙了两天多。就是个数码管+ADC。看看自己两年多前写的程序。。这感觉。用了一天多重构。。。。之前写程序的那个乱啊。。。重新整理下，自己的库函数。记录于此。</p>
-<hr>
-<h1 id="1602库函数"><a href="#1602库函数" class="headerlink" title="1602库函数"></a>1602库函数</h1><h2 id="1602-h"><a href="#1602-h" class="headerlink" title="1602.h"></a>1602.h</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*模 块 名：                LCD1602      */</span></div><div class="line"></div><div class="line"><span class="comment">/*创 建 人：zyy        日期：2014-11-04  */</span></div><div class="line"></div><div class="line"><span class="comment">/*修 改 者：js         日期：2016-07-08	*/</span></div><div class="line"></div><div class="line"><span class="comment">/*版 本2.1	                            */</span></div><div class="line"></div><div class="line"><span class="comment">/*使用方法：首先调用LCD初始化函数void LcdInit()；</span></div><div class="line">  输入一个double类型数据调用void LcdDisplay(double temp);       </div><div class="line">  显示在第二行；如需修改第一行数据可在LcdDisplay函数中修改 */</div><div class="line"><span class="comment">/*  BUG   : 第二行double数据显示最后一位后，会跟随一位乱码 */</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stc12c5a60s2.h&gt;      </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;intrins.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span>  uint unsigned int</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span>  uchar unsigned char</span></div><div class="line"></div><div class="line">sbit lcdrs = P1^<span class="number">7</span>;</div><div class="line">sbit lcden = P2^<span class="number">4</span>;</div><div class="line">sbit    rw = P1^<span class="number">6</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> lcd_data_port P0</span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">sdelay</span><span class="params">(uint s)</span></span>;			 <span class="comment">//通用延迟函数</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_com</span><span class="params">(uchar com)</span></span>;	     <span class="comment">//并口写数据</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_data</span><span class="params">(uchar date)</span></span>;	 <span class="comment">//并口写数据</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">LcdInit</span><span class="params">()</span></span>;		             <span class="comment">//1602初始化</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">LcdDisplay</span><span class="params">(<span class="keyword">double</span> temp,uint t)</span></span>;	 <span class="comment">//显示函数</span></div></pre></td></tr></table></figure>
-<h2 id="1602-c"><a href="#1602-c" class="headerlink" title="1602.c"></a>1602.c</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1602.c</span></div><div class="line">include &lt;<span class="number">1602.</span>h&gt;</div><div class="line"></div><div class="line"><span class="comment">/*模 块 名：              LCD1602        */</span></div><div class="line"></div><div class="line"><span class="comment">/*创 建 人：zyy       日期：2014-11-04    */</span></div><div class="line"></div><div class="line"><span class="comment">/*修 改 者：js        日期：2016-07-08	*/</span></div><div class="line"></div><div class="line"><span class="comment">/*版 本2.1	                            */</span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">/**********************************************/</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">sdelay</span><span class="params">(uint s)</span>			   <span class="comment">//通用延迟函数</span></span></div><div class="line">&#123;</div><div class="line">	uint x,y;</div><div class="line">	<span class="keyword">for</span>(x=s;x&gt;<span class="number">0</span>;x--)</div><div class="line">	<span class="keyword">for</span>(y=<span class="number">250</span>;y&gt;<span class="number">0</span>;y--);</div><div class="line">&#125;</div><div class="line"><span class="comment">/**********************************************/</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_com</span><span class="params">(uchar com)</span>	   <span class="comment">//并口写数据</span></span></div><div class="line">&#123;</div><div class="line">	lcdrs=<span class="number">0</span>;</div><div class="line">	lcden=<span class="number">0</span>;</div><div class="line">	lcd_data_port=com;</div><div class="line">	sdelay(<span class="number">1</span>);</div><div class="line">	lcden=<span class="number">1</span>;</div><div class="line">	sdelay(<span class="number">1</span>);</div><div class="line">	lcden=<span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_data</span><span class="params">(uchar date)</span>	   <span class="comment">//并口写数据</span></span></div><div class="line">&#123;</div><div class="line">	lcdrs=<span class="number">1</span>;</div><div class="line">	lcden=<span class="number">0</span>;</div><div class="line">	lcd_data_port=date;</div><div class="line">	sdelay(<span class="number">1</span>);</div><div class="line">	lcden=<span class="number">1</span>;</div><div class="line">	sdelay(<span class="number">1</span>);</div><div class="line">	lcden=<span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">/*********************************************************************</span></div><div class="line">*</div><div class="line">* 函 数 名: LcdInit</div><div class="line">* 功能描述: LCD初始化</div><div class="line">* 函数说明: 初始化数据：0x38  0x0c	0x06  0x01</div><div class="line">* 调用函数: sdelay（），write_com（），	write_data（）</div><div class="line">* 输 入: 无</div><div class="line">* 返 回: 无</div><div class="line">* 设 计 者：zyy 日期：2014-12-23</div><div class="line">* 版 本：   1.0</div><div class="line">***********************************************************************/</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">LcdInit</span><span class="params">()</span>		     <span class="comment">//1602初始化</span></span></div><div class="line">&#123;</div><div class="line">	lcden=<span class="number">0</span>;</div><div class="line">	rw=<span class="number">0</span>;</div><div class="line">	write_com(<span class="number">0x38</span>);</div><div class="line">	write_com(<span class="number">0x0c</span>);</div><div class="line">	write_com(<span class="number">0x06</span>);</div><div class="line">	write_com(<span class="number">0x01</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*********************************************************************</span></div><div class="line">*</div><div class="line">* 函 数 名: LcdDisplay</div><div class="line">* 功能描述: LCD显示</div><div class="line">* 函数说明: double类型数据转化为字符串，在lcd第二行显示。</div><div class="line">* 调用函数: sprintf(),write_com(),sdelay()</div><div class="line">* 全局变量:	无</div><div class="line">* 输 入:    一个double类型变量值</div><div class="line">* 返 回:    无</div><div class="line">* 设 计 者：zyy 日期：2014-12-23</div><div class="line">* 修 改 者：js 日期：2016-07-08</div><div class="line">* 版 本：	2.0</div><div class="line">***********************************************************************/</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">LcdDisplay</span><span class="params">(<span class="keyword">double</span> temp,uint t)</span>	       		    <span class="comment">//显示函数</span></span></div><div class="line">&#123;</div><div class="line"><span class="keyword">static</span> uchar  table0[]=&#123;<span class="string">"pm              "</span>&#125;;		<span class="comment">//1602默认第一行</span></div><div class="line"><span class="keyword">static</span> uchar  table1[]=&#123;<span class="string">"00.0            "</span>&#125;;</div><div class="line"></div><div class="line">uchar  num=<span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="built_in">sprintf</span>(table1,<span class="string">"%f"</span>,(<span class="keyword">double</span>)temp);</div><div class="line"><span class="built_in">sprintf</span>(table1+<span class="number">8</span>,<span class="string">"%2d"</span>,(uint)t);</div><div class="line"></div><div class="line"></div><div class="line">   write_com(<span class="number">0x80</span>);</div><div class="line">	<span class="keyword">for</span>(num=<span class="number">0</span>;num&lt;<span class="number">15</span>;num++)	       <span class="comment">//第一行刷新</span></div><div class="line">	&#123;</div><div class="line">		write_data(table0[num]);</div><div class="line">		sdelay(<span class="number">5</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">   write_com(<span class="number">0x80</span>+<span class="number">0x40</span>);</div><div class="line">    <span class="keyword">for</span>(num=<span class="number">0</span>;num&lt;<span class="number">16</span>;num++)	       <span class="comment">//第二行显示</span></div><div class="line">	&#123;write_data(table1[num]);    <span class="comment">//0.0195</span></div><div class="line">		sdelay(<span class="number">5</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="数码管"><a href="#数码管" class="headerlink" title="数码管"></a>数码管</h1><ul>
-<li>对应电路图如下<br><img src="http://cdn1.snapgram.co/imgs/2016/07/09/QQ.jpg" alt="QQ.jpg"><h2 id="shu-h"><a href="#shu-h" class="headerlink" title="shu.h"></a>shu.h</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*模 块 名：           数码管           */</span></div><div class="line"></div><div class="line"><span class="comment">/*创 建 人：zy       日期：2014-07-01 */</span></div><div class="line"></div><div class="line"><span class="comment">/*版 本1.2	                            */</span></div><div class="line"></div><div class="line"><span class="comment">/*使用方法：调用 Shu_Display(double js)函数，输入一个double类型数据，</span></div><div class="line">  固定显示格式为小数点前4位及小数点后两位。                             */</div><div class="line"></div><div class="line"><span class="comment">/*BUG：显示小数点后第二位时，有时会与输入值小1.原因疑似与fmod()函数有关 */</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stc12c5a60s2.h&gt;      </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;intrins.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> uint unsigned int</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> uchar unsigned char</span></div><div class="line"> </div><div class="line"></div><div class="line"><span class="comment">//端口定义</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> io_dm P0         <span class="comment">//定义LED显示的段码数据脚</span></span></div><div class="line">sbit io_shu = P2^<span class="number">3</span>;      <span class="comment">//数码管开关低电平有效</span></div><div class="line">sbit io_A   = P2^<span class="number">0</span>;		 <span class="comment">//3-8译码器输入</span></div><div class="line">sbit io_B   = P2^<span class="number">1</span>;</div><div class="line">sbit io_C   = P2^<span class="number">2</span>;</div><div class="line"></div><div class="line">sbit io_DP  = P0^<span class="number">7</span>;		 <span class="comment">//dp点定义</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">extern</span> uchar du_num[<span class="number">15</span>];</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay_1ms</span><span class="params">(uchar x)</span></span>;    <span class="comment">//1ms延迟函数</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">wei</span><span class="params">(uchar i)</span></span>;			<span class="comment">//位选输出函数</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Shu_Display</span><span class="params">(<span class="keyword">double</span> js)</span></span>;<span class="comment">//数码管显示函数</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="shu-c"><a href="#shu-c" class="headerlink" title="shu.c"></a>shu.c</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;shu.h&gt;   </span></span></div><div class="line"></div><div class="line"><span class="comment">/*模 块 名：          数码管           */</span></div><div class="line"></div><div class="line"><span class="comment">/*创 建 人：zy       日期：2014-07-01 */</span></div><div class="line"></div><div class="line"><span class="comment">/*版 本1.2	                            */</span></div><div class="line"></div><div class="line"><span class="comment">//显示数字</span></div><div class="line">uchar du_num[]=&#123;<span class="number">0x3f</span>,<span class="number">0x06</span>,<span class="number">0x5b</span>,<span class="number">0x4f</span>,<span class="number">0x66</span>,<span class="number">0x6d</span>,<span class="number">0x7d</span>,<span class="number">0x07</span>,<span class="number">0x7f</span>,<span class="number">0x6f</span>,<span class="number">0x77</span>,<span class="number">0x7c</span>,<span class="number">0x39</span>,<span class="number">0x5e</span>,<span class="number">0x79</span>,<span class="number">0x71</span>&#125;;</div><div class="line"><span class="comment">//                0    1    2    3    4    5    6    7    8    9    a    b    c    d    e    f </span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay_1ms</span><span class="params">(uchar x)</span><span class="comment">//1ms延迟函数</span></span></div><div class="line">&#123;</div><div class="line">    uchar j;</div><div class="line">    <span class="keyword">while</span>(x--)&#123;</div><div class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">125</span>;j++)</div><div class="line">            &#123;;&#125;</div><div class="line">        &#125;   </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">wei</span><span class="params">(uchar i)</span>		<span class="comment">//位选信号输入</span></span></div><div class="line">&#123;	<span class="comment">//i=i+1;</span></div><div class="line">	<span class="keyword">switch</span> (i)</div><div class="line">	&#123; <span class="keyword">case</span> <span class="number">0</span>:&#123;io_A=<span class="number">0</span>;io_B=<span class="number">0</span>;io_C=<span class="number">0</span>;&#125;  <span class="keyword">break</span>;   </div><div class="line">      <span class="keyword">case</span> <span class="number">1</span>:&#123;io_A=<span class="number">1</span>;io_B=<span class="number">0</span>;io_C=<span class="number">0</span>;&#125;  <span class="keyword">break</span>; </div><div class="line">	  <span class="keyword">case</span> <span class="number">2</span>:&#123;io_A=<span class="number">0</span>;io_B=<span class="number">2</span>;io_C=<span class="number">0</span>;&#125;  <span class="keyword">break</span>; </div><div class="line">	  <span class="keyword">case</span> <span class="number">3</span>:&#123;io_A=<span class="number">1</span>;io_B=<span class="number">1</span>;io_C=<span class="number">0</span>;&#125;  <span class="keyword">break</span>; </div><div class="line">	  <span class="keyword">case</span> <span class="number">4</span>:&#123;io_A=<span class="number">0</span>;io_B=<span class="number">0</span>;io_C=<span class="number">1</span>;&#125;  <span class="keyword">break</span>; </div><div class="line">	  <span class="keyword">case</span> <span class="number">5</span>:&#123;io_A=<span class="number">1</span>;io_B=<span class="number">0</span>;io_C=<span class="number">1</span>;&#125;  <span class="keyword">break</span>; </div><div class="line">	  <span class="keyword">case</span> <span class="number">6</span>:&#123;io_A=<span class="number">0</span>;io_B=<span class="number">1</span>;io_C=<span class="number">1</span>;&#125;  <span class="keyword">break</span>; </div><div class="line">     </div><div class="line">	  <span class="keyword">default</span>: ; <span class="keyword">break</span>; </div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"> <span class="comment">/*********************************************************************</span></div><div class="line">*</div><div class="line">* 函 数 名: Shu_Display() </div><div class="line">* 功能描述: 将数字显示到数码管上，显示格式4+2</div><div class="line">* 函数说明: 段选位选，动态刷新数码管</div><div class="line">* 调用函数: delay_1ms  fmod()</div><div class="line">* 全局变量: 无</div><div class="line">* 输 入:    1个double类型数据</div><div class="line">* 返 回:    无</div><div class="line">* 设 计 者：zy 日期：2014-07-01 </div><div class="line">* 修 改 者：zy 日期：2016-07-08</div><div class="line">* 版 本：   1.2</div><div class="line">***********************************************************************/</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Shu_Display</span><span class="params">(<span class="keyword">double</span> js)</span></span></div><div class="line">&#123;uchar i;                  <span class="comment">//循环变量</span></div><div class="line"> <span class="keyword">static</span> uchar  suff[<span class="number">6</span>];	   <span class="comment">//数据处理暂存数组</span></div><div class="line"> <span class="keyword">static</span> uint   cuff[<span class="number">4</span>];	   <span class="comment">//提取各位有关</span></div><div class="line"> <span class="keyword">static</span> <span class="keyword">double</span>  n=<span class="number">1</span>,y; 	   <span class="comment">//与小数截取有关</span></div><div class="line"> <span class="keyword">static</span>  uint count;		   <span class="comment">//暂存</span></div><div class="line"> </div><div class="line"> y=<span class="built_in">fmod</span>(js,n);			   <span class="comment">//分离js小数部分 存在y中</span></div><div class="line"></div><div class="line"> count=js;				   <span class="comment">//强制类型转换，取js整数部分</span></div><div class="line"></div><div class="line"> suff[<span class="number">0</span>] = count/<span class="number">1000</span>;	   <span class="comment">//取千位</span></div><div class="line"> cuff[<span class="number">0</span>] = count%<span class="number">1000</span>;</div><div class="line"></div><div class="line"> suff[<span class="number">1</span>] = cuff[<span class="number">0</span>]/<span class="number">100</span>;	   <span class="comment">//取百位</span></div><div class="line"> cuff[<span class="number">1</span>] = cuff[<span class="number">0</span>]%<span class="number">100</span>;</div><div class="line"></div><div class="line"> suff[<span class="number">2</span>] = cuff[<span class="number">1</span>]/<span class="number">10</span>;	   <span class="comment">//取十位</span></div><div class="line"> suff[<span class="number">3</span>] = cuff[<span class="number">1</span>]%<span class="number">10</span>;	   <span class="comment">//取个位</span></div><div class="line"></div><div class="line"> count	 = y*<span class="number">1000</span>;		   <span class="comment">//小数部分。扩大1000倍提取。</span></div><div class="line"> </div><div class="line"> cuff[<span class="number">2</span>] = count%<span class="number">1000</span>;</div><div class="line"></div><div class="line"> suff[<span class="number">4</span>] = cuff[<span class="number">2</span>]/<span class="number">100</span>;	   <span class="comment">//小数点后一位</span></div><div class="line"> cuff[<span class="number">3</span>] = cuff[<span class="number">2</span>]%<span class="number">100</span>;</div><div class="line"></div><div class="line"> suff[<span class="number">5</span>] = cuff[<span class="number">3</span>]/<span class="number">10</span>;	  <span class="comment">//小数点后2位</span></div><div class="line"></div><div class="line"> io_shu=<span class="number">0</span>;			      <span class="comment">//打开3-8译码器</span></div><div class="line"></div><div class="line"> <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">6</span>;i++)</div><div class="line">   &#123;</div><div class="line">    wei(i);               <span class="comment">//位选</span></div><div class="line">	io_dm=du_num[suff[i]];<span class="comment">//段选</span></div><div class="line">	<span class="keyword">if</span>(i==<span class="number">3</span>) io_DP=<span class="number">1</span>;</div><div class="line">	delay_1ms(<span class="number">1</span>);	      <span class="comment">//延迟</span></div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-	
-
-	
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-	
-	
-	<div>
-	    <p id="div-border-left-blue">
-	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
-	    <span>
-	    <b>本文地址：</b><a href="/page/3/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
-	    </span>
-	    </p>
-	</div>
-	
-
-	
-    <footer class="post-footer">
-	
-	
-	
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-  
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/27/VPS科学上网教程系列2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jasper">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/v.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="默">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/27/VPS科学上网教程系列2/" itemprop="url">
-                  科学上网教程（二）——VPS优化加速
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-27T17:52:16+08:00">
-                2016-06-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/科学上网/" itemprop="url" rel="index">
-                    <span itemprop="name">科学上网</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/06/27/VPS科学上网教程系列2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/06/27/VPS科学上网教程系列2/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/06/27/VPS科学上网教程系列2/" class="leancloud_visitors" data-flag-title="科学上网教程（二）——VPS优化加速">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  2,966
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  13m
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">更新</div><div class="line"><span class="number">2016.06</span>.<span class="number">26</span>    与SSR有关部分基本完成。</div><div class="line"><span class="number">2016.06</span>.<span class="number">28</span>    TCP优化部分完成</div><div class="line"><span class="number">2016.06</span>.<span class="number">29</span>    gfw.press、FinalSpeed和锐速部分基本完成。</div><div class="line"><span class="number">2016.12</span>.<span class="number">11</span>    重新整理相关内容，增加SSR混淆</div><div class="line"><span class="number">2016.12</span>.<span class="number">15</span>    增加TCP-BBR</div><div class="line"><span class="number">2017.01</span>.<span class="number">11</span>    整理相关内容，增加锐速配置优化 </div><div class="line"><span class="number">2017.03</span>.<span class="number">28</span>    更新一部分配置内容，删除无效内容</div><div class="line"><span class="number">2017.04</span>.<span class="number">02</span>    因<span class="number">91</span>yun被爆隐私问题，删除其对应内容</div><div class="line"><span class="number">2017.07</span>.<span class="number">03</span>    更新大量锐速/bbr内容，移除GFW.Press和其他内容</div></pre></td></tr></table></figure>
-<h2 id="TCP优化（非BBR适用）"><a href="#TCP优化（非BBR适用）" class="headerlink" title="TCP优化（非BBR适用）"></a>TCP优化（非BBR适用）</h2><h3 id="使用建议"><a href="#使用建议" class="headerlink" title="使用建议"></a>使用建议</h3><ul>
-<li><p><strong>建议科学上网服务器都进行一遍TCP优化</strong></p>
-</li>
-<li><p><strong>与其他加速手段兼容</strong></p>
-</li>
-<li><p><strong>使用 BBR 加速可以略过此部分(已包含)</strong></p>
-</li>
-</ul>
-<h3 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h3><ul>
-<li>适用场景：高延迟搞丢包线路</li>
-</ul>
-<ul>
-<li><p>增加TCP连接数量</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano /etc/security/limits.conf</div></pre></td></tr></table></figure>
-<p>添加两行：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">* soft nofile <span class="number">51200</span></div><div class="line">* hard nofile <span class="number">51200</span></div></pre></td></tr></table></figure>
-<p>保存(Ctrl + X —— y ——回车)</p>
-</li>
-<li><p>设置ulimit：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ulimit -n <span class="number">51200</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>修改内核参数适合的还是hybla（高延迟高丢包率环境）<br>首先看一下VPS现有算法：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sysctl net.ipv4.tcp_available_congestion_control</div></pre></td></tr></table></figure>
-<p>没有hybla时，加载hybla算法.</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/sbin/modprobe tcp_hybla</div></pre></td></tr></table></figure>
-<p>开始修改</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano /etc/sysctl.conf</div></pre></td></tr></table></figure>
-<p>复制代码：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#TCP配置优化(不然你自己根本不知道你在干什么)</div><div class="line">fs.file-max = 51200</div><div class="line">#提高整个系统的文件限制</div><div class="line">net.core.rmem_max = 67108864</div><div class="line">net.core.wmem_max = 67108864</div><div class="line">net.core.netdev_max_backlog = 250000</div><div class="line">net.core.somaxconn = 4096</div><div class="line"></div><div class="line">net.ipv4.tcp_syncookies = 1</div><div class="line">net.ipv4.tcp_tw_reuse = 1</div><div class="line">net.ipv4.tcp_tw_recycle = 0</div><div class="line">net.ipv4.tcp_fin_timeout = 30</div><div class="line">net.ipv4.tcp_keepalive_time = 1200</div><div class="line">net.ipv4.ip_local_port_range = 10000 65000</div><div class="line">net.ipv4.tcp_max_syn_backlog = 8192</div><div class="line">net.ipv4.tcp_max_tw_buckets = 5000</div><div class="line">net.ipv4.tcp_fastopen = 3</div><div class="line">net.ipv4.tcp_mem = 25600 51200 102400</div><div class="line">net.ipv4.tcp_rmem = 4096 87380 67108864</div><div class="line">net.ipv4.tcp_wmem = 4096 65536 67108864</div><div class="line">net.ipv4.tcp_mtu_probing = 1</div><div class="line">net.ipv4.tcp_congestion_control = hybla</div><div class="line">#END OF LINE</div></pre></td></tr></table></figure>
-<p>保存(Ctrl + X —— y ——回车)</p>
-<p>应用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sysctl -p</div></pre></td></tr></table></figure>
-</li>
-<li><p>重启SSR</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/shadowsocks restart</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="锐速"><a href="#锐速" class="headerlink" title="锐速"></a>锐速</h2><ul>
-<li>介绍<br>锐速（ServerSpeeder）加速软件是一种基于ZETATCP加速引擎的软件，只需单边部署就可以起到 显著加速效果的 TCP 加速技术。</li>
-</ul>
-<h3 id="使用建议-7-03"><a href="#使用建议-7-03" class="headerlink" title="使用建议(7.03)"></a>使用建议(7.03)</h3><ul>
-<li><p><strong>除非对隐私要求特别高，加速手段首先参数锐速</strong></p>
-</li>
-<li><p><strong>与 BBR 目前不兼容，二者取其一可满足大部分需要加速场景</strong></p>
-</li>
-<li><p><strong>默认参数即可满足大部分场景，除非很慢，否则不推荐更改配置文件</strong></p>
-</li>
-</ul>
-<hr>
-<ul>
-<li>锐速目前已经基本停止运营，而且母公司LotServer面向企业用户还在运营</li>
-<li>以下提供的破解版安装方式，收集自网络。仅供个人实验使用，请支持正版。</li>
-</ul>
-<hr>
-<h3 id="锐速安装"><a href="#锐速安装" class="headerlink" title="锐速安装"></a>锐速安装</h3><ul>
-<li>安装包来自 <a href="https://moeclub.org/" target="_blank" rel="external">@Vicer</a> 感谢原作者！</li>
-</ul>
-<h4 id="锐速一键安装包"><a href="#锐速一键安装包" class="headerlink" title="锐速一键安装包"></a>锐速一键安装包</h4><ul>
-<li><p>参考</p>
-<blockquote>
-<p><a href="https://github.com/0oVicero0/serverSpeeser_Install" target="_blank" rel="external">https://github.com/0oVicero0/serverSpeeser_Install</a></p>
-</blockquote>
-</li>
-<li><p>安装</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --<span class="keyword">no</span>-check-certificate -qO /tmp/appex.<span class="keyword">sh</span> <span class="string">"https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh"</span> &amp;&amp; bash /tmp/appex.<span class="keyword">sh</span> <span class="string">'install'</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><p>中间提示全部输入 y 即可，等待安装完成</p>
-</li>
-<li><p>卸载</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --<span class="keyword">no</span>-check-certificate -qO /tmp/appex.<span class="keyword">sh</span> <span class="string">"https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh"</span> &amp;&amp; bash /tmp/appex.<span class="keyword">sh</span> <span class="string">'uninstall'</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
-<li>启动命令  <code>/appex/bin/lotServer.sh start</code></li>
-<li>状态查询  <code>/appex/bin/lotServer.sh status</code></li>
-<li>停止加速  <code>/appex/bin/lotServer.sh stop</code></li>
-<li>更新许可  <code>/appex/bin/serverSpeeder.sh renewLic</code></li>
-<li>重新启动  <code>/appex/bin/serverSpeeder.sh restart</code></li>
-</ul>
-<h3 id="7-03-锐速配置文件优化"><a href="#7-03-锐速配置文件优化" class="headerlink" title="(7.03)锐速配置文件优化"></a>(7.03)锐速配置文件优化</h3><ul>
-<li>详细配置文档<blockquote>
-<p><a href="https://github.com/0oVicero0/serverSpeeder_Install/blob/master/lotServer.pdf" target="_blank" rel="external">https://github.com/0oVicero0/serverSpeeder_Install/blob/master/lotServer.pdf</a></p>
-</blockquote>
-</li>
-<li><p>配置文件在<code>/serverspeeder/etc/config</code></p>
-</li>
-<li><p>首先确保下面3个参数开启</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rsc=<span class="string">"1"</span></div><div class="line">advinacc=<span class="string">"1"</span></div><div class="line">maxmode=<span class="string">"1"</span></div></pre></td></tr></table></figure>
-<p>rsc=”1″ #RSC 网卡驱动模式<br>advinacc=”1″ #流量方向加速<br>maxmode=”1″ #最大传输模式</p>
-</li>
-<li><p>DO vps还要开启gso</p>
-</li>
-<li><p>下面是一些个人测试对加速有效果的选项，请结合网络环境自行测试</p>
-<h4 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h4></li>
-<li><p>initialCwndWan=“64″<br>初始 TCP 发送窗口能够发送的数据包的数量，该值设置的高会获得更好的加速效果，但是可能会造成网络的拥塞。使用值在60以下有效果</p>
-</li>
-<li><p>l2wQLimit=”1024 4096″<br>从 LAN 到 WAN 加速引擎在缓冲池充满和空闲时分别能够缓存的数据包队列的长度的上限，该值设置的高会获得更好的加速效果，但是会消耗更多的内存。<br>w2lQLimit=”1024 4096″<br>从 WAN 到 LAN 加速引擎在缓冲池充满和空闲时分别能够缓存的数据包队列的长度的上限，该值设置的高会获得更好的加速效果，但是会消耗更多的内存。</p>
-</li>
-<li><p>halfCwndMinSRtt=”500″<br>halfCwndLossRateShift=”3″<br>以上两个值用于判断网络拥塞，分别为延时和丢包率，丢包率默认值为 3，即1/2^3，当拥塞产生时，退出第三代 Learning-based TCP 算法，采用类似传统 TCP 的算法。<br>此处对于高丢包的线路来说，直接设置为1，即丢包百分之50以上时，才退出Learning-based TCP 算法(这会导致高丢包线路上增加流量消耗)</p>
-</li>
-<li><p>修改完成后，重启锐速</p>
- <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/serverspeeder/bin/serverSpeeder.<span class="keyword">sh</span> restart</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="FinalSpeed"><a href="#FinalSpeed" class="headerlink" title="FinalSpeed"></a>FinalSpeed</h2><ul>
-<li>介绍<br>FinalSpeed是高速双边加速软件,可加速所有基于tcp协议的网络服务,在高丢包和高延迟环境下,仍可达到90%的物理带宽利用率,即使高峰时段也能轻松跑满带宽。<strong>可以与锐速共存</strong>。</li>
-</ul>
-<h3 id="使用建议-7-03-1"><a href="#使用建议-7-03-1" class="headerlink" title="使用建议(7.03)"></a>使用建议(7.03)</h3><ul>
-<li><strong>FinalSpeed现在已停止更新,建议作为备选加速手段</strong></li>
-<li><strong>OVZ虚拟化的vps上只可用udp模式</strong>，udp在国内被封杀较严重，导致链接中断等。</li>
-</ul>
-<h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><ul>
-<li><strong>FinalSpeed现在已停止更新</strong>，官方移除了安装方法，以下安装方式来自github备份。</li>
-</ul>
-<ul>
-<li><p>安装命令:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">rm -f install_fs.sh</div><div class="line">wget  https:<span class="comment">//github.com/dupontjoy/customization/raw/master/Rules/Shadowsocks/Finalspeed/install_fs.sh</span></div><div class="line">chmod +x install_fs.sh</div><div class="line">./install_fs.sh <span class="number">2</span>&gt;&amp;<span class="number">1</span> | tee install.log</div></pre></td></tr></table></figure>
-<p>一键安装完成后，vps会自动安装java环境。</p>
-</li>
-</ul>
-<ul>
-<li><p>卸载：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sh /fs/stop.sh ; rm -rf /fs</div></pre></td></tr></table></figure>
-</li>
-<li><p>设置开机启动：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chmod +<span class="keyword">x</span> /etc/rc.local</div><div class="line"><span class="keyword">vi</span> /etc/rc.local</div></pre></td></tr></table></figure>
-</li>
-<li><p>然后加入</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">sh</span> /fs/start.<span class="keyword">sh</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>每天晚上1点自动重启：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">crontab -<span class="keyword">e</span></div><div class="line"><span class="number">0</span> <span class="number">1</span> * * * <span class="keyword">sh</span> /fs/restart.<span class="keyword">sh</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="FinalSpeed-windows客户端"><a href="#FinalSpeed-windows客户端" class="headerlink" title="FinalSpeed windows客户端"></a>FinalSpeed windows客户端</h3><p>官方最新版本为1.2 更新日志上表明cpu占用降低30%，但是稳定性较差，时常挂掉。推荐FinalSpeed1.12测试版 个人常用版本，很稳定。</p>
-<ul>
-<li>这一部分请参考一下网站。<blockquote>
-<p><a href="https://blog.kuoruan.com/82.html" target="_blank" rel="external">https://blog.kuoruan.com/82.html</a></p>
-</blockquote>
-</li>
-</ul>
-<h3 id="常用命令-1"><a href="#常用命令-1" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
-<li><p>启动：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">sh</span> /fs/start.<span class="keyword">sh</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>停止：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">sh</span> /fs/<span class="keyword">stop</span>.<span class="keyword">sh</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>重新启动：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">sh</span> /fs/restart.<span class="keyword">sh</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>运行日志：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tail -<span class="keyword">f</span> /fs/server.<span class="built_in">log</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="Kcptun"><a href="#Kcptun" class="headerlink" title="Kcptun"></a>Kcptun</h2><ul>
-<li>小内存VPS可用(64M内存服务器稳定运行)，OVZ架构可用， Go 语言编写</li>
-</ul>
-<h3 id="使用建议-7-03-2"><a href="#使用建议-7-03-2" class="headerlink" title="使用建议(7.03)"></a>使用建议(7.03)</h3><ul>
-<li><strong>首次使用，建议作为备选加速手段</strong></li>
-<li><strong>不当配置将带来大量流量消耗</strong></li>
-</ul>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
-<li>Kcptun 基于 KCP 协议的 UDP 隧道，它可以将 TCP 流转换为 KCP+UDP 流。而 KCP 是一个快速可靠协议，能以比 TCP 浪费10%-20%的带宽的代价，换取平均延迟降低 30%-40%，且最大延迟降低三倍的传输效果。</li>
-<li><p>Kcptun 服务端安装繁琐，目前没有改为Kcptun加速的需求，收集网络一部分Kcptun搭建教程供参考。</p>
-</li>
-<li><blockquote>
-<p>小内存福音，Kcptun Shadowsocks加速方案      <a href="https://blog.kuoruan.com/102.html" target="_blank" rel="external">https://blog.kuoruan.com/102.html</a></p>
-<p>Kcptun 服务端一键安装脚本,喜闻乐见的多用户支持<br>  <a href="https://blog.kuoruan.com/110.html" target="_blank" rel="external">https://blog.kuoruan.com/110.html</a></p>
-</blockquote>
-</li>
-</ul>
-<h2 id="SSR混淆参数"><a href="#SSR混淆参数" class="headerlink" title="SSR混淆参数"></a>SSR混淆参数</h2><ul>
-<li><p>作者Jessica Lynn<br>转载自</p>
-<blockquote>
-<p><a href="https://plus.google.com/113582246973758055268/posts/H51ZpzwUFDK?iem=4&amp;gpawv=1&amp;hl=zh-Hans-TW" target="_blank" rel="external">https://plus.google.com/113582246973758055268/posts/H51ZpzwUFDK?iem=4&amp;gpawv=1&amp;hl=zh-Hans-TW</a></p>
-</blockquote>
-</li>
-<li><p>一些混淆参数（域名）</p>
-</li>
-<li><p>国内：<br>  sz.btfs.mail.ftn.qq.com<br>  btrace.video.qq.com<br>  ossweb-img.qq.com<br>  1234-wyfqdku4kcgcabalp6rdudo7–1042249034.cmos.greencompute.org<br>  aecpm.alicdn.com<br>  aldh5.tmall.com<br>  at.alicdn.com<br>  atanx.alicdn.com<br>  g.alicdn.com<br>  gtms03.alicdn.com<br>  gw.alicdn.com<br>  img.alicdn.com</p>
-</li>
-<li><p>国外：<br>  az813057.vo.msecnd.net<br>  az817829.vo.msecnd.net<br>  azureedge.net<br>  media.gettyimages.com<br>  origin.cdn77.com</p>
-</li>
-</ul>
-<h2 id="TCP-BBR-7-03"><a href="#TCP-BBR-7-03" class="headerlink" title="TCP-BBR(7.03)"></a>TCP-BBR(7.03)</h2><ul>
-<li>BBR (Bottleneck Bandwidth and RTT)是由google工程师编写的新的 TCP 拥塞控制算法，目的是要尽量跑满带宽, 并且尽量不要有排队的情况, 加速效果不比锐速差</li>
-</ul>
-<h3 id="使用建议-7-03-3"><a href="#使用建议-7-03-3" class="headerlink" title="使用建议(7.03)"></a>使用建议(7.03)</h3><ul>
-<li><p><strong>开源，高效，强烈推荐首选！</strong></p>
-</li>
-<li><p><strong>同一线路，BBR与锐速可分别试用取舍，一般满足需求！</strong></p>
-</li>
-<li><p><strong>修改版 BBR 更为高效</strong></p>
-</li>
-<li><p><strong>不会造成流量大量浪费</strong></p>
-</li>
-</ul>
-<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><ul>
-<li><a href="https://github.com/google/bbr" target="_blank" rel="external">开源地址</a><ul>
-<li>测试环境 Debian 7 x64  Vultr</li>
-<li>启用TCP-BBR涉及VPS更换内核，所以如果步骤错误，或者VPS不兼容最新的内核，会导致无法开机等错误，</li>
-<li>锐速不支持，更换后的 &gt;4.9 内核</li>
-</ul>
-</li>
-</ul>
-<h4 id="安装原版BBR"><a href="#安装原版BBR" class="headerlink" title="安装原版BBR"></a>安装原版BBR</h4><ul>
-<li><p>脚本来自<a href="https://teddysun.com/489.html" target="_blank" rel="external">秋水逸冰</a></p>
-</li>
-<li><p>系统支持：CentOS 6+，Debian 7+，Ubuntu 12+</p>
-</li>
-<li>虚拟技术：OpenVZ 以外的，比如 KVM、Xen、VMware 等</li>
-<li><p>内存要求：≥128M</p>
-</li>
-<li><p>连接SSH，输入下面命令，更新内核</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh</div><div class="line">chmod +x bbr.sh</div><div class="line">./bbr.sh</div></pre></td></tr></table></figure>
-</li>
-<li><p>安装完成后，脚本会提示需要重启 VPS，输入 y 并回车后重启</p>
-</li>
-<li><p>重连SSH</p>
-</li>
-<li><p>验证 内核版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uname -r</div></pre></td></tr></table></figure>
-<p>最新内核版本大于4.9即可，最新4.12(7.03)</p>
-</li>
-<li><p>修改sysctl.conf</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano /etc/sysctl.conf</div></pre></td></tr></table></figure>
-<p>复制代码：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#TCP配置优化(不然你自己根本不知道你在干什么)</div><div class="line">fs.file-max = 51200</div><div class="line">#提高整个系统的文件限制</div><div class="line">net.core.rmem_max = 67108864</div><div class="line">net.core.wmem_max = 67108864</div><div class="line">net.core.netdev_max_backlog = 250000</div><div class="line">net.core.somaxconn = 4096</div><div class="line"></div><div class="line">net.ipv4.tcp_syncookies = 1</div><div class="line">net.ipv4.tcp_tw_reuse = 1</div><div class="line">net.ipv4.tcp_tw_recycle = 0</div><div class="line">net.ipv4.tcp_fin_timeout = 30</div><div class="line">net.ipv4.tcp_keepalive_time = 1200</div><div class="line">net.ipv4.ip_local_port_range = 10000 65000</div><div class="line">net.ipv4.tcp_max_syn_backlog = 8192</div><div class="line">net.ipv4.tcp_max_tw_buckets = 5000</div><div class="line">net.ipv4.tcp_fastopen = 3</div><div class="line">net.ipv4.tcp_mem = 25600 51200 102400</div><div class="line">net.ipv4.tcp_rmem = 4096 87380 67108864</div><div class="line">net.ipv4.tcp_wmem = 4096 65536 67108864</div><div class="line">net.ipv4.tcp_mtu_probing = 1</div><div class="line">net.ipv4.tcp_congestion_control = bbr</div><div class="line">#END OF LINE</div></pre></td></tr></table></figure>
-<p>保存(Ctrl + X —— y ——回车)</p>
-<p>应用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sysctl -p</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>重启SSR <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/shadowsocks restart</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="修改版BBR"><a href="#修改版BBR" class="headerlink" title="修改版BBR"></a>修改版BBR</h3><ul>
-<li>相对原版更为暴力，加速效果更好</li>
-<li>提供 Vicer版 和 魔改版 两个试用后加速效果还不错的版本。</li>
-<li>我的测试来看 魔改版 的最高速度高于  Vicer版 ，但 YOUTUBE 来看 Vicer版 高于 魔改版</li>
-</ul>
-<hr>
-<ul>
-<li><p>注意：修改版BBR的一键脚本，支持系统较少，安装前需要确认自己的系统支持，如不在支持列表，自行Google即可，有大量第三方脚本。</p>
-</li>
-<li><p><strong>支持系统： Debian 8 / Ubuntu16 + /Debian 7(需要手动安装gcc4.9)</strong></p>
-</li>
-</ul>
-<hr>
-<h4 id="Debian-7手动安装gcc4-9-以root用户登陆，否则-命令前添加sudo"><a href="#Debian-7手动安装gcc4-9-以root用户登陆，否则-命令前添加sudo" class="headerlink" title="Debian 7手动安装gcc4.9(以root用户登陆，否则 命令前添加sudo)"></a>Debian 7手动安装gcc4.9(以root用户登陆，否则 命令前添加sudo)</h4><ul>
-<li><p>修改系统更新源</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano /etc/apt/sources.<span class="keyword">list</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>添加如下两个更新源</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">deb</span> http://ftp.<span class="keyword">cn</span>.debian.org/debian/ jessie main non-free contrib</div><div class="line"><span class="keyword">deb</span> http://ftp.uk.debian.org/debian/ jessie main non-free contrib</div></pre></td></tr></table></figure>
-</li>
-<li><p>保存(Ctrl + X —— y ——回车)</p>
-</li>
-<li><p>执行更新<br><code>apt-get update</code></p>
-</li>
-<li><p>检查可安装 gcc 版本列表<br><code>apt-cache search gcc</code><br>输出有gcc4.9 字样即可，数量无所谓</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">libx32gcc-4.8-dev - GCC support library (x32 development files)</div><div class="line"> cpp-4.9 - GNU C preprocessor</div><div class="line"> gcc-4.9 - GNU C compiler</div><div class="line"> gcc-4.9-base - GCC, the GNU Compiler Collection (base package)</div><div class="line"> gcc-4.9-locales - GCC, the GNU compiler collection (native language support files)</div><div class="line"> gcc-4.9-multilib - GNU C compiler (multilib files)</div><div class="line"> gcc-4.9-plugin-dev - Files for GNU GCC plugin development.</div><div class="line"> gcc-4.9-source - Source of the GNU Compiler Collection</div><div class="line"> gccgo-4.9 - GNU Go compiler</div><div class="line"> gccgo-4.9-multilib - GNU Go compiler (multilib files)</div><div class="line"> gcj-4.9 - GCJ byte code and native compiler for Java(TM)</div><div class="line"> gcj-4.9-jdk - GCJ and Classpath development tools for Java(TM)</div><div class="line"> gcj-4.9-jre-lib - Java runtime library for use with gcj (jar files)</div><div class="line"> gdc-4.9 - GNU D compiler (version 2), based on the GCC backend</div><div class="line"> gfortran-4.9 - GNU Fortran compiler</div><div class="line"> gfortran-4.9-multilib - GNU Fortran compiler (multilib files)</div><div class="line"> gobjc++-4.9 - GNU Objective-C++ compiler</div><div class="line"> gobjc++-4.9-multilib - GNU Objective-C++ compiler (multilib files)</div><div class="line"> gobjc-4.9 - GNU Objective-C compiler</div><div class="line"> gobjc-4.9-multilib - GNU Objective-C compiler (multilib files)</div></pre></td></tr></table></figure>
-</li>
-<li><p>命令<code>apt-get install g++-4.9</code> 安装g++-4.9</p>
-</li>
-</ul>
-<h4 id="Vicer版BBR"><a href="#Vicer版BBR" class="headerlink" title="Vicer版BBR"></a>Vicer版BBR</h4><ul>
-<li>脚本来自<a href="https://moeclub.org/2017/06/24/278/" target="_blank" rel="external">Debian/Ubuntu TCP BBR 改进版/增强版</a></li>
-<li><p>一键安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate -qO &apos;BBR_POWERED.sh&apos; &apos;https://moeclub.org/attachment/LinuxShell/BBR_POWERED.sh&apos; &amp;&amp; chmod a+x BBR_POWERED.sh &amp;&amp; bash BBR_POWERED.sh</div></pre></td></tr></table></figure>
-</li>
-<li><p>遇到 <code>Error! Header not be matched by Linux Kernel.</code> 参看<a href="https://moeclub.org/2017/06/06/249/" target="_blank" rel="external">Debian/Ubuntu 开启 TCP BBR 拥塞算法</a>,依照 作者开启bbr 的脚本执行一遍即可。</p>
-</li>
-<li>遇到<code>Error! Install gcc-4.9.</code>  debian 7 重新安装一遍 gcc-4.9 ，其他系统 执行 <code>apt-get update</code></li>
-<li>安装完成后 执行<code>lsmod |grep &#39;bbr_powered&#39;</code> 结果不为空,则加载模块成功</li>
-<li>重启SSR <code>/etc/init.d/shadowsocks restart</code></li>
-</ul>
-<h4 id="魔改版BBR"><a href="#魔改版BBR" class="headerlink" title="魔改版BBR"></a>魔改版BBR</h4><ul>
-<li><p>一键脚本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/FunctionClub/YankeeBBR/master/bbr.sh &amp;&amp; bash bbr.sh install</div></pre></td></tr></table></figure>
-<p>之后选择重启系统，重连SSH</p>
-</li>
-<li>输入命令 <code>bash bbr.sh start</code> 即可完成安装</li>
-<li>验证 <code>sysctl net.ipv4.tcp_available_congestion_control</code> 返回命令有 tsunami 即可。</li>
-<li>重启SSR <code>/etc/init.d/shadowsocks restart</code></li>
-</ul>
-<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2>
-          
-        
-      
-    </div>
-
-	
-
-	
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-	
-	
-	<div>
-	    <p id="div-border-left-blue">
-	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
-	    <span>
-	    <b>本文地址：</b><a href="/page/3/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
-	    </span>
-	    </p>
-	</div>
-	
-
-	
-    <footer class="post-footer">
-	
-	
-	
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -3680,7 +3761,7 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -3762,7 +3843,7 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
         <div class="copyright" >
   
   &copy;  2016.6.2 - 
-  <span itemprop="copyrightYear">2017.11.14</span>
+  <span itemprop="copyrightYear">2018.1.14</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
