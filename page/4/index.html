@@ -325,6 +325,1922 @@
   
   
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/09/Android笔记-UI(一)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/09/Android笔记-UI(一)/" itemprop="url">
+                  Android笔记—UI(一)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-09T12:00:00+08:00">
+                2016-12-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/12/09/Android笔记-UI(一)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/12/09/Android笔记-UI(一)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/12/09/Android笔记-UI(一)/" class="leancloud_visitors" data-flag-title="Android笔记—UI(一)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  2,512
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  12m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<ul>
+<li>资料来源如下</li>
+<li>第一行代码(第二版)</li>
+</ul>
+<hr>
+<h2 id="常用控件"><a href="#常用控件" class="headerlink" title="常用控件"></a>常用控件</h2><h3 id="TextView"><a href="#TextView" class="headerlink" title="TextView"></a>TextView</h3><ul>
+<li><a href="https://developer.android.com/reference/android/widget/TextView.html" target="_blank" rel="external">TextView</a>  显示文本信息</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;TextView</div><div class="line">      android:id=&quot;@+id/text_view&quot;</div><div class="line">      android:layout_width=&quot;match_parent&quot;</div><div class="line">      android:layout_height=&quot;wrap_content&quot;</div><div class="line">      android:gravity=&quot;center&quot;</div><div class="line">      android:textSize=&quot;24sp&quot;</div><div class="line">      android:textColor=&quot;#00ff00&quot;</div><div class="line">      android:text=&quot;This is TextView&quot; /&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>效果如下<br><img src="http://cdn4.snapgram.co/images/2016/12/09/ScreenShot_20161209145323.png" alt="ScreenShot_20161209145323.png"></p>
+</li>
+</ul>
+<h4 id="常用属性详解"><a href="#常用属性详解" class="headerlink" title="常用属性详解"></a>常用属性详解</h4><ul>
+<li>android:id 指定当前控件唯一标识符</li>
+<li><p>android:layout_width    android:layout_height<br>指定控件的宽度和高度，取值有</p>
+<ul>
+<li>match_parent 匹配父布局  </li>
+<li>wrap_content自适应内容  </li>
+<li>fill_parent与match_parent 相同</li>
+</ul>
+</li>
+<li><p>android:gravity 文字对齐方式，<br>可取值 top bottom left right center  可以使用 | 同时使用多个属性</p>
+</li>
+<li><p>android:text  文本内容</p>
+</li>
+<li><p>android:textSize    android:textColor  文本的大小/颜色</p>
+</li>
+</ul>
+<h3 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h3><ul>
+<li><a href="https://developer.android.com/reference/android/widget/Button.html" target="_blank" rel="external">Button</a>  按钮</li>
+<li><p>代码</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button"</span></div><div class="line">      <span class="attr">android:textAllCaps</span>=<span class="string">"false"</span>/&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>效果如下<br><img src="http://cdn2.snapgram.co/imgs/2016/12/09/2.png" alt="2.png"></p>
+</li>
+</ul>
+<h4 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h4><ul>
+<li>android:textAllCaps 系统自动转换文本为大写  true/false</li>
+</ul>
+<h4 id="按钮响应-3种"><a href="#按钮响应-3种" class="headerlink" title="按钮响应(3种)"></a>按钮响应(3种)</h4><ul>
+<li><p>匿名类注册监听器</p>
+<ul>
+<li>代码如下<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//新建Button对象 //强制类型转换</span></div><div class="line">Button button = (Button)findViewById(R.id.button);</div><div class="line">button.setOnClickListener(<span class="keyword">new</span> View.OnClickListener()&#123;</div><div class="line">      <span class="meta">@Override</span></div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span></span>&#123;</div><div class="line">          <span class="comment">//添加逻辑</span></div><div class="line">      &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>接口方式实现</p>
+<ul>
+<li>代码<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">   <span class="comment">//继承接口</span></div><div class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span></span>&#123;</div><div class="line"></div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">       <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">       setContentView(R.layout.activity_main);</div><div class="line">	<span class="comment">//注册监听器</span></div><div class="line">       Button button = (Button)findViewById(R.id.button);</div><div class="line">       button.setOnClickListener(<span class="keyword">this</span>);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="comment">//根据button id处理不同逻辑</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span></span>&#123;</div><div class="line">       <span class="keyword">switch</span> (view.getId())&#123;</div><div class="line">           <span class="keyword">case</span> R.id.button:</div><div class="line">               <span class="comment">//处理逻辑</span></div><div class="line">               <span class="keyword">break</span>;</div><div class="line">           <span class="keyword">default</span>:</div><div class="line">               <span class="keyword">break</span>;</div><div class="line">       	&#125;</div><div class="line">   	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>android:onClick 匹配<br>在xml中指定android:onClick 指定的方法名称匹配，签名必须完全相同<br>方法要求：</p>
+<ul>
+<li>是公共方法  public</li>
+<li>具有空返回值 void</li>
+<li>以 View 作为唯一参数（这将是之前点击的 View）</li>
+</ul>
+<ul>
+<li><p>代码如下</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:onClick="Button_onClick"</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Button_onClick</span><span class="params">(View view)</span></span>&#123;</div><div class="line">    <span class="comment">//处理逻辑</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="EditText"><a href="#EditText" class="headerlink" title="EditText"></a>EditText</h3><ul>
+<li><a href="https://developer.android.com/reference/android/widget/EditText.html" target="_blank" rel="external">EditText</a></li>
+<li><p>代码如下</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">EditText</span></span></div><div class="line">     <span class="attr">android:id</span>=<span class="string">"@+id/edit_text"</span></div><div class="line">     <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">     <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">     <span class="attr">android:hint</span>=<span class="string">"输入文字"</span></div><div class="line">     <span class="attr">android:maxLines</span>=<span class="string">"2"</span>/&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>效果<br><img src="http://cdn2.snapgram.co/imgs/2016/12/10/ScreenShot_20161210102606.png" alt="ScreenShot_20161210102606.png"></p>
+<h4 id="常用属性-1"><a href="#常用属性-1" class="headerlink" title="常用属性"></a>常用属性</h4></li>
+<li>android:hint  指定一些提示性文字，再用户未输入时提示。</li>
+<li>android:maxLines  输入内容最大占用行数</li>
+</ul>
+<h4 id="提取输入文本"><a href="#提取输入文本" class="headerlink" title="提取输入文本"></a>提取输入文本</h4><ul>
+<li>通过findViewById找到EditText 实例，在处理逻辑中调用EditText.getText方法得到输入内容，再由toString转换为字符串。</li>
+<li>代码如下<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//新建EditTExt对象</span></div><div class="line"><span class="keyword">private</span> EditText editText;</div><div class="line"></div><div class="line"><span class="comment">//绑定EditText实例</span></div><div class="line">editText = (EditText)findViewById(R.id.edit_text);</div><div class="line"></div><div class="line"><span class="comment">//提取文本</span></div><div class="line">String inputText = editText.getText().toString();</div><div class="line"><span class="comment">//Toast显示</span></div><div class="line">Toast.makeText(MainActivity.<span class="keyword">this</span>,inputText,Toast.LENGTH_SHORT).show();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="ImageView"><a href="#ImageView" class="headerlink" title="ImageView"></a>ImageView</h3><ul>
+<li>将图片放入drawable-xhdpi文件夹</li>
+<li><a href="https://developer.android.com/reference/android/widget/ImageView.html" target="_blank" rel="external">ImageView</a></li>
+<li><p>代码</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ImageView</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/image_view"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:src</span>=<span class="string">"@drawable/img_1"</span>/&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>效果如下<br><img src="http://cdn2.snapgram.co/imgs/2016/12/11/ScreenShot_20161211142408.png" alt="ScreenShot_20161211142408.png"></p>
+</li>
+</ul>
+<h4 id="常用属性-2"><a href="#常用属性-2" class="headerlink" title="常用属性"></a>常用属性</h4><ul>
+<li>android:src  引用资源位置</li>
+</ul>
+<h4 id="更改ImageView图片"><a href="#更改ImageView图片" class="headerlink" title="更改ImageView图片"></a>更改ImageView图片</h4><ul>
+<li>调用 imageView.setImageResource()方法</li>
+<li>代码如下<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> ImageView imageView;</div><div class="line"></div><div class="line">imageView = (ImageView)findViewById(R.id.image_view);</div><div class="line"></div><div class="line">imageView.setImageResource(R.drawable.img_2);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="ProgressBar"><a href="#ProgressBar" class="headerlink" title="ProgressBar"></a>ProgressBar</h3><ul>
+<li><a href="https://developer.android.com/reference/android/widget/ProgressBar.html" target="_blank" rel="external">ProgressBar</a></li>
+<li><p>代码如下</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ProgressBar</span></span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/progress_bar"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">style</span>=<span class="string">"?android:attr/progressBarStyleHorizontal"</span></div><div class="line">    <span class="attr">android:max</span>=<span class="string">"100"</span>/&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p><img src="http://cdn4.snapgram.co/images/2016/12/11/ScreenShot_20161211143148.png" alt="ScreenShot_20161211143148.png"></p>
+</li>
+</ul>
+<h4 id="常用属性-3"><a href="#常用属性-3" class="headerlink" title="常用属性"></a>常用属性</h4><ul>
+<li>android：visibility 是否可见 取值 visible  invisible  gone</li>
+<li>style=”?android:attr/progressBarStyleHorizontal”<br>android:max=”100”<br>设定显示方式为横向进度条，进度条最大值100</li>
+</ul>
+<h4 id="进度条有关设置"><a href="#进度条有关设置" class="headerlink" title="进度条有关设置"></a>进度条有关设置</h4><ul>
+<li><p>显示/隐藏进度条<br>progressBar.setVisibility()方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> ProgressBar progressBar;</div><div class="line"></div><div class="line">progressBar = (ProgressBar)findViewById(R.id.progress_bar);</div><div class="line"></div><div class="line"><span class="comment">//设置ProgressBar</span></div><div class="line"><span class="keyword">if</span>(progressBar.getVisibility() == View.GONE)&#123;</div><div class="line">	progressBar.setVisibility(View.VISIBLE);</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">	progressBar.setVisibility(View.GONE);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>设置进度条进度</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> progress = progressBar.getProgress();</div><div class="line">progress +=<span class="number">10</span>;</div><div class="line">progressBar.setProgress(progress);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="AlertDialog"><a href="#AlertDialog" class="headerlink" title="AlertDialog"></a>AlertDialog</h3><ul>
+<li><a href="https://developer.android.com/reference/android/app/AlertDialog.html" target="_blank" rel="external">AlertDialog</a></li>
+<li><p>代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">AlertDialog.Builder dialog = <span class="keyword">new</span> AlertDialog.Builder(MainActivity.<span class="keyword">this</span>);</div><div class="line">dialog.setTitle(<span class="string">"This is Dialog"</span>);</div><div class="line">dialog.setMessage(<span class="string">"something important"</span>);</div><div class="line">dialog.setCancelable(<span class="keyword">false</span>);</div><div class="line"><span class="comment">//setPositiveButton设定OK点击事件</span></div><div class="line">dialog.setPositiveButton(<span class="string">"OK"</span>,<span class="keyword">new</span> DialogInterface.OnClickListener()&#123;</div><div class="line"><span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialog,<span class="keyword">int</span> which)</span></span>&#123;</div><div class="line">     &#125;</div><div class="line">&#125;);</div><div class="line"><span class="comment">//setNegativeButton设定Canncel点击事件</span></div><div class="line">dialog.setNegativeButton(<span class="string">"Canncel"</span>,<span class="keyword">new</span> DialogInterface.OnClickListener()&#123;</div><div class="line"><span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialog,<span class="keyword">int</span> which)</span></span>&#123;</div><div class="line">   &#125;</div><div class="line">&#125;);</div><div class="line"><span class="comment">//显示 AlertDialog</span></div><div class="line">dialog.show();</div></pre></td></tr></table></figure>
+</li>
+<li><p><img src="http://cdn1.snapgram.co/imgs/2016/12/11/ScreenShot_20161211195720.png" alt="ScreenShot_20161211195720.png"></p>
+</li>
+</ul>
+<h3 id="ProgressDialog"><a href="#ProgressDialog" class="headerlink" title="ProgressDialog"></a>ProgressDialog</h3><ul>
+<li><a href="https://developer.android.com/reference/android/app/ProgressDialog.html" target="_blank" rel="external">ProgressDialog</a>与AlertDialog类似，但是会额外显示一个进度条</li>
+<li><p>代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//新建ProgressDialog对象</span></div><div class="line">ProgressDialog progressDialog = <span class="keyword">new</span> ProgressDialog(MainActivity.<span class="keyword">this</span>);</div><div class="line"><span class="comment">//设置标题</span></div><div class="line">progressDialog.setTitle(<span class="string">"This is ProgressDialog"</span>);</div><div class="line"><span class="comment">//设置内容</span></div><div class="line">progressDialog.setMessage(<span class="string">"Loading..."</span>);</div><div class="line"><span class="comment">//是否可以返回键取消</span></div><div class="line">progressDialog.setCancelable(<span class="keyword">false</span>);</div><div class="line"><span class="comment">//显示</span></div><div class="line">progressDialog.show();</div></pre></td></tr></table></figure>
+</li>
+<li><p>效果如图<br><img src="http://cdn4.snapgram.co/images/2016/12/11/ScreenShot_20161211200629.png" alt="ScreenShot_20161211200629.png"></p>
+</li>
+<li><p><code>PS：progressDialog.setCancelable();属性设置为false时表示ProgressDialog无法通过Back键取消。只能通过progressDialog.dismiss()方法取消</code></p>
+</li>
+</ul>
+<h2 id="四种基本布局"><a href="#四种基本布局" class="headerlink" title="四种基本布局"></a>四种基本布局</h2><h3 id="LinearLayout-线性布局"><a href="#LinearLayout-线性布局" class="headerlink" title="LinearLayout 线性布局"></a>LinearLayout 线性布局</h3><ul>
+<li>线性方向上依次排列</li>
+<li>基础效果如下<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">  <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></div><div class="line">  <span class="attr">android:id</span>=<span class="string">"@+id/activity_main"</span></div><div class="line">  <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span></div><div class="line">  <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">  <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">  <span class="attr">tools:context</span>=<span class="string">"ljy.com.uilayouttest.MainActivity"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_1"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button_1"</span>/&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_2"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button_2"</span>/&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_3"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button_3"</span>/&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="基础属性"><a href="#基础属性" class="headerlink" title="基础属性"></a>基础属性</h4><ul>
+<li>android：orientation     LinearLayout 的排列方向，取值有两种 horizontal横向和vertical竖向，不指定 android：orientation时，默认 horizontal</li>
+<li>android:layout<em>gravity  </em>指定控件在布局中的对齐方式。该属性与 LinearLayout 的排列方向有很大关系。</li>
+<li><p>android:layout<em>weight    </em>允许使用比例方式指定控件大小,计算控件大小时，系统非将所有控件的android:layout<em>weight  </em>值相加，当作基底，计算指定的大小比例</p>
+<ul>
+<li><p>EditText和Button<br>常见用法</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">    <span class="tag">&lt;<span class="name">EditText</span></span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/button_1"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></div><div class="line">    <span class="attr">android:hint</span>=<span class="string">"Button_1"</span>/&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/button_2"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></div><div class="line">    <span class="attr">android:text</span>=<span class="string">"Button_2"</span>/&gt;</div></pre></td></tr></table></figure>
+<p><img src="http://cdn1.snapgram.co/imgs/2016/12/13/ScreenShot_20161213100420.png" alt="ScreenShot_20161213100420.png"><br>指定android:layout<em>width   </em>为0dp，android:layout<em>weight=”1”均为1 </em>平分大小</p>
+</li>
+<li><p>另一种用法</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">    <span class="tag">&lt;<span class="name">EditText</span></span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/button_1"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></div><div class="line">    <span class="attr">android:hint</span>=<span class="string">"Button_1"</span>/&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/button_2"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">android:text</span>=<span class="string">"Button_2"</span>/&gt;</div></pre></td></tr></table></figure>
+<p>将Button的android:layout_width设定为wrap_content，EditText 的android:layout<em>weight=”1”，EditText会占满整个屏幕剩余部分，在适配屏幕时较常用</em></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="RelativeLayout相对布局"><a href="#RelativeLayout相对布局" class="headerlink" title="RelativeLayout相对布局"></a>RelativeLayout相对布局</h3><ul>
+<li>属性较多，以代码形式说明<h4 id="相对父布局位置"><a href="#相对父布局位置" class="headerlink" title="相对父布局位置"></a>相对父布局位置</h4></li>
+<li><p>代码如下</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">  <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></div><div class="line">  <span class="attr">android:id</span>=<span class="string">"@+id/activity_main"</span></div><div class="line">  <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span></div><div class="line">  <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">  <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">  <span class="attr">tools:context</span>=<span class="string">"ljy.com.uilayouttest.MainActivity"</span>&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_1"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_alignParentLeft</span>=<span class="string">"true"</span></div><div class="line">      <span class="attr">android:layout_alignParentTop</span>=<span class="string">"true"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button 1"</span>/&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_2"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_alignParentRight</span>=<span class="string">"true"</span></div><div class="line">      <span class="attr">android:layout_alignParentTop</span>=<span class="string">"true"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button 2"</span>/&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_3"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_centerInParent</span>=<span class="string">"true"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button 3"</span>/&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_4"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_alignParentBottom</span>=<span class="string">"true"</span></div><div class="line">      <span class="attr">android:layout_alignParentLeft</span>=<span class="string">"true"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button 4"</span>/&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_5"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_alignParentBottom</span>=<span class="string">"true"</span></div><div class="line">      <span class="attr">android:layout_alignParentRight</span>=<span class="string">"true"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button 5"</span>/&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><img src="http://cdn3.snapgram.co/imgs/2016/12/13/ScreenShot_20161213102007.png" alt="ScreenShot_20161213102007.png"></p>
+</li>
+<li>android:layout_alignParentLeft=”true”<br>android:layout_alignParentTop=”true”<br>android:layout_centerInParent=”true”<br>android:layout_alignParentBottom=”true”<br>android:layout<em>alignParentRight=”true”
+</em>简而言之这些属性指定了控件相对父布局的位置</li>
+</ul>
+<h4 id="相对控件位置"><a href="#相对控件位置" class="headerlink" title="相对控件位置"></a>相对控件位置</h4><ul>
+<li><p>代码如下</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">  <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></div><div class="line">  <span class="attr">android:id</span>=<span class="string">"@+id/activity_main"</span></div><div class="line">  <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span></div><div class="line">  <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">  <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">  <span class="attr">tools:context</span>=<span class="string">"ljy.com.uilayouttest.MainActivity"</span>&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_3"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_centerInParent</span>=<span class="string">"true"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button 3"</span>/&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_1"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_above</span>=<span class="string">"@id/button_3"</span></div><div class="line">      <span class="attr">android:layout_toLeftOf</span>=<span class="string">"@id/button_3"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button 1"</span>/&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_2"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_above</span>=<span class="string">"@id/button_3"</span></div><div class="line">      <span class="attr">android:layout_toRightOf</span>=<span class="string">"@id/button_3"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button 2"</span>/&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_4"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_below</span>=<span class="string">"@id/button_3"</span></div><div class="line">      <span class="attr">android:layout_toLeftOf</span>=<span class="string">"@id/button_3"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button 4"</span>/&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button_5"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_below</span>=<span class="string">"@id/button_3"</span></div><div class="line">      <span class="attr">android:layout_toRightOf</span>=<span class="string">"@id/button_3"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button 5"</span>/&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><img src="http://cdn4.snapgram.co/images/2016/12/13/ScreenShot_20161213103016.png" alt="ScreenShot_20161213103016.png"></p>
+</li>
+<li><p>说明</p>
+<ul>
+<li>android:layout_above 可以指定一个控件位于指定控件的上方，需要指定ID引用</li>
+<li>android:layout_below 指定一个控件位于指定控件的下方，id引用</li>
+<li>android:layout_toLeftOf 指定一个控件位于指定控件的左侧，id引用</li>
+<li>android:layout_toRightOf 指定一个控件位于指定控件的右侧，id引用。</li>
+</ul>
+</li>
+<li><p><strong>NOTE：当控件去引用另一个控件的ID时，引用控件一定要在前</strong>本例中是id/button<em>3在最前面</em></p>
+</li>
+</ul>
+<h3 id="FrameLayout帧布局"><a href="#FrameLayout帧布局" class="headerlink" title="FrameLayout帧布局"></a>FrameLayout帧布局</h3><ul>
+<li>所有控件默认左上角</li>
+<li><p>代码如下<br>两个控件重合</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">FrameLayout</span>  <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">  <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">  <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/text_view"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"TextView"</span>/&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">ImageView</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/image_view"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:src</span>=<span class="string">"@mipmap/ic_launcher"</span>/&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="http://cdn2.snapgram.co/imgs/2016/12/13/ScreenShot_20161213113149.png" alt="ScreenShot_20161213113149.png"></p>
+</li>
+<li><p>android:layout<em>gravity  </em>同样可以应用于FrameLayout中，指定对齐方式</p>
+</li>
+</ul>
+<h3 id="PercentFrameLayout百分比布局"><a href="#PercentFrameLayout百分比布局" class="headerlink" title="PercentFrameLayout百分比布局"></a>PercentFrameLayout百分比布局</h3><ul>
+<li>PercentFrameLayout并非内置于系统SDK中，使用前要在build.gradle中添加百分比布局的依赖。</li>
+<li><p>修改app/build.gradle文件，在dependencies闭包中增加依赖。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">  <span class="function">compile <span class="title">fileTree</span><span class="params">(dir: <span class="string">'libs'</span>, include: [<span class="string">'*.jar'</span>])</span></span></div><div class="line">  <span class="title">androidTestCompile</span><span class="params">(<span class="string">'com.android.support.test.espresso:espresso-core:2.2.2'</span>, &#123;</span></div><div class="line">      exclude group: <span class="string">'com.android.support'</span>, <span class="keyword">module</span>: <span class="string">'support-annotations'</span></div><div class="line">  &#125;)</div><div class="line">  compile 'com.android.support:appcompat-v7:25.0.1'</div><div class="line">  <span class="comment">//下面一行为增加内容，要与上面的版本号保持一致</span></div><div class="line">  compile 'com.android.support:percent:25.0.1'</div><div class="line">  testCompile 'junit:junit:4.12'</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>修改完成后，as会开始同步，同步完成即可。</p>
+</li>
+</ul>
+<ul>
+<li>PercentFrameLayout继承了FrameLayout的特性，所有控件默认左上角，需要通过android:layout<em>gravity </em>来调整位置</li>
+<li><p>源码如下</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"># PercentFrameLayout 并非系统内置SDK，需要声明完整包路径</div><div class="line"><span class="tag">&lt;<span class="name">android.support.percent.PercentFrameLayout</span></span></div><div class="line"># 随后定义<span class="attr">app</span>的命名空间</div><div class="line">  <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">  <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></div><div class="line">  <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">  <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button1"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button1"</span></div><div class="line">      <span class="attr">android:layout_gravity</span>=<span class="string">"left|top"</span></div><div class="line">      <span class="attr">app:layout_widthPercent</span>=<span class="string">"50%"</span></div><div class="line">      <span class="attr">app:layout_heightPercent</span>=<span class="string">"50%"</span>/&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button2"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button2"</span></div><div class="line">      <span class="attr">android:layout_gravity</span>=<span class="string">"right|top"</span></div><div class="line">      <span class="attr">app:layout_widthPercent</span>=<span class="string">"50%"</span></div><div class="line">      <span class="attr">app:layout_heightPercent</span>=<span class="string">"50%"</span>/&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button3"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button3"</span></div><div class="line">      <span class="attr">android:layout_gravity</span>=<span class="string">"left|bottom"</span></div><div class="line">      <span class="attr">app:layout_widthPercent</span>=<span class="string">"50%"</span></div><div class="line">      <span class="attr">app:layout_heightPercent</span>=<span class="string">"50%"</span>/&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/button4"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Button4"</span></div><div class="line">      <span class="attr">android:layout_gravity</span>=<span class="string">"right|bottom"</span></div><div class="line">      <span class="attr">app:layout_widthPercent</span>=<span class="string">"50%"</span></div><div class="line">      <span class="attr">app:layout_heightPercent</span>=<span class="string">"50%"</span>/&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">android.support.percent.PercentFrameLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>效果如图<br><img src="http://cdn4.snapgram.co/images/2016/12/13/ScreenShot_20161213145134.png" alt="ScreenShot_20161213145134.png"></p>
+</li>
+<li><p>与之类似的还有 PercentRelativeLayout，用法不加累赘</p>
+</li>
+</ul>
+<h2 id="自定义控件"><a href="#自定义控件" class="headerlink" title="自定义控件"></a>自定义控件</h2><h3 id="引入布局"><a href="#引入布局" class="headerlink" title="引入布局"></a>引入布局</h3><ul>
+<li><p>新建title.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">  <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">  <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">  <span class="attr">android:background</span>=<span class="string">"@drawable/title_bg"</span>&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/title_back"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_gravity</span>=<span class="string">"center"</span></div><div class="line">      <span class="attr">android:layout_margin</span>=<span class="string">"5dp"</span></div><div class="line">      <span class="attr">android:background</span>=<span class="string">"@drawable/back_bg"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Back"</span></div><div class="line">      <span class="attr">android:textColor</span>=<span class="string">"#fff"</span> /&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/title_text"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_gravity</span>=<span class="string">"center"</span></div><div class="line">      <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></div><div class="line">      <span class="attr">android:gravity</span>=<span class="string">"center"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Title Text"</span></div><div class="line">      <span class="attr">android:textColor</span>=<span class="string">"#fff"</span></div><div class="line">      <span class="attr">android:textSize</span>=<span class="string">"24sp"</span> /&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/title_edit"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_gravity</span>=<span class="string">"center"</span></div><div class="line">      <span class="attr">android:layout_margin</span>=<span class="string">"5dp"</span></div><div class="line">      <span class="attr">android:background</span>=<span class="string">"@drawable/edit_bg"</span></div><div class="line">      <span class="attr">android:text</span>=<span class="string">"Edit"</span></div><div class="line">      <span class="attr">android:textColor</span>=<span class="string">"#fff"</span> /&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>在activity<em>main.xml  </em>中使用title.xml<br> <code>&lt;include layout=&quot;@layout/title&quot;/&gt;</code>   </p>
+</li>
+<li><p>隐藏系统自带标题栏,在mainActivity的onCreat中添加如下代码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  ActionBar actionBar = getSupportActionBar();</div><div class="line"><span class="keyword">if</span> (actionBar != <span class="keyword">null</span>)</div><div class="line">    actionBar.hide();</div></pre></td></tr></table></figure>
+</li>
+<li><p>效果如下<br><img src="http://cdn2.snapgram.co/imgs/2016/12/13/ScreenShot_20161213182554.png" alt="ScreenShot_20161213182554.png"></p>
+<h3 id="自定义控件-1"><a href="#自定义控件-1" class="headerlink" title="自定义控件"></a>自定义控件</h3><ul>
+<li>创建TitleLayout继承自LinearLayout ，代码如下<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TitleLayout</span> <span class="keyword">extends</span> <span class="title">LinearLayout</span> </span>&#123;</div><div class="line"><span class="comment">//构造函数</span></div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="title">TitleLayout</span><span class="params">(Context context, AttributeSet attributeSet)</span></span>&#123;</div><div class="line">     <span class="keyword">super</span>(context,attributeSet);</div><div class="line">     <span class="comment">//调用LayoutInflater.from方法构建LayoutInflater对象，</span></div><div class="line">     <span class="comment">//再调用inflate加载布局文件</span></div><div class="line">     LayoutInflater.from(context).inflate(R.layout.title,<span class="keyword">this</span>);</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>再activity<em>main.xml  </em>中 添加自定义控件,<br><strong>添加自定义控件时要指明控件的完整类名</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ljy.com.uicustomviews.TitleLayout</span></span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>/&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>效果与引入布局文件相同</p>
+</li>
+</ul>
+<h4 id="注册按钮点击事件"><a href="#注册按钮点击事件" class="headerlink" title="注册按钮点击事件"></a>注册按钮点击事件</h4><ul>
+<li>在TitleLayout的构造函数添加按钮注册点击事件<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Button titleBack = (Button)findViewById(R.id.title_back);</div><div class="line">Button titleEdit = (Button)findViewById(R.id.title_edit);</div><div class="line">titleBack.setOnClickListener(<span class="keyword">new</span> OnClickListener() &#123;</div><div class="line">         <span class="meta">@Override</span></div><div class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">             <span class="comment">//模拟返回键</span></div><div class="line">             ((Activity)getContext()).finish();</div><div class="line">         &#125;</div><div class="line">     &#125;);</div><div class="line"></div><div class="line">     titleEdit.setOnClickListener(<span class="keyword">new</span> OnClickListener() &#123;</div><div class="line">         <span class="meta">@Override</span></div><div class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">             <span class="comment">//Toast通知</span></div><div class="line">             Toast.makeText(getContext(),<span class="string">"clik"</span>,Toast.LENGTH_SHORT).show();</div><div class="line">         &#125;</div><div class="line">     &#125;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/4/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/07/Android笔记-Activity/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/07/Android笔记-Activity/" itemprop="url">
+                  Android笔记—Activity
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-07T12:00:00+08:00">
+                2016-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/12/07/Android笔记-Activity/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/12/07/Android笔记-Activity/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/12/07/Android笔记-Activity/" class="leancloud_visitors" data-flag-title="Android笔记—Activity">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  3,223
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  14m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<ul>
+<li>资料来源如下</li>
+<li>第一行代码(第二版)</li>
+</ul>
+<hr>
+<h2 id="Activity基础"><a href="#Activity基础" class="headerlink" title="Activity基础"></a>Activity基础</h2><h3 id="Activity定义"><a href="#Activity定义" class="headerlink" title="Activity定义"></a>Activity定义</h3><ul>
+<li>Activity 是Android四大组件之一，用户可与其提供的屏幕进行交互，以执行操作。 每个 Activity 都会获得一个用于绘制其用户界面的窗口。窗口可以充满屏幕，也可浮动。应用通常由多个彼此联系的 Activity 组成。应用中的某个 Activity 为“主”Activity，即首次启动应用时的Activity。</li>
+</ul>
+<h3 id="创建Activity"><a href="#创建Activity" class="headerlink" title="创建Activity"></a>创建Activity</h3><ul>
+<li><p>新建FirstAtivity继承自AppCompatActivity</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span></span>&#123;</div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span>  <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">&#125; &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建加载布局<br>  <a href="http://snapgr.am/image/LoY4" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/07/20/1.jpg" alt="1.jpg"></a></p>
+</li>
+<li><p>切换到first-layout</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">  &lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line">  &lt;LinearLayout</div><div class="line">  xmlns:android="http://schemas.android.com/apk/res/android"</div><div class="line">  android:layout_width="match_parent"</div><div class="line">  android:layout_height="match_parent"&gt;</div><div class="line">  &lt;Button</div><div class="line">      android:id="@+id/button_1"</div><div class="line">      android:text="button_1"</div><div class="line">      android:layout_width="wrap_content"</div><div class="line">      android:layout_height="wrap_content" /&gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在FirestActivity中加载layout<br>  在onCreate中加入</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">setContentView(R.layout.first_layout);</div></pre></td></tr></table></figure>
+</li>
+<li><p>在AndroidMainfest文件中注册。</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;activity</div><div class="line">           android:name=".FirstActivity"</div><div class="line">           android:label="This is FirstActivity"&gt;</div><div class="line">           &lt;intent-filter&gt;</div><div class="line">               &lt;action android:name="android.intent.action.MAIN"/&gt;</div><div class="line">               &lt;category android:name="android.intent.category.LAUNCHER"/&gt;</div><div class="line">           &lt;/intent-filter&gt;</div><div class="line">&lt;/activity&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在模拟器中启动apk<br>  <a href="http://snapgr.am/image/LogP" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/07/20/5ea429.jpg" alt="5ea429.jpg"></a></p>
+</li>
+</ul>
+<h3 id="使用Toast"><a href="#使用Toast" class="headerlink" title="使用Toast"></a>使用Toast</h3><blockquote>
+<p><a href="https://developer.android.com/guide/topics/ui/notifiers/toasts.html#Positioning" target="_blank" rel="external">Toast google官方说明</a></p>
+<ul>
+<li>推送一个短小信息推送给用户<br>  如图（摘自android developer）<br>  <img src="http://cdn4.snapgram.co/images/2016/07/20/toast.png" alt="toast.png"></li>
+</ul>
+</blockquote>
+<ul>
+<li><p>使用方法</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Toast.makeText(context, text, duration).show();</div></pre></td></tr></table></figure>
+<p>  举例</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Toast.makeText(FirstActivity.<span class="keyword">this</span>, <span class="string">"you clicked button 1"</span>, Toast.LENGTH_SHORT).show();</div><div class="line"><span class="comment">/*                  activity.this   消息内容                显示时间设置   */</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="使用Menu"><a href="#使用Menu" class="headerlink" title="使用Menu"></a>使用Menu</h3><ul>
+<li><p>创建菜单</p>
+<ul>
+<li>在res下新疆menu文件夹，右击menu文件夹—new—Menu resource file，创建main的菜单文件。</li>
+<li><p>main.xml中添加如下代码</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"> &lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">menu</span>        <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">item</span></span></div><div class="line">     <span class="attr">android:id</span>=<span class="string">"@+id/add_item"</span></div><div class="line">     <span class="attr">android:title</span>=<span class="string">"Add"</span>/&gt;</div><div class="line">   <span class="tag">&lt;<span class="name">item</span></span></div><div class="line">     <span class="attr">android:id</span>=<span class="string">"@+id/remove_item"</span></div><div class="line">     <span class="attr">android:title</span>=<span class="string">"Remove"</span>/&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">menu</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>这里创建了两个菜单项 Add和Remove</p>
+</li>
+<li><p>在FirestActivity中重写 onCreateOptionsMenu()方法（快捷键 Ctrl+O）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  <span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onCreateOptionsMenu</span><span class="params">(Menu menu)</span> </span>&#123;</div><div class="line">    getMenuInflater().inflate(R.menu.main, menu);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>getMenuInflater()</code>可以得到MenuInflater对象，再调用.inflate就可以创建菜单。.inflat接受俩个参数，一是资源文件名，二是菜单项添加至那个对象中。onCreateOptionsMenu方法中返回true表示创建菜单并显示。</p>
+</li>
+<li>效果如下。<br><img src="http://cdn2.snapgram.co/imgs/2016/12/07/Screenshot_1481113497.png" alt="Screenshot_1481113497.png"></li>
+</ul>
+</li>
+<li><p>创建菜单点击响应事件</p>
+<ul>
+<li><p>重写onOptionsItemSelected方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onOptionsItemSelected</span><span class="params">(MenuItem item)</span> </span>&#123;</div><div class="line">   <span class="keyword">switch</span> (item.getItemId()) &#123;</div><div class="line">       <span class="keyword">case</span> R.id.add_item:</div><div class="line">           Toast.makeText(<span class="keyword">this</span>, <span class="string">"Add"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">           <span class="keyword">break</span>;</div><div class="line">       <span class="keyword">case</span> R.id.remove_item:</div><div class="line">           Toast.makeText(<span class="keyword">this</span>, <span class="string">"Remove"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">           <span class="keyword">break</span>;</div><div class="line">       <span class="keyword">default</span>:</div><div class="line">   &#125;</div><div class="line">   <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>通过item.getItemId()判断点击选项，弹出不同的Toast</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="向一个activity-并传递字符串"><a href="#向一个activity-并传递字符串" class="headerlink" title="向一个activity 并传递字符串"></a>向一个activity 并传递字符串</h3><ul>
+<li>构建一个Intent<br>  <code>Intent intent = new Intent(this, DisplayMessageActivity.class);</code><br>  构造方法有两个参数：<br>  Context 是第一个参数，这里使用了this是因为Activity是Context的子类。<br>  Class 类是系统将要分发的APP组件，在这里，这个Activity将会被启动。</li>
+</ul>
+<ul>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendMessage</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">    <span class="comment">// 创建一个新的intent对象，绑定DisplayMessageActivity</span></div><div class="line">    Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, DisplayMessageActivity.class);</div><div class="line">    <span class="comment">//创建一个editText对象，绑定xml中editText</span></div><div class="line">    EditText editText = (EditText) findViewById(R.id.edit_message);</div><div class="line">    <span class="comment">//获取editText中输入文字，转成字符串</span></div><div class="line">    String message = editText.getText().toString();</div><div class="line">    <span class="comment">//一个Intent对象可以携带被称为extras的键值对。</span></div><div class="line">    <span class="comment">// putExtra()方法将键放在第一个参数中，将值放在第二个参数中。</span></div><div class="line">    intent.putExtra(EXTRA_MESSAGE, message);</div><div class="line">    <span class="comment">//启动intent对应Activity</span></div><div class="line">    startActivity(intent);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">    setContentView(R.layout.activity_display_message);</div><div class="line"></div><div class="line">    <span class="comment">//创建本地intent</span></div><div class="line">    Intent intent = getIntent();</div><div class="line">    <span class="comment">//取出String类型数据，如果是Int类型就是getIntExtra，Boolean类型就是getBooleanExtra</span></div><div class="line">    String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);</div><div class="line">    <span class="comment">//显示String</span></div><div class="line">    <span class="comment">//创建新的TextView</span></div><div class="line">    TextView textView = <span class="keyword">new</span> TextView(<span class="keyword">this</span>);</div><div class="line">    <span class="comment">//设置文本大小</span></div><div class="line">    textView.setTextSize(<span class="number">40</span>);</div><div class="line">    <span class="comment">//设置显示内容</span></div><div class="line">    textView.setText(message);</div><div class="line">    <span class="comment">//绑定xml</span></div><div class="line">    ViewGroup layout = (ViewGroup) findViewById(R.id.activity_display_message);</div><div class="line">    <span class="comment">//ViewGroup中添加TextView</span></div><div class="line">    layout.addView(textView);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="返回数据给上一个Activity"><a href="#返回数据给上一个Activity" class="headerlink" title="返回数据给上一个Activity"></a>返回数据给上一个Activity</h3><ul>
+<li><p>构建Intent使用startActivityForResult()方法传入请求码，启动下一个Activity<br>在下一个Activity中构建Intent，intent.putExtra存入键值-key，调用setResult()方法，传入finish()结束掉Activity<br>重写第一个Activity中的onActivityResult()方法，调用.getStringExtra取出key对应键值。</p>
+</li>
+<li><p>startActivityForResult(Intent, int Bundle) Intent与单纯启动Activity的Intent相同，第二个是请求码，下一级 回调提供相同的请求码，以便您应用可以正确识别结果。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent(FirestActivity.<span class="keyword">this</span>,ScendActivity.class);</div><div class="line">startActivityForResult(intent,<span class="number">1</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>setResult()方法，第一个参数向上级方法处理结果，一般使用RESULT_OK或RESULT_CANCELED，第二个参数 对应Intent</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//新建显示Intent</span></div><div class="line">Intent intent = <span class="keyword">new</span> Intent();</div><div class="line"><span class="comment">//存入key-键值</span></div><div class="line">intent.putExtra(<span class="string">"data_return"</span>,<span class="string">"Hello Firest"</span>);</div><div class="line">setResult(RESULT_OK,intent);</div><div class="line"><span class="comment">//结束Activity</span></div><div class="line">finish();</div></pre></td></tr></table></figure>
+</li>
+<li><p>onActivityResult()三个参数.第一个startActivityForResult() 传递的请求代码。第二个 Activity 指定的结果代码。成功是 RESULT_OK；失败，则是 RESULT_CANCELED。第三个是传送结果数据的 Intent。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"> <span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode,<span class="keyword">int</span> resultCode,Intent data)</span></span>&#123;</div><div class="line">    <span class="comment">//选择不同请求码对应处理逻辑</span></div><div class="line">    <span class="keyword">switch</span>(requestCode)&#123;</div><div class="line">        <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">            <span class="comment">//处理结果时候ok</span></div><div class="line">            <span class="keyword">if</span>(resultCode == RESULT_OK)&#123;</div><div class="line">                <span class="comment">//取出数据</span></div><div class="line">                String returnedData = data.getStringExtra(<span class="string">"data_return"</span>);</div><div class="line">                Log.d(<span class="string">"FirstActivity"</span>, returnedData);</div><div class="line">            &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Activity生命周期"><a href="#Activity生命周期" class="headerlink" title="Activity生命周期"></a>Activity生命周期</h2><p>  <img src="http://cdn2.snapgram.co/imgs/2016/12/07/basic-lifecycle.png" alt="basic-lifecycle.png"></p>
+<ul>
+<li>Activity 3种状态<ul>
+<li>Resumed/继续<br>Activity 处于前台，且用户可以与其交互</li>
+<li>Paused/暂停<br> Activity 被在前台中处于另一个 Activity—部分阻挡。 暂停的 Activity 不会接收用户输入并且无法执行任何代码。</li>
+<li>Stopped/停止<br>Activity完全隐藏，对用户完全不可见.当停止时，activity的所有状态信息比如成员变量都会被保留，但是不能再执行任何代码</li>
+</ul>
+</li>
+</ul>
+<h3 id="启动一个Activity"><a href="#启动一个Activity" class="headerlink" title="启动一个Activity"></a>启动一个Activity</h3><ul>
+<li>onCreate方法</li>
+<li><p>主Activity：</p>
+<ul>
+<li>用户点击app图标，启动主Activity</li>
+<li>在AndroidManifest.xml中声明<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>通过调用onCreate方法创建一个Activity实例，onCreate方法在Activity的整个生命周期中只执行一次。</p>
+</li>
+<li>之后系统会很快的调用onStart和onResume方法，Activity进入Resumed/继续模式。直到被其他activity覆盖/屏幕关闭。<h3 id="销毁Activity"><a href="#销毁Activity" class="headerlink" title="销毁Activity"></a>销毁Activity</h3></li>
+<li>onDestory方法<br>大多数的APP不需要实现这个方法，因为本地类引用会随着Activity一起总结，不过Activity的清理工作应该放在onPause下或者onStop。       </li>
+<li>Note:<br>在所有的情况下系统调用onDestory方法之后已经调用过onPause方法与onStop方法，不过有一个例外情况：你在onCreate方法中调用了finish方法。在一些例子中，当你的Activity临时决定要启动另一个Activity，你可能要在onCreate方法内调用finish方法来销毁这个Activity，在这种情况下，系统会立即调用onDestory方法，而不会调用其它任何生命周期方法。</li>
+</ul>
+<h3 id="暂停Activity"><a href="#暂停Activity" class="headerlink" title="暂停Activity"></a>暂停Activity</h3><ul>
+<li>onPause()方法</li>
+<li><p>Activity被其他Activity覆盖/失去用户焦点，系统调用onPause()方法，Activity 进入暂停状态。</p>
+<ul>
+<li>note：android7.0及以上版本加入了多窗口模式，当Activity失去用户焦点时，可能处于多窗口模式。</li>
+<li><p>onPause() 常用回调：</p>
+<ul>
+<li>检查 Activity 是否可见。不可见则停止可能消耗 CPU 的操作</li>
+<li>提交未保存的更改，仅保存用户离开时希望永久性保存此类更改（比如电子邮件草稿）。</li>
+<li>释放系统资源，GPS/Camer等</li>
+<li><p>示例 (释放Camer)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;</div><div class="line"><span class="keyword">super</span>.onPause();  <span class="comment">// Always call the superclass method first</span></div><div class="line"></div><div class="line"><span class="comment">// Release the Camera because we don't need it when paused</span></div><div class="line"><span class="comment">// and other activities might need to use it.</span></div><div class="line"><span class="keyword">if</span> (mCamera != <span class="keyword">null</span>) &#123;</div><div class="line">   mCamera.release();</div><div class="line">   mCamera = <span class="keyword">null</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>注意事项：</p>
+<ul>
+<li>在onPause()一般不执行永久性存储用户更改，不执行 CPU 密集型工作，这些工作一般放在onStop() 。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="继续-Activity"><a href="#继续-Activity" class="headerlink" title="继续 Activity"></a>继续 Activity</h3><ul>
+<li>onResume() 方法</li>
+<li>暂停状态回到继续状态，Activity第一次启动时也会调用这个方法。</li>
+<li>onResume() 以初始化在 onPause() 期间释放的组件。</li>
+<li>示例(重新获取Camera)<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</div><div class="line">  <span class="keyword">super</span>.onResume();  <span class="comment">// Always call the superclass method first</span></div><div class="line"></div><div class="line">  <span class="comment">// Get the Camera instance as the activity achieves full user focus</span></div><div class="line">  <span class="keyword">if</span> (mCamera == <span class="keyword">null</span>) &#123;</div><div class="line">      initializeCamera(); <span class="comment">// Local method to handle camera init</span></div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="停止-Activity"><a href="#停止-Activity" class="headerlink" title="停止 Activity"></a>停止 Activity</h3><ul>
+<li>note：<br>大多数相对简单的 Activity 而言，系统在 Activity 停止时会将Activity 实例保留在系统内存中，无需实现 onStop() 和 onRestart() 或甚至onStart() 方法。可能只需使用 onPause() 暂停正在进行的操作，并从系统资源断开连接。</li>
+</ul>
+<ul>
+<li>onStop() 方法</li>
+<li><p>场景：</p>
+<ul>
+<li>用户在最近应用切换到另一个应用</li>
+<li>应用中执行开始新 Activity 的操作</li>
+<li>Activity使用时，接打电话</li>
+</ul>
+</li>
+<li><p>调用时，Activity不再可见，释放几乎所有用户不使用时不需要的资源。如果系统内存紧张，则可能销毁内存中的Acitivity实例。</p>
+</li>
+<li>onStop() 方法调用后，Activity不再可见，极端情况下，系统可能会仅终止应用进程，而不调用 onDestroy() ，因此需要使用 onStop() 释放几乎所有用户不使用时不需要的资源。</li>
+<li>尽管 onPause() 方法在 onStop()之前调用，在onStop() 执行更大、占用更多 CPU 的关闭操作，比如向数据库写入信息</li>
+<li>示例（草稿笔记内容保存在永久存储）<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span> </span>&#123;</div><div class="line">  <span class="keyword">super</span>.onStop();  <span class="comment">// Always call the superclass method first</span></div><div class="line"></div><div class="line">  <span class="comment">// Save the note's current draft, because the activity is stopping</span></div><div class="line">  <span class="comment">// and we want to be sure the current note progress isn't lost.</span></div><div class="line">  ContentValues values = <span class="keyword">new</span> ContentValues();</div><div class="line">  values.put(NotePad.Notes.COLUMN_NAME_NOTE, getCurrentNoteText());</div><div class="line">  values.put(NotePad.Notes.COLUMN_NAME_TITLE, getCurrentNoteTitle());</div><div class="line"></div><div class="line">  getContentResolver().update(</div><div class="line">  mUri,    <span class="comment">// The URI for the note to update.</span></div><div class="line">  values,  <span class="comment">// The map of column names and new values to apply to them.</span></div><div class="line">   <span class="keyword">null</span>,    <span class="comment">// No SELECT criteria are used.</span></div><div class="line">   <span class="keyword">null</span>     <span class="comment">// No WHERE columns are used.</span></div><div class="line">   );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="启动-重启-Activity"><a href="#启动-重启-Activity" class="headerlink" title="启动/重启 Activity"></a>启动/重启 Activity</h3><ul>
+<li>onStart() 方法</li>
+<li>Activity 停止转换为继续状态时，系统回调onRestart() 方法+ onStart() 方法.onStop() 方法清理了所有 Activity 的资源，重启 Activity 需要重新实例化它们。同时 Activity 初次创建时重新实例化它们。 出于此，经常使用 onStart() 方法作为 onStop() 方法的对应</li>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"> <span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span> </span>&#123;</div><div class="line">   <span class="keyword">super</span>.onStart();  <span class="comment">// Always call the superclass method first</span></div><div class="line"></div><div class="line">   <span class="comment">// The activity is either being restarted or started for the first time</span></div><div class="line">   <span class="comment">// so this is where we should make sure that GPS is enabled</span></div><div class="line">   LocationManager locationManager =</div><div class="line">    (LocationManager) getSystemService(Context.LOCATION_SERVICE);</div><div class="line">   <span class="keyword">boolean</span> gpsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);</div><div class="line"></div><div class="line">   <span class="keyword">if</span> (!gpsEnabled) &#123;</div><div class="line">    <span class="comment">// Create a dialog here that requests the user to enable GPS, and use an intent</span></div><div class="line">    <span class="comment">// with the android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS action</span></div><div class="line">    <span class="comment">// to take the user to the Settings screen to enable GPS when they click "OK"</span></div><div class="line">   	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onRestart</span><span class="params">()</span> </span>&#123;</div><div class="line">   <span class="keyword">super</span>.onRestart();  <span class="comment">// Always call the superclass method first</span></div><div class="line"></div><div class="line">   <span class="comment">// Activity being restarted from stopped state</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="保存-Activity-状态"><a href="#保存-Activity-状态" class="headerlink" title="保存 Activity 状态"></a>保存 Activity 状态</h3><ul>
+<li>onSaveInstanceState()方法</li>
+<li>默认情况下，Activity 实例被销毁时系统会使用 Bundle 实例状态保存 Activity 布局中有关每个 View 对象的信息。在Activity 重建时，布局状态便自动恢复先前的状态。 </li>
+<li>默认实现保存有关 Activity 视图层次的状态信息，例如 EditText 小部件中的文本或ListView 的滚动位置</li>
+<li>要恢复的更多信息，需要重写 onSaveInstanceState()方法，将键值对添加至 Bundle 对象</li>
+<li><img src="http://cdn4.snapgram.co/images/2016/11/18/basic-lifecycle-savestate.png" alt="basic-lifecycle-savestate.png"></li>
+</ul>
+<ul>
+<li>note:<br>旋转屏幕时，Activity 将被销毁并重新创建。原因：方向更改时可能需要时加载备用资源（比如布局）</li>
+</ul>
+<ul>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> <span class="keyword">final</span> String STATE_SCORE = <span class="string">"playerScore"</span>;</div><div class="line"><span class="keyword">static</span> <span class="keyword">final</span> String STATE_LEVEL = <span class="string">"playerLevel"</span>;</div><div class="line">...</div><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSaveInstanceState</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">  <span class="comment">// Save the user's current game state</span></div><div class="line">   savedInstanceState.putInt(STATE_SCORE, mCurrentScore);</div><div class="line">   savedInstanceState.putInt(STATE_LEVEL, mCurrentLevel);</div><div class="line"></div><div class="line">   <span class="comment">// Always call the superclass so it can save the view hierarchy state</span></div><div class="line">   <span class="keyword">super</span>.onSaveInstanceState(savedInstanceState);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="恢复-Activity"><a href="#恢复-Activity" class="headerlink" title="恢复 Activity"></a>恢复 Activity</h3><ul>
+<li>onCreate() 和 onRestoreInstanceState() 回调方法均接收包含实例状态信息的相同 Bundle</li>
+<li>onCreate() 方法</li>
+<li>调用onCreate() 方法需要区分是创建 Activity 的新实例还是恢复先前的实例，判断 Bundle 是否为 null</li>
+<li><p>示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">   <span class="keyword">super</span>.onCreate(savedInstanceState); <span class="comment">// Always call the superclass first</span></div><div class="line"></div><div class="line">   <span class="comment">// Check whether we're recreating a previously destroyed instance</span></div><div class="line">   <span class="keyword">if</span> (savedInstanceState != <span class="keyword">null</span>) &#123;</div><div class="line">       <span class="comment">// Restore value of members from saved state</span></div><div class="line">       mCurrentScore = savedInstanceState.getInt(STATE_SCORE);</div><div class="line">       mCurrentLevel = savedInstanceState.getInt(STATE_LEVEL);</div><div class="line">   &#125; <span class="keyword">else</span> &#123;</div><div class="line">       <span class="comment">// Probably initialize members with default values for a new instance</span></div><div class="line">  	 &#125;</div><div class="line">   ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>onRestoreInstanceState()方法</p>
+</li>
+<li>只需要恢复的已保存的状态</li>
+<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRestoreInstanceState</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">   <span class="comment">// Always call the superclass so it can restore the view hierarchy</span></div><div class="line">   <span class="keyword">super</span>.onRestoreInstanceState(savedInstanceState);</div><div class="line"></div><div class="line">   <span class="comment">// Restore state members from saved instance</span></div><div class="line">   mCurrentScore = savedInstanceState.getInt(STATE_SCORE);</div><div class="line">   mCurrentLevel = savedInstanceState.getInt(STATE_LEVEL);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="重启Activity其他选择"><a href="#重启Activity其他选择" class="headerlink" title="重启Activity其他选择"></a>重启Activity其他选择</h3><ul>
+<li><a href="https://developer.android.com/guide/topics/resources/runtime-changes.html" target="_blank" rel="external">官方说明</a></li>
+<li>重启应用并恢复大量数据不仅成本高昂，而且会留下糟糕的使用体验，有两个其他选择<h4 id="在配置变更期间保留对象"><a href="#在配置变更期间保留对象" class="headerlink" title="在配置变更期间保留对象"></a>在配置变更期间保留对象</h4></li>
+<li>Activity 因配置变更而重启，则可通过保留 Fragment 来减轻重新初始化 Activity 的负担</li>
+<li>当 Android 系统因配置变更而关闭 Activity 时，不会销毁已标记为要保留的 Activity 的片段。 您可以将此类片段添加到 Activity 以保留有状态的对象。</li>
+</ul>
+<h2 id="Activity最佳实践"><a href="#Activity最佳实践" class="headerlink" title="Activity最佳实践"></a>Activity最佳实践</h2><h3 id="知晓当前运行的活动"><a href="#知晓当前运行的活动" class="headerlink" title="知晓当前运行的活动"></a>知晓当前运行的活动</h3><ul>
+<li><p>自定义BaseActivity继承自AppCompatActivity<br>重写onCreate方法，打印当前运行的Activity名<br>app类所有Activity改为继承BaseActivity</p>
+</li>
+<li><p>代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">      <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">      <span class="comment">//打印当前类名</span></div><div class="line">      Log.d(<span class="string">"BaseActivity"</span>, getClass().getSimpleName())；</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>效果如下<br><img src="http://cdn2.snapgram.co/imgs/2016/12/08/ScreenShot_20161208172740.png" alt="ScreenShot_20161208172740.png"></p>
+</li>
+</ul>
+<h3 id="随时退出程序"><a href="#随时退出程序" class="headerlink" title="随时退出程序"></a>随时退出程序</h3><ul>
+<li>新建ActivityCollector类作为活动管理器，添加/删除Activity登记,在BaseActivity中添加对应代码。</li>
+<li><p>代码如下  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityCollector</span> </span>&#123;</div><div class="line"><span class="comment">//新建Activity的列表对象</span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> List&lt;Activity&gt; activities = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"><span class="comment">//添加Activity进入列表</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addActivity</span><span class="params">(Activity activity)</span> </span>&#123;</div><div class="line">       activities.add(activity);</div><div class="line">   &#125;</div><div class="line"><span class="comment">//在列表中移除Activity</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">removeActivity</span><span class="params">(Activity activity)</span> </span>&#123;</div><div class="line">       activities.remove(activity);</div><div class="line">   &#125;</div><div class="line"><span class="comment">//for循环列表 结束所有Activity</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">finishAll</span><span class="params">()</span> </span>&#123;</div><div class="line">       <span class="keyword">for</span> (Activity activity : activities) &#123;</div><div class="line">           <span class="keyword">if</span> (!activity.isFinishing()) &#123;</div><div class="line">               activity.finish();</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>BaseActivity<br>在onCreate()方法中添加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Activity管理器中添加新的活动</span></div><div class="line">ActivityCollector.addActivity(<span class="keyword">this</span>);</div></pre></td></tr></table></figure>
+<p>重写onDestroy()方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">super</span>.onDestroy();</div><div class="line">    <span class="comment">//Activity管理器中移除活动</span></div><div class="line">    ActivityCollector.removeActivity(<span class="keyword">this</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在任何地方调用finishAll()方法即可。</p>
+</li>
+</ul>
+<h3 id="启动活动的最近写法"><a href="#启动活动的最近写法" class="headerlink" title="启动活动的最近写法"></a>启动活动的最近写法</h3><ul>
+<li>启动下一个Activity并传递数据模块化</li>
+<li><p>在SecondActivity内增加actionStart()方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">//调用的Activity，数据1，数据2</span></div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">actionStart</span><span class="params">(Context context, String data1, String data2)</span></span>&#123;</div><div class="line">    <span class="comment">//新建Intent，绑定SecondActivity</span></div><div class="line">    Intent intent = <span class="keyword">new</span> Intent(context,ScendActivity.class);</div><div class="line">    <span class="comment">//存入data1，data2</span></div><div class="line">    intent.putExtra(<span class="string">"param1"</span>,data1);</div><div class="line">    intent.putExtra(<span class="string">"param2"</span>,data2);</div><div class="line">    <span class="comment">//启动Activity</span></div><div class="line">    context.startActivity(intent);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>启动SecondActivity方式<br><code>ScendActivity.actionStart(FirestActivity.this,&quot;data1&quot;,&quot;data2&quot;);</code>  </p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/4/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/27/初入树莓派2----常规初始化+远程桌面/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/27/初入树莓派2----常规初始化+远程桌面/" itemprop="url">
+                  初入树莓派2---初始化+远程桌面
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-27T10:17:11+08:00">
+                2016-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/树莓派/" itemprop="url" rel="index">
+                    <span itemprop="name">树莓派</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/27/初入树莓派2----常规初始化+远程桌面/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/27/初入树莓派2----常规初始化+远程桌面/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/11/27/初入树莓派2----常规初始化+远程桌面/" class="leancloud_visitors" data-flag-title="初入树莓派2---初始化+远程桌面">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  511
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><h3 id="启用树莓派root用户"><a href="#启用树莓派root用户" class="headerlink" title="启用树莓派root用户"></a>启用树莓派root用户</h3><ul>
+<li>不做物联网终端时启用root用户比较方便</li>
+<li>SSH连接树莓派</li>
+<li><p>在命令行下执行</p>
+<ul>
+<li><p>启用root用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo passwd root</div></pre></td></tr></table></figure>
+</li>
+<li><p>执行后输入两遍你要设定的root密码</p>
+</li>
+<li>在输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo passwd –unlock root</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>root用户解锁完成</p>
+</li>
+<li><p>执行完毕后依旧无法登陆</p>
+<ul>
+<li><p>执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nano /etc/ssh/sshd_config</div></pre></td></tr></table></figure>
+</li>
+<li><p>找到<code>PermitRootLogin without-password</code><br> 改为<code>PermitRootLogin yes</code></p>
+</li>
+<li>Ctrl + X 、 Y 、 回车 保存</li>
+<li><code>sudo reboot</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="更换国内镜像地址"><a href="#更换国内镜像地址" class="headerlink" title="更换国内镜像地址"></a>更换国内镜像地址</h3><hr>
+<h2 id="gt-http-blog-lxx1-com-2040"><a href="#gt-http-blog-lxx1-com-2040" class="headerlink" title="&gt; http://blog.lxx1.com/2040"></a>&gt; <a href="http://blog.lxx1.com/2040" target="_blank" rel="external">http://blog.lxx1.com/2040</a></h2><ul>
+<li>由于众所周知的原因，树莓派链接官方更新源实在太过缓慢，国内有一批不错的镜像地址，可以解决系统/软件更新问题。</li>
+<li><p>收集的树莓派镜像一般使用比较频繁的有下面几个<br>1.<a href="http://mirrors.aliyun.com/" target="_blank" rel="external">阿里云</a>  首推镜像地址，移动/联通/电信网络都有不错的访问速度。<br>2.<a href="http://mirrors.neusoft.edu.cn/raspbian/raspbian/" target="_blank" rel="external">大连东软信息学院</a>  北方用户比较友好<br>3.<a href="http://mirrors.ustc.edu.cn/raspbian/raspbian/" target="_blank" rel="external">中国科学技术大学</a>  教育网有加成，非教育网就慢多了</p>
+</li>
+<li><p>这里选择 阿里云的镜像</p>
+</li>
+</ul>
+<ul>
+<li><p>更新 sources.list</p>
+<ul>
+<li><p>执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nano /etc/apt/sources.list</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除官方内容或者用#注释掉，添加以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">deb http://mirrors.aliyun.com/raspbian/raspbian/ jessie main non-free contrib</div><div class="line">deb-src http://mirrors.aliyun.com/raspbian/raspbian/ jessie main non-free contrib</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>删除raspi.list备用更新源(可选)</p>
+<ul>
+<li>通常更新sources.list后依旧缓慢，大多是raspi.list的锅</li>
+<li><code>rm /etc/apt/sources.list.d/raspi.list</code>    </li>
+</ul>
+</li>
+</ul>
+<h3 id="设置中文字体"><a href="#设置中文字体" class="headerlink" title="设置中文字体"></a>设置中文字体</h3><ul>
+<li><p>系统中缺少中文字库 首先更新字库和输入法</p>
+<ul>
+<li><p>执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install ttf-wqy-zenhei</div><div class="line">sudo apt-get install scim-pinyin</div></pre></td></tr></table></figure>
+</li>
+<li><p>接下来 都点 y</p>
+</li>
+<li><p>执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo raspi-config</div></pre></td></tr></table></figure>
+</li>
+<li><p>选择change_locale</p>
+</li>
+<li><img src="http://cdn2.snapgram.co/imgs/2016/11/27/950743-20160520171916373-887591767.png" alt="950743-20160520171916373-887591767.png"><br>空格键在前面打勾或去掉勾（星号=勾） Tab选择OK</li>
+<li>去掉en_GB.UTF-8 UTF-8<br>勾选：”en_US.UTF-8 UTF-8”、”zh_CN.UTF-8 UTF-8”、”zh_CN.GBK GBK”</li>
+<li>OK，下一屏幕,</li>
+<li><img src="http://cdn1.snapgram.co/imgs/2016/11/27/950743-20160520171919435-1542955508.png" alt="950743-20160520171919435-1542955508.png"><br>默认语言选zh_CN.UTF-8</li>
+</ul>
+</li>
+</ul>
+<h2 id="远程桌面"><a href="#远程桌面" class="headerlink" title="远程桌面"></a>远程桌面</h2><ul>
+<li><p>终端执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install xrdp</div></pre></td></tr></table></figure>
+</li>
+<li><p>windows端 CMD 执行  <code>mstsc</code></p>
+</li>
+<li>输入树莓派ip地址 用户名 密码 </li>
+<li><a href="http://snapgr.am/image/L7lS" target="_blank" rel="external"><img src="http://cdn4.snapgram.co/images/2016/11/27/950743-20160520171926529-1842218984.png" alt="950743-20160520171926529-1842218984.png"></a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/4/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/08/GitHub-Pages更新导致Next主题-博客主页空白，解决方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/08/GitHub-Pages更新导致Next主题-博客主页空白，解决方案/" itemprop="url">
+                  GitHub-Pages更新导致Next主题-博客主页空白，解决方案
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-08T10:10:11+08:00">
+                2016-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/点滴/" itemprop="url" rel="index">
+                    <span itemprop="name">点滴</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/08/GitHub-Pages更新导致Next主题-博客主页空白，解决方案/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/08/GitHub-Pages更新导致Next主题-博客主页空白，解决方案/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/11/08/GitHub-Pages更新导致Next主题-博客主页空白，解决方案/" class="leancloud_visitors" data-flag-title="GitHub-Pages更新导致Next主题-博客主页空白，解决方案">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  220
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>倒腾了俩小时，以为梯子坏了，结果。。。GitHub-Pages更新了！！！</strong> </p>
+<hr>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><ul>
+<li>GitHub-Pages更新，  过滤掉了 source/vendors 目录的访问。</li>
+<li><a href="https://github.com/iissnan/hexo-theme-next/issues/1214" target="_blank" rel="external">issues入口</a></li>
+</ul>
+<h3 id="解决1更新主题"><a href="#解决1更新主题" class="headerlink" title="解决1更新主题"></a>解决1更新主题</h3><ul>
+<li>作者更新了到最新的master分支，解决了这个问题，<br>  So：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="解决2更新本地设置（Next最新版）"><a href="#解决2更新本地设置（Next最新版）" class="headerlink" title="解决2更新本地设置（Next最新版）"></a>解决2更新本地设置（Next最新版）</h3><ul>
+<li>将 source/vendors 目录修改成 source/lib （或者其他的名称，只是 lib 我测试了可以使用）；同时，修改下主题配置文件_config.yml， 将 _internal: vendors 改成你所修改的名字，例如  _internal: lib。</li>
+</ul>
+<h3 id="解决3更新本地设置（Next5-0及以下版本）"><a href="#解决3更新本地设置（Next5-0及以下版本）" class="headerlink" title="解决3更新本地设置（Next5.0及以下版本）"></a>解决3更新本地设置（Next5.0及以下版本）</h3><ul>
+<li>将 source/vendors 目录修改成 source/lib （或者其他的名称，只是 lib 我测试了可以使用）；同时，修改下主题配置文件_config.yml， <strong>vendors: vendors </strong>改成你所修改的名字，例如  _internal: lib。</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/4/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/09/自建DNS解决运营商DNS污染/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/09/自建DNS解决运营商DNS污染/" itemprop="url">
+                  自建DNS服务器(dnsmasq)，对抗DNS污染
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-09T12:00:00+08:00">
+                2016-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/树莓派/" itemprop="url" rel="index">
+                    <span itemprop="name">树莓派</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/10/09/自建DNS解决运营商DNS污染/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/10/09/自建DNS解决运营商DNS污染/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/10/09/自建DNS解决运营商DNS污染/" class="leancloud_visitors" data-flag-title="自建DNS服务器(dnsmasq)，对抗DNS污染">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  945
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ul>
+<li>学校网络出口劫持严重，上淘宝加返利———-等等等等等等</li>
+<li>一直更新hosts不方便，要上google，全平台不好弄</li>
+<li>项目组需要</li>
+</ul>
+<hr>
+<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><ul>
+<li>搭建一个可访问个人公网DNS服务器</li>
+<li>提高DNS加载速度</li>
+<li>规避运营商的DNS劫持</li>
+<li>不影响学校内网访问</li>
+<li>简单的能上google</li>
+</ul>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><ul>
+<li>一台有公网IP的vps，开放了53端口（<a href="http://tool.chinaz.com/port/" target="_blank" rel="external">端口扫描</a>显示开放了53端口）</li>
+<li>装的是linux系统（以    CentOS 6.4 为例）</li>
+<li>WinSCP（或其他文件管理）</li>
+<li>putty.exe（或者其他SSH登陆工具）</li>
+<li>没了。。。。</li>
+</ul>
+<h3 id="DNSmasq原理和说明"><a href="#DNSmasq原理和说明" class="headerlink" title="DNSmasq原理和说明"></a>DNSmasq原理和说明</h3><ul>
+<li>DNSmasq是一个小巧且方便地用于配置DNS和DHCP的工具，适用于小型网络。作为域名解析服务器(DNS)，dnsmasq可以通过缓存 DNS 请求来提高对访问过的网址的连接速度。</li>
+<li>通过设置DNSmasq的上游DNS地址为无污染DNS来解决运营商的DNS污染。</li>
+<li>DNSmasq可以对单独的网址设置DNS服务器。对于学校内网地址设置为学校教育网的DNS解析。对于类似于youtube这种由于DNS污染没法访问的地址，可以先收集无污染的DNS地址，然后交与无污染DNS解析得到正确地址。</li>
+<li>DNSmasq再对网址提交上游DNS解析前，可以先通过本地hosts匹配。设置合适hosts可以实现科学上网。</li>
+</ul>
+<hr>
+<p><strong>开始！</strong></p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><h4 id="安装dnsmasq"><a href="#安装dnsmasq" class="headerlink" title="安装dnsmasq"></a>安装dnsmasq</h4><ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install dnsmasq -y</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="配置Dnsmasq"><a href="#配置Dnsmasq" class="headerlink" title="配置Dnsmasq"></a>配置Dnsmasq</h4><ul>
+<li><p>Dnsmasq的配置文件是 /etc/dnsmasq.conf .通过WinSCP加载修改。</p>
+</li>
+<li><p><a href="http://www.jianshu.com/p/71ccc79aaa9e" target="_blank" rel="external">dnsmasq.conf设置项说明</a></p>
+</li>
+<li><p>此次使用的配置如下</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> #指定给dnsmasq使用的hosts</div><div class="line"> addn-hosts=/etc/dnsmasq.host</div><div class="line"> #不使用/etc/resolv.conf(VPS默认DNS)来进行上游dns服务器解析需要配置的比较少直接写在dnsmasq.conf文件里了</div><div class="line"> no-resolv</div><div class="line">   </div><div class="line">#上游DNS地址这里为腾讯DNS和中科大DNS</div><div class="line">server=119.29.29.29</div><div class="line">server=202.141.162.123</div><div class="line">server=/google.com/202.141.162.123</div><div class="line">   #这一行是针对学校内网访问，学校内地址使用学校内网DNS。具体地区调整。</div><div class="line">server=/.edu.cn/202.141.162.123</div></pre></td></tr></table></figure>
+</li>
+<li><p>上游DNS推荐<br>  这里需要在VPS上测试各个DNS后决定。</p>
+<ul>
+<li>常用靠谱DNS<br>  阿里DNS        223.5.5.5               223.6.6.6<br>  114DNS          114.114.114.114<br>  腾讯DNS        119.29.29.29<br>  V2EX DNS    199.91.73.222       178.79.131.110（访问苹果商店有buff加速）</li>
+<li>无污染DNS<br>  目前比较稳定的只有中科大DNS和一些自建的小型DNS。小型DNS通过反带来访问google等，会带来一些隐私和安全风险，还是推荐自建DNS/hosts访问。<br>  中科大DNS<br>  202.38.93.153   （教育网）<br>  202.141.176.93  （中国移动）<br>  202.141.162.123 （中国电信）</li>
+<li>其他DNS请自行GOOGLE</li>
+</ul>
+</li>
+<li><p><strong>千万注意！！！</strong> 配置文件中有<strong>listen-address</strong>配置，网络大多数教程中有<code>listen-address=127.0.0.1</code>这是指Dnsmasq只服务于本机的DNS请求。如果需要搭建公网DNS服务，<strong>这个绝对不能有！！</strong></p>
+</li>
+</ul>
+<h4 id="创建-修改-etc-dnsmasq-host文件"><a href="#创建-修改-etc-dnsmasq-host文件" class="headerlink" title="创建/修改/etc/dnsmasq.host文件"></a>创建/修改/etc/dnsmasq.host文件</h4><ul>
+<li>一些常用去广告hosts/科学上网hosts的内容，<br>  具体不多说hosts科学上网是一天比一天死的快。没有找到靠谱的地址推荐。自行搜索把！</li>
+</ul>
+<h4 id="重启Dnsmasq服务"><a href="#重启Dnsmasq服务" class="headerlink" title="重启Dnsmasq服务"></a>重启Dnsmasq服务</h4><ul>
+<li><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service dnsmasq restart</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="测试53端口"><a href="#测试53端口" class="headerlink" title="测试53端口"></a>测试53端口</h4><ul>
+<li><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -tunlp|grep 53</div></pre></td></tr></table></figure>
+</li>
+<li><p>如果正常应该如下</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@VM_27_70_centos ~]# netstat -tunlp|grep 53</div><div class="line">tcp        0      0 0.0.0.0:53                  0.0.0.0:*                   LIST                    EN      4226/dnsmasq</div><div class="line">udp        0      0 0.0.0.0:53                  0.0.0.0:*                                                   4226/dnsmasq</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="修改本地DNS地址"><a href="#修改本地DNS地址" class="headerlink" title="修改本地DNS地址"></a>修改本地DNS地址</h4><ul>
+<li>这个不多说了，不会的自行google了。。</li>
+</ul>
+<hr>
+<p><strong>结束语</strong><br>创建完了，本地DNS快多了，访问淘宝再也没有了牛皮癣。</p>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><blockquote>
+<p><a href="http://blog.antior.cn/posts/2015_29.html" target="_blank" rel="external">http://blog.antior.cn/posts/2015_29.html</a><br><a href="http://www.jianshu.com/p/71ccc79aaa9e" target="_blank" rel="external">http://www.jianshu.com/p/71ccc79aaa9e</a><br><a href="http://www.linuxdown.net/install/soft/2016/0520/5566.html" target="_blank" rel="external">http://www.linuxdown.net/install/soft/2016/0520/5566.html</a><br><a href="http://blog.cnwyhx.com/centos-linux-dnsmasq-install-dns/" target="_blank" rel="external">http://blog.cnwyhx.com/centos-linux-dnsmasq-install-dns/</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/4/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/17/Android汇总/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/17/Android汇总/" itemprop="url">
+                  Android
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-17T10:11:11+08:00">
+                2016-07-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/07/17/Android汇总/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/07/17/Android汇总/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/07/17/Android汇总/" class="leancloud_visitors" data-flag-title="Android">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  255
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Andorid笔记系列"><a href="#Andorid笔记系列" class="headerlink" title="Andorid笔记系列"></a>Andorid笔记系列</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">更新</div><div class="line"><span class="number">2016.07</span>.<span class="number">20</span>    第一行代码Activity创建部分完成</div><div class="line"><span class="number">2016.07</span>.<span class="number">21</span>    完成添加了button和<span class="keyword">menu</span>部分，对应P39页</div><div class="line"><span class="number">2016.07</span>.<span class="number">22</span>    完成了P55页之前的activity部分。对于activity（二）</div><div class="line"><span class="number">2016.08</span>.<span class="number">10</span>    基本搞定，UI除ListView以外的部分。<span class="number">4</span>种布局比较熟悉，不再折腾。</div><div class="line"><span class="number">2016.08</span>.<span class="number">11</span>    开始ListView部分</div><div class="line"><span class="number">2016.08</span>.<span class="number">14</span>    停更半月</div><div class="line"><span class="number">2016.09</span>.<span class="number">02</span>    恢复更新</div><div class="line"><span class="number">2016.09</span>.<span class="number">03</span>    Broadcast部分开坑。</div><div class="line"><span class="number">2016.09</span>.<span class="number">07</span>    ListView部分除BaseAdapter外完成。BaseAdapter内容，什么时候理解深一点再补上。</div><div class="line"><span class="number">2016.09</span>.<span class="number">13</span>    完成了Broadcast对应部分</div><div class="line"><span class="number">2016.10</span>.<span class="number">03</span>    重新按照google的文档查漏补缺.</div><div class="line"><span class="number">2016.10</span>.<span class="number">03</span>    更名Android笔记，重新开始更新。</div><div class="line"><span class="number">2016.12</span>.<span class="number">05</span>    第二行代码开始！</div><div class="line"><span class="number">2016.12</span>.<span class="number">07</span>    重新整理Android系列笔记，从<span class="number">0</span>整合</div><div class="line"><span class="number">2016.12</span>.<span class="number">08</span>    Activity部分整合完成</div><div class="line"><span class="number">2016.12</span>.<span class="number">13</span>    UI部分基础完成，LIstView部分完成</div><div class="line"><span class="number">2016.12</span>.<span class="number">16</span>    RecycleView部分，基础完成，有待进一步填坑 </div><div class="line"><span class="number">2016.12</span>.<span class="number">22</span>    Fragment完成，有一个占坑</div><div class="line"><span class="number">2016.12</span>.<span class="number">23</span>    Broadcast完成</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/4/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/09/单片机课程设计总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1967,514 +3883,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-  
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/21/初入树莓派1----安装系统+进入SSH/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jasper">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/v.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="默">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/21/初入树莓派1----安装系统+进入SSH/" itemprop="url">
-                  初入树莓派1安装系统+进入SSH
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-21T10:17:11+08:00">
-                2016-06-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/树莓派/" itemprop="url" rel="index">
-                    <span itemprop="name">树莓派</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/06/21/初入树莓派1----安装系统+进入SSH/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/06/21/初入树莓派1----安装系统+进入SSH/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/06/21/初入树莓派1----安装系统+进入SSH/" class="leancloud_visitors" data-flag-title="初入树莓派1安装系统+进入SSH">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  573
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  2m
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><del><strong>为了更好的从事程序员事业、填坑linux、为学弟打下第一手资料、留下linux培训教材……</strong></del></p>
-<ul>
-<li><em>实际就是为了搭个路由器，玩玩</em><br> 入了树莓派3b +电源+外壳+sd卡—300大洋——–<em>肉疼</em></li>
-</ul>
-<hr>
-<h3 id="树莓派系统安装"><a href="#树莓派系统安装" class="headerlink" title="树莓派系统安装"></a>树莓派系统安装</h3><ul>
-<li>树莓派3b的耗电量还是挺大的<br> 推荐买个2.5A的电源</li>
-</ul>
-<p>系统选择</p>
-<ul>
-<li><p>树莓派支持 数十款操作系统，一般新手推荐的是<strong>raspbian</strong></p>
-</li>
-<li><p>Raspbian是为树莓派设计，基于Debian的操作系统，不隶属于树莓派基金会[1]，但被列为官方支持的操作系统，</p>
-</li>
-<li><p><a href="https://www.raspberrypi.org/downloads/raspbian/" target="_blank" rel="external">Raspbian镜像地址</a>(最好在FQ下，否则会很慢的。你要用IDM当我没说)</p>
-</li>
-<li>Raspbian有两个版本，简单区别如下<ul>
-<li>RASPBIAN JESSIE WITH PIXEL<br>带有完整的桌面体验，安装包1.4G左右</li>
-<li>RASPBIAN JESSIE LITE<br>没有X-server 套件，没有 Qt 和 GTK+ 的函式库。等于去掉了桌面。安装包400Mb上下。</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>所要用到的工具是：</p>
-<ul>
-<li>1.多功能读卡器一个</li>
-<li>2.TF卡一张（4G以上）</li>
-</ul>
-</li>
-<li><p>烧写器官方推荐是<strong>win32diskimager</strong><br>但是<strong>文件路径不支持中文</strong>。</p>
-</li>
-<li><p>个人推荐 <strong>USB Image Tool</strong><br>故障率最低的是1.7版本。</p>
-</li>
-</ul>
-<h3 id="插上读卡器，烧写系统开始！"><a href="#插上读卡器，烧写系统开始！" class="headerlink" title="插上读卡器，烧写系统开始！"></a>插上读卡器，烧写系统开始！</h3><ul>
-<li><p><strong>烧写系统</strong></p>
-<ol>
-<li>打开USB Image Tool<br><strong>注意左上角是Device Mode，不是Volume Mode！</strong><br><a href="http://snapgr.am/image/Livb" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/06/20/1.png" alt="1.png"></a></li>
-<li>选择下载后解压的img文件</li>
-<li>写入等待进度条完成即可。</li>
-</ol>
-</li>
-<li><p><strong>错误原因</strong></p>
-<ol>
-<li>USB Image Tool 在win7以上系统中必须要以管理员权限运行</li>
-<li>USB Image Tool运行需要.net环境 直接使用系统默认加载的即可。</li>
-<li>烧写完成后接入电源</li>
-</ol>
-</li>
-</ul>
-<h3 id="进入SSH管理（没有显示设备时）"><a href="#进入SSH管理（没有显示设备时）" class="headerlink" title="进入SSH管理（没有显示设备时）"></a>进入SSH管理（没有显示设备时）</h3><ul>
-<li><p>第一次进入系统时直接利用网线接入路由器，将电脑接入同一个wifi下。<br>在路由器管理界面查找树莓派对应得IP地址。<br>也可以扫描一下局域网设备中开启22端口的设备.</p>
-</li>
-<li><p><strong>使用SSH管理工具，这里以putty为例。打开软件，填入树莓派ip地址。</strong></p>
-<ol>
-<li><strong>打开软件，填入树莓派ip地址。</strong><br><em>默认登陆界面</em><br><a href="http://snapgr.am/image/Liv4" target="_blank" rel="external"><img src="http://cdn4.snapgram.co/images/2016/06/20/2.png" alt="2.png"></a><ol>
-<li><strong>默认用户名pi 密码raspberry。</strong><br><a href="http://snapgr.am/image/LivJ" target="_blank" rel="external"><img src="http://cdn2.snapgram.co/imgs/2016/06/20/3.png" alt="3.png"></a></li>
-<li><strong>登陆成功！</strong><br><img src="http://cdn1.snapgram.co/imgs/2016/06/20/4.png" alt="4.png"></li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
-<ul>
-<li>参考<blockquote>
-<p><a href="http://blog.csdn.net/longerzone/article/details/36034619" target="_blank" rel="external">http://blog.csdn.net/longerzone/article/details/36034619</a></p>
-</blockquote>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-	
-
-	
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-	
-	
-	<div>
-	    <p id="div-border-left-blue">
-	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
-	    <span>
-	    <b>本文地址：</b><a href="/page/4/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
-	    </span>
-	    </p>
-	</div>
-	
-
-	
-    <footer class="post-footer">
-	
-	
-	
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-  
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/18/hellowworld/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jasper">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/v.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="默">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/18/hellowworld/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-18T10:10:11+08:00">
-                2016-06-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随/" itemprop="url" rel="index">
-                    <span itemprop="name">随</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/06/18/hellowworld/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/06/18/hellowworld/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/06/18/hellowworld/" class="leancloud_visitors" data-flag-title="Hello World">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  42
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1m
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-	
-
-	
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-	
-	
-	<div>
-	    <p id="div-border-left-blue">
-	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
-	    <span>
-	    <b>本文地址：</b><a href="/page/4/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
-	    </span>
-	    </p>
-	</div>
-	
-
-	
-    <footer class="post-footer">
-	
-	
-	
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2519,7 +3932,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">42</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2530,7 +3943,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2601,7 +4014,7 @@
         <div class="copyright" >
   
   &copy;  2016.6.2 - 
-  <span itemprop="copyrightYear">2018.1.14</span>
+  <span itemprop="copyrightYear">2018.1.19</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

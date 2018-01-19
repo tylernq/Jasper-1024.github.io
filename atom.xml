@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-01-14T06:53:03.785Z</updated>
+  <updated>2018-01-19T15:04:49.024Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,56 +16,700 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="http://yoursite.com/2018/01/14/wenti/"/>
-    <id>http://yoursite.com/2018/01/14/wenti/</id>
-    <published>2018-01-14T06:27:33.461Z</published>
-    <updated>2018-01-14T06:53:03.785Z</updated>
+    <title>python—n函数</title>
+    <link href="http://yoursite.com/2018/01/19/python%E2%80%94n%E5%87%BD%E6%95%B0/"/>
+    <id>http://yoursite.com/2018/01/19/python—n函数/</id>
+    <published>2018-01-19T02:17:11.000Z</published>
+    <updated>2018-01-19T15:04:49.024Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><ul>
-<li>主体是Activity + ViewPager + Fragment, Fragment的recyclerview加载列表.</li>
-<li>MainViewModel 中持有FragmentViewModel 和 MainRepository实例.(MainRepository实现数据获取).MainViewModel中实现了MainActicity的<code>LifecycleObserver</code>接口,可以在Acticity creat resume等等时候,做一些数据操作.</li>
-<li><p>整体是MVVM,直接对 FragmentViewModel 的实例执行<code>xxx.set(items)</code>设置数据,对应recyclerview就能刷新数据(不用考虑线程问题)</p>
+    <content type="html"><![CDATA[<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h3><ul>
+<li>参数数量不对 TypeError错误</li>
+<li>参数类型错误，TypeError的错误，并且给出错误信息</li>
+<li>int()转换为int类型</li>
+<li>float()</li>
+<li>bool()</li>
+<li><p>str()</p>
 </li>
-<li><p>整体需要实现的功能,如图<img src="https://i.loli.net/2018/01/14/5a5afd1583ee6.png" alt="草图.png"></p>
+<li><p>函数名为一指向函数对象的引用,可以将变量指向函数,再调用</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = abs <span class="comment"># 变量a指向abs函数</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a(<span class="number">-1</span>) <span class="comment"># 所以也可以通过a调用abs函数</span></div><div class="line"><span class="number">1</span></div></pre></td></tr></table></figure>
 </li>
-<li><p>源码地址 &gt; <a href="https://github.com/Jasper-1024/MyPrivacy/tree/MVVM_test/app/src/main/java/com/jasperhale/myprivacy/Activity" target="_blank" rel="external">https://github.com/Jasper-1024/MyPrivacy/tree/MVVM_test/app/src/main/java/com/jasperhale/myprivacy/Activity</a><br>暂时比较乱,还没整理.</p>
+</ul>
+<h3 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h3><ul>
+<li><p>示例</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_abs</span><span class="params">(x)</span>:</span></div><div class="line">  <span class="keyword">if</span> x &gt;= <span class="number">0</span>:</div><div class="line">      <span class="keyword">return</span> x</div><div class="line">  <span class="keyword">else</span>:</div><div class="line">      <span class="keyword">return</span> -x</div></pre></td></tr></table></figure>
+<p>def 函数名(参数) :<br>  函数体<br>  return </p>
 </li>
-<li><p>我尝试使用rxjava的BehaviorSubject来实现这个过程.</p>
+<li>没有return 则返回 None</li>
+<li><p>import 包含模块,java一样</p>
+</li>
+<li><p>空函数 pass 语句.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">nop</span><span class="params">()</span>:</span></div><div class="line">  <span class="keyword">pass</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>示例 返回多个参数</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> math</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">move</span><span class="params">(x, y, step, angle=<span class="number">0</span>)</span>:</span></div><div class="line">  nx = x + step * math.cos(angle)</div><div class="line">  ny = y - step * math.sin(angle)</div><div class="line">  <span class="keyword">return</span> nx, ny</div></pre></td></tr></table></figure>
+<p>返回的是一个tuple .. 按位置赋值给变量</p>
+</li>
+</ul>
+<h3 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h3><ul>
+<li><strong>参数定义的顺序必须是：必选参数、默认参数、可变参数、命名关键字参数和关键字参数</strong></li>
+</ul>
+<h4 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h4><ul>
+<li><p>示例:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">power</span><span class="params">(x, n=<span class="number">2</span>)</span>:</span></div><div class="line">...</div><div class="line"></div><div class="line">power(<span class="number">5</span>)   power(<span class="number">5</span>, <span class="number">2</span>)  power(n=<span class="number">3</span>,<span class="number">5</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>默认参数必须指向不变对象</p>
+</li>
+<li>多个参数时，变化大的参数在前，变化小的参数在后。变化小的参数就可以作为默认参数。</li>
+<li>多个默认参数，可以按顺序提供默认参数</li>
+<li><p>也可以不按顺序提供。当不按顺序提供部分默认参数时，需要把参数名写上 <code>enroll(&#39;Adam&#39;, &#39;M&#39;, city=&#39;Tianjin&#39;)</code></p>
+</li>
+<li><p><strong><code>坑</code></strong></p>
 <ul>
-<li><p>在FragmentViewModel  中新建一个public的 <code>BehaviorSubject</code></p>
-</li>
-<li><p>MainRepository 获取数据过程包装成一个<code>Observable &lt;ObservableList&gt; applistObservable</code></p>
-</li>
-<li><p>在FragmentViewModel将设置过程（<code>xxx.set(items)</code>）包装成一个 <code>Observer&lt;ObservableList&gt; setObserver</code></p>
-</li>
-<li><p>在MainActicity creat/destory时候 绑定/解绑 <code>applistObservable.subscribe(behaviorSubject);</code></p>
-</li>
-<li><p>在Fragment creat/destory时候 绑定/解绑 <code>behaviorSubject.subscribe(setObserver);</code></p>
-</li>
+<li>默认参数 不可变性 每次调用均会改变其值.</li>
 </ul>
 </li>
 </ul>
-<p>##　问题</p>
-<ul>
-<li>表现: recycleerview 没有显示数据.</li>
-<li>在 MainRepository 里面的 applistObservable 打印显示已经完成了获取,但FragmentViewModel 里面的 setObserver 没有收到数据.</li>
-<li>稍微改一点地方(log打印),android studio的 instant run 刷新后对应列表显示正常.</li>
+<h4 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h4><ul>
+<li><p>示例:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc</span><span class="params">(*numbers)</span>:</span></div><div class="line">  sum = <span class="number">0</span></div><div class="line">  <span class="keyword">for</span> n <span class="keyword">in</span> numbers:</div><div class="line">      sum = sum + n * n</div><div class="line">  <span class="keyword">return</span> sum</div><div class="line"></div><div class="line">nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">calc(*nums)   <span class="comment">#相同</span></div><div class="line">calc(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>传入的参数个数可变,传入组装成了tuple</p>
+</li>
+<li>当作c语言指针吧😂 传入数组的地址</li>
 </ul>
-<p>##　其他</p>
-<ul>
-<li>个人开源项目,不涉及商业问题.</li>
-<li>因为这个卡了很久了,有偿求教.</li>
+<h4 id="命名关键字参数"><a href="#命名关键字参数" class="headerlink" title="命名关键字参数"></a>命名关键字参数</h4><ul>
+<li><p>示例:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, age, *, city, job)</span>:</span></div><div class="line">  print(name, age, city, job)</div><div class="line"></div><div class="line">person(<span class="string">'Jack'</span>, <span class="number">24</span>, city=<span class="string">'Beijing'</span>, job=<span class="string">'Engineer'</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>命名关键字参数需要一个特殊分隔符<em>，</em>后面的参数被视为命名关键字参数</p>
+</li>
+<li><p>函数定义中已经有了一个可变参数，后面跟着的命名关键字参数就不再需要一个特殊分隔符*</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, age, *args, city, job)</span>:</span></div><div class="line">  print(name, age, args, city, job)</div></pre></td></tr></table></figure>
+</li>
+<li><p>如果没有可变参数，就必须加一个<em>作为特殊分隔符。如果缺少</em>，Python解释器将无法识别位置参数和命名关键字参数</p>
+<h4 id="关键字参数"><a href="#关键字参数" class="headerlink" title="关键字参数"></a>关键字参数</h4></li>
+<li><p>示例</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, age, **kw)</span>:</span></div><div class="line">  print(<span class="string">'name:'</span>, name, <span class="string">'age:'</span>, age, <span class="string">'other:'</span>, kw)</div><div class="line"></div><div class="line">extra = &#123;<span class="string">'city'</span>: <span class="string">'Beijing'</span>, <span class="string">'job'</span>: <span class="string">'Engineer'</span>&#125;</div><div class="line">person(<span class="string">'Jack'</span>, <span class="number">24</span>, city=extra[<span class="string">'city'</span>], job=extra[<span class="string">'job'</span>])</div><div class="line"><span class="comment">#相同</span></div><div class="line">extra = &#123;<span class="string">'city'</span>: <span class="string">'Beijing'</span>, <span class="string">'job'</span>: <span class="string">'Engineer'</span>&#125;</div><div class="line">person(<span class="string">'Jack'</span>, <span class="number">24</span>, **extra)</div></pre></td></tr></table></figure>
+</li>
+<li><p>关键字参数在函数内部组装为一个dict</p>
+</li>
+<li>函数内部获得是 dict的拷贝,修改对原值无影响.</li>
+<li>可以传入任意不受限制的关键字参数</li>
+</ul>
+<h4 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h4><ul>
+<li>python 不含尾递归优化,注意层级,否则非常容易堆栈溢出.</li>
 </ul>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;主体是Activity + ViewPager + Fragment, Fragment的recyclerview加载列表.&lt;/
+      &lt;h2 id=&quot;函数&quot;&gt;&lt;a href=&quot;#函数&quot; class=&quot;headerlink&quot; title=&quot;函数&quot;&gt;&lt;/a&gt;函数&lt;/h2&gt;&lt;h3 id=&quot;常用&quot;&gt;&lt;a href=&quot;#常用&quot; class=&quot;headerlink&quot; title=&quot;常用&quot;&gt;&lt;/a&gt;常用&lt;/h3&gt;&lt;ul&gt;
+&lt;
     
     </summary>
     
+      <category term="python笔记" scheme="http://yoursite.com/categories/python%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python—函数式编程</title>
+    <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
+    <id>http://yoursite.com/2018/01/19/python—函数式编程/</id>
+    <published>2018-01-19T02:17:11.000Z</published>
+    <updated>2018-01-19T15:02:50.054Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><ul>
+<li>纯函数式编程没有变量,一个函数只要输出确定,输出就是确定的,称为没有副作用.使用变量的函数内部由于变量状态不确定性,有副作用.</li>
+<li>函数式编程另一个特点是允许函数本身作为参数传入,也可以直接返回另外一个函数.</li>
+<li>python对函数式编程提供有限支持.(还使用变量 so不是纯函数式编程语言)<h3 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h3></li>
+<li>python中函数本身也可以赋值给变量,变量可以指向函数</li>
+<li>函数的参数可以传入另一个函数,这种函数称为高阶函数.</li>
+</ul>
+<h4 id="map-reduce"><a href="#map-reduce" class="headerlink" title="map/reduce"></a>map/reduce</h4><ul>
+<li>map()接收两个参数，一个是函数，一个是Iterable，map将传入的函数依次作用到序列的每个元素，并把结果作为新的Iterator返回</li>
+<li><p>示例</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">list(map(str, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]) <span class="comment"># list所有数字转为字符串</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>reduce把一个函数作用在一个序列[x1, x2, x3, …]上，这个函数必须接收两个参数，reduce把结果继续和序列的下一个元素做累积计算</p>
+</li>
+<li>示例<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">fn</span><span class="params">(x, y)</span>:</span></div><div class="line"><span class="meta">... </span>    <span class="keyword">return</span> x * <span class="number">10</span> + y</div><div class="line">...</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">char2num</span><span class="params">(s)</span>:</span></div><div class="line"><span class="meta">... </span>    digits = &#123;<span class="string">'0'</span>: <span class="number">0</span>, <span class="string">'1'</span>: <span class="number">1</span>, <span class="string">'2'</span>: <span class="number">2</span>, <span class="string">'3'</span>: <span class="number">3</span>, <span class="string">'4'</span>: <span class="number">4</span>, <span class="string">'5'</span>: <span class="number">5</span>, <span class="string">'6'</span>: <span class="number">6</span>, <span class="string">'7'</span>: <span class="number">7</span>, <span class="string">'8'</span>: <span class="number">8</span>, <span class="string">'9'</span>: <span class="number">9</span>&#125;</div><div class="line"><span class="meta">... </span>    <span class="keyword">return</span> digits[s]</div><div class="line">...</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>reduce(fn, map(char2num, <span class="string">'13579'</span>))</div><div class="line"><span class="number">13579</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h4><ul>
+<li>filter()接收一个函数和一个序列。filter()把传入的函数依次作用于每个元素，然后根据返回值是True还是False决定保留还是丢弃该元素。</li>
+<li>filter()函数返回的是一个 惰性序列 Iterator，也就是一个惰性序列,需要用list()函数获得所有结果并返回list</li>
+<li>示例<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_odd</span><span class="params">(n)</span>:</span></div><div class="line">  <span class="keyword">return</span> n % <span class="number">2</span> == <span class="number">1</span></div><div class="line"></div><div class="line">list(filter(is_odd, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">15</span>])) <span class="comment"># 只保留奇数</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">not_empty</span><span class="params">(s)</span>:</span></div><div class="line">  <span class="keyword">return</span> s <span class="keyword">and</span> s.strip()</div><div class="line"></div><div class="line">list(filter(not_empty, [<span class="string">'A'</span>, <span class="string">''</span>, <span class="string">'B'</span>, <span class="keyword">None</span>, <span class="string">'C'</span>, <span class="string">'  '</span>])) <span class="comment"># 删除空字符</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h4><ul>
+<li>sorted()函数接收一个key函数来实现自定义的排序.第三个参数<code>reverse=True</code>决定正序倒序.</li>
+<li><p>示例:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">  &gt;&gt;&gt; sorted([<span class="string">'bob'</span>, <span class="string">'about'</span>, <span class="string">'Zoo'</span>, <span class="string">'Credit'</span>],key=str.lower)</div><div class="line">  [<span class="string">'about'</span>, <span class="string">'bob'</span>, <span class="string">'Credit'</span>, <span class="string">'Zoo'</span>]</div><div class="line"></div><div class="line">  &gt;&gt;&gt; sorted([<span class="string">'bob'</span>, <span class="string">'about'</span>, <span class="string">'Zoo'</span>, <span class="string">'Credit'</span>], key=str.lower, reverse=<span class="keyword">True</span>)</div><div class="line">  [<span class="string">'Zoo'</span>, <span class="string">'Credit'</span>, <span class="string">'bob'</span>, <span class="string">'about'</span>]</div><div class="line">  ``` </div><div class="line"></div><div class="line"><span class="comment">### 返回函数</span></div><div class="line">* 将函数作为结果返回.(很随便😂)</div><div class="line">* 闭包（Closure）:相关参数和变量都保存在返回函数.</div><div class="line">* **note:**返回的函数在其定义内部引用了局部变量args，所以，当一个函数返回了一个函数后，其内部的局部变量还被新函数引用</div><div class="line">* 示例(坑):</div><div class="line">  ```py</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">()</span>:</span></div><div class="line">    fs = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">4</span>):</div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">()</span>:</span></div><div class="line">             <span class="keyword">return</span> i*i</div><div class="line">        fs.append(f)</div><div class="line">    <span class="keyword">return</span> fs</div><div class="line"></div><div class="line">  f1, f2, f3 = count()</div><div class="line"></div><div class="line">  &gt;&gt;&gt; f1()</div><div class="line">  <span class="number">9</span></div><div class="line">  &gt;&gt;&gt; f2()</div><div class="line">  <span class="number">9</span></div><div class="line">  &gt;&gt;&gt; f3()</div><div class="line">  <span class="number">9</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>返回的函数引用了变量i，但它并非立刻执行。等到3个函数都返回时，它们所引用的变量i已经变成了3，因此最终结果为9</p>
+</li>
+<li>一定要引用循环变量怎么办？方法是再创建一个函数，用该函数的参数绑定循环变量当前的值，无论该循环变量后续如何更改，已绑定到函数参数的值不变</li>
+<li>示例:<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">()</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(j)</span>:</span></div><div class="line">      <span class="function"><span class="keyword">def</span> <span class="title">g</span><span class="params">()</span>:</span></div><div class="line">          <span class="keyword">return</span> j*j</div><div class="line">      <span class="keyword">return</span> g</div><div class="line">  fs = []</div><div class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">4</span>):</div><div class="line">      fs.append(f(i)) <span class="comment"># f(i)立刻被执行，因此i的当前值被传入f()</span></div><div class="line">  <span class="keyword">return</span> fs</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h3><ul>
+<li>不显式定义的函数. python中是 <code>lambda</code> 但与java不同.</li>
+<li>python中<code>lambda</code>限制，只能有一个表达式，不用写return，返回值就是该表达式的结果</li>
+<li>匿名函数不必担心函数名冲突。此外，匿名函数也是一个函数对象，也可以把匿名函数赋值给一个变量，再利用变量来调用该函数</li>
+<li>示例<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f = <span class="keyword">lambda</span> x: x * x</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h3><ul>
+<li>代码运行期间,动态增加功能方式称为装饰器(Decorator)</li>
+<li><p>示例</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span><span class="params">(func)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kw)</span>:</span></div><div class="line">      print(<span class="string">'call %s():'</span> % func.__name__)</div><div class="line">      <span class="keyword">return</span> func(*args, **kw)</div><div class="line">  <span class="keyword">return</span> wrapper</div><div class="line"></div><div class="line"><span class="meta">@log</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">now</span><span class="params">()</span>:</span></div><div class="line">  print(<span class="string">'2015-3-25'</span>)</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>now()</div><div class="line">call now():</div><div class="line"><span class="number">2015</span><span class="number">-3</span><span class="number">-25</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>如示例,装饰器 接受一个函数作为参数,并返回原函数.在原函数定义时,以 <code>@ xxx</code>作为标记.示例1 为2层,如果打印文本可以自定义.</p>
+</li>
+<li><p>示例</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span><span class="params">(text)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(func)</span>:</span></div><div class="line">      <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kw)</span>:</span></div><div class="line">          print(<span class="string">'%s %s():'</span> % (text, func.__name__))</div><div class="line">          <span class="keyword">return</span> func(*args, **kw)</div><div class="line">      <span class="keyword">return</span> wrapper</div><div class="line">  <span class="keyword">return</span> decorator</div><div class="line"></div><div class="line"><span class="meta">@log('execute')</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">now</span><span class="params">()</span>:</span></div><div class="line">  print(<span class="string">'2015-3-25'</span>)</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>now()</div><div class="line">execute now():</div><div class="line"><span class="number">2015</span><span class="number">-3</span><span class="number">-25</span></div></pre></td></tr></table></figure>
+<p>打印可自定义 又加上了一层.</p>
+</li>
+<li><p>如上两种定义后,函数对象的名称等发生了变化,so,终极版</p>
+</li>
+<li>Python内置的functools.wraps 会将原始函数的<code>__name__</code>等属性复制到wrapper()函数中.</li>
+<li>示例<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> functools</div><div class="line"><span class="comment"># 不带参数</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span><span class="params">(func)</span>:</span></div><div class="line"><span class="meta">    @functools.wraps(func)</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kw)</span>:</span></div><div class="line">        print(<span class="string">'call %s():'</span> % func.__name__)</div><div class="line">        <span class="keyword">return</span> func(*args, **kw)</div><div class="line">    <span class="keyword">return</span> wrapper</div><div class="line"></div><div class="line"><span class="comment"># 带参数</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span><span class="params">(text)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(func)</span>:</span></div><div class="line"><span class="meta">        @functools.wraps(func)</span></div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kw)</span>:</span></div><div class="line">            print(<span class="string">'%s %s():'</span> % (text, func.__name__))</div><div class="line">            <span class="keyword">return</span> func(*args, **kw)</div><div class="line">        <span class="keyword">return</span> wrapper</div><div class="line">    <span class="keyword">return</span> decorator</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h3><ul>
+<li>functools.partial的作用是把一个函数的某些参数设置默认值，返回一个新的函数.</li>
+<li><p>示例:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> functools</div><div class="line">int2 = functools.partial(int, base=<span class="number">2</span>)</div><div class="line"></div><div class="line">int2(<span class="string">'1000000'</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>注意: 仅仅是把base参数重新设定默认值为2，<strong>但也可以在函数调用时传入其他值</strong></p>
+</li>
+<li>由于python 中函数也可以最为参数传入,so,参数固定成某一个函数也可.</li>
+<li><p>同理: <code>*args</code> 和 <code>**kw</code> 也可以.</p>
+</li>
+<li><p>简化函数调用.</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;函数式编程&quot;&gt;&lt;a href=&quot;#函数式编程&quot; class=&quot;headerlink&quot; title=&quot;函数式编程&quot;&gt;&lt;/a&gt;函数式编程&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;纯函数式编程没有变量,一个函数只要输出确定,输出就是确定的,称为没有副作用.使用变量的函数内部由于变量状
+    
+    </summary>
+    
+      <category term="python笔记" scheme="http://yoursite.com/categories/python%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python—高级特性</title>
+    <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/"/>
+    <id>http://yoursite.com/2018/01/19/python—高级特性/</id>
+    <published>2018-01-19T02:17:11.000Z</published>
+    <updated>2018-01-19T15:03:49.103Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="高级特性"><a href="#高级特性" class="headerlink" title="高级特性"></a>高级特性</h2><ul>
+<li>代码精炼</li>
+<li>python代码量越少,开发效率越高.<h3 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h3></li>
+<li>取list或tuple的部分元素</li>
+<li><p>示例</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">L[<span class="number">0</span>:<span class="number">3</span>] <span class="comment">#0到3,但结果不包括索引3</span></div><div class="line">L[:<span class="number">3</span>] <span class="comment">#0可省略</span></div></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">L[<span class="number">-2</span>:]  <span class="comment">#-2到0 但不包括索引0</span></div><div class="line">L[<span class="number">-2</span>:<span class="number">-1</span>] <span class="comment">#-2</span></div></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">L[:<span class="number">10</span>:<span class="number">2</span>] <span class="comment">#前10 每隔2个取一个</span></div><div class="line">L[::<span class="number">5</span>] <span class="comment">#所有,每隔5个取一个</span></div><div class="line">L[:] <span class="comment">#原样复制</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>对tuple取切片,结果依然是tuple.</p>
+</li>
+<li><strong>字符串可以看作一个list</strong>,每个字符占一位.</li>
+</ul>
+<h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><ul>
+<li>迭代很随便…太随便了…</li>
+<li>list tuple不多说了</li>
+<li><p>dict字典也可以迭代,因为无序,输出的顺序不一定相同.<br>默认迭代的是key 但value 也可以迭代,key value也可以同时迭代</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> value <span class="keyword">in</span> d.values()</div><div class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> d.items()</div></pre></td></tr></table></figure>
+</li>
+<li><p>上文书中说的,字符串可以当作list,所以也可以迭代.</p>
+</li>
+<li><p>问题来了,如何判断可迭代对象?<br><code>collections模块的Iterable类型判断</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(<span class="string">'abc'</span>, Iterable) <span class="comment"># str是否可迭代</span></div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>类似c/java的带下标循环实现?<br>Python内置的<code>enumerate函数</code>,把一个list变成索引-元素对</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i, value <span class="keyword">in</span> enumerate([<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>]):</div><div class="line">  print(i, value)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h3><ul>
+<li><code>用来生成list</code></li>
+<li><p>示例: [1x1, 2x2, 3x3, …, 10x10]</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">11</span>)] </div><div class="line">[m + n <span class="keyword">for</span> m <span class="keyword">in</span> <span class="string">'ABC'</span> <span class="keyword">for</span> n <span class="keyword">in</span> <span class="string">'XYZ'</span>] <span class="comment">#两层</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>for可以同时循环两个甚至多个变量,dict的items()可以同时迭代key和value</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">d = &#123;<span class="string">'x'</span>: <span class="string">'A'</span>, <span class="string">'y'</span>: <span class="string">'B'</span>, <span class="string">'z'</span>: <span class="string">'C'</span> &#125; <span class="comment"># 多个变量</span></div><div class="line">[k + <span class="string">'='</span> + v <span class="keyword">for</span> k, v <span class="keyword">in</span> d.items()] <span class="comment"># 生成list</span></div><div class="line">[s.lower() <span class="keyword">for</span> s <span class="keyword">in</span> L] <span class="comment"># 全部小写</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h3><ul>
+<li>generator 依照某种算法不断循环生成数据,而不是一次性生成完.节省大量空间.</li>
+<li><p>创建generator</p>
+<ul>
+<li><p>把列表生成式的[]改成()</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g = (x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>))</div></pre></td></tr></table></figure>
+<p>调用<code>next(g)</code>可获取下一个值.<br>最常用<code>for n in g:</code>代入for循环.也没有抛出错误.</p>
+</li>
+<li><p>定义一个包含<code>yield</code>关键字的函数.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(max)</span>:</span></div><div class="line">n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></div><div class="line"><span class="keyword">while</span> n &lt; max:</div><div class="line">    <span class="keyword">yield</span> b</div><div class="line">    a, b = b, a + b</div><div class="line">    n = n + <span class="number">1</span></div><div class="line"><span class="keyword">return</span> <span class="string">'done'</span></div></pre></td></tr></table></figure>
+<ul>
+<li>变成generator的函数，在每次调用next()的时候执行，遇到yield语句返回，再次执行时从上次返回的yield语句处继续执行。</li>
+<li>用for循环调用generator时，拿不到generator的return语句的返回值。如果想要拿到返回值，必须捕获StopIteration错误，返回值包含在StopIteration的value中.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><ul>
+<li><p>可以被for循环的对象统称为可迭代对象：<code>Iterable</code><br>使用isinstance()判断一个对象是否是Iterable对象</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isinstance(&#123;&#125;, Iterable)</div></pre></td></tr></table></figure>
+</li>
+<li><p>可以被next()函数调用并不断返回下一个值的对象称为迭代器：<code>Iterator</code> 表示一个惰性计算的序列 <code>Iterator</code>甚至可以表示一个无限大的数据流<br>isinstance()判断一个对象是否是Iterator对象</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isinstance((x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)), Iterator)</div></pre></td></tr></table></figure>
+</li>
+<li><p>集合数据类型如list、dict、str等是Iterable但不是Iterator，不过可以通过iter()函数获得一个Iterator对象。</p>
+</li>
+<li>Python的for循环本质上就是通过不断调用next()</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;高级特性&quot;&gt;&lt;a href=&quot;#高级特性&quot; class=&quot;headerlink&quot; title=&quot;高级特性&quot;&gt;&lt;/a&gt;高级特性&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;代码精炼&lt;/li&gt;
+&lt;li&gt;python代码量越少,开发效率越高.&lt;h3 id=&quot;切片&quot;&gt;&lt;a href=&quot;#切
+    
+    </summary>
+    
+      <category term="python笔记" scheme="http://yoursite.com/categories/python%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python—面向对象</title>
+    <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    <id>http://yoursite.com/2018/01/19/python—面向对象/</id>
+    <published>2018-01-19T02:17:11.000Z</published>
+    <updated>2018-01-19T15:00:27.450Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><ul>
+<li>类 方法 实例</li>
+<li>封装 继承 多态</li>
+</ul>
+<h3 id="类和实例"><a href="#类和实例" class="headerlink" title="类和实例"></a>类和实例</h3><ul>
+<li><p>示例</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, score)</span>:</span></div><div class="line">      self.name = name</div><div class="line">      self.score = score</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">print_score</span><span class="params">(self)</span>:</span></div><div class="line">      print(<span class="string">'%s: %s'</span> % (self.name, self.score))</div><div class="line"></div><div class="line">bart = Student(<span class="string">'Bart Simpson'</span>, <span class="number">59</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>定义类的关键词与java一样 <code>class</code> 括号内为继承的父类.没有父类时,选择 <code>object</code> 作为基类.(<code>object</code>是所有类的基类)</p>
+</li>
+<li><p>变量比较特殊,不像java中有单独字段.python 类中变量定义是在<code>__init__</code>方法</p>
+</li>
+<li><p>方法的声明和函数类似. <code>def 方法名 (参数)</code></p>
+<ul>
+<li>类中 第一个参数必须是<code>self</code>,意为创建的实例自身.方法中调用类中其他变量都要通过 <code>self.xxx</code> 访问.</li>
+</ul>
+</li>
+<li><p>一些必须实现的属性在<code>__init__</code>方法中定义.如示例.第一个参数是 <code>self</code> 之后是具体变量值,在方法内 使用self访问类中定义的变量.</p>
+</li>
+<li><p>Python允许对实例变量绑定任何数据,so just do it😈</p>
+</li>
+</ul>
+<h3 id="访问限制"><a href="#访问限制" class="headerlink" title="访问限制"></a>访问限制</h3><ul>
+<li>类似java private 字段的python实现</li>
+<li>属性的名称前加上两个下划线 <code>__</code> 该属性就成为了类的私有属性,只能在实例的内部访问.(<code>self.xxx</code>) </li>
+<li><p>获取/修改,使用 <code>get/set</code> 获取或修改对应属性.(一般在set中可以添加类型检查)</p>
+</li>
+<li><p>类似<code>__xxx__</code>的变量，双下划线开头，并且以双下划线结尾的，是特殊变量.特殊变量是可以直接访问的，不是private变量.也<strong>最好不要定义<code>__xxx__</code>变量名</strong></p>
+</li>
+<li><p>以下划线开头的实例变量名，例如<code>_name</code>.可以在外部访问的，但是，约定俗成,请直接忽视.</p>
+</li>
+<li><p>特例:</p>
+<ul>
+<li>双下划线开头的实例变量不能直接访问是因为Python解释器对外把<code>__name</code>变量改成了<code>_Student__name</code>.<strong>仍然可以通过<code>_Student__name</code>来访问<code>__name</code>变量</strong>.</li>
+<li><p>一个错误设置示例:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart = Student(<span class="string">'Bart Simpson'</span>, <span class="number">59</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart.get_name()</div><div class="line"><span class="string">'Bart Simpson'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart.__name = <span class="string">'New Name'</span> <span class="comment"># 设置__name变量！</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart.__name</div><div class="line"><span class="string">'New Name'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart.get_name() <span class="comment"># get_name()内部返回self.__name</span></div><div class="line"><span class="string">'Bart Simpson'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>如同示例,外部代码直接赋给 <code>bart.__name</code> 不会影响实例中原有属性,只会新增一个属性.究其原因,实例中的属性已经被解释器重命名为了<code>bart._Student__name</code>.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="继承和多态"><a href="#继承和多态" class="headerlink" title="继承和多态"></a>继承和多态</h3><ul>
+<li>继承和多态概念与java类似.不多语了.</li>
+<li>那么重点来了:</li>
+<li>python本身是动态语言,体现在变量/类等各个方面,自由度极高.在继承上,亦是如此.<ul>
+<li>java中定义一个su方法,调用model类实例实现的run方法.su方法可传入的只有 model类或其子类的实例</li>
+<li>但python中 只要是定义了 run方法(别管内容/功能一样不一样)类的实例,都可以作为参数传入 su 方法.</li>
+</ul>
+</li>
+<li>java中对类的类型的处理,相当于照猫🐱画虎🐯,传入的起码要是个猫科动物. python 中对类的类型处理,额头写个<code>王</code>字,哪怕传入具体对象是个猫头鹰🦉,也当作猫科处理了.</li>
+</ul>
+<hr>
+<ul>
+<li>note:<br>判断一个变量是否是某个类型可以用isinstance()<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(a, list)</div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h3 id="获取对象信息"><a href="#获取对象信息" class="headerlink" title="获取对象信息"></a>获取对象信息</h3><hr>
+<h2 id="让我想起了java反射-不过能获取的信息要全多了"><a href="#让我想起了java反射-不过能获取的信息要全多了" class="headerlink" title="* 让我想起了java反射..不过能获取的信息要全多了."></a>* 让我想起了java反射..不过能获取的信息要全多了.</h2><h4 id="type"><a href="#type" class="headerlink" title="type()"></a>type()</h4><ul>
+<li><p>示例:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; type(123)</div><div class="line">&lt;class 'int'&gt;</div><div class="line"></div><div class="line">&gt;&gt;&gt; type(a)</div><div class="line">&lt;class '__main__.Animal'&gt;</div><div class="line"></div><div class="line">&gt;&gt;&gt; type(123)==type(456)</div><div class="line">True</div></pre></td></tr></table></figure>
+</li>
+<li><p>判断对象类型</p>
+</li>
+<li>由变量指向函数或者类，也可以用type()判断</li>
+<li><p>type返回对应的Class类型,可直接 <code>== 类型</code>判断</p>
+</li>
+<li><p>判断一个对象是否是函数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import types</div><div class="line">&gt;&gt;&gt; def fn():</div><div class="line">...     pass</div><div class="line">...</div><div class="line">&gt;&gt;&gt; type(fn)==types.FunctionType</div><div class="line">True</div><div class="line">&gt;&gt;&gt; type(abs)==types.BuiltinFunctionType</div><div class="line">True</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="isinstance"><a href="#isinstance" class="headerlink" title="isinstance()"></a>isinstance()</h4><ul>
+<li><p>示例:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(h, Husky)</div><div class="line"><span class="keyword">True</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], (list, tuple))</div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>判断继承关系,一打一个准.</p>
+</li>
+<li>能用type()判断的基本类型也可以用isinstance()判断</li>
+<li>总是优先使用isinstance()判断类型，可以将指定类型及其子类“一网打尽”。</li>
+</ul>
+<h4 id="dir"><a href="#dir" class="headerlink" title="dir()"></a>dir()</h4><ul>
+<li><p>示例:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>dir(<span class="string">'ABC'</span>)</div><div class="line">[<span class="string">'__add__'</span>, <span class="string">'__class__'</span>,..., <span class="string">'__subclasshook__'</span>, <span class="string">'capitalize'</span>, <span class="string">'casefold'</span>,..., <span class="string">'zfill'</span>]</div></pre></td></tr></table></figure>
+</li>
+<li><p>获得一个对象的所有属性和方法.直接返回一个字符串list.</p>
+</li>
+<li><p>配合getattr()、setattr()以及hasattr()，可以直接操作一个对象的状态.</p>
+</li>
+<li><p>示例:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>hasattr(obj, <span class="string">'x'</span>) <span class="comment"># 有属性'x'吗？</span></div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>obj.x</div><div class="line"><span class="number">9</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>hasattr(obj, <span class="string">'y'</span>) <span class="comment"># 有属性'y'吗？</span></div><div class="line"><span class="keyword">False</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>setattr(obj, <span class="string">'y'</span>, <span class="number">19</span>) <span class="comment"># 设置一个属性'y'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>hasattr(obj, <span class="string">'y'</span>) <span class="comment"># 有属性'y'吗？</span></div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>getattr(obj, <span class="string">'y'</span>) <span class="comment"># 获取属性'y'</span></div><div class="line"><span class="number">19</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>obj.y <span class="comment"># 获取属性'y'</span></div><div class="line"><span class="number">19</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>不存在的属性，会抛出AttributeError的错误,可以传入一个default参数，如果属性不存在，就返回默认值.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>getattr(obj, <span class="string">'z'</span>, <span class="number">404</span>) <span class="comment"># 获取属性'z'，如果不存在，返回默认值404</span></div><div class="line"><span class="number">404</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>也可以获得对象的方法</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>hasattr(obj, <span class="string">'power'</span>) <span class="comment"># 有属性'power'吗？</span></div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>getattr(obj, <span class="string">'power'</span>) <span class="comment"># 获取属性'power'</span></div><div class="line">&lt;bound method MyObject.power of &lt;__main__.MyObject object at <span class="number">0x10077a6a0</span>&gt;&gt;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>fn = getattr(obj, <span class="string">'power'</span>) <span class="comment"># 获取属性'power'并赋值到变量fn</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>fn <span class="comment"># fn指向obj.power</span></div><div class="line">&lt;bound method MyObject.power of &lt;__main__.MyObject object at <span class="number">0x10077a6a0</span>&gt;&gt;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>fn() <span class="comment"># 调用fn()与调用obj.power()是一样的</span></div><div class="line"><span class="number">81</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>只有在不知道对象信息的时候，才会去获取对象信息.谨记,谨记.</p>
+</li>
+</ul>
+<h3 id="实例属性和类属性"><a href="#实例属性和类属性" class="headerlink" title="实例属性和类属性"></a>实例属性和类属性</h3><ul>
+<li>类似java类中静态变量 与 普通变量区别.</li>
+<li><p>类的属性,直接在类的cclass中声明.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></div><div class="line">  name = <span class="string">'Student'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>访问时,类的属性会被实例的同名属性覆盖,但不会被修改,互相独立.</p>
+</li>
+<li>删除实例属性后，再使用相同的名称，访问到的将是类属性</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;面向对象&quot;&gt;&lt;a href=&quot;#面向对象&quot; class=&quot;headerlink&quot; title=&quot;面向对象&quot;&gt;&lt;/a&gt;面向对象&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;类 方法 实例&lt;/li&gt;
+&lt;li&gt;封装 继承 多态&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;类和实例&quot;&gt;&lt;a hr
+    
+    </summary>
+    
+      <category term="python笔记" scheme="http://yoursite.com/categories/python%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python—基础</title>
+    <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E5%9F%BA%E7%A1%80/"/>
+    <id>http://yoursite.com/2018/01/19/python—基础/</id>
+    <published>2018-01-19T02:17:11.000Z</published>
+    <updated>2018-01-19T14:54:56.297Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
+<li>整数 浮点数 <h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3></li>
+<li>字符串以单引号 ‘ 或 “ 包括. </li>
+<li>转义字符 \ 依然有效. r’’表示此字符串默认不转移.</li>
+<li>/n有效, 可用 开头 … 替换<h3 id="布尔"><a href="#布尔" class="headerlink" title="布尔"></a>布尔</h3></li>
+<li>只有True 和 Flase </li>
+<li>and or not 3种常用操作</li>
+</ul>
+<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><ul>
+<li>通常都为大写表示.</li>
+<li>除法有两种 / 或 //<br>/ 结果可能为浮点, // 结果为整数(地板除)</li>
+</ul>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li>None 空值,不为0.谨记</li>
+<li>动态语言,so,变量的类型无所谓.</li>
+<li>浮点数精度无限,但超过限制直接表示为 <code>inf</code></li>
+</ul>
+<h2 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h2><ul>
+<li>简而言之 文件使用utf-8就对了.</li>
+<li>utf-8 属于万国码的简化,低位与 ASCII 兼容.</li>
+</ul>
+<h3 id="python字符串编码"><a href="#python字符串编码" class="headerlink" title="python字符串编码"></a>python字符串编码</h3><ul>
+<li>py3中默认是 Unicode 万国码.</li>
+<li>ord()获取字符的整数表示，chr()把编码转换为字符.</li>
+<li>Python对bytes类型的数据用带b前缀的单引号或双引号表示 <code>x = b&#39;ABC&#39;</code></li>
+<li><p>以Unicode表示的str通过encode()方法可以编码为指定的bytes</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">'ABC'</span>.encode(<span class="string">'ascii'</span>)</div><div class="line"><span class="string">b'ABC'</span></div><div class="line"><span class="string">'中文'</span>.encode(<span class="string">'utf-8'</span>)</div><div class="line"><span class="string">b'\xe4\xb8\xad\xe6\x96\x87'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>对应的decode()方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'ABC'</span>.decode(<span class="string">'ascii'</span>)</div><div class="line"><span class="string">'ABC'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'\xe4\xb8\xad\xe6\x96\x87'</span>.decode(<span class="string">'utf-8'</span>)</div><div class="line"><span class="string">'中文'</span></div></pre></td></tr></table></figure>
+<p>可以传入errors=’ignore’忽略错误的字节</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">b'\xe4\xb8\xad\xff'</span>.decode(<span class="string">'utf-8'</span>, errors=<span class="string">'ignore'</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>len(),str计算字符.bytes计算字节</p>
+</li>
+<li>开头,第一行,可执行文件(windows会忽视注释)<br>第二行,以utf-8处理文件.<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="字符串格式化"><a href="#字符串格式化" class="headerlink" title="字符串格式化"></a>字符串格式化</h3><ul>
+<li><p>占位符与c基本相同 %d %s %x %f</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">'%2d-%02d'</span> % (<span class="number">3</span>, <span class="number">1</span>))</div><div class="line">print(<span class="string">'%.2f'</span> % <span class="number">3.1415926</span>)</div></pre></td></tr></table></figure>
+<p>需要 % 时, %%</p>
+</li>
+<li><p>format()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'Hello, &#123;0&#125;, 成绩提升了 &#123;1:.1f&#125;%'</span>.format(<span class="string">'小明'</span>, <span class="number">17.125</span>)</div><div class="line"><span class="string">'Hello, 小明, 成绩提升了 17.1%'</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="list-tuple"><a href="#list-tuple" class="headerlink" title="list tuple"></a>list tuple</h2><h3 id="list-列表"><a href="#list-列表" class="headerlink" title="list 列表"></a>list 列表</h3><ul>
+<li><p>示例, <code>= [ , , ]</code> 可变 有序</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">classmates = [<span class="string">'Michael'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>]</div></pre></td></tr></table></figure>
+</li>
+<li><p>索引以 0 开始,可以倒序 <code>-n</code> 当然越界都是 <code>IndexError</code> 错误</p>
+</li>
+<li>.len(),list元素个数.</li>
+<li>.append(x) 末尾添加</li>
+<li>.insert(i,x) 对应索引处插入</li>
+<li>.pop(i) 删除i对应元素,为空则删除末尾元素.</li>
+<li>替换i位置,直接赋值.</li>
+<li>list的元素可以为一个list.多重数组.</li>
+</ul>
+<h3 id="tuple-元组"><a href="#tuple-元组" class="headerlink" title="tuple 元组"></a>tuple 元组</h3><ul>
+<li><p>示例<code>= ( , , )</code> 不可变 有序 更安全,其他与list相同</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">t = (<span class="number">1</span>, <span class="number">2</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>t = (1,)</code>声明一个元素元组,比较特殊.</p>
+</li>
+</ul>
+<h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2><ul>
+<li><p>示例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> true :</div><div class="line">    print(<span class="string">"1"</span>)</div><div class="line"><span class="keyword">elif</span> true :</div><div class="line">    print(<span class="string">"2"</span>)</div><div class="line"><span class="keyword">else</span> :</div><div class="line">    print(<span class="string">"3"</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>if 条件可简写,<code>if x</code> x非零数值、非空字符串、非空list 则为true</p>
+</li>
+<li>提及用户输入 input()</li>
+<li>input默认返回字符串,如需要其他类型 int()转换.</li>
+</ul>
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><ul>
+<li><p>示例 与c相同</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> x <span class="keyword">in</span> names:</div><div class="line">    print(x)</div></pre></td></tr></table></figure>
+</li>
+<li><p>示例 与c相同</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> n &gt; <span class="number">0</span>:</div><div class="line">    print(n)</div></pre></td></tr></table></figure>
+</li>
+<li><p>break 跳出此层循环</p>
+</li>
+<li>continue 跳出本轮循环</li>
+</ul>
+<h2 id="dict-和-set"><a href="#dict-和-set" class="headerlink" title="dict 和 set"></a>dict 和 set</h2><h3 id="dict"><a href="#dict" class="headerlink" title="dict"></a>dict</h3><ul>
+<li>字典,使用键值对储存数据,索引极快,空间换时间.</li>
+<li>对应其他语言的 map </li>
+<li><p>示例: {‘’: ,’’: ,…}</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">d = &#123;<span class="string">'Michael'</span>: <span class="number">95</span>, <span class="string">'Bob'</span>: <span class="number">75</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</div><div class="line">d[<span class="string">'Michael'</span>]</div><div class="line"><span class="number">95</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>key</p>
+<ul>
+<li>必须为不可变对象,整数、字符串等</li>
+<li>一个key对应一个value</li>
+<li><p>key不存在</p>
+<ul>
+<li><p>in判断</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'Thomas'</span> <span class="keyword">in</span> d</div><div class="line"><span class="keyword">False</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>get()获取</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">d.get(<span class="string">'Thomas'</span>) <span class="comment"># 返回空</span></div><div class="line">d.get(<span class="string">'Thomas'</span>, <span class="number">-1</span>) <span class="comment"># 不存在? 返回-1: ;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>pop()删除</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">d.pop(<span class="string">'Bob'</span>)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><ul>
+<li>key的集合,但不存在value</li>
+<li>无序、不重复、元素为不可变对象</li>
+<li>创建set需要一个list</li>
+<li><p>示例 set([ , , …])</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s</div><div class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>.add(key)</code>/<code>.remove(key)</code></p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;数据类型&quot;&gt;&lt;a href=&quot;#数据类型&quot; class=&quot;headerlink&quot; title=&quot;数据类型&quot;&gt;&lt;/a&gt;数据类型&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;整数 浮点数 &lt;h3 id=&quot;字符串&quot;&gt;&lt;a href=&quot;#字符串&quot; class=&quot;headerlink&quot; ti
+    
+    </summary>
+    
+      <category term="python笔记" scheme="http://yoursite.com/categories/python%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python—模块</title>
+    <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E6%A8%A1%E5%9D%97/"/>
+    <id>http://yoursite.com/2018/01/19/python—模块/</id>
+    <published>2018-01-19T02:17:11.000Z</published>
+    <updated>2018-01-19T15:01:52.734Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><ul>
+<li>模块是一组Python代码的集合，可以使用其他模块，也可以被其他模块使用。</li>
+<li><p>涉及到概念 包(Package) 和 模块(Module)</p>
+</li>
+<li><p>创建自己的模块时，要注意：</p>
+<ul>
+<li>模块名要遵循Python变量命名规范，不要使用中文、特殊字符；</li>
+<li>模块名不要和系统模块名冲突，最好先查看系统是否已存在该模块，检查方法是在Python交互环境执行import abc，若成功则说明系统存在此模块。</li>
+</ul>
+</li>
+</ul>
+<h3 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h3><ul>
+<li><p>示例</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">' a test module '</span></div><div class="line"></div><div class="line">__author__ = <span class="string">'Michael Liao'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> sys</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></div><div class="line">    args = sys.argv</div><div class="line">    <span class="keyword">if</span> len(args)==<span class="number">1</span>:</div><div class="line">        print(<span class="string">'Hello, world!'</span>)</div><div class="line">    <span class="keyword">elif</span> len(args)==<span class="number">2</span>:</div><div class="line">        print(<span class="string">'Hello, %s!'</span> % args[<span class="number">1</span>])</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        print(<span class="string">'Too many arguments!'</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</div><div class="line">    test()</div></pre></td></tr></table></figure>
+</li>
+<li><p>注释:</p>
+<ul>
+<li>第1行注释可以让这个hello.py文件直接在Unix/Linux/Mac上运行</li>
+<li>第2行注释表示.py文件本身使用标准UTF-8编码；</li>
+<li>第4行是一个字符串，表示模块的文档注释，任何模块代码的第一个字符串都被视为模块的文档注释</li>
+<li>第6行使用<strong>author</strong>变量把作者写进去</li>
+</ul>
+</li>
+<li><p>重点<code>if __name__==&#39;__main__&#39;:</code></p>
+</li>
+<li>Python解释器把一个特殊变量<strong>name</strong>置为<strong>main</strong>，而如果在其他地方导入该hello模块时，if判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试.</li>
+</ul>
+<h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><ul>
+<li>Python中，是通过<code>_</code>前缀 标记 private </li>
+<li>note: <strong>python中语法没有限制 <code>_</code>开头的变量/函数!</strong></li>
+</ul>
+<h3 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h3><ul>
+<li><p><code>pip</code>命令 </p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install xxx</div></pre></td></tr></table></figure>
+</li>
+<li><p>或者在文件中自定义路径.</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;模块&quot;&gt;&lt;a href=&quot;#模块&quot; class=&quot;headerlink&quot; title=&quot;模块&quot;&gt;&lt;/a&gt;模块&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;模块是一组Python代码的集合，可以使用其他模块，也可以被其他模块使用。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;涉及到概念 包(Packag
+    
+    </summary>
+    
+      <category term="python笔记" scheme="http://yoursite.com/categories/python%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux笔记—Linux文件夹操作</title>
+    <link href="http://yoursite.com/2018/01/18/linux%E7%AC%94%E8%AE%B0%E2%80%94Linux%E6%96%87%E4%BB%B6%E5%A4%B9%E6%93%8D%E4%BD%9C/"/>
+    <id>http://yoursite.com/2018/01/18/linux笔记—Linux文件夹操作/</id>
+    <published>2018-01-18T02:17:11.000Z</published>
+    <updated>2018-01-19T15:06:47.054Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="linux下文件夹相关操作"><a href="#linux下文件夹相关操作" class="headerlink" title="linux下文件夹相关操作"></a>linux下文件夹相关操作</h2><ul>
+<li>参考<blockquote>
+<p><a href="http://blog.csdn.net/u011118014/article/details/43232693" target="_blank" rel="external">http://blog.csdn.net/u011118014/article/details/43232693</a></p>
+<h2 id="打开文件夹-遍历访问每个文件"><a href="#打开文件夹-遍历访问每个文件" class="headerlink" title="打开文件夹,遍历访问每个文件"></a>打开文件夹,遍历访问每个文件</h2><h3 id="切换到文件夹路径下"><a href="#切换到文件夹路径下" class="headerlink" title="切换到文件夹路径下"></a>切换到文件夹路径下</h3></blockquote>
+</li>
+<li>调用 chdir 即可<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chdir(&quot;/info&quot;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="打开文件夹"><a href="#打开文件夹" class="headerlink" title="打开文件夹"></a>打开文件夹</h3><ul>
+<li><p>源码,打开文件夹返回对应文件夹的DIR结构体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">DIR *dir;	</div><div class="line">dir = opendir(pcDirName);</div><div class="line">if (NULL == dir)&#123;</div><div class="line">  continue ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>DIR结构体 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">struct __dirstream</div><div class="line"> &#123;</div><div class="line">  void *__fd;</div><div class="line">  char *__data;</div><div class="line">  int __entry_data;</div><div class="line">  char *__ptr;</div><div class="line">  int __entry_ptr;</div><div class="line">  size_t __allocation;</div><div class="line">  size_t __size;</div><div class="line">  __libc_lock_define (, __lock)</div><div class="line"> &#125;;</div><div class="line">typedef struct __dirstream DIR;</div></pre></td></tr></table></figure>
+<p>保存文件夹相关内容,无需深究</p>
+</li>
+<li><p>源码,遍历文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">struct direct    *ent;</div><div class="line">while (NULL != (ent = readdir(dir)))&#123;</div><div class="line">  /*如果 指向 . ..*/</div><div class="line">  if (0 == strcmp(ent-&gt;d_name, &quot;.&quot;) \</div><div class="line">    || 0 == strcmp(ent-&gt;d_name, &quot;..&quot;) \</div><div class="line">    || 4 == ent-&gt;d_type)&#123;</div><div class="line">      continue;</div><div class="line">  &#125;    </div><div class="line">  /*遍历*/</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>dirent结构体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">struct dirent</div><div class="line">&#123;</div><div class="line">  long d_ino; /* inode number 索引节点号 */</div><div class="line">  off_t d_off; /* offset to this dirent 在目录文件中的偏移 */</div><div class="line">  unsigned short d_reclen; /* length of this d_name 文件名长 */</div><div class="line">  unsigned char d_type; /* the type of d_name 文件类型 */</div><div class="line">  char d_name [NAME_MAX+1]; /* file name (null-terminated) 文件名，最长255字符 */</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>dirent指向目录和目录中某个具体文件,但还是桥梁作用,访问文件具体内容还需要通过d_name找到stat结构体支援.</p>
+</li>
+<li><p>源码,获取stat结构体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">stat  f_stat;</div><div class="line">sdwRet = stat(ent-&gt;d_name, &amp;f_stat);</div></pre></td></tr></table></figure>
+</li>
+<li><p>stat结构体是指向文件的结构体 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">struct stat &#123;</div><div class="line">  mode_t     st_mode;       //文件访问权限</div><div class="line">  ino_t      st_ino;       //索引节点号</div><div class="line">  dev_t      st_dev;        //文件使用的设备号</div><div class="line">  dev_t      st_rdev;       //设备文件的设备号</div><div class="line">  nlink_t    st_nlink;      //文件的硬连接数</div><div class="line">  uid_t      st_uid;        //所有者用户识别号</div><div class="line">  gid_t      st_gid;        //组识别号</div><div class="line">  off_t      st_size;       //以字节为单位的文件容量</div><div class="line">  time_t     st_atime;      //最后一次访问该文件的时间</div><div class="line">  time_t     st_mtime;      //最后一次修改该文件的时间</div><div class="line">  time_t     st_ctime;      //最后一次改变该文件状态的时间</div><div class="line">  blksize_t st_blksize;    //包含该文件的磁盘块的大小</div><div class="line">  blkcnt_t   st_blocks;     //该文件所占的磁盘块</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>之后愉快访问吧</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;linux下文件夹相关操作&quot;&gt;&lt;a href=&quot;#linux下文件夹相关操作&quot; class=&quot;headerlink&quot; title=&quot;linux下文件夹相关操作&quot;&gt;&lt;/a&gt;linux下文件夹相关操作&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;参考&lt;blockquote&gt;
+&lt;p&gt;&lt;a
+    
+    </summary>
+    
+      <category term="linux笔记" scheme="http://yoursite.com/categories/linux%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
   </entry>
   
@@ -120,9 +764,9 @@
       <category term="Android随手记" scheme="http://yoursite.com/categories/Android%E9%9A%8F%E6%89%8B%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -171,9 +815,9 @@
       <category term="Android随手记" scheme="http://yoursite.com/categories/Android%E9%9A%8F%E6%89%8B%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -384,9 +1028,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -447,9 +1091,9 @@
       <category term="Android随手记" scheme="http://yoursite.com/categories/Android%E9%9A%8F%E6%89%8B%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -594,7 +1238,7 @@
 <hr>
 <h2 id="看门狗定时器驱动内核API"><a href="#看门狗定时器驱动内核API" class="headerlink" title="看门狗定时器驱动内核API"></a>看门狗定时器驱动内核API</h2><ul>
 <li>最后更新时间 2013.2.12</li>
-<li>Wim Van Sebroeck <a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#x3a;&#119;&#105;&#109;&#64;&#x69;&#103;&#x75;&#x61;&#110;&#x61;&#46;&#x62;&#101;">&#119;&#105;&#109;&#64;&#x69;&#103;&#x75;&#x61;&#110;&#x61;&#46;&#x62;&#101;</a></li>
+<li>Wim Van Sebroeck <a href="&#109;&#x61;&#105;&#108;&#x74;&#x6f;&#58;&#119;&#x69;&#109;&#x40;&#105;&#x67;&#x75;&#x61;&#110;&#x61;&#46;&#98;&#x65;">&#119;&#x69;&#109;&#x40;&#105;&#x67;&#x75;&#x61;&#110;&#x61;&#46;&#98;&#x65;</a></li>
 </ul>
 <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul>
 <li>本文档没有描述看门狗设备或驱动。也不涉及那些在用户空间调用的API，对应在 Documentation/watchdog/watchdog-api.txt （也就是<a href="">上一篇</a>）</li>
@@ -771,8 +1415,8 @@
 </li>
 <li><p>linux看门狗设备API</p>
 </li>
-<li>Copyright 2002 Christer Weingel <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#111;&#x3a;&#x77;&#105;&#x6e;&#x67;&#101;&#108;&#x40;&#x6e;&#97;&#x6e;&#x6f;&#45;&#x73;&#x79;&#115;&#x74;&#101;&#x6d;&#x2e;&#99;&#x6f;&#x6d;">&#x77;&#105;&#x6e;&#x67;&#101;&#108;&#x40;&#x6e;&#97;&#x6e;&#x6f;&#45;&#x73;&#x79;&#115;&#x74;&#101;&#x6d;&#x2e;&#99;&#x6f;&#x6d;</a></li>
-<li><p>本文档的一些内容来自 sbc60xxwdt ，版权属于 Copyright 2000 Jakob Oestergaard <a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#111;&#58;&#x6a;&#97;&#107;&#111;&#x62;&#x40;&#111;&#x73;&#x74;&#x65;&#110;&#102;&#101;&#x6c;&#x64;&#46;&#x64;&#x6b;">&#x6a;&#97;&#107;&#111;&#x62;&#x40;&#111;&#x73;&#x74;&#x65;&#110;&#102;&#101;&#x6c;&#x64;&#46;&#x64;&#x6b;</a></p>
+<li>Copyright 2002 Christer Weingel <a href="&#109;&#97;&#105;&#108;&#x74;&#x6f;&#58;&#119;&#x69;&#110;&#103;&#101;&#108;&#x40;&#x6e;&#x61;&#x6e;&#x6f;&#45;&#115;&#x79;&#x73;&#x74;&#101;&#x6d;&#46;&#x63;&#x6f;&#x6d;">&#119;&#x69;&#110;&#103;&#101;&#108;&#x40;&#x6e;&#x61;&#x6e;&#x6f;&#45;&#115;&#x79;&#x73;&#x74;&#101;&#x6d;&#46;&#x63;&#x6f;&#x6d;</a></li>
+<li><p>本文档的一些内容来自 sbc60xxwdt ，版权属于 Copyright 2000 Jakob Oestergaard <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#x6a;&#x61;&#107;&#x6f;&#98;&#x40;&#x6f;&#x73;&#116;&#101;&#110;&#102;&#101;&#108;&#x64;&#x2e;&#100;&#x6b;">&#x6a;&#x61;&#107;&#x6f;&#98;&#x40;&#x6f;&#x73;&#116;&#101;&#110;&#102;&#101;&#108;&#x64;&#x2e;&#100;&#x6b;</a></p>
 </li>
 <li><p>本文档基于linux内核 2.4.18</p>
 </li>
@@ -1435,9 +2079,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1559,9 +2203,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1704,743 +2348,15 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
       <category term="毕设" scheme="http://yoursite.com/tags/%E6%AF%95%E8%AE%BE/"/>
     
       <category term="BlueTooth" scheme="http://yoursite.com/tags/BlueTooth/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>科学上网教程（三）——VPS安全加固</title>
-    <link href="http://yoursite.com/2017/04/08/VPS%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B3/"/>
-    <id>http://yoursite.com/2017/04/08/VPS科学上网教程3/</id>
-    <published>2017-04-08T09:52:16.000Z</published>
-    <updated>2017-10-30T15:15:01.464Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">更新</div><div class="line"><span class="number">2017.04</span>.<span class="number">08</span>  VPS日常一些安全措施</div><div class="line"><span class="number">2017.08</span>.<span class="number">22</span>  更新安全措施，读者反馈，没有debian的，这里加上。</div><div class="line"><span class="number">2017.10</span>.<span class="number">30</span>  纠正错误,排版.</div></pre></td></tr></table></figure>
-<hr>
-<ul>
-<li><p>导语<br>科学上网教程系列，很久没有更新新内容了。更新常用安全措施，至少保证，不会被轻易的当作肉鸡。都是一些常用的安全措施。</p>
-</li>
-<li><p>系统环境：CentOS/debian 7</p>
-</li>
-</ul>
-<hr>
-<h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h2><ul>
-<li>有两种方案<ul>
-<li>彻底关闭SSH登陆，改为密钥登陆，安全性最高，但配置较为复杂</li>
-<li>修改SSH登陆端口，同时开放默认端口，将爆破 ssh 密码的 IP 封停<h3 id="密钥登陆"><a href="#密钥登陆" class="headerlink" title="密钥登陆"></a>密钥登陆</h3></li>
-</ul>
-</li>
-<li>主要步骤在这里,有时间再更新<blockquote>
-<p><a href="https://ttt.tt/104/" target="_blank" rel="external">https://ttt.tt/104/</a></p>
-</blockquote>
-</li>
-</ul>
-<h3 id="修改端口"><a href="#修改端口" class="headerlink" title="修改端口"></a>修改端口</h3><ul>
-<li><p>CentOS 命令 如下，以下是将 SSH 端口改为 999 端口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed -i &apos;s/#Port 22/Port 999/g&apos; /etc/ssh/sshd_config</div></pre></td></tr></table></figure>
-<ul>
-<li><p>debian需要打开/etc/ssh/sshd<em>config </em>文件，修改其中的port后面的数字,</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano /etc/ssh/sshd_config</div></pre></td></tr></table></figure>
-<p>修改其中的port后面的数字，为你要ssh登陆的端口，cltrl + x保存，回车退出。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="fail2ban"><a href="#fail2ban" class="headerlink" title="fail2ban"></a>fail2ban</h2><ul>
-<li><p>fail2ban 是 Linux 上的一个著名的入侵保护的开源框架，它会监控多个系统的日志文件，并根据检测到的任何可疑的行为自动触发不同的防御动作。将尝试爆破 ssh 密码的 IP 封停，默认10分钟。</p>
-</li>
-<li><p>详细配置安装方法在如下网址，这里使用默认配置即可。</p>
-<blockquote>
-<p><a href="https://linux.cn/article-5067-1.html" target="_blank" rel="external">https://linux.cn/article-5067-1.html</a></p>
-</blockquote>
-</li>
-<li><p>安装 fail2ban<br>CentOS 需要提前 <a href="https://linux.cn/article-2324-1.html" target="_blank" rel="external"> 设置 EPEL 仓库 </a><br>以 root 用户登陆，非 root 用户需要 命令前 增加 sudo</p>
-<p>安装命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//CentOS</div><div class="line">yum install fail2ban</div><div class="line">//Debian / ubuntu</div><div class="line">apt-get install fail2ban</div></pre></td></tr></table></figure>
-</li>
-<li><p>其他命令</p>
-<ul>
-<li><p>重启</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service fail2ban restart</div></pre></td></tr></table></figure>
-</li>
-<li><p>验证状态</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fail2ban-client ping</div></pre></td></tr></table></figure>
-<p>返回</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Server replied: pong</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>设置开机自启动（debian不用前面验证完成，已加入开机启动）</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// CentOS/RHEL 6</div><div class="line">chkconfig fail2ban on</div><div class="line">// CentOS/RHEL 7</div><div class="line">systemctl enable fail2ban</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="禁用Linux多余端口"><a href="#禁用Linux多余端口" class="headerlink" title="禁用Linux多余端口"></a>禁用Linux多余端口</h2><ul>
-<li>关闭多余端口是永远正确的选择！只留下常用端口 和 SSR端口</li>
-<li><p>配置  iptables <strong>警告 iptables 配置不是一般的复杂，谨慎操作</strong></p>
-</li>
-<li><p>清空默认规则</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -F</div></pre></td></tr></table></figure>
-</li>
-<li><p>允许22端口，给暴力破解留点空间 //doge</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p tcp --dport 22 -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT</div></pre></td></tr></table></figure>
-</li>
-<li><p>允许53端口 udp ，一般用做DNS服务器，如果你不需要则忽略此条</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">iptables -A OUTPUT -p udp --dport 53 -j ACCEPT</div><div class="line">iptables -A INPUT -p udp --sport 53 -j ACCEPT</div></pre></td></tr></table></figure>
-</li>
-<li><p>允许本机访问本机</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT</div><div class="line">iptables -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><p><strong>允许真正 SSH 端口</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p tcp -s 0/0 --dport 999 -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport 999 -m state --state ESTABLISHED -j ACCEPT</div></pre></td></tr></table></figure>
-</li>
-<li><p>允许 80 443 端口，http 和 https</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p tcp -s 0/0 --dport 80 -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport 80 -m state --state ESTABLISHED -j ACCEPT</div><div class="line">iptables -A INPUT -p tcp -s 0/0 --dport 443 -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport 443 -m state --state ESTABLISHED -j ACCEPT</div></pre></td></tr></table></figure>
-</li>
-<li><p>允许 SSR端口 以888 xxx 为例 你有几个端口，就添加几个</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p tcp -s 0/0 --dport 888 -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport 888 -m state --state ESTABLISHED -j ACCEPT</div><div class="line"></div><div class="line">iptables -A INPUT -p tcp -s 0/0 --dport xxx -j ACCEPT</div><div class="line">iptables -A OUTPUT -p tcp --sport xxx -m state --state ESTABLISHED -j ACCEPT</div></pre></td></tr></table></figure>
-</li>
-<li><p>CentOS 保存配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">iptables-save &gt; /etc/sysconfig/iptables</div><div class="line">``` </div><div class="line">重载 iptables</div></pre></td></tr></table></figure>
-<p>iptables -L</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">* debian 7 保存配置</div></pre></td></tr></table></figure>
-<p>iptables-save &gt; /etc/iptables-rules<br>ip6tables-save &gt; /etc/ip6tables-rules</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">随后修改/etc/network/interfaces文件，最后加入</div></pre></td></tr></table></figure>
-<p>pre-up iptables-restore &lt; /etc/iptables-rules<br>pre-up ip6tables-restore &lt; /etc/ip6tables-rules</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  重启执行`iptables -L`，看到配置已生效。</div><div class="line"></div><div class="line">## 安装 CSF 防火墙</div><div class="line">* 命令</div></pre></td></tr></table></figure>
-<p>rm -fv csf.tgz<br>wget <a href="http://download.configserver.com/csf.tgz" target="_blank" rel="external">http://download.configserver.com/csf.tgz</a><br>tar -xzf csf.tgz<br>cd csf<br>sh install.sh<br>//使用下边的命令来验证csf正确安装并已经运行<br>perl /usr/local/csf/bin/csftest.pl</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">## autoban 补丁（8.22）推荐</div><div class="line">* 来自ss原作者@clowwindy 的补丁，ban掉那些尝试破译ss密码的ip，在此对原作者表示敬意！</div><div class="line">* 原理是同一个ip出现3次以上尝试破译ss密码会被永久ban掉，ssr也可用</div><div class="line">* 测试只在debian 7上进行，需要python环境，但是通过秋水逸冰脚本安装ssr 已经安装好了python环境。</div><div class="line"></div><div class="line">* 以下内容参考</div><div class="line">  &gt;https://plus.google.com/104980438521301094845/posts/9zypCffhdZu</div><div class="line"></div><div class="line">---</div><div class="line"></div><div class="line">* 下载脚本</div></pre></td></tr></table></figure>
-<p>wget <a href="https://raw.githubusercontent.com/Jasper-1024/shadowsocksr/manyuser/utils/autoban.py" target="_blank" rel="external">https://raw.githubusercontent.com/Jasper-1024/shadowsocksr/manyuser/utils/autoban.py</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">* ssr运行</div></pre></td></tr></table></figure>
-<p>python autoban.py &lt; /var/log/shadowsocksr.log</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  查看哪些ip试图连接破解ssr密码。原版ss将log文件路径替换即可。</div><div class="line">  </div><div class="line">* 自动ban ip</div><div class="line">  编辑/etc/init.d/rc.local，加入</div></pre></td></tr></table></figure>
-<p>python /root/autoban.py &lt; /var/log/shadowsocksr.log</p>
-<p>nohup tail -F /var/log/shadowsocksr.log | python /root/autoban.py &gt;log 2&gt;log &amp;<br>```<br>保存退出即可。</p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;
-    
-    </summary>
-    
-      <category term="科学上网" scheme="http://yoursite.com/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
-    
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-      <category term="VPS" scheme="http://yoursite.com/tags/VPS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android笔记—仿绿色守护嗜睡模式通知</title>
-    <link href="http://yoursite.com/2017/03/07/Android%E7%AC%94%E8%AE%B0%E2%80%94%E4%BB%BF%E7%BB%BF%E8%89%B2%E5%AE%88%E6%8A%A4%E5%97%9C%E7%9D%A1%E6%A8%A1%E5%BC%8F%E9%80%9A%E7%9F%A5/"/>
-    <id>http://yoursite.com/2017/03/07/Android笔记—仿绿色守护嗜睡模式通知/</id>
-    <published>2017-03-07T04:00:00.000Z</published>
-    <updated>2017-03-15T01:51:24.740Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<p>资料来源如下</p>
-<ul>
-<li>第一行代码(第二版)</li>
-<li><a href="https://developer.android.com/training/notify-user/index.html" target="_blank" rel="external">Android  Training Notifying the User</a></li>
-<li><a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html#CreateNotification" target="_blank" rel="external">Android API 通知</a></li>
-<li><a href="https://www.oschina.net/question/234345_40111" target="_blank" rel="external">【Android】状态栏通知Notification、NotificationManager详解</a></li>
-</ul>
-<p>编程环境</p>
-<ul>
-<li>Android Studio 2.2.3 </li>
-</ul>
-<p>导语</p>
-<ul>
-<li>OneTapDoze遇到的第一个难题，顺带记录Android 通知相关内容</li>
-</ul>
-<hr>
-<h2 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h2><ul>
-<li><p>绿色守护进入doze模式后，会在通知栏创建一个计时通知 如下图<br><img src="http://cdn3.snapgram.co/imgs/2017/03/07/Screenshot_20170307-231118.png" alt="Screenshot_20170307-231118.png"></p>
-</li>
-<li><p>退出doze模式后，会指示进入doze和退出doze的时间段。<br><img src="http://cdn4.snapgram.co/images/2017/03/07/Screenshot_20170307-231132.png" alt="Screenshot_20170307-231132.png"></p>
-</li>
-<li><p>我们要仿照的样式就是这样，进入退出doze，对应创建通知的代码都在doze模式改变的Broadcast中。</p>
-</li>
-</ul>
-<h2 id="基础部分"><a href="#基础部分" class="headerlink" title="基础部分"></a>基础部分</h2><h3 id="创建通知"><a href="#创建通知" class="headerlink" title="创建通知"></a>创建通知</h3><ul>
-<li>行文前：<br>Android每次版本几乎都会有通知API的改动，不同版本之间通知兼容性很是问题，为此我们使用support_v7 库中的NotificationCompat.Builder代替Notification.Builder二者使用方式相同</li>
-</ul>
-<hr>
-<ul>
-<li><p>涉及到的两个类</p>
-<ul>
-<li>NotificationManager</li>
-<li>Notification (support库中对应NotificationCompat)</li>
-</ul>
-</li>
-<li><p>NotificationManager</p>
-<ul>
-<li>状态栏通知的管理类，负责发通知、清除通知等 </li>
-<li>NotificationManager 是一个系统Service，必须通过 getSystemService()方法来获取</li>
-</ul>
-</li>
-<li><p>Notification</p>
-<ul>
-<li>具体的状态栏通知对象，可以设置icon、文字、提示声音、振动等参数</li>
-<li>一个Builder对象至少包含三个方面<ul>
-<li>一个小图标，通过setSmallIcon()方法设置。</li>
-<li>通知标题，通过setContentTitle()方法设置。</li>
-<li>详细文本，通过setContentText()方法设置。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>简单示例</p>
-<ul>
-<li><p>创建通知构建器<br> 代码</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Notification notification = <span class="keyword">new</span> NotificationCompat.Builder(<span class="keyword">this</span>)</div><div class="line">           .setContentTitle(<span class="string">"这是通知标题"</span>)</div><div class="line">           .setContentText(<span class="string">"这是通知内容"</span>)</div><div class="line">           <span class="comment">//这里使用的是应用图标，一般没人这么干，就是为了方便</span></div><div class="line">           .setSmallIcon(R.mipmap.ic_launcher)</div><div class="line">           .build();</div></pre></td></tr></table></figure>
-<ul>
-<li><p>发布通知</p>
-<ul>
-<li>获得NotificationManager的实例</li>
-<li>使用notify()方法发布通知。在调用notify()方法  指定通知的ID，(ID用于通知更新)  加载Notification实例</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> mNotificationId = <span class="number">001</span>;</div><div class="line"></div><div class="line">NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);</div><div class="line">manager.notify(mNotificationId, notification);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>效果如下</p>
-<ul>
-<li>android 7.0 / 6.0 /4.0 通过</li>
-<li><img src="http://cdn1.snapgram.co/imgs/2017/02/02/ScreenShot_20170202173430.png" alt="ScreenShot_20170202173430.png"></li>
-</ul>
-</li>
-</ul>
-<h3 id="更新通知"><a href="#更新通知" class="headerlink" title="更新通知"></a>更新通知</h3><ul>
-<li><p>可以创建一个全新的NotificationCompat对象，也可以在原NotificationCompat对象基础上修改，最后只要 .notify 方法中对应同一个 mNotificationId ，系统就会自动更新已有通知，代码不在累赘。</p>
-</li>
-<li><p>基础部分到此，足矣</p>
-</li>
-</ul>
-<h2 id="正题"><a href="#正题" class="headerlink" title="正题"></a>正题</h2><ul>
-<li>实现时间段的显示，肯定会保存系统进入doze 退出doze对应的时间点。再计算出中间经历的时间。</li>
-</ul>
-<h3 id="提取系统时间"><a href="#提取系统时间" class="headerlink" title="提取系统时间"></a>提取系统时间</h3><ul>
-<li><p>java.util.Date<br>这里用到了java中的 时间类型 java.util.Date<br>java.util.Date 是java中常用时间类型，可以被SimpleDateFormat格式化format() 指定输出的时间格式<br>比如我们需要 小时：分：秒<br><code>SimpleDateFormat scanf = new SimpleDateFormat(&quot;HH:mm:ss&quot;);</code><br><code>scanf.format(java.util.Date)</code> 即可。</p>
-</li>
-<li><p>提前当前系统时间</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">java.util.Date time_after = <span class="keyword">null</span>;</div><div class="line">time_after = <span class="keyword">new</span> java.util.Date(System.currentTimeMillis());</div></pre></td></tr></table></figure>
-</li>
-<li><p>计算时间差<br>理论上是两个时间相减再格式化输出即可，可惜没成，原因还没找到。于是土办法：</p>
-<ul>
-<li>调用 .getTime() 方法，将 java.util.Date 转化为毫秒计时(long)</li>
-<li>取两者差值</li>
-<li>转化为 时间长短 字符串返回，</li>
-<li>代码如下<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"> size = (time_after.getTime() - time_befor.getTime());</div><div class="line"> string = scanf.format(time_befor) + <span class="string">"-"</span> + scanf.format(time_after) + <span class="string">"="</span>+ trform(size);</div><div class="line">      </div><div class="line"> <span class="function">String <span class="title">trform</span><span class="params">(<span class="keyword">long</span> size)</span> </span>&#123;</div><div class="line"> <span class="keyword">long</span> day, hour, min, secone;</div><div class="line"> </div><div class="line"> day = size / (<span class="number">1000</span> * <span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span>);          <span class="comment">//以天数为单位取整</span></div><div class="line"> hour = (size / (<span class="number">60</span> * <span class="number">60</span> * <span class="number">1000</span>) - day * <span class="number">24</span>);             <span class="comment">//以小时为单位取整</span></div><div class="line"> min = ((size / (<span class="number">60</span> * <span class="number">1000</span>)) - day * <span class="number">24</span> * <span class="number">60</span> - hour * <span class="number">60</span>);    <span class="comment">//以分钟为单位取整</span></div><div class="line"> secone = (size / <span class="number">1000</span> - day * <span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span> - hour * <span class="number">60</span> * <span class="number">60</span> - min * <span class="number">60</span>);</div><div class="line"></div><div class="line"><span class="keyword">if</span> (day != <span class="number">0</span>) &#123;</div><div class="line">   <span class="keyword">return</span> day + <span class="string">"d"</span> + hour + <span class="string">"h"</span> + min + <span class="string">"m"</span> + secone + <span class="string">"s"</span>;</div><div class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (hour != <span class="number">0</span>) &#123;</div><div class="line">         <span class="keyword">return</span> hour + <span class="string">"h"</span> + min + <span class="string">"m"</span> + secone + <span class="string">"s"</span>;</div><div class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (min != <span class="number">0</span>) &#123;</div><div class="line">         <span class="keyword">return</span> min + <span class="string">"m"</span> + secone + <span class="string">"s"</span>;</div><div class="line">     &#125; <span class="keyword">else</span> &#123;</div><div class="line">         <span class="keyword">return</span> secone + <span class="string">"s"</span>;</div><div class="line">     &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="通知扩展布局"><a href="#通知扩展布局" class="headerlink" title="通知扩展布局"></a>通知扩展布局</h3><ul>
-<li><p>在如下图片中，可以发现，通知在发出后，只默认显示最近一次的时间记录，其他时间记录可以在此条通知上下滑查看。明显与基础部分不同。<br><img src="http://cdn4.snapgram.co/images/2017/03/07/Screenshot_20170307-231132.png" alt="Screenshot_20170307-231132.png"></p>
-</li>
-<li><p>此处应用了 Builder.setStyle() 拓展布局，顾名思义，这是用于拓展通知显示范围</p>
-</li>
-</ul>
-<hr>
-<h4 id="使用扩展布局"><a href="#使用扩展布局" class="headerlink" title="使用扩展布局"></a>使用扩展布局</h4><ul>
-<li>使用拓展布局<ul>
-<li>构建一个 inboxStyle 对象</li>
-<li>.addLine方法  添加 String  inboxStyle 行</li>
-<li>使用 Builder.setStyle( inboxStyle )加载到通知</li>
-<li>等待通知发布即可。</li>
-</ul>
-</li>
-<li><p>简单例程如下 </p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建 inboxStyle</span></div><div class="line"> NotificationCompat.InboxStyle inboxStyle = <span class="keyword">new</span> NotificationCompat.InboxStyle();</div><div class="line"> <span class="comment">//添加 String 行 ，前提是 我已经创建了一个 String</span></div><div class="line"> inboxStyle.addLine(string);</div><div class="line"> <span class="comment">// 在notification 设置    inboxStyle 在一堆 build 里面</span></div><div class="line"> .setStyle(inboxStyle)</div></pre></td></tr></table></figure>
-</li>
-<li><p>清除原有内容，发布新的 inboxStyle 只需要 <code>inboxStyle = new NotificationCompat.InboxStyle();</code></p>
-</li>
-</ul>
-<h3 id="Doze模式改变广播"><a href="#Doze模式改变广播" class="headerlink" title="Doze模式改变广播"></a>Doze模式改变广播</h3><h2 id="对应-ACTION-DEVICE-IDLE-MODE-CHANGED"><a href="#对应-ACTION-DEVICE-IDLE-MODE-CHANGED" class="headerlink" title="* 对应 ACTION_DEVICE_IDLE_MODE_CHANGED"></a>* 对应 <code>ACTION_DEVICE_IDLE_MODE_CHANGED</code></h2><ul>
-<li>坑：只能动态注册，静态注册无效，具体代码中<code>powermanger.ACTION_DEVICE_IDLE_MODE_CHANGED</code> 需要实例化 PowerManger ，而 PowerManger 又是与 Activity绑定，所以只有应用保持后台存活时才会进入广播。</li>
-<li>例程如下<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//实例化 PowerManager</span></div><div class="line">PowerManager powermanger = (PowerManager) getApplicationContext().getSystemService(Context.POWER_SERVICE);</div><div class="line"><span class="comment">//动态注册广播</span></div><div class="line">intentFilter = <span class="keyword">new</span> IntentFilter();</div><div class="line">intentFilter.addAction(powermanger.ACTION_DEVICE_IDLE_MODE_CHANGED);</div><div class="line"><span class="comment">//idlemodechage 是 BroadcastReceiver </span></div><div class="line">idlemodechage = <span class="keyword">new</span> IdleModeChange();</div><div class="line">registerReceiver(idlemodechage, intentFilter);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;p&gt;资料来源如下&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;第一行代码(第二版)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.android.com/training/notify-user/index.html&quot; target=&quot;_blank&quot; rel=
-    
-    </summary>
-    
-      <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
-      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android笔记—ContentResolver</title>
-    <link href="http://yoursite.com/2017/01/19/Android%E7%AC%94%E8%AE%B0-ContentResolver/"/>
-    <id>http://yoursite.com/2017/01/19/Android笔记-ContentResolver/</id>
-    <published>2017-01-19T04:00:00.000Z</published>
-    <updated>2017-01-28T13:24:28.091Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<p>资料来源如下</p>
-<ul>
-<li>第一行代码(第二版)</li>
-<li><a href="http://www.jianshu.com/p/57798618bd90" target="_blank" rel="external">android6.0运行时权限详解</a></li>
-</ul>
-<p>编程环境</p>
-<ul>
-<li>Android Studio 2.2.3 </li>
-</ul>
-<p>导语</p>
-<ul>
-<li>内容提供器是安全的应用间共享数据途径，在正式进入之前需要了解一下 Android 自6.0以来权限的变化</li>
-</ul>
-<hr>
-<h2 id="Android-权限详解"><a href="#Android-权限详解" class="headerlink" title="Android 权限详解"></a>Android 权限详解</h2><hr>
-<p>资料来源：</p>
-<ul>
-<li><a href="http://www.jianshu.com/p/57798618bd90" target="_blank" rel="external">android6.0运行时权限详解</a></li>
-<li><a href="https://developer.android.com/guide/topics/security/permissions.html" target="_blank" rel="external">Develop-API Guides-系统权限</a></li>
-<li>第一行代码(第二版)</li>
-</ul>
-<hr>
-<h3 id="Android权限介绍"><a href="#Android权限介绍" class="headerlink" title="Android权限介绍"></a>Android权限介绍</h3><ul>
-<li><p>Android 是一个权限分隔的操作系统<br>每个应用系统标识（Linux 用户 ID 和组 ID）不同。系统各部分标识亦不相同。Linux 据此将不同的应用以及应用与系统分隔开来。<br>更详细的安全功能通过“权限”提供，权限 会限制特定进程可以执行的具体操作，并且根据 URI 权限授权临时访问特定的数据段</p>
-</li>
-<li><p>权限声明<br>最常见的权限声明在 AndroidManifest.xml 文件中一个或多个uses-permission 标记, </p>
-<ul>
-<li>例如 声明短信权限 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">  <span class="attr">package</span>=<span class="string">"com.android.app.myapp"</span> &gt;</div><div class="line">  <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.RECEIVE_SMS"</span> /&gt;</span></div><div class="line">  ...</div><div class="line">  <span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>android 6.0 权限机制<br>android 6.0之前 权限及在安装的时候，根据权限声明产生一个权限列表，用户只有在同意之后才能完成app的安装。<br>android 6.0 以后 引入了  运行时权限 功能，应用所需权限不再一次性在安装时申请，而是在运行时需要用到那种权限向用户申请，同时用户也可以随时取消该授权</p>
-</li>
-<li><p>权限分类</p>
-<ul>
-<li>Normal Permissions(普通权限)<br>不涉及用户隐私，不需要用户进行授权的，例如 手机震动、访问网络等</li>
-<li>Dangerous Permission(危险权限)<br>涉及到用户隐私的，需要用户进行授权，例如 读取sdcard、访问通讯录等<br><a href="https://developer.android.com/guide/topics/security/permissions.html" target="_blank" rel="external">危险权限组</a>如表1</li>
-</ul>
-</li>
-</ul>
-<h3 id="应用运行时申请权限（适用于-Android6-0-及以上版本）"><a href="#应用运行时申请权限（适用于-Android6-0-及以上版本）" class="headerlink" title="应用运行时申请权限（适用于 Android6.0 及以上版本）"></a>应用运行时申请权限（适用于 Android6.0 及以上版本）</h3><ul>
-<li>通过一个简单的实例来说明过程<h4 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h4></li>
-<li><p>拨打电话 CALL<em>PHONE  </em>权限为例 </p>
-<ul>
-<li>权限声明<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.CALL_PHONE"</span>/&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>拨打10010</p>
-<ul>
-<li>代码如下 构建一个隐式intent 启动拨打电话<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_CALL);</div><div class="line">intent.setData(Uri.parse(<span class="string">"tel:10010"</span>));</div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>在主界面上添加一个Button 在其onClick方法中拨打电话，运行程序!</li>
-</ul>
-<hr>
-<ul>
-<li>在An’d’roid 6.0 以下版本中 电话都可以正常拨出。Android 6.0 以上版本中 则可能会应用崩溃/无反应，查看logcat的打印日志可以看到 “Permission Denial”权限被禁止的信息，接下来尝试使用 运行时申请权限</li>
-</ul>
-<hr>
-<ul>
-<li>检查是否已获得授权<br>int  checkSelfPermission(Context context, String permission)方法 <ul>
-<li>Context context context<br>String permission  权限具体名称<br>打电话对应 Manifest.permission.CALL<em>PHONE   </em></li>
-<li>方法返回  PERMISSION_GRANTED  /   PERMISSION_DENIED</li>
-<li>例程<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(ContextCompat.checkSelfPermission</div><div class="line">(MainActivity.<span class="keyword">this</span>,Manifest.permission.CALL_PHONE) </div><div class="line">!=PackageManager.PERMISSION_GRANTED)</div><div class="line">&#123;</div><div class="line">         ;</div><div class="line">&#125;<span class="keyword">else</span> &#123;</div><div class="line">         ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>申请权限<br>void ActivityCompat.requestPermissions (Activity activity, String[] permissions, int requestCode)方法</p>
-<ul>
-<li><p>Activity activity  Activity实例<br>String[] permissions  请求权限名<br>int requestCode 请求码，大于0即可，对应在onRequestPermissionsResult 回掉方法中的requestCode</p>
-</li>
-<li><p>例程</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ActivityCompat.requestPermissions(MainActivity.<span class="keyword">this</span>,</div><div class="line"><span class="keyword">new</span> String[]&#123;Manifest.permission.CALL_PHONE&#125;,<span class="number">1</span> );</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>授权后回掉<br>无论用户是否授权都会进入回掉方法，需要重写该方法。<br>void onRequestPermissionsResult (int requestCode, String[] permissions, int[] grantResults)方法</p>
-<ul>
-<li><p>int requestCode    在 requestPermissions 中传入的请求码<br>String[] permissions   请求的权限，不为空<br>int[] grantResults        授权结果 只有 PERMISSION_GRANTED  / PERMISSION_DENIED 两个值</p>
-</li>
-<li><p>例程</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, String[] permissions, <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</div><div class="line">    <span class="keyword">switch</span> (requestCode) &#123;</div><div class="line">    	<span class="comment">//请求码 1</span></div><div class="line">        <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">            <span class="comment">//授权结果(int) 的 长度是否大于0  与上 授权结果是否等于  PackageManager.PERMISSION_GRANTED </span></div><div class="line">            <span class="keyword">if</span> (grantResults.length &gt; <span class="number">0</span> &amp;&amp; grantResults[<span class="number">0</span>] == PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line">            <span class="comment">//授权通过执行</span></div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="comment">//授权没有通过  </span></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>当用户拒绝后再次询问<br>  boolean ActivityCompat.shouldShowRequestPermissionRationale(Activity activity, String permission)             （真心太长了）</p>
-<ul>
-<li>Activity activity  Activity实例<br>String permission   权限名称<br>应用第一次需要授权时,用户授权，该方法返回false。当用户拒绝授权,下次需要该权限时,该方法会返回true</li>
-<li>例程<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">if</span> (ActivityCompat.shouldShowRequestPermissionRationale</div><div class="line">(PermissionActivity.<span class="keyword">this</span>,Manifest.permission.READ_CONTACTS))</div><div class="line">&#123;</div><div class="line"><span class="comment">//第二次询问用户是否授权</span></div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line"><span class="comment">//用户依旧拒绝后操作</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>例程源码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">      <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">      setContentView(R.layout.activity_main);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Button</span><span class="params">(View view)</span></span>&#123;</div><div class="line">      <span class="keyword">if</span>(ContextCompat.checkSelfPermission(MainActivity.<span class="keyword">this</span>,Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED)&#123;</div><div class="line">          ActivityCompat.requestPermissions(MainActivity.<span class="keyword">this</span>, <span class="keyword">new</span> String[]&#123;Manifest.permission.CALL_PHONE&#125;,<span class="number">1</span> );</div><div class="line">      &#125;<span class="keyword">else</span> &#123;</div><div class="line">          call();</div><div class="line">      &#125;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">()</span> </span>&#123;</div><div class="line">      <span class="keyword">try</span> &#123;</div><div class="line">          Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_CALL);</div><div class="line">          intent.setData(Uri.parse(<span class="string">"tel:10010"</span>));</div><div class="line">          startActivity(intent);</div><div class="line">      &#125; <span class="keyword">catch</span> (SecurityException e) &#123;</div><div class="line">          e.printStackTrace();</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, String[] permissions, <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</div><div class="line">      <span class="keyword">switch</span> (requestCode) &#123;</div><div class="line">          <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">              <span class="keyword">if</span> (grantResults.length &gt; <span class="number">0</span> &amp;&amp; grantResults[<span class="number">0</span>] == PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line">                  call();</div><div class="line">              &#125; <span class="keyword">else</span> &#123;</div><div class="line">                  Toast.makeText(<span class="keyword">this</span>, <span class="string">"You denied the permission"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">              &#125;</div><div class="line">              <span class="keyword">break</span>;</div><div class="line">          <span class="keyword">default</span>:</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">     <span class="attr">android:onClick</span>=<span class="string">"Button"</span></div><div class="line">     <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">     <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">     <span class="attr">android:text</span>=<span class="string">"Hello World!"</span> /&gt;</div></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;p&gt;资料来源如下&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;第一行代码(第二版)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.jianshu.com/p/57798618bd90&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;android6.0运行时
-    
-    </summary>
-    
-      <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
-      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android笔记—数据保存</title>
-    <link href="http://yoursite.com/2017/01/14/Android%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E4%BF%9D%E5%AD%98/"/>
-    <id>http://yoursite.com/2017/01/14/Android笔记-数据保存/</id>
-    <published>2017-01-14T04:00:00.000Z</published>
-    <updated>2017-01-14T13:30:28.259Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<p>资料来源如下</p>
-<ul>
-<li>第一行代码(第二版)</li>
-</ul>
-<p>编程环境</p>
-<ul>
-<li>Android Studio 2.2.3 </li>
-</ul>
-<hr>
-<h2 id="Android-中的主要数据存储"><a href="#Android-中的主要数据存储" class="headerlink" title="Android 中的主要数据存储"></a>Android 中的主要数据存储</h2><ul>
-<li><p>有三种</p>
-</li>
-<li><p>保存键值集<br> 要保存的相对较小键值集合，使用 SharedPreferences</p>
-</li>
-<li><p>保存文件<br>使用 Android 文件系统通过 File API 读取和写入文件，适合按开始到结束的顺序不跳过地读取或写入大量数据。 例如，图片文件或通过网络交换的任何内容</p>
-</li>
-<li><p>在 SQL 数据库中保存数据<br>Android内建的SQLite 数据库存储重复或结构化数据</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li>PS：这里如果没有学过 SQL 数据库使用，推荐LitePal</li>
-<li>Android开源数据库<a href="https://github.com/LitePalFramework/LitePal#latest-downloads/" target="_blank" rel="external">LitePal</a>  ：郭霖(第一行代码作者)</li>
-<li>详细介绍在这里<a href="http://www.jianshu.com/p/557682e0a9f0" target="_blank" rel="external">（懒人必备）Android开源数据库LitePal</a></li>
-</ul>
-<hr>
-<h3 id="保存键值集"><a href="#保存键值集" class="headerlink" title="保存键值集"></a>保存键值集</h3><ul>
-<li>想要保存的相对较小键值集合</li>
-<li><p>调用SharedPreferences</p>
-</li>
-<li><p>首先：获取SharedPreferences的句柄<br>用户可以创建一个共享参数文件或访问一个已经存在的共享参数文件。<br>具体途径有三条</p>
-<ul>
-<li><p>getSharedPreferences (String name, int mode)</p>
-<ul>
-<li>第一个参数：SharedPreferences的名称，第二个：参数指定操作模式</li>
-<li>需要创建/读取 多个共享参数文件时使用，每个文件都拥有一个标识符，可以通过这个标识符通过该方法的第一个参数获得共享参数对象。可以通过APP中的任意Context对象调用它。</li>
-<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//指定SharedPreferences名称为data  模式为MODE_PRIVATE：只有当前程序才有权限读取/修改</span></div><div class="line">SharedPreferences sharedPref = getSharedPreferences(<span class="string">"data"</span>, MODE_PRIVATE);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>getPreferences (int mode)</p>
-<ul>
-<li>参数：指定操作模式</li>
-<li>只创建 Activity 的一个SharedPreferences。在Activity 中使用。 方法会检索属于该 Activity 的默认共享首选项文件，无需提供名称</li>
-<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//模式：MODE_PRIVATE：只有当前程序才有权限读取/修改</span></div><div class="line">SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>getDefaultSharedPreferences(context)</p>
-<ul>
-<li>参数：context</li>
-<li>自动以档期应用程序包名作为前缀命名SharedPreferences文件</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>写入数据到共享参数中<ul>
-<li>SharedPreferences 调用 edit() 创建一个 SharedPreferences.Editor<br>使用诸如 putInt() 和 putString() 方法写入的键和值<br>最后调用commit() 以保存更改<br>也可调用apply() 保存更改</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li>commit() 与 apply() 相同/区别</li>
-<li>相同<ul>
-<li>都是提交preference修改数据</li>
-</ul>
-</li>
-<li>区别<ul>
-<li>apply没有返回值  commit返回boolean表明修改是否提交成功</li>
-<li>apply是将操作提交到内存，而后异步真正提交到文件<br> commit是同步的提交到文件<br> 多个commit同时提交，互相等待，效率较低<br> apply直接覆盖，效率较高<ul>
-<li>apply没有任何错误提示，只是提交的动作</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建 .edit()</span></div><div class="line">SharedPreferences.Editor editor = sharedPref.edit();</div><div class="line"><span class="comment">//写入字符串。key-值 TextView</span></div><div class="line">editor.putString(<span class="string">"TextView"</span>,<span class="string">"hello"</span>);</div><div class="line"><span class="comment">//保存更改</span></div><div class="line">editor.commit();</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>从共享参数中读取数据<ul>
-<li>获取SharedPreferences的句柄<br>方式同上</li>
-<li>调用比如getInt()或getString()方法，然后传入键值，如果键不存在，则会返回一个默认值</li>
-<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取SharedPreferences的句柄</span></div><div class="line">SharedPreferences sharedPreferences = getSharedPreferences(<span class="string">"data"</span>,MODE_PRIVATE);</div><div class="line"><span class="comment">//读取键值对应数据</span></div><div class="line">String text = sharedPreferences.getString(<span class="string">"TextView"</span>,<span class="string">""</span>);</div><div class="line"><span class="comment">//打印到log中 验证</span></div><div class="line">Log.d(<span class="string">"data"</span>,text);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="保存到文件"><a href="#保存到文件" class="headerlink" title="保存到文件"></a>保存到文件</h3><ul>
-<li>Android 设备有两个文件存储区域： 内部存储 和 外部存储<br>Android 设备早期内置的非易失性内存（内部存储），以及移动存储介质 微型 SD 卡等（外部存储）<br>任何Android设备始终有两个存储空间，并且无论外部存储设备是否可移动，API 的行为均一致</li>
-</ul>
-<ul>
-<li>Android的文件存储是以java流为基础，并优化了一些操作。java流不属于本文范围。</li>
-<li>涉及java流部分参考<a href="http://androidtoast.iteye.com/blog/1172673" target="_blank" rel="external">Android文件IO详解</a></li>
-</ul>
-<h4 id="内部存储"><a href="#内部存储" class="headerlink" title="内部存储"></a>内部存储</h4><h4 id="保存到内部存储"><a href="#保存到内部存储" class="headerlink" title="保存到内部存储"></a>保存到内部存储</h4><ul>
-<li>某一应用对其内部存储 始终具有 进行读写的权限，而无需声明任何权限，在 Android N之前，内部文件可以通过放宽权限让其他应用访问。<strong>但是极不推荐以这种方式共享文件</strong></li>
-</ul>
-<ul>
-<li><p>简单实例</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">(String inputText)</span></span>&#123;</div><div class="line">      <span class="comment">//新建一个FileOutputStream对象(字节流)</span></div><div class="line">      FileOutputStream out = <span class="keyword">null</span>;</div><div class="line">      <span class="comment">//新建一个BufferedWriter (字符流)</span></div><div class="line">      BufferedWriter writer = <span class="keyword">null</span>;</div><div class="line">      <span class="keyword">try</span>&#123;</div><div class="line">          <span class="comment">//out 实例化</span></div><div class="line">          out = openFileOutput(<span class="string">"data"</span>,Context.MODE_PRIVATE);</div><div class="line">          <span class="comment">//OutputStreamWrit  字节流转换为字符流</span></div><div class="line">          <span class="comment">//字符流绑定BufferedWriter(缓冲区)</span></div><div class="line">          writer = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> OutputStreamWriter(out));</div><div class="line">          <span class="comment">//写入到文件</span></div><div class="line">          writer.write(inputText);</div><div class="line">      &#125;<span class="keyword">catch</span> (IOException e )&#123;</div><div class="line">          e.printStackTrace();</div><div class="line">      &#125; <span class="keyword">finally</span> &#123;</div><div class="line">          <span class="keyword">try</span>&#123;</div><div class="line">              <span class="comment">//如果写入成功</span></div><div class="line">              <span class="keyword">if</span> (writer != <span class="keyword">null</span>) &#123;</div><div class="line">              	<span class="comment">//关闭流</span></div><div class="line">                  writer.close();</div><div class="line">              &#125;</div><div class="line">          &#125;<span class="keyword">catch</span> (IOException e)&#123;</div><div class="line">              e.printStackTrace();</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>FileOutputStream：</p>
-<ul>
-<li>继承自 OutputStream 用于文件处理的节点流</li>
-<li>用于写入原始字节流到文件</li>
-</ul>
-</li>
-<li><p>FileOutputStream openFileOutput (String name, int mode)</p>
-<ul>
-<li>返回FileOutputStream对象</li>
-<li>第一个参数是文件名</li>
-<li>第二个参数是操作模式，有4种取值<ul>
-<li>MODE<em>PRIVATE(默认)</em>当同一文件名存在时覆盖原文件</li>
-<li>MODE<em>APPEND  </em>当同名文件存在时，在原文件末尾追加</li>
-<li>其余两种均在android4.2及以上版本中废弃</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>OutputStreamWrit</p>
-<ul>
-<li>继承自 Writer </li>
-<li>将字节流转换为字符流</li>
-</ul>
-</li>
-<li><p>BufferedWriter </p>
-<ul>
-<li>继承自Writer </li>
-<li>绑定字符输出流，提高具体的流对象的效率</li>
-<li>.flush()方法 对缓冲区进行刷新，让数据到目的地</li>
-<li>.close();方法 关闭缓冲区，即关闭绑定的流</li>
-</ul>
-</li>
-</ul>
-<h5 id="从内部存储读取文件"><a href="#从内部存储读取文件" class="headerlink" title="从内部存储读取文件"></a>从内部存储读取文件</h5><ul>
-<li><p>简单实例</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">load</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="comment">//新建FileInputStream对象</span></div><div class="line">     FileInputStream in = <span class="keyword">null</span>;</div><div class="line">     <span class="comment">//新建 BufferedReader对象</span></div><div class="line">     BufferedReader reader = <span class="keyword">null</span>;</div><div class="line">     <span class="comment">//新建一个StringBuilder 空</span></div><div class="line">      content = <span class="keyword">new</span> StringBuilder();</div><div class="line">     <span class="keyword">try</span>&#123;</div><div class="line">     	<span class="comment">//FileInputStream对象实例化</span></div><div class="line">         in = openFileInput(<span class="string">"data"</span>);</div><div class="line">         <span class="comment">//字节流转换为字符流</span></div><div class="line">         <span class="comment">//缓冲流绑定字符流</span></div><div class="line">         reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(in));</div><div class="line">         <span class="comment">//空 String</span></div><div class="line">         String line = <span class="string">""</span>;</div><div class="line">         <span class="comment">//读取文件内容，并判断是否读取完成</span></div><div class="line">         <span class="keyword">while</span>((line = reader.readLine())!=<span class="keyword">null</span>)&#123;</div><div class="line">         	<span class="comment">//读取内容添加到 StringBuilder 对象中   </span></div><div class="line">             content.append(line);</div><div class="line">         &#125;</div><div class="line">     &#125;<span class="keyword">catch</span> (IOException e)&#123;</div><div class="line">         e.printStackTrace();</div><div class="line">     &#125;</div><div class="line">     <span class="keyword">finally</span> &#123;</div><div class="line">         <span class="keyword">if</span>(reader != <span class="keyword">null</span>)&#123;</div><div class="line">             <span class="keyword">try</span>&#123;</div><div class="line">             	<span class="comment">//关闭流</span></div><div class="line">                 reader.close();</div><div class="line">             &#125;<span class="keyword">catch</span> (IOException e)&#123;</div><div class="line">                 e.printStackTrace();</div><div class="line">             &#125;</div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line">     <span class="comment">//将读取结果 由StringBuilder转换为String 并返回</span></div><div class="line">     <span class="keyword">return</span> content.toString();</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>FileInputStream</p>
-<ul>
-<li>继承自 InputStream，用于文件处理的节点流</li>
-<li>从文件中读取</li>
-</ul>
-</li>
-<li><p>FileInputStream openFileInput(String filename)</p>
-<ul>
-<li>返回FileInputStream对象</li>
-<li>参数为 读取的文件名</li>
-</ul>
-</li>
-<li><p>InputStreamRead</p>
-<ul>
-<li>将字节流转换为字符流</li>
-</ul>
-</li>
-<li><p>BufferedReader</p>
-<ul>
-<li>缓冲流</li>
-</ul>
-</li>
-</ul>
-<h4 id="外部存储"><a href="#外部存储" class="headerlink" title="外部存储"></a>外部存储</h4><ul>
-<li>占坑</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;p&gt;资料来源如下&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;第一行代码(第二版)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;编程环境&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Android Studio 2.2.3 &lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;Android-中的主要数据存储&quot;&gt;&lt;a hr
-    
-    </summary>
-    
-      <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
-      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2016总结</title>
-    <link href="http://yoursite.com/2016/12/31/2016%E6%80%BB%E7%BB%93/"/>
-    <id>http://yoursite.com/2016/12/31/2016总结/</id>
-    <published>2016-12-31T04:00:11.000Z</published>
-    <updated>2016-12-31T14:50:12.906Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="2016"><a href="#2016" class="headerlink" title="2016"></a>2016</h3><ul>
-<li>找到了兴趣-Android开始正式学习。</li>
-<li>搭建了自己的blog，虽然周围人没人关注，有一篇日子的阅读量过了1万，还是很惊喜的</li>
-<li>嵌入式工作没用找到满意的，只能说等春招 Andoid的实习，这段时间努力提高自己，</li>
-<li>放弃了考研</li>
-<li>心情走过了类似抑郁的经历，对体制种种各有看法，是对是错，让时间见证</li>
-</ul>
-<hr>
-<h3 id="2017"><a href="#2017" class="headerlink" title="2017"></a>2017</h3><ul>
-<li>希望有自己的收入，经济相对自由一点</li>
-<li>谈一段恋爱，遇到合适的女孩吧</li>
-<li>Android的路上，顺利一点吧</li>
-<li>不给自己设定限制，走一步再走一步</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;2016&quot;&gt;&lt;a href=&quot;#2016&quot; class=&quot;headerlink&quot; title=&quot;2016&quot;&gt;&lt;/a&gt;2016&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;找到了兴趣-Android开始正式学习。&lt;/li&gt;
-&lt;li&gt;搭建了自己的blog，虽然周围人没人关注，有一篇日子
-    
-    </summary>
-    
-      <category term="随" scheme="http://yoursite.com/categories/%E9%9A%8F/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Android Studio优化编译速度</title>
-    <link href="http://yoursite.com/2016/12/25/Android%20Studio%E4%BC%98%E5%8C%96%E7%BC%96%E8%AF%91%E9%80%9F%E5%BA%A6/"/>
-    <id>http://yoursite.com/2016/12/25/Android Studio优化编译速度/</id>
-    <published>2016-12-25T04:00:00.000Z</published>
-    <updated>2016-12-25T14:51:15.768Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<p>资料来源如下</p>
-<ul>
-<li><a href="http://www.jianshu.com/p/1c878c10a6bb" target="_blank" rel="external">http://www.jianshu.com/p/1c878c10a6bb</a></li>
-<li><a href="http://www.jianshu.com/p/9b8ef61b7cdb" target="_blank" rel="external">http://www.jianshu.com/p/9b8ef61b7cdb</a></li>
-<li><a href="http://www.jianshu.com/p/64d9a52aebbf" target="_blank" rel="external">http://www.jianshu.com/p/64d9a52aebbf</a></li>
-</ul>
-<p>编程环境</p>
-<ul>
-<li>Android Studio 2.2.3</li>
-</ul>
-<p>导语</p>
-<ul>
-<li>ssd盘容量不够了，重装系统，随便重新安装了Android Studio 记录一边优化过程</li>
-</ul>
-<hr>
-<h2 id="最重要的-有一个良好的梯子-全局翻墙"><a href="#最重要的-有一个良好的梯子-全局翻墙" class="headerlink" title="最重要的 有一个良好的梯子+全局翻墙"></a>最重要的 有一个良好的梯子+全局翻墙</h2><ul>
-<li>大部分Android Studio安装的问题,就基本不会出现</li>
-</ul>
-<h4 id="开启gradle单独的守护进程"><a href="#开启gradle单独的守护进程" class="headerlink" title="开启gradle单独的守护进程"></a>开启gradle单独的守护进程</h4><ul>
-<li><p>在C:\Users.gradle目录(user目录即当前用户不同电脑一般不同)下新建 gradle.properties文件<br>复制下面的代码</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">org.gradle.daemon=true  </div><div class="line">org.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=800m  </div><div class="line">-XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8</div><div class="line">org.gradle.parallel=true  </div><div class="line">org.gradle.configureondemand=true</div></pre></td></tr></table></figure>
-<p>应该是增大了gradle 运行的 java 虚拟机的大小，我的电脑是8g内存，这个配置效果最好</p>
-</li>
-</ul>
-<h4 id="扩大Android-Studio-运行内存"><a href="#扩大Android-Studio-运行内存" class="headerlink" title="扩大Android Studio 运行内存"></a>扩大Android Studio 运行内存</h4><ul>
-<li><p>找到Android Studio安装目录下的bin文件夹<br>找到studio64.exe.vmoptions和studio.exe.vmoptions文件(64位)<br>studio.exe.vmoptions和studio.exe.vmoptions文件(32位)</p>
-</li>
-<li><p>分别编辑文件,改动3个地方如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-Xms1024m</div><div class="line">-Xmx2048m</div><div class="line">-XX:MaxPermSize=800m</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="Android-Studio-设置"><a href="#Android-Studio-设置" class="headerlink" title="Android Studio 设置"></a>Android Studio 设置</h4><ul>
-<li><p>Command-line Option不填<br><img src="http://cdn2.snapgram.co/imgs/2016/12/25/ScreenShot_20161225224242.png" alt="ScreenShot_20161225224242.png"></p>
-</li>
-<li><p>gradle 离线模式<br>勾选Office Work，我这里测试是速度基本不变，但是网上有人测试是效果相差很多，原因不明，可能是网络一直全局翻墙的关系<br><img src="http://cdn1.snapgram.co/imgs/2016/12/25/ScreenShot_20161225224455.png" alt="ScreenShot_20161225224455.png"></p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;p&gt;资料来源如下&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.jianshu.com/p/1c878c10a6bb&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jianshu.com/p/1c878c10
-    
-    </summary>
-    
-      <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
     
   </entry>
   
