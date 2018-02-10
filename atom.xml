@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-01-19T15:04:49.024Z</updated>
+  <updated>2018-01-22T13:15:40.622Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,104 +16,53 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>python—n函数</title>
-    <link href="http://yoursite.com/2018/01/19/python%E2%80%94n%E5%87%BD%E6%95%B0/"/>
-    <id>http://yoursite.com/2018/01/19/python—n函数/</id>
-    <published>2018-01-19T02:17:11.000Z</published>
-    <updated>2018-01-19T15:04:49.024Z</updated>
+    <title>总结</title>
+    <link href="http://yoursite.com/2018/01/22/2017%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2018/01/22/2017总结/</id>
+    <published>2018-01-22T04:00:11.000Z</published>
+    <updated>2018-01-22T13:15:40.622Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h3><ul>
-<li>参数数量不对 TypeError错误</li>
-<li>参数类型错误，TypeError的错误，并且给出错误信息</li>
-<li>int()转换为int类型</li>
-<li>float()</li>
-<li>bool()</li>
-<li><p>str()</p>
-</li>
-<li><p>函数名为一指向函数对象的引用,可以将变量指向函数,再调用</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = abs <span class="comment"># 变量a指向abs函数</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a(<span class="number">-1</span>) <span class="comment"># 所以也可以通过a调用abs函数</span></div><div class="line"><span class="number">1</span></div></pre></td></tr></table></figure>
-</li>
+    <content type="html"><![CDATA[<h3 id="2016"><a href="#2016" class="headerlink" title="2016"></a>2016</h3><ul>
+<li>找到了兴趣-Android开始正式学习。</li>
+<li>搭建了自己的blog，虽然周围人没人关注，有一篇日子的阅读量过了1万，还是很惊喜的</li>
+<li>嵌入式工作没用找到满意的，只能说等春招 Andoid的实习，这段时间努力提高自己，</li>
+<li>放弃了考研</li>
+<li>心情走过了类似抑郁的经历，对体制种种各有看法，是对是错，让时间见证</li>
 </ul>
-<h3 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h3><ul>
-<li><p>示例</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_abs</span><span class="params">(x)</span>:</span></div><div class="line">  <span class="keyword">if</span> x &gt;= <span class="number">0</span>:</div><div class="line">      <span class="keyword">return</span> x</div><div class="line">  <span class="keyword">else</span>:</div><div class="line">      <span class="keyword">return</span> -x</div></pre></td></tr></table></figure>
-<p>def 函数名(参数) :<br>  函数体<br>  return </p>
-</li>
-<li>没有return 则返回 None</li>
-<li><p>import 包含模块,java一样</p>
-</li>
-<li><p>空函数 pass 语句.</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">nop</span><span class="params">()</span>:</span></div><div class="line">  <span class="keyword">pass</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>示例 返回多个参数</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> math</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">move</span><span class="params">(x, y, step, angle=<span class="number">0</span>)</span>:</span></div><div class="line">  nx = x + step * math.cos(angle)</div><div class="line">  ny = y - step * math.sin(angle)</div><div class="line">  <span class="keyword">return</span> nx, ny</div></pre></td></tr></table></figure>
-<p>返回的是一个tuple .. 按位置赋值给变量</p>
-</li>
+<hr>
+<h3 id="2017"><a href="#2017" class="headerlink" title="2017"></a>2017</h3><ul>
+<li>希望有自己的收入，经济相对自由一点</li>
+<li>谈一段恋爱，遇到合适的女孩吧</li>
+<li>Android的路上，顺利一点吧</li>
+<li>不给自己设定限制，走一步再走一步</li>
 </ul>
-<h3 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h3><ul>
-<li><strong>参数定义的顺序必须是：必选参数、默认参数、可变参数、命名关键字参数和关键字参数</strong></li>
+<h3 id="2017-1"><a href="#2017-1" class="headerlink" title="2017"></a>2017</h3><ul>
+<li>工作了,有了一点自己的收入</li>
+<li>有喜欢的人,却很无力的选择遗忘</li>
+<li>在从事android以外的工作,2018准备转行.</li>
 </ul>
-<h4 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h4><ul>
-<li><p>示例:</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">power</span><span class="params">(x, n=<span class="number">2</span>)</span>:</span></div><div class="line">...</div><div class="line"></div><div class="line">power(<span class="number">5</span>)   power(<span class="number">5</span>, <span class="number">2</span>)  power(n=<span class="number">3</span>,<span class="number">5</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>默认参数必须指向不变对象</p>
-</li>
-<li>多个参数时，变化大的参数在前，变化小的参数在后。变化小的参数就可以作为默认参数。</li>
-<li>多个默认参数，可以按顺序提供默认参数</li>
-<li><p>也可以不按顺序提供。当不按顺序提供部分默认参数时，需要把参数名写上 <code>enroll(&#39;Adam&#39;, &#39;M&#39;, city=&#39;Tianjin&#39;)</code></p>
-</li>
-<li><p><strong><code>坑</code></strong></p>
-<ul>
-<li>默认参数 不可变性 每次调用均会改变其值.</li>
-</ul>
-</li>
-</ul>
-<h4 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h4><ul>
-<li><p>示例:</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc</span><span class="params">(*numbers)</span>:</span></div><div class="line">  sum = <span class="number">0</span></div><div class="line">  <span class="keyword">for</span> n <span class="keyword">in</span> numbers:</div><div class="line">      sum = sum + n * n</div><div class="line">  <span class="keyword">return</span> sum</div><div class="line"></div><div class="line">nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">calc(*nums)   <span class="comment">#相同</span></div><div class="line">calc(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>传入的参数个数可变,传入组装成了tuple</p>
-</li>
-<li>当作c语言指针吧😂 传入数组的地址</li>
-</ul>
-<h4 id="命名关键字参数"><a href="#命名关键字参数" class="headerlink" title="命名关键字参数"></a>命名关键字参数</h4><ul>
-<li><p>示例:</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, age, *, city, job)</span>:</span></div><div class="line">  print(name, age, city, job)</div><div class="line"></div><div class="line">person(<span class="string">'Jack'</span>, <span class="number">24</span>, city=<span class="string">'Beijing'</span>, job=<span class="string">'Engineer'</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>命名关键字参数需要一个特殊分隔符<em>，</em>后面的参数被视为命名关键字参数</p>
-</li>
-<li><p>函数定义中已经有了一个可变参数，后面跟着的命名关键字参数就不再需要一个特殊分隔符*</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, age, *args, city, job)</span>:</span></div><div class="line">  print(name, age, args, city, job)</div></pre></td></tr></table></figure>
-</li>
-<li><p>如果没有可变参数，就必须加一个<em>作为特殊分隔符。如果缺少</em>，Python解释器将无法识别位置参数和命名关键字参数</p>
-<h4 id="关键字参数"><a href="#关键字参数" class="headerlink" title="关键字参数"></a>关键字参数</h4></li>
-<li><p>示例</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, age, **kw)</span>:</span></div><div class="line">  print(<span class="string">'name:'</span>, name, <span class="string">'age:'</span>, age, <span class="string">'other:'</span>, kw)</div><div class="line"></div><div class="line">extra = &#123;<span class="string">'city'</span>: <span class="string">'Beijing'</span>, <span class="string">'job'</span>: <span class="string">'Engineer'</span>&#125;</div><div class="line">person(<span class="string">'Jack'</span>, <span class="number">24</span>, city=extra[<span class="string">'city'</span>], job=extra[<span class="string">'job'</span>])</div><div class="line"><span class="comment">#相同</span></div><div class="line">extra = &#123;<span class="string">'city'</span>: <span class="string">'Beijing'</span>, <span class="string">'job'</span>: <span class="string">'Engineer'</span>&#125;</div><div class="line">person(<span class="string">'Jack'</span>, <span class="number">24</span>, **extra)</div></pre></td></tr></table></figure>
-</li>
-<li><p>关键字参数在函数内部组装为一个dict</p>
-</li>
-<li>函数内部获得是 dict的拷贝,修改对原值无影响.</li>
-<li>可以传入任意不受限制的关键字参数</li>
-</ul>
-<h4 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h4><ul>
-<li>python 不含尾递归优化,注意层级,否则非常容易堆栈溢出.</li>
+<hr>
+<h3 id="2018"><a href="#2018" class="headerlink" title="2018"></a>2018</h3><ul>
+<li>迟到的终结</li>
+<li>转行android,补足基础.</li>
+<li>日常迁移到linux下,熟悉python,提升效率.</li>
+<li>博客不要断,记清楚自己的目标</li>
+<li>体制重重,守护好家人,除此之外,别无他求.</li>
+<li>保持自己对环境的体察,珍惜剩下的时间.</li>
+<li>要记得 有过的梦想,即使已经遥不可及,不等于要违背自己的底线.</li>
 </ul>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;函数&quot;&gt;&lt;a href=&quot;#函数&quot; class=&quot;headerlink&quot; title=&quot;函数&quot;&gt;&lt;/a&gt;函数&lt;/h2&gt;&lt;h3 id=&quot;常用&quot;&gt;&lt;a href=&quot;#常用&quot; class=&quot;headerlink&quot; title=&quot;常用&quot;&gt;&lt;/a&gt;常用&lt;/h3&gt;&lt;ul&gt;
-&lt;
+      &lt;h3 id=&quot;2016&quot;&gt;&lt;a href=&quot;#2016&quot; class=&quot;headerlink&quot; title=&quot;2016&quot;&gt;&lt;/a&gt;2016&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;找到了兴趣-Android开始正式学习。&lt;/li&gt;
+&lt;li&gt;搭建了自己的blog，虽然周围人没人关注，有一篇日子
     
     </summary>
     
-      <category term="python笔记" scheme="http://yoursite.com/categories/python%E7%AC%94%E8%AE%B0/"/>
+      <category term="随" scheme="http://yoursite.com/categories/%E9%9A%8F/"/>
     
-    
-      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
     
   </entry>
   
@@ -122,7 +71,7 @@
     <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
     <id>http://yoursite.com/2018/01/19/python—函数式编程/</id>
     <published>2018-01-19T02:17:11.000Z</published>
-    <updated>2018-01-19T15:02:50.054Z</updated>
+    <updated>2018-01-19T15:02:50.055Z</updated>
     
     <content type="html"><![CDATA[<h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><ul>
 <li>纯函数式编程没有变量,一个函数只要输出确定,输出就是确定的,称为没有副作用.使用变量的函数内部由于变量状态不确定性,有副作用.</li>
@@ -214,103 +163,11 @@
   </entry>
   
   <entry>
-    <title>python—高级特性</title>
-    <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/"/>
-    <id>http://yoursite.com/2018/01/19/python—高级特性/</id>
-    <published>2018-01-19T02:17:11.000Z</published>
-    <updated>2018-01-19T15:03:49.103Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="高级特性"><a href="#高级特性" class="headerlink" title="高级特性"></a>高级特性</h2><ul>
-<li>代码精炼</li>
-<li>python代码量越少,开发效率越高.<h3 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h3></li>
-<li>取list或tuple的部分元素</li>
-<li><p>示例</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">L[<span class="number">0</span>:<span class="number">3</span>] <span class="comment">#0到3,但结果不包括索引3</span></div><div class="line">L[:<span class="number">3</span>] <span class="comment">#0可省略</span></div></pre></td></tr></table></figure>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">L[<span class="number">-2</span>:]  <span class="comment">#-2到0 但不包括索引0</span></div><div class="line">L[<span class="number">-2</span>:<span class="number">-1</span>] <span class="comment">#-2</span></div></pre></td></tr></table></figure>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">L[:<span class="number">10</span>:<span class="number">2</span>] <span class="comment">#前10 每隔2个取一个</span></div><div class="line">L[::<span class="number">5</span>] <span class="comment">#所有,每隔5个取一个</span></div><div class="line">L[:] <span class="comment">#原样复制</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>对tuple取切片,结果依然是tuple.</p>
-</li>
-<li><strong>字符串可以看作一个list</strong>,每个字符占一位.</li>
-</ul>
-<h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><ul>
-<li>迭代很随便…太随便了…</li>
-<li>list tuple不多说了</li>
-<li><p>dict字典也可以迭代,因为无序,输出的顺序不一定相同.<br>默认迭代的是key 但value 也可以迭代,key value也可以同时迭代</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> value <span class="keyword">in</span> d.values()</div><div class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> d.items()</div></pre></td></tr></table></figure>
-</li>
-<li><p>上文书中说的,字符串可以当作list,所以也可以迭代.</p>
-</li>
-<li><p>问题来了,如何判断可迭代对象?<br><code>collections模块的Iterable类型判断</code></p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(<span class="string">'abc'</span>, Iterable) <span class="comment"># str是否可迭代</span></div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>类似c/java的带下标循环实现?<br>Python内置的<code>enumerate函数</code>,把一个list变成索引-元素对</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i, value <span class="keyword">in</span> enumerate([<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>]):</div><div class="line">  print(i, value)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h3><ul>
-<li><code>用来生成list</code></li>
-<li><p>示例: [1x1, 2x2, 3x3, …, 10x10]</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">11</span>)] </div><div class="line">[m + n <span class="keyword">for</span> m <span class="keyword">in</span> <span class="string">'ABC'</span> <span class="keyword">for</span> n <span class="keyword">in</span> <span class="string">'XYZ'</span>] <span class="comment">#两层</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>for可以同时循环两个甚至多个变量,dict的items()可以同时迭代key和value</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">d = &#123;<span class="string">'x'</span>: <span class="string">'A'</span>, <span class="string">'y'</span>: <span class="string">'B'</span>, <span class="string">'z'</span>: <span class="string">'C'</span> &#125; <span class="comment"># 多个变量</span></div><div class="line">[k + <span class="string">'='</span> + v <span class="keyword">for</span> k, v <span class="keyword">in</span> d.items()] <span class="comment"># 生成list</span></div><div class="line">[s.lower() <span class="keyword">for</span> s <span class="keyword">in</span> L] <span class="comment"># 全部小写</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h3><ul>
-<li>generator 依照某种算法不断循环生成数据,而不是一次性生成完.节省大量空间.</li>
-<li><p>创建generator</p>
-<ul>
-<li><p>把列表生成式的[]改成()</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g = (x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>))</div></pre></td></tr></table></figure>
-<p>调用<code>next(g)</code>可获取下一个值.<br>最常用<code>for n in g:</code>代入for循环.也没有抛出错误.</p>
-</li>
-<li><p>定义一个包含<code>yield</code>关键字的函数.</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(max)</span>:</span></div><div class="line">n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></div><div class="line"><span class="keyword">while</span> n &lt; max:</div><div class="line">    <span class="keyword">yield</span> b</div><div class="line">    a, b = b, a + b</div><div class="line">    n = n + <span class="number">1</span></div><div class="line"><span class="keyword">return</span> <span class="string">'done'</span></div></pre></td></tr></table></figure>
-<ul>
-<li>变成generator的函数，在每次调用next()的时候执行，遇到yield语句返回，再次执行时从上次返回的yield语句处继续执行。</li>
-<li>用for循环调用generator时，拿不到generator的return语句的返回值。如果想要拿到返回值，必须捕获StopIteration错误，返回值包含在StopIteration的value中.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><ul>
-<li><p>可以被for循环的对象统称为可迭代对象：<code>Iterable</code><br>使用isinstance()判断一个对象是否是Iterable对象</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isinstance(&#123;&#125;, Iterable)</div></pre></td></tr></table></figure>
-</li>
-<li><p>可以被next()函数调用并不断返回下一个值的对象称为迭代器：<code>Iterator</code> 表示一个惰性计算的序列 <code>Iterator</code>甚至可以表示一个无限大的数据流<br>isinstance()判断一个对象是否是Iterator对象</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isinstance((x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)), Iterator)</div></pre></td></tr></table></figure>
-</li>
-<li><p>集合数据类型如list、dict、str等是Iterable但不是Iterator，不过可以通过iter()函数获得一个Iterator对象。</p>
-</li>
-<li>Python的for循环本质上就是通过不断调用next()</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;高级特性&quot;&gt;&lt;a href=&quot;#高级特性&quot; class=&quot;headerlink&quot; title=&quot;高级特性&quot;&gt;&lt;/a&gt;高级特性&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;代码精炼&lt;/li&gt;
-&lt;li&gt;python代码量越少,开发效率越高.&lt;h3 id=&quot;切片&quot;&gt;&lt;a href=&quot;#切
-    
-    </summary>
-    
-      <category term="python笔记" scheme="http://yoursite.com/categories/python%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
     <title>python—面向对象</title>
     <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     <id>http://yoursite.com/2018/01/19/python—面向对象/</id>
     <published>2018-01-19T02:17:11.000Z</published>
-    <updated>2018-01-19T15:00:27.450Z</updated>
+    <updated>2018-01-19T15:00:27.451Z</updated>
     
     <content type="html"><![CDATA[<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><ul>
 <li>类 方法 实例</li>
@@ -592,11 +449,205 @@
   </entry>
   
   <entry>
+    <title>python—n函数</title>
+    <link href="http://yoursite.com/2018/01/19/python%E2%80%94n%E5%87%BD%E6%95%B0/"/>
+    <id>http://yoursite.com/2018/01/19/python—n函数/</id>
+    <published>2018-01-19T02:17:11.000Z</published>
+    <updated>2018-01-19T15:04:49.024Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h3><ul>
+<li>参数数量不对 TypeError错误</li>
+<li>参数类型错误，TypeError的错误，并且给出错误信息</li>
+<li>int()转换为int类型</li>
+<li>float()</li>
+<li>bool()</li>
+<li><p>str()</p>
+</li>
+<li><p>函数名为一指向函数对象的引用,可以将变量指向函数,再调用</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = abs <span class="comment"># 变量a指向abs函数</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a(<span class="number">-1</span>) <span class="comment"># 所以也可以通过a调用abs函数</span></div><div class="line"><span class="number">1</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h3><ul>
+<li><p>示例</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_abs</span><span class="params">(x)</span>:</span></div><div class="line">  <span class="keyword">if</span> x &gt;= <span class="number">0</span>:</div><div class="line">      <span class="keyword">return</span> x</div><div class="line">  <span class="keyword">else</span>:</div><div class="line">      <span class="keyword">return</span> -x</div></pre></td></tr></table></figure>
+<p>def 函数名(参数) :<br>  函数体<br>  return </p>
+</li>
+<li>没有return 则返回 None</li>
+<li><p>import 包含模块,java一样</p>
+</li>
+<li><p>空函数 pass 语句.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">nop</span><span class="params">()</span>:</span></div><div class="line">  <span class="keyword">pass</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>示例 返回多个参数</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> math</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">move</span><span class="params">(x, y, step, angle=<span class="number">0</span>)</span>:</span></div><div class="line">  nx = x + step * math.cos(angle)</div><div class="line">  ny = y - step * math.sin(angle)</div><div class="line">  <span class="keyword">return</span> nx, ny</div></pre></td></tr></table></figure>
+<p>返回的是一个tuple .. 按位置赋值给变量</p>
+</li>
+</ul>
+<h3 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h3><ul>
+<li><strong>参数定义的顺序必须是：必选参数、默认参数、可变参数、命名关键字参数和关键字参数</strong></li>
+</ul>
+<h4 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h4><ul>
+<li><p>示例:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">power</span><span class="params">(x, n=<span class="number">2</span>)</span>:</span></div><div class="line">...</div><div class="line"></div><div class="line">power(<span class="number">5</span>)   power(<span class="number">5</span>, <span class="number">2</span>)  power(n=<span class="number">3</span>,<span class="number">5</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>默认参数必须指向不变对象</p>
+</li>
+<li>多个参数时，变化大的参数在前，变化小的参数在后。变化小的参数就可以作为默认参数。</li>
+<li>多个默认参数，可以按顺序提供默认参数</li>
+<li><p>也可以不按顺序提供。当不按顺序提供部分默认参数时，需要把参数名写上 <code>enroll(&#39;Adam&#39;, &#39;M&#39;, city=&#39;Tianjin&#39;)</code></p>
+</li>
+<li><p><strong><code>坑</code></strong></p>
+<ul>
+<li>默认参数 不可变性 每次调用均会改变其值.</li>
+</ul>
+</li>
+</ul>
+<h4 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h4><ul>
+<li><p>示例:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc</span><span class="params">(*numbers)</span>:</span></div><div class="line">  sum = <span class="number">0</span></div><div class="line">  <span class="keyword">for</span> n <span class="keyword">in</span> numbers:</div><div class="line">      sum = sum + n * n</div><div class="line">  <span class="keyword">return</span> sum</div><div class="line"></div><div class="line">nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">calc(*nums)   <span class="comment">#相同</span></div><div class="line">calc(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>传入的参数个数可变,传入组装成了tuple</p>
+</li>
+<li>当作c语言指针吧😂 传入数组的地址</li>
+</ul>
+<h4 id="命名关键字参数"><a href="#命名关键字参数" class="headerlink" title="命名关键字参数"></a>命名关键字参数</h4><ul>
+<li><p>示例:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, age, *, city, job)</span>:</span></div><div class="line">  print(name, age, city, job)</div><div class="line"></div><div class="line">person(<span class="string">'Jack'</span>, <span class="number">24</span>, city=<span class="string">'Beijing'</span>, job=<span class="string">'Engineer'</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>命名关键字参数需要一个特殊分隔符<em>，</em>后面的参数被视为命名关键字参数</p>
+</li>
+<li><p>函数定义中已经有了一个可变参数，后面跟着的命名关键字参数就不再需要一个特殊分隔符*</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, age, *args, city, job)</span>:</span></div><div class="line">  print(name, age, args, city, job)</div></pre></td></tr></table></figure>
+</li>
+<li><p>如果没有可变参数，就必须加一个<em>作为特殊分隔符。如果缺少</em>，Python解释器将无法识别位置参数和命名关键字参数</p>
+<h4 id="关键字参数"><a href="#关键字参数" class="headerlink" title="关键字参数"></a>关键字参数</h4></li>
+<li><p>示例</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, age, **kw)</span>:</span></div><div class="line">  print(<span class="string">'name:'</span>, name, <span class="string">'age:'</span>, age, <span class="string">'other:'</span>, kw)</div><div class="line"></div><div class="line">extra = &#123;<span class="string">'city'</span>: <span class="string">'Beijing'</span>, <span class="string">'job'</span>: <span class="string">'Engineer'</span>&#125;</div><div class="line">person(<span class="string">'Jack'</span>, <span class="number">24</span>, city=extra[<span class="string">'city'</span>], job=extra[<span class="string">'job'</span>])</div><div class="line"><span class="comment">#相同</span></div><div class="line">extra = &#123;<span class="string">'city'</span>: <span class="string">'Beijing'</span>, <span class="string">'job'</span>: <span class="string">'Engineer'</span>&#125;</div><div class="line">person(<span class="string">'Jack'</span>, <span class="number">24</span>, **extra)</div></pre></td></tr></table></figure>
+</li>
+<li><p>关键字参数在函数内部组装为一个dict</p>
+</li>
+<li>函数内部获得是 dict的拷贝,修改对原值无影响.</li>
+<li>可以传入任意不受限制的关键字参数</li>
+</ul>
+<h4 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h4><ul>
+<li>python 不含尾递归优化,注意层级,否则非常容易堆栈溢出.</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;函数&quot;&gt;&lt;a href=&quot;#函数&quot; class=&quot;headerlink&quot; title=&quot;函数&quot;&gt;&lt;/a&gt;函数&lt;/h2&gt;&lt;h3 id=&quot;常用&quot;&gt;&lt;a href=&quot;#常用&quot; class=&quot;headerlink&quot; title=&quot;常用&quot;&gt;&lt;/a&gt;常用&lt;/h3&gt;&lt;ul&gt;
+&lt;
+    
+    </summary>
+    
+      <category term="python笔记" scheme="http://yoursite.com/categories/python%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python—高级特性</title>
+    <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/"/>
+    <id>http://yoursite.com/2018/01/19/python—高级特性/</id>
+    <published>2018-01-19T02:17:11.000Z</published>
+    <updated>2018-01-19T15:03:49.103Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="高级特性"><a href="#高级特性" class="headerlink" title="高级特性"></a>高级特性</h2><ul>
+<li>代码精炼</li>
+<li>python代码量越少,开发效率越高.<h3 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h3></li>
+<li>取list或tuple的部分元素</li>
+<li><p>示例</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">L[<span class="number">0</span>:<span class="number">3</span>] <span class="comment">#0到3,但结果不包括索引3</span></div><div class="line">L[:<span class="number">3</span>] <span class="comment">#0可省略</span></div></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">L[<span class="number">-2</span>:]  <span class="comment">#-2到0 但不包括索引0</span></div><div class="line">L[<span class="number">-2</span>:<span class="number">-1</span>] <span class="comment">#-2</span></div></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">L[:<span class="number">10</span>:<span class="number">2</span>] <span class="comment">#前10 每隔2个取一个</span></div><div class="line">L[::<span class="number">5</span>] <span class="comment">#所有,每隔5个取一个</span></div><div class="line">L[:] <span class="comment">#原样复制</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>对tuple取切片,结果依然是tuple.</p>
+</li>
+<li><strong>字符串可以看作一个list</strong>,每个字符占一位.</li>
+</ul>
+<h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><ul>
+<li>迭代很随便…太随便了…</li>
+<li>list tuple不多说了</li>
+<li><p>dict字典也可以迭代,因为无序,输出的顺序不一定相同.<br>默认迭代的是key 但value 也可以迭代,key value也可以同时迭代</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> value <span class="keyword">in</span> d.values()</div><div class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> d.items()</div></pre></td></tr></table></figure>
+</li>
+<li><p>上文书中说的,字符串可以当作list,所以也可以迭代.</p>
+</li>
+<li><p>问题来了,如何判断可迭代对象?<br><code>collections模块的Iterable类型判断</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(<span class="string">'abc'</span>, Iterable) <span class="comment"># str是否可迭代</span></div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>类似c/java的带下标循环实现?<br>Python内置的<code>enumerate函数</code>,把一个list变成索引-元素对</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i, value <span class="keyword">in</span> enumerate([<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>]):</div><div class="line">  print(i, value)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h3><ul>
+<li><code>用来生成list</code></li>
+<li><p>示例: [1x1, 2x2, 3x3, …, 10x10]</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">11</span>)] </div><div class="line">[m + n <span class="keyword">for</span> m <span class="keyword">in</span> <span class="string">'ABC'</span> <span class="keyword">for</span> n <span class="keyword">in</span> <span class="string">'XYZ'</span>] <span class="comment">#两层</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>for可以同时循环两个甚至多个变量,dict的items()可以同时迭代key和value</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">d = &#123;<span class="string">'x'</span>: <span class="string">'A'</span>, <span class="string">'y'</span>: <span class="string">'B'</span>, <span class="string">'z'</span>: <span class="string">'C'</span> &#125; <span class="comment"># 多个变量</span></div><div class="line">[k + <span class="string">'='</span> + v <span class="keyword">for</span> k, v <span class="keyword">in</span> d.items()] <span class="comment"># 生成list</span></div><div class="line">[s.lower() <span class="keyword">for</span> s <span class="keyword">in</span> L] <span class="comment"># 全部小写</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h3><ul>
+<li>generator 依照某种算法不断循环生成数据,而不是一次性生成完.节省大量空间.</li>
+<li><p>创建generator</p>
+<ul>
+<li><p>把列表生成式的[]改成()</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g = (x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>))</div></pre></td></tr></table></figure>
+<p>调用<code>next(g)</code>可获取下一个值.<br>最常用<code>for n in g:</code>代入for循环.也没有抛出错误.</p>
+</li>
+<li><p>定义一个包含<code>yield</code>关键字的函数.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(max)</span>:</span></div><div class="line">n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></div><div class="line"><span class="keyword">while</span> n &lt; max:</div><div class="line">    <span class="keyword">yield</span> b</div><div class="line">    a, b = b, a + b</div><div class="line">    n = n + <span class="number">1</span></div><div class="line"><span class="keyword">return</span> <span class="string">'done'</span></div></pre></td></tr></table></figure>
+<ul>
+<li>变成generator的函数，在每次调用next()的时候执行，遇到yield语句返回，再次执行时从上次返回的yield语句处继续执行。</li>
+<li>用for循环调用generator时，拿不到generator的return语句的返回值。如果想要拿到返回值，必须捕获StopIteration错误，返回值包含在StopIteration的value中.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><ul>
+<li><p>可以被for循环的对象统称为可迭代对象：<code>Iterable</code><br>使用isinstance()判断一个对象是否是Iterable对象</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isinstance(&#123;&#125;, Iterable)</div></pre></td></tr></table></figure>
+</li>
+<li><p>可以被next()函数调用并不断返回下一个值的对象称为迭代器：<code>Iterator</code> 表示一个惰性计算的序列 <code>Iterator</code>甚至可以表示一个无限大的数据流<br>isinstance()判断一个对象是否是Iterator对象</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isinstance((x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)), Iterator)</div></pre></td></tr></table></figure>
+</li>
+<li><p>集合数据类型如list、dict、str等是Iterable但不是Iterator，不过可以通过iter()函数获得一个Iterator对象。</p>
+</li>
+<li>Python的for循环本质上就是通过不断调用next()</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;高级特性&quot;&gt;&lt;a href=&quot;#高级特性&quot; class=&quot;headerlink&quot; title=&quot;高级特性&quot;&gt;&lt;/a&gt;高级特性&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;代码精炼&lt;/li&gt;
+&lt;li&gt;python代码量越少,开发效率越高.&lt;h3 id=&quot;切片&quot;&gt;&lt;a href=&quot;#切
+    
+    </summary>
+    
+      <category term="python笔记" scheme="http://yoursite.com/categories/python%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>python—模块</title>
     <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E6%A8%A1%E5%9D%97/"/>
     <id>http://yoursite.com/2018/01/19/python—模块/</id>
     <published>2018-01-19T02:17:11.000Z</published>
-    <updated>2018-01-19T15:01:52.734Z</updated>
+    <updated>2018-01-19T15:01:52.735Z</updated>
     
     <content type="html"><![CDATA[<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><ul>
 <li>模块是一组Python代码的集合，可以使用其他模块，也可以被其他模块使用。</li>
@@ -718,7 +769,7 @@
     <link href="http://yoursite.com/2017/11/23/Android%E9%9A%8F%E6%89%8B%E8%AE%B0-Android%20M%E9%97%AA%E9%80%80%E5%B0%8F%E8%AE%B0/"/>
     <id>http://yoursite.com/2017/11/23/Android随手记-Android M闪退小记/</id>
     <published>2017-11-23T04:00:00.000Z</published>
-    <updated>2017-11-23T13:25:12.336Z</updated>
+    <updated>2017-11-23T13:25:12.337Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <p>编程环境</p>
@@ -764,9 +815,9 @@
       <category term="Android随手记" scheme="http://yoursite.com/categories/Android%E9%9A%8F%E6%89%8B%E8%AE%B0/"/>
     
     
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -815,9 +866,9 @@
       <category term="Android随手记" scheme="http://yoursite.com/categories/Android%E9%9A%8F%E6%89%8B%E8%AE%B0/"/>
     
     
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -828,7 +879,7 @@
     <link href="http://yoursite.com/2017/11/06/Android%E7%AC%94%E8%AE%B0%E2%80%94Rxjava2/"/>
     <id>http://yoursite.com/2017/11/06/Android笔记—Rxjava2/</id>
     <published>2017-11-06T04:00:00.000Z</published>
-    <updated>2017-11-06T15:10:08.180Z</updated>
+    <updated>2017-11-06T15:10:08.181Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <p>资料来源如下<br><a href="http://www.jianshu.com/u/c50b715ccaeb" target="_blank" rel="external">给初学者的RxJava2.0教程</a>(demo代码来源)</p>
@@ -1028,9 +1079,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1041,7 +1092,7 @@
     <link href="http://yoursite.com/2017/11/04/Android%E9%9A%8F%E6%89%8B%E8%AE%B0-Glide%E5%8A%A0%E8%BD%BDDrawable%E5%AF%B9%E8%B1%A1/"/>
     <id>http://yoursite.com/2017/11/04/Android随手记-Glide加载Drawable对象/</id>
     <published>2017-11-04T04:00:00.000Z</published>
-    <updated>2017-11-04T13:59:36.565Z</updated>
+    <updated>2017-11-04T13:59:36.566Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <p>编程环境</p>
@@ -1091,9 +1142,9 @@
       <category term="Android随手记" scheme="http://yoursite.com/categories/Android%E9%9A%8F%E6%89%8B%E8%AE%B0/"/>
     
     
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1104,7 +1155,7 @@
     <link href="http://yoursite.com/2017/09/10/linux%E7%AC%94%E8%AE%B0%E2%80%94qemu%E8%BF%90%E8%A1%8Clinux/"/>
     <id>http://yoursite.com/2017/09/10/linux笔记—qemu运行linux/</id>
     <published>2017-09-10T02:17:11.000Z</published>
-    <updated>2017-09-10T01:50:57.632Z</updated>
+    <updated>2017-09-10T01:50:57.633Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <ul>
@@ -1230,7 +1281,7 @@
     <link href="http://yoursite.com/2017/08/23/linux%E7%AC%94%E8%AE%B0%E2%80%94%E7%9C%8B%E9%97%A8%E7%8B%97%E5%86%85%E6%A0%B8API%E6%96%87%E6%A1%A3%E7%BF%BB%E8%AF%91/"/>
     <id>http://yoursite.com/2017/08/23/linux笔记—看门狗内核API文档翻译/</id>
     <published>2017-08-23T09:52:16.000Z</published>
-    <updated>2017-09-10T01:35:25.036Z</updated>
+    <updated>2017-09-10T01:35:25.037Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li>wdt第二弹，内核API，勉强翻译下来了，还需要进一步整理</li>
@@ -1238,7 +1289,7 @@
 <hr>
 <h2 id="看门狗定时器驱动内核API"><a href="#看门狗定时器驱动内核API" class="headerlink" title="看门狗定时器驱动内核API"></a>看门狗定时器驱动内核API</h2><ul>
 <li>最后更新时间 2013.2.12</li>
-<li>Wim Van Sebroeck <a href="&#109;&#x61;&#105;&#108;&#x74;&#x6f;&#58;&#119;&#x69;&#109;&#x40;&#105;&#x67;&#x75;&#x61;&#110;&#x61;&#46;&#98;&#x65;">&#119;&#x69;&#109;&#x40;&#105;&#x67;&#x75;&#x61;&#110;&#x61;&#46;&#98;&#x65;</a></li>
+<li>Wim Van Sebroeck <a href="&#x6d;&#97;&#105;&#108;&#x74;&#111;&#x3a;&#x77;&#x69;&#109;&#x40;&#x69;&#x67;&#x75;&#x61;&#x6e;&#97;&#46;&#98;&#x65;">&#x77;&#x69;&#109;&#x40;&#x69;&#x67;&#x75;&#x61;&#x6e;&#97;&#46;&#98;&#x65;</a></li>
 </ul>
 <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul>
 <li>本文档没有描述看门狗设备或驱动。也不涉及那些在用户空间调用的API，对应在 Documentation/watchdog/watchdog-api.txt （也就是<a href="">上一篇</a>）</li>
@@ -1415,8 +1466,8 @@
 </li>
 <li><p>linux看门狗设备API</p>
 </li>
-<li>Copyright 2002 Christer Weingel <a href="&#109;&#97;&#105;&#108;&#x74;&#x6f;&#58;&#119;&#x69;&#110;&#103;&#101;&#108;&#x40;&#x6e;&#x61;&#x6e;&#x6f;&#45;&#115;&#x79;&#x73;&#x74;&#101;&#x6d;&#46;&#x63;&#x6f;&#x6d;">&#119;&#x69;&#110;&#103;&#101;&#108;&#x40;&#x6e;&#x61;&#x6e;&#x6f;&#45;&#115;&#x79;&#x73;&#x74;&#101;&#x6d;&#46;&#x63;&#x6f;&#x6d;</a></li>
-<li><p>本文档的一些内容来自 sbc60xxwdt ，版权属于 Copyright 2000 Jakob Oestergaard <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#x6a;&#x61;&#107;&#x6f;&#98;&#x40;&#x6f;&#x73;&#116;&#101;&#110;&#102;&#101;&#108;&#x64;&#x2e;&#100;&#x6b;">&#x6a;&#x61;&#107;&#x6f;&#98;&#x40;&#x6f;&#x73;&#116;&#101;&#110;&#102;&#101;&#108;&#x64;&#x2e;&#100;&#x6b;</a></p>
+<li>Copyright 2002 Christer Weingel <a href="&#109;&#x61;&#105;&#108;&#x74;&#x6f;&#58;&#x77;&#x69;&#x6e;&#x67;&#x65;&#x6c;&#x40;&#x6e;&#x61;&#x6e;&#x6f;&#x2d;&#x73;&#121;&#x73;&#x74;&#x65;&#109;&#46;&#99;&#x6f;&#109;">&#x77;&#x69;&#x6e;&#x67;&#x65;&#x6c;&#x40;&#x6e;&#x61;&#x6e;&#x6f;&#x2d;&#x73;&#121;&#x73;&#x74;&#x65;&#109;&#46;&#99;&#x6f;&#109;</a></li>
+<li><p>本文档的一些内容来自 sbc60xxwdt ，版权属于 Copyright 2000 Jakob Oestergaard <a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x6a;&#97;&#107;&#x6f;&#x62;&#x40;&#x6f;&#115;&#x74;&#x65;&#x6e;&#102;&#x65;&#108;&#x64;&#46;&#100;&#x6b;">&#x6a;&#97;&#107;&#x6f;&#x62;&#x40;&#x6f;&#115;&#x74;&#x65;&#x6e;&#102;&#x65;&#108;&#x64;&#46;&#100;&#x6b;</a></p>
 </li>
 <li><p>本文档基于linux内核 2.4.18</p>
 </li>
@@ -1850,7 +1901,7 @@
     <link href="http://yoursite.com/2017/08/15/linux%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%97%B6%E9%97%B4%E5%AD%90%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>http://yoursite.com/2017/08/15/linux笔记——时间子系统（一）/</id>
     <published>2017-08-15T09:52:16.000Z</published>
-    <updated>2017-09-10T01:36:52.140Z</updated>
+    <updated>2017-09-10T01:36:52.141Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li>ss</li>
@@ -1950,7 +2001,7 @@
     <link href="http://yoursite.com/2017/06/11/Android%E7%AC%94%E8%AE%B0-%E4%B9%90%E8%81%94%E7%BD%91%E4%B8%8A%E4%BC%A0%E6%95%B0%E6%8D%AE%20TCP%E9%95%BF%E8%BF%9E%E6%8E%A5%E6%80%BB%E7%BB%93/"/>
     <id>http://yoursite.com/2017/06/11/Android笔记-乐联网上传数据 TCP长连接总结/</id>
     <published>2017-06-11T04:00:00.000Z</published>
-    <updated>2017-06-11T14:55:38.908Z</updated>
+    <updated>2017-06-11T14:55:38.909Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <p>资料来源如下</p>
@@ -2079,9 +2130,9 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -2094,7 +2145,7 @@
     <link href="http://yoursite.com/2017/05/08/Android%E7%AC%94%E8%AE%B0-%E8%87%AA%E7%94%A8MVP%E6%A1%86%E6%9E%B6/"/>
     <id>http://yoursite.com/2017/05/08/Android笔记-自用MVP框架/</id>
     <published>2017-05-08T04:00:00.000Z</published>
-    <updated>2017-05-09T15:19:29.284Z</updated>
+    <updated>2017-05-09T15:19:29.285Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <p>资料来源如下</p>
@@ -2203,160 +2254,11 @@
       <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
-      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android笔记—蓝牙串口(BlueTooth+EventBus)</title>
-    <link href="http://yoursite.com/2017/04/17/Android%E7%AC%94%E8%AE%B0-%E8%93%9D%E7%89%99%E4%B8%B2%E5%8F%A3%E4%B8%80%E7%A7%8D%E6%96%B9%E6%A1%88BlueTooth+EventBus/"/>
-    <id>http://yoursite.com/2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/</id>
-    <published>2017-04-17T04:00:00.000Z</published>
-    <updated>2017-06-11T12:40:33.649Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<p>资料来源如下</p>
-<ul>
-<li>第一行代码(第二版)</li>
-</ul>
-<p>编程环境</p>
-<ul>
-<li>Android Studio 2.2.3 </li>
-</ul>
-<p>导语</p>
-<ul>
-<li>毕设中的蓝牙部分,记录以供复习</li>
-</ul>
-<hr>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h3><ul>
-<li><p>Android应用 与 Hc-05 蓝牙模块连接,单片机与 Android 端 可以通过串口正常收发数据.</p>
-</li>
-<li><p>预留足够灵活的接口, Android 应用中可以在任意位置获取到蓝牙数据</p>
-</li>
-<li><p>Activity切换时,蓝牙连接不断开.</p>
-</li>
-</ul>
-<h3 id="用到的开源库-知识点资料-简介-来源"><a href="#用到的开源库-知识点资料-简介-来源" class="headerlink" title="用到的开源库/知识点资料 简介/来源"></a>用到的开源库/知识点资料 简介/来源</h3><ul>
-<li><p>蓝牙:<br><a href="https://developer.android.com/guide/topics/connectivity/bluetooth.html" target="_blank" rel="external">Android API 指南</a></p>
-<blockquote>
-<p><a href="https://developer.android.com/guide/topics/connectivity/bluetooth.html" target="_blank" rel="external">https://developer.android.com/guide/topics/connectivity/bluetooth.html</a></p>
-</blockquote>
-</li>
-<li><p>EventBus:<br><a href="https://github.com/greenrobot/EventBus" target="_blank" rel="external">EventBus-GitHub</a> 是一个Android端优化的publish/subscribe消息总线,用来替代 Intent 、   Handler 、 Broadcast 等在 Actvity 、 Fragment 、 Service 等组件之间传递信息 . EventBus 可以传递一个完整的对象,简单高效, <strong>注意 EventBus 只能在多线程之间传递消息,无法在不同进程之间传递消息</strong> ,EventBus 3.0 以后进一步简化了传递方式,真的是很值得学习的一个开源库!</p>
-<p>参考资料如下:</p>
-<p><a href="http://www.jianshu.com/p/acfe78296bb5" target="_blank" rel="external">EventBus 3.0初探: 入门使用及其使用 完全解析</a></p>
-<p> <a href="http://www.jianshu.com/p/1eaca34e5314" target="_blank" rel="external">EventBus3(3.0.0)源码解析</a></p>
-</li>
-</ul>
-<hr>
-<h2 id="基础部分"><a href="#基础部分" class="headerlink" title="基础部分"></a>基础部分</h2><ul>
-<li>蓝牙 与 EventBus 基础部分</li>
-</ul>
-<h3 id="BlueTooth"><a href="#BlueTooth" class="headerlink" title="BlueTooth"></a>BlueTooth</h3><hr>
-<ul>
-<li>备注 : 这里使用的是 传统蓝牙 即 蓝牙4.0以前版本, 而不是 蓝牙4.0 ( ble低功耗蓝牙)及以后版本 </li>
-</ul>
-<hr>
-<ul>
-<li>Android 对 Bluetooth 做了很好的封装,我们可以比较轻松的在 Android Bluetooth API 上进行开发.</li>
-<li>Android中所有蓝牙API均来自 android.bluetooth 包</li>
-</ul>
-<h4 id="BlueTooth基础"><a href="#BlueTooth基础" class="headerlink" title="BlueTooth基础"></a>BlueTooth基础</h4><ul>
-<li><p>BluetoothAdapter 本地蓝牙适配器<br>BluetoothAdapter 是所有蓝牙交互的入口点, 在初始化蓝牙及蓝牙配对阶段使用<br>1.发现其他蓝牙设备<br>2.查询绑定（配对）设备的列表<br>3.使用已知的 MAC 地址实例化 BluetoothDevice<br>4.创建 BluetoothServerSocket 侦听来自其他设备的通信。</p>
-</li>
-<li><p>BluetoothDevice 远程蓝牙设备<br>含有该设备的信息，例如设备的名称、地址、类和绑定状态等。</p>
-</li>
-<li><p>BluetoothSocket 蓝牙套接字接口（与 TCP Socket 相似）<br>与 BluetoothDevice 配合建立远程连接,允许应用通过 InputStream 和 OutputStream 与其他蓝牙设备交换数据.</p>
-</li>
-</ul>
-<h4 id="初始化蓝牙"><a href="#初始化蓝牙" class="headerlink" title="初始化蓝牙"></a>初始化蓝牙</h4><ul>
-<li><p>声明蓝牙权限<br>Android 应用使用蓝牙前都需要声明蓝牙权限<br>一般只需要  BLUETOOTH 权限即可,但是考虑到之后有更多的需求,需要更改系统蓝牙设置,由此需要 BLUETOOTH<em>ADMIN 权限</em>也一起声明</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;manifest ... &gt;</div><div class="line">&lt;uses-permission android:name="android.permission.BLUETOOTH" /&gt;</div><div class="line">&lt;uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /&gt;</div><div class="line">...</div><div class="line">&lt;/manifest&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>蓝牙设备可用性  获取 BluetoothAdapter<br>获取 BluetoothAdapter，需要静态 getDefaultAdapter() 方法。getDefaultAdapter() 会返回一个表示设备自身的蓝牙适配器的 BluetoothAdapter 设备不支持蓝牙 则返回 null</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();</div><div class="line"><span class="keyword">if</span> (mBluetoothAdapter == <span class="keyword">null</span>) &#123;</div><div class="line">  <span class="comment">// 蓝牙不可用操作</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>开启蓝牙<br>BluetoothAdapter 的 .isEnabled() 可以判断系统蓝牙是否开启.<br>没有开启时 startActivityForResult() 发送包含  ACTION_REQUEST_ENABLE  的 Intent 请求系统开启蓝牙,并在 onActivityResult() 返回的数据中 RESULT_CANCELED 表示开启失败 RESULT_OK  表示开启成功,这里我们只检测开启失败情况,并提示用户 </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (!mBluetoothAdapter.isEnabled()) &#123;</div><div class="line">  Intent enableBtIntent = <span class="keyword">new</span> Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);</div><div class="line">  startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);</div><div class="line">&#125;</div><div class="line"></div><div class="line"> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data)</span> </span>&#123;</div><div class="line">      <span class="keyword">if</span> (requestCode == REQUEST_ENABLE_BT &amp;&amp; resultCode == RESULT_CANCELED) &#123;</div><div class="line">          Toast.makeText(MyApplication.getContext(),R.string.Bluetooth_openfail, Toast.LENGTH_SHORT).show();</div><div class="line">      &#125;</div><div class="line">      BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();</div><div class="line">      <span class="keyword">if</span> (mBluetoothAdapter == <span class="keyword">null</span>) &#123;</div><div class="line">          <span class="comment">//设备不支持蓝牙时处理</span></div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>查询已配对的设备<br>调用 getBondedDevices(),返回已配对设备的一组 BluetoothDevice.之后使用for循环遍历</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Set&lt;BluetoothDevice&gt; pairedDevices = mBluetoothAdapter.getBondedDevices();</div><div class="line"><span class="keyword">if</span> (pairedDevices.size() &gt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="comment">//重新加载bluetoothDeviceList</span></div><div class="line">        bluetoothDeviceList.clear();</div><div class="line">        <span class="comment">//BluetoothDevice列表循环</span></div><div class="line">        <span class="keyword">for</span> (BluetoothDevice device : pairedDevices) &#123;</div><div class="line">          bluetoothDeviceList.add(device);</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>扫描设备<br>查找设备是非常耗费系统资源的事项，需要安排在子线程中执行，这里没有用到，由需要请参考Google官方蓝牙教程</p>
-</li>
-<li><p>连接设备<br>蓝牙分主从机，链接为服务器/客户端。这里使用的是连接为客户端。</p>
-<ul>
-<li>首先获取远程设备的 BluetoothDevice 对象，即在选择设备阶段的BluetoothDevice</li>
-<li>调用 createRfcommSocketToServiceRecord(UUID) 获取 BluetoothSocket，UUID通用唯一识别码 在蓝牙中具体是什么没有很好的解释。这里的值取的是<br><code>&quot;00001101-0000-1000-8000-00805F9B34FB&quot;</code></li>
-<li>调用 connect() 发起连接,阻塞调用，需要在子线程中执行。<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//蓝牙连接子线程</span></div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</div><div class="line"></div><div class="line">    <span class="comment">//解析函数</span></div><div class="line">    ConnectThread(BluetoothDevice bluetoothDevice) &#123;</div><div class="line">        <span class="comment">// 使用一个中间变量 tmp</span></div><div class="line">        <span class="comment">// mmSocket 类型是 final</span></div><div class="line"></div><div class="line">        BluetoothSocket tmp = <span class="keyword">null</span>;</div><div class="line">        <span class="comment">// 获取 BluetoothSocket</span></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="comment">// MY_UUID is the app's UUID string, also used by the server code</span></div><div class="line">            tmp = bluetoothDevice.createRfcommSocketToServiceRecord(UUID.fromString(MyApplication.MY_UUID));</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//赋值给 mmSocket</span></div><div class="line">        mmSocket = tmp;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// 关闭蓝牙扫描</span></div><div class="line">        MyApplication.getBluetoothAdapter().cancelDiscovery();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="comment">// 通过 socket 连接到设备. connect() 会一直执行直到成功连接或者抛出异常</span></div><div class="line">            mmSocket.connect();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException connectException) &#123;</div><div class="line">            <span class="comment">//无法连接到蓝牙,关闭连接并退出</span></div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                mmSocket.close();</div><div class="line">            &#125;</div><div class="line">            <span class="comment">//没有正常关闭</span></div><div class="line">            <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// Do work to manage the connection (in a separate thread)</span></div><div class="line">        mConnectedThread = <span class="keyword">new</span> ConnectedThread(mmSocket);</div><div class="line">        mConnectedThread.start();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 关闭蓝牙连接</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            mmSocket.close();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>管理连接<br>获取BluetoothSocket<br>获取 InputStream 和 OutputStream， getInputStream() 和 getOutputStream() 来处理数据传输。read(byte[]) 和 write(byte[]) 读取数据并写入到流式传输。<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectedThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">      <span class="comment">//BluetoothSocket</span></div><div class="line">      <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</div><div class="line">      <span class="comment">//输入流</span></div><div class="line">      <span class="keyword">private</span> <span class="keyword">final</span> InputStream mmInStream;</div><div class="line">      <span class="comment">//输出流</span></div><div class="line">      <span class="keyword">private</span> <span class="keyword">final</span> OutputStream mmOutStream;</div><div class="line"></div><div class="line">      ConnectedThread(BluetoothSocket socket) &#123;</div><div class="line">          <span class="comment">//传入BluetoothSocket，实例化mmSocket</span></div><div class="line">          mmSocket = socket;</div><div class="line">          <span class="comment">//输入/输出流 中间变量</span></div><div class="line">          InputStream tmpIn = <span class="keyword">null</span>;</div><div class="line">          OutputStream tmpOut = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">          <span class="comment">// 输入输出流实例化</span></div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              tmpIn = socket.getInputStream();</div><div class="line">              tmpOut = socket.getOutputStream();</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">              e.printStackTrace();</div><div class="line">          &#125;</div><div class="line">          mmInStream = tmpIn;</div><div class="line">          mmOutStream = tmpOut;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">          <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</div><div class="line">          <span class="keyword">int</span> bytes;</div><div class="line">          <span class="comment">// 连接成功时</span></div><div class="line">          <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">              <span class="keyword">try</span> &#123;</div><div class="line">                  <span class="comment">// 在InputStream读数据</span></div><div class="line">                  bytes = mmInStream.read();</div><div class="line">                  <span class="comment">//发送数据</span></div><div class="line">                  Events.bluetooth_Recycle bluetooth_recycle = <span class="keyword">new</span> Events.bluetooth_Recycle();</div><div class="line">                  bluetooth_recycle.s = bytes;</div><div class="line">                  bluetooth_recycle.bytes = String.valueOf((<span class="keyword">char</span>) bytes);</div><div class="line">                  EventBus.getDefault().post(bluetooth_recycle);</div><div class="line">              &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">                  <span class="keyword">break</span>;</div><div class="line">              &#125;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="comment">//写方法</span></div><div class="line">      <span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              mmOutStream.write(bytes);</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">              e.printStackTrace();</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="comment">//关闭流连接</span></div><div class="line">      <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              mmSocket.close();</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="EventBus"><a href="#EventBus" class="headerlink" title="EventBus"></a>EventBus</h3><ul>
-<li>直接放链接了<blockquote>
-<p><a href="http://www.jianshu.com/p/a040955194fc" target="_blank" rel="external">http://www.jianshu.com/p/a040955194fc</a><br><a href="http://www.jianshu.com/p/acfe78296bb5" target="_blank" rel="external">http://www.jianshu.com/p/acfe78296bb5</a><br><a href="http://www.ff50.net/view/40565212977623506063.html" target="_blank" rel="external">http://www.ff50.net/view/40565212977623506063.html</a></p>
-</blockquote>
-</li>
-</ul>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ul>
-<li><p>蓝牙连接子线程</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">      <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</div><div class="line"></div><div class="line">      <span class="comment">//解析函数</span></div><div class="line">      ConnectThread(BluetoothDevice bluetoothDevice) &#123;</div><div class="line">          <span class="comment">// 使用一个中间变量 tmp</span></div><div class="line">          <span class="comment">// mmSocket 类型是 final</span></div><div class="line"></div><div class="line">          BluetoothSocket tmp = <span class="keyword">null</span>;</div><div class="line">          <span class="comment">// 获取 BluetoothSocket</span></div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              <span class="comment">// MY_UUID is the app's UUID string, also used by the server code</span></div><div class="line">              tmp = bluetoothDevice.createRfcommSocketToServiceRecord(UUID.fromString(MyApplication.MY_UUID));</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">          &#125;</div><div class="line">          <span class="comment">//赋值给 mmSocket</span></div><div class="line">          mmSocket = tmp;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">          <span class="comment">// 关闭蓝牙扫描</span></div><div class="line">          MyApplication.getBluetoothAdapter().cancelDiscovery();</div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              <span class="comment">// 通过 socket 连接到设备. connect() 会一直执行直到成功连接或者抛出异常</span></div><div class="line">              mmSocket.connect();</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException connectException) &#123;</div><div class="line">              <span class="comment">//无法连接到蓝牙,关闭连接并退出</span></div><div class="line">              <span class="keyword">try</span> &#123;</div><div class="line">                  mmSocket.close();</div><div class="line">              &#125;</div><div class="line">              <span class="comment">//没有正常关闭</span></div><div class="line">              <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">              &#125;</div><div class="line">              <span class="keyword">return</span>;</div><div class="line">          &#125;</div><div class="line">          <span class="comment">// Do work to manage the connection (in a separate thread)</span></div><div class="line">          mConnectedThread = <span class="keyword">new</span> ConnectedThread(mmSocket);</div><div class="line">          mConnectedThread.start();</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="comment">/**</span></div><div class="line">       * 关闭蓝牙连接</div><div class="line">       */</div><div class="line">      <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              mmSocket.close();</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>管理连接子线程</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">//管理连接子线程</span></div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectedThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="comment">//BluetoothSocket</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</div><div class="line">    <span class="comment">//输入流</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> InputStream mmInStream;</div><div class="line">    <span class="comment">//输出流</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> OutputStream mmOutStream;</div><div class="line"></div><div class="line">    ConnectedThread(BluetoothSocket socket) &#123;</div><div class="line">        <span class="comment">//传入BluetoothSocket，实例化mmSocket</span></div><div class="line">        mmSocket = socket;</div><div class="line">        <span class="comment">//输入/输出流 中间变量</span></div><div class="line">        InputStream tmpIn = <span class="keyword">null</span>;</div><div class="line">        OutputStream tmpOut = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">        <span class="comment">// 输入输出流实例化</span></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            tmpIn = socket.getInputStream();</div><div class="line">            tmpOut = socket.getOutputStream();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        mmInStream = tmpIn;</div><div class="line">        mmOutStream = tmpOut;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</div><div class="line">        <span class="keyword">int</span> bytes;</div><div class="line">        <span class="comment">// 连接成功时</span></div><div class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                <span class="comment">// 在InputStream读数据</span></div><div class="line">                bytes = mmInStream.read();</div><div class="line">                <span class="comment">//发送数据</span></div><div class="line">                Events.bluetooth_Recycle bluetooth_recycle = <span class="keyword">new</span> Events.bluetooth_Recycle();</div><div class="line">                bluetooth_recycle.s = bytes;</div><div class="line">                bluetooth_recycle.bytes = String.valueOf((<span class="keyword">char</span>) bytes);</div><div class="line">                EventBus.getDefault().post(bluetooth_recycle);</div><div class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//写方法</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            mmOutStream.write(bytes);</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//关闭流连接</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            mmSocket.close();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>连接蓝牙<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//连接线程</span></div><div class="line"><span class="keyword">private</span> ConnectThread mConnectThread;</div><div class="line"><span class="comment">//管理连接进程</span></div><div class="line"><span class="keyword">private</span> ConnectedThread mConnectedThread;</div><div class="line"></div><div class="line"><span class="comment">//创建连接子线程</span></div><div class="line">mConnectThread = <span class="keyword">new</span> ConnectThread(bluetoothDevice);</div><div class="line"><span class="comment">//启动连接子线程</span></div><div class="line">mConnectThread.start();</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>向蓝牙写入数据<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">//发送数据String,        主线程            优先级4       非粘性事件</span></div><div class="line"><span class="meta">@Subscribe</span>(threadMode = ThreadMode.MAIN, priority = <span class="number">4</span>, sticky = <span class="keyword">false</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEvent</span><span class="params">(Events.bluetooth_Send bluetoothSend)</span> </span>&#123;</div><div class="line">    String bytes = bluetoothSend.bytes;</div><div class="line">    mConnectedThread.write(bytes.getBytes());</div><div class="line">    LogUtil.d(Tag, <span class="string">"onEvent:Send"</span> + bluetoothSend.bytes);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>接收数据处理<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">//数据转换                后台进程            优先级3       非粘性事件</span></div><div class="line"><span class="meta">@Subscribe</span>(threadMode = ThreadMode.BACKGROUND, priority = <span class="number">3</span>, sticky = <span class="keyword">false</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEvent</span><span class="params">(Events.bluetooth_Transformers bluetoothTransformers)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> bytes = bluetoothTransformers.bytes;</div><div class="line">    <span class="comment">//处理数据</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;p&gt;资料来源如下&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;第一行代码(第二版)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;编程环境&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Android Studio 2.2.3 &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;导语&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;毕设中的蓝牙部分,记录以供复习&lt;/
-    
-    </summary>
-    
-      <category term="Android笔记" scheme="http://yoursite.com/categories/Android%E7%AC%94%E8%AE%B0/"/>
-    
     
       <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
-      <category term="毕设" scheme="http://yoursite.com/tags/%E6%AF%95%E8%AE%BE/"/>
-    
-      <category term="BlueTooth" scheme="http://yoursite.com/tags/BlueTooth/"/>
     
   </entry>
   

@@ -325,6 +325,327 @@
   
   
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/" itemprop="url">
+                  Android笔记—蓝牙串口(BlueTooth+EventBus)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-17T12:00:00+08:00">
+                2017-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/" class="leancloud_visitors" data-flag-title="Android笔记—蓝牙串口(BlueTooth+EventBus)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,942
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  9m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>资料来源如下</p>
+<ul>
+<li>第一行代码(第二版)</li>
+</ul>
+<p>编程环境</p>
+<ul>
+<li>Android Studio 2.2.3 </li>
+</ul>
+<p>导语</p>
+<ul>
+<li>毕设中的蓝牙部分,记录以供复习</li>
+</ul>
+<hr>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h3><ul>
+<li><p>Android应用 与 Hc-05 蓝牙模块连接,单片机与 Android 端 可以通过串口正常收发数据.</p>
+</li>
+<li><p>预留足够灵活的接口, Android 应用中可以在任意位置获取到蓝牙数据</p>
+</li>
+<li><p>Activity切换时,蓝牙连接不断开.</p>
+</li>
+</ul>
+<h3 id="用到的开源库-知识点资料-简介-来源"><a href="#用到的开源库-知识点资料-简介-来源" class="headerlink" title="用到的开源库/知识点资料 简介/来源"></a>用到的开源库/知识点资料 简介/来源</h3><ul>
+<li><p>蓝牙:<br><a href="https://developer.android.com/guide/topics/connectivity/bluetooth.html" target="_blank" rel="external">Android API 指南</a></p>
+<blockquote>
+<p><a href="https://developer.android.com/guide/topics/connectivity/bluetooth.html" target="_blank" rel="external">https://developer.android.com/guide/topics/connectivity/bluetooth.html</a></p>
+</blockquote>
+</li>
+<li><p>EventBus:<br><a href="https://github.com/greenrobot/EventBus" target="_blank" rel="external">EventBus-GitHub</a> 是一个Android端优化的publish/subscribe消息总线,用来替代 Intent 、   Handler 、 Broadcast 等在 Actvity 、 Fragment 、 Service 等组件之间传递信息 . EventBus 可以传递一个完整的对象,简单高效, <strong>注意 EventBus 只能在多线程之间传递消息,无法在不同进程之间传递消息</strong> ,EventBus 3.0 以后进一步简化了传递方式,真的是很值得学习的一个开源库!</p>
+<p>参考资料如下:</p>
+<p><a href="http://www.jianshu.com/p/acfe78296bb5" target="_blank" rel="external">EventBus 3.0初探: 入门使用及其使用 完全解析</a></p>
+<p> <a href="http://www.jianshu.com/p/1eaca34e5314" target="_blank" rel="external">EventBus3(3.0.0)源码解析</a></p>
+</li>
+</ul>
+<hr>
+<h2 id="基础部分"><a href="#基础部分" class="headerlink" title="基础部分"></a>基础部分</h2><ul>
+<li>蓝牙 与 EventBus 基础部分</li>
+</ul>
+<h3 id="BlueTooth"><a href="#BlueTooth" class="headerlink" title="BlueTooth"></a>BlueTooth</h3><hr>
+<ul>
+<li>备注 : 这里使用的是 传统蓝牙 即 蓝牙4.0以前版本, 而不是 蓝牙4.0 ( ble低功耗蓝牙)及以后版本 </li>
+</ul>
+<hr>
+<ul>
+<li>Android 对 Bluetooth 做了很好的封装,我们可以比较轻松的在 Android Bluetooth API 上进行开发.</li>
+<li>Android中所有蓝牙API均来自 android.bluetooth 包</li>
+</ul>
+<h4 id="BlueTooth基础"><a href="#BlueTooth基础" class="headerlink" title="BlueTooth基础"></a>BlueTooth基础</h4><ul>
+<li><p>BluetoothAdapter 本地蓝牙适配器<br>BluetoothAdapter 是所有蓝牙交互的入口点, 在初始化蓝牙及蓝牙配对阶段使用<br>1.发现其他蓝牙设备<br>2.查询绑定（配对）设备的列表<br>3.使用已知的 MAC 地址实例化 BluetoothDevice<br>4.创建 BluetoothServerSocket 侦听来自其他设备的通信。</p>
+</li>
+<li><p>BluetoothDevice 远程蓝牙设备<br>含有该设备的信息，例如设备的名称、地址、类和绑定状态等。</p>
+</li>
+<li><p>BluetoothSocket 蓝牙套接字接口（与 TCP Socket 相似）<br>与 BluetoothDevice 配合建立远程连接,允许应用通过 InputStream 和 OutputStream 与其他蓝牙设备交换数据.</p>
+</li>
+</ul>
+<h4 id="初始化蓝牙"><a href="#初始化蓝牙" class="headerlink" title="初始化蓝牙"></a>初始化蓝牙</h4><ul>
+<li><p>声明蓝牙权限<br>Android 应用使用蓝牙前都需要声明蓝牙权限<br>一般只需要  BLUETOOTH 权限即可,但是考虑到之后有更多的需求,需要更改系统蓝牙设置,由此需要 BLUETOOTH<em>ADMIN 权限</em>也一起声明</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;manifest ... &gt;</div><div class="line">&lt;uses-permission android:name="android.permission.BLUETOOTH" /&gt;</div><div class="line">&lt;uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /&gt;</div><div class="line">...</div><div class="line">&lt;/manifest&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>蓝牙设备可用性  获取 BluetoothAdapter<br>获取 BluetoothAdapter，需要静态 getDefaultAdapter() 方法。getDefaultAdapter() 会返回一个表示设备自身的蓝牙适配器的 BluetoothAdapter 设备不支持蓝牙 则返回 null</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();</div><div class="line"><span class="keyword">if</span> (mBluetoothAdapter == <span class="keyword">null</span>) &#123;</div><div class="line">  <span class="comment">// 蓝牙不可用操作</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>开启蓝牙<br>BluetoothAdapter 的 .isEnabled() 可以判断系统蓝牙是否开启.<br>没有开启时 startActivityForResult() 发送包含  ACTION_REQUEST_ENABLE  的 Intent 请求系统开启蓝牙,并在 onActivityResult() 返回的数据中 RESULT_CANCELED 表示开启失败 RESULT_OK  表示开启成功,这里我们只检测开启失败情况,并提示用户 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (!mBluetoothAdapter.isEnabled()) &#123;</div><div class="line">  Intent enableBtIntent = <span class="keyword">new</span> Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);</div><div class="line">  startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);</div><div class="line">&#125;</div><div class="line"></div><div class="line"> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data)</span> </span>&#123;</div><div class="line">      <span class="keyword">if</span> (requestCode == REQUEST_ENABLE_BT &amp;&amp; resultCode == RESULT_CANCELED) &#123;</div><div class="line">          Toast.makeText(MyApplication.getContext(),R.string.Bluetooth_openfail, Toast.LENGTH_SHORT).show();</div><div class="line">      &#125;</div><div class="line">      BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();</div><div class="line">      <span class="keyword">if</span> (mBluetoothAdapter == <span class="keyword">null</span>) &#123;</div><div class="line">          <span class="comment">//设备不支持蓝牙时处理</span></div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>查询已配对的设备<br>调用 getBondedDevices(),返回已配对设备的一组 BluetoothDevice.之后使用for循环遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Set&lt;BluetoothDevice&gt; pairedDevices = mBluetoothAdapter.getBondedDevices();</div><div class="line"><span class="keyword">if</span> (pairedDevices.size() &gt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="comment">//重新加载bluetoothDeviceList</span></div><div class="line">        bluetoothDeviceList.clear();</div><div class="line">        <span class="comment">//BluetoothDevice列表循环</span></div><div class="line">        <span class="keyword">for</span> (BluetoothDevice device : pairedDevices) &#123;</div><div class="line">          bluetoothDeviceList.add(device);</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>扫描设备<br>查找设备是非常耗费系统资源的事项，需要安排在子线程中执行，这里没有用到，由需要请参考Google官方蓝牙教程</p>
+</li>
+<li><p>连接设备<br>蓝牙分主从机，链接为服务器/客户端。这里使用的是连接为客户端。</p>
+<ul>
+<li>首先获取远程设备的 BluetoothDevice 对象，即在选择设备阶段的BluetoothDevice</li>
+<li>调用 createRfcommSocketToServiceRecord(UUID) 获取 BluetoothSocket，UUID通用唯一识别码 在蓝牙中具体是什么没有很好的解释。这里的值取的是<br><code>&quot;00001101-0000-1000-8000-00805F9B34FB&quot;</code></li>
+<li>调用 connect() 发起连接,阻塞调用，需要在子线程中执行。<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//蓝牙连接子线程</span></div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</div><div class="line"></div><div class="line">    <span class="comment">//解析函数</span></div><div class="line">    ConnectThread(BluetoothDevice bluetoothDevice) &#123;</div><div class="line">        <span class="comment">// 使用一个中间变量 tmp</span></div><div class="line">        <span class="comment">// mmSocket 类型是 final</span></div><div class="line"></div><div class="line">        BluetoothSocket tmp = <span class="keyword">null</span>;</div><div class="line">        <span class="comment">// 获取 BluetoothSocket</span></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="comment">// MY_UUID is the app's UUID string, also used by the server code</span></div><div class="line">            tmp = bluetoothDevice.createRfcommSocketToServiceRecord(UUID.fromString(MyApplication.MY_UUID));</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//赋值给 mmSocket</span></div><div class="line">        mmSocket = tmp;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// 关闭蓝牙扫描</span></div><div class="line">        MyApplication.getBluetoothAdapter().cancelDiscovery();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="comment">// 通过 socket 连接到设备. connect() 会一直执行直到成功连接或者抛出异常</span></div><div class="line">            mmSocket.connect();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException connectException) &#123;</div><div class="line">            <span class="comment">//无法连接到蓝牙,关闭连接并退出</span></div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                mmSocket.close();</div><div class="line">            &#125;</div><div class="line">            <span class="comment">//没有正常关闭</span></div><div class="line">            <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// Do work to manage the connection (in a separate thread)</span></div><div class="line">        mConnectedThread = <span class="keyword">new</span> ConnectedThread(mmSocket);</div><div class="line">        mConnectedThread.start();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 关闭蓝牙连接</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            mmSocket.close();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>管理连接<br>获取BluetoothSocket<br>获取 InputStream 和 OutputStream， getInputStream() 和 getOutputStream() 来处理数据传输。read(byte[]) 和 write(byte[]) 读取数据并写入到流式传输。<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectedThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">      <span class="comment">//BluetoothSocket</span></div><div class="line">      <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</div><div class="line">      <span class="comment">//输入流</span></div><div class="line">      <span class="keyword">private</span> <span class="keyword">final</span> InputStream mmInStream;</div><div class="line">      <span class="comment">//输出流</span></div><div class="line">      <span class="keyword">private</span> <span class="keyword">final</span> OutputStream mmOutStream;</div><div class="line"></div><div class="line">      ConnectedThread(BluetoothSocket socket) &#123;</div><div class="line">          <span class="comment">//传入BluetoothSocket，实例化mmSocket</span></div><div class="line">          mmSocket = socket;</div><div class="line">          <span class="comment">//输入/输出流 中间变量</span></div><div class="line">          InputStream tmpIn = <span class="keyword">null</span>;</div><div class="line">          OutputStream tmpOut = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">          <span class="comment">// 输入输出流实例化</span></div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              tmpIn = socket.getInputStream();</div><div class="line">              tmpOut = socket.getOutputStream();</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">              e.printStackTrace();</div><div class="line">          &#125;</div><div class="line">          mmInStream = tmpIn;</div><div class="line">          mmOutStream = tmpOut;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">          <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</div><div class="line">          <span class="keyword">int</span> bytes;</div><div class="line">          <span class="comment">// 连接成功时</span></div><div class="line">          <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">              <span class="keyword">try</span> &#123;</div><div class="line">                  <span class="comment">// 在InputStream读数据</span></div><div class="line">                  bytes = mmInStream.read();</div><div class="line">                  <span class="comment">//发送数据</span></div><div class="line">                  Events.bluetooth_Recycle bluetooth_recycle = <span class="keyword">new</span> Events.bluetooth_Recycle();</div><div class="line">                  bluetooth_recycle.s = bytes;</div><div class="line">                  bluetooth_recycle.bytes = String.valueOf((<span class="keyword">char</span>) bytes);</div><div class="line">                  EventBus.getDefault().post(bluetooth_recycle);</div><div class="line">              &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">                  <span class="keyword">break</span>;</div><div class="line">              &#125;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="comment">//写方法</span></div><div class="line">      <span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              mmOutStream.write(bytes);</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">              e.printStackTrace();</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="comment">//关闭流连接</span></div><div class="line">      <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              mmSocket.close();</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="EventBus"><a href="#EventBus" class="headerlink" title="EventBus"></a>EventBus</h3><ul>
+<li>直接放链接了<blockquote>
+<p><a href="http://www.jianshu.com/p/a040955194fc" target="_blank" rel="external">http://www.jianshu.com/p/a040955194fc</a><br><a href="http://www.jianshu.com/p/acfe78296bb5" target="_blank" rel="external">http://www.jianshu.com/p/acfe78296bb5</a><br><a href="http://www.ff50.net/view/40565212977623506063.html" target="_blank" rel="external">http://www.ff50.net/view/40565212977623506063.html</a></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ul>
+<li><p>蓝牙连接子线程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">      <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</div><div class="line"></div><div class="line">      <span class="comment">//解析函数</span></div><div class="line">      ConnectThread(BluetoothDevice bluetoothDevice) &#123;</div><div class="line">          <span class="comment">// 使用一个中间变量 tmp</span></div><div class="line">          <span class="comment">// mmSocket 类型是 final</span></div><div class="line"></div><div class="line">          BluetoothSocket tmp = <span class="keyword">null</span>;</div><div class="line">          <span class="comment">// 获取 BluetoothSocket</span></div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              <span class="comment">// MY_UUID is the app's UUID string, also used by the server code</span></div><div class="line">              tmp = bluetoothDevice.createRfcommSocketToServiceRecord(UUID.fromString(MyApplication.MY_UUID));</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">          &#125;</div><div class="line">          <span class="comment">//赋值给 mmSocket</span></div><div class="line">          mmSocket = tmp;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">          <span class="comment">// 关闭蓝牙扫描</span></div><div class="line">          MyApplication.getBluetoothAdapter().cancelDiscovery();</div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              <span class="comment">// 通过 socket 连接到设备. connect() 会一直执行直到成功连接或者抛出异常</span></div><div class="line">              mmSocket.connect();</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException connectException) &#123;</div><div class="line">              <span class="comment">//无法连接到蓝牙,关闭连接并退出</span></div><div class="line">              <span class="keyword">try</span> &#123;</div><div class="line">                  mmSocket.close();</div><div class="line">              &#125;</div><div class="line">              <span class="comment">//没有正常关闭</span></div><div class="line">              <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">              &#125;</div><div class="line">              <span class="keyword">return</span>;</div><div class="line">          &#125;</div><div class="line">          <span class="comment">// Do work to manage the connection (in a separate thread)</span></div><div class="line">          mConnectedThread = <span class="keyword">new</span> ConnectedThread(mmSocket);</div><div class="line">          mConnectedThread.start();</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="comment">/**</span></div><div class="line">       * 关闭蓝牙连接</div><div class="line">       */</div><div class="line">      <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">              mmSocket.close();</div><div class="line">          &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>管理连接子线程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">//管理连接子线程</span></div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectedThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="comment">//BluetoothSocket</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</div><div class="line">    <span class="comment">//输入流</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> InputStream mmInStream;</div><div class="line">    <span class="comment">//输出流</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> OutputStream mmOutStream;</div><div class="line"></div><div class="line">    ConnectedThread(BluetoothSocket socket) &#123;</div><div class="line">        <span class="comment">//传入BluetoothSocket，实例化mmSocket</span></div><div class="line">        mmSocket = socket;</div><div class="line">        <span class="comment">//输入/输出流 中间变量</span></div><div class="line">        InputStream tmpIn = <span class="keyword">null</span>;</div><div class="line">        OutputStream tmpOut = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">        <span class="comment">// 输入输出流实例化</span></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            tmpIn = socket.getInputStream();</div><div class="line">            tmpOut = socket.getOutputStream();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        mmInStream = tmpIn;</div><div class="line">        mmOutStream = tmpOut;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</div><div class="line">        <span class="keyword">int</span> bytes;</div><div class="line">        <span class="comment">// 连接成功时</span></div><div class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                <span class="comment">// 在InputStream读数据</span></div><div class="line">                bytes = mmInStream.read();</div><div class="line">                <span class="comment">//发送数据</span></div><div class="line">                Events.bluetooth_Recycle bluetooth_recycle = <span class="keyword">new</span> Events.bluetooth_Recycle();</div><div class="line">                bluetooth_recycle.s = bytes;</div><div class="line">                bluetooth_recycle.bytes = String.valueOf((<span class="keyword">char</span>) bytes);</div><div class="line">                EventBus.getDefault().post(bluetooth_recycle);</div><div class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//写方法</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            mmOutStream.write(bytes);</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//关闭流连接</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            mmSocket.close();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>连接蓝牙<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//连接线程</span></div><div class="line"><span class="keyword">private</span> ConnectThread mConnectThread;</div><div class="line"><span class="comment">//管理连接进程</span></div><div class="line"><span class="keyword">private</span> ConnectedThread mConnectedThread;</div><div class="line"></div><div class="line"><span class="comment">//创建连接子线程</span></div><div class="line">mConnectThread = <span class="keyword">new</span> ConnectThread(bluetoothDevice);</div><div class="line"><span class="comment">//启动连接子线程</span></div><div class="line">mConnectThread.start();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>向蓝牙写入数据<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">//发送数据String,        主线程            优先级4       非粘性事件</span></div><div class="line"><span class="meta">@Subscribe</span>(threadMode = ThreadMode.MAIN, priority = <span class="number">4</span>, sticky = <span class="keyword">false</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEvent</span><span class="params">(Events.bluetooth_Send bluetoothSend)</span> </span>&#123;</div><div class="line">    String bytes = bluetoothSend.bytes;</div><div class="line">    mConnectedThread.write(bytes.getBytes());</div><div class="line">    LogUtil.d(Tag, <span class="string">"onEvent:Send"</span> + bluetoothSend.bytes);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>接收数据处理<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">//数据转换                后台进程            优先级3       非粘性事件</span></div><div class="line"><span class="meta">@Subscribe</span>(threadMode = ThreadMode.BACKGROUND, priority = <span class="number">3</span>, sticky = <span class="keyword">false</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEvent</span><span class="params">(Events.bluetooth_Transformers bluetoothTransformers)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> bytes = bluetoothTransformers.bytes;</div><div class="line">    <span class="comment">//处理数据</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/3/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/08/VPS科学上网教程3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3312,329 +3633,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-  
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/13/Android笔记-UI-ListView/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jasper">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/v.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="默">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/13/Android笔记-UI-ListView/" itemprop="url">
-                  Android笔记-UI-ListView
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-13T18:00:00+08:00">
-                2016-12-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">Android笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/13/Android笔记-UI-ListView/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/12/13/Android笔记-UI-ListView/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/12/13/Android笔记-UI-ListView/" class="leancloud_visitors" data-flag-title="Android笔记-UI-ListView">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  1,885
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  8m
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<ul>
-<li>资料来源如下</li>
-<li>第一行代码(第二版)</li>
-<li><a href="https://developer.android.com/reference/android/widget/ListView.html" target="_blank" rel="external">ListView</a></li>
-<li><a href="http://blog.csdn.net/guolin_blog/article/details/44996879" target="_blank" rel="external"> Android ListView工作原理完全解析，带你从源码的角度彻底理解</a></li>
-</ul>
-<hr>
-<ul>
-<li>ListView是所有原生控件中使用频率最高和最复杂的，涉及知识点也较多，专门抽出一篇来记录，涉及一些过程分析，希望自己能写完</li>
-</ul>
-<hr>
-<h3 id="ListView的简单使用"><a href="#ListView的简单使用" class="headerlink" title="ListView的简单使用"></a>ListView的简单使用</h3><ul>
-<li><p>先来看一下一个简单的实例<br>代码如下</p>
-<ul>
-<li><p>在activity_main.xml中添加_ListView</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ListView</span></span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/list_view"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">ListView</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>修改MainActivity的代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">//要显示的数组，屏幕长了点，为了显示滑动效果多增加了几项。</span></div><div class="line">   <span class="keyword">private</span> String[] data = &#123;<span class="string">"apple"</span>,<span class="string">"banana"</span>,<span class="string">"orange"</span>,<span class="string">"watermelon"</span>,<span class="string">"pear"</span>,<span class="string">"grape"</span>,<span class="string">"pineapple"</span>,<span class="string">"strawberry"</span>,<span class="string">"cherry"</span>,<span class="string">"mango"</span>,<span class="string">"A"</span>,<span class="string">"B"</span>,<span class="string">"C"</span>,<span class="string">"D"</span>,<span class="string">"E"</span>,<span class="string">"F"</span>&#125;;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">      <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">      setContentView(R.layout.activity_main);</div><div class="line">      Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);</div><div class="line">      setSupportActionBar(toolbar);</div><div class="line"></div><div class="line"><span class="comment">//为适配器绑定数据</span></div><div class="line">	ArrayAdapter&lt;String&gt; adapter = <span class="keyword">new</span> ArrayAdapter&lt;String&gt;(MainActivity.<span class="keyword">this</span>,android.R.layout.simple_list_item_single_choice,data);</div><div class="line"><span class="comment">//得到ListView对象的引用</span></div><div class="line">ListView listView = (ListView) findViewById(R.id.list_view);</div><div class="line"><span class="comment">//适配器内容传递</span></div><div class="line">listView.setAdapter(adapter);   </div><div class="line">      &#125;);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>效果如图<br><img src="http://cdn1.snapgram.co/imgs/2016/12/14/Screenshot_20160812-170816.png" alt="Screenshot_20160812-170816.png">    </p>
-</li>
-<li><p>步骤其实比较简单</p>
-<ul>
-<li>准备要显示的数据 ——String[] data数组</li>
-<li>构建适配器  ——ArrayAdapter<string> adapter</string></li>
-<li>将适配器添加到ListView ——listView.setAdapter(adapter);   </li>
-</ul>
-</li>
-<li><p>详解</p>
-<ul>
-<li>ListView首先是用来展现大量数据的，<br>数据源的来源可以是网络下载，程序内置、数据库提取等，本例中则是简单的定义了一个String类型 data数组。<br>数据源的类型/种类繁多，使得ListView无法直接适配数据源，直接适配数据源将导致代码的臃肿和效率的低下。ListView与数据源之间需要一个过度</li>
-<li>适配器：Adapter，Adapter在ListView和数据源之间起到了一个桥梁的作用。正是Adapter的使用ListView的使用变得要比其它控件复杂得多。</li>
-</ul>
-</li>
-</ul>
-<h3 id="Adapter适配器"><a href="#Adapter适配器" class="headerlink" title="Adapter适配器"></a>Adapter适配器</h3><ul>
-<li><p>Adapter适配器在ListView和数据源之间起到了一个桥梁的作用Adapter的接口都是统一的，因此ListView不用担心任何适配方面的问题。</p>
-<p>Adapter又是一个接口(interface)，它可以去实现各种各样的子类，每个子类都能通过自己的逻辑来去完成特定的功能，以及与特定数据源的适配操作，比如说ArrayAdapter可以用于数组和List类型的数据源适配，SimpleCursorAdapter可以用于游标类型的数据源适配</p>
-<p>这样就解决了数据源适配的难题，并且还拥有相当不错的扩展性</p>
-</li>
-<li><p>简易的示图(来自  郭霖的博客)<br><img src="http://cdn3.snapgram.co/imgs/2016/12/14/SouthEast.png" alt="SouthEast.png"></p>
-</li>
-<li><p>常用Adapter</p>
-<p>ArrayAdapter<t>——用来绑定一个数组，支持泛型操作</t></p>
-<p>SimpleAdapter——用来绑定在xml中定义的控件对应的数据</p>
-<p>SimpleCursorAdapter——用来绑定游标得到的数据</p>
-<p>BaseAdapter——通用的基础适配器</p>
-</li>
-<li><p>实例中使用的是ArrayAdapter，ArrayAdapter具有多个构造函数重载，这里使用的是字符串类型，</p>
-</li>
-<li>ArrayAdapter的构造函数<ul>
-<li>当前上下文</li>
-<li>ListView子项的id，本例中使用的是android.R.layout.simple_list_item 这是Android内置的一个布局文件</li>
-<li>需要适配的数据<br>之后适配器就构建完成，最后传递进LIstView中即可</li>
-</ul>
-</li>
-</ul>
-<h4 id="自定义适配器"><a href="#自定义适配器" class="headerlink" title="自定义适配器"></a>自定义适配器</h4><ul>
-<li>从第一行代码第二版的源码LiseViewTest目录下拷贝drawble<em>hdpi </em>到你的工程下</li>
-<li><p>新建Fruit类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Fruit</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> String name;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">int</span> imageId;</div><div class="line">  <span class="comment">//构造函数   水果名称/水果对应图片资源ID</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Fruit</span><span class="params">(String name, <span class="keyword">int</span> imageId)</span> </span>&#123;</div><div class="line">      <span class="keyword">this</span>.name = name;</div><div class="line">      <span class="keyword">this</span>.imageId = imageId;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">      <span class="keyword">return</span> name;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getImageId</span><span class="params">()</span> </span>&#123;</div><div class="line">      <span class="keyword">return</span> imageId;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>在layout目录下新建fruit<em>item.xml  </em></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">  <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span></div><div class="line">  <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">  <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">ImageView</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/fruit_image"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span> /&gt;</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/fruit_name"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">      <span class="attr">android:layout_gravity</span>=<span class="string">"center_vertical"</span></div><div class="line">      <span class="attr">android:layout_marginLeft</span>=<span class="string">"10dp"</span> /&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>一个ImageView和TextView ，水平居中显示</p>
-</li>
-<li><p>自定义适配器继承自ArrayAdapter 泛型指定为fruit类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">//继承自ArrayAdapter</span></div><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FruitAdapter</span> <span class="keyword">extends</span> <span class="title">ArrayAdapter</span>&lt;<span class="title">Fruit</span>&gt; </span>&#123;</div><div class="line">   <span class="keyword">private</span> <span class="keyword">int</span> resourceId;</div><div class="line"><span class="comment">//构造函数  /上下文  ListView子项布局id    数据</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="title">FruitAdapter</span><span class="params">(Context context, <span class="keyword">int</span> textViewResourceId,</span></span></div><div class="line">                       List&lt;Fruit&gt; objects) &#123;</div><div class="line">       <span class="keyword">super</span>(context, textViewResourceId, objects);</div><div class="line">       resourceId = textViewResourceId;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="comment">//当前子元素的的位置，</span></div><div class="line">   <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span></span>&#123;</div><div class="line">       Fruit fruit = getItem(position); <span class="comment">// 获取当前项的Fruit实例</span></div><div class="line">       View view = LayoutInflater.from(getContext()).inflate(resourceId,parent,<span class="keyword">false</span>);</div><div class="line">       ImageView fruitImage = (ImageView)view.findViewById(R.id.fruit_image);</div><div class="line">       TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</div><div class="line">       fruitImage.setImageResource(fruit.getImageId());</div><div class="line">       fruitName.setText(fruit.getName());</div><div class="line">       <span class="keyword">return</span> view;</div><div class="line">   &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>getView()方法接受的三个参数，第一个参数position代表当前子元素的的位置，我们可以通过具体的位置来获取与其相关的数据。第二个参数convertView</li>
-<li>LayoutInflater.inflate()方法来去加载布局。接收3个参数，第三个参数为false表示只在父布局声明的layout属性有效，但不会为这个view添加父布局，最后设定为接下来会对这个view进行一些属性和值的设定，最后将view返回。</li>
-</ul>
-</li>
-<li><p>修改MainActivity的代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="comment">//新建Fruit类的数组</span></div><div class="line">  <span class="keyword">private</span> List&lt;Fruit&gt; fruitList = <span class="keyword">new</span> ArrayList&lt;Fruit&gt;();</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">      <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">      setContentView(R.layout.activity_main);</div><div class="line"></div><div class="line"><span class="comment">// 初始化水果数据</span></div><div class="line">      initFruits();</div><div class="line">      <span class="comment">//设置FruitAdapter适配器</span></div><div class="line">      FruitAdapter adapter = <span class="keyword">new</span> FruitAdapter(MainActivity.<span class="keyword">this</span>, R.layout.fruit_item, fruitList);</div><div class="line">      <span class="comment">//得到ListView的引用</span></div><div class="line">      ListView listView = (ListView) findViewById(R.id.list_view);</div><div class="line">      listView.setAdapter(adapter);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// 初始化水果数据</span></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initFruits</span><span class="params">()</span> </span>&#123;</div><div class="line">      <span class="comment">//填充两遍，占满屏幕</span></div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</div><div class="line">          Fruit apple = <span class="keyword">new</span> Fruit(<span class="string">"Apple"</span>, R.drawable.apple_pic);</div><div class="line">          fruitList.add(apple);</div><div class="line">          Fruit banana = <span class="keyword">new</span> Fruit(<span class="string">"Banana"</span>, R.drawable.banana_pic);</div><div class="line">          fruitList.add(banana);</div><div class="line">          Fruit orange = <span class="keyword">new</span> Fruit(<span class="string">"Orange"</span>, R.drawable.orange_pic);</div><div class="line">          fruitList.add(orange);</div><div class="line">          Fruit watermelon = <span class="keyword">new</span> Fruit(<span class="string">"Watermelon"</span>, R.drawable.watermelon_pic);</div><div class="line">          fruitList.add(watermelon);</div><div class="line">          Fruit pear = <span class="keyword">new</span> Fruit(<span class="string">"Pear"</span>, R.drawable.pear_pic);</div><div class="line">          fruitList.add(pear);</div><div class="line">          Fruit grape = <span class="keyword">new</span> Fruit(<span class="string">"Grape"</span>, R.drawable.grape_pic);</div><div class="line">          fruitList.add(grape);</div><div class="line">          Fruit pineapple = <span class="keyword">new</span> Fruit(<span class="string">"Pineapple"</span>, R.drawable.pineapple_pic);</div><div class="line">          fruitList.add(pineapple);</div><div class="line">          Fruit strawberry = <span class="keyword">new</span> Fruit(<span class="string">"Strawberry"</span>, R.drawable.strawberry_pic);</div><div class="line">          fruitList.add(strawberry);</div><div class="line">          Fruit cherry = <span class="keyword">new</span> Fruit(<span class="string">"Cherry"</span>, R.drawable.cherry_pic);</div><div class="line">          fruitList.add(cherry);</div><div class="line">          Fruit mango = <span class="keyword">new</span> Fruit(<span class="string">"Mango"</span>, R.drawable.mango_pic);</div><div class="line">          fruitList.add(mango);</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>只需要修改fruit<em>item.xml，即可定制界面</em></p>
-</li>
-</ul>
-<h3 id="提升ListView的效率"><a href="#提升ListView的效率" class="headerlink" title="提升ListView的效率"></a>提升ListView的效率</h3><h4 id="convertView参数"><a href="#convertView参数" class="headerlink" title="convertView参数"></a>convertView参数</h4><ul>
-<li>针对  <code>Fruit fruit = getItem(position); // 获取当前项的Fruit实例</code><br>每次滑动ListView时，getView()方法都会将布局都会重新加载一边</li>
-<li>convertView参数：将之前加载完成的布局进行缓存。</li>
-<li>借助convertView参数，在每次加载View之前查询convertView是否为空，为空则重新加载，不为空则从convertView中取</li>
-<li><p>代码部分如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">View view;</div><div class="line">Fruit fruit = getItem(position); <span class="comment">// 获取当前项的Fruit实例</span></div><div class="line"></div><div class="line"> <span class="keyword">if</span> (convertView == <span class="keyword">null</span>) &#123;</div><div class="line">      view = LayoutInflater.from(getContext()).inflate(resourceId,parent,<span class="keyword">false</span>);</div><div class="line"> &#125;<span class="keyword">else</span> &#123;</div><div class="line">      view = convertView;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>ListView不会再重复加载布局了</p>
-<h4 id="ViewHolder"><a href="#ViewHolder" class="headerlink" title="ViewHolder"></a>ViewHolder</h4></li>
-<li>ViewHolder不是Android的开发API，而是一种设计方法</li>
-<li><p>针对<br><code>ImageView fruitImage = (ImageView)view.findViewById(R.id.fruit_image);
-TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每次布局实例化后，findViewById都会重新执行获取控件实例</p>
-</li>
-<li><p>新增内部类 ViewHolder，利用Tag附加到对应View中，即每次加载布局时，对应的  获取控件实例的操作也一并执行，并储存在View中。这样 获取控件实例的操作直接缓存在View中，不会再重复执行</p>
-</li>
-<li><p>代码如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"> <span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</div><div class="line">       Fruit fruit = getItem(position); <span class="comment">// 获取当前项的Fruit实例</span></div><div class="line">       View view;</div><div class="line">       ViewHolder viewHolder;</div><div class="line">       <span class="keyword">if</span> (convertView == <span class="keyword">null</span>) &#123;</div><div class="line">           <span class="comment">//加载布局</span></div><div class="line">           view = LayoutInflater.from(getContext()).inflate(resourceId, parent, <span class="keyword">false</span>);</div><div class="line">           viewHolder = <span class="keyword">new</span> ViewHolder();</div><div class="line">           viewHolder.fruitImage = (ImageView) view.findViewById (R.id.fruit_image);</div><div class="line">           viewHolder.fruitName = (TextView) view.findViewById (R.id.fruit_name);</div><div class="line">           view.setTag(viewHolder); <span class="comment">// 将ViewHolder存储在View中</span></div><div class="line">       &#125; <span class="keyword">else</span> &#123;</div><div class="line">           view = convertView;</div><div class="line">           viewHolder = (ViewHolder) view.getTag(); <span class="comment">// 重新获取ViewHolder</span></div><div class="line">       &#125;</div><div class="line">       viewHolder.fruitImage.setImageResource(fruit.getImageId());</div><div class="line">       viewHolder.fruitName.setText(fruit.getName());</div><div class="line">       <span class="keyword">return</span> view;</div><div class="line">   &#125;</div><div class="line"><span class="comment">//ViewHolder 内部类</span></div><div class="line">   <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> </span>&#123;</div><div class="line"></div><div class="line">       ImageView fruitImage;</div><div class="line"></div><div class="line">       TextView fruitName;</div><div class="line"></div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="ListView中的点击事件"><a href="#ListView中的点击事件" class="headerlink" title="ListView中的点击事件"></a>ListView中的点击事件</h3><ul>
-<li>比较简单,再MainActivty的onCreate方法中添加</li>
-<li><p>代码如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">listView.setOnItemClickListener(<span class="keyword">new</span> AdapterView.OnItemClickListener() &#123;</div><div class="line">          <span class="meta">@Override</span></div><div class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemClick</span><span class="params">(AdapterView&lt;?&gt; parent, View view,</span></span></div><div class="line">                                  <span class="keyword">int</span> position, <span class="keyword">long</span> id) &#123;</div><div class="line">              Fruit fruit = fruitList.get(position);</div><div class="line">              Toast.makeText(MainActivity.<span class="keyword">this</span>, fruit.getName(), Toast.LENGTH_SHORT).show();</div></pre></td></tr></table></figure>
-</li>
-<li><p>setOnItemClickListener为ListView注册了一个监听器，点击发生时回掉 onItemClick()方法，该方法通过position参数判断具体子项。该处是执行Toast</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-	
-
-	
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-	
-	
-	<div>
-	    <p id="div-border-left-blue">
-	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
-	    <span>
-	    <b>本文地址：</b><a href="/page/3/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
-	    </span>
-	    </p>
-	</div>
-	
-
-	
-    <footer class="post-footer">
-	
-	
-	
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -3684,7 +3682,7 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -3766,7 +3764,7 @@ TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);</code><br>每
         <div class="copyright" >
   
   &copy;  2016.6.2 - 
-  <span itemprop="copyrightYear">2018.1.19</span>
+  <span itemprop="copyrightYear">2018.2.10</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
