@@ -325,6 +325,304 @@
   
   
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/08/Android笔记-自用MVP框架/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/08/Android笔记-自用MVP框架/" itemprop="url">
+                  Android笔记-自用MVP框架
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-08T12:00:00+08:00">
+                2017-05-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Android笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/08/Android笔记-自用MVP框架/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/05/08/Android笔记-自用MVP框架/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/05/08/Android笔记-自用MVP框架/" class="leancloud_visitors" data-flag-title="Android笔记-自用MVP框架">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  891
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>资料来源如下</p>
+<ul>
+<li>网络</li>
+</ul>
+<p>编程环境</p>
+<ul>
+<li>Android Studio 2.2.3 </li>
+</ul>
+<p>导语</p>
+<ul>
+<li>转眼刚用上手的MVP又不符合需求了，还是总结一下，继续MVVM吧。</li>
+</ul>
+<hr>
+<h3 id="起"><a href="#起" class="headerlink" title="起"></a>起</h3><ul>
+<li><p>主要内容是转载，搭建小工程应该足够了。<br><a href="http://blog.csdn.net/dantestones/article/details/50899235" target="_blank" rel="external">Android mvp 架构的自述</a><br><a href="http://blog.csdn.net/dantestones/article/details/51445208" target="_blank" rel="external">如何更高效的使用MVP以及官方MVP架构解析</a></p>
+</li>
+<li><p>框架开源在GitHub 地址<a href="https://github.com/Jasper-1024/MvpTest" target="_blank" rel="external">点我直达</a></p>
+</li>
+<li><p>好，我们开始吧！</p>
+</li>
+</ul>
+<hr>
+<h3 id="MVC-MVP-MVVM"><a href="#MVC-MVP-MVVM" class="headerlink" title="MVC MVP MVVM"></a>MVC MVP MVVM</h3><ul>
+<li>省略200行，详情看<a href="https://www.tianmaying.com/tutorial/AndroidMVC" target="_blank" rel="external">Android App的设计架构：MVC,MVP,MVVM与架构经验谈</a></li>
+<li>再累赘属于掉书袋了，作者写的是很用心，恩，MVVM也有。</li>
+</ul>
+<h3 id="框架详解"><a href="#框架详解" class="headerlink" title="框架详解"></a>框架详解</h3><ul>
+<li><p>整个框架截图<br>  <img src="http://cdn5.snapgram.co/images/2017/05/09/ScreenShot_20170509215208.png" alt="ScreenShot_20170509215208.png"></p>
+</li>
+<li><p>整体层次比较明确了，BaseClass 里存放基类，Model层存放数据存储有关类、Presenter层存放逻辑代码、View层存放Activity、frament等。</p>
+</li>
+<li>这个框架是由MVP在Android中应用存在的问题而搭建的，基类中代码也由此而来。</li>
+</ul>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ul>
+<li><p>presenter一直持有Activity对象导致的内存泄漏问题</p>
+<ul>
+<li>使用mvp的时候，presenter会持有view，如果presenter有后台异步的长时间的动作，比如网络请求，这时如果返回退出了Activity，后台异步的动作不会立即停止，这里就会有内存泄漏的隐患。</li>
+<li>需要一个销毁view的方法，这里是在基类中完成的。</li>
+</ul>
+</li>
+<li><p>presenter绑定和解绑繁琐</p>
+<ul>
+<li>一般一个presenter对应一个Activity，一般应用内存在多个Actiivity，绑定与解绑相当繁琐。</li>
+<li>统一在 Basepresenter 与 BaseActivity中进行，同时解决内存泄漏问题，还有其他常用内容一并添加。</li>
+</ul>
+</li>
+<li><p>presenter 与 Model 的通信问题。</p>
+<ul>
+<li>presenter已经与View层 强耦合了，框架中需要解耦presenter 与 Model ，使用异步通信。Handle等都太复杂了。。。</li>
+<li>开始没有什么好的解决办法，直到遇到了EventBus，当然EventBus也不是万能解决方案，跨进程，还是要另辟蹊径，不过EventBus足够自己写着完了。还有Rxjava，恩，还在玩着，没搞太懂。</li>
+</ul>
+</li>
+</ul>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ul>
+<li>BasePresenter<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BasePresenter</span>&lt;<span class="title">Viewinterface</span>&gt; </span>&#123;</div><div class="line">   <span class="comment">//传入泛型</span></div><div class="line">   <span class="keyword">public</span> Viewinterface mView;</div><div class="line">   <span class="comment">//绑定</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attach</span><span class="params">(Viewinterface mView)</span> </span>&#123;</div><div class="line">       <span class="keyword">this</span>.mView = mView;</div><div class="line">   &#125;</div><div class="line">   <span class="comment">//解绑，防止view为空是内存泄漏</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dettach</span><span class="params">()</span> </span>&#123;</div><div class="line">       mView = <span class="keyword">null</span>;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>BaseActivity<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseActivity</span> &lt;<span class="title">Viewinterface</span>,<span class="title">mPresenter</span> <span class="keyword">extends</span> <span class="title">BasePresenter</span>&lt;<span class="title">Viewinterface</span>&gt;&gt;<span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">   <span class="comment">//获取Presenter对象</span></div><div class="line">   <span class="keyword">public</span> mPresenter mpresenter;</div><div class="line"></div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">       <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">       <span class="comment">//Presenter实例化</span></div><div class="line">       mpresenter = initPresenter();</div><div class="line">       <span class="comment">//打印当前activity</span></div><div class="line">       LogUtil.d(<span class="string">"Activity"</span>, getClass().getSimpleName()+<span class="string">"onCreate"</span>);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</div><div class="line">       <span class="comment">//重新刷新时重新绑定view</span></div><div class="line">       mpresenter.attach((Viewinterface) <span class="keyword">this</span>);</div><div class="line">       <span class="keyword">super</span>.onResume();</div><div class="line">       LogUtil.d(<span class="string">"Activity"</span>, getClass().getSimpleName()+<span class="string">"onResume"</span>);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">       <span class="comment">//解绑presenter持有的view</span></div><div class="line">       mpresenter.dettach();</div><div class="line">       <span class="keyword">super</span>.onDestroy();</div><div class="line">       LogUtil.d(<span class="string">"Activity"</span>, getClass().getSimpleName()+<span class="string">"onDestroy"</span>);</div><div class="line">   &#125;</div><div class="line"></div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span>  <span class="keyword">abstract</span> mPresenter <span class="title">initPresenter</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>Presenter<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Presenter</span> </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>mPresenter<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">mPresenter</span> <span class="keyword">extends</span> <span class="title">BasePresenter</span>&lt;<span class="title">Viewif</span>&gt; <span class="keyword">implements</span> <span class="title">Presenter</span> </span>&#123;</div><div class="line">   <span class="keyword">private</span> Model mModel;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="title">mPresenter</span><span class="params">(Viewif view)</span> </span>&#123;</div><div class="line">       <span class="keyword">this</span>.attach(view);</div><div class="line">       <span class="keyword">this</span>.mModel = <span class="keyword">new</span> mModel();</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>BaseView</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BaseView</span>&lt;<span class="title">T</span>&gt;  </span>&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Viewif </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Viewif</span> <span class="keyword">extends</span> <span class="title">BaseView</span> </span>&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>MainActivity<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">BaseActivity</span>&lt;<span class="title">Viewif</span>, <span class="title">mPresenter</span>&gt; <span class="keyword">implements</span> <span class="title">Viewif</span></span>&#123;</div><div class="line"></div><div class="line">   Presenter presenter;</div><div class="line">   <span class="comment">//Presenter初始化</span></div><div class="line">   <span class="function"><span class="keyword">public</span> mPresenter <span class="title">initPresenter</span><span class="params">()</span> </span>&#123;</div><div class="line">       <span class="keyword">return</span> <span class="keyword">new</span> mPresenter(<span class="keyword">this</span>);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">       <span class="comment">//presenter初始化</span></div><div class="line">       presenter = mpresenter;</div><div class="line">       <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">       setContentView(R.layout.activity_main);</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>LogUtil<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LogUtil</span> </span>&#123;</div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> VERBOSE = <span class="number">1</span>;<span class="comment">//啰嗦，等级最低的</span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEBUG = <span class="number">2</span>;<span class="comment">//调试</span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> INFO = <span class="number">3</span>;<span class="comment">//信息</span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> WARN = <span class="number">4</span>;<span class="comment">//警告</span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> ERROR = <span class="number">5</span>;<span class="comment">//错误</span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> NOTHING = <span class="number">6</span>;<span class="comment">//什么也不打印出来</span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> level = VERBOSE;<span class="comment">//LEVEL:标准</span></div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">v</span><span class="params">(String tag, String msg)</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (level &lt;= VERBOSE) &#123;<span class="comment">//如果大于或者等于定义的标准就打印出来</span></div><div class="line">           Log.v(tag, msg);</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">d</span><span class="params">(String tag, String msg)</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (level &lt;= DEBUG) &#123;</div><div class="line">           Log.d(tag, msg);</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">i</span><span class="params">(String tag, String msg)</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (level &lt;= INFO) &#123;</div><div class="line">           Log.i(tag, msg);</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">w</span><span class="params">(String tag, String msg)</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (level &lt;= WARN) &#123;</div><div class="line">           Log.w(tag, msg);</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">e</span><span class="params">(String tag, String msg)</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (level &lt;= ERROR) &#123;</div><div class="line">           Log.e(tag, msg);</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/page/3/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/17/Android笔记-蓝牙串口一种方案BlueTooth+EventBus/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3283,356 +3581,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-  
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/16/Android笔记-UI-RecyclerView/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jasper">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/v.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="默">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/16/Android笔记-UI-RecyclerView/" itemprop="url">
-                  Android笔记—UI-RecyclerView
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-16T12:00:00+08:00">
-                2016-12-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">Android笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/16/Android笔记-UI-RecyclerView/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/12/16/Android笔记-UI-RecyclerView/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/12/16/Android笔记-UI-RecyclerView/" class="leancloud_visitors" data-flag-title="Android笔记—UI-RecyclerView">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  1,659
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  8m
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<p>资料来源如下</p>
-<ul>
-<li>第一行代码(第二版)</li>
-<li><a href="http://blog.cgsdream.org/2015/06/11/recyclerview/" target="_blank" rel="external">RecyclerView使用详解—六和敬</a></li>
-<li><a href="http://jinyudong.com/2014/11/13/Introduce-RecyclerView-%E4%B8%80/" target="_blank" rel="external">RecyclerView使用介绍— Jin Yudong</a></li>
-<li><a href="http://blog.csdn.net/lmj623565791/article/details/45059587" target="_blank" rel="external">Android RecyclerView 使用完全解析 体验艺术般的控件—鸿洋_</a></li>
-<li><a href="https://developer.android.com/training/material/lists-cards.html#RecyclerView" target="_blank" rel="external">创建列表与卡片—Android Developer</a></li>
-</ul>
-<p>编程环境</p>
-<ul>
-<li>Android Studio 2.2.3 </li>
-</ul>
-<p>导语</p>
-<ul>
-<li>RecyclerView内容较ListView更多，初期只能更新一些基础内容，高级的用法随时更新，长期跟进</li>
-</ul>
-<hr>
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ul>
-<li><a href="https://developer.android.com/reference/android/support/v7/widget/RecyclerView.html" target="_blank" rel="external">RecyclerView</a>是用于取代ListView的组件,第一次出现是在2014年google I/O大会，内置在是Android L及以上版本的SDK中。</li>
-<li>对比与ListView，RecyclerView弥补了ListView中的效率问题，同时支持更多的显示效果，代码逻辑更为清晰</li>
-</ul>
-<h3 id="基本使用步骤"><a href="#基本使用步骤" class="headerlink" title="基本使用步骤"></a>基本使用步骤</h3><hr>
-<ul>
-<li>RecyclerView定义在support库中，使用RecyclerView之前必须在添加依赖</li>
-<li>build.gradle中添加<br> <code>compile &#39;com.android.support:recyclerview-v7:25.1.0&#39;</code></li>
-</ul>
-<hr>
-<ul>
-<li><p>RecyclerView项目结构如下：<br><img src="http://cdn1.snapgram.co/imgs/2016/12/16/RecyclerView.png" alt="RecyclerView.png"></p>
-</li>
-<li><p>要使用RecyclerView，需要指定<strong>一个Adapter适配器</strong>和一个<strong>LayoutManager布局管理器</strong></p>
-</li>
-<li><p><strong>Adapter适配器</strong>：作用与ListView中使用的Adapter相同，都是将数据与对应item的界面进行绑定<br>所不同的是：RecyclerView中适配器必须继承自RecyclerView.Adapter，且 强制使用了ViewHolder</p>
-</li>
-</ul>
-<ul>
-<li><p><strong>LayoutManager布局管理器</strong>：每一个item如何进行排列，何时展示和隐藏。<br>重用View时，LayoutManager会向Adapter适配器请求新的数据替换旧的数据，避免了View的冗余和频繁调用findViewById</p>
-<p>LayoutManager的引入 使得各种布局排列编写，变的格外容易，这也是RecyclerView优于ListView的一个地方</p>
-</li>
-<li><p>目前RecyclerView 内置3种LayoutManager：</p>
-<ul>
-<li>LinearLayoutManager 横向/竖向布局</li>
-<li>GridLayoutManager  网格布局</li>
-<li>StaggeredGridLayoutManager  瀑布流布局</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>MainActivity中 RecyclerView 设置  </p>
-<ol>
-<li><p>创建RecyclerView对象<br><code>RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycle_view);</code></p>
-</li>
-<li><p>设置LayoutManager显示规则</p>
-</li>
-<li><p>设置适配器<br><code>recyclerview.setAdapter(adapter);</code></p>
-</li>
-</ol>
-</li>
-</ul>
-<h4 id="简单实例"><a href="#简单实例" class="headerlink" title="简单实例"></a>简单实例</h4><p>由一个简单的实例+详细分析</p>
-<ul>
-<li><p>添加依赖<br>打开app/build.gradle文件，在dependencies闭包下添加依赖库<br>版本与你工程的<code>com.android.support:appcompat-v7:25.1.0</code>版本对应</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile <span class="string">'com.android.support:recyclerview-v7:25.1.0'</span></div></pre></td></tr></table></figure>
-<p>之后AndroidStudio会开始同步</p>
-</li>
-<li><p>添加RecyclerView到xml文件,基本与ListView一致，不过RecyclerView并非内置在SDK中，这里需要写出完整的包路径</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">android.support.v7.widget.RecyclerView</span></span></div><div class="line">      <span class="attr">android:id</span>=<span class="string">"@+id/recycle_view"</span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">      /&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>要展示的依旧是水果+图片形式，<br>图片资源在第一行代码第二版源码 /chapter3/ListViewTest\app\src\main\res\drawable-hdpi下，同时将Fruit类和fruit<em>item.xml一并复制，这里给出两者源码，不再加分析</em></p>
-<ul>
-<li><p>Fruit类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Fruit</span> </span>&#123;</div><div class="line"><span class="keyword">private</span> String name;</div><div class="line"><span class="keyword">private</span> <span class="keyword">int</span> imageId;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Fruit</span><span class="params">(String name, <span class="keyword">int</span> imageId)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.imageId = imageId;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> name;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getImageId</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> imageId;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>fruit<em>item.xml  </em></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="attr">android:orientation</span>=<span class="string">"horizontal"</span></div><div class="line"><span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line"><span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">ImageView</span></span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/fruit_image"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span> /&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/fruit_name"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">android:layout_gravity</span>=<span class="string">"center_vertical"</span></div><div class="line">    <span class="attr">android:layout_marginLeft</span>=<span class="string">"10dp"</span> /&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>准备RecyclerView适配器，适配器需要继承自  RecyclerView.Adapter，将泛型指定为   .ViewHolder，(ViewHolder为在适配器的一个内部类)，并重写3个方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public ViewHolder onCreateViewHolder(ViewGroup parent,int viewType)//创建返回ViewHolder实例</div><div class="line">public void onBindViewHolder(ViewHolder holder,int pisition)//数据与界面绑定</div><div class="line">public int getItemCount()  // 返回数据的数量</div></pre></td></tr></table></figure>
-<p> 新建 FruitAdapter 继承自  RecyclerView.Adapter</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">//继承自RecyclerView.Adapter，泛型为  FruitAdapter .ViewHolder</span></div><div class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FruitAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">FruitAdapter</span>.<span class="title">ViewHolder</span>&gt; </span>&#123;</div><div class="line">   <span class="comment">//私有Fruit列表</span></div><div class="line">   <span class="keyword">private</span> List&lt;Fruit&gt; mFruitList;</div><div class="line"></div><div class="line"><span class="comment">//新建内部类ViewHolder继承自RecyclerView.ViewHolde有每个Item的的所有界面元素</span></div><div class="line">   <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span></span>&#123;</div><div class="line">       ImageView fruitImage;</div><div class="line">       TextView fruitName;</div><div class="line">       <span class="comment">//ViewHolder构造函数，传入View，通常为RecyclerView子项的外层布局(本例为fruit_item.xml)</span></div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="title">ViewHolder</span><span class="params">(View view)</span></span>&#123;</div><div class="line">           <span class="keyword">super</span>(view);</div><div class="line">           <span class="comment">//findViewById获取  Image/Name实例</span></div><div class="line">           fruitImage = (ImageView)view.findViewById(R.id.fruit_image);</div><div class="line">           fruitName = (TextView)view.findViewById(R.id.fruit_name);</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line"><span class="comment">//FruitAdapter构造函数，将数据源传入全局变量mFruitList</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="title">FruitAdapter</span><span class="params">(List&lt;Fruit&gt;fruitList)</span></span>&#123;</div><div class="line">       mFruitList = fruitList;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="comment">//创建ViewHolder实例</span></div><div class="line">   <span class="function"><span class="keyword">public</span> ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup parent,<span class="keyword">int</span> viewType)</span></span>&#123;</div><div class="line">       <span class="comment">//加载布局文件</span></div><div class="line">       View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fruit_item,parent,<span class="keyword">false</span>);</div><div class="line">       <span class="comment">//调用ViewHolder构造函数</span></div><div class="line">       ViewHolder holder = <span class="keyword">new</span> ViewHolder(view);</div><div class="line">       <span class="comment">//返回ViewHolder实例</span></div><div class="line">       <span class="keyword">return</span> holder;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="comment">//对 RecyclerView子项进行赋值，有新的子项进入屏幕显示范围时调用</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(ViewHolder holder,<span class="keyword">int</span> pisition)</span></span>&#123;</div><div class="line">       Fruit fruit = mFruitList.get(pisition);</div><div class="line">       holder.fruitImage.setImageResource(fruit.getImageId());</div><div class="line">       holder.fruitName.setText(fruit.getName());</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="comment">//返回 RecyclerView子项数量</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span></span>&#123;</div><div class="line">       <span class="keyword">return</span> mFruitList.size();</div><div class="line">   &#125;</div><div class="line"></div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><p>MainActivity中使用RecyclerView</p>
-<ul>
-<li><p>创建RecyclerView对象</p>
-</li>
-<li><p>设置LayoutManager显示规则（默认竖向滚动）</p>
-</li>
-<li><p>设置适配器</p>
-</li>
-</ul>
-<p>代码如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line"><span class="comment">//私有列表</span></div><div class="line">   <span class="keyword">private</span> List&lt;Fruit&gt; fruitList = <span class="keyword">new</span> ArrayList&lt;Fruit&gt;();</div><div class="line">   </div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">       <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">       setContentView(R.layout.activity_main);</div><div class="line">	</div><div class="line">       <span class="comment">//初始化Fruits数据</span></div><div class="line">       initFruits();</div><div class="line">       <span class="comment">//获取RecyclerView实例</span></div><div class="line">       RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycle_view);</div><div class="line">       </div><div class="line">       <span class="comment">//创建LinearLayoutManager，并设置入recyclerView</span></div><div class="line">       LinearLayoutManager layoutManager = <span class="keyword">new</span> LinearLayoutManager(<span class="keyword">this</span>);</div><div class="line">       recyclerView.setLayoutManager(layoutManager);</div><div class="line">       </div><div class="line">       <span class="comment">//新建适配器，并传入</span></div><div class="line">       FruitAdapter adapter = <span class="keyword">new</span> FruitAdapter(fruitList);</div><div class="line">       recyclerView.setAdapter(adapter);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="comment">//初始化Fruits类</span></div><div class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initFruits</span><span class="params">()</span> </span>&#123;</div><div class="line">       <span class="comment">//循环两遍 怕占不满屏幕</span></div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</div><div class="line">           Fruit apple = <span class="keyword">new</span> Fruit(<span class="string">"Apple"</span>, R.drawable.apple_pic);</div><div class="line">           fruitList.add(apple);</div><div class="line">           Fruit banana = <span class="keyword">new</span> Fruit(<span class="string">"Banana"</span>, R.drawable.banana_pic);</div><div class="line">           fruitList.add(banana);</div><div class="line">           Fruit orange = <span class="keyword">new</span> Fruit(<span class="string">"Orange"</span>, R.drawable.orange_pic);</div><div class="line">           fruitList.add(orange);</div><div class="line">           Fruit watermelon = <span class="keyword">new</span> Fruit(<span class="string">"Watermelon"</span>, R.drawable.watermelon_pic);</div><div class="line">           fruitList.add(watermelon);</div><div class="line">           Fruit pear = <span class="keyword">new</span> Fruit(<span class="string">"Pear"</span>, R.drawable.pear_pic);</div><div class="line">           fruitList.add(pear);</div><div class="line">           Fruit grape = <span class="keyword">new</span> Fruit(<span class="string">"Grape"</span>, R.drawable.grape_pic);</div><div class="line">           fruitList.add(grape);</div><div class="line">           Fruit pineapple = <span class="keyword">new</span> Fruit(<span class="string">"Pineapple"</span>, R.drawable.pineapple_pic);</div><div class="line">           fruitList.add(pineapple);</div><div class="line">           Fruit strawberry = <span class="keyword">new</span> Fruit(<span class="string">"Strawberry"</span>, R.drawable.strawberry_pic);</div><div class="line">           fruitList.add(strawberry);</div><div class="line">           Fruit cherry = <span class="keyword">new</span> Fruit(<span class="string">"Cherry"</span>, R.drawable.cherry_pic);</div><div class="line">           fruitList.add(cherry);</div><div class="line">           Fruit mango = <span class="keyword">new</span> Fruit(<span class="string">"Mango"</span>, R.drawable.mango_pic);</div><div class="line">           fruitList.add(mango);</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>这样最简单的 RecyclerView 就搭建完了效果如下<br><img src="http://cdn5.snapgram.co/images/2016/12/16/ScreenShot_20161216105246.png" alt="ScreenShot_20161216105246.png"></p>
-</li>
-<li><p>代码比ListView稍多，但是逻辑比较清晰。</p>
-</li>
-</ul>
-<h3 id="横向-瀑布流-网格布局"><a href="#横向-瀑布流-网格布局" class="headerlink" title="横向/瀑布流/网格布局"></a>横向/瀑布流/网格布局</h3><ul>
-<li>只需要设置相应LayoutManager即可   /手动滑稽  <h4 id="横向"><a href="#横向" class="headerlink" title="横向"></a>横向</h4></li>
-<li><p>在 LinearLayoutManager 中修改几行代码即可</p>
-</li>
-<li><p>修改 LinearLayoutManager 代码，添加一行，搞定！</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>当然需要简单修改一下item的布局文件，LinearLayout改为垂直排列，宽度固定100dp，图片/文字居中<br>效果如下<br><img src="http://cdn2.snapgram.co/imgs/2016/12/16/ScreenShot_20161216105723.png" alt="ScreenShot_20161216105723.png"></li>
-</ul>
-<h4 id="瀑布流"><a href="#瀑布流" class="headerlink" title="瀑布流"></a>瀑布流</h4><ul>
-<li>这需要 StaggeredGridLayoutManager 布局管理器，可以 竖向/横向 滚动</li>
-<li>代码如下<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//瀑布流布局，3行，竖向</span></div><div class="line">StaggeredGridLayoutManager layoutManager = <span class="keyword">new</span> StaggeredGridLayoutManager(<span class="number">3</span>, StaggeredGridLayoutManager.VERTICAL);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>调整布局文件，效果如下<br><img src="http://cdn1.snapgram.co/imgs/2016/12/16/ScreenShot_20161216215538.png" alt="ScreenShot_20161216215538.png"></li>
-</ul>
-<h4 id="网格"><a href="#网格" class="headerlink" title="网格"></a>网格</h4><ul>
-<li>这需要 GridLayoutManager 布局管理器</li>
-<li><p>代码如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//网格布局，两行</span></div><div class="line">GridLayoutManager layoutManager = <span class="keyword">new</span> GridLayoutManager(<span class="keyword">this</span>,<span class="number">3</span>);</div></pre></td></tr></table></figure>
-</li>
-<li><p>调整布局文件后，效果如下<br><img src="http://cdn4.snapgram.co/images/2016/12/16/ScreenShot_20161216220321.png" alt="ScreenShot_20161216220321.png"></p>
-</li>
-</ul>
-<h3 id="注册点击事件"><a href="#注册点击事件" class="headerlink" title="注册点击事件"></a>注册点击事件</h3><ul>
-<li>RecyclerView 中并没有提供注册监听器的方法，需要子项View自行注册</li>
-<li>部分代码如下<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">  <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</div><div class="line">    View fruitView;</div><div class="line">    ImageView fruitImage;</div><div class="line">    TextView fruitName;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ViewHolder</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(view);</div><div class="line">        fruitView = view;</div><div class="line">        fruitImage = (ImageView) view.findViewById(R.id.fruit_image);</div><div class="line">        fruitName = (TextView) view.findViewById(R.id.fruit_name);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</div><div class="line">    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fruit_item, parent, <span class="keyword">false</span>);</div><div class="line">    <span class="keyword">final</span> ViewHolder holder = <span class="keyword">new</span> ViewHolder(view);</div><div class="line">    holder.fruitView.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">            <span class="keyword">int</span> position = holder.getAdapterPosition();</div><div class="line">            Fruit fruit = mFruitList.get(position);</div><div class="line">            Toast.makeText(v.getContext(), <span class="string">"you clicked view "</span> + fruit.getName(), Toast.LENGTH_SHORT).show();</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    holder.fruitImage.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">            <span class="keyword">int</span> position = holder.getAdapterPosition();</div><div class="line">            Fruit fruit = mFruitList.get(position);</div><div class="line">            Toast.makeText(v.getContext(), <span class="string">"you clicked image "</span> + fruit.getName(), Toast.LENGTH_SHORT).show();</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    <span class="keyword">return</span> holder;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-	
-
-	
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-	
-	
-	<div>
-	    <p id="div-border-left-blue">
-	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
-	    <span>
-	    <b>本文地址：</b><a href="/page/3/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
-	    </span>
-	    </p>
-	</div>
-	
-
-	
-    <footer class="post-footer">
-	
-	
-	
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -3682,7 +3630,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -3693,7 +3641,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -3704,7 +3652,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -3764,7 +3712,7 @@
         <div class="copyright" >
   
   &copy;  2016.6.2 - 
-  <span itemprop="copyrightYear">2018.2.10</span>
+  <span itemprop="copyrightYear">2018.3.3</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
