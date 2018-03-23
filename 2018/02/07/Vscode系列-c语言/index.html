@@ -1,0 +1,1386 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="学习记录,Linux," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="默" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="环境  vscode 1.20.x ubuntu   前言 写嵌入式的c语言太难搞了,受够了盗版 sourceinsight 艰难的代码提示和补全之后,尝试换一款编辑器. 跨平台,支持多种语言,自由度高. vim 和 Emacs 命令行 有一点学习成本. 最后选定了 vscode 业余写点 python 和 java 写写 markdown 博客等等 (看pdf也行…).    注意vscode">
+<meta name="keywords" content="学习记录,Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vscode系列—c语言">
+<meta property="og:url" content="http://yoursite.com/2018/02/07/Vscode系列-c语言/index.html">
+<meta property="og:site_name" content="默">
+<meta property="og:description" content="环境  vscode 1.20.x ubuntu   前言 写嵌入式的c语言太难搞了,受够了盗版 sourceinsight 艰难的代码提示和补全之后,尝试换一款编辑器. 跨平台,支持多种语言,自由度高. vim 和 Emacs 命令行 有一点学习成本. 最后选定了 vscode 业余写点 python 和 java 写写 markdown 博客等等 (看pdf也行…).    注意vscode">
+<meta property="og:image" content="https://i.loli.net/2018/03/23/5ab4f9c678732.png">
+<meta property="og:image" content="https://i.loli.net/2018/03/23/5ab4f9c6ec147.png">
+<meta property="og:image" content="https://i.loli.net/2018/03/23/5ab4f9c64e3af.png">
+<meta property="og:image" content="https://i.loli.net/2018/03/23/5ab4f9c702d2c.png">
+<meta property="og:image" content="https://i.loli.net/2018/03/23/5ab4f7f51181a.png">
+<meta property="og:updated_time" content="2018-03-23T17:55:00.795Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vscode系列—c语言">
+<meta name="twitter:description" content="环境  vscode 1.20.x ubuntu   前言 写嵌入式的c语言太难搞了,受够了盗版 sourceinsight 艰难的代码提示和补全之后,尝试换一款编辑器. 跨平台,支持多种语言,自由度高. vim 和 Emacs 命令行 有一点学习成本. 最后选定了 vscode 业余写点 python 和 java 写写 markdown 博客等等 (看pdf也行…).    注意vscode">
+<meta name="twitter:image" content="https://i.loli.net/2018/03/23/5ab4f9c678732.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/02/07/Vscode系列-c语言/"/>
+
+
+
+
+
+  <title> Vscode系列—c语言 | 默 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-79641673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">默</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">为了生存，而一点点淡忘了最初的本意。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/07/Vscode系列-c语言/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Vscode系列—c语言
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-07T12:00:00+08:00">
+                2018-02-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">linux笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/07/Vscode系列-c语言/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/02/07/Vscode系列-c语言/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/02/07/Vscode系列-c语言/" class="leancloud_visitors" data-flag-title="Vscode系列—c语言">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  3,046
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  13m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>环境</p>
+<ul>
+<li>vscode 1.20.x</li>
+<li>ubuntu</li>
+</ul>
+<hr>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
+<li>写嵌入式的c语言太难搞了,受够了盗版 sourceinsight 艰难的代码提示和补全之后,尝试换一款编辑器.</li>
+<li>跨平台,支持多种语言,自由度高.</li>
+<li>vim 和 Emacs 命令行 有一点学习成本.</li>
+<li>最后选定了 vscode 业余写点 python 和 java 写写 markdown 博客等等 (看pdf也行…).</li>
+</ul>
+<hr>
+<ul>
+<li>注意vscode首先是个编辑器,其他的功能都是通过 插件 + 后端 实现的.</li>
+</ul>
+<hr>
+<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><ul>
+<li>代码补全 最重要的<strong>c语言的结构体补全!!!</strong>.<ul>
+<li>结构体补全曾经深深折磨这我,直到遇到了clang….</li>
+<li>顺带着解决了语法检查,clang的语法检查很是好用.</li>
+<li>插件: C/C++ Clang Command Adapter</li>
+<li><img src="https://i.loli.net/2018/03/23/5ab4f9c678732.png" alt="auto.png"></li>
+<li><img src="https://i.loli.net/2018/03/23/5ab4f9c6ec147.png" alt="autoa.png"></li>
+</ul>
+</li>
+<li>语法检查<ul>
+<li>常规clang足矣,但还不够.</li>
+<li>clang是编译器,但有些错误编译器还是无能为力,祭出Cppcheck,C/C++代码缺陷静态检查工具.</li>
+<li>插件: cppcheck</li>
+<li><img src="https://i.loli.net/2018/03/23/5ab4f9c64e3af.png" alt="err.png"></li>
+</ul>
+</li>
+<li>代码格式化<ul>
+<li>眼瞅着clang 配套的clang-format .</li>
+<li>插件: Clang-Format</li>
+</ul>
+</li>
+<li>函数跳转<ul>
+<li>微软官方c/c++插件就行了,但官方插件自带代码补全和语法检查,不怎么好,一定要关掉否则会与clang冲突.</li>
+<li>插件: C/C++ for Visual Studio Code</li>
+<li><img src="https://i.loli.net/2018/03/23/5ab4f9c702d2c.png" alt="jump.png"></li>
+</ul>
+</li>
+</ul>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ul>
+<li><p>上文书说到,vscode实现编辑器以外的功能都需要插件+后端的形式 so 一般的安装步骤如下:</p>
+</li>
+<li><p>安装后端,如clang 、cppcheck 等.</p>
+</li>
+<li>安装对应插件</li>
+<li><p>修改配置文件(json格式)</p>
+</li>
+<li><p>最后针对处理头文件等.</p>
+</li>
+</ul>
+<h2 id="代码补全-语法检查"><a href="#代码补全-语法检查" class="headerlink" title="代码补全/语法检查"></a>代码补全/语法检查</h2><ul>
+<li>代码补全/语法检查都依赖于后端clang,而ubunt自带的clang 3.8版本,而clang最新的稳定版本为5.0,这里选择5.0版本.</li>
+<li>参考 &gt; <a href="https://apt.llvm.org/" target="_blank" rel="external">https://apt.llvm.org/</a></li>
+</ul>
+<h3 id="安装clang-5-0"><a href="#安装clang-5-0" class="headerlink" title="安装clang-5.0"></a>安装clang-5.0</h3><ul>
+<li><p>修改ubuntu源 /etc/apt/source.list 添加llvm官方源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty-5.0 main</div><div class="line">deb-src http://apt.llvm.org/trusty/ llvm-toolchain-trusty-5.0 main</div></pre></td></tr></table></figure>
+</li>
+<li><p>添加llvm源的 密钥</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key|sudo apt-key add -</div></pre></td></tr></table></figure>
+</li>
+<li><p>更新软件列表,这样就可以安装5.0版本了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装clang5.0</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install clang-5.0 lldb-5.0</div></pre></td></tr></table></figure>
+<p>或者安装全部llvm root用户下(太多偷个懒)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install clang-5.0 clang-tools-5.0 clang-5.0-doc libclang-common-5.0-dev libclang-5.0-dev libclang1-5.0 libclang1-5.0-dbg libllvm-5.0-ocaml-dev libllvm5.0 libllvm5.0-dbg lldb-5.0 llvm-5.0 llvm-5.0-dev llvm-5.0-doc llvm-5.0-examples llvm-5.0-runtime clang-format-5.0 python-clang-5.0 libfuzzer-5.0-dev</div></pre></td></tr></table></figure>
+</li>
+<li><p>完整安装需要良好的网络,llvm大概300M,等下就好.</p>
+</li>
+<li><p>验证</p>
+<ul>
+<li>命令行输入 clang-5.0 不会提示无此命令即可.</li>
+</ul>
+</li>
+</ul>
+<h3 id="clang"><a href="#clang" class="headerlink" title="clang"></a>clang</h3><ul>
+<li><p>ubuntu自带版本3.8</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install clang</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="clang插件及配置"><a href="#clang插件及配置" class="headerlink" title="clang插件及配置"></a>clang插件及配置</h3><ul>
+<li><p>插件名 C/C++ Clang Command Adapter,在vscode中搜索下载即可.<br>网络环境限制还可以在vscode官网下载vsix格式的文件,离线安装.</p>
+</li>
+<li><p>安装完成后,进入重头戏,也是初次上手vscode最难适应的地方.</p>
+</li>
+<li><p>进入vscode的设置 <code>setting.json</code> ,分为 用户区设置 和 工作区设置.</p>
+<ul>
+<li>用户区设置,是用户自定义全局设置,覆盖vscode默认设置,每个工程都有效.</li>
+<li>工作区设置,是针对本工程的个性化设置,只在本工程生效.</li>
+<li>简易是将clang等设置 保存在用户区,工作区保存追对 clang 的头文件设置.</li>
+</ul>
+</li>
+<li><p>用户区设置</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">"clang.executable": "clang-5.0",</div><div class="line">"clang.completion.triggerChars": [</div><div class="line">      ".",</div><div class="line">      ":",</div><div class="line">      "&gt;"],</div></pre></td></tr></table></figure>
+<ul>
+<li>clang.executable : 后端clang的路径,这里是 clang-5.0 ,也可以写入 clang 的安装目录.</li>
+<li>clang.completion.triggerChars : 触发代码补全的输入,常用的 . : &gt;.</li>
+</ul>
+</li>
+<li><p>工作区设置</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">"clang.cflags": [</div><div class="line">      "-std=c99",</div><div class="line">      "-I$&#123;cwd&#125;",</div><div class="line">      "-I/usr/include",</div><div class="line">      "-I/usr/include/c++/5",</div><div class="line">      "-I/usr/include/x86_64-linux-gnu/c++/5",</div><div class="line">      "-I/usr/include/c++/5/backward",</div><div class="line">      "-I/usr/lib/gcc/x86_64-linux-gnu/5/include",</div><div class="line">      "-I/usr/local/include",</div><div class="line">      "-I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed",</div><div class="line">      "-I/usr/include/x86_64-linux-gnu",</div><div class="line">      "-I/usr/include",</div><div class="line">      "-I$&#123;workspaceRoot&#125;",</div><div class="line">      "-I$&#123;workspaceRoot&#125;/Include",</div><div class="line">      "-I$&#123;workspaceRoot&#125;/Libs/Cjson/Include"</div><div class="line">  ],</div></pre></td></tr></table></figure>
+<ul>
+<li>clang.cflags : <code>&quot;-std=c99&quot;</code> clang语法检查时 c/c++ 语言标准,要兼容历史项目,这就选的 c99 ,新项目简易 直接 c11.<pre><code>clang进行代码补全/语法检查的头文件路径, 格式是 `-I路径` ,支持直接和间接路径(${workspaceRoot}).
+</code></pre></li>
+<li>头文件一定要写全,否则一直会有错误提示.</li>
+</ul>
+</li>
+<li><p>保存后,代码补全/语法检查 全部如上图所示.</p>
+</li>
+</ul>
+<h2 id="语法检查"><a href="#语法检查" class="headerlink" title="语法检查"></a>语法检查</h2><ul>
+<li>这里特指 cppcheck</li>
+</ul>
+<h3 id="安装cppcheck"><a href="#安装cppcheck" class="headerlink" title="安装cppcheck"></a>安装cppcheck</h3><ul>
+<li><p>我没有追求最新,直接通过ubuntu官方源安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install cppcheck</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装完成,执行 cppcheck 命令,不提示无此命令即可.</p>
+</li>
+</ul>
+<h3 id="cppcheck插件及配置"><a href="#cppcheck插件及配置" class="headerlink" title="cppcheck插件及配置"></a>cppcheck插件及配置</h3><ul>
+<li><p>搜索安装 cppcheck</p>
+</li>
+<li><p>同样配置分为用户区和工作区.工作区对应头文件设置.</p>
+</li>
+<li><p>用户区</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">"cppcheck.cppcheckPath": null,</div><div class="line">"cppcheck.standard": [</div><div class="line">      "c99",</div><div class="line">  ],</div><div class="line">"cppcheck.language": "c",</div></pre></td></tr></table></figure>
+<ul>
+<li>cppcheck.cppcheckPath : null时,会使用 cppcheck 命令指向的版本,也可以使用自定义路径.</li>
+<li>cppcheck.standard : cppcheck 检查时 c/c++版本,历史原因我这里还是 c99.</li>
+<li>cppcheck.language : 前置检查时 以 c 或者 c++ 检查.我这里都是 c 项目,填写 c .</li>
+</ul>
+</li>
+<li><p>工作区</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">"cppcheck.includePaths": [</div><div class="line">  "$&#123;cwd&#125;",</div><div class="line">  "/usr/include",</div><div class="line">  "/usr/include/c++/5",</div><div class="line">  "/usr/include/x86_64-linux-gnu/c++/5",</div><div class="line">  "/usr/include/c++/5/backward",</div><div class="line">  "/usr/lib/gcc/x86_64-linux-gnu/5/include",</div><div class="line">  "/usr/local/include",</div><div class="line">  "/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed",</div><div class="line">  "/usr/include/x86_64-linux-gnu",</div><div class="line">  "/usr/include",</div><div class="line">  "$&#123;workspaceRoot&#125;",</div><div class="line">  "$&#123;workspaceRoot&#125;/Include",</div><div class="line">  "$&#123;workspaceRoot&#125;/Code/APP/Code/Libs/Cjson/Include"</div><div class="line">],</div><div class="line">"cppcheck.force": true</div></pre></td></tr></table></figure>
+<ul>
+<li>cppcheck.includePaths : 头文件路径,这里没有 <code>-I</code> ,直接输入路径即可.支持直接和间接路径.</li>
+<li>cppcheck.force : 强制检查所有枚举所有可能配置,有多个项目同时在工作,这里我放到工作区了,如果代码量小的工程建议放在用户区,作为全局配置.</li>
+</ul>
+</li>
+</ul>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ul>
+<li><p>左下角,点击cppcheck 如图<br><img src="https://i.loli.net/2018/03/23/5ab4f7f51181a.png" alt="cppcheck.png"></p>
+</li>
+<li><p>3个选择</p>
+<ul>
+<li>分析当前打开文件</li>
+<li>分析工作区所有文件</li>
+<li>其他…没用过..</li>
+</ul>
+</li>
+</ul>
+<h2 id="函数跳转"><a href="#函数跳转" class="headerlink" title="函数跳转"></a>函数跳转</h2><ul>
+<li>直接使用微软的 C/C++ for Visual Studio Code 即可.</li>
+<li>官方的很强大,带代码补全和语法检查,,可惜表现不太好.函数跳转很好用.</li>
+</ul>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ul>
+<li><p>搜索安装 C/C++ for Visual Studio Code</p>
+</li>
+<li><p>不用安装后端了,对应的配置就稍微麻烦了.</p>
+</li>
+<li><p>在项目根目录下 查找 .vscode文件夹,进入.应该由 setting.json文件,对应工作区设置.</p>
+</li>
+<li><p>新建c_cpp_properties.json ,写入以下内容.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"configurations"</span>: [</div><div class="line">      &#123;</div><div class="line">          <span class="attr">"name"</span>: <span class="string">"Mac"</span>,</div><div class="line">          <span class="attr">"includePath"</span>: [</div><div class="line">              <span class="string">"/usr/include"</span>,</div><div class="line">              <span class="string">"/usr/local/include"</span>,</div><div class="line">              <span class="string">"$&#123;workspaceRoot&#125;"</span></div><div class="line">          ],</div><div class="line">          <span class="attr">"defines"</span>: [],</div><div class="line">          <span class="attr">"intelliSenseMode"</span>: <span class="string">"clang-x64"</span>,</div><div class="line">          <span class="attr">"browse"</span>: &#123;</div><div class="line">              <span class="attr">"path"</span>: [</div><div class="line">                  <span class="string">"/usr/include"</span>,</div><div class="line">                  <span class="string">"/usr/local/include"</span>,</div><div class="line">                  <span class="string">"$&#123;workspaceRoot&#125;"</span></div><div class="line">              ],</div><div class="line">              <span class="attr">"limitSymbolsToIncludedHeaders"</span>: <span class="literal">true</span>,</div><div class="line">              <span class="attr">"databaseFilename"</span>: <span class="string">""</span></div><div class="line">          &#125;,</div><div class="line">          <span class="attr">"macFrameworkPath"</span>: [</div><div class="line">              <span class="string">"/System/Library/Frameworks"</span>,</div><div class="line">              <span class="string">"/Library/Frameworks"</span></div><div class="line">          ]</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">          <span class="attr">"name"</span>: <span class="string">"Linux"</span>,</div><div class="line">          <span class="attr">"includePath"</span>: [</div><div class="line">              <span class="string">"/usr/include/c++/5"</span>,</div><div class="line">              <span class="string">"/usr/include/x86_64-linux-gnu/c++/5"</span>,</div><div class="line">              <span class="string">"/usr/include/c++/5/backward"</span>,</div><div class="line">              <span class="string">"/usr/lib/gcc/x86_64-linux-gnu/5/include"</span>,</div><div class="line">              <span class="string">"/usr/local/include"</span>,</div><div class="line">              <span class="string">"/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"</span>,</div><div class="line">              <span class="string">"/usr/include/x86_64-linux-gnu"</span>,</div><div class="line">              <span class="string">"/usr/include"</span>,</div><div class="line">              <span class="string">"$&#123;workspaceRoot&#125;"</span>,</div><div class="line">              <span class="string">"$&#123;workspaceRoot&#125;/Include"</span></div><div class="line">          ],</div><div class="line">          <span class="attr">"defines"</span>: [],</div><div class="line">          <span class="attr">"intelliSenseMode"</span>: <span class="string">"clang-x64"</span>,</div><div class="line">          <span class="attr">"browse"</span>: &#123;</div><div class="line">              <span class="attr">"path"</span>: [</div><div class="line">                  <span class="string">"/usr/include/c++/5"</span>,</div><div class="line">                  <span class="string">"/usr/include/x86_64-linux-gnu/c++/5"</span>,</div><div class="line">                  <span class="string">"/usr/include/c++/5/backward"</span>,</div><div class="line">                  <span class="string">"/usr/lib/gcc/x86_64-linux-gnu/5/include"</span>,</div><div class="line">                  <span class="string">"/usr/local/include"</span>,</div><div class="line">                  <span class="string">"/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"</span>,</div><div class="line">                  <span class="string">"/usr/include/x86_64-linux-gnu"</span>,</div><div class="line">                  <span class="string">"/usr/include"</span>,</div><div class="line">                  <span class="string">"$&#123;workspaceRoot&#125;"</span>,</div><div class="line">                  <span class="string">"$&#123;workspaceRoot&#125;/Include"</span></div><div class="line">              ],</div><div class="line">              <span class="attr">"limitSymbolsToIncludedHeaders"</span>: <span class="literal">true</span>,</div><div class="line">              <span class="attr">"databaseFilename"</span>: <span class="string">""</span></div><div class="line">          &#125;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">          <span class="attr">"name"</span>: <span class="string">"Win32"</span>,</div><div class="line">          <span class="attr">"includePath"</span>: [</div><div class="line">              <span class="string">"C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include"</span>,</div><div class="line">              <span class="string">"$&#123;workspaceRoot&#125;"</span></div><div class="line">          ],</div><div class="line">          <span class="attr">"defines"</span>: [</div><div class="line">              <span class="string">"_DEBUG"</span>,</div><div class="line">              <span class="string">"UNICODE"</span>,</div><div class="line">              <span class="string">"_UNICODE"</span></div><div class="line">          ],</div><div class="line">          <span class="attr">"intelliSenseMode"</span>: <span class="string">"msvc-x64"</span>,</div><div class="line">          <span class="attr">"browse"</span>: &#123;</div><div class="line">              <span class="attr">"path"</span>: [</div><div class="line">                  <span class="string">"C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include/*"</span>,</div><div class="line">                  <span class="string">"$&#123;workspaceRoot&#125;"</span></div><div class="line">              ],</div><div class="line">              <span class="attr">"limitSymbolsToIncludedHeaders"</span>: <span class="literal">true</span>,</div><div class="line">              <span class="attr">"databaseFilename"</span>: <span class="string">""</span></div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">  ],</div><div class="line">  <span class="attr">"version"</span>: <span class="number">3</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们只关注linux下的设置,将常用头文件路径添加到 <code>includePath</code> 和 <code>&quot;browse&quot;-&gt;&quot;path&quot;</code>下.<br><strong>可以不用手工添加</strong>,项目文件下,光标 指向提示找不到的 include 头文件 ,会有 💡 提示添加路径到path中,搞定!</p>
+</li>
+<li><p>至此代码跳转应该可以使用了.</p>
+<ul>
+<li>ctrl 悬浮提示,点击跳转.还有其他快捷键爽翻天.</li>
+</ul>
+</li>
+</ul>
+<h3 id="特别提醒"><a href="#特别提醒" class="headerlink" title="特别提醒"></a>特别提醒</h3><ul>
+<li><p>上文提到 C/C++ for Visual Studio Code 会与 clang 的代码提示和语法检查冲突,所以一定要记得在用户区设置关闭自带.</p>
+</li>
+<li><p>用户区设置</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">"C_Cpp.autocomplete": "Disabled",</div><div class="line">"C_Cpp.errorSquiggles": "Disabled",</div><div class="line">"C_Cpp.formatting": "Disabled",</div></pre></td></tr></table></figure>
+<ul>
+<li>关闭自动补全 错误提示 和 代码格式化.</li>
+</ul>
+</li>
+</ul>
+<h2 id="代码格式化"><a href="#代码格式化" class="headerlink" title="代码格式化"></a>代码格式化</h2><ul>
+<li>使用clang-5.0 配套的 clang-format-5.0即可.</li>
+<li>clang-format可以通过配置文件控制很多格式化细节,推荐使用.</li>
+</ul>
+<h3 id="安装clang-format"><a href="#安装clang-format" class="headerlink" title="安装clang-format"></a>安装clang-format</h3><ul>
+<li><p>进行过 安装clang-5.0 后,执行如下命令即可.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install clang-format-5.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>ubuntu官方源 为3.8版本,也可以安装使用.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install clang-format</div></pre></td></tr></table></figure>
+</li>
+<li><p>最好与clang版本保持一致.</p>
+</li>
+</ul>
+<h3 id="clang-format配置"><a href="#clang-format配置" class="headerlink" title="clang-format配置"></a>clang-format配置</h3><ul>
+<li><p>这里使用配置文件形式详细自定义格式化.(也可以直接使用自带的几种格式,同样够用)</p>
+</li>
+<li><p>用户区设置</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">"clang-format.assumeFilename": ".clang-format",</div><div class="line">"clang-format.executable": "clang-format-5.0",</div></pre></td></tr></table></figure>
+<ul>
+<li>clang-format.assumeFilename : 制定格式化的标准,这里是通过文件 .clang-format 来配置.还可以留空通过<code>clang-format.fallbackStyle</code>指定 LLVM, Google, Chromium, Mozilla, WebKit 之一为格式化标准.</li>
+<li>clang-format.executable : clang-format路径,这里安装的是 clang-format-5.0.</li>
+</ul>
+</li>
+<li><p>指定通过.clang-format文件为格式化标准后,在项目根目录下 新建 .clang-format 文件.</p>
+</li>
+<li><p>每个版本的 clang-format 都有对应的详细定制说明.5.0版本<a href="http://releases.llvm.org/5.0.0/tools/clang/docs/ClangFormatStyleOptions.html" target="_blank" rel="external">对应说明</a></p>
+</li>
+<li><p>官方有几个风格实例:</p>
+<ul>
+<li><p>Linux Kernel style</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">BasedOnStyle: LLVM</div><div class="line">IndentWidth: 8</div><div class="line">UseTab: Always</div><div class="line">BreakBeforeBraces: Linux</div><div class="line">AllowShortIfStatementsOnASingleLine: <span class="literal">false</span></div><div class="line">IndentCaseLabels: <span class="literal">false</span></div></pre></td></tr></table></figure>
+<p>效果如下:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">        <span class="keyword">switch</span> (x) &#123;</div><div class="line">        <span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">        <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">                do_something();</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">                do_something_else();</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (condition)</div><div class="line">                do_something_completely_different();</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (x == y) &#123;</div><div class="line">                q();</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; y) &#123;</div><div class="line">                w();</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">                r();</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Visual Studio style</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">UseTab: Never</div><div class="line">IndentWidth: 4</div><div class="line">BreakBeforeBraces: Allman</div><div class="line">AllowShortIfStatementsOnASingleLine: <span class="literal">false</span></div><div class="line">IndentCaseLabels: <span class="literal">false</span></div><div class="line">ColumnLimit: 0</div></pre></td></tr></table></figure>
+<p>效果如下:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">switch</span> (suffix)</div><div class="line">    &#123;</div><div class="line">    <span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">    <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">        do_something();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">        do_something_else();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (condition)</div><div class="line">        do_somthing_completely_different();</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (x == y)</div><div class="line">    &#123;</div><div class="line">        q();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; y)</div><div class="line">    &#123;</div><div class="line">        w();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        r();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>最后是我的自定义配置(中文说明),从网上收集+官方文档.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 配置以什么语言format当前文件</span></div><div class="line"><span class="comment"># CPP: C, C++, Objective-C, ObjectiveC++;</span></div><div class="line">Language: Cpp</div><div class="line"></div><div class="line"><span class="comment">#在llvm的配置基础上加定制配置</span></div><div class="line">BasedOnStyle: LLVM </div><div class="line"></div><div class="line"><span class="comment">#someLongFunction(argument1,</span></div><div class="line"><span class="comment">#                 argument2);</span></div><div class="line">AlignAfterOpenBracket: Align</div><div class="line"></div><div class="line"><span class="comment"># true: 表示对齐连续的紧跟注释（连续行使用双斜杠注释，包括在函数体内），多用于Model定义、property说明、私有成员变量说明；</span></div><div class="line">AlignTrailingComments: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#对齐连续赋值运算符</span></div><div class="line">AlignConsecutiveAssignments : <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#若true，则对齐连续声明.</span></div><div class="line">AlignConsecutiveDeclarations : <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#换行符选项 左对齐</span></div><div class="line">AlignEscapedNewlines: Left</div><div class="line"></div><div class="line"><span class="comment">#水平对齐二目运算符和三目运算符的操作数</span></div><div class="line">AlignOperands : <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment"># true：允许较短(一般只有一行，多为内联C函数)的Function在一行显示,如“int f() &#123; return 1; &#125;”，规定设为false；</span></div><div class="line">AllowShortFunctionsOnASingleLine: <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment">#true: 允许较短的if判断在一行显示，否则换行显示（没有自动加花括号）；</span></div><div class="line">AllowShortIfStatementsOnASingleLine: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#??? true 允许较短的循环（while、for）在一行显示，否则换行显示（没有自动加花括号）；</span></div><div class="line">AllowShortLoopsOnASingleLine: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#true：允许只有Break语句的case标签在一行显示，false：不允许（自动换行显示）, 规范为不允许</span></div><div class="line">AllowShortCaseLabelsOnASingleLine: <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment">#true：允许将较长的literal－String字符串分割成多行显示；</span></div><div class="line">AlwaysBreakBeforeMultilineStrings: <span class="literal">false</span></div><div class="line"></div><div class="line">BreakBeforeBraces: Allman</div><div class="line"></div><div class="line"><span class="comment">#连续行的缩进长度（通常缩进＋设置值）， 一般用于首参数小于后续参数的method名字、多行的String－literals</span></div><div class="line">ContinuationIndentWidth: 4</div><div class="line"></div><div class="line"><span class="comment">#设置代码的最大长度（回自动对代码长度进行换行显示，并对注释自动换行；当长度加大的时候，AllowAllParametersOfDeclarationOnNextLine＝true失效）</span></div><div class="line">ColumnLimit: 100</div><div class="line"></div><div class="line"><span class="comment">#如果为真（true）, 分析最常见的格式化文件中“&amp;”和“\*”的对齐方式。pointeralignment则仅作为后备。</span></div><div class="line">DerivePointerAlignment: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#true: 将switch的case标签从switch表达式缩进一级；否则将switch表达式对齐；</span></div><div class="line">IndentCaseLabels: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#缩进字符长度</span></div><div class="line">IndentWidth:     4</div><div class="line"></div><div class="line"><span class="comment">#所有位置的指针星号（＊）或取地址符号（&amp;）对齐位置：Left、Middle、Right，当作为乘号时候居中 （规范为Right）</span></div><div class="line">PointerAlignment: Right</div><div class="line"></div><div class="line"><span class="comment">#整个文件任意位置最大能够保持的连续空行数（如果超过MAX值，减少到Max行，小于不管；）</span></div><div class="line">MaxEmptyLinesToKeep: 2</div><div class="line"></div><div class="line"><span class="comment">#true:在赋值运算符之前添加一个空格，否则去掉；(规范为添加)</span></div><div class="line">SpaceBeforeAssignmentOperators: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#是否在括号之前添加一个空格，Never：任何情况都不添加；ControlStatements：只在控制结构（for、if、while）的地方添加空格；AlWays: 除开在function－like的的宏定义之外在任何地方都需要添加空格；（规范为ControlStatements）</span></div><div class="line">SpaceBeforeParens: ControlStatements</div><div class="line"></div><div class="line"><span class="comment">#在紧跟注释之前所留空格数，一般建议为2个空格</span></div><div class="line">SpacesBeforeTrailingComments: 2</div><div class="line"></div><div class="line">UseTab: Never</div><div class="line"></div><div class="line"><span class="comment"># 格式兼容C++11</span></div><div class="line">Standard: Cpp11</div><div class="line"></div><div class="line"><span class="comment">#当前配置生效开关，true：打开，false：关闭</span></div><div class="line">DisableFormat: <span class="literal">false</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="编译-调试"><a href="#编译-调试" class="headerlink" title="编译/调试"></a>编译/调试</h1><ul>
+<li>待续</li>
+</ul>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><ul>
+<li>至此,vscode 编写c语言的体验就十分完整了.跨平台一致化的体验真的很好.推荐还在苦恼 c 编辑器的可以一试.</li>
+<li>下一篇vscode的 python 配置.</li>
+</ul>
+
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="https://my.mixtape.moe/pkqlqc.png" alt="Jasper Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/2018/02/07/Vscode系列-c语言/" title="Vscode系列—c语言">http://yoursite.com/2018/02/07/Vscode系列-c语言/</a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+        <div class="post-tags">
+          
+            <a href="/tags/学习记录/" rel="tag"># 学习记录</a>
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/07/算法第四版—摘录/" rel="next" title="算法第四版笔记—">
+                <i class="fa fa-chevron-left"></i> 算法第四版笔记—
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/07/面试汇总-java/" rel="prev" title="面试题汇总—java">
+                面试题汇总—java <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/v.png"
+               alt="Jasper" />
+          <p class="site-author-name" itemprop="name">Jasper</p>
+           
+              <p class="site-description motion-element" itemprop="description">程序员 微尘 V</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jasper-1024" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#需求"><span class="nav-number">2.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码补全-语法检查"><span class="nav-number">3.1.</span> <span class="nav-text">代码补全/语法检查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装clang-5-0"><span class="nav-number">3.1.1.</span> <span class="nav-text">安装clang-5.0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clang"><span class="nav-number">3.1.2.</span> <span class="nav-text">clang</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clang插件及配置"><span class="nav-number">3.1.3.</span> <span class="nav-text">clang插件及配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法检查"><span class="nav-number">3.2.</span> <span class="nav-text">语法检查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装cppcheck"><span class="nav-number">3.2.1.</span> <span class="nav-text">安装cppcheck</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cppcheck插件及配置"><span class="nav-number">3.2.2.</span> <span class="nav-text">cppcheck插件及配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">3.2.3.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数跳转"><span class="nav-number">3.3.</span> <span class="nav-text">函数跳转</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-number">3.3.1.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特别提醒"><span class="nav-number">3.3.2.</span> <span class="nav-text">特别提醒</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码格式化"><span class="nav-number">3.4.</span> <span class="nav-text">代码格式化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装clang-format"><span class="nav-number">3.4.1.</span> <span class="nav-text">安装clang-format</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clang-format配置"><span class="nav-number">3.4.2.</span> <span class="nav-text">clang-format配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编译-调试"><span class="nav-number">4.</span> <span class="nav-text">编译/调试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">5.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016.6.2 - 
+  <span itemprop="copyrightYear">2018.3.24</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jasper</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://jasper1024.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/02/07/Vscode系列-c语言/';
+          this.page.identifier = '2018/02/07/Vscode系列-c语言/';
+          this.page.title = 'Vscode系列—c语言';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://jasper1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("8AEPwU1rVoSnwxtOrX35u23j-gzGzoHsz", "SBLr7EMdL83IXCfJSbydMdll");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

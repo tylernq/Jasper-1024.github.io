@@ -1,0 +1,1460 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="面试题,java," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="默" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="资料来源如下  常用的Android开发的一些技能点以及BAT公司面试题汇集   感觉自己白学了////😂////  一道一道的找答案..    java面试题汇总熟练掌握java是很关键的，大公司不仅仅要求你会使用几个api，更多的是要你熟悉源码实现原理，甚至要你知道有哪些不足，怎么改进，还有一些java有关的一些算法，设计模式等等。 一、java基础面试知识点 java中==和equals">
+<meta name="keywords" content="面试题,java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试题汇总—java">
+<meta property="og:url" content="http://yoursite.com/2018/03/07/面试汇总-java/index.html">
+<meta property="og:site_name" content="默">
+<meta property="og:description" content="资料来源如下  常用的Android开发的一些技能点以及BAT公司面试题汇集   感觉自己白学了////😂////  一道一道的找答案..    java面试题汇总熟练掌握java是很关键的，大公司不仅仅要求你会使用几个api，更多的是要你熟悉源码实现原理，甚至要你知道有哪些不足，怎么改进，还有一些java有关的一些算法，设计模式等等。 一、java基础面试知识点 java中==和equals">
+<meta property="og:updated_time" content="2018-03-08T15:24:02.524Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试题汇总—java">
+<meta name="twitter:description" content="资料来源如下  常用的Android开发的一些技能点以及BAT公司面试题汇集   感觉自己白学了////😂////  一道一道的找答案..    java面试题汇总熟练掌握java是很关键的，大公司不仅仅要求你会使用几个api，更多的是要你熟悉源码实现原理，甚至要你知道有哪些不足，怎么改进，还有一些java有关的一些算法，设计模式等等。 一、java基础面试知识点 java中==和equals">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/07/面试汇总-java/"/>
+
+
+
+
+
+  <title> 面试题汇总—java | 默 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-79641673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">默</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">为了生存，而一点点淡忘了最初的本意。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/07/面试汇总-java/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                面试题汇总—java
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-07T12:00:00+08:00">
+                2018-03-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/07/面试汇总-java/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/03/07/面试汇总-java/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/07/面试汇总-java/" class="leancloud_visitors" data-flag-title="面试题汇总—java">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  3,273
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  12m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>资料来源如下</p>
+<blockquote>
+<p><a href="https://github.com/AweiLoveAndroid/CommonDevKnowledge" target="_blank" rel="external">常用的Android开发的一些技能点以及BAT公司面试题汇集</a></p>
+</blockquote>
+<ul>
+<li><p>感觉自己白学了////😂////</p>
+</li>
+<li><p>一道一道的找答案..</p>
+</li>
+</ul>
+<hr>
+<h1 id="java面试题汇总"><a href="#java面试题汇总" class="headerlink" title="java面试题汇总"></a>java面试题汇总</h1><p>熟练掌握java是很关键的，大公司不仅仅要求你会使用几个api，更多的是要你熟悉源码实现原理，甚至要你知道有哪些不足，怎么改进，还有一些java有关的一些算法，设计模式等等。</p>
+<h2 id="一、java基础面试知识点"><a href="#一、java基础面试知识点" class="headerlink" title="一、java基础面试知识点"></a>一、java基础面试知识点</h2><ul>
+<li><p>java中==和equals和hashCode的区别</p>
+<ul>
+<li>关系操作符 ==：<ul>
+<li>基本数据类型，== 判断的是左右两边操作数的值是否相等</li>
+<li>引用数据类型，== 判断的是左右两边操作数的内存地址是否相同,是否是同一个对象。</li>
+</ul>
+</li>
+<li>equals方法 基类Object中的实例方法<ul>
+<li>本质是期望比较 对象的内容</li>
+</ul>
+</li>
+<li>hashCode方法,基类Object中的实例方法,返回一个int类型 hash值.<ul>
+<li>重写上述两个方法,必须保证hashCode与equals的结果一致性,内容相同的对象,hash值相同,比较返回 true</li>
+<li>hash值为确定对象在哈希表中位置的标识.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>int、char、long各占多少字节数</p>
+<ul>
+<li>int 4字节</li>
+<li>char 2个字节</li>
+<li>long 8个字节</li>
+</ul>
+</li>
+<li><p>int与integer的区别</p>
+<ul>
+<li>int为java的内置基本类型</li>
+<li>integer 为int的包装类</li>
+</ul>
+</li>
+<li><p>探探对java多态的理解</p>
+<ul>
+<li>类之间存在继承关系,子类可以重写父类相同的方法名.</li>
+<li>调用时 子类直接调用自己实现的同命方法.</li>
+</ul>
+</li>
+<li><p>String、StringBuffer、StringBuilder区别</p>
+<ul>
+<li>String 是不可变对象,所有操作都会生成新的String对象</li>
+<li>StringBuffer StringBuilder 为可变对象.<ul>
+<li>StringBufferd 线程安全</li>
+<li>StringBuilder 线程不安全,但是单线程性能好</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>什么是内部类？内部类的作用</p>
+<ul>
+<li><p>内部类主要定义在类的内部</p>
+<ul>
+<li>成员内部类<ul>
+<li>作为外部类的成员，可以直接使用外部类的所有成员和方法，即使是private</li>
+<li>外部类要访问内部类的所有成员变量或方法，则需要通过内部类的对象来获取</li>
+<li>成员内部类不能含有 static 的变量和方法</li>
+</ul>
+</li>
+<li>局部内部类 <ul>
+<li>指内部类定义在方法和作用域内，就是在外部类的方法中定义的内部类就是局部内部类</li>
+<li>局部内部类由于是在方法中定义的，其作用域也是在方法内部中，方法外执行到，则被JVM回收。局部内部类的实例化也只能在方法中进行</li>
+<li>局部内部类方法中想要使用局部变量，该变量必须声明为 final 类型</li>
+</ul>
+</li>
+<li>静态内部类<ul>
+<li>修饰为static的内部类</li>
+<li>直接引用 <code>外部类.内部类</code></li>
+<li>实例化: <code>外部类.内部类 对象 = new 外部类.内部类()</code></li>
+</ul>
+</li>
+<li>匿名内部类<ul>
+<li>局部内部类一种</li>
+<li>没有名称,只能使用new声明<code>new &lt;类或接口&gt; &lt;类的主体&gt;</code></li>
+<li>使用最多的实例(创建线程):<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Thread t = <span class="keyword">new</span> Thread() &#123;</div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++) &#123;</div><div class="line">                    System.out.print(i + <span class="string">" "</span>);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        t.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>内部类能独立地继承自一个类（接口的）实现，所以无论外围类是否已经继承了某个（接口的）实现，对于内部类都没有影响。内部类使得多重继承的解决方案变得完整。接口解决了部分问题，而内部类有效地实现了“多重继承”。</p>
+</li>
+</ul>
+</li>
+<li><p>抽象类和接口区别</p>
+<ul>
+<li>抽象类是对事物的抽象,接口是对行为的抽象</li>
+</ul>
+</li>
+<li><p>抽象类的意义</p>
+<ul>
+<li>更利于代码的维护和重用</li>
+</ul>
+</li>
+<li><p>抽象类与接口的应用场景</p>
+<ul>
+<li>接口是为了使用它规范的某一个行为</li>
+<li>抽象类是为了使用这个类属性和行为</li>
+</ul>
+</li>
+<li><p>抽象类是否可以没有方法和属性？</p>
+<ul>
+<li>可以</li>
+</ul>
+</li>
+<li><p>接口的意义</p>
+<ul>
+<li>补足多重继承关系.</li>
+<li>赋予多态更多的实现方式</li>
+</ul>
+</li>
+<li><p>泛型中extends和super的区别</p>
+<ul>
+<li><code>&lt;? super T&gt;</code> 代表泛型T及其父类 ?的下界</li>
+<li><code>&lt;? extends T&gt;</code> 代表泛型T及其子类 ?的上界</li>
+<li>频繁往外读取内容的，适合用上界Extends。</li>
+<li>经常往里插入的，适合用下界Super。</li>
+</ul>
+</li>
+<li><p>父类的静态方法能否被子类重写</p>
+<ul>
+<li>否 静态方法与对象无关</li>
+</ul>
+</li>
+<li><p>进程和线程的区别</p>
+<ul>
+<li>进程是具有一定独立功能的程序关于某个数据集合上的一次运行活动,进程是系统进行资源分配和调度的一个独立单位。</li>
+<li>线程是进程的一个实体, 是CPU调度和分派的基本单位,它是比进程更小的能独立运行的基本单位.线程自己基本上不拥有系统资源,只拥有一点在运行中必不可少的资源(如程序计数器,一组寄存器和栈),但是它可与同属一个进程的其他的线程共享进程所拥有的全部资源。</li>
+<li>一个线程可以创建和撤销另一个线程，同一个进程中的多个线程之间可以并发执行。</li>
+<li>进程和线程的主要差别在于它们是不同的操作系统资源管理方式。进程有独立的地址空间，一个进程崩溃后，在保护模式下不会对其它进程产生影响，而线程只是一个进程中的不同执行路径。线程有自己的堆栈和局部变量，但线程之间没有单独的地址空间，一个线程死掉就等于整个进程死掉，所以多进程的程序要比多线程的程序 健壮，但在进程切换时，耗费资源较大，效率要差一些。但对于一些要求同时进行并且又要共享某些变量的并发操作，只能用线程，不能用进程。</li>
+</ul>
+</li>
+<li><p>final，finally，finalize的区别</p>
+<ul>
+<li>final 修饰符 修饰类标识无法再被继承</li>
+<li>finally 用于错误处理</li>
+<li>finalize 析构函数,但调用后 资源回收时间由 jvm决定</li>
+</ul>
+</li>
+<li><p>序列化的方式(<strong>待考</strong>)</p>
+<ul>
+<li>序列化，表示将一个对象转换成可存储或可传输的状态。序列化后的对象可以在网络上进行传输，也可以存储到本地</li>
+<li>Json,Serializable,Parcelable,ObjectOutputStream</li>
+</ul>
+</li>
+<li><p>Serializable 和Parcelable 的区别</p>
+<ul>
+<li>Serializable是java api，Parcelable是Android api;</li>
+<li>Serializable过程需要大量的I/O操作,开销大,效率低</li>
+<li>Parcelable过程不需要大量的I/O操作,开销小,效率高</li>
+</ul>
+</li>
+<li><p>静态属性和静态方法是否可以被继承？是否可以被重写？以及原因？</p>
+<ul>
+<li>可以被继承,但不能被重写,静态方法和静态属性是属于类.</li>
+</ul>
+</li>
+<li><p>静态内部类的设计意图</p>
+<ul>
+<li>静态内部类可以独立存在，又希望只被外部类使用，private修饰的时候不被同一个包下的其他类使用。</li>
+<li>非静态内部类在编译完成之后会隐含地保存着一个引用，该引用是指向创建它的外围内，但是静态内部类却没有。</li>
+<li>静态内部类的作用：</li>
+<li>只是为了降低包的深度，方便类的使用，</li>
+<li>静态内部类适用于包含类当中，但又不依赖与外在的类，不能使用外在类的非静态属性和方法，只是为了方便管理类结构而定义。</li>
+<li>在创建静态内部类的时候，不需要外部类对象的引用。</li>
+<li>非静态内部类有一个很大的优点：可以自由使用外部类的所有变量和方法</li>
+</ul>
+</li>
+<li><p>成员内部类、静态内部类、局部内部类和匿名内部类的理解，以及项目中的应用</p>
+<ul>
+<li>见上内部类</li>
+</ul>
+</li>
+<li><p>谈谈对kotlin的理解</p>
+<ul>
+<li>代码量下降</li>
+<li>语法糖</li>
+<li>与java 100%兼容</li>
+<li>函数式编程</li>
+</ul>
+</li>
+<li><p>闭包和局部内部类的区别</p>
+</li>
+</ul>
+<ul>
+<li>string 转换成 integer的方式及原理</li>
+</ul>
+<h2 id="二、java深入源码级的面试题（有难度）"><a href="#二、java深入源码级的面试题（有难度）" class="headerlink" title="二、java深入源码级的面试题（有难度）"></a>二、java深入源码级的面试题（有难度）</h2><ul>
+<li>哪些情况下的对象会被垃圾回收机制处理掉？</li>
+<li>讲一下常见编码方式？</li>
+<li>utf-8编码中的中文占几个字节；int型几个字节？</li>
+<li>静态代理和动态代理的区别，什么场景使用？</li>
+<li>Java的异常体系</li>
+<li>谈谈你对解析与分派的认识。</li>
+<li>修改对象A的equals方法的签名，那么使用HashMap存放这个对象实例的时候，会调用哪个equals方法？</li>
+<li>Java中实现多态的机制是什么？</li>
+<li>如何将一个Java对象序列化到文件里？</li>
+<li>说说你对Java反射的理解</li>
+<li>说说你对Java注解的理解</li>
+<li>说说你对依赖注入的理解</li>
+<li>说一下泛型原理，并举例说明</li>
+<li>Java中String的了解</li>
+<li>String为什么要设计成不可变的？</li>
+<li>Object类的equal和hashCode方法重写，为什么？</li>
+</ul>
+<h2 id="三、数据结构"><a href="#三、数据结构" class="headerlink" title="三、数据结构"></a>三、数据结构</h2><ul>
+<li>常用数据结构简介</li>
+<li>并发集合了解哪些？</li>
+<li>列举java的集合以及集合之间的继承关系</li>
+<li>集合类以及集合框架</li>
+<li>容器类介绍以及之间的区别（容器类估计很多人没听这个词，Java容器主要可以划分为4个部分：List列表、Set集合、Map映射、工具类（Iterator迭代器、Enumeration枚举类、Arrays和Collections），具体的可以看看这篇博文 <a href="http://alexyyek.github.io/2015/04/06/Collection/" target="_blank" rel="external">Java容器类</a>）</li>
+<li>List,Set,Map的区别</li>
+<li>List和Map的实现方式以及存储方式</li>
+<li>HashMap的实现原理</li>
+<li>HashMap数据结构？</li>
+<li>HashMap源码理解</li>
+<li>HashMap如何put数据（从HashMap源码角度讲解）？</li>
+<li>HashMap怎么手写实现？</li>
+<li>ConcurrentHashMap的实现原理</li>
+<li>ArrayMap和HashMap的对比</li>
+<li>HashTable实现原理</li>
+<li>TreeMap具体实现</li>
+<li>HashMap和HashTable的区别</li>
+<li>HashMap与HashSet的区别</li>
+<li>HashSet与HashMap怎么判断集合元素重复？</li>
+<li>集合Set实现Hash怎么防止碰撞</li>
+<li>ArrayList和LinkedList的区别，以及应用场景</li>
+<li>数组和链表的区别</li>
+<li>二叉树的深度优先遍历和广度优先遍历的具体实现</li>
+<li>堆的结构</li>
+<li>堆和树的区别</li>
+<li>堆和栈在内存中的区别是什么(解答提示：可以从数据结构方面以及实际实现方面两个方面去回答)？</li>
+<li>什么是深拷贝和浅拷贝</li>
+<li>手写链表逆序代码</li>
+<li>讲一下对树，B+树的理解</li>
+<li>讲一下对图的理解</li>
+<li>判断单链表成环与否？</li>
+<li>链表翻转（即：翻转一个单项链表）</li>
+<li>合并多个单有序链表（假设都是递增的）</li>
+</ul>
+<h2 id="四、线程、多线程和线程池"><a href="#四、线程、多线程和线程池" class="headerlink" title="四、线程、多线程和线程池"></a>四、线程、多线程和线程池</h2><ul>
+<li>开启线程的三种方式？</li>
+<li>线程和进程的区别？</li>
+<li>为什么要有线程，而不是仅仅用进程？</li>
+<li>run()和start()方法区别</li>
+<li>如何控制某个方法允许并发访问线程的个数？</li>
+<li>在Java中wait和seelp方法的不同；</li>
+<li>谈谈wait/notify关键字的理解</li>
+<li>什么导致线程阻塞？</li>
+<li>线程如何关闭？</li>
+<li>讲一下java中的同步的方法</li>
+<li>数据一致性如何保证？</li>
+<li>如何保证线程安全？</li>
+<li>如何实现线程同步？</li>
+<li>两个进程同时要求写或者读，能不能实现？如何防止进程的同步？</li>
+<li>线程间操作List</li>
+<li>Java中对象的生命周期</li>
+<li>Synchronized用法</li>
+<li>synchronize的原理</li>
+<li>谈谈对Synchronized关键字，类锁，方法锁，重入锁的理解</li>
+<li>static synchronized 方法的多线程访问和作用</li>
+<li>同一个类里面两个synchronized方法，两个线程同时访问的问题</li>
+<li>volatile的原理</li>
+<li>谈谈volatile关键字的用法</li>
+<li>谈谈volatile关键字的作用</li>
+<li>谈谈NIO的理解</li>
+<li>synchronized 和volatile 关键字的区别</li>
+<li>synchronized与Lock的区别</li>
+<li>ReentrantLock 、synchronized和volatile比较</li>
+<li>ReentrantLock的内部实现</li>
+<li>lock原理</li>
+<li>死锁的四个必要条件？</li>
+<li>怎么避免死锁？</li>
+<li>对象锁和类锁是否会互相影响？</li>
+<li>什么是线程池，如何使用?</li>
+<li>Java的并发、多线程、线程模型</li>
+<li>谈谈对多线程的理解</li>
+<li>多线程有什么要注意的问题？</li>
+<li>谈谈你对并发编程的理解并举例说明</li>
+<li>谈谈你对多线程同步机制的理解？</li>
+<li>如何保证多线程读写文件的安全？</li>
+<li>多线程断点续传原理</li>
+<li>断点续传的实现</li>
+</ul>
+<h2 id="并发编程有关知识点（这个是一般Android开发用的少的，所以建议多去看看）："><a href="#并发编程有关知识点（这个是一般Android开发用的少的，所以建议多去看看）：" class="headerlink" title="并发编程有关知识点（这个是一般Android开发用的少的，所以建议多去看看）："></a>并发编程有关知识点（这个是一般Android开发用的少的，所以建议多去看看）：</h2><p>平时Android开发中对并发编程可以做得比较少，Thread这个类经常会用到，但是我们想提升自己的话，一定不能停留在表面，,我们也应该去了解一下java的关于线程相关的源码级别的东西。</p>
+<hr>
+<p><strong>学习的参考资料如下：</strong></p>
+<blockquote>
+<p>Java 内存模型</p>
+</blockquote>
+<ul>
+<li><a href="http://www.iteye.com/topic/806990" target="_blank" rel="external">java线程安全总结</a></li>
+<li><a href="http://ifeve.com/java-memory-model-0/" target="_blank" rel="external">深入理解java内存模型系列文章</a></li>
+</ul>
+<blockquote>
+<p>线程状态：</p>
+</blockquote>
+<ul>
+<li><a href="https://my.oschina.net/mingdongcheng/blog/139263" target="_blank" rel="external">一张图让你看懂JAVA线程间的状态转换</a></li>
+</ul>
+<blockquote>
+<p>锁：</p>
+</blockquote>
+<ul>
+<li><a href="http://blog.csdn.net/vking_wang/article/details/9952063" target="_blank" rel="external">锁机制：synchronized、Lock、Condition</a></li>
+<li><a href="http://wiki.jikexueyuan.com/project/java-concurrent/locks-in-java.html" target="_blank" rel="external">Java 中的锁</a></li>
+</ul>
+<blockquote>
+<p>并发编程：</p>
+</blockquote>
+<ul>
+<li><a href="http://www.cnblogs.com/dolphin0520/p/3920357.html" target="_blank" rel="external">Java并发编程：Thread类的使用</a></li>
+<li><a href="http://blog.51cto.com/lavasoft/27069" target="_blank" rel="external">Java多线程编程总结</a></li>
+<li><a href="https://www.jianshu.com/p/053943a425c3#" target="_blank" rel="external">Java并发编程的总结与思考</a></li>
+<li><a href="http://www.cnblogs.com/chenssy/p/4701027.html" target="_blank" rel="external">Java并发编程实战—–synchronized</a></li>
+<li><a href="http://www.infoq.com/cn/articles/ConcurrentHashMap#" target="_blank" rel="external">深入分析ConcurrentHashMap</a></li>
+</ul>
+
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="https://my.mixtape.moe/pkqlqc.png" alt="Jasper Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/2018/03/07/面试汇总-java/" title="面试题汇总—java">http://yoursite.com/2018/03/07/面试汇总-java/</a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面试题/" rel="tag"># 面试题</a>
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/07/Vscode系列-c语言/" rel="next" title="Vscode系列—c语言">
+                <i class="fa fa-chevron-left"></i> Vscode系列—c语言
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/v.png"
+               alt="Jasper" />
+          <p class="site-author-name" itemprop="name">Jasper</p>
+           
+              <p class="site-description motion-element" itemprop="description">程序员 微尘 V</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jasper-1024" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java面试题汇总"><span class="nav-number">1.</span> <span class="nav-text">java面试题汇总</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、java基础面试知识点"><span class="nav-number">1.1.</span> <span class="nav-text">一、java基础面试知识点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、java深入源码级的面试题（有难度）"><span class="nav-number">1.2.</span> <span class="nav-text">二、java深入源码级的面试题（有难度）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、数据结构"><span class="nav-number">1.3.</span> <span class="nav-text">三、数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、线程、多线程和线程池"><span class="nav-number">1.4.</span> <span class="nav-text">四、线程、多线程和线程池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发编程有关知识点（这个是一般Android开发用的少的，所以建议多去看看）："><span class="nav-number">1.5.</span> <span class="nav-text">并发编程有关知识点（这个是一般Android开发用的少的，所以建议多去看看）：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016.6.2 - 
+  <span itemprop="copyrightYear">2018.3.24</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jasper</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://jasper1024.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/03/07/面试汇总-java/';
+          this.page.identifier = '2018/03/07/面试汇总-java/';
+          this.page.title = '面试题汇总—java';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://jasper1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("8AEPwU1rVoSnwxtOrX35u23j-gzGzoHsz", "SBLr7EMdL83IXCfJSbydMdll");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
