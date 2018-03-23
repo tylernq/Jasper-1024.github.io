@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-03-08T15:24:02.524Z</updated>
+  <updated>2018-03-23T17:56:59.757Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,282 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vscode系列—c语言</title>
+    <link href="http://yoursite.com/2018/03/24/Vscode%E7%B3%BB%E5%88%97-c%E8%AF%AD%E8%A8%80/"/>
+    <id>http://yoursite.com/2018/03/24/Vscode系列-c语言/</id>
+    <published>2018-03-24T04:00:00.000Z</published>
+    <updated>2018-03-23T17:56:59.757Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<p>环境</p>
+<ul>
+<li>vscode 1.20.x</li>
+<li>ubuntu</li>
+</ul>
+<hr>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
+<li>写嵌入式的c语言太难搞了,受够了盗版 sourceinsight 艰难的代码提示和补全之后,尝试换一款编辑器.</li>
+<li>跨平台,支持多种语言,自由度高.</li>
+<li>vim 和 Emacs 命令行 有一点学习成本.</li>
+<li>最后选定了 vscode 业余写点 python 和 java 写写 markdown 博客等等 (看pdf也行…).</li>
+</ul>
+<hr>
+<ul>
+<li>注意vscode首先是个编辑器,其他的功能都是通过 插件 + 后端 实现的.</li>
+</ul>
+<hr>
+<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><ul>
+<li>代码补全 最重要的<strong>c语言的结构体补全!!!</strong>.<ul>
+<li>结构体补全曾经深深折磨这我,直到遇到了clang….</li>
+<li>顺带着解决了语法检查,clang的语法检查很是好用.</li>
+<li>插件: C/C++ Clang Command Adapter</li>
+<li><img src="https://i.loli.net/2018/03/23/5ab4f9c678732.png" alt="auto.png"></li>
+<li><img src="https://i.loli.net/2018/03/23/5ab4f9c6ec147.png" alt="autoa.png"></li>
+</ul>
+</li>
+<li>语法检查<ul>
+<li>常规clang足矣,但还不够.</li>
+<li>clang是编译器,但有些错误编译器还是无能为力,祭出Cppcheck,C/C++代码缺陷静态检查工具.</li>
+<li>插件: cppcheck</li>
+<li><img src="https://i.loli.net/2018/03/23/5ab4f9c64e3af.png" alt="err.png"></li>
+</ul>
+</li>
+<li>代码格式化<ul>
+<li>眼瞅着clang 配套的clang-format .</li>
+<li>插件: Clang-Format</li>
+</ul>
+</li>
+<li>函数跳转<ul>
+<li>微软官方c/c++插件就行了,但官方插件自带代码补全和语法检查,不怎么好,一定要关掉否则会与clang冲突.</li>
+<li>插件: C/C++ for Visual Studio Code</li>
+<li><img src="https://i.loli.net/2018/03/23/5ab4f9c702d2c.png" alt="jump.png"></li>
+</ul>
+</li>
+</ul>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ul>
+<li><p>上文书说到,vscode实现编辑器以外的功能都需要插件+后端的形式 so 一般的安装步骤如下:</p>
+</li>
+<li><p>安装后端,如clang 、cppcheck 等.</p>
+</li>
+<li>安装对应插件</li>
+<li><p>修改配置文件(json格式)</p>
+</li>
+<li><p>最后针对处理头文件等.</p>
+</li>
+</ul>
+<h2 id="代码补全-语法检查"><a href="#代码补全-语法检查" class="headerlink" title="代码补全/语法检查"></a>代码补全/语法检查</h2><ul>
+<li>代码补全/语法检查都依赖于后端clang,而ubunt自带的clang 3.8版本,而clang最新的稳定版本为5.0,这里选择5.0版本.</li>
+<li>参考 &gt; <a href="https://apt.llvm.org/" target="_blank" rel="external">https://apt.llvm.org/</a></li>
+</ul>
+<h3 id="安装clang-5-0"><a href="#安装clang-5-0" class="headerlink" title="安装clang-5.0"></a>安装clang-5.0</h3><ul>
+<li><p>修改ubuntu源 /etc/apt/source.list 添加llvm官方源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty-5.0 main</div><div class="line">deb-src http://apt.llvm.org/trusty/ llvm-toolchain-trusty-5.0 main</div></pre></td></tr></table></figure>
+</li>
+<li><p>添加llvm源的 密钥</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key|sudo apt-key add -</div></pre></td></tr></table></figure>
+</li>
+<li><p>更新软件列表,这样就可以安装5.0版本了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装clang5.0</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install clang-5.0 lldb-5.0</div></pre></td></tr></table></figure>
+<p>或者安装全部llvm root用户下(太多偷个懒)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install clang-5.0 clang-tools-5.0 clang-5.0-doc libclang-common-5.0-dev libclang-5.0-dev libclang1-5.0 libclang1-5.0-dbg libllvm-5.0-ocaml-dev libllvm5.0 libllvm5.0-dbg lldb-5.0 llvm-5.0 llvm-5.0-dev llvm-5.0-doc llvm-5.0-examples llvm-5.0-runtime clang-format-5.0 python-clang-5.0 libfuzzer-5.0-dev</div></pre></td></tr></table></figure>
+</li>
+<li><p>完整安装需要良好的网络,llvm大概300M,等下就好.</p>
+</li>
+<li><p>验证</p>
+<ul>
+<li>命令行输入 clang-5.0 不会提示无此命令即可.</li>
+</ul>
+</li>
+</ul>
+<h3 id="clang"><a href="#clang" class="headerlink" title="clang"></a>clang</h3><ul>
+<li><p>ubuntu自带版本3.8</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install clang</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="clang插件及配置"><a href="#clang插件及配置" class="headerlink" title="clang插件及配置"></a>clang插件及配置</h3><ul>
+<li><p>插件名 C/C++ Clang Command Adapter,在vscode中搜索下载即可.<br>网络环境限制还可以在vscode官网下载vsix格式的文件,离线安装.</p>
+</li>
+<li><p>安装完成后,进入重头戏,也是初次上手vscode最难适应的地方.</p>
+</li>
+<li><p>进入vscode的设置 <code>setting.json</code> ,分为 用户区设置 和 工作区设置.</p>
+<ul>
+<li>用户区设置,是用户自定义全局设置,覆盖vscode默认设置,每个工程都有效.</li>
+<li>工作区设置,是针对本工程的个性化设置,只在本工程生效.</li>
+<li>简易是将clang等设置 保存在用户区,工作区保存追对 clang 的头文件设置.</li>
+</ul>
+</li>
+<li><p>用户区设置</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">"clang.executable": "clang-5.0",</div><div class="line">"clang.completion.triggerChars": [</div><div class="line">      ".",</div><div class="line">      ":",</div><div class="line">      "&gt;"],</div></pre></td></tr></table></figure>
+<ul>
+<li>clang.executable : 后端clang的路径,这里是 clang-5.0 ,也可以写入 clang 的安装目录.</li>
+<li>clang.completion.triggerChars : 触发代码补全的输入,常用的 . : &gt;.</li>
+</ul>
+</li>
+<li><p>工作区设置</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">"clang.cflags": [</div><div class="line">      "-std=c99",</div><div class="line">      "-I$&#123;cwd&#125;",</div><div class="line">      "-I/usr/include",</div><div class="line">      "-I/usr/include/c++/5",</div><div class="line">      "-I/usr/include/x86_64-linux-gnu/c++/5",</div><div class="line">      "-I/usr/include/c++/5/backward",</div><div class="line">      "-I/usr/lib/gcc/x86_64-linux-gnu/5/include",</div><div class="line">      "-I/usr/local/include",</div><div class="line">      "-I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed",</div><div class="line">      "-I/usr/include/x86_64-linux-gnu",</div><div class="line">      "-I/usr/include",</div><div class="line">      "-I$&#123;workspaceRoot&#125;",</div><div class="line">      "-I$&#123;workspaceRoot&#125;/Include",</div><div class="line">      "-I$&#123;workspaceRoot&#125;/Libs/Cjson/Include"</div><div class="line">  ],</div></pre></td></tr></table></figure>
+<ul>
+<li>clang.cflags : <code>&quot;-std=c99&quot;</code> clang语法检查时 c/c++ 语言标准,要兼容历史项目,这就选的 c99 ,新项目简易 直接 c11.<pre><code>clang进行代码补全/语法检查的头文件路径, 格式是 `-I路径` ,支持直接和间接路径(${workspaceRoot}).
+</code></pre></li>
+<li>头文件一定要写全,否则一直会有错误提示.</li>
+</ul>
+</li>
+<li><p>保存后,代码补全/语法检查 全部如上图所示.</p>
+</li>
+</ul>
+<h2 id="语法检查"><a href="#语法检查" class="headerlink" title="语法检查"></a>语法检查</h2><ul>
+<li>这里特指 cppcheck</li>
+</ul>
+<h3 id="安装cppcheck"><a href="#安装cppcheck" class="headerlink" title="安装cppcheck"></a>安装cppcheck</h3><ul>
+<li><p>我没有追求最新,直接通过ubuntu官方源安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install cppcheck</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装完成,执行 cppcheck 命令,不提示无此命令即可.</p>
+</li>
+</ul>
+<h3 id="cppcheck插件及配置"><a href="#cppcheck插件及配置" class="headerlink" title="cppcheck插件及配置"></a>cppcheck插件及配置</h3><ul>
+<li><p>搜索安装 cppcheck</p>
+</li>
+<li><p>同样配置分为用户区和工作区.工作区对应头文件设置.</p>
+</li>
+<li><p>用户区</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">"cppcheck.cppcheckPath": null,</div><div class="line">"cppcheck.standard": [</div><div class="line">      "c99",</div><div class="line">  ],</div><div class="line">"cppcheck.language": "c",</div></pre></td></tr></table></figure>
+<ul>
+<li>cppcheck.cppcheckPath : null时,会使用 cppcheck 命令指向的版本,也可以使用自定义路径.</li>
+<li>cppcheck.standard : cppcheck 检查时 c/c++版本,历史原因我这里还是 c99.</li>
+<li>cppcheck.language : 前置检查时 以 c 或者 c++ 检查.我这里都是 c 项目,填写 c .</li>
+</ul>
+</li>
+<li><p>工作区</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">"cppcheck.includePaths": [</div><div class="line">  "$&#123;cwd&#125;",</div><div class="line">  "/usr/include",</div><div class="line">  "/usr/include/c++/5",</div><div class="line">  "/usr/include/x86_64-linux-gnu/c++/5",</div><div class="line">  "/usr/include/c++/5/backward",</div><div class="line">  "/usr/lib/gcc/x86_64-linux-gnu/5/include",</div><div class="line">  "/usr/local/include",</div><div class="line">  "/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed",</div><div class="line">  "/usr/include/x86_64-linux-gnu",</div><div class="line">  "/usr/include",</div><div class="line">  "$&#123;workspaceRoot&#125;",</div><div class="line">  "$&#123;workspaceRoot&#125;/Include",</div><div class="line">  "$&#123;workspaceRoot&#125;/Code/APP/Code/Libs/Cjson/Include"</div><div class="line">],</div><div class="line">"cppcheck.force": true</div></pre></td></tr></table></figure>
+<ul>
+<li>cppcheck.includePaths : 头文件路径,这里没有 <code>-I</code> ,直接输入路径即可.支持直接和间接路径.</li>
+<li>cppcheck.force : 强制检查所有枚举所有可能配置,有多个项目同时在工作,这里我放到工作区了,如果代码量小的工程建议放在用户区,作为全局配置.</li>
+</ul>
+</li>
+</ul>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ul>
+<li><p>左下角,点击cppcheck 如图<br><img src="https://i.loli.net/2018/03/23/5ab4f7f51181a.png" alt="cppcheck.png"></p>
+</li>
+<li><p>3个选择</p>
+<ul>
+<li>分析当前打开文件</li>
+<li>分析工作区所有文件</li>
+<li>其他…没用过..</li>
+</ul>
+</li>
+</ul>
+<h2 id="函数跳转"><a href="#函数跳转" class="headerlink" title="函数跳转"></a>函数跳转</h2><ul>
+<li>直接使用微软的 C/C++ for Visual Studio Code 即可.</li>
+<li>官方的很强大,带代码补全和语法检查,,可惜表现不太好.函数跳转很好用.</li>
+</ul>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ul>
+<li><p>搜索安装 C/C++ for Visual Studio Code</p>
+</li>
+<li><p>不用安装后端了,对应的配置就稍微麻烦了.</p>
+</li>
+<li><p>在项目根目录下 查找 .vscode文件夹,进入.应该由 setting.json文件,对应工作区设置.</p>
+</li>
+<li><p>新建c_cpp_properties.json ,写入以下内容.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"configurations"</span>: [</div><div class="line">      &#123;</div><div class="line">          <span class="attr">"name"</span>: <span class="string">"Mac"</span>,</div><div class="line">          <span class="attr">"includePath"</span>: [</div><div class="line">              <span class="string">"/usr/include"</span>,</div><div class="line">              <span class="string">"/usr/local/include"</span>,</div><div class="line">              <span class="string">"$&#123;workspaceRoot&#125;"</span></div><div class="line">          ],</div><div class="line">          <span class="attr">"defines"</span>: [],</div><div class="line">          <span class="attr">"intelliSenseMode"</span>: <span class="string">"clang-x64"</span>,</div><div class="line">          <span class="attr">"browse"</span>: &#123;</div><div class="line">              <span class="attr">"path"</span>: [</div><div class="line">                  <span class="string">"/usr/include"</span>,</div><div class="line">                  <span class="string">"/usr/local/include"</span>,</div><div class="line">                  <span class="string">"$&#123;workspaceRoot&#125;"</span></div><div class="line">              ],</div><div class="line">              <span class="attr">"limitSymbolsToIncludedHeaders"</span>: <span class="literal">true</span>,</div><div class="line">              <span class="attr">"databaseFilename"</span>: <span class="string">""</span></div><div class="line">          &#125;,</div><div class="line">          <span class="attr">"macFrameworkPath"</span>: [</div><div class="line">              <span class="string">"/System/Library/Frameworks"</span>,</div><div class="line">              <span class="string">"/Library/Frameworks"</span></div><div class="line">          ]</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">          <span class="attr">"name"</span>: <span class="string">"Linux"</span>,</div><div class="line">          <span class="attr">"includePath"</span>: [</div><div class="line">              <span class="string">"/usr/include/c++/5"</span>,</div><div class="line">              <span class="string">"/usr/include/x86_64-linux-gnu/c++/5"</span>,</div><div class="line">              <span class="string">"/usr/include/c++/5/backward"</span>,</div><div class="line">              <span class="string">"/usr/lib/gcc/x86_64-linux-gnu/5/include"</span>,</div><div class="line">              <span class="string">"/usr/local/include"</span>,</div><div class="line">              <span class="string">"/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"</span>,</div><div class="line">              <span class="string">"/usr/include/x86_64-linux-gnu"</span>,</div><div class="line">              <span class="string">"/usr/include"</span>,</div><div class="line">              <span class="string">"$&#123;workspaceRoot&#125;"</span>,</div><div class="line">              <span class="string">"$&#123;workspaceRoot&#125;/Include"</span></div><div class="line">          ],</div><div class="line">          <span class="attr">"defines"</span>: [],</div><div class="line">          <span class="attr">"intelliSenseMode"</span>: <span class="string">"clang-x64"</span>,</div><div class="line">          <span class="attr">"browse"</span>: &#123;</div><div class="line">              <span class="attr">"path"</span>: [</div><div class="line">                  <span class="string">"/usr/include/c++/5"</span>,</div><div class="line">                  <span class="string">"/usr/include/x86_64-linux-gnu/c++/5"</span>,</div><div class="line">                  <span class="string">"/usr/include/c++/5/backward"</span>,</div><div class="line">                  <span class="string">"/usr/lib/gcc/x86_64-linux-gnu/5/include"</span>,</div><div class="line">                  <span class="string">"/usr/local/include"</span>,</div><div class="line">                  <span class="string">"/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"</span>,</div><div class="line">                  <span class="string">"/usr/include/x86_64-linux-gnu"</span>,</div><div class="line">                  <span class="string">"/usr/include"</span>,</div><div class="line">                  <span class="string">"$&#123;workspaceRoot&#125;"</span>,</div><div class="line">                  <span class="string">"$&#123;workspaceRoot&#125;/Include"</span></div><div class="line">              ],</div><div class="line">              <span class="attr">"limitSymbolsToIncludedHeaders"</span>: <span class="literal">true</span>,</div><div class="line">              <span class="attr">"databaseFilename"</span>: <span class="string">""</span></div><div class="line">          &#125;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">          <span class="attr">"name"</span>: <span class="string">"Win32"</span>,</div><div class="line">          <span class="attr">"includePath"</span>: [</div><div class="line">              <span class="string">"C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include"</span>,</div><div class="line">              <span class="string">"$&#123;workspaceRoot&#125;"</span></div><div class="line">          ],</div><div class="line">          <span class="attr">"defines"</span>: [</div><div class="line">              <span class="string">"_DEBUG"</span>,</div><div class="line">              <span class="string">"UNICODE"</span>,</div><div class="line">              <span class="string">"_UNICODE"</span></div><div class="line">          ],</div><div class="line">          <span class="attr">"intelliSenseMode"</span>: <span class="string">"msvc-x64"</span>,</div><div class="line">          <span class="attr">"browse"</span>: &#123;</div><div class="line">              <span class="attr">"path"</span>: [</div><div class="line">                  <span class="string">"C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include/*"</span>,</div><div class="line">                  <span class="string">"$&#123;workspaceRoot&#125;"</span></div><div class="line">              ],</div><div class="line">              <span class="attr">"limitSymbolsToIncludedHeaders"</span>: <span class="literal">true</span>,</div><div class="line">              <span class="attr">"databaseFilename"</span>: <span class="string">""</span></div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">  ],</div><div class="line">  <span class="attr">"version"</span>: <span class="number">3</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们只关注linux下的设置,将常用头文件路径添加到 <code>includePath</code> 和 <code>&quot;browse&quot;-&gt;&quot;path&quot;</code>下.<br><strong>可以不用手工添加</strong>,项目文件下,光标 指向提示找不到的 include 头文件 ,会有 💡 提示添加路径到path中,搞定!</p>
+</li>
+<li><p>至此代码跳转应该可以使用了.</p>
+<ul>
+<li>ctrl 悬浮提示,点击跳转.还有其他快捷键爽翻天.</li>
+</ul>
+</li>
+</ul>
+<h3 id="特别提醒"><a href="#特别提醒" class="headerlink" title="特别提醒"></a>特别提醒</h3><ul>
+<li><p>上文提到 C/C++ for Visual Studio Code 会与 clang 的代码提示和语法检查冲突,所以一定要记得在用户区设置关闭自带.</p>
+</li>
+<li><p>用户区设置</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">"C_Cpp.autocomplete": "Disabled",</div><div class="line">"C_Cpp.errorSquiggles": "Disabled",</div><div class="line">"C_Cpp.formatting": "Disabled",</div></pre></td></tr></table></figure>
+<ul>
+<li>关闭自动补全 错误提示 和 代码格式化.</li>
+</ul>
+</li>
+</ul>
+<h2 id="代码格式化"><a href="#代码格式化" class="headerlink" title="代码格式化"></a>代码格式化</h2><ul>
+<li>使用clang-5.0 配套的 clang-format-5.0即可.</li>
+<li>clang-format可以通过配置文件控制很多格式化细节,推荐使用.</li>
+</ul>
+<h3 id="安装clang-format"><a href="#安装clang-format" class="headerlink" title="安装clang-format"></a>安装clang-format</h3><ul>
+<li><p>进行过 安装clang-5.0 后,执行如下命令即可.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install clang-format-5.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>ubuntu官方源 为3.8版本,也可以安装使用.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install clang-format</div></pre></td></tr></table></figure>
+</li>
+<li><p>最好与clang版本保持一致.</p>
+</li>
+</ul>
+<h3 id="clang-format配置"><a href="#clang-format配置" class="headerlink" title="clang-format配置"></a>clang-format配置</h3><ul>
+<li><p>这里使用配置文件形式详细自定义格式化.(也可以直接使用自带的几种格式,同样够用)</p>
+</li>
+<li><p>用户区设置</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">"clang-format.assumeFilename": ".clang-format",</div><div class="line">"clang-format.executable": "clang-format-5.0",</div></pre></td></tr></table></figure>
+<ul>
+<li>clang-format.assumeFilename : 制定格式化的标准,这里是通过文件 .clang-format 来配置.还可以留空通过<code>clang-format.fallbackStyle</code>指定 LLVM, Google, Chromium, Mozilla, WebKit 之一为格式化标准.</li>
+<li>clang-format.executable : clang-format路径,这里安装的是 clang-format-5.0.</li>
+</ul>
+</li>
+<li><p>指定通过.clang-format文件为格式化标准后,在项目根目录下 新建 .clang-format 文件.</p>
+</li>
+<li><p>每个版本的 clang-format 都有对应的详细定制说明.5.0版本<a href="http://releases.llvm.org/5.0.0/tools/clang/docs/ClangFormatStyleOptions.html" target="_blank" rel="external">对应说明</a></p>
+</li>
+<li><p>官方有几个风格实例:</p>
+<ul>
+<li><p>Linux Kernel style</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">BasedOnStyle: LLVM</div><div class="line">IndentWidth: 8</div><div class="line">UseTab: Always</div><div class="line">BreakBeforeBraces: Linux</div><div class="line">AllowShortIfStatementsOnASingleLine: <span class="literal">false</span></div><div class="line">IndentCaseLabels: <span class="literal">false</span></div></pre></td></tr></table></figure>
+<p>效果如下:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">        <span class="keyword">switch</span> (x) &#123;</div><div class="line">        <span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">        <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">                do_something();</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">                do_something_else();</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (condition)</div><div class="line">                do_something_completely_different();</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (x == y) &#123;</div><div class="line">                q();</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; y) &#123;</div><div class="line">                w();</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">                r();</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Visual Studio style</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">UseTab: Never</div><div class="line">IndentWidth: 4</div><div class="line">BreakBeforeBraces: Allman</div><div class="line">AllowShortIfStatementsOnASingleLine: <span class="literal">false</span></div><div class="line">IndentCaseLabels: <span class="literal">false</span></div><div class="line">ColumnLimit: 0</div></pre></td></tr></table></figure>
+<p>效果如下:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">switch</span> (suffix)</div><div class="line">    &#123;</div><div class="line">    <span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">    <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">        do_something();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">        do_something_else();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (condition)</div><div class="line">        do_somthing_completely_different();</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (x == y)</div><div class="line">    &#123;</div><div class="line">        q();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; y)</div><div class="line">    &#123;</div><div class="line">        w();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        r();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>最后是我的自定义配置(中文说明),从网上收集+官方文档.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 配置以什么语言format当前文件</span></div><div class="line"><span class="comment"># CPP: C, C++, Objective-C, ObjectiveC++;</span></div><div class="line">Language: Cpp</div><div class="line"></div><div class="line"><span class="comment">#在llvm的配置基础上加定制配置</span></div><div class="line">BasedOnStyle: LLVM </div><div class="line"></div><div class="line"><span class="comment">#someLongFunction(argument1,</span></div><div class="line"><span class="comment">#                 argument2);</span></div><div class="line">AlignAfterOpenBracket: Align</div><div class="line"></div><div class="line"><span class="comment"># true: 表示对齐连续的紧跟注释（连续行使用双斜杠注释，包括在函数体内），多用于Model定义、property说明、私有成员变量说明；</span></div><div class="line">AlignTrailingComments: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#对齐连续赋值运算符</span></div><div class="line">AlignConsecutiveAssignments : <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#若true，则对齐连续声明.</span></div><div class="line">AlignConsecutiveDeclarations : <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#换行符选项 左对齐</span></div><div class="line">AlignEscapedNewlines: Left</div><div class="line"></div><div class="line"><span class="comment">#水平对齐二目运算符和三目运算符的操作数</span></div><div class="line">AlignOperands : <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment"># true：允许较短(一般只有一行，多为内联C函数)的Function在一行显示,如“int f() &#123; return 1; &#125;”，规定设为false；</span></div><div class="line">AllowShortFunctionsOnASingleLine: <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment">#true: 允许较短的if判断在一行显示，否则换行显示（没有自动加花括号）；</span></div><div class="line">AllowShortIfStatementsOnASingleLine: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#??? true 允许较短的循环（while、for）在一行显示，否则换行显示（没有自动加花括号）；</span></div><div class="line">AllowShortLoopsOnASingleLine: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#true：允许只有Break语句的case标签在一行显示，false：不允许（自动换行显示）, 规范为不允许</span></div><div class="line">AllowShortCaseLabelsOnASingleLine: <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment">#true：允许将较长的literal－String字符串分割成多行显示；</span></div><div class="line">AlwaysBreakBeforeMultilineStrings: <span class="literal">false</span></div><div class="line"></div><div class="line">BreakBeforeBraces: Allman</div><div class="line"></div><div class="line"><span class="comment">#连续行的缩进长度（通常缩进＋设置值）， 一般用于首参数小于后续参数的method名字、多行的String－literals</span></div><div class="line">ContinuationIndentWidth: 4</div><div class="line"></div><div class="line"><span class="comment">#设置代码的最大长度（回自动对代码长度进行换行显示，并对注释自动换行；当长度加大的时候，AllowAllParametersOfDeclarationOnNextLine＝true失效）</span></div><div class="line">ColumnLimit: 100</div><div class="line"></div><div class="line"><span class="comment">#如果为真（true）, 分析最常见的格式化文件中“&amp;”和“\*”的对齐方式。pointeralignment则仅作为后备。</span></div><div class="line">DerivePointerAlignment: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#true: 将switch的case标签从switch表达式缩进一级；否则将switch表达式对齐；</span></div><div class="line">IndentCaseLabels: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#缩进字符长度</span></div><div class="line">IndentWidth:     4</div><div class="line"></div><div class="line"><span class="comment">#所有位置的指针星号（＊）或取地址符号（&amp;）对齐位置：Left、Middle、Right，当作为乘号时候居中 （规范为Right）</span></div><div class="line">PointerAlignment: Right</div><div class="line"></div><div class="line"><span class="comment">#整个文件任意位置最大能够保持的连续空行数（如果超过MAX值，减少到Max行，小于不管；）</span></div><div class="line">MaxEmptyLinesToKeep: 2</div><div class="line"></div><div class="line"><span class="comment">#true:在赋值运算符之前添加一个空格，否则去掉；(规范为添加)</span></div><div class="line">SpaceBeforeAssignmentOperators: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#是否在括号之前添加一个空格，Never：任何情况都不添加；ControlStatements：只在控制结构（for、if、while）的地方添加空格；AlWays: 除开在function－like的的宏定义之外在任何地方都需要添加空格；（规范为ControlStatements）</span></div><div class="line">SpaceBeforeParens: ControlStatements</div><div class="line"></div><div class="line"><span class="comment">#在紧跟注释之前所留空格数，一般建议为2个空格</span></div><div class="line">SpacesBeforeTrailingComments: 2</div><div class="line"></div><div class="line">UseTab: Never</div><div class="line"></div><div class="line"><span class="comment"># 格式兼容C++11</span></div><div class="line">Standard: Cpp11</div><div class="line"></div><div class="line"><span class="comment">#当前配置生效开关，true：打开，false：关闭</span></div><div class="line">DisableFormat: <span class="literal">false</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="编译-调试"><a href="#编译-调试" class="headerlink" title="编译/调试"></a>编译/调试</h1><ul>
+<li>待续</li>
+</ul>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><ul>
+<li>至此,vscode 编写c语言的体验就十分完整了.跨平台一致化的体验真的很好.推荐还在苦恼 c 编辑器的可以一试.</li>
+<li>下一篇vscode的 python 配置.</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;环境&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;vscode 1.20.x&lt;/li&gt;
+&lt;li&gt;ubuntu&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;ul
+    
+    </summary>
+    
+      <category term="linux笔记" scheme="http://yoursite.com/categories/linux%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>面试题汇总—java</title>
@@ -372,282 +648,6 @@
   </entry>
   
   <entry>
-    <title>Vscode系列—c语言</title>
-    <link href="http://yoursite.com/2018/02/07/Vscode%E7%B3%BB%E5%88%97-c%E8%AF%AD%E8%A8%80/"/>
-    <id>http://yoursite.com/2018/02/07/Vscode系列-c语言/</id>
-    <published>2018-02-07T04:00:00.000Z</published>
-    <updated>2018-03-23T17:55:00.795Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<p>环境</p>
-<ul>
-<li>vscode 1.20.x</li>
-<li>ubuntu</li>
-</ul>
-<hr>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
-<li>写嵌入式的c语言太难搞了,受够了盗版 sourceinsight 艰难的代码提示和补全之后,尝试换一款编辑器.</li>
-<li>跨平台,支持多种语言,自由度高.</li>
-<li>vim 和 Emacs 命令行 有一点学习成本.</li>
-<li>最后选定了 vscode 业余写点 python 和 java 写写 markdown 博客等等 (看pdf也行…).</li>
-</ul>
-<hr>
-<ul>
-<li>注意vscode首先是个编辑器,其他的功能都是通过 插件 + 后端 实现的.</li>
-</ul>
-<hr>
-<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><ul>
-<li>代码补全 最重要的<strong>c语言的结构体补全!!!</strong>.<ul>
-<li>结构体补全曾经深深折磨这我,直到遇到了clang….</li>
-<li>顺带着解决了语法检查,clang的语法检查很是好用.</li>
-<li>插件: C/C++ Clang Command Adapter</li>
-<li><img src="https://i.loli.net/2018/03/23/5ab4f9c678732.png" alt="auto.png"></li>
-<li><img src="https://i.loli.net/2018/03/23/5ab4f9c6ec147.png" alt="autoa.png"></li>
-</ul>
-</li>
-<li>语法检查<ul>
-<li>常规clang足矣,但还不够.</li>
-<li>clang是编译器,但有些错误编译器还是无能为力,祭出Cppcheck,C/C++代码缺陷静态检查工具.</li>
-<li>插件: cppcheck</li>
-<li><img src="https://i.loli.net/2018/03/23/5ab4f9c64e3af.png" alt="err.png"></li>
-</ul>
-</li>
-<li>代码格式化<ul>
-<li>眼瞅着clang 配套的clang-format .</li>
-<li>插件: Clang-Format</li>
-</ul>
-</li>
-<li>函数跳转<ul>
-<li>微软官方c/c++插件就行了,但官方插件自带代码补全和语法检查,不怎么好,一定要关掉否则会与clang冲突.</li>
-<li>插件: C/C++ for Visual Studio Code</li>
-<li><img src="https://i.loli.net/2018/03/23/5ab4f9c702d2c.png" alt="jump.png"></li>
-</ul>
-</li>
-</ul>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ul>
-<li><p>上文书说到,vscode实现编辑器以外的功能都需要插件+后端的形式 so 一般的安装步骤如下:</p>
-</li>
-<li><p>安装后端,如clang 、cppcheck 等.</p>
-</li>
-<li>安装对应插件</li>
-<li><p>修改配置文件(json格式)</p>
-</li>
-<li><p>最后针对处理头文件等.</p>
-</li>
-</ul>
-<h2 id="代码补全-语法检查"><a href="#代码补全-语法检查" class="headerlink" title="代码补全/语法检查"></a>代码补全/语法检查</h2><ul>
-<li>代码补全/语法检查都依赖于后端clang,而ubunt自带的clang 3.8版本,而clang最新的稳定版本为5.0,这里选择5.0版本.</li>
-<li>参考 &gt; <a href="https://apt.llvm.org/" target="_blank" rel="external">https://apt.llvm.org/</a></li>
-</ul>
-<h3 id="安装clang-5-0"><a href="#安装clang-5-0" class="headerlink" title="安装clang-5.0"></a>安装clang-5.0</h3><ul>
-<li><p>修改ubuntu源 /etc/apt/source.list 添加llvm官方源</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty-5.0 main</div><div class="line">deb-src http://apt.llvm.org/trusty/ llvm-toolchain-trusty-5.0 main</div></pre></td></tr></table></figure>
-</li>
-<li><p>添加llvm源的 密钥</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key|sudo apt-key add -</div></pre></td></tr></table></figure>
-</li>
-<li><p>更新软件列表,这样就可以安装5.0版本了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div></pre></td></tr></table></figure>
-</li>
-<li><p>安装clang5.0</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install clang-5.0 lldb-5.0</div></pre></td></tr></table></figure>
-<p>或者安装全部llvm root用户下(太多偷个懒)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install clang-5.0 clang-tools-5.0 clang-5.0-doc libclang-common-5.0-dev libclang-5.0-dev libclang1-5.0 libclang1-5.0-dbg libllvm-5.0-ocaml-dev libllvm5.0 libllvm5.0-dbg lldb-5.0 llvm-5.0 llvm-5.0-dev llvm-5.0-doc llvm-5.0-examples llvm-5.0-runtime clang-format-5.0 python-clang-5.0 libfuzzer-5.0-dev</div></pre></td></tr></table></figure>
-</li>
-<li><p>完整安装需要良好的网络,llvm大概300M,等下就好.</p>
-</li>
-<li><p>验证</p>
-<ul>
-<li>命令行输入 clang-5.0 不会提示无此命令即可.</li>
-</ul>
-</li>
-</ul>
-<h3 id="clang"><a href="#clang" class="headerlink" title="clang"></a>clang</h3><ul>
-<li><p>ubuntu自带版本3.8</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install clang</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="clang插件及配置"><a href="#clang插件及配置" class="headerlink" title="clang插件及配置"></a>clang插件及配置</h3><ul>
-<li><p>插件名 C/C++ Clang Command Adapter,在vscode中搜索下载即可.<br>网络环境限制还可以在vscode官网下载vsix格式的文件,离线安装.</p>
-</li>
-<li><p>安装完成后,进入重头戏,也是初次上手vscode最难适应的地方.</p>
-</li>
-<li><p>进入vscode的设置 <code>setting.json</code> ,分为 用户区设置 和 工作区设置.</p>
-<ul>
-<li>用户区设置,是用户自定义全局设置,覆盖vscode默认设置,每个工程都有效.</li>
-<li>工作区设置,是针对本工程的个性化设置,只在本工程生效.</li>
-<li>简易是将clang等设置 保存在用户区,工作区保存追对 clang 的头文件设置.</li>
-</ul>
-</li>
-<li><p>用户区设置</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">"clang.executable": "clang-5.0",</div><div class="line">"clang.completion.triggerChars": [</div><div class="line">      ".",</div><div class="line">      ":",</div><div class="line">      "&gt;"],</div></pre></td></tr></table></figure>
-<ul>
-<li>clang.executable : 后端clang的路径,这里是 clang-5.0 ,也可以写入 clang 的安装目录.</li>
-<li>clang.completion.triggerChars : 触发代码补全的输入,常用的 . : &gt;.</li>
-</ul>
-</li>
-<li><p>工作区设置</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">"clang.cflags": [</div><div class="line">      "-std=c99",</div><div class="line">      "-I$&#123;cwd&#125;",</div><div class="line">      "-I/usr/include",</div><div class="line">      "-I/usr/include/c++/5",</div><div class="line">      "-I/usr/include/x86_64-linux-gnu/c++/5",</div><div class="line">      "-I/usr/include/c++/5/backward",</div><div class="line">      "-I/usr/lib/gcc/x86_64-linux-gnu/5/include",</div><div class="line">      "-I/usr/local/include",</div><div class="line">      "-I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed",</div><div class="line">      "-I/usr/include/x86_64-linux-gnu",</div><div class="line">      "-I/usr/include",</div><div class="line">      "-I$&#123;workspaceRoot&#125;",</div><div class="line">      "-I$&#123;workspaceRoot&#125;/Include",</div><div class="line">      "-I$&#123;workspaceRoot&#125;/Libs/Cjson/Include"</div><div class="line">  ],</div></pre></td></tr></table></figure>
-<ul>
-<li>clang.cflags : <code>&quot;-std=c99&quot;</code> clang语法检查时 c/c++ 语言标准,要兼容历史项目,这就选的 c99 ,新项目简易 直接 c11.<pre><code>clang进行代码补全/语法检查的头文件路径, 格式是 `-I路径` ,支持直接和间接路径(${workspaceRoot}).
-</code></pre></li>
-<li>头文件一定要写全,否则一直会有错误提示.</li>
-</ul>
-</li>
-<li><p>保存后,代码补全/语法检查 全部如上图所示.</p>
-</li>
-</ul>
-<h2 id="语法检查"><a href="#语法检查" class="headerlink" title="语法检查"></a>语法检查</h2><ul>
-<li>这里特指 cppcheck</li>
-</ul>
-<h3 id="安装cppcheck"><a href="#安装cppcheck" class="headerlink" title="安装cppcheck"></a>安装cppcheck</h3><ul>
-<li><p>我没有追求最新,直接通过ubuntu官方源安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install cppcheck</div></pre></td></tr></table></figure>
-</li>
-<li><p>安装完成,执行 cppcheck 命令,不提示无此命令即可.</p>
-</li>
-</ul>
-<h3 id="cppcheck插件及配置"><a href="#cppcheck插件及配置" class="headerlink" title="cppcheck插件及配置"></a>cppcheck插件及配置</h3><ul>
-<li><p>搜索安装 cppcheck</p>
-</li>
-<li><p>同样配置分为用户区和工作区.工作区对应头文件设置.</p>
-</li>
-<li><p>用户区</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">"cppcheck.cppcheckPath": null,</div><div class="line">"cppcheck.standard": [</div><div class="line">      "c99",</div><div class="line">  ],</div><div class="line">"cppcheck.language": "c",</div></pre></td></tr></table></figure>
-<ul>
-<li>cppcheck.cppcheckPath : null时,会使用 cppcheck 命令指向的版本,也可以使用自定义路径.</li>
-<li>cppcheck.standard : cppcheck 检查时 c/c++版本,历史原因我这里还是 c99.</li>
-<li>cppcheck.language : 前置检查时 以 c 或者 c++ 检查.我这里都是 c 项目,填写 c .</li>
-</ul>
-</li>
-<li><p>工作区</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">"cppcheck.includePaths": [</div><div class="line">  "$&#123;cwd&#125;",</div><div class="line">  "/usr/include",</div><div class="line">  "/usr/include/c++/5",</div><div class="line">  "/usr/include/x86_64-linux-gnu/c++/5",</div><div class="line">  "/usr/include/c++/5/backward",</div><div class="line">  "/usr/lib/gcc/x86_64-linux-gnu/5/include",</div><div class="line">  "/usr/local/include",</div><div class="line">  "/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed",</div><div class="line">  "/usr/include/x86_64-linux-gnu",</div><div class="line">  "/usr/include",</div><div class="line">  "$&#123;workspaceRoot&#125;",</div><div class="line">  "$&#123;workspaceRoot&#125;/Include",</div><div class="line">  "$&#123;workspaceRoot&#125;/Code/APP/Code/Libs/Cjson/Include"</div><div class="line">],</div><div class="line">"cppcheck.force": true</div></pre></td></tr></table></figure>
-<ul>
-<li>cppcheck.includePaths : 头文件路径,这里没有 <code>-I</code> ,直接输入路径即可.支持直接和间接路径.</li>
-<li>cppcheck.force : 强制检查所有枚举所有可能配置,有多个项目同时在工作,这里我放到工作区了,如果代码量小的工程建议放在用户区,作为全局配置.</li>
-</ul>
-</li>
-</ul>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ul>
-<li><p>左下角,点击cppcheck 如图<br><img src="https://i.loli.net/2018/03/23/5ab4f7f51181a.png" alt="cppcheck.png"></p>
-</li>
-<li><p>3个选择</p>
-<ul>
-<li>分析当前打开文件</li>
-<li>分析工作区所有文件</li>
-<li>其他…没用过..</li>
-</ul>
-</li>
-</ul>
-<h2 id="函数跳转"><a href="#函数跳转" class="headerlink" title="函数跳转"></a>函数跳转</h2><ul>
-<li>直接使用微软的 C/C++ for Visual Studio Code 即可.</li>
-<li>官方的很强大,带代码补全和语法检查,,可惜表现不太好.函数跳转很好用.</li>
-</ul>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ul>
-<li><p>搜索安装 C/C++ for Visual Studio Code</p>
-</li>
-<li><p>不用安装后端了,对应的配置就稍微麻烦了.</p>
-</li>
-<li><p>在项目根目录下 查找 .vscode文件夹,进入.应该由 setting.json文件,对应工作区设置.</p>
-</li>
-<li><p>新建c_cpp_properties.json ,写入以下内容.</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"configurations"</span>: [</div><div class="line">      &#123;</div><div class="line">          <span class="attr">"name"</span>: <span class="string">"Mac"</span>,</div><div class="line">          <span class="attr">"includePath"</span>: [</div><div class="line">              <span class="string">"/usr/include"</span>,</div><div class="line">              <span class="string">"/usr/local/include"</span>,</div><div class="line">              <span class="string">"$&#123;workspaceRoot&#125;"</span></div><div class="line">          ],</div><div class="line">          <span class="attr">"defines"</span>: [],</div><div class="line">          <span class="attr">"intelliSenseMode"</span>: <span class="string">"clang-x64"</span>,</div><div class="line">          <span class="attr">"browse"</span>: &#123;</div><div class="line">              <span class="attr">"path"</span>: [</div><div class="line">                  <span class="string">"/usr/include"</span>,</div><div class="line">                  <span class="string">"/usr/local/include"</span>,</div><div class="line">                  <span class="string">"$&#123;workspaceRoot&#125;"</span></div><div class="line">              ],</div><div class="line">              <span class="attr">"limitSymbolsToIncludedHeaders"</span>: <span class="literal">true</span>,</div><div class="line">              <span class="attr">"databaseFilename"</span>: <span class="string">""</span></div><div class="line">          &#125;,</div><div class="line">          <span class="attr">"macFrameworkPath"</span>: [</div><div class="line">              <span class="string">"/System/Library/Frameworks"</span>,</div><div class="line">              <span class="string">"/Library/Frameworks"</span></div><div class="line">          ]</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">          <span class="attr">"name"</span>: <span class="string">"Linux"</span>,</div><div class="line">          <span class="attr">"includePath"</span>: [</div><div class="line">              <span class="string">"/usr/include/c++/5"</span>,</div><div class="line">              <span class="string">"/usr/include/x86_64-linux-gnu/c++/5"</span>,</div><div class="line">              <span class="string">"/usr/include/c++/5/backward"</span>,</div><div class="line">              <span class="string">"/usr/lib/gcc/x86_64-linux-gnu/5/include"</span>,</div><div class="line">              <span class="string">"/usr/local/include"</span>,</div><div class="line">              <span class="string">"/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"</span>,</div><div class="line">              <span class="string">"/usr/include/x86_64-linux-gnu"</span>,</div><div class="line">              <span class="string">"/usr/include"</span>,</div><div class="line">              <span class="string">"$&#123;workspaceRoot&#125;"</span>,</div><div class="line">              <span class="string">"$&#123;workspaceRoot&#125;/Include"</span></div><div class="line">          ],</div><div class="line">          <span class="attr">"defines"</span>: [],</div><div class="line">          <span class="attr">"intelliSenseMode"</span>: <span class="string">"clang-x64"</span>,</div><div class="line">          <span class="attr">"browse"</span>: &#123;</div><div class="line">              <span class="attr">"path"</span>: [</div><div class="line">                  <span class="string">"/usr/include/c++/5"</span>,</div><div class="line">                  <span class="string">"/usr/include/x86_64-linux-gnu/c++/5"</span>,</div><div class="line">                  <span class="string">"/usr/include/c++/5/backward"</span>,</div><div class="line">                  <span class="string">"/usr/lib/gcc/x86_64-linux-gnu/5/include"</span>,</div><div class="line">                  <span class="string">"/usr/local/include"</span>,</div><div class="line">                  <span class="string">"/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"</span>,</div><div class="line">                  <span class="string">"/usr/include/x86_64-linux-gnu"</span>,</div><div class="line">                  <span class="string">"/usr/include"</span>,</div><div class="line">                  <span class="string">"$&#123;workspaceRoot&#125;"</span>,</div><div class="line">                  <span class="string">"$&#123;workspaceRoot&#125;/Include"</span></div><div class="line">              ],</div><div class="line">              <span class="attr">"limitSymbolsToIncludedHeaders"</span>: <span class="literal">true</span>,</div><div class="line">              <span class="attr">"databaseFilename"</span>: <span class="string">""</span></div><div class="line">          &#125;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">          <span class="attr">"name"</span>: <span class="string">"Win32"</span>,</div><div class="line">          <span class="attr">"includePath"</span>: [</div><div class="line">              <span class="string">"C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include"</span>,</div><div class="line">              <span class="string">"$&#123;workspaceRoot&#125;"</span></div><div class="line">          ],</div><div class="line">          <span class="attr">"defines"</span>: [</div><div class="line">              <span class="string">"_DEBUG"</span>,</div><div class="line">              <span class="string">"UNICODE"</span>,</div><div class="line">              <span class="string">"_UNICODE"</span></div><div class="line">          ],</div><div class="line">          <span class="attr">"intelliSenseMode"</span>: <span class="string">"msvc-x64"</span>,</div><div class="line">          <span class="attr">"browse"</span>: &#123;</div><div class="line">              <span class="attr">"path"</span>: [</div><div class="line">                  <span class="string">"C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include/*"</span>,</div><div class="line">                  <span class="string">"$&#123;workspaceRoot&#125;"</span></div><div class="line">              ],</div><div class="line">              <span class="attr">"limitSymbolsToIncludedHeaders"</span>: <span class="literal">true</span>,</div><div class="line">              <span class="attr">"databaseFilename"</span>: <span class="string">""</span></div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">  ],</div><div class="line">  <span class="attr">"version"</span>: <span class="number">3</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>我们只关注linux下的设置,将常用头文件路径添加到 <code>includePath</code> 和 <code>&quot;browse&quot;-&gt;&quot;path&quot;</code>下.<br><strong>可以不用手工添加</strong>,项目文件下,光标 指向提示找不到的 include 头文件 ,会有 💡 提示添加路径到path中,搞定!</p>
-</li>
-<li><p>至此代码跳转应该可以使用了.</p>
-<ul>
-<li>ctrl 悬浮提示,点击跳转.还有其他快捷键爽翻天.</li>
-</ul>
-</li>
-</ul>
-<h3 id="特别提醒"><a href="#特别提醒" class="headerlink" title="特别提醒"></a>特别提醒</h3><ul>
-<li><p>上文提到 C/C++ for Visual Studio Code 会与 clang 的代码提示和语法检查冲突,所以一定要记得在用户区设置关闭自带.</p>
-</li>
-<li><p>用户区设置</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">"C_Cpp.autocomplete": "Disabled",</div><div class="line">"C_Cpp.errorSquiggles": "Disabled",</div><div class="line">"C_Cpp.formatting": "Disabled",</div></pre></td></tr></table></figure>
-<ul>
-<li>关闭自动补全 错误提示 和 代码格式化.</li>
-</ul>
-</li>
-</ul>
-<h2 id="代码格式化"><a href="#代码格式化" class="headerlink" title="代码格式化"></a>代码格式化</h2><ul>
-<li>使用clang-5.0 配套的 clang-format-5.0即可.</li>
-<li>clang-format可以通过配置文件控制很多格式化细节,推荐使用.</li>
-</ul>
-<h3 id="安装clang-format"><a href="#安装clang-format" class="headerlink" title="安装clang-format"></a>安装clang-format</h3><ul>
-<li><p>进行过 安装clang-5.0 后,执行如下命令即可.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install clang-format-5.0</div></pre></td></tr></table></figure>
-</li>
-<li><p>ubuntu官方源 为3.8版本,也可以安装使用.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install clang-format</div></pre></td></tr></table></figure>
-</li>
-<li><p>最好与clang版本保持一致.</p>
-</li>
-</ul>
-<h3 id="clang-format配置"><a href="#clang-format配置" class="headerlink" title="clang-format配置"></a>clang-format配置</h3><ul>
-<li><p>这里使用配置文件形式详细自定义格式化.(也可以直接使用自带的几种格式,同样够用)</p>
-</li>
-<li><p>用户区设置</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">"clang-format.assumeFilename": ".clang-format",</div><div class="line">"clang-format.executable": "clang-format-5.0",</div></pre></td></tr></table></figure>
-<ul>
-<li>clang-format.assumeFilename : 制定格式化的标准,这里是通过文件 .clang-format 来配置.还可以留空通过<code>clang-format.fallbackStyle</code>指定 LLVM, Google, Chromium, Mozilla, WebKit 之一为格式化标准.</li>
-<li>clang-format.executable : clang-format路径,这里安装的是 clang-format-5.0.</li>
-</ul>
-</li>
-<li><p>指定通过.clang-format文件为格式化标准后,在项目根目录下 新建 .clang-format 文件.</p>
-</li>
-<li><p>每个版本的 clang-format 都有对应的详细定制说明.5.0版本<a href="http://releases.llvm.org/5.0.0/tools/clang/docs/ClangFormatStyleOptions.html" target="_blank" rel="external">对应说明</a></p>
-</li>
-<li><p>官方有几个风格实例:</p>
-<ul>
-<li><p>Linux Kernel style</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">BasedOnStyle: LLVM</div><div class="line">IndentWidth: 8</div><div class="line">UseTab: Always</div><div class="line">BreakBeforeBraces: Linux</div><div class="line">AllowShortIfStatementsOnASingleLine: <span class="literal">false</span></div><div class="line">IndentCaseLabels: <span class="literal">false</span></div></pre></td></tr></table></figure>
-<p>效果如下:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">        <span class="keyword">switch</span> (x) &#123;</div><div class="line">        <span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">        <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">                do_something();</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">                do_something_else();</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (condition)</div><div class="line">                do_something_completely_different();</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (x == y) &#123;</div><div class="line">                q();</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; y) &#123;</div><div class="line">                w();</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">                r();</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>Visual Studio style</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">UseTab: Never</div><div class="line">IndentWidth: 4</div><div class="line">BreakBeforeBraces: Allman</div><div class="line">AllowShortIfStatementsOnASingleLine: <span class="literal">false</span></div><div class="line">IndentCaseLabels: <span class="literal">false</span></div><div class="line">ColumnLimit: 0</div></pre></td></tr></table></figure>
-<p>效果如下:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">switch</span> (suffix)</div><div class="line">    &#123;</div><div class="line">    <span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">    <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">        do_something();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">        do_something_else();</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (condition)</div><div class="line">        do_somthing_completely_different();</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (x == y)</div><div class="line">    &#123;</div><div class="line">        q();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; y)</div><div class="line">    &#123;</div><div class="line">        w();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        r();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>最后是我的自定义配置(中文说明),从网上收集+官方文档.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 配置以什么语言format当前文件</span></div><div class="line"><span class="comment"># CPP: C, C++, Objective-C, ObjectiveC++;</span></div><div class="line">Language: Cpp</div><div class="line"></div><div class="line"><span class="comment">#在llvm的配置基础上加定制配置</span></div><div class="line">BasedOnStyle: LLVM </div><div class="line"></div><div class="line"><span class="comment">#someLongFunction(argument1,</span></div><div class="line"><span class="comment">#                 argument2);</span></div><div class="line">AlignAfterOpenBracket: Align</div><div class="line"></div><div class="line"><span class="comment"># true: 表示对齐连续的紧跟注释（连续行使用双斜杠注释，包括在函数体内），多用于Model定义、property说明、私有成员变量说明；</span></div><div class="line">AlignTrailingComments: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#对齐连续赋值运算符</span></div><div class="line">AlignConsecutiveAssignments : <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#若true，则对齐连续声明.</span></div><div class="line">AlignConsecutiveDeclarations : <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#换行符选项 左对齐</span></div><div class="line">AlignEscapedNewlines: Left</div><div class="line"></div><div class="line"><span class="comment">#水平对齐二目运算符和三目运算符的操作数</span></div><div class="line">AlignOperands : <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment"># true：允许较短(一般只有一行，多为内联C函数)的Function在一行显示,如“int f() &#123; return 1; &#125;”，规定设为false；</span></div><div class="line">AllowShortFunctionsOnASingleLine: <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment">#true: 允许较短的if判断在一行显示，否则换行显示（没有自动加花括号）；</span></div><div class="line">AllowShortIfStatementsOnASingleLine: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#??? true 允许较短的循环（while、for）在一行显示，否则换行显示（没有自动加花括号）；</span></div><div class="line">AllowShortLoopsOnASingleLine: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#true：允许只有Break语句的case标签在一行显示，false：不允许（自动换行显示）, 规范为不允许</span></div><div class="line">AllowShortCaseLabelsOnASingleLine: <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment">#true：允许将较长的literal－String字符串分割成多行显示；</span></div><div class="line">AlwaysBreakBeforeMultilineStrings: <span class="literal">false</span></div><div class="line"></div><div class="line">BreakBeforeBraces: Allman</div><div class="line"></div><div class="line"><span class="comment">#连续行的缩进长度（通常缩进＋设置值）， 一般用于首参数小于后续参数的method名字、多行的String－literals</span></div><div class="line">ContinuationIndentWidth: 4</div><div class="line"></div><div class="line"><span class="comment">#设置代码的最大长度（回自动对代码长度进行换行显示，并对注释自动换行；当长度加大的时候，AllowAllParametersOfDeclarationOnNextLine＝true失效）</span></div><div class="line">ColumnLimit: 100</div><div class="line"></div><div class="line"><span class="comment">#如果为真（true）, 分析最常见的格式化文件中“&amp;”和“\*”的对齐方式。pointeralignment则仅作为后备。</span></div><div class="line">DerivePointerAlignment: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#true: 将switch的case标签从switch表达式缩进一级；否则将switch表达式对齐；</span></div><div class="line">IndentCaseLabels: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#缩进字符长度</span></div><div class="line">IndentWidth:     4</div><div class="line"></div><div class="line"><span class="comment">#所有位置的指针星号（＊）或取地址符号（&amp;）对齐位置：Left、Middle、Right，当作为乘号时候居中 （规范为Right）</span></div><div class="line">PointerAlignment: Right</div><div class="line"></div><div class="line"><span class="comment">#整个文件任意位置最大能够保持的连续空行数（如果超过MAX值，减少到Max行，小于不管；）</span></div><div class="line">MaxEmptyLinesToKeep: 2</div><div class="line"></div><div class="line"><span class="comment">#true:在赋值运算符之前添加一个空格，否则去掉；(规范为添加)</span></div><div class="line">SpaceBeforeAssignmentOperators: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#是否在括号之前添加一个空格，Never：任何情况都不添加；ControlStatements：只在控制结构（for、if、while）的地方添加空格；AlWays: 除开在function－like的的宏定义之外在任何地方都需要添加空格；（规范为ControlStatements）</span></div><div class="line">SpaceBeforeParens: ControlStatements</div><div class="line"></div><div class="line"><span class="comment">#在紧跟注释之前所留空格数，一般建议为2个空格</span></div><div class="line">SpacesBeforeTrailingComments: 2</div><div class="line"></div><div class="line">UseTab: Never</div><div class="line"></div><div class="line"><span class="comment"># 格式兼容C++11</span></div><div class="line">Standard: Cpp11</div><div class="line"></div><div class="line"><span class="comment">#当前配置生效开关，true：打开，false：关闭</span></div><div class="line">DisableFormat: <span class="literal">false</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="编译-调试"><a href="#编译-调试" class="headerlink" title="编译/调试"></a>编译/调试</h1><ul>
-<li>待续</li>
-</ul>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><ul>
-<li>至此,vscode 编写c语言的体验就十分完整了.跨平台一致化的体验真的很好.推荐还在苦恼 c 编辑器的可以一试.</li>
-<li>下一篇vscode的 python 配置.</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;p&gt;环境&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;vscode 1.20.x&lt;/li&gt;
-&lt;li&gt;ubuntu&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;ul
-    
-    </summary>
-    
-      <category term="linux笔记" scheme="http://yoursite.com/categories/linux%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
     <title>算法第四版笔记—</title>
     <link href="http://yoursite.com/2018/02/07/%E7%AE%97%E6%B3%95%E7%AC%AC%E5%9B%9B%E7%89%88%E2%80%94%E6%91%98%E5%BD%95/"/>
     <id>http://yoursite.com/2018/02/07/算法第四版—摘录/</id>
@@ -917,6 +917,166 @@
   </entry>
   
   <entry>
+    <title>python—模块</title>
+    <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E6%A8%A1%E5%9D%97/"/>
+    <id>http://yoursite.com/2018/01/19/python—模块/</id>
+    <published>2018-01-19T02:17:11.000Z</published>
+    <updated>2018-01-19T15:01:52.735Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><ul>
+<li>模块是一组Python代码的集合，可以使用其他模块，也可以被其他模块使用。</li>
+<li><p>涉及到概念 包(Package) 和 模块(Module)</p>
+</li>
+<li><p>创建自己的模块时，要注意：</p>
+<ul>
+<li>模块名要遵循Python变量命名规范，不要使用中文、特殊字符；</li>
+<li>模块名不要和系统模块名冲突，最好先查看系统是否已存在该模块，检查方法是在Python交互环境执行import abc，若成功则说明系统存在此模块。</li>
+</ul>
+</li>
+</ul>
+<h3 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h3><ul>
+<li><p>示例</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">' a test module '</span></div><div class="line"></div><div class="line">__author__ = <span class="string">'Michael Liao'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> sys</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></div><div class="line">    args = sys.argv</div><div class="line">    <span class="keyword">if</span> len(args)==<span class="number">1</span>:</div><div class="line">        print(<span class="string">'Hello, world!'</span>)</div><div class="line">    <span class="keyword">elif</span> len(args)==<span class="number">2</span>:</div><div class="line">        print(<span class="string">'Hello, %s!'</span> % args[<span class="number">1</span>])</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        print(<span class="string">'Too many arguments!'</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</div><div class="line">    test()</div></pre></td></tr></table></figure>
+</li>
+<li><p>注释:</p>
+<ul>
+<li>第1行注释可以让这个hello.py文件直接在Unix/Linux/Mac上运行</li>
+<li>第2行注释表示.py文件本身使用标准UTF-8编码；</li>
+<li>第4行是一个字符串，表示模块的文档注释，任何模块代码的第一个字符串都被视为模块的文档注释</li>
+<li>第6行使用<strong>author</strong>变量把作者写进去</li>
+</ul>
+</li>
+<li><p>重点<code>if __name__==&#39;__main__&#39;:</code></p>
+</li>
+<li>Python解释器把一个特殊变量<strong>name</strong>置为<strong>main</strong>，而如果在其他地方导入该hello模块时，if判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试.</li>
+</ul>
+<h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><ul>
+<li>Python中，是通过<code>_</code>前缀 标记 private </li>
+<li>note: <strong>python中语法没有限制 <code>_</code>开头的变量/函数!</strong></li>
+</ul>
+<h3 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h3><ul>
+<li><p><code>pip</code>命令 </p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install xxx</div></pre></td></tr></table></figure>
+</li>
+<li><p>或者在文件中自定义路径.</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;模块&quot;&gt;&lt;a href=&quot;#模块&quot; class=&quot;headerlink&quot; title=&quot;模块&quot;&gt;&lt;/a&gt;模块&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;模块是一组Python代码的集合，可以使用其他模块，也可以被其他模块使用。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;涉及到概念 包(Packag
+    
+    </summary>
+    
+      <category term="python笔记" scheme="http://yoursite.com/categories/python%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python—函数式编程</title>
+    <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
+    <id>http://yoursite.com/2018/01/19/python—函数式编程/</id>
+    <published>2018-01-19T02:17:11.000Z</published>
+    <updated>2018-01-19T15:02:50.055Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><ul>
+<li>纯函数式编程没有变量,一个函数只要输出确定,输出就是确定的,称为没有副作用.使用变量的函数内部由于变量状态不确定性,有副作用.</li>
+<li>函数式编程另一个特点是允许函数本身作为参数传入,也可以直接返回另外一个函数.</li>
+<li>python对函数式编程提供有限支持.(还使用变量 so不是纯函数式编程语言)<h3 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h3></li>
+<li>python中函数本身也可以赋值给变量,变量可以指向函数</li>
+<li>函数的参数可以传入另一个函数,这种函数称为高阶函数.</li>
+</ul>
+<h4 id="map-reduce"><a href="#map-reduce" class="headerlink" title="map/reduce"></a>map/reduce</h4><ul>
+<li>map()接收两个参数，一个是函数，一个是Iterable，map将传入的函数依次作用到序列的每个元素，并把结果作为新的Iterator返回</li>
+<li><p>示例</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">list(map(str, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]) <span class="comment"># list所有数字转为字符串</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>reduce把一个函数作用在一个序列[x1, x2, x3, …]上，这个函数必须接收两个参数，reduce把结果继续和序列的下一个元素做累积计算</p>
+</li>
+<li>示例<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">fn</span><span class="params">(x, y)</span>:</span></div><div class="line"><span class="meta">... </span>    <span class="keyword">return</span> x * <span class="number">10</span> + y</div><div class="line">...</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">char2num</span><span class="params">(s)</span>:</span></div><div class="line"><span class="meta">... </span>    digits = &#123;<span class="string">'0'</span>: <span class="number">0</span>, <span class="string">'1'</span>: <span class="number">1</span>, <span class="string">'2'</span>: <span class="number">2</span>, <span class="string">'3'</span>: <span class="number">3</span>, <span class="string">'4'</span>: <span class="number">4</span>, <span class="string">'5'</span>: <span class="number">5</span>, <span class="string">'6'</span>: <span class="number">6</span>, <span class="string">'7'</span>: <span class="number">7</span>, <span class="string">'8'</span>: <span class="number">8</span>, <span class="string">'9'</span>: <span class="number">9</span>&#125;</div><div class="line"><span class="meta">... </span>    <span class="keyword">return</span> digits[s]</div><div class="line">...</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>reduce(fn, map(char2num, <span class="string">'13579'</span>))</div><div class="line"><span class="number">13579</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h4><ul>
+<li>filter()接收一个函数和一个序列。filter()把传入的函数依次作用于每个元素，然后根据返回值是True还是False决定保留还是丢弃该元素。</li>
+<li>filter()函数返回的是一个 惰性序列 Iterator，也就是一个惰性序列,需要用list()函数获得所有结果并返回list</li>
+<li>示例<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_odd</span><span class="params">(n)</span>:</span></div><div class="line">  <span class="keyword">return</span> n % <span class="number">2</span> == <span class="number">1</span></div><div class="line"></div><div class="line">list(filter(is_odd, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">15</span>])) <span class="comment"># 只保留奇数</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">not_empty</span><span class="params">(s)</span>:</span></div><div class="line">  <span class="keyword">return</span> s <span class="keyword">and</span> s.strip()</div><div class="line"></div><div class="line">list(filter(not_empty, [<span class="string">'A'</span>, <span class="string">''</span>, <span class="string">'B'</span>, <span class="keyword">None</span>, <span class="string">'C'</span>, <span class="string">'  '</span>])) <span class="comment"># 删除空字符</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h4><ul>
+<li>sorted()函数接收一个key函数来实现自定义的排序.第三个参数<code>reverse=True</code>决定正序倒序.</li>
+<li><p>示例:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">  &gt;&gt;&gt; sorted([<span class="string">'bob'</span>, <span class="string">'about'</span>, <span class="string">'Zoo'</span>, <span class="string">'Credit'</span>],key=str.lower)</div><div class="line">  [<span class="string">'about'</span>, <span class="string">'bob'</span>, <span class="string">'Credit'</span>, <span class="string">'Zoo'</span>]</div><div class="line"></div><div class="line">  &gt;&gt;&gt; sorted([<span class="string">'bob'</span>, <span class="string">'about'</span>, <span class="string">'Zoo'</span>, <span class="string">'Credit'</span>], key=str.lower, reverse=<span class="keyword">True</span>)</div><div class="line">  [<span class="string">'Zoo'</span>, <span class="string">'Credit'</span>, <span class="string">'bob'</span>, <span class="string">'about'</span>]</div><div class="line">  ``` </div><div class="line"></div><div class="line"><span class="comment">### 返回函数</span></div><div class="line">* 将函数作为结果返回.(很随便😂)</div><div class="line">* 闭包（Closure）:相关参数和变量都保存在返回函数.</div><div class="line">* **note:**返回的函数在其定义内部引用了局部变量args，所以，当一个函数返回了一个函数后，其内部的局部变量还被新函数引用</div><div class="line">* 示例(坑):</div><div class="line">  ```py</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">()</span>:</span></div><div class="line">    fs = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">4</span>):</div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">()</span>:</span></div><div class="line">             <span class="keyword">return</span> i*i</div><div class="line">        fs.append(f)</div><div class="line">    <span class="keyword">return</span> fs</div><div class="line"></div><div class="line">  f1, f2, f3 = count()</div><div class="line"></div><div class="line">  &gt;&gt;&gt; f1()</div><div class="line">  <span class="number">9</span></div><div class="line">  &gt;&gt;&gt; f2()</div><div class="line">  <span class="number">9</span></div><div class="line">  &gt;&gt;&gt; f3()</div><div class="line">  <span class="number">9</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>返回的函数引用了变量i，但它并非立刻执行。等到3个函数都返回时，它们所引用的变量i已经变成了3，因此最终结果为9</p>
+</li>
+<li>一定要引用循环变量怎么办？方法是再创建一个函数，用该函数的参数绑定循环变量当前的值，无论该循环变量后续如何更改，已绑定到函数参数的值不变</li>
+<li>示例:<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">()</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(j)</span>:</span></div><div class="line">      <span class="function"><span class="keyword">def</span> <span class="title">g</span><span class="params">()</span>:</span></div><div class="line">          <span class="keyword">return</span> j*j</div><div class="line">      <span class="keyword">return</span> g</div><div class="line">  fs = []</div><div class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">4</span>):</div><div class="line">      fs.append(f(i)) <span class="comment"># f(i)立刻被执行，因此i的当前值被传入f()</span></div><div class="line">  <span class="keyword">return</span> fs</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h3><ul>
+<li>不显式定义的函数. python中是 <code>lambda</code> 但与java不同.</li>
+<li>python中<code>lambda</code>限制，只能有一个表达式，不用写return，返回值就是该表达式的结果</li>
+<li>匿名函数不必担心函数名冲突。此外，匿名函数也是一个函数对象，也可以把匿名函数赋值给一个变量，再利用变量来调用该函数</li>
+<li>示例<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f = <span class="keyword">lambda</span> x: x * x</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h3><ul>
+<li>代码运行期间,动态增加功能方式称为装饰器(Decorator)</li>
+<li><p>示例</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span><span class="params">(func)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kw)</span>:</span></div><div class="line">      print(<span class="string">'call %s():'</span> % func.__name__)</div><div class="line">      <span class="keyword">return</span> func(*args, **kw)</div><div class="line">  <span class="keyword">return</span> wrapper</div><div class="line"></div><div class="line"><span class="meta">@log</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">now</span><span class="params">()</span>:</span></div><div class="line">  print(<span class="string">'2015-3-25'</span>)</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>now()</div><div class="line">call now():</div><div class="line"><span class="number">2015</span><span class="number">-3</span><span class="number">-25</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>如示例,装饰器 接受一个函数作为参数,并返回原函数.在原函数定义时,以 <code>@ xxx</code>作为标记.示例1 为2层,如果打印文本可以自定义.</p>
+</li>
+<li><p>示例</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span><span class="params">(text)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(func)</span>:</span></div><div class="line">      <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kw)</span>:</span></div><div class="line">          print(<span class="string">'%s %s():'</span> % (text, func.__name__))</div><div class="line">          <span class="keyword">return</span> func(*args, **kw)</div><div class="line">      <span class="keyword">return</span> wrapper</div><div class="line">  <span class="keyword">return</span> decorator</div><div class="line"></div><div class="line"><span class="meta">@log('execute')</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">now</span><span class="params">()</span>:</span></div><div class="line">  print(<span class="string">'2015-3-25'</span>)</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>now()</div><div class="line">execute now():</div><div class="line"><span class="number">2015</span><span class="number">-3</span><span class="number">-25</span></div></pre></td></tr></table></figure>
+<p>打印可自定义 又加上了一层.</p>
+</li>
+<li><p>如上两种定义后,函数对象的名称等发生了变化,so,终极版</p>
+</li>
+<li>Python内置的functools.wraps 会将原始函数的<code>__name__</code>等属性复制到wrapper()函数中.</li>
+<li>示例<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> functools</div><div class="line"><span class="comment"># 不带参数</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span><span class="params">(func)</span>:</span></div><div class="line"><span class="meta">    @functools.wraps(func)</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kw)</span>:</span></div><div class="line">        print(<span class="string">'call %s():'</span> % func.__name__)</div><div class="line">        <span class="keyword">return</span> func(*args, **kw)</div><div class="line">    <span class="keyword">return</span> wrapper</div><div class="line"></div><div class="line"><span class="comment"># 带参数</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span><span class="params">(text)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(func)</span>:</span></div><div class="line"><span class="meta">        @functools.wraps(func)</span></div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kw)</span>:</span></div><div class="line">            print(<span class="string">'%s %s():'</span> % (text, func.__name__))</div><div class="line">            <span class="keyword">return</span> func(*args, **kw)</div><div class="line">        <span class="keyword">return</span> wrapper</div><div class="line">    <span class="keyword">return</span> decorator</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h3><ul>
+<li>functools.partial的作用是把一个函数的某些参数设置默认值，返回一个新的函数.</li>
+<li><p>示例:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> functools</div><div class="line">int2 = functools.partial(int, base=<span class="number">2</span>)</div><div class="line"></div><div class="line">int2(<span class="string">'1000000'</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>注意: 仅仅是把base参数重新设定默认值为2，<strong>但也可以在函数调用时传入其他值</strong></p>
+</li>
+<li>由于python 中函数也可以最为参数传入,so,参数固定成某一个函数也可.</li>
+<li><p>同理: <code>*args</code> 和 <code>**kw</code> 也可以.</p>
+</li>
+<li><p>简化函数调用.</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;函数式编程&quot;&gt;&lt;a href=&quot;#函数式编程&quot; class=&quot;headerlink&quot; title=&quot;函数式编程&quot;&gt;&lt;/a&gt;函数式编程&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;纯函数式编程没有变量,一个函数只要输出确定,输出就是确定的,称为没有副作用.使用变量的函数内部由于变量状
+    
+    </summary>
+    
+      <category term="python笔记" scheme="http://yoursite.com/categories/python%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>python—n函数</title>
     <link href="http://yoursite.com/2018/01/19/python%E2%80%94n%E5%87%BD%E6%95%B0/"/>
     <id>http://yoursite.com/2018/01/19/python—n函数/</id>
@@ -1019,57 +1179,85 @@
   </entry>
   
   <entry>
-    <title>python—模块</title>
-    <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E6%A8%A1%E5%9D%97/"/>
-    <id>http://yoursite.com/2018/01/19/python—模块/</id>
+    <title>python—高级特性</title>
+    <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/"/>
+    <id>http://yoursite.com/2018/01/19/python—高级特性/</id>
     <published>2018-01-19T02:17:11.000Z</published>
-    <updated>2018-01-19T15:01:52.735Z</updated>
+    <updated>2018-01-19T15:03:49.103Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><ul>
-<li>模块是一组Python代码的集合，可以使用其他模块，也可以被其他模块使用。</li>
-<li><p>涉及到概念 包(Package) 和 模块(Module)</p>
-</li>
-<li><p>创建自己的模块时，要注意：</p>
-<ul>
-<li>模块名要遵循Python变量命名规范，不要使用中文、特殊字符；</li>
-<li>模块名不要和系统模块名冲突，最好先查看系统是否已存在该模块，检查方法是在Python交互环境执行import abc，若成功则说明系统存在此模块。</li>
-</ul>
-</li>
-</ul>
-<h3 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h3><ul>
+    <content type="html"><![CDATA[<h2 id="高级特性"><a href="#高级特性" class="headerlink" title="高级特性"></a>高级特性</h2><ul>
+<li>代码精炼</li>
+<li>python代码量越少,开发效率越高.<h3 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h3></li>
+<li>取list或tuple的部分元素</li>
 <li><p>示例</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">' a test module '</span></div><div class="line"></div><div class="line">__author__ = <span class="string">'Michael Liao'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> sys</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></div><div class="line">    args = sys.argv</div><div class="line">    <span class="keyword">if</span> len(args)==<span class="number">1</span>:</div><div class="line">        print(<span class="string">'Hello, world!'</span>)</div><div class="line">    <span class="keyword">elif</span> len(args)==<span class="number">2</span>:</div><div class="line">        print(<span class="string">'Hello, %s!'</span> % args[<span class="number">1</span>])</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        print(<span class="string">'Too many arguments!'</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</div><div class="line">    test()</div></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">L[<span class="number">0</span>:<span class="number">3</span>] <span class="comment">#0到3,但结果不包括索引3</span></div><div class="line">L[:<span class="number">3</span>] <span class="comment">#0可省略</span></div></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">L[<span class="number">-2</span>:]  <span class="comment">#-2到0 但不包括索引0</span></div><div class="line">L[<span class="number">-2</span>:<span class="number">-1</span>] <span class="comment">#-2</span></div></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">L[:<span class="number">10</span>:<span class="number">2</span>] <span class="comment">#前10 每隔2个取一个</span></div><div class="line">L[::<span class="number">5</span>] <span class="comment">#所有,每隔5个取一个</span></div><div class="line">L[:] <span class="comment">#原样复制</span></div></pre></td></tr></table></figure>
 </li>
-<li><p>注释:</p>
+<li><p>对tuple取切片,结果依然是tuple.</p>
+</li>
+<li><strong>字符串可以看作一个list</strong>,每个字符占一位.</li>
+</ul>
+<h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><ul>
+<li>迭代很随便…太随便了…</li>
+<li>list tuple不多说了</li>
+<li><p>dict字典也可以迭代,因为无序,输出的顺序不一定相同.<br>默认迭代的是key 但value 也可以迭代,key value也可以同时迭代</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> value <span class="keyword">in</span> d.values()</div><div class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> d.items()</div></pre></td></tr></table></figure>
+</li>
+<li><p>上文书中说的,字符串可以当作list,所以也可以迭代.</p>
+</li>
+<li><p>问题来了,如何判断可迭代对象?<br><code>collections模块的Iterable类型判断</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(<span class="string">'abc'</span>, Iterable) <span class="comment"># str是否可迭代</span></div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>类似c/java的带下标循环实现?<br>Python内置的<code>enumerate函数</code>,把一个list变成索引-元素对</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i, value <span class="keyword">in</span> enumerate([<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>]):</div><div class="line">  print(i, value)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h3><ul>
+<li><code>用来生成list</code></li>
+<li><p>示例: [1x1, 2x2, 3x3, …, 10x10]</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">11</span>)] </div><div class="line">[m + n <span class="keyword">for</span> m <span class="keyword">in</span> <span class="string">'ABC'</span> <span class="keyword">for</span> n <span class="keyword">in</span> <span class="string">'XYZ'</span>] <span class="comment">#两层</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>for可以同时循环两个甚至多个变量,dict的items()可以同时迭代key和value</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">d = &#123;<span class="string">'x'</span>: <span class="string">'A'</span>, <span class="string">'y'</span>: <span class="string">'B'</span>, <span class="string">'z'</span>: <span class="string">'C'</span> &#125; <span class="comment"># 多个变量</span></div><div class="line">[k + <span class="string">'='</span> + v <span class="keyword">for</span> k, v <span class="keyword">in</span> d.items()] <span class="comment"># 生成list</span></div><div class="line">[s.lower() <span class="keyword">for</span> s <span class="keyword">in</span> L] <span class="comment"># 全部小写</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h3><ul>
+<li>generator 依照某种算法不断循环生成数据,而不是一次性生成完.节省大量空间.</li>
+<li><p>创建generator</p>
 <ul>
-<li>第1行注释可以让这个hello.py文件直接在Unix/Linux/Mac上运行</li>
-<li>第2行注释表示.py文件本身使用标准UTF-8编码；</li>
-<li>第4行是一个字符串，表示模块的文档注释，任何模块代码的第一个字符串都被视为模块的文档注释</li>
-<li>第6行使用<strong>author</strong>变量把作者写进去</li>
+<li><p>把列表生成式的[]改成()</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g = (x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>))</div></pre></td></tr></table></figure>
+<p>调用<code>next(g)</code>可获取下一个值.<br>最常用<code>for n in g:</code>代入for循环.也没有抛出错误.</p>
+</li>
+<li><p>定义一个包含<code>yield</code>关键字的函数.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(max)</span>:</span></div><div class="line">n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></div><div class="line"><span class="keyword">while</span> n &lt; max:</div><div class="line">    <span class="keyword">yield</span> b</div><div class="line">    a, b = b, a + b</div><div class="line">    n = n + <span class="number">1</span></div><div class="line"><span class="keyword">return</span> <span class="string">'done'</span></div></pre></td></tr></table></figure>
+<ul>
+<li>变成generator的函数，在每次调用next()的时候执行，遇到yield语句返回，再次执行时从上次返回的yield语句处继续执行。</li>
+<li>用for循环调用generator时，拿不到generator的return语句的返回值。如果想要拿到返回值，必须捕获StopIteration错误，返回值包含在StopIteration的value中.</li>
 </ul>
 </li>
-<li><p>重点<code>if __name__==&#39;__main__&#39;:</code></p>
-</li>
-<li>Python解释器把一个特殊变量<strong>name</strong>置为<strong>main</strong>，而如果在其他地方导入该hello模块时，if判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试.</li>
 </ul>
-<h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><ul>
-<li>Python中，是通过<code>_</code>前缀 标记 private </li>
-<li>note: <strong>python中语法没有限制 <code>_</code>开头的变量/函数!</strong></li>
+</li>
 </ul>
-<h3 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h3><ul>
-<li><p><code>pip</code>命令 </p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install xxx</div></pre></td></tr></table></figure>
+<h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><ul>
+<li><p>可以被for循环的对象统称为可迭代对象：<code>Iterable</code><br>使用isinstance()判断一个对象是否是Iterable对象</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isinstance(&#123;&#125;, Iterable)</div></pre></td></tr></table></figure>
 </li>
-<li><p>或者在文件中自定义路径.</p>
+<li><p>可以被next()函数调用并不断返回下一个值的对象称为迭代器：<code>Iterator</code> 表示一个惰性计算的序列 <code>Iterator</code>甚至可以表示一个无限大的数据流<br>isinstance()判断一个对象是否是Iterator对象</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isinstance((x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)), Iterator)</div></pre></td></tr></table></figure>
 </li>
+<li><p>集合数据类型如list、dict、str等是Iterable但不是Iterator，不过可以通过iter()函数获得一个Iterator对象。</p>
+</li>
+<li>Python的for循环本质上就是通过不断调用next()</li>
 </ul>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;模块&quot;&gt;&lt;a href=&quot;#模块&quot; class=&quot;headerlink&quot; title=&quot;模块&quot;&gt;&lt;/a&gt;模块&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;模块是一组Python代码的集合，可以使用其他模块，也可以被其他模块使用。&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;涉及到概念 包(Packag
+      &lt;h2 id=&quot;高级特性&quot;&gt;&lt;a href=&quot;#高级特性&quot; class=&quot;headerlink&quot; title=&quot;高级特性&quot;&gt;&lt;/a&gt;高级特性&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;代码精炼&lt;/li&gt;
+&lt;li&gt;python代码量越少,开发效率越高.&lt;h3 id=&quot;切片&quot;&gt;&lt;a href=&quot;#切
     
     </summary>
     
@@ -1218,194 +1406,6 @@
     
       &lt;h2 id=&quot;数据类型&quot;&gt;&lt;a href=&quot;#数据类型&quot; class=&quot;headerlink&quot; title=&quot;数据类型&quot;&gt;&lt;/a&gt;数据类型&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;整数 浮点数 &lt;h3 id=&quot;字符串&quot;&gt;&lt;a href=&quot;#字符串&quot; class=&quot;headerlink&quot; ti
-    
-    </summary>
-    
-      <category term="python笔记" scheme="http://yoursite.com/categories/python%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python—函数式编程</title>
-    <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
-    <id>http://yoursite.com/2018/01/19/python—函数式编程/</id>
-    <published>2018-01-19T02:17:11.000Z</published>
-    <updated>2018-01-19T15:02:50.055Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><ul>
-<li>纯函数式编程没有变量,一个函数只要输出确定,输出就是确定的,称为没有副作用.使用变量的函数内部由于变量状态不确定性,有副作用.</li>
-<li>函数式编程另一个特点是允许函数本身作为参数传入,也可以直接返回另外一个函数.</li>
-<li>python对函数式编程提供有限支持.(还使用变量 so不是纯函数式编程语言)<h3 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h3></li>
-<li>python中函数本身也可以赋值给变量,变量可以指向函数</li>
-<li>函数的参数可以传入另一个函数,这种函数称为高阶函数.</li>
-</ul>
-<h4 id="map-reduce"><a href="#map-reduce" class="headerlink" title="map/reduce"></a>map/reduce</h4><ul>
-<li>map()接收两个参数，一个是函数，一个是Iterable，map将传入的函数依次作用到序列的每个元素，并把结果作为新的Iterator返回</li>
-<li><p>示例</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">list(map(str, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]) <span class="comment"># list所有数字转为字符串</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>reduce把一个函数作用在一个序列[x1, x2, x3, …]上，这个函数必须接收两个参数，reduce把结果继续和序列的下一个元素做累积计算</p>
-</li>
-<li>示例<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">fn</span><span class="params">(x, y)</span>:</span></div><div class="line"><span class="meta">... </span>    <span class="keyword">return</span> x * <span class="number">10</span> + y</div><div class="line">...</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">char2num</span><span class="params">(s)</span>:</span></div><div class="line"><span class="meta">... </span>    digits = &#123;<span class="string">'0'</span>: <span class="number">0</span>, <span class="string">'1'</span>: <span class="number">1</span>, <span class="string">'2'</span>: <span class="number">2</span>, <span class="string">'3'</span>: <span class="number">3</span>, <span class="string">'4'</span>: <span class="number">4</span>, <span class="string">'5'</span>: <span class="number">5</span>, <span class="string">'6'</span>: <span class="number">6</span>, <span class="string">'7'</span>: <span class="number">7</span>, <span class="string">'8'</span>: <span class="number">8</span>, <span class="string">'9'</span>: <span class="number">9</span>&#125;</div><div class="line"><span class="meta">... </span>    <span class="keyword">return</span> digits[s]</div><div class="line">...</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>reduce(fn, map(char2num, <span class="string">'13579'</span>))</div><div class="line"><span class="number">13579</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h4><ul>
-<li>filter()接收一个函数和一个序列。filter()把传入的函数依次作用于每个元素，然后根据返回值是True还是False决定保留还是丢弃该元素。</li>
-<li>filter()函数返回的是一个 惰性序列 Iterator，也就是一个惰性序列,需要用list()函数获得所有结果并返回list</li>
-<li>示例<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_odd</span><span class="params">(n)</span>:</span></div><div class="line">  <span class="keyword">return</span> n % <span class="number">2</span> == <span class="number">1</span></div><div class="line"></div><div class="line">list(filter(is_odd, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">15</span>])) <span class="comment"># 只保留奇数</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">not_empty</span><span class="params">(s)</span>:</span></div><div class="line">  <span class="keyword">return</span> s <span class="keyword">and</span> s.strip()</div><div class="line"></div><div class="line">list(filter(not_empty, [<span class="string">'A'</span>, <span class="string">''</span>, <span class="string">'B'</span>, <span class="keyword">None</span>, <span class="string">'C'</span>, <span class="string">'  '</span>])) <span class="comment"># 删除空字符</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h4><ul>
-<li>sorted()函数接收一个key函数来实现自定义的排序.第三个参数<code>reverse=True</code>决定正序倒序.</li>
-<li><p>示例:</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">  &gt;&gt;&gt; sorted([<span class="string">'bob'</span>, <span class="string">'about'</span>, <span class="string">'Zoo'</span>, <span class="string">'Credit'</span>],key=str.lower)</div><div class="line">  [<span class="string">'about'</span>, <span class="string">'bob'</span>, <span class="string">'Credit'</span>, <span class="string">'Zoo'</span>]</div><div class="line"></div><div class="line">  &gt;&gt;&gt; sorted([<span class="string">'bob'</span>, <span class="string">'about'</span>, <span class="string">'Zoo'</span>, <span class="string">'Credit'</span>], key=str.lower, reverse=<span class="keyword">True</span>)</div><div class="line">  [<span class="string">'Zoo'</span>, <span class="string">'Credit'</span>, <span class="string">'bob'</span>, <span class="string">'about'</span>]</div><div class="line">  ``` </div><div class="line"></div><div class="line"><span class="comment">### 返回函数</span></div><div class="line">* 将函数作为结果返回.(很随便😂)</div><div class="line">* 闭包（Closure）:相关参数和变量都保存在返回函数.</div><div class="line">* **note:**返回的函数在其定义内部引用了局部变量args，所以，当一个函数返回了一个函数后，其内部的局部变量还被新函数引用</div><div class="line">* 示例(坑):</div><div class="line">  ```py</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">()</span>:</span></div><div class="line">    fs = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">4</span>):</div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">()</span>:</span></div><div class="line">             <span class="keyword">return</span> i*i</div><div class="line">        fs.append(f)</div><div class="line">    <span class="keyword">return</span> fs</div><div class="line"></div><div class="line">  f1, f2, f3 = count()</div><div class="line"></div><div class="line">  &gt;&gt;&gt; f1()</div><div class="line">  <span class="number">9</span></div><div class="line">  &gt;&gt;&gt; f2()</div><div class="line">  <span class="number">9</span></div><div class="line">  &gt;&gt;&gt; f3()</div><div class="line">  <span class="number">9</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>返回的函数引用了变量i，但它并非立刻执行。等到3个函数都返回时，它们所引用的变量i已经变成了3，因此最终结果为9</p>
-</li>
-<li>一定要引用循环变量怎么办？方法是再创建一个函数，用该函数的参数绑定循环变量当前的值，无论该循环变量后续如何更改，已绑定到函数参数的值不变</li>
-<li>示例:<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">()</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(j)</span>:</span></div><div class="line">      <span class="function"><span class="keyword">def</span> <span class="title">g</span><span class="params">()</span>:</span></div><div class="line">          <span class="keyword">return</span> j*j</div><div class="line">      <span class="keyword">return</span> g</div><div class="line">  fs = []</div><div class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">4</span>):</div><div class="line">      fs.append(f(i)) <span class="comment"># f(i)立刻被执行，因此i的当前值被传入f()</span></div><div class="line">  <span class="keyword">return</span> fs</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h3><ul>
-<li>不显式定义的函数. python中是 <code>lambda</code> 但与java不同.</li>
-<li>python中<code>lambda</code>限制，只能有一个表达式，不用写return，返回值就是该表达式的结果</li>
-<li>匿名函数不必担心函数名冲突。此外，匿名函数也是一个函数对象，也可以把匿名函数赋值给一个变量，再利用变量来调用该函数</li>
-<li>示例<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f = <span class="keyword">lambda</span> x: x * x</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h3><ul>
-<li>代码运行期间,动态增加功能方式称为装饰器(Decorator)</li>
-<li><p>示例</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span><span class="params">(func)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kw)</span>:</span></div><div class="line">      print(<span class="string">'call %s():'</span> % func.__name__)</div><div class="line">      <span class="keyword">return</span> func(*args, **kw)</div><div class="line">  <span class="keyword">return</span> wrapper</div><div class="line"></div><div class="line"><span class="meta">@log</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">now</span><span class="params">()</span>:</span></div><div class="line">  print(<span class="string">'2015-3-25'</span>)</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>now()</div><div class="line">call now():</div><div class="line"><span class="number">2015</span><span class="number">-3</span><span class="number">-25</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>如示例,装饰器 接受一个函数作为参数,并返回原函数.在原函数定义时,以 <code>@ xxx</code>作为标记.示例1 为2层,如果打印文本可以自定义.</p>
-</li>
-<li><p>示例</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span><span class="params">(text)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(func)</span>:</span></div><div class="line">      <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kw)</span>:</span></div><div class="line">          print(<span class="string">'%s %s():'</span> % (text, func.__name__))</div><div class="line">          <span class="keyword">return</span> func(*args, **kw)</div><div class="line">      <span class="keyword">return</span> wrapper</div><div class="line">  <span class="keyword">return</span> decorator</div><div class="line"></div><div class="line"><span class="meta">@log('execute')</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">now</span><span class="params">()</span>:</span></div><div class="line">  print(<span class="string">'2015-3-25'</span>)</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>now()</div><div class="line">execute now():</div><div class="line"><span class="number">2015</span><span class="number">-3</span><span class="number">-25</span></div></pre></td></tr></table></figure>
-<p>打印可自定义 又加上了一层.</p>
-</li>
-<li><p>如上两种定义后,函数对象的名称等发生了变化,so,终极版</p>
-</li>
-<li>Python内置的functools.wraps 会将原始函数的<code>__name__</code>等属性复制到wrapper()函数中.</li>
-<li>示例<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> functools</div><div class="line"><span class="comment"># 不带参数</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span><span class="params">(func)</span>:</span></div><div class="line"><span class="meta">    @functools.wraps(func)</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kw)</span>:</span></div><div class="line">        print(<span class="string">'call %s():'</span> % func.__name__)</div><div class="line">        <span class="keyword">return</span> func(*args, **kw)</div><div class="line">    <span class="keyword">return</span> wrapper</div><div class="line"></div><div class="line"><span class="comment"># 带参数</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span><span class="params">(text)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(func)</span>:</span></div><div class="line"><span class="meta">        @functools.wraps(func)</span></div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kw)</span>:</span></div><div class="line">            print(<span class="string">'%s %s():'</span> % (text, func.__name__))</div><div class="line">            <span class="keyword">return</span> func(*args, **kw)</div><div class="line">        <span class="keyword">return</span> wrapper</div><div class="line">    <span class="keyword">return</span> decorator</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h3><ul>
-<li>functools.partial的作用是把一个函数的某些参数设置默认值，返回一个新的函数.</li>
-<li><p>示例:</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> functools</div><div class="line">int2 = functools.partial(int, base=<span class="number">2</span>)</div><div class="line"></div><div class="line">int2(<span class="string">'1000000'</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>注意: 仅仅是把base参数重新设定默认值为2，<strong>但也可以在函数调用时传入其他值</strong></p>
-</li>
-<li>由于python 中函数也可以最为参数传入,so,参数固定成某一个函数也可.</li>
-<li><p>同理: <code>*args</code> 和 <code>**kw</code> 也可以.</p>
-</li>
-<li><p>简化函数调用.</p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;函数式编程&quot;&gt;&lt;a href=&quot;#函数式编程&quot; class=&quot;headerlink&quot; title=&quot;函数式编程&quot;&gt;&lt;/a&gt;函数式编程&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;纯函数式编程没有变量,一个函数只要输出确定,输出就是确定的,称为没有副作用.使用变量的函数内部由于变量状
-    
-    </summary>
-    
-      <category term="python笔记" scheme="http://yoursite.com/categories/python%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python—高级特性</title>
-    <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/"/>
-    <id>http://yoursite.com/2018/01/19/python—高级特性/</id>
-    <published>2018-01-19T02:17:11.000Z</published>
-    <updated>2018-01-19T15:03:49.103Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="高级特性"><a href="#高级特性" class="headerlink" title="高级特性"></a>高级特性</h2><ul>
-<li>代码精炼</li>
-<li>python代码量越少,开发效率越高.<h3 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h3></li>
-<li>取list或tuple的部分元素</li>
-<li><p>示例</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">L[<span class="number">0</span>:<span class="number">3</span>] <span class="comment">#0到3,但结果不包括索引3</span></div><div class="line">L[:<span class="number">3</span>] <span class="comment">#0可省略</span></div></pre></td></tr></table></figure>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">L[<span class="number">-2</span>:]  <span class="comment">#-2到0 但不包括索引0</span></div><div class="line">L[<span class="number">-2</span>:<span class="number">-1</span>] <span class="comment">#-2</span></div></pre></td></tr></table></figure>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">L[:<span class="number">10</span>:<span class="number">2</span>] <span class="comment">#前10 每隔2个取一个</span></div><div class="line">L[::<span class="number">5</span>] <span class="comment">#所有,每隔5个取一个</span></div><div class="line">L[:] <span class="comment">#原样复制</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>对tuple取切片,结果依然是tuple.</p>
-</li>
-<li><strong>字符串可以看作一个list</strong>,每个字符占一位.</li>
-</ul>
-<h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><ul>
-<li>迭代很随便…太随便了…</li>
-<li>list tuple不多说了</li>
-<li><p>dict字典也可以迭代,因为无序,输出的顺序不一定相同.<br>默认迭代的是key 但value 也可以迭代,key value也可以同时迭代</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> value <span class="keyword">in</span> d.values()</div><div class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> d.items()</div></pre></td></tr></table></figure>
-</li>
-<li><p>上文书中说的,字符串可以当作list,所以也可以迭代.</p>
-</li>
-<li><p>问题来了,如何判断可迭代对象?<br><code>collections模块的Iterable类型判断</code></p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(<span class="string">'abc'</span>, Iterable) <span class="comment"># str是否可迭代</span></div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>类似c/java的带下标循环实现?<br>Python内置的<code>enumerate函数</code>,把一个list变成索引-元素对</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i, value <span class="keyword">in</span> enumerate([<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>]):</div><div class="line">  print(i, value)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h3><ul>
-<li><code>用来生成list</code></li>
-<li><p>示例: [1x1, 2x2, 3x3, …, 10x10]</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">11</span>)] </div><div class="line">[m + n <span class="keyword">for</span> m <span class="keyword">in</span> <span class="string">'ABC'</span> <span class="keyword">for</span> n <span class="keyword">in</span> <span class="string">'XYZ'</span>] <span class="comment">#两层</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>for可以同时循环两个甚至多个变量,dict的items()可以同时迭代key和value</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">d = &#123;<span class="string">'x'</span>: <span class="string">'A'</span>, <span class="string">'y'</span>: <span class="string">'B'</span>, <span class="string">'z'</span>: <span class="string">'C'</span> &#125; <span class="comment"># 多个变量</span></div><div class="line">[k + <span class="string">'='</span> + v <span class="keyword">for</span> k, v <span class="keyword">in</span> d.items()] <span class="comment"># 生成list</span></div><div class="line">[s.lower() <span class="keyword">for</span> s <span class="keyword">in</span> L] <span class="comment"># 全部小写</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h3><ul>
-<li>generator 依照某种算法不断循环生成数据,而不是一次性生成完.节省大量空间.</li>
-<li><p>创建generator</p>
-<ul>
-<li><p>把列表生成式的[]改成()</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g = (x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>))</div></pre></td></tr></table></figure>
-<p>调用<code>next(g)</code>可获取下一个值.<br>最常用<code>for n in g:</code>代入for循环.也没有抛出错误.</p>
-</li>
-<li><p>定义一个包含<code>yield</code>关键字的函数.</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(max)</span>:</span></div><div class="line">n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></div><div class="line"><span class="keyword">while</span> n &lt; max:</div><div class="line">    <span class="keyword">yield</span> b</div><div class="line">    a, b = b, a + b</div><div class="line">    n = n + <span class="number">1</span></div><div class="line"><span class="keyword">return</span> <span class="string">'done'</span></div></pre></td></tr></table></figure>
-<ul>
-<li>变成generator的函数，在每次调用next()的时候执行，遇到yield语句返回，再次执行时从上次返回的yield语句处继续执行。</li>
-<li>用for循环调用generator时，拿不到generator的return语句的返回值。如果想要拿到返回值，必须捕获StopIteration错误，返回值包含在StopIteration的value中.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><ul>
-<li><p>可以被for循环的对象统称为可迭代对象：<code>Iterable</code><br>使用isinstance()判断一个对象是否是Iterable对象</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isinstance(&#123;&#125;, Iterable)</div></pre></td></tr></table></figure>
-</li>
-<li><p>可以被next()函数调用并不断返回下一个值的对象称为迭代器：<code>Iterator</code> 表示一个惰性计算的序列 <code>Iterator</code>甚至可以表示一个无限大的数据流<br>isinstance()判断一个对象是否是Iterator对象</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isinstance((x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)), Iterator)</div></pre></td></tr></table></figure>
-</li>
-<li><p>集合数据类型如list、dict、str等是Iterable但不是Iterator，不过可以通过iter()函数获得一个Iterator对象。</p>
-</li>
-<li>Python的for循环本质上就是通过不断调用next()</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;高级特性&quot;&gt;&lt;a href=&quot;#高级特性&quot; class=&quot;headerlink&quot; title=&quot;高级特性&quot;&gt;&lt;/a&gt;高级特性&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;代码精炼&lt;/li&gt;
-&lt;li&gt;python代码量越少,开发效率越高.&lt;h3 id=&quot;切片&quot;&gt;&lt;a href=&quot;#切
     
     </summary>
     
@@ -2001,7 +2001,7 @@
 <hr>
 <h2 id="看门狗定时器驱动内核API"><a href="#看门狗定时器驱动内核API" class="headerlink" title="看门狗定时器驱动内核API"></a>看门狗定时器驱动内核API</h2><ul>
 <li>最后更新时间 2013.2.12</li>
-<li>Wim Van Sebroeck <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#111;&#x3a;&#x77;&#105;&#109;&#64;&#105;&#x67;&#x75;&#x61;&#110;&#97;&#x2e;&#98;&#101;">&#x77;&#105;&#109;&#64;&#105;&#x67;&#x75;&#x61;&#110;&#97;&#x2e;&#98;&#101;</a></li>
+<li>Wim Van Sebroeck <a href="&#x6d;&#97;&#105;&#108;&#x74;&#x6f;&#x3a;&#119;&#x69;&#x6d;&#64;&#105;&#103;&#117;&#97;&#x6e;&#x61;&#x2e;&#x62;&#101;">&#119;&#x69;&#x6d;&#64;&#105;&#103;&#117;&#97;&#x6e;&#x61;&#x2e;&#x62;&#101;</a></li>
 </ul>
 <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul>
 <li>本文档没有描述看门狗设备或驱动。也不涉及那些在用户空间调用的API，对应在 Documentation/watchdog/watchdog-api.txt （也就是<a href="">上一篇</a>）</li>
@@ -2178,8 +2178,8 @@
 </li>
 <li><p>linux看门狗设备API</p>
 </li>
-<li>Copyright 2002 Christer Weingel <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#x3a;&#119;&#x69;&#x6e;&#x67;&#x65;&#108;&#x40;&#x6e;&#x61;&#110;&#x6f;&#45;&#115;&#121;&#115;&#116;&#101;&#109;&#46;&#99;&#x6f;&#109;">&#119;&#x69;&#x6e;&#x67;&#x65;&#108;&#x40;&#x6e;&#x61;&#110;&#x6f;&#45;&#115;&#121;&#115;&#116;&#101;&#109;&#46;&#99;&#x6f;&#109;</a></li>
-<li><p>本文档的一些内容来自 sbc60xxwdt ，版权属于 Copyright 2000 Jakob Oestergaard <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#x6f;&#58;&#106;&#x61;&#x6b;&#111;&#98;&#64;&#111;&#115;&#116;&#101;&#110;&#x66;&#101;&#x6c;&#x64;&#46;&#100;&#107;">&#106;&#x61;&#x6b;&#111;&#98;&#64;&#111;&#115;&#116;&#101;&#110;&#x66;&#101;&#x6c;&#x64;&#46;&#100;&#107;</a></p>
+<li>Copyright 2002 Christer Weingel <a href="&#x6d;&#97;&#105;&#108;&#x74;&#x6f;&#x3a;&#119;&#105;&#110;&#103;&#101;&#x6c;&#64;&#110;&#x61;&#110;&#111;&#45;&#x73;&#121;&#x73;&#x74;&#101;&#x6d;&#x2e;&#x63;&#111;&#x6d;">&#119;&#105;&#110;&#103;&#101;&#x6c;&#64;&#110;&#x61;&#110;&#111;&#45;&#x73;&#121;&#x73;&#x74;&#101;&#x6d;&#x2e;&#x63;&#111;&#x6d;</a></li>
+<li><p>本文档的一些内容来自 sbc60xxwdt ，版权属于 Copyright 2000 Jakob Oestergaard <a href="&#109;&#97;&#x69;&#108;&#x74;&#111;&#58;&#106;&#97;&#x6b;&#111;&#98;&#x40;&#x6f;&#115;&#x74;&#x65;&#110;&#102;&#x65;&#x6c;&#100;&#46;&#x64;&#107;">&#106;&#97;&#x6b;&#111;&#98;&#x40;&#x6f;&#115;&#x74;&#x65;&#110;&#102;&#x65;&#x6c;&#100;&#46;&#x64;&#107;</a></p>
 </li>
 <li><p>本文档基于linux内核 2.4.18</p>
 </li>
