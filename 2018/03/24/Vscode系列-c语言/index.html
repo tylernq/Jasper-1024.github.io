@@ -101,7 +101,7 @@
 <meta property="og:image" content="https://i.loli.net/2018/03/23/5ab4f9c64e3af.png">
 <meta property="og:image" content="https://i.loli.net/2018/03/23/5ab4f9c702d2c.png">
 <meta property="og:image" content="https://i.loli.net/2018/03/23/5ab4f7f51181a.png">
-<meta property="og:updated_time" content="2018-03-23T17:56:59.757Z">
+<meta property="og:updated_time" content="2018-03-23T18:03:05.922Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vscode系列—c语言">
 <meta name="twitter:description" content="环境  vscode 1.20.x ubuntu   前言 写嵌入式的c语言太难搞了,受够了盗版 sourceinsight 艰难的代码提示和补全之后,尝试换一款编辑器. 跨平台,支持多种语言,自由度高. vim 和 Emacs 命令行 有一点学习成本. 最后选定了 vscode 业余写点 python 和 java 写写 markdown 博客等等 (看pdf也行…).    注意vscode">
@@ -588,8 +588,7 @@
 <li><p>工作区设置</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">"clang.cflags": [</div><div class="line">      "-std=c99",</div><div class="line">      "-I$&#123;cwd&#125;",</div><div class="line">      "-I/usr/include",</div><div class="line">      "-I/usr/include/c++/5",</div><div class="line">      "-I/usr/include/x86_64-linux-gnu/c++/5",</div><div class="line">      "-I/usr/include/c++/5/backward",</div><div class="line">      "-I/usr/lib/gcc/x86_64-linux-gnu/5/include",</div><div class="line">      "-I/usr/local/include",</div><div class="line">      "-I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed",</div><div class="line">      "-I/usr/include/x86_64-linux-gnu",</div><div class="line">      "-I/usr/include",</div><div class="line">      "-I$&#123;workspaceRoot&#125;",</div><div class="line">      "-I$&#123;workspaceRoot&#125;/Include",</div><div class="line">      "-I$&#123;workspaceRoot&#125;/Libs/Cjson/Include"</div><div class="line">  ],</div></pre></td></tr></table></figure>
 <ul>
-<li>clang.cflags : <code>&quot;-std=c99&quot;</code> clang语法检查时 c/c++ 语言标准,要兼容历史项目,这就选的 c99 ,新项目简易 直接 c11.<pre><code>clang进行代码补全/语法检查的头文件路径, 格式是 `-I路径` ,支持直接和间接路径(${workspaceRoot}).
-</code></pre></li>
+<li>clang.cflags : <code>&quot;-std=c99&quot;</code> clang语法检查时 c/c++ 语言标准,要兼容历史项目,这就选的 c99 ,新项目简易 直接 c11.clang进行代码补全/语法检查的头文件路径, 格式是 <code>-I路径</code> ,支持直接和间接路径(${workspaceRoot}).</li>
 <li>头文件一定要写全,否则一直会有错误提示.</li>
 </ul>
 </li>

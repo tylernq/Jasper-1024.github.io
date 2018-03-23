@@ -587,8 +587,7 @@
 <li><p>工作区设置</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">"clang.cflags": [</div><div class="line">      "-std=c99",</div><div class="line">      "-I$&#123;cwd&#125;",</div><div class="line">      "-I/usr/include",</div><div class="line">      "-I/usr/include/c++/5",</div><div class="line">      "-I/usr/include/x86_64-linux-gnu/c++/5",</div><div class="line">      "-I/usr/include/c++/5/backward",</div><div class="line">      "-I/usr/lib/gcc/x86_64-linux-gnu/5/include",</div><div class="line">      "-I/usr/local/include",</div><div class="line">      "-I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed",</div><div class="line">      "-I/usr/include/x86_64-linux-gnu",</div><div class="line">      "-I/usr/include",</div><div class="line">      "-I$&#123;workspaceRoot&#125;",</div><div class="line">      "-I$&#123;workspaceRoot&#125;/Include",</div><div class="line">      "-I$&#123;workspaceRoot&#125;/Libs/Cjson/Include"</div><div class="line">  ],</div></pre></td></tr></table></figure>
 <ul>
-<li>clang.cflags : <code>&quot;-std=c99&quot;</code> clang语法检查时 c/c++ 语言标准,要兼容历史项目,这就选的 c99 ,新项目简易 直接 c11.<pre><code>clang进行代码补全/语法检查的头文件路径, 格式是 `-I路径` ,支持直接和间接路径(${workspaceRoot}).
-</code></pre></li>
+<li>clang.cflags : <code>&quot;-std=c99&quot;</code> clang语法检查时 c/c++ 语言标准,要兼容历史项目,这就选的 c99 ,新项目简易 直接 c11.clang进行代码补全/语法检查的头文件路径, 格式是 <code>-I路径</code> ,支持直接和间接路径(${workspaceRoot}).</li>
 <li>头文件一定要写全,否则一直会有错误提示.</li>
 </ul>
 </li>
@@ -1827,6 +1826,285 @@
   
   
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/19/python—高级特性/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/01/19/python—高级特性/" itemprop="url">
+                  python—高级特性
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T10:17:11+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">python笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/19/python—高级特性/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/01/19/python—高级特性/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/01/19/python—高级特性/" class="leancloud_visitors" data-flag-title="python—高级特性">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  754
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="高级特性"><a href="#高级特性" class="headerlink" title="高级特性"></a>高级特性</h2><ul>
+<li>代码精炼</li>
+<li>python代码量越少,开发效率越高.<h3 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h3></li>
+<li>取list或tuple的部分元素</li>
+<li><p>示例</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">L[<span class="number">0</span>:<span class="number">3</span>] <span class="comment">#0到3,但结果不包括索引3</span></div><div class="line">L[:<span class="number">3</span>] <span class="comment">#0可省略</span></div></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">L[<span class="number">-2</span>:]  <span class="comment">#-2到0 但不包括索引0</span></div><div class="line">L[<span class="number">-2</span>:<span class="number">-1</span>] <span class="comment">#-2</span></div></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">L[:<span class="number">10</span>:<span class="number">2</span>] <span class="comment">#前10 每隔2个取一个</span></div><div class="line">L[::<span class="number">5</span>] <span class="comment">#所有,每隔5个取一个</span></div><div class="line">L[:] <span class="comment">#原样复制</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>对tuple取切片,结果依然是tuple.</p>
+</li>
+<li><strong>字符串可以看作一个list</strong>,每个字符占一位.</li>
+</ul>
+<h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><ul>
+<li>迭代很随便…太随便了…</li>
+<li>list tuple不多说了</li>
+<li><p>dict字典也可以迭代,因为无序,输出的顺序不一定相同.<br>默认迭代的是key 但value 也可以迭代,key value也可以同时迭代</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> value <span class="keyword">in</span> d.values()</div><div class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> d.items()</div></pre></td></tr></table></figure>
+</li>
+<li><p>上文书中说的,字符串可以当作list,所以也可以迭代.</p>
+</li>
+<li><p>问题来了,如何判断可迭代对象?<br><code>collections模块的Iterable类型判断</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(<span class="string">'abc'</span>, Iterable) <span class="comment"># str是否可迭代</span></div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>类似c/java的带下标循环实现?<br>Python内置的<code>enumerate函数</code>,把一个list变成索引-元素对</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i, value <span class="keyword">in</span> enumerate([<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>]):</div><div class="line">  print(i, value)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h3><ul>
+<li><code>用来生成list</code></li>
+<li><p>示例: [1x1, 2x2, 3x3, …, 10x10]</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">11</span>)] </div><div class="line">[m + n <span class="keyword">for</span> m <span class="keyword">in</span> <span class="string">'ABC'</span> <span class="keyword">for</span> n <span class="keyword">in</span> <span class="string">'XYZ'</span>] <span class="comment">#两层</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>for可以同时循环两个甚至多个变量,dict的items()可以同时迭代key和value</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">d = &#123;<span class="string">'x'</span>: <span class="string">'A'</span>, <span class="string">'y'</span>: <span class="string">'B'</span>, <span class="string">'z'</span>: <span class="string">'C'</span> &#125; <span class="comment"># 多个变量</span></div><div class="line">[k + <span class="string">'='</span> + v <span class="keyword">for</span> k, v <span class="keyword">in</span> d.items()] <span class="comment"># 生成list</span></div><div class="line">[s.lower() <span class="keyword">for</span> s <span class="keyword">in</span> L] <span class="comment"># 全部小写</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h3><ul>
+<li>generator 依照某种算法不断循环生成数据,而不是一次性生成完.节省大量空间.</li>
+<li><p>创建generator</p>
+<ul>
+<li><p>把列表生成式的[]改成()</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g = (x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>))</div></pre></td></tr></table></figure>
+<p>调用<code>next(g)</code>可获取下一个值.<br>最常用<code>for n in g:</code>代入for循环.也没有抛出错误.</p>
+</li>
+<li><p>定义一个包含<code>yield</code>关键字的函数.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(max)</span>:</span></div><div class="line">n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></div><div class="line"><span class="keyword">while</span> n &lt; max:</div><div class="line">    <span class="keyword">yield</span> b</div><div class="line">    a, b = b, a + b</div><div class="line">    n = n + <span class="number">1</span></div><div class="line"><span class="keyword">return</span> <span class="string">'done'</span></div></pre></td></tr></table></figure>
+<ul>
+<li>变成generator的函数，在每次调用next()的时候执行，遇到yield语句返回，再次执行时从上次返回的yield语句处继续执行。</li>
+<li>用for循环调用generator时，拿不到generator的return语句的返回值。如果想要拿到返回值，必须捕获StopIteration错误，返回值包含在StopIteration的value中.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><ul>
+<li><p>可以被for循环的对象统称为可迭代对象：<code>Iterable</code><br>使用isinstance()判断一个对象是否是Iterable对象</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isinstance(&#123;&#125;, Iterable)</div></pre></td></tr></table></figure>
+</li>
+<li><p>可以被next()函数调用并不断返回下一个值的对象称为迭代器：<code>Iterator</code> 表示一个惰性计算的序列 <code>Iterator</code>甚至可以表示一个无限大的数据流<br>isinstance()判断一个对象是否是Iterator对象</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isinstance((x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)), Iterator)</div></pre></td></tr></table></figure>
+</li>
+<li><p>集合数据类型如list、dict、str等是Iterable但不是Iterator，不过可以通过iter()函数获得一个Iterator对象。</p>
+</li>
+<li>Python的for循环本质上就是通过不断调用next()</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/19/python—面向对象/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2337,6 +2615,342 @@
 <figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install xxx</div></pre></td></tr></table></figure>
 </li>
 <li><p>或者在文件中自定义路径.</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/19/python—基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/01/19/python—基础/" itemprop="url">
+                  python—基础
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T10:17:11+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">python笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/19/python—基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/01/19/python—基础/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/01/19/python—基础/" class="leancloud_visitors" data-flag-title="python—基础">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  812
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
+<li>整数 浮点数 <h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3></li>
+<li>字符串以单引号 ‘ 或 “ 包括. </li>
+<li>转义字符 \ 依然有效. r’’表示此字符串默认不转移.</li>
+<li>/n有效, 可用 开头 … 替换<h3 id="布尔"><a href="#布尔" class="headerlink" title="布尔"></a>布尔</h3></li>
+<li>只有True 和 Flase </li>
+<li>and or not 3种常用操作</li>
+</ul>
+<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><ul>
+<li>通常都为大写表示.</li>
+<li>除法有两种 / 或 //<br>/ 结果可能为浮点, // 结果为整数(地板除)</li>
+</ul>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li>None 空值,不为0.谨记</li>
+<li>动态语言,so,变量的类型无所谓.</li>
+<li>浮点数精度无限,但超过限制直接表示为 <code>inf</code></li>
+</ul>
+<h2 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h2><ul>
+<li>简而言之 文件使用utf-8就对了.</li>
+<li>utf-8 属于万国码的简化,低位与 ASCII 兼容.</li>
+</ul>
+<h3 id="python字符串编码"><a href="#python字符串编码" class="headerlink" title="python字符串编码"></a>python字符串编码</h3><ul>
+<li>py3中默认是 Unicode 万国码.</li>
+<li>ord()获取字符的整数表示，chr()把编码转换为字符.</li>
+<li>Python对bytes类型的数据用带b前缀的单引号或双引号表示 <code>x = b&#39;ABC&#39;</code></li>
+<li><p>以Unicode表示的str通过encode()方法可以编码为指定的bytes</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">'ABC'</span>.encode(<span class="string">'ascii'</span>)</div><div class="line"><span class="string">b'ABC'</span></div><div class="line"><span class="string">'中文'</span>.encode(<span class="string">'utf-8'</span>)</div><div class="line"><span class="string">b'\xe4\xb8\xad\xe6\x96\x87'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>对应的decode()方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'ABC'</span>.decode(<span class="string">'ascii'</span>)</div><div class="line"><span class="string">'ABC'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'\xe4\xb8\xad\xe6\x96\x87'</span>.decode(<span class="string">'utf-8'</span>)</div><div class="line"><span class="string">'中文'</span></div></pre></td></tr></table></figure>
+<p>可以传入errors=’ignore’忽略错误的字节</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">b'\xe4\xb8\xad\xff'</span>.decode(<span class="string">'utf-8'</span>, errors=<span class="string">'ignore'</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>len(),str计算字符.bytes计算字节</p>
+</li>
+<li>开头,第一行,可执行文件(windows会忽视注释)<br>第二行,以utf-8处理文件.<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="字符串格式化"><a href="#字符串格式化" class="headerlink" title="字符串格式化"></a>字符串格式化</h3><ul>
+<li><p>占位符与c基本相同 %d %s %x %f</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">'%2d-%02d'</span> % (<span class="number">3</span>, <span class="number">1</span>))</div><div class="line">print(<span class="string">'%.2f'</span> % <span class="number">3.1415926</span>)</div></pre></td></tr></table></figure>
+<p>需要 % 时, %%</p>
+</li>
+<li><p>format()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'Hello, &#123;0&#125;, 成绩提升了 &#123;1:.1f&#125;%'</span>.format(<span class="string">'小明'</span>, <span class="number">17.125</span>)</div><div class="line"><span class="string">'Hello, 小明, 成绩提升了 17.1%'</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="list-tuple"><a href="#list-tuple" class="headerlink" title="list tuple"></a>list tuple</h2><h3 id="list-列表"><a href="#list-列表" class="headerlink" title="list 列表"></a>list 列表</h3><ul>
+<li><p>示例, <code>= [ , , ]</code> 可变 有序</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">classmates = [<span class="string">'Michael'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>]</div></pre></td></tr></table></figure>
+</li>
+<li><p>索引以 0 开始,可以倒序 <code>-n</code> 当然越界都是 <code>IndexError</code> 错误</p>
+</li>
+<li>.len(),list元素个数.</li>
+<li>.append(x) 末尾添加</li>
+<li>.insert(i,x) 对应索引处插入</li>
+<li>.pop(i) 删除i对应元素,为空则删除末尾元素.</li>
+<li>替换i位置,直接赋值.</li>
+<li>list的元素可以为一个list.多重数组.</li>
+</ul>
+<h3 id="tuple-元组"><a href="#tuple-元组" class="headerlink" title="tuple 元组"></a>tuple 元组</h3><ul>
+<li><p>示例<code>= ( , , )</code> 不可变 有序 更安全,其他与list相同</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">t = (<span class="number">1</span>, <span class="number">2</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>t = (1,)</code>声明一个元素元组,比较特殊.</p>
+</li>
+</ul>
+<h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2><ul>
+<li><p>示例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> true :</div><div class="line">    print(<span class="string">"1"</span>)</div><div class="line"><span class="keyword">elif</span> true :</div><div class="line">    print(<span class="string">"2"</span>)</div><div class="line"><span class="keyword">else</span> :</div><div class="line">    print(<span class="string">"3"</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>if 条件可简写,<code>if x</code> x非零数值、非空字符串、非空list 则为true</p>
+</li>
+<li>提及用户输入 input()</li>
+<li>input默认返回字符串,如需要其他类型 int()转换.</li>
+</ul>
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><ul>
+<li><p>示例 与c相同</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> x <span class="keyword">in</span> names:</div><div class="line">    print(x)</div></pre></td></tr></table></figure>
+</li>
+<li><p>示例 与c相同</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> n &gt; <span class="number">0</span>:</div><div class="line">    print(n)</div></pre></td></tr></table></figure>
+</li>
+<li><p>break 跳出此层循环</p>
+</li>
+<li>continue 跳出本轮循环</li>
+</ul>
+<h2 id="dict-和-set"><a href="#dict-和-set" class="headerlink" title="dict 和 set"></a>dict 和 set</h2><h3 id="dict"><a href="#dict" class="headerlink" title="dict"></a>dict</h3><ul>
+<li>字典,使用键值对储存数据,索引极快,空间换时间.</li>
+<li>对应其他语言的 map </li>
+<li><p>示例: {‘’: ,’’: ,…}</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">d = &#123;<span class="string">'Michael'</span>: <span class="number">95</span>, <span class="string">'Bob'</span>: <span class="number">75</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</div><div class="line">d[<span class="string">'Michael'</span>]</div><div class="line"><span class="number">95</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>key</p>
+<ul>
+<li>必须为不可变对象,整数、字符串等</li>
+<li>一个key对应一个value</li>
+<li><p>key不存在</p>
+<ul>
+<li><p>in判断</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'Thomas'</span> <span class="keyword">in</span> d</div><div class="line"><span class="keyword">False</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>get()获取</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">d.get(<span class="string">'Thomas'</span>) <span class="comment"># 返回空</span></div><div class="line">d.get(<span class="string">'Thomas'</span>, <span class="number">-1</span>) <span class="comment"># 不存在? 返回-1: ;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>pop()删除</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">d.pop(<span class="string">'Bob'</span>)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><ul>
+<li>key的集合,但不存在value</li>
+<li>无序、不重复、元素为不可变对象</li>
+<li>创建set需要一个list</li>
+<li><p>示例 set([ , , …])</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s</div><div class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>.add(key)</code>/<code>.remove(key)</code></p>
 </li>
 </ul>
 
@@ -2912,621 +3526,6 @@
 </ul>
 <h4 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h4><ul>
 <li>python 不含尾递归优化,注意层级,否则非常容易堆栈溢出.</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-	
-
-	
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-	
-	
-	<div>
-	    <p id="div-border-left-blue">
-	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
-	    <span>
-	    <b>本文地址：</b><a href="/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
-	    </span>
-	    </p>
-	</div>
-	
-
-	
-    <footer class="post-footer">
-	
-	
-	
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-  
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/19/python—高级特性/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jasper">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/v.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="默">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/19/python—高级特性/" itemprop="url">
-                  python—高级特性
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T10:17:11+08:00">
-                2018-01-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">python笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/19/python—高级特性/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/19/python—高级特性/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/01/19/python—高级特性/" class="leancloud_visitors" data-flag-title="python—高级特性">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  754
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  3m
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="高级特性"><a href="#高级特性" class="headerlink" title="高级特性"></a>高级特性</h2><ul>
-<li>代码精炼</li>
-<li>python代码量越少,开发效率越高.<h3 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h3></li>
-<li>取list或tuple的部分元素</li>
-<li><p>示例</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">L[<span class="number">0</span>:<span class="number">3</span>] <span class="comment">#0到3,但结果不包括索引3</span></div><div class="line">L[:<span class="number">3</span>] <span class="comment">#0可省略</span></div></pre></td></tr></table></figure>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">L[<span class="number">-2</span>:]  <span class="comment">#-2到0 但不包括索引0</span></div><div class="line">L[<span class="number">-2</span>:<span class="number">-1</span>] <span class="comment">#-2</span></div></pre></td></tr></table></figure>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">L[:<span class="number">10</span>:<span class="number">2</span>] <span class="comment">#前10 每隔2个取一个</span></div><div class="line">L[::<span class="number">5</span>] <span class="comment">#所有,每隔5个取一个</span></div><div class="line">L[:] <span class="comment">#原样复制</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>对tuple取切片,结果依然是tuple.</p>
-</li>
-<li><strong>字符串可以看作一个list</strong>,每个字符占一位.</li>
-</ul>
-<h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><ul>
-<li>迭代很随便…太随便了…</li>
-<li>list tuple不多说了</li>
-<li><p>dict字典也可以迭代,因为无序,输出的顺序不一定相同.<br>默认迭代的是key 但value 也可以迭代,key value也可以同时迭代</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> value <span class="keyword">in</span> d.values()</div><div class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> d.items()</div></pre></td></tr></table></figure>
-</li>
-<li><p>上文书中说的,字符串可以当作list,所以也可以迭代.</p>
-</li>
-<li><p>问题来了,如何判断可迭代对象?<br><code>collections模块的Iterable类型判断</code></p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(<span class="string">'abc'</span>, Iterable) <span class="comment"># str是否可迭代</span></div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>类似c/java的带下标循环实现?<br>Python内置的<code>enumerate函数</code>,把一个list变成索引-元素对</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i, value <span class="keyword">in</span> enumerate([<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>]):</div><div class="line">  print(i, value)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h3><ul>
-<li><code>用来生成list</code></li>
-<li><p>示例: [1x1, 2x2, 3x3, …, 10x10]</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">11</span>)] </div><div class="line">[m + n <span class="keyword">for</span> m <span class="keyword">in</span> <span class="string">'ABC'</span> <span class="keyword">for</span> n <span class="keyword">in</span> <span class="string">'XYZ'</span>] <span class="comment">#两层</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>for可以同时循环两个甚至多个变量,dict的items()可以同时迭代key和value</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">d = &#123;<span class="string">'x'</span>: <span class="string">'A'</span>, <span class="string">'y'</span>: <span class="string">'B'</span>, <span class="string">'z'</span>: <span class="string">'C'</span> &#125; <span class="comment"># 多个变量</span></div><div class="line">[k + <span class="string">'='</span> + v <span class="keyword">for</span> k, v <span class="keyword">in</span> d.items()] <span class="comment"># 生成list</span></div><div class="line">[s.lower() <span class="keyword">for</span> s <span class="keyword">in</span> L] <span class="comment"># 全部小写</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h3><ul>
-<li>generator 依照某种算法不断循环生成数据,而不是一次性生成完.节省大量空间.</li>
-<li><p>创建generator</p>
-<ul>
-<li><p>把列表生成式的[]改成()</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g = (x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>))</div></pre></td></tr></table></figure>
-<p>调用<code>next(g)</code>可获取下一个值.<br>最常用<code>for n in g:</code>代入for循环.也没有抛出错误.</p>
-</li>
-<li><p>定义一个包含<code>yield</code>关键字的函数.</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(max)</span>:</span></div><div class="line">n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></div><div class="line"><span class="keyword">while</span> n &lt; max:</div><div class="line">    <span class="keyword">yield</span> b</div><div class="line">    a, b = b, a + b</div><div class="line">    n = n + <span class="number">1</span></div><div class="line"><span class="keyword">return</span> <span class="string">'done'</span></div></pre></td></tr></table></figure>
-<ul>
-<li>变成generator的函数，在每次调用next()的时候执行，遇到yield语句返回，再次执行时从上次返回的yield语句处继续执行。</li>
-<li>用for循环调用generator时，拿不到generator的return语句的返回值。如果想要拿到返回值，必须捕获StopIteration错误，返回值包含在StopIteration的value中.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><ul>
-<li><p>可以被for循环的对象统称为可迭代对象：<code>Iterable</code><br>使用isinstance()判断一个对象是否是Iterable对象</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isinstance(&#123;&#125;, Iterable)</div></pre></td></tr></table></figure>
-</li>
-<li><p>可以被next()函数调用并不断返回下一个值的对象称为迭代器：<code>Iterator</code> 表示一个惰性计算的序列 <code>Iterator</code>甚至可以表示一个无限大的数据流<br>isinstance()判断一个对象是否是Iterator对象</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isinstance((x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)), Iterator)</div></pre></td></tr></table></figure>
-</li>
-<li><p>集合数据类型如list、dict、str等是Iterable但不是Iterator，不过可以通过iter()函数获得一个Iterator对象。</p>
-</li>
-<li>Python的for循环本质上就是通过不断调用next()</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-	
-
-	
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-	
-	
-	<div>
-	    <p id="div-border-left-blue">
-	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
-	    <span>
-	    <b>本文地址：</b><a href="/index.html" title=""></a><br/><b>转载请注明出处，谢谢！</b>
-	    </span>
-	    </p>
-	</div>
-	
-
-	
-    <footer class="post-footer">
-	
-	
-	
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-  
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/19/python—基础/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jasper">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/v.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="默">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/19/python—基础/" itemprop="url">
-                  python—基础
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T10:17:11+08:00">
-                2018-01-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">python笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/19/python—基础/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/19/python—基础/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/01/19/python—基础/" class="leancloud_visitors" data-flag-title="python—基础">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  812
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  3m
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
-<li>整数 浮点数 <h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3></li>
-<li>字符串以单引号 ‘ 或 “ 包括. </li>
-<li>转义字符 \ 依然有效. r’’表示此字符串默认不转移.</li>
-<li>/n有效, 可用 开头 … 替换<h3 id="布尔"><a href="#布尔" class="headerlink" title="布尔"></a>布尔</h3></li>
-<li>只有True 和 Flase </li>
-<li>and or not 3种常用操作</li>
-</ul>
-<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><ul>
-<li>通常都为大写表示.</li>
-<li>除法有两种 / 或 //<br>/ 结果可能为浮点, // 结果为整数(地板除)</li>
-</ul>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
-<li>None 空值,不为0.谨记</li>
-<li>动态语言,so,变量的类型无所谓.</li>
-<li>浮点数精度无限,但超过限制直接表示为 <code>inf</code></li>
-</ul>
-<h2 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h2><ul>
-<li>简而言之 文件使用utf-8就对了.</li>
-<li>utf-8 属于万国码的简化,低位与 ASCII 兼容.</li>
-</ul>
-<h3 id="python字符串编码"><a href="#python字符串编码" class="headerlink" title="python字符串编码"></a>python字符串编码</h3><ul>
-<li>py3中默认是 Unicode 万国码.</li>
-<li>ord()获取字符的整数表示，chr()把编码转换为字符.</li>
-<li>Python对bytes类型的数据用带b前缀的单引号或双引号表示 <code>x = b&#39;ABC&#39;</code></li>
-<li><p>以Unicode表示的str通过encode()方法可以编码为指定的bytes</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">'ABC'</span>.encode(<span class="string">'ascii'</span>)</div><div class="line"><span class="string">b'ABC'</span></div><div class="line"><span class="string">'中文'</span>.encode(<span class="string">'utf-8'</span>)</div><div class="line"><span class="string">b'\xe4\xb8\xad\xe6\x96\x87'</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>对应的decode()方法</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'ABC'</span>.decode(<span class="string">'ascii'</span>)</div><div class="line"><span class="string">'ABC'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'\xe4\xb8\xad\xe6\x96\x87'</span>.decode(<span class="string">'utf-8'</span>)</div><div class="line"><span class="string">'中文'</span></div></pre></td></tr></table></figure>
-<p>可以传入errors=’ignore’忽略错误的字节</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">b'\xe4\xb8\xad\xff'</span>.decode(<span class="string">'utf-8'</span>, errors=<span class="string">'ignore'</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>len(),str计算字符.bytes计算字节</p>
-</li>
-<li>开头,第一行,可执行文件(windows会忽视注释)<br>第二行,以utf-8处理文件.<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="字符串格式化"><a href="#字符串格式化" class="headerlink" title="字符串格式化"></a>字符串格式化</h3><ul>
-<li><p>占位符与c基本相同 %d %s %x %f</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">'%2d-%02d'</span> % (<span class="number">3</span>, <span class="number">1</span>))</div><div class="line">print(<span class="string">'%.2f'</span> % <span class="number">3.1415926</span>)</div></pre></td></tr></table></figure>
-<p>需要 % 时, %%</p>
-</li>
-<li><p>format()</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'Hello, &#123;0&#125;, 成绩提升了 &#123;1:.1f&#125;%'</span>.format(<span class="string">'小明'</span>, <span class="number">17.125</span>)</div><div class="line"><span class="string">'Hello, 小明, 成绩提升了 17.1%'</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="list-tuple"><a href="#list-tuple" class="headerlink" title="list tuple"></a>list tuple</h2><h3 id="list-列表"><a href="#list-列表" class="headerlink" title="list 列表"></a>list 列表</h3><ul>
-<li><p>示例, <code>= [ , , ]</code> 可变 有序</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">classmates = [<span class="string">'Michael'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>]</div></pre></td></tr></table></figure>
-</li>
-<li><p>索引以 0 开始,可以倒序 <code>-n</code> 当然越界都是 <code>IndexError</code> 错误</p>
-</li>
-<li>.len(),list元素个数.</li>
-<li>.append(x) 末尾添加</li>
-<li>.insert(i,x) 对应索引处插入</li>
-<li>.pop(i) 删除i对应元素,为空则删除末尾元素.</li>
-<li>替换i位置,直接赋值.</li>
-<li>list的元素可以为一个list.多重数组.</li>
-</ul>
-<h3 id="tuple-元组"><a href="#tuple-元组" class="headerlink" title="tuple 元组"></a>tuple 元组</h3><ul>
-<li><p>示例<code>= ( , , )</code> 不可变 有序 更安全,其他与list相同</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">t = (<span class="number">1</span>, <span class="number">2</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p><code>t = (1,)</code>声明一个元素元组,比较特殊.</p>
-</li>
-</ul>
-<h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2><ul>
-<li><p>示例</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> true :</div><div class="line">    print(<span class="string">"1"</span>)</div><div class="line"><span class="keyword">elif</span> true :</div><div class="line">    print(<span class="string">"2"</span>)</div><div class="line"><span class="keyword">else</span> :</div><div class="line">    print(<span class="string">"3"</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>if 条件可简写,<code>if x</code> x非零数值、非空字符串、非空list 则为true</p>
-</li>
-<li>提及用户输入 input()</li>
-<li>input默认返回字符串,如需要其他类型 int()转换.</li>
-</ul>
-<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><ul>
-<li><p>示例 与c相同</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> x <span class="keyword">in</span> names:</div><div class="line">    print(x)</div></pre></td></tr></table></figure>
-</li>
-<li><p>示例 与c相同</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> n &gt; <span class="number">0</span>:</div><div class="line">    print(n)</div></pre></td></tr></table></figure>
-</li>
-<li><p>break 跳出此层循环</p>
-</li>
-<li>continue 跳出本轮循环</li>
-</ul>
-<h2 id="dict-和-set"><a href="#dict-和-set" class="headerlink" title="dict 和 set"></a>dict 和 set</h2><h3 id="dict"><a href="#dict" class="headerlink" title="dict"></a>dict</h3><ul>
-<li>字典,使用键值对储存数据,索引极快,空间换时间.</li>
-<li>对应其他语言的 map </li>
-<li><p>示例: {‘’: ,’’: ,…}</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">d = &#123;<span class="string">'Michael'</span>: <span class="number">95</span>, <span class="string">'Bob'</span>: <span class="number">75</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</div><div class="line">d[<span class="string">'Michael'</span>]</div><div class="line"><span class="number">95</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>key</p>
-<ul>
-<li>必须为不可变对象,整数、字符串等</li>
-<li>一个key对应一个value</li>
-<li><p>key不存在</p>
-<ul>
-<li><p>in判断</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'Thomas'</span> <span class="keyword">in</span> d</div><div class="line"><span class="keyword">False</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>get()获取</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">d.get(<span class="string">'Thomas'</span>) <span class="comment"># 返回空</span></div><div class="line">d.get(<span class="string">'Thomas'</span>, <span class="number">-1</span>) <span class="comment"># 不存在? 返回-1: ;</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>pop()删除</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">d.pop(<span class="string">'Bob'</span>)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><ul>
-<li>key的集合,但不存在value</li>
-<li>无序、不重复、元素为不可变对象</li>
-<li>创建set需要一个list</li>
-<li><p>示例 set([ , , …])</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s</div><div class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p><code>.add(key)</code>/<code>.remove(key)</code></p>
-</li>
 </ul>
 
           
