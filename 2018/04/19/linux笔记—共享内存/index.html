@@ -1,0 +1,1278 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="学习记录,Linux," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="默" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="共享内存 即多进程之间直接对读写同一段内存.相比较管道及消息队列,显而易见的好处是速度快,所有的IPC方法中效率最高.但共享内存并未提供同步机制,需要自行实现.  原理 顾名思义，共享内存就是说两个不同的进程A、B可以共同享有一块内存区域  整个处理流程是  进程A第一次访问该页中的数据时, 生成一个缺页中断. 内核读入此页到内存并更新页表使之指向此页. 进程B访问同一页面而出现缺页中断,内核只将">
+<meta name="keywords" content="学习记录,Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux笔记—共享内存">
+<meta property="og:url" content="http://yoursite.com/2018/04/19/linux笔记—共享内存/index.html">
+<meta property="og:site_name" content="默">
+<meta property="og:description" content="共享内存 即多进程之间直接对读写同一段内存.相比较管道及消息队列,显而易见的好处是速度快,所有的IPC方法中效率最高.但共享内存并未提供同步机制,需要自行实现.  原理 顾名思义，共享内存就是说两个不同的进程A、B可以共同享有一块内存区域  整个处理流程是  进程A第一次访问该页中的数据时, 生成一个缺页中断. 内核读入此页到内存并更新页表使之指向此页. 进程B访问同一页面而出现缺页中断,内核只将">
+<meta property="og:image" content="https://i.loli.net/2018/04/27/5ae2e1a5719a2.png">
+<meta property="og:updated_time" content="2018-04-30T16:33:39.255Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux笔记—共享内存">
+<meta name="twitter:description" content="共享内存 即多进程之间直接对读写同一段内存.相比较管道及消息队列,显而易见的好处是速度快,所有的IPC方法中效率最高.但共享内存并未提供同步机制,需要自行实现.  原理 顾名思义，共享内存就是说两个不同的进程A、B可以共同享有一块内存区域  整个处理流程是  进程A第一次访问该页中的数据时, 生成一个缺页中断. 内核读入此页到内存并更新页表使之指向此页. 进程B访问同一页面而出现缺页中断,内核只将">
+<meta name="twitter:image" content="https://i.loli.net/2018/04/27/5ae2e1a5719a2.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/19/linux笔记—共享内存/"/>
+
+
+
+
+
+  <title> linux笔记—共享内存 | 默 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-79641673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">默</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">为了生存，而一点点淡忘了最初的本意。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/19/linux笔记—共享内存/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                linux笔记—共享内存
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-19T10:17:11+08:00">
+                2018-04-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">linux笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/19/linux笔记—共享内存/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/04/19/linux笔记—共享内存/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/04/19/linux笔记—共享内存/" class="leancloud_visitors" data-flag-title="linux笔记—共享内存">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,747
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="共享内存"><a href="#共享内存" class="headerlink" title="共享内存"></a>共享内存</h1><ul>
+<li>即多进程之间直接对读写同一段内存.相比较管道及消息队列,显而易见的好处是速度快,所有的IPC方法中效率最高.但共享内存并未提供同步机制,需要自行实现.</li>
+</ul>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><ul>
+<li><p>顾名思义，共享内存就是说两个不同的进程A、B可以共同享有一块内存区域<br><img src="https://i.loli.net/2018/04/27/5ae2e1a5719a2.png" alt="20150124140604078.png"></p>
+</li>
+<li><p>整个处理流程是</p>
+<ul>
+<li>进程A第一次访问该页中的数据时, 生成一个缺页中断. 内核读入此页到内存并更新页表使之指向此页.</li>
+<li>进程B访问同一页面而出现缺页中断,内核只将进程B的页表登记项指向次页即可.</li>
+<li>进程A.B 即可访问同一段内存.</li>
+</ul>
+</li>
+</ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ul>
+<li><p>shmget函数<br>shmget被用来开辟/初始化一段共享内存.其他进程使用相同的key 通过 shgat 获取同一段共享内存.，只有shmget函数才直接使用信号量键,所有其他的信号量函数使用由semget函数返回的信号量标识符.</p>
+<p>函数原型</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">shmget</span><span class="params">(<span class="keyword">key_t</span> key, <span class="keyword">size_t</span> size, <span class="keyword">int</span> shmflg)</span></span>;</div></pre></td></tr></table></figure>
+<p>key : 与信号量的semget函数一样，使用共享内存key（非0整数）shmget函数成功时返回一个与key相关的共享内存标识符(非负整数),用于多进程的共享.调用失败返回-1.<br>size : 开辟的共享内存大小(字节).<br>shmflg : 权限控制,与IPC_CREAT做或操作,控制其他进程对共享内存权限. 0644即代表其他进程只有读的权限.</p>
+</li>
+<li><p>shmat函数<br>用来启动对该共享内存的访问，并把共享内存连接到当前进程的地址空间</p>
+<p>函数原型</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> *<span class="title">shmat</span><span class="params">(<span class="keyword">int</span> shm_id, <span class="keyword">const</span> <span class="keyword">void</span> *shm_addr, <span class="keyword">int</span> shmflg)</span></span>;</div></pre></td></tr></table></figure>
+<p>shm_id: 由shmget函数返回的共享内存标识.<br>shm_addr: 指定共享内存连接到当前进程中的地址位置，通常为空，表示让系统来选择共享内存的地址.<br>shm_flg: 标志位，通常为0.</p>
+</li>
+<li><p>shmdt函数<br>将共享内存从当前进程中分离,使该共享内存对当前进程不再可用.</p>
+<p>函数原型:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">shmdt</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> *shmaddr)</span></span>;</div></pre></td></tr></table></figure>
+<p>shmaddr: shmat函数返回的地址指针，调用成功时返回0，失败时返回-1.</p>
+</li>
+<li><p>shmctl函数<br>控制共享内存.</p>
+<p>函数原型</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">shmctl</span><span class="params">(<span class="keyword">int</span> shmid, <span class="keyword">int</span> cmd, struct shmid_ds *buf)</span></span></div></pre></td></tr></table></figure>
+<p>shm_id: shmget函数返回的共享内存标识符</p>
+<p>command: 要采取的操作,以下三个值 ：</p>
+<ul>
+<li>IPC_STAT：把shmid_ds结构中的数据设置为共享内存的当前关联值，即用共享内存的当前关联值覆盖shmid_ds的值.</li>
+<li>IPC_SET：如果进程有足够的权限，就把共享内存的当前关联值设置为shmid_ds结构中给出的值</li>
+<li>IPC_RMID：删除共享内存段</li>
+</ul>
+<p>buf: 结构指针,指向共享内存模式和访问权限的结构.</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">shmid_ds结构至少包括以下成员：</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">shmid_ds</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">uid_t</span> shm_perm.uid;</div><div class="line">    <span class="keyword">uid_t</span> shm_perm.gid;</div><div class="line">    <span class="keyword">mode_t</span> shm_perm.mode;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="系统限制及规避"><a href="#系统限制及规避" class="headerlink" title="系统限制及规避"></a>系统限制及规避</h2><h3 id="大小"><a href="#大小" class="headerlink" title="大小"></a>大小</h3><ul>
+<li>linux默认限制共享内存总大小由 SHMMAX 值确定.默认值未32MB</li>
+<li><p>读取</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /proc/sys/kernel/shmmax</div></pre></td></tr></table></figure>
+</li>
+<li><p>当超过系统限制时 提示 <code>unable to attach to shared memory</code>.</p>
+</li>
+<li><p>规避</p>
+<ul>
+<li><p>直接修改/proc.无需重启</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"2147483648"</span> &amp;gt; /proc/sys/kernel/shmmax</div></pre></td></tr></table></figure>
+<p>可以将命令写入启动脚本 /etc/rc.local中.保证重启生效</p>
+</li>
+<li><p>使用 sysctl 命令修改</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sysctl -w kernel.shmmax=2147483648</div></pre></td></tr></table></figure>
+<p>可以将此参数插入到 /etc/sysctl.conf 启动文件中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"kernel.shmmax=2147483648"</span> &amp;gt;&amp;gt; /etc/sysctl.conf</div></pre></td></tr></table></figure>
+<p>永久生效.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="数量"><a href="#数量" class="headerlink" title="数量"></a>数量</h3><ul>
+<li>与大小类似的,共享内存创建的总数量由 SHMMNI 参数确定.</li>
+<li><p>读取</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /proc/sys/kernel/shmmni</div></pre></td></tr></table></figure>
+<p>默认情况下是 4096.</p>
+</li>
+<li><p>一般不需要修改.</p>
+</li>
+</ul>
+<h3 id="同一进程多次shmat"><a href="#同一进程多次shmat" class="headerlink" title="同一进程多次shmat"></a>同一进程多次shmat</h3><ul>
+<li>shmat即挂载共享内存到进程的进程空间.</li>
+<li><p>当同一进程多次调用shmat 挂载同一共享内存时,shamat每次返回的地址都不同,相当于在进程的线性空间中存在多个实际指向同一块共享内存.直到最后进程线性空间消耗殆尽.</p>
+</li>
+<li><p>解决:<br>需要在挂载共享内存前,判断申请的共享内存指针是否为空,为 NULL ,则第一次加载此共享内存.否则不再重复加载.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span>* p = <span class="literal">NULL</span>;</div><div class="line"><span class="comment">/*其他操作*/</span></div><div class="line"><span class="keyword">if</span> (<span class="literal">NULL</span> == p)</div><div class="line">&#123;</div><div class="line">   p = shmat(shmid,p,<span class="number">0666</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="多个进程相同key多次创建共享内存"><a href="#多个进程相同key多次创建共享内存" class="headerlink" title="多个进程相同key多次创建共享内存"></a>多个进程相同key多次创建共享内存</h3><ul>
+<li><p>共享内存创建有大小之分.key相同情况下,容量小的共享内存会获得之前创建的大的共享内存的内容.有可能导致之前创建共享内存的进程崩溃.</p>
+</li>
+<li><p>解决</p>
+<ul>
+<li><p>在shmage使用IPC_EXCL标记.现行判断共享内存是否已创建.如果已创建则挂载,没有创建返回失败后,再创建.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Shmid = Shmget(key, size,IPC_CREATE|IPC_EXCL); </div><div class="line"><span class="keyword">if</span> (<span class="number">-1</span> != shmid) </div><div class="line">&#123;</div><div class="line">  <span class="comment">/*错误处理*/</span></div><div class="line">  Shmid = Shmget(key, size,IPC_CREATE);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>不通过key 标记同一块共享内存.<br>shmget使用 kry = IPC_PRIVATE ,linux会忽略key值,直接新建一块共享内存.返回标识,通过管道/文件方式共享给其他进程使用.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="共享内存删除"><a href="#共享内存删除" class="headerlink" title="共享内存删除"></a>共享内存删除</h3><ul>
+<li>调用shmctl 删除共享内存后,共享内存并不会立刻被系统清理.</li>
+<li><p>首先共享内存的 shmid_ds结构中的 shm_nattch 减一.该共享内存从调用shmctl的进程剥离.但 shm_nattch 不为 0 的情况下,即仍然有别进程连接的情况下.共享内存并不会立刻清除. 只有在 shm_nattch 为 0 ,没有任何进程连接的情况下,系统才会清理 这段共享内存.</p>
+</li>
+<li><p>该段共享内存被任何连接的进程执行 shmctl 删除操作后, 新的进程将无法连接到该段共享内存. </p>
+</li>
+<li>与之对应的 Shmdt ,只是将共享内存由 调用的进程空间剥离.不会影响其他进程连接到该段共享内存.</li>
+</ul>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><ul>
+<li>多进程共享数据.以链表为例.</li>
+<li><p>有两种方式:</p>
+<ul>
+<li>开辟一段共享内存,之后存入整个链表.将共享内存连接到各个进程.<ul>
+<li>优点:<ul>
+<li>对原有代码改动少.</li>
+</ul>
+</li>
+<li>缺点:<ul>
+<li>封装链表操作时,各个进程头节点偏移量不同,不能简单的通过 <code>*p-&gt;next</code> 访问.</li>
+<li>有共享内存大小限制.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>每一个链表节点对应一个共享内存.开辟同等数量的共享内存.<ul>
+<li>优点<ul>
+<li>可以随用随创,相对节省内存.</li>
+<li>链表节点next 存储相对链表头节点偏移即可,访问操作相对单一共享内存容易.</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>受限于 linux 默认 4096的总数量限制.且总数不易更改.</li>
+<li>开辟新链表节点相对复杂.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>实际使用中第一种较为常见.</p>
+</li>
+</ul>
+<h3 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h3><ul>
+<li>与共享内存类似的信号量,也是跨进程的.信号量是比较一种比较方便配合共享内存同步的方式.</li>
+</ul>
+
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="https://my.mixtape.moe/pkqlqc.png" alt="Jasper Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/2018/04/19/linux笔记—共享内存/" title="linux笔记—共享内存">http://yoursite.com/2018/04/19/linux笔记—共享内存/</a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+        <div class="post-tags">
+          
+            <a href="/tags/学习记录/" rel="tag"># 学习记录</a>
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/14/Android随手记-Rxjava2/" rel="next" title="Android随手记—Rxjava2">
+                <i class="fa fa-chevron-left"></i> Android随手记—Rxjava2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/29/python—生成测试文件/" rel="prev" title="python—生成测试文件">
+                python—生成测试文件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/v.png"
+               alt="Jasper" />
+          <p class="site-author-name" itemprop="name">Jasper</p>
+           
+              <p class="site-description motion-element" itemprop="description">程序员 微尘 V</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jasper-1024" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#共享内存"><span class="nav-number">1.</span> <span class="nav-text">共享内存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">1.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">1.2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统限制及规避"><span class="nav-number">1.3.</span> <span class="nav-text">系统限制及规避</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#大小"><span class="nav-number">1.3.1.</span> <span class="nav-text">大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数量"><span class="nav-number">1.3.2.</span> <span class="nav-text">数量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同一进程多次shmat"><span class="nav-number">1.3.3.</span> <span class="nav-text">同一进程多次shmat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多个进程相同key多次创建共享内存"><span class="nav-number">1.3.4.</span> <span class="nav-text">多个进程相同key多次创建共享内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共享内存删除"><span class="nav-number">1.3.5.</span> <span class="nav-text">共享内存删除</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用"><span class="nav-number">1.4.</span> <span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#同步"><span class="nav-number">1.4.1.</span> <span class="nav-text">同步</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016.6.2 - 
+  <span itemprop="copyrightYear">2018.5.1</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jasper</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://jasper1024.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/04/19/linux笔记—共享内存/';
+          this.page.identifier = '2018/04/19/linux笔记—共享内存/';
+          this.page.title = 'linux笔记—共享内存';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://jasper1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("8AEPwU1rVoSnwxtOrX35u23j-gzGzoHsz", "SBLr7EMdL83IXCfJSbydMdll");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

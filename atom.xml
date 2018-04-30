@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-03-23T18:12:36.802Z</updated>
+  <updated>2018-04-30T16:35:31.285Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,449 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python—生成测试文件</title>
+    <link href="http://yoursite.com/2018/04/29/python%E2%80%94%E7%94%9F%E6%88%90%E6%B5%8B%E8%AF%95%E6%96%87%E4%BB%B6/"/>
+    <id>http://yoursite.com/2018/04/29/python—生成测试文件/</id>
+    <published>2018-04-29T02:17:11.000Z</published>
+    <updated>2018-04-30T16:35:31.285Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li><p>需要一些原始数据,简单记录</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment">#-*- coding:utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> random</div><div class="line"><span class="keyword">import</span> string</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getWhitList_Size</span><span class="params">(ListSize)</span>:</span></div><div class="line">    numCount=ListSize</div><div class="line"></div><div class="line">    i=<span class="number">0</span></div><div class="line">    filePath=<span class="string">"List.txt"</span></div><div class="line">    <span class="keyword">with</span> open(filePath, <span class="string">"w"</span>, encoding=<span class="string">"GBK"</span>) <span class="keyword">as</span> f:</div><div class="line">    <span class="keyword">while</span> i&lt;numCount:</div><div class="line">        f.write(<span class="string">''</span>.join(random.choices(string.ascii_uppercase + string.digits, k=<span class="number">6</span>)))</div><div class="line">        f.write(<span class="string">"\n"</span>)</div><div class="line">        i=i+<span class="number">1</span></div><div class="line"></div><div class="line">getWhitList_Size(<span class="number">50000</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>python文件操作:</p>
+<ul>
+<li>其他语言也大同小异.</li>
+<li>open write close</li>
+</ul>
+</li>
+<li><p>核心是 随机生成字符串</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">''</span>.join(random.choices(string.ascii_uppercase + string.digits, k=<span class="number">6</span>))</div></pre></td></tr></table></figure>
+<p><code>random.choices(population, weights=None, *, cum_weights=None, k=1)</code><br>从population集群中随机抽取K个元素 weights是相对权重列表 cum_weights是累计权重 两个参数不能同时存在.<br>(注:random.choices是python3.6后新增方法)</p>
+<ul>
+<li><code>string.ascii_uppercase + string.digits</code> 是string包下代表大写字母和字符串的集合.</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;需要一些原始数据,简单记录&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;
+    
+    </summary>
+    
+      <category term="python笔记" scheme="http://yoursite.com/categories/python%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux笔记—共享内存</title>
+    <link href="http://yoursite.com/2018/04/19/linux%E7%AC%94%E8%AE%B0%E2%80%94%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98/"/>
+    <id>http://yoursite.com/2018/04/19/linux笔记—共享内存/</id>
+    <published>2018-04-19T02:17:11.000Z</published>
+    <updated>2018-04-30T16:33:39.255Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="共享内存"><a href="#共享内存" class="headerlink" title="共享内存"></a>共享内存</h1><ul>
+<li>即多进程之间直接对读写同一段内存.相比较管道及消息队列,显而易见的好处是速度快,所有的IPC方法中效率最高.但共享内存并未提供同步机制,需要自行实现.</li>
+</ul>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><ul>
+<li><p>顾名思义，共享内存就是说两个不同的进程A、B可以共同享有一块内存区域<br><img src="https://i.loli.net/2018/04/27/5ae2e1a5719a2.png" alt="20150124140604078.png"></p>
+</li>
+<li><p>整个处理流程是</p>
+<ul>
+<li>进程A第一次访问该页中的数据时, 生成一个缺页中断. 内核读入此页到内存并更新页表使之指向此页.</li>
+<li>进程B访问同一页面而出现缺页中断,内核只将进程B的页表登记项指向次页即可.</li>
+<li>进程A.B 即可访问同一段内存.</li>
+</ul>
+</li>
+</ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ul>
+<li><p>shmget函数<br>shmget被用来开辟/初始化一段共享内存.其他进程使用相同的key 通过 shgat 获取同一段共享内存.，只有shmget函数才直接使用信号量键,所有其他的信号量函数使用由semget函数返回的信号量标识符.</p>
+<p>函数原型</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">shmget</span><span class="params">(<span class="keyword">key_t</span> key, <span class="keyword">size_t</span> size, <span class="keyword">int</span> shmflg)</span></span>;</div></pre></td></tr></table></figure>
+<p>key : 与信号量的semget函数一样，使用共享内存key（非0整数）shmget函数成功时返回一个与key相关的共享内存标识符(非负整数),用于多进程的共享.调用失败返回-1.<br>size : 开辟的共享内存大小(字节).<br>shmflg : 权限控制,与IPC_CREAT做或操作,控制其他进程对共享内存权限. 0644即代表其他进程只有读的权限.</p>
+</li>
+<li><p>shmat函数<br>用来启动对该共享内存的访问，并把共享内存连接到当前进程的地址空间</p>
+<p>函数原型</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> *<span class="title">shmat</span><span class="params">(<span class="keyword">int</span> shm_id, <span class="keyword">const</span> <span class="keyword">void</span> *shm_addr, <span class="keyword">int</span> shmflg)</span></span>;</div></pre></td></tr></table></figure>
+<p>shm_id: 由shmget函数返回的共享内存标识.<br>shm_addr: 指定共享内存连接到当前进程中的地址位置，通常为空，表示让系统来选择共享内存的地址.<br>shm_flg: 标志位，通常为0.</p>
+</li>
+<li><p>shmdt函数<br>将共享内存从当前进程中分离,使该共享内存对当前进程不再可用.</p>
+<p>函数原型:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">shmdt</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> *shmaddr)</span></span>;</div></pre></td></tr></table></figure>
+<p>shmaddr: shmat函数返回的地址指针，调用成功时返回0，失败时返回-1.</p>
+</li>
+<li><p>shmctl函数<br>控制共享内存.</p>
+<p>函数原型</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">shmctl</span><span class="params">(<span class="keyword">int</span> shmid, <span class="keyword">int</span> cmd, struct shmid_ds *buf)</span></span></div></pre></td></tr></table></figure>
+<p>shm_id: shmget函数返回的共享内存标识符</p>
+<p>command: 要采取的操作,以下三个值 ：</p>
+<ul>
+<li>IPC_STAT：把shmid_ds结构中的数据设置为共享内存的当前关联值，即用共享内存的当前关联值覆盖shmid_ds的值.</li>
+<li>IPC_SET：如果进程有足够的权限，就把共享内存的当前关联值设置为shmid_ds结构中给出的值</li>
+<li>IPC_RMID：删除共享内存段</li>
+</ul>
+<p>buf: 结构指针,指向共享内存模式和访问权限的结构.</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">shmid_ds结构至少包括以下成员：</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">shmid_ds</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">uid_t</span> shm_perm.uid;</div><div class="line">    <span class="keyword">uid_t</span> shm_perm.gid;</div><div class="line">    <span class="keyword">mode_t</span> shm_perm.mode;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="系统限制及规避"><a href="#系统限制及规避" class="headerlink" title="系统限制及规避"></a>系统限制及规避</h2><h3 id="大小"><a href="#大小" class="headerlink" title="大小"></a>大小</h3><ul>
+<li>linux默认限制共享内存总大小由 SHMMAX 值确定.默认值未32MB</li>
+<li><p>读取</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /proc/sys/kernel/shmmax</div></pre></td></tr></table></figure>
+</li>
+<li><p>当超过系统限制时 提示 <code>unable to attach to shared memory</code>.</p>
+</li>
+<li><p>规避</p>
+<ul>
+<li><p>直接修改/proc.无需重启</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"2147483648"</span> &amp;gt; /proc/sys/kernel/shmmax</div></pre></td></tr></table></figure>
+<p>可以将命令写入启动脚本 /etc/rc.local中.保证重启生效</p>
+</li>
+<li><p>使用 sysctl 命令修改</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sysctl -w kernel.shmmax=2147483648</div></pre></td></tr></table></figure>
+<p>可以将此参数插入到 /etc/sysctl.conf 启动文件中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"kernel.shmmax=2147483648"</span> &amp;gt;&amp;gt; /etc/sysctl.conf</div></pre></td></tr></table></figure>
+<p>永久生效.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="数量"><a href="#数量" class="headerlink" title="数量"></a>数量</h3><ul>
+<li>与大小类似的,共享内存创建的总数量由 SHMMNI 参数确定.</li>
+<li><p>读取</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /proc/sys/kernel/shmmni</div></pre></td></tr></table></figure>
+<p>默认情况下是 4096.</p>
+</li>
+<li><p>一般不需要修改.</p>
+</li>
+</ul>
+<h3 id="同一进程多次shmat"><a href="#同一进程多次shmat" class="headerlink" title="同一进程多次shmat"></a>同一进程多次shmat</h3><ul>
+<li>shmat即挂载共享内存到进程的进程空间.</li>
+<li><p>当同一进程多次调用shmat 挂载同一共享内存时,shamat每次返回的地址都不同,相当于在进程的线性空间中存在多个实际指向同一块共享内存.直到最后进程线性空间消耗殆尽.</p>
+</li>
+<li><p>解决:<br>需要在挂载共享内存前,判断申请的共享内存指针是否为空,为 NULL ,则第一次加载此共享内存.否则不再重复加载.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span>* p = <span class="literal">NULL</span>;</div><div class="line"><span class="comment">/*其他操作*/</span></div><div class="line"><span class="keyword">if</span> (<span class="literal">NULL</span> == p)</div><div class="line">&#123;</div><div class="line">   p = shmat(shmid,p,<span class="number">0666</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="多个进程相同key多次创建共享内存"><a href="#多个进程相同key多次创建共享内存" class="headerlink" title="多个进程相同key多次创建共享内存"></a>多个进程相同key多次创建共享内存</h3><ul>
+<li><p>共享内存创建有大小之分.key相同情况下,容量小的共享内存会获得之前创建的大的共享内存的内容.有可能导致之前创建共享内存的进程崩溃.</p>
+</li>
+<li><p>解决</p>
+<ul>
+<li><p>在shmage使用IPC_EXCL标记.现行判断共享内存是否已创建.如果已创建则挂载,没有创建返回失败后,再创建.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Shmid = Shmget(key, size,IPC_CREATE|IPC_EXCL); </div><div class="line"><span class="keyword">if</span> (<span class="number">-1</span> != shmid) </div><div class="line">&#123;</div><div class="line">  <span class="comment">/*错误处理*/</span></div><div class="line">  Shmid = Shmget(key, size,IPC_CREATE);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>不通过key 标记同一块共享内存.<br>shmget使用 kry = IPC_PRIVATE ,linux会忽略key值,直接新建一块共享内存.返回标识,通过管道/文件方式共享给其他进程使用.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="共享内存删除"><a href="#共享内存删除" class="headerlink" title="共享内存删除"></a>共享内存删除</h3><ul>
+<li>调用shmctl 删除共享内存后,共享内存并不会立刻被系统清理.</li>
+<li><p>首先共享内存的 shmid_ds结构中的 shm_nattch 减一.该共享内存从调用shmctl的进程剥离.但 shm_nattch 不为 0 的情况下,即仍然有别进程连接的情况下.共享内存并不会立刻清除. 只有在 shm_nattch 为 0 ,没有任何进程连接的情况下,系统才会清理 这段共享内存.</p>
+</li>
+<li><p>该段共享内存被任何连接的进程执行 shmctl 删除操作后, 新的进程将无法连接到该段共享内存. </p>
+</li>
+<li>与之对应的 Shmdt ,只是将共享内存由 调用的进程空间剥离.不会影响其他进程连接到该段共享内存.</li>
+</ul>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><ul>
+<li>多进程共享数据.以链表为例.</li>
+<li><p>有两种方式:</p>
+<ul>
+<li>开辟一段共享内存,之后存入整个链表.将共享内存连接到各个进程.<ul>
+<li>优点:<ul>
+<li>对原有代码改动少.</li>
+</ul>
+</li>
+<li>缺点:<ul>
+<li>封装链表操作时,各个进程头节点偏移量不同,不能简单的通过 <code>*p-&gt;next</code> 访问.</li>
+<li>有共享内存大小限制.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>每一个链表节点对应一个共享内存.开辟同等数量的共享内存.<ul>
+<li>优点<ul>
+<li>可以随用随创,相对节省内存.</li>
+<li>链表节点next 存储相对链表头节点偏移即可,访问操作相对单一共享内存容易.</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>受限于 linux 默认 4096的总数量限制.且总数不易更改.</li>
+<li>开辟新链表节点相对复杂.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>实际使用中第一种较为常见.</p>
+</li>
+</ul>
+<h3 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h3><ul>
+<li>与共享内存类似的信号量,也是跨进程的.信号量是比较一种比较方便配合共享内存同步的方式.</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;共享内存&quot;&gt;&lt;a href=&quot;#共享内存&quot; class=&quot;headerlink&quot; title=&quot;共享内存&quot;&gt;&lt;/a&gt;共享内存&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;即多进程之间直接对读写同一段内存.相比较管道及消息队列,显而易见的好处是速度快,所有的IPC方法中效率最高.但共
+    
+    </summary>
+    
+      <category term="linux笔记" scheme="http://yoursite.com/categories/linux%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android随手记—Rxjava2</title>
+    <link href="http://yoursite.com/2018/04/14/Android%E9%9A%8F%E6%89%8B%E8%AE%B0-Rxjava2/"/>
+    <id>http://yoursite.com/2018/04/14/Android随手记-Rxjava2/</id>
+    <published>2018-04-14T04:00:00.000Z</published>
+    <updated>2018-04-30T16:35:48.917Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><ul>
+<li>编程环境<ul>
+<li>Android Studio 3.2</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="解除订阅"><a href="#解除订阅" class="headerlink" title="解除订阅"></a>解除订阅</h2><ul>
+<li>CompositeDisposable:<ul>
+<li>得到一个Disposable实例时</li>
+<li>调用CompositeDisposable.add()添加到订阅</li>
+<li>生命周期结束 CompositeDisposable.clear() 可快速解除.</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;编程环境&lt;ul&gt;
+&lt;li&gt;Android Studio 3.2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="Android随手记" scheme="http://yoursite.com/categories/Android%E9%9A%8F%E6%89%8B%E8%AE%B0/"/>
+    
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>面试题汇总—Android</title>
+    <link href="http://yoursite.com/2018/04/07/%E9%9D%A2%E8%AF%95%E6%B1%87%E6%80%BB-Android/"/>
+    <id>http://yoursite.com/2018/04/07/面试汇总-Android/</id>
+    <published>2018-04-07T04:00:00.000Z</published>
+    <updated>2018-04-06T06:42:46.897Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<p>资料来源如下</p>
+<blockquote>
+<p><a href="https://github.com/AweiLoveAndroid/CommonDevKnowledge" target="_blank" rel="external">常用的Android开发的一些技能点以及BAT公司面试题汇集</a></p>
+</blockquote>
+<ul>
+<li><p>感觉自己白学了////😂////</p>
+</li>
+<li><p>一道一道的找答案..</p>
+</li>
+</ul>
+<hr>
+<h1 id="Android面试题"><a href="#Android面试题" class="headerlink" title="Android面试题"></a>Android面试题</h1><p>Android面试题除了Android基础之外，更多的问的是一些源码级别的、原理这些等。所以想去大公司面试，一定要多看看源码和实现方式，常用框架可以试试自己能不能手写实现一下，锻炼一下自己。</p>
+<h3 id="一、Android基础知识点"><a href="#一、Android基础知识点" class="headerlink" title="一、Android基础知识点"></a>一、Android基础知识点</h3><ul>
+<li>四大组件是什么</li>
+<li>四大组件的生命周期和简单用法</li>
+<li>Activity之间的通信方式</li>
+<li>Activity各种情况下的生命周期</li>
+<li>横竖屏切换的时候，Activity 各种情况下的生命周期</li>
+<li>Activity与Fragment之间生命周期比较</li>
+<li>Activity上有Dialog的时候按Home键时的生命周期</li>
+<li>两个Activity 之间跳转时必然会执行的是哪几个方法？</li>
+<li>前台切换到后台，然后再回到前台，Activity生命周期回调方法。弹出Dialog，生命值周期回调方法。</li>
+<li>Activity的四种启动模式对比</li>
+<li>Activity状态保存于恢复</li>
+<li>fragment各种情况下的生命周期</li>
+<li>Fragment状态保存startActivityForResult是哪个类的方法，在什么情况下使用？</li>
+<li>如何实现Fragment的滑动？</li>
+<li>fragment之间传递数据的方式？</li>
+<li>Activity 怎么和Service 绑定？</li>
+<li>怎么在Activity 中启动自己对应的Service？</li>
+<li>service和activity怎么进行数据交互？</li>
+<li>Service的开启方式</li>
+<li>请描述一下Service 的生命周期</li>
+<li>谈谈你对ContentProvider的理解</li>
+<li>说说ContentProvider、ContentResolver、ContentObserver 之间的关系</li>
+<li>请描述一下广播BroadcastReceiver的理解</li>
+<li>广播的分类</li>
+<li>广播使用的方式和场景</li>
+<li>在manifest 和代码中如何注册和使用BroadcastReceiver?</li>
+<li>本地广播和全局广播有什么差别？</li>
+<li>BroadcastReceiver，LocalBroadcastReceiver 区别</li>
+<li>AlertDialog,popupWindow,Activity区别</li>
+<li>Application 和 Activity 的 Context 对象的区别</li>
+<li>Android属性动画特性</li>
+<li>如何导入外部数据库?</li>
+<li>LinearLayout、RelativeLayout、FrameLayout的特性及对比，并介绍使用场景。</li>
+<li>谈谈对接口与回调的理解</li>
+<li>回调的原理</li>
+<li>写一个回调demo</li>
+<li>介绍下SurfView</li>
+<li>RecycleView的使用</li>
+<li>序列化的作用，以及Android两种序列化的区别</li>
+<li>差值器</li>
+<li>估值器</li>
+<li>Android中数据存储方式</li>
+</ul>
+<h3 id="二、Android源码相关分析"><a href="#二、Android源码相关分析" class="headerlink" title="二、Android源码相关分析"></a>二、Android源码相关分析</h3><ul>
+<li>Android动画框架实现原理</li>
+<li>Android各个版本API的区别</li>
+<li>Requestlayout，onlayout，onDraw，DrawChild区别与联系</li>
+<li>invalidate和postInvalidate的区别及使用</li>
+<li>Activity-Window-View三者的差别</li>
+<li>谈谈对Volley的理解</li>
+<li>如何优化自定义View</li>
+<li>低版本SDK如何实现高版本api？</li>
+<li>描述一次网络请求的流程</li>
+<li>HttpUrlConnection 和 okhttp关系</li>
+<li>Bitmap对象的理解</li>
+<li>looper架构</li>
+<li>ActivityThread，AMS，WMS的工作原理</li>
+<li>自定义View如何考虑机型适配</li>
+<li>自定义View的事件</li>
+<li>AstncTask+HttpClient 与 AsyncHttpClient有什么区别？</li>
+<li>LaunchMode应用场景</li>
+<li>AsyncTask 如何使用?</li>
+<li>SpareArray原理</li>
+<li>请介绍下ContentProvider 是如何实现数据共享的？</li>
+<li>AndroidService与Activity之间通信的几种方式</li>
+<li>IntentService原理及作用是什么？</li>
+<li>说说Activity、Intent、Service 是什么关系</li>
+<li>ApplicationContext和ActivityContext的区别</li>
+<li>SP是进程同步的吗?有什么方法做到同步？</li>
+<li>谈谈多线程在Android中的使用</li>
+<li>进程和 Application 的生命周期</li>
+<li>封装View的时候怎么知道view的大小</li>
+<li>RecycleView原理</li>
+<li>AndroidManifest的作用与理解</li>
+</ul>
+<h3 id="三、常见的一些原理性问题"><a href="#三、常见的一些原理性问题" class="headerlink" title="三、常见的一些原理性问题"></a>三、常见的一些原理性问题</h3><ul>
+<li>Handler机制和底层实现</li>
+<li>Handler、Thread和HandlerThread的差别</li>
+<li>handler发消息给子线程，looper怎么启动？</li>
+<li>关于Handler，在任何地方new Handler 都是什么线程下?</li>
+<li>ThreadLocal原理，实现及如何保证Local属性？</li>
+<li>请解释下在单线程模型中Message、Handler、Message Queue、Looper之间的关系</li>
+<li>请描述一下View事件传递分发机制</li>
+<li>Touch事件传递流程</li>
+<li>事件分发中的onTouch 和onTouchEvent 有什么区别，又该如何使用？</li>
+<li>View和ViewGroup分别有哪些事件分发相关的回调方法</li>
+<li>View刷新机制</li>
+<li>View绘制流程</li>
+<li>自定义控件原理</li>
+<li>自定义View如何提供获取View属性的接口？</li>
+<li>Android代码中实现WAP方式联网</li>
+<li>AsyncTask机制</li>
+<li>AsyncTask原理及不足</li>
+<li>如何取消AsyncTask？</li>
+<li>为什么不能在子线程更新UI？</li>
+<li>ANR产生的原因是什么？</li>
+<li>ANR定位和修正</li>
+<li>oom是什么？</li>
+<li>什么情况导致oom？</li>
+<li>有什么解决方法可以避免OOM？</li>
+<li>Oom 是否可以try catch？为什么？</li>
+<li>内存泄漏是什么？</li>
+<li>什么情况导致内存泄漏？</li>
+<li>如何防止线程的内存泄漏？</li>
+<li>内存泄露场的解决方法</li>
+<li>内存泄漏和内存溢出区别？</li>
+<li>LruCache默认缓存大小</li>
+<li>ContentProvider的权限管理(解答：读写分离，权限控制-精确到表级，URL控制)</li>
+<li>如何通过广播拦截和abort一条短信？</li>
+<li>广播是否可以请求网络？</li>
+<li>广播引起anr的时间限制是多少？</li>
+<li>计算一个view的嵌套层级</li>
+<li>Activity栈</li>
+<li>Android线程有没有上限？</li>
+<li>线程池有没有上限？</li>
+<li>ListView重用的是什么？</li>
+<li>Android为什么引入Parcelable？</li>
+<li>有没有尝试简化Parcelable的使用？</li>
+</ul>
+<h3 id="四、开发中常见的一些问题"><a href="#四、开发中常见的一些问题" class="headerlink" title="四、开发中常见的一些问题"></a>四、开发中常见的一些问题</h3><ul>
+<li>ListView 中图片错位的问题是如何产生的?</li>
+<li>混合开发有了解吗？</li>
+<li>知道哪些混合开发的方式？说出它们的优缺点和各自使用场景？（解答：比如:RN，weex，H5，小程序，WPA等。做Android的了解一些前端js等还是很有好处的)；</li>
+<li>屏幕适配的处理技巧都有哪些?</li>
+<li>服务器只提供数据接收接口，在多线程或多进程条件下，如何保证数据的有序到达？</li>
+<li>动态布局的理解</li>
+<li>怎么去除重复代码？</li>
+<li>画出 Android 的大体架构图</li>
+<li>Recycleview和ListView的区别</li>
+<li>ListView图片加载错乱的原理和解决方案</li>
+<li>动态权限适配方案，权限组的概念</li>
+<li>Android系统为什么会设计ContentProvider？</li>
+<li>下拉状态栏是不是影响activity的生命周期</li>
+<li>如果在onStop的时候做了网络请求，onResume的时候怎么恢复？</li>
+<li>Bitmap 使用时候注意什么？</li>
+<li>Bitmap的recycler()</li>
+<li>Android中开启摄像头的主要步骤</li>
+<li>ViewPager使用细节，如何设置成每次只初始化当前的Fragment，其他的不初始化？</li>
+<li>点击事件被拦截，但是想传到下面的View，如何操作？</li>
+<li>微信主页面的实现方式</li>
+<li>微信上消息小红点的原理</li>
+<li>CAS介绍（这是阿里巴巴的面试题，我不是很了解，可以参考博客: <a href="http://blog.csdn.net/jly4758/article/details/46673835" target="_blank" rel="external">CAS简介</a>）</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;资料来源如下&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/AweiLoveAndroid/CommonDevKnowledge&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;常用的Android
+    
+    </summary>
+    
+      <category term="面试" scheme="http://yoursite.com/categories/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="面试题" scheme="http://yoursite.com/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+  </entry>
   
   <entry>
     <title>Vscode系列—c语言</title>
@@ -295,7 +738,7 @@
     <link href="http://yoursite.com/2018/03/07/%E9%9D%A2%E8%AF%95%E6%B1%87%E6%80%BB-java/"/>
     <id>http://yoursite.com/2018/03/07/面试汇总-java/</id>
     <published>2018-03-07T04:00:00.000Z</published>
-    <updated>2018-03-08T15:24:02.524Z</updated>
+    <updated>2018-04-06T06:42:47.935Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <p>资料来源如下</p>
@@ -515,8 +958,10 @@
 <li>Object类的equal和hashCode方法重写，为什么？</li>
 </ul>
 <h2 id="三、数据结构"><a href="#三、数据结构" class="headerlink" title="三、数据结构"></a>三、数据结构</h2><ul>
-<li>常用数据结构简介</li>
-<li>并发集合了解哪些？</li>
+<li><p>常用数据结构简介</p>
+</li>
+<li><p>并发集合了解哪些？</p>
+</li>
 <li>列举java的集合以及集合之间的继承关系</li>
 <li>集合类以及集合框架</li>
 <li>容器类介绍以及之间的区别（容器类估计很多人没听这个词，Java容器主要可以划分为4个部分：List列表、Set集合、Map映射、工具类（Iterator迭代器、Enumeration枚举类、Arrays和Collections），具体的可以看看这篇博文 <a href="http://alexyyek.github.io/2015/04/06/Collection/" target="_blank" rel="external">Java容器类</a>）</li>
@@ -778,85 +1223,95 @@
   </entry>
   
   <entry>
-    <title>python—高级特性</title>
-    <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/"/>
-    <id>http://yoursite.com/2018/01/19/python—高级特性/</id>
+    <title>python—n函数</title>
+    <link href="http://yoursite.com/2018/01/19/python%E2%80%94n%E5%87%BD%E6%95%B0/"/>
+    <id>http://yoursite.com/2018/01/19/python—n函数/</id>
     <published>2018-01-19T02:17:11.000Z</published>
-    <updated>2018-01-19T15:03:49.103Z</updated>
+    <updated>2018-01-19T15:04:49.024Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="高级特性"><a href="#高级特性" class="headerlink" title="高级特性"></a>高级特性</h2><ul>
-<li>代码精炼</li>
-<li>python代码量越少,开发效率越高.<h3 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h3></li>
-<li>取list或tuple的部分元素</li>
+    <content type="html"><![CDATA[<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h3><ul>
+<li>参数数量不对 TypeError错误</li>
+<li>参数类型错误，TypeError的错误，并且给出错误信息</li>
+<li>int()转换为int类型</li>
+<li>float()</li>
+<li>bool()</li>
+<li><p>str()</p>
+</li>
+<li><p>函数名为一指向函数对象的引用,可以将变量指向函数,再调用</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = abs <span class="comment"># 变量a指向abs函数</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a(<span class="number">-1</span>) <span class="comment"># 所以也可以通过a调用abs函数</span></div><div class="line"><span class="number">1</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h3><ul>
 <li><p>示例</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">L[<span class="number">0</span>:<span class="number">3</span>] <span class="comment">#0到3,但结果不包括索引3</span></div><div class="line">L[:<span class="number">3</span>] <span class="comment">#0可省略</span></div></pre></td></tr></table></figure>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">L[<span class="number">-2</span>:]  <span class="comment">#-2到0 但不包括索引0</span></div><div class="line">L[<span class="number">-2</span>:<span class="number">-1</span>] <span class="comment">#-2</span></div></pre></td></tr></table></figure>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">L[:<span class="number">10</span>:<span class="number">2</span>] <span class="comment">#前10 每隔2个取一个</span></div><div class="line">L[::<span class="number">5</span>] <span class="comment">#所有,每隔5个取一个</span></div><div class="line">L[:] <span class="comment">#原样复制</span></div></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_abs</span><span class="params">(x)</span>:</span></div><div class="line">  <span class="keyword">if</span> x &gt;= <span class="number">0</span>:</div><div class="line">      <span class="keyword">return</span> x</div><div class="line">  <span class="keyword">else</span>:</div><div class="line">      <span class="keyword">return</span> -x</div></pre></td></tr></table></figure>
+<p>def 函数名(参数) :<br>  函数体<br>  return </p>
 </li>
-<li><p>对tuple取切片,结果依然是tuple.</p>
+<li>没有return 则返回 None</li>
+<li><p>import 包含模块,java一样</p>
 </li>
-<li><strong>字符串可以看作一个list</strong>,每个字符占一位.</li>
-</ul>
-<h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><ul>
-<li>迭代很随便…太随便了…</li>
-<li>list tuple不多说了</li>
-<li><p>dict字典也可以迭代,因为无序,输出的顺序不一定相同.<br>默认迭代的是key 但value 也可以迭代,key value也可以同时迭代</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> value <span class="keyword">in</span> d.values()</div><div class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> d.items()</div></pre></td></tr></table></figure>
+<li><p>空函数 pass 语句.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">nop</span><span class="params">()</span>:</span></div><div class="line">  <span class="keyword">pass</span></div></pre></td></tr></table></figure>
 </li>
-<li><p>上文书中说的,字符串可以当作list,所以也可以迭代.</p>
-</li>
-<li><p>问题来了,如何判断可迭代对象?<br><code>collections模块的Iterable类型判断</code></p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(<span class="string">'abc'</span>, Iterable) <span class="comment"># str是否可迭代</span></div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>类似c/java的带下标循环实现?<br>Python内置的<code>enumerate函数</code>,把一个list变成索引-元素对</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i, value <span class="keyword">in</span> enumerate([<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>]):</div><div class="line">  print(i, value)</div></pre></td></tr></table></figure>
+<li><p>示例 返回多个参数</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> math</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">move</span><span class="params">(x, y, step, angle=<span class="number">0</span>)</span>:</span></div><div class="line">  nx = x + step * math.cos(angle)</div><div class="line">  ny = y - step * math.sin(angle)</div><div class="line">  <span class="keyword">return</span> nx, ny</div></pre></td></tr></table></figure>
+<p>返回的是一个tuple .. 按位置赋值给变量</p>
 </li>
 </ul>
-<h3 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h3><ul>
-<li><code>用来生成list</code></li>
-<li><p>示例: [1x1, 2x2, 3x3, …, 10x10]</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">11</span>)] </div><div class="line">[m + n <span class="keyword">for</span> m <span class="keyword">in</span> <span class="string">'ABC'</span> <span class="keyword">for</span> n <span class="keyword">in</span> <span class="string">'XYZ'</span>] <span class="comment">#两层</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>for可以同时循环两个甚至多个变量,dict的items()可以同时迭代key和value</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">d = &#123;<span class="string">'x'</span>: <span class="string">'A'</span>, <span class="string">'y'</span>: <span class="string">'B'</span>, <span class="string">'z'</span>: <span class="string">'C'</span> &#125; <span class="comment"># 多个变量</span></div><div class="line">[k + <span class="string">'='</span> + v <span class="keyword">for</span> k, v <span class="keyword">in</span> d.items()] <span class="comment"># 生成list</span></div><div class="line">[s.lower() <span class="keyword">for</span> s <span class="keyword">in</span> L] <span class="comment"># 全部小写</span></div></pre></td></tr></table></figure>
-</li>
+<h3 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h3><ul>
+<li><strong>参数定义的顺序必须是：必选参数、默认参数、可变参数、命名关键字参数和关键字参数</strong></li>
 </ul>
-<h3 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h3><ul>
-<li>generator 依照某种算法不断循环生成数据,而不是一次性生成完.节省大量空间.</li>
-<li><p>创建generator</p>
+<h4 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h4><ul>
+<li><p>示例:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">power</span><span class="params">(x, n=<span class="number">2</span>)</span>:</span></div><div class="line">...</div><div class="line"></div><div class="line">power(<span class="number">5</span>)   power(<span class="number">5</span>, <span class="number">2</span>)  power(n=<span class="number">3</span>,<span class="number">5</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>默认参数必须指向不变对象</p>
+</li>
+<li>多个参数时，变化大的参数在前，变化小的参数在后。变化小的参数就可以作为默认参数。</li>
+<li>多个默认参数，可以按顺序提供默认参数</li>
+<li><p>也可以不按顺序提供。当不按顺序提供部分默认参数时，需要把参数名写上 <code>enroll(&#39;Adam&#39;, &#39;M&#39;, city=&#39;Tianjin&#39;)</code></p>
+</li>
+<li><p><strong><code>坑</code></strong></p>
 <ul>
-<li><p>把列表生成式的[]改成()</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g = (x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>))</div></pre></td></tr></table></figure>
-<p>调用<code>next(g)</code>可获取下一个值.<br>最常用<code>for n in g:</code>代入for循环.也没有抛出错误.</p>
-</li>
-<li><p>定义一个包含<code>yield</code>关键字的函数.</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(max)</span>:</span></div><div class="line">n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></div><div class="line"><span class="keyword">while</span> n &lt; max:</div><div class="line">    <span class="keyword">yield</span> b</div><div class="line">    a, b = b, a + b</div><div class="line">    n = n + <span class="number">1</span></div><div class="line"><span class="keyword">return</span> <span class="string">'done'</span></div></pre></td></tr></table></figure>
-<ul>
-<li>变成generator的函数，在每次调用next()的时候执行，遇到yield语句返回，再次执行时从上次返回的yield语句处继续执行。</li>
-<li>用for循环调用generator时，拿不到generator的return语句的返回值。如果想要拿到返回值，必须捕获StopIteration错误，返回值包含在StopIteration的value中.</li>
+<li>默认参数 不可变性 每次调用均会改变其值.</li>
 </ul>
 </li>
 </ul>
+<h4 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h4><ul>
+<li><p>示例:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc</span><span class="params">(*numbers)</span>:</span></div><div class="line">  sum = <span class="number">0</span></div><div class="line">  <span class="keyword">for</span> n <span class="keyword">in</span> numbers:</div><div class="line">      sum = sum + n * n</div><div class="line">  <span class="keyword">return</span> sum</div><div class="line"></div><div class="line">nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">calc(*nums)   <span class="comment">#相同</span></div><div class="line">calc(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</div></pre></td></tr></table></figure>
 </li>
+<li><p>传入的参数个数可变,传入组装成了tuple</p>
+</li>
+<li>当作c语言指针吧😂 传入数组的地址</li>
 </ul>
-<h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><ul>
-<li><p>可以被for循环的对象统称为可迭代对象：<code>Iterable</code><br>使用isinstance()判断一个对象是否是Iterable对象</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isinstance(&#123;&#125;, Iterable)</div></pre></td></tr></table></figure>
+<h4 id="命名关键字参数"><a href="#命名关键字参数" class="headerlink" title="命名关键字参数"></a>命名关键字参数</h4><ul>
+<li><p>示例:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, age, *, city, job)</span>:</span></div><div class="line">  print(name, age, city, job)</div><div class="line"></div><div class="line">person(<span class="string">'Jack'</span>, <span class="number">24</span>, city=<span class="string">'Beijing'</span>, job=<span class="string">'Engineer'</span>)</div></pre></td></tr></table></figure>
 </li>
-<li><p>可以被next()函数调用并不断返回下一个值的对象称为迭代器：<code>Iterator</code> 表示一个惰性计算的序列 <code>Iterator</code>甚至可以表示一个无限大的数据流<br>isinstance()判断一个对象是否是Iterator对象</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isinstance((x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)), Iterator)</div></pre></td></tr></table></figure>
+<li><p>命名关键字参数需要一个特殊分隔符<em>，</em>后面的参数被视为命名关键字参数</p>
 </li>
-<li><p>集合数据类型如list、dict、str等是Iterable但不是Iterator，不过可以通过iter()函数获得一个Iterator对象。</p>
+<li><p>函数定义中已经有了一个可变参数，后面跟着的命名关键字参数就不再需要一个特殊分隔符*</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, age, *args, city, job)</span>:</span></div><div class="line">  print(name, age, args, city, job)</div></pre></td></tr></table></figure>
 </li>
-<li>Python的for循环本质上就是通过不断调用next()</li>
+<li><p>如果没有可变参数，就必须加一个<em>作为特殊分隔符。如果缺少</em>，Python解释器将无法识别位置参数和命名关键字参数</p>
+<h4 id="关键字参数"><a href="#关键字参数" class="headerlink" title="关键字参数"></a>关键字参数</h4></li>
+<li><p>示例</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, age, **kw)</span>:</span></div><div class="line">  print(<span class="string">'name:'</span>, name, <span class="string">'age:'</span>, age, <span class="string">'other:'</span>, kw)</div><div class="line"></div><div class="line">extra = &#123;<span class="string">'city'</span>: <span class="string">'Beijing'</span>, <span class="string">'job'</span>: <span class="string">'Engineer'</span>&#125;</div><div class="line">person(<span class="string">'Jack'</span>, <span class="number">24</span>, city=extra[<span class="string">'city'</span>], job=extra[<span class="string">'job'</span>])</div><div class="line"><span class="comment">#相同</span></div><div class="line">extra = &#123;<span class="string">'city'</span>: <span class="string">'Beijing'</span>, <span class="string">'job'</span>: <span class="string">'Engineer'</span>&#125;</div><div class="line">person(<span class="string">'Jack'</span>, <span class="number">24</span>, **extra)</div></pre></td></tr></table></figure>
+</li>
+<li><p>关键字参数在函数内部组装为一个dict</p>
+</li>
+<li>函数内部获得是 dict的拷贝,修改对原值无影响.</li>
+<li>可以传入任意不受限制的关键字参数</li>
+</ul>
+<h4 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h4><ul>
+<li>python 不含尾递归优化,注意层级,否则非常容易堆栈溢出.</li>
 </ul>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;高级特性&quot;&gt;&lt;a href=&quot;#高级特性&quot; class=&quot;headerlink&quot; title=&quot;高级特性&quot;&gt;&lt;/a&gt;高级特性&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;代码精炼&lt;/li&gt;
-&lt;li&gt;python代码量越少,开发效率越高.&lt;h3 id=&quot;切片&quot;&gt;&lt;a href=&quot;#切
+      &lt;h2 id=&quot;函数&quot;&gt;&lt;a href=&quot;#函数&quot; class=&quot;headerlink&quot; title=&quot;函数&quot;&gt;&lt;/a&gt;函数&lt;/h2&gt;&lt;h3 id=&quot;常用&quot;&gt;&lt;a href=&quot;#常用&quot; class=&quot;headerlink&quot; title=&quot;常用&quot;&gt;&lt;/a&gt;常用&lt;/h3&gt;&lt;ul&gt;
+&lt;
     
     </summary>
     
@@ -870,57 +1325,141 @@
   </entry>
   
   <entry>
-    <title>python—模块</title>
-    <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E6%A8%A1%E5%9D%97/"/>
-    <id>http://yoursite.com/2018/01/19/python—模块/</id>
+    <title>python—基础</title>
+    <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E5%9F%BA%E7%A1%80/"/>
+    <id>http://yoursite.com/2018/01/19/python—基础/</id>
     <published>2018-01-19T02:17:11.000Z</published>
-    <updated>2018-01-19T15:01:52.735Z</updated>
+    <updated>2018-01-19T14:54:56.297Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><ul>
-<li>模块是一组Python代码的集合，可以使用其他模块，也可以被其他模块使用。</li>
-<li><p>涉及到概念 包(Package) 和 模块(Module)</p>
-</li>
-<li><p>创建自己的模块时，要注意：</p>
-<ul>
-<li>模块名要遵循Python变量命名规范，不要使用中文、特殊字符；</li>
-<li>模块名不要和系统模块名冲突，最好先查看系统是否已存在该模块，检查方法是在Python交互环境执行import abc，若成功则说明系统存在此模块。</li>
+    <content type="html"><![CDATA[<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
+<li>整数 浮点数 <h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3></li>
+<li>字符串以单引号 ‘ 或 “ 包括. </li>
+<li>转义字符 \ 依然有效. r’’表示此字符串默认不转移.</li>
+<li>/n有效, 可用 开头 … 替换<h3 id="布尔"><a href="#布尔" class="headerlink" title="布尔"></a>布尔</h3></li>
+<li>只有True 和 Flase </li>
+<li>and or not 3种常用操作</li>
 </ul>
+<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><ul>
+<li>通常都为大写表示.</li>
+<li>除法有两种 / 或 //<br>/ 结果可能为浮点, // 结果为整数(地板除)</li>
+</ul>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li>None 空值,不为0.谨记</li>
+<li>动态语言,so,变量的类型无所谓.</li>
+<li>浮点数精度无限,但超过限制直接表示为 <code>inf</code></li>
+</ul>
+<h2 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h2><ul>
+<li>简而言之 文件使用utf-8就对了.</li>
+<li>utf-8 属于万国码的简化,低位与 ASCII 兼容.</li>
+</ul>
+<h3 id="python字符串编码"><a href="#python字符串编码" class="headerlink" title="python字符串编码"></a>python字符串编码</h3><ul>
+<li>py3中默认是 Unicode 万国码.</li>
+<li>ord()获取字符的整数表示，chr()把编码转换为字符.</li>
+<li>Python对bytes类型的数据用带b前缀的单引号或双引号表示 <code>x = b&#39;ABC&#39;</code></li>
+<li><p>以Unicode表示的str通过encode()方法可以编码为指定的bytes</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">'ABC'</span>.encode(<span class="string">'ascii'</span>)</div><div class="line"><span class="string">b'ABC'</span></div><div class="line"><span class="string">'中文'</span>.encode(<span class="string">'utf-8'</span>)</div><div class="line"><span class="string">b'\xe4\xb8\xad\xe6\x96\x87'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>对应的decode()方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'ABC'</span>.decode(<span class="string">'ascii'</span>)</div><div class="line"><span class="string">'ABC'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'\xe4\xb8\xad\xe6\x96\x87'</span>.decode(<span class="string">'utf-8'</span>)</div><div class="line"><span class="string">'中文'</span></div></pre></td></tr></table></figure>
+<p>可以传入errors=’ignore’忽略错误的字节</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">b'\xe4\xb8\xad\xff'</span>.decode(<span class="string">'utf-8'</span>, errors=<span class="string">'ignore'</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>len(),str计算字符.bytes计算字节</p>
+</li>
+<li>开头,第一行,可执行文件(windows会忽视注释)<br>第二行,以utf-8处理文件.<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h3><ul>
+<h3 id="字符串格式化"><a href="#字符串格式化" class="headerlink" title="字符串格式化"></a>字符串格式化</h3><ul>
+<li><p>占位符与c基本相同 %d %s %x %f</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">'%2d-%02d'</span> % (<span class="number">3</span>, <span class="number">1</span>))</div><div class="line">print(<span class="string">'%.2f'</span> % <span class="number">3.1415926</span>)</div></pre></td></tr></table></figure>
+<p>需要 % 时, %%</p>
+</li>
+<li><p>format()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'Hello, &#123;0&#125;, 成绩提升了 &#123;1:.1f&#125;%'</span>.format(<span class="string">'小明'</span>, <span class="number">17.125</span>)</div><div class="line"><span class="string">'Hello, 小明, 成绩提升了 17.1%'</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="list-tuple"><a href="#list-tuple" class="headerlink" title="list tuple"></a>list tuple</h2><h3 id="list-列表"><a href="#list-列表" class="headerlink" title="list 列表"></a>list 列表</h3><ul>
+<li><p>示例, <code>= [ , , ]</code> 可变 有序</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">classmates = [<span class="string">'Michael'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>]</div></pre></td></tr></table></figure>
+</li>
+<li><p>索引以 0 开始,可以倒序 <code>-n</code> 当然越界都是 <code>IndexError</code> 错误</p>
+</li>
+<li>.len(),list元素个数.</li>
+<li>.append(x) 末尾添加</li>
+<li>.insert(i,x) 对应索引处插入</li>
+<li>.pop(i) 删除i对应元素,为空则删除末尾元素.</li>
+<li>替换i位置,直接赋值.</li>
+<li>list的元素可以为一个list.多重数组.</li>
+</ul>
+<h3 id="tuple-元组"><a href="#tuple-元组" class="headerlink" title="tuple 元组"></a>tuple 元组</h3><ul>
+<li><p>示例<code>= ( , , )</code> 不可变 有序 更安全,其他与list相同</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">t = (<span class="number">1</span>, <span class="number">2</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>t = (1,)</code>声明一个元素元组,比较特殊.</p>
+</li>
+</ul>
+<h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2><ul>
 <li><p>示例</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">' a test module '</span></div><div class="line"></div><div class="line">__author__ = <span class="string">'Michael Liao'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> sys</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></div><div class="line">    args = sys.argv</div><div class="line">    <span class="keyword">if</span> len(args)==<span class="number">1</span>:</div><div class="line">        print(<span class="string">'Hello, world!'</span>)</div><div class="line">    <span class="keyword">elif</span> len(args)==<span class="number">2</span>:</div><div class="line">        print(<span class="string">'Hello, %s!'</span> % args[<span class="number">1</span>])</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        print(<span class="string">'Too many arguments!'</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</div><div class="line">    test()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> true :</div><div class="line">    print(<span class="string">"1"</span>)</div><div class="line"><span class="keyword">elif</span> true :</div><div class="line">    print(<span class="string">"2"</span>)</div><div class="line"><span class="keyword">else</span> :</div><div class="line">    print(<span class="string">"3"</span>)</div></pre></td></tr></table></figure>
 </li>
-<li><p>注释:</p>
+<li><p>if 条件可简写,<code>if x</code> x非零数值、非空字符串、非空list 则为true</p>
+</li>
+<li>提及用户输入 input()</li>
+<li>input默认返回字符串,如需要其他类型 int()转换.</li>
+</ul>
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><ul>
+<li><p>示例 与c相同</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> x <span class="keyword">in</span> names:</div><div class="line">    print(x)</div></pre></td></tr></table></figure>
+</li>
+<li><p>示例 与c相同</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> n &gt; <span class="number">0</span>:</div><div class="line">    print(n)</div></pre></td></tr></table></figure>
+</li>
+<li><p>break 跳出此层循环</p>
+</li>
+<li>continue 跳出本轮循环</li>
+</ul>
+<h2 id="dict-和-set"><a href="#dict-和-set" class="headerlink" title="dict 和 set"></a>dict 和 set</h2><h3 id="dict"><a href="#dict" class="headerlink" title="dict"></a>dict</h3><ul>
+<li>字典,使用键值对储存数据,索引极快,空间换时间.</li>
+<li>对应其他语言的 map </li>
+<li><p>示例: {‘’: ,’’: ,…}</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">d = &#123;<span class="string">'Michael'</span>: <span class="number">95</span>, <span class="string">'Bob'</span>: <span class="number">75</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</div><div class="line">d[<span class="string">'Michael'</span>]</div><div class="line"><span class="number">95</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>key</p>
 <ul>
-<li>第1行注释可以让这个hello.py文件直接在Unix/Linux/Mac上运行</li>
-<li>第2行注释表示.py文件本身使用标准UTF-8编码；</li>
-<li>第4行是一个字符串，表示模块的文档注释，任何模块代码的第一个字符串都被视为模块的文档注释</li>
-<li>第6行使用<strong>author</strong>变量把作者写进去</li>
+<li>必须为不可变对象,整数、字符串等</li>
+<li>一个key对应一个value</li>
+<li><p>key不存在</p>
+<ul>
+<li><p>in判断</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'Thomas'</span> <span class="keyword">in</span> d</div><div class="line"><span class="keyword">False</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>get()获取</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">d.get(<span class="string">'Thomas'</span>) <span class="comment"># 返回空</span></div><div class="line">d.get(<span class="string">'Thomas'</span>, <span class="number">-1</span>) <span class="comment"># 不存在? 返回-1: ;</span></div></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
-<li><p>重点<code>if __name__==&#39;__main__&#39;:</code></p>
+<li><p>pop()删除</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">d.pop(<span class="string">'Bob'</span>)</div></pre></td></tr></table></figure>
 </li>
-<li>Python解释器把一个特殊变量<strong>name</strong>置为<strong>main</strong>，而如果在其他地方导入该hello模块时，if判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试.</li>
 </ul>
-<h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><ul>
-<li>Python中，是通过<code>_</code>前缀 标记 private </li>
-<li>note: <strong>python中语法没有限制 <code>_</code>开头的变量/函数!</strong></li>
-</ul>
-<h3 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h3><ul>
-<li><p><code>pip</code>命令 </p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install xxx</div></pre></td></tr></table></figure>
 </li>
-<li><p>或者在文件中自定义路径.</p>
+</ul>
+<h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><ul>
+<li>key的集合,但不存在value</li>
+<li>无序、不重复、元素为不可变对象</li>
+<li>创建set需要一个list</li>
+<li><p>示例 set([ , , …])</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s</div><div class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>.add(key)</code>/<code>.remove(key)</code></p>
 </li>
 </ul>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;模块&quot;&gt;&lt;a href=&quot;#模块&quot; class=&quot;headerlink&quot; title=&quot;模块&quot;&gt;&lt;/a&gt;模块&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;模块是一组Python代码的集合，可以使用其他模块，也可以被其他模块使用。&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;涉及到概念 包(Packag
+      &lt;h2 id=&quot;数据类型&quot;&gt;&lt;a href=&quot;#数据类型&quot; class=&quot;headerlink&quot; title=&quot;数据类型&quot;&gt;&lt;/a&gt;数据类型&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;整数 浮点数 &lt;h3 id=&quot;字符串&quot;&gt;&lt;a href=&quot;#字符串&quot; class=&quot;headerlink&quot; ti
     
     </summary>
     
@@ -1072,95 +1611,149 @@
   </entry>
   
   <entry>
-    <title>python—n函数</title>
-    <link href="http://yoursite.com/2018/01/19/python%E2%80%94n%E5%87%BD%E6%95%B0/"/>
-    <id>http://yoursite.com/2018/01/19/python—n函数/</id>
+    <title>python—模块</title>
+    <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E6%A8%A1%E5%9D%97/"/>
+    <id>http://yoursite.com/2018/01/19/python—模块/</id>
     <published>2018-01-19T02:17:11.000Z</published>
-    <updated>2018-01-19T15:04:49.024Z</updated>
+    <updated>2018-01-19T15:01:52.735Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h3><ul>
-<li>参数数量不对 TypeError错误</li>
-<li>参数类型错误，TypeError的错误，并且给出错误信息</li>
-<li>int()转换为int类型</li>
-<li>float()</li>
-<li>bool()</li>
-<li><p>str()</p>
+    <content type="html"><![CDATA[<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><ul>
+<li>模块是一组Python代码的集合，可以使用其他模块，也可以被其他模块使用。</li>
+<li><p>涉及到概念 包(Package) 和 模块(Module)</p>
 </li>
-<li><p>函数名为一指向函数对象的引用,可以将变量指向函数,再调用</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = abs <span class="comment"># 变量a指向abs函数</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a(<span class="number">-1</span>) <span class="comment"># 所以也可以通过a调用abs函数</span></div><div class="line"><span class="number">1</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h3><ul>
-<li><p>示例</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_abs</span><span class="params">(x)</span>:</span></div><div class="line">  <span class="keyword">if</span> x &gt;= <span class="number">0</span>:</div><div class="line">      <span class="keyword">return</span> x</div><div class="line">  <span class="keyword">else</span>:</div><div class="line">      <span class="keyword">return</span> -x</div></pre></td></tr></table></figure>
-<p>def 函数名(参数) :<br>  函数体<br>  return </p>
-</li>
-<li>没有return 则返回 None</li>
-<li><p>import 包含模块,java一样</p>
-</li>
-<li><p>空函数 pass 语句.</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">nop</span><span class="params">()</span>:</span></div><div class="line">  <span class="keyword">pass</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>示例 返回多个参数</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> math</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">move</span><span class="params">(x, y, step, angle=<span class="number">0</span>)</span>:</span></div><div class="line">  nx = x + step * math.cos(angle)</div><div class="line">  ny = y - step * math.sin(angle)</div><div class="line">  <span class="keyword">return</span> nx, ny</div></pre></td></tr></table></figure>
-<p>返回的是一个tuple .. 按位置赋值给变量</p>
-</li>
-</ul>
-<h3 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h3><ul>
-<li><strong>参数定义的顺序必须是：必选参数、默认参数、可变参数、命名关键字参数和关键字参数</strong></li>
-</ul>
-<h4 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h4><ul>
-<li><p>示例:</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">power</span><span class="params">(x, n=<span class="number">2</span>)</span>:</span></div><div class="line">...</div><div class="line"></div><div class="line">power(<span class="number">5</span>)   power(<span class="number">5</span>, <span class="number">2</span>)  power(n=<span class="number">3</span>,<span class="number">5</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>默认参数必须指向不变对象</p>
-</li>
-<li>多个参数时，变化大的参数在前，变化小的参数在后。变化小的参数就可以作为默认参数。</li>
-<li>多个默认参数，可以按顺序提供默认参数</li>
-<li><p>也可以不按顺序提供。当不按顺序提供部分默认参数时，需要把参数名写上 <code>enroll(&#39;Adam&#39;, &#39;M&#39;, city=&#39;Tianjin&#39;)</code></p>
-</li>
-<li><p><strong><code>坑</code></strong></p>
+<li><p>创建自己的模块时，要注意：</p>
 <ul>
-<li>默认参数 不可变性 每次调用均会改变其值.</li>
+<li>模块名要遵循Python变量命名规范，不要使用中文、特殊字符；</li>
+<li>模块名不要和系统模块名冲突，最好先查看系统是否已存在该模块，检查方法是在Python交互环境执行import abc，若成功则说明系统存在此模块。</li>
 </ul>
 </li>
 </ul>
-<h4 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h4><ul>
-<li><p>示例:</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc</span><span class="params">(*numbers)</span>:</span></div><div class="line">  sum = <span class="number">0</span></div><div class="line">  <span class="keyword">for</span> n <span class="keyword">in</span> numbers:</div><div class="line">      sum = sum + n * n</div><div class="line">  <span class="keyword">return</span> sum</div><div class="line"></div><div class="line">nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">calc(*nums)   <span class="comment">#相同</span></div><div class="line">calc(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>传入的参数个数可变,传入组装成了tuple</p>
-</li>
-<li>当作c语言指针吧😂 传入数组的地址</li>
-</ul>
-<h4 id="命名关键字参数"><a href="#命名关键字参数" class="headerlink" title="命名关键字参数"></a>命名关键字参数</h4><ul>
-<li><p>示例:</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, age, *, city, job)</span>:</span></div><div class="line">  print(name, age, city, job)</div><div class="line"></div><div class="line">person(<span class="string">'Jack'</span>, <span class="number">24</span>, city=<span class="string">'Beijing'</span>, job=<span class="string">'Engineer'</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>命名关键字参数需要一个特殊分隔符<em>，</em>后面的参数被视为命名关键字参数</p>
-</li>
-<li><p>函数定义中已经有了一个可变参数，后面跟着的命名关键字参数就不再需要一个特殊分隔符*</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, age, *args, city, job)</span>:</span></div><div class="line">  print(name, age, args, city, job)</div></pre></td></tr></table></figure>
-</li>
-<li><p>如果没有可变参数，就必须加一个<em>作为特殊分隔符。如果缺少</em>，Python解释器将无法识别位置参数和命名关键字参数</p>
-<h4 id="关键字参数"><a href="#关键字参数" class="headerlink" title="关键字参数"></a>关键字参数</h4></li>
+<h3 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h3><ul>
 <li><p>示例</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, age, **kw)</span>:</span></div><div class="line">  print(<span class="string">'name:'</span>, name, <span class="string">'age:'</span>, age, <span class="string">'other:'</span>, kw)</div><div class="line"></div><div class="line">extra = &#123;<span class="string">'city'</span>: <span class="string">'Beijing'</span>, <span class="string">'job'</span>: <span class="string">'Engineer'</span>&#125;</div><div class="line">person(<span class="string">'Jack'</span>, <span class="number">24</span>, city=extra[<span class="string">'city'</span>], job=extra[<span class="string">'job'</span>])</div><div class="line"><span class="comment">#相同</span></div><div class="line">extra = &#123;<span class="string">'city'</span>: <span class="string">'Beijing'</span>, <span class="string">'job'</span>: <span class="string">'Engineer'</span>&#125;</div><div class="line">person(<span class="string">'Jack'</span>, <span class="number">24</span>, **extra)</div></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">' a test module '</span></div><div class="line"></div><div class="line">__author__ = <span class="string">'Michael Liao'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> sys</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></div><div class="line">    args = sys.argv</div><div class="line">    <span class="keyword">if</span> len(args)==<span class="number">1</span>:</div><div class="line">        print(<span class="string">'Hello, world!'</span>)</div><div class="line">    <span class="keyword">elif</span> len(args)==<span class="number">2</span>:</div><div class="line">        print(<span class="string">'Hello, %s!'</span> % args[<span class="number">1</span>])</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        print(<span class="string">'Too many arguments!'</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</div><div class="line">    test()</div></pre></td></tr></table></figure>
 </li>
-<li><p>关键字参数在函数内部组装为一个dict</p>
-</li>
-<li>函数内部获得是 dict的拷贝,修改对原值无影响.</li>
-<li>可以传入任意不受限制的关键字参数</li>
+<li><p>注释:</p>
+<ul>
+<li>第1行注释可以让这个hello.py文件直接在Unix/Linux/Mac上运行</li>
+<li>第2行注释表示.py文件本身使用标准UTF-8编码；</li>
+<li>第4行是一个字符串，表示模块的文档注释，任何模块代码的第一个字符串都被视为模块的文档注释</li>
+<li>第6行使用<strong>author</strong>变量把作者写进去</li>
 </ul>
-<h4 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h4><ul>
-<li>python 不含尾递归优化,注意层级,否则非常容易堆栈溢出.</li>
+</li>
+<li><p>重点<code>if __name__==&#39;__main__&#39;:</code></p>
+</li>
+<li>Python解释器把一个特殊变量<strong>name</strong>置为<strong>main</strong>，而如果在其他地方导入该hello模块时，if判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试.</li>
+</ul>
+<h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><ul>
+<li>Python中，是通过<code>_</code>前缀 标记 private </li>
+<li>note: <strong>python中语法没有限制 <code>_</code>开头的变量/函数!</strong></li>
+</ul>
+<h3 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h3><ul>
+<li><p><code>pip</code>命令 </p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install xxx</div></pre></td></tr></table></figure>
+</li>
+<li><p>或者在文件中自定义路径.</p>
+</li>
 </ul>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;函数&quot;&gt;&lt;a href=&quot;#函数&quot; class=&quot;headerlink&quot; title=&quot;函数&quot;&gt;&lt;/a&gt;函数&lt;/h2&gt;&lt;h3 id=&quot;常用&quot;&gt;&lt;a href=&quot;#常用&quot; class=&quot;headerlink&quot; title=&quot;常用&quot;&gt;&lt;/a&gt;常用&lt;/h3&gt;&lt;ul&gt;
-&lt;
+      &lt;h2 id=&quot;模块&quot;&gt;&lt;a href=&quot;#模块&quot; class=&quot;headerlink&quot; title=&quot;模块&quot;&gt;&lt;/a&gt;模块&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;模块是一组Python代码的集合，可以使用其他模块，也可以被其他模块使用。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;涉及到概念 包(Packag
+    
+    </summary>
+    
+      <category term="python笔记" scheme="http://yoursite.com/categories/python%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python—高级特性</title>
+    <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/"/>
+    <id>http://yoursite.com/2018/01/19/python—高级特性/</id>
+    <published>2018-01-19T02:17:11.000Z</published>
+    <updated>2018-01-19T15:03:49.103Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="高级特性"><a href="#高级特性" class="headerlink" title="高级特性"></a>高级特性</h2><ul>
+<li>代码精炼</li>
+<li>python代码量越少,开发效率越高.<h3 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h3></li>
+<li>取list或tuple的部分元素</li>
+<li><p>示例</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">L[<span class="number">0</span>:<span class="number">3</span>] <span class="comment">#0到3,但结果不包括索引3</span></div><div class="line">L[:<span class="number">3</span>] <span class="comment">#0可省略</span></div></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">L[<span class="number">-2</span>:]  <span class="comment">#-2到0 但不包括索引0</span></div><div class="line">L[<span class="number">-2</span>:<span class="number">-1</span>] <span class="comment">#-2</span></div></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">L[:<span class="number">10</span>:<span class="number">2</span>] <span class="comment">#前10 每隔2个取一个</span></div><div class="line">L[::<span class="number">5</span>] <span class="comment">#所有,每隔5个取一个</span></div><div class="line">L[:] <span class="comment">#原样复制</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>对tuple取切片,结果依然是tuple.</p>
+</li>
+<li><strong>字符串可以看作一个list</strong>,每个字符占一位.</li>
+</ul>
+<h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><ul>
+<li>迭代很随便…太随便了…</li>
+<li>list tuple不多说了</li>
+<li><p>dict字典也可以迭代,因为无序,输出的顺序不一定相同.<br>默认迭代的是key 但value 也可以迭代,key value也可以同时迭代</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> value <span class="keyword">in</span> d.values()</div><div class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> d.items()</div></pre></td></tr></table></figure>
+</li>
+<li><p>上文书中说的,字符串可以当作list,所以也可以迭代.</p>
+</li>
+<li><p>问题来了,如何判断可迭代对象?<br><code>collections模块的Iterable类型判断</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(<span class="string">'abc'</span>, Iterable) <span class="comment"># str是否可迭代</span></div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>类似c/java的带下标循环实现?<br>Python内置的<code>enumerate函数</code>,把一个list变成索引-元素对</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i, value <span class="keyword">in</span> enumerate([<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>]):</div><div class="line">  print(i, value)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h3><ul>
+<li><code>用来生成list</code></li>
+<li><p>示例: [1x1, 2x2, 3x3, …, 10x10]</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">11</span>)] </div><div class="line">[m + n <span class="keyword">for</span> m <span class="keyword">in</span> <span class="string">'ABC'</span> <span class="keyword">for</span> n <span class="keyword">in</span> <span class="string">'XYZ'</span>] <span class="comment">#两层</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>for可以同时循环两个甚至多个变量,dict的items()可以同时迭代key和value</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">d = &#123;<span class="string">'x'</span>: <span class="string">'A'</span>, <span class="string">'y'</span>: <span class="string">'B'</span>, <span class="string">'z'</span>: <span class="string">'C'</span> &#125; <span class="comment"># 多个变量</span></div><div class="line">[k + <span class="string">'='</span> + v <span class="keyword">for</span> k, v <span class="keyword">in</span> d.items()] <span class="comment"># 生成list</span></div><div class="line">[s.lower() <span class="keyword">for</span> s <span class="keyword">in</span> L] <span class="comment"># 全部小写</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h3><ul>
+<li>generator 依照某种算法不断循环生成数据,而不是一次性生成完.节省大量空间.</li>
+<li><p>创建generator</p>
+<ul>
+<li><p>把列表生成式的[]改成()</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g = (x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>))</div></pre></td></tr></table></figure>
+<p>调用<code>next(g)</code>可获取下一个值.<br>最常用<code>for n in g:</code>代入for循环.也没有抛出错误.</p>
+</li>
+<li><p>定义一个包含<code>yield</code>关键字的函数.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(max)</span>:</span></div><div class="line">n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></div><div class="line"><span class="keyword">while</span> n &lt; max:</div><div class="line">    <span class="keyword">yield</span> b</div><div class="line">    a, b = b, a + b</div><div class="line">    n = n + <span class="number">1</span></div><div class="line"><span class="keyword">return</span> <span class="string">'done'</span></div></pre></td></tr></table></figure>
+<ul>
+<li>变成generator的函数，在每次调用next()的时候执行，遇到yield语句返回，再次执行时从上次返回的yield语句处继续执行。</li>
+<li>用for循环调用generator时，拿不到generator的return语句的返回值。如果想要拿到返回值，必须捕获StopIteration错误，返回值包含在StopIteration的value中.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><ul>
+<li><p>可以被for循环的对象统称为可迭代对象：<code>Iterable</code><br>使用isinstance()判断一个对象是否是Iterable对象</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isinstance(&#123;&#125;, Iterable)</div></pre></td></tr></table></figure>
+</li>
+<li><p>可以被next()函数调用并不断返回下一个值的对象称为迭代器：<code>Iterator</code> 表示一个惰性计算的序列 <code>Iterator</code>甚至可以表示一个无限大的数据流<br>isinstance()判断一个对象是否是Iterator对象</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isinstance((x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)), Iterator)</div></pre></td></tr></table></figure>
+</li>
+<li><p>集合数据类型如list、dict、str等是Iterable但不是Iterator，不过可以通过iter()函数获得一个Iterator对象。</p>
+</li>
+<li>Python的for循环本质上就是通过不断调用next()</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;高级特性&quot;&gt;&lt;a href=&quot;#高级特性&quot; class=&quot;headerlink&quot; title=&quot;高级特性&quot;&gt;&lt;/a&gt;高级特性&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;代码精炼&lt;/li&gt;
+&lt;li&gt;python代码量越少,开发效率越高.&lt;h3 id=&quot;切片&quot;&gt;&lt;a href=&quot;#切
     
     </summary>
     
@@ -1257,154 +1850,6 @@
     
       &lt;h2 id=&quot;函数式编程&quot;&gt;&lt;a href=&quot;#函数式编程&quot; class=&quot;headerlink&quot; title=&quot;函数式编程&quot;&gt;&lt;/a&gt;函数式编程&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;纯函数式编程没有变量,一个函数只要输出确定,输出就是确定的,称为没有副作用.使用变量的函数内部由于变量状
-    
-    </summary>
-    
-      <category term="python笔记" scheme="http://yoursite.com/categories/python%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python—基础</title>
-    <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E5%9F%BA%E7%A1%80/"/>
-    <id>http://yoursite.com/2018/01/19/python—基础/</id>
-    <published>2018-01-19T02:17:11.000Z</published>
-    <updated>2018-01-19T14:54:56.297Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
-<li>整数 浮点数 <h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3></li>
-<li>字符串以单引号 ‘ 或 “ 包括. </li>
-<li>转义字符 \ 依然有效. r’’表示此字符串默认不转移.</li>
-<li>/n有效, 可用 开头 … 替换<h3 id="布尔"><a href="#布尔" class="headerlink" title="布尔"></a>布尔</h3></li>
-<li>只有True 和 Flase </li>
-<li>and or not 3种常用操作</li>
-</ul>
-<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><ul>
-<li>通常都为大写表示.</li>
-<li>除法有两种 / 或 //<br>/ 结果可能为浮点, // 结果为整数(地板除)</li>
-</ul>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
-<li>None 空值,不为0.谨记</li>
-<li>动态语言,so,变量的类型无所谓.</li>
-<li>浮点数精度无限,但超过限制直接表示为 <code>inf</code></li>
-</ul>
-<h2 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h2><ul>
-<li>简而言之 文件使用utf-8就对了.</li>
-<li>utf-8 属于万国码的简化,低位与 ASCII 兼容.</li>
-</ul>
-<h3 id="python字符串编码"><a href="#python字符串编码" class="headerlink" title="python字符串编码"></a>python字符串编码</h3><ul>
-<li>py3中默认是 Unicode 万国码.</li>
-<li>ord()获取字符的整数表示，chr()把编码转换为字符.</li>
-<li>Python对bytes类型的数据用带b前缀的单引号或双引号表示 <code>x = b&#39;ABC&#39;</code></li>
-<li><p>以Unicode表示的str通过encode()方法可以编码为指定的bytes</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">'ABC'</span>.encode(<span class="string">'ascii'</span>)</div><div class="line"><span class="string">b'ABC'</span></div><div class="line"><span class="string">'中文'</span>.encode(<span class="string">'utf-8'</span>)</div><div class="line"><span class="string">b'\xe4\xb8\xad\xe6\x96\x87'</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>对应的decode()方法</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'ABC'</span>.decode(<span class="string">'ascii'</span>)</div><div class="line"><span class="string">'ABC'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'\xe4\xb8\xad\xe6\x96\x87'</span>.decode(<span class="string">'utf-8'</span>)</div><div class="line"><span class="string">'中文'</span></div></pre></td></tr></table></figure>
-<p>可以传入errors=’ignore’忽略错误的字节</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">b'\xe4\xb8\xad\xff'</span>.decode(<span class="string">'utf-8'</span>, errors=<span class="string">'ignore'</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>len(),str计算字符.bytes计算字节</p>
-</li>
-<li>开头,第一行,可执行文件(windows会忽视注释)<br>第二行,以utf-8处理文件.<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="字符串格式化"><a href="#字符串格式化" class="headerlink" title="字符串格式化"></a>字符串格式化</h3><ul>
-<li><p>占位符与c基本相同 %d %s %x %f</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">'%2d-%02d'</span> % (<span class="number">3</span>, <span class="number">1</span>))</div><div class="line">print(<span class="string">'%.2f'</span> % <span class="number">3.1415926</span>)</div></pre></td></tr></table></figure>
-<p>需要 % 时, %%</p>
-</li>
-<li><p>format()</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'Hello, &#123;0&#125;, 成绩提升了 &#123;1:.1f&#125;%'</span>.format(<span class="string">'小明'</span>, <span class="number">17.125</span>)</div><div class="line"><span class="string">'Hello, 小明, 成绩提升了 17.1%'</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="list-tuple"><a href="#list-tuple" class="headerlink" title="list tuple"></a>list tuple</h2><h3 id="list-列表"><a href="#list-列表" class="headerlink" title="list 列表"></a>list 列表</h3><ul>
-<li><p>示例, <code>= [ , , ]</code> 可变 有序</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">classmates = [<span class="string">'Michael'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>]</div></pre></td></tr></table></figure>
-</li>
-<li><p>索引以 0 开始,可以倒序 <code>-n</code> 当然越界都是 <code>IndexError</code> 错误</p>
-</li>
-<li>.len(),list元素个数.</li>
-<li>.append(x) 末尾添加</li>
-<li>.insert(i,x) 对应索引处插入</li>
-<li>.pop(i) 删除i对应元素,为空则删除末尾元素.</li>
-<li>替换i位置,直接赋值.</li>
-<li>list的元素可以为一个list.多重数组.</li>
-</ul>
-<h3 id="tuple-元组"><a href="#tuple-元组" class="headerlink" title="tuple 元组"></a>tuple 元组</h3><ul>
-<li><p>示例<code>= ( , , )</code> 不可变 有序 更安全,其他与list相同</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">t = (<span class="number">1</span>, <span class="number">2</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p><code>t = (1,)</code>声明一个元素元组,比较特殊.</p>
-</li>
-</ul>
-<h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2><ul>
-<li><p>示例</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> true :</div><div class="line">    print(<span class="string">"1"</span>)</div><div class="line"><span class="keyword">elif</span> true :</div><div class="line">    print(<span class="string">"2"</span>)</div><div class="line"><span class="keyword">else</span> :</div><div class="line">    print(<span class="string">"3"</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>if 条件可简写,<code>if x</code> x非零数值、非空字符串、非空list 则为true</p>
-</li>
-<li>提及用户输入 input()</li>
-<li>input默认返回字符串,如需要其他类型 int()转换.</li>
-</ul>
-<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><ul>
-<li><p>示例 与c相同</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> x <span class="keyword">in</span> names:</div><div class="line">    print(x)</div></pre></td></tr></table></figure>
-</li>
-<li><p>示例 与c相同</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> n &gt; <span class="number">0</span>:</div><div class="line">    print(n)</div></pre></td></tr></table></figure>
-</li>
-<li><p>break 跳出此层循环</p>
-</li>
-<li>continue 跳出本轮循环</li>
-</ul>
-<h2 id="dict-和-set"><a href="#dict-和-set" class="headerlink" title="dict 和 set"></a>dict 和 set</h2><h3 id="dict"><a href="#dict" class="headerlink" title="dict"></a>dict</h3><ul>
-<li>字典,使用键值对储存数据,索引极快,空间换时间.</li>
-<li>对应其他语言的 map </li>
-<li><p>示例: {‘’: ,’’: ,…}</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">d = &#123;<span class="string">'Michael'</span>: <span class="number">95</span>, <span class="string">'Bob'</span>: <span class="number">75</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</div><div class="line">d[<span class="string">'Michael'</span>]</div><div class="line"><span class="number">95</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>key</p>
-<ul>
-<li>必须为不可变对象,整数、字符串等</li>
-<li>一个key对应一个value</li>
-<li><p>key不存在</p>
-<ul>
-<li><p>in判断</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'Thomas'</span> <span class="keyword">in</span> d</div><div class="line"><span class="keyword">False</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>get()获取</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">d.get(<span class="string">'Thomas'</span>) <span class="comment"># 返回空</span></div><div class="line">d.get(<span class="string">'Thomas'</span>, <span class="number">-1</span>) <span class="comment"># 不存在? 返回-1: ;</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>pop()删除</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">d.pop(<span class="string">'Bob'</span>)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><ul>
-<li>key的集合,但不存在value</li>
-<li>无序、不重复、元素为不可变对象</li>
-<li>创建set需要一个list</li>
-<li><p>示例 set([ , , …])</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s</div><div class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p><code>.add(key)</code>/<code>.remove(key)</code></p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;数据类型&quot;&gt;&lt;a href=&quot;#数据类型&quot; class=&quot;headerlink&quot; title=&quot;数据类型&quot;&gt;&lt;/a&gt;数据类型&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;整数 浮点数 &lt;h3 id=&quot;字符串&quot;&gt;&lt;a href=&quot;#字符串&quot; class=&quot;headerlink&quot; ti
     
     </summary>
     
@@ -1984,658 +2429,6 @@
       <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
       <category term="qemu" scheme="http://yoursite.com/tags/qemu/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>linux笔记——看门狗内核API文档翻译</title>
-    <link href="http://yoursite.com/2017/08/23/linux%E7%AC%94%E8%AE%B0%E2%80%94%E7%9C%8B%E9%97%A8%E7%8B%97%E5%86%85%E6%A0%B8API%E6%96%87%E6%A1%A3%E7%BF%BB%E8%AF%91/"/>
-    <id>http://yoursite.com/2017/08/23/linux笔记—看门狗内核API文档翻译/</id>
-    <published>2017-08-23T09:52:16.000Z</published>
-    <updated>2017-09-10T01:35:25.037Z</updated>
-    
-    <content type="html"><![CDATA[<ul>
-<li>wdt第二弹，内核API，勉强翻译下来了，还需要进一步整理</li>
-</ul>
-<hr>
-<h2 id="看门狗定时器驱动内核API"><a href="#看门狗定时器驱动内核API" class="headerlink" title="看门狗定时器驱动内核API"></a>看门狗定时器驱动内核API</h2><ul>
-<li>最后更新时间 2013.2.12</li>
-<li>Wim Van Sebroeck <a href="&#109;&#x61;&#105;&#108;&#x74;&#x6f;&#58;&#x77;&#x69;&#109;&#x40;&#105;&#103;&#117;&#97;&#110;&#x61;&#x2e;&#98;&#x65;">&#x77;&#x69;&#109;&#x40;&#105;&#103;&#117;&#97;&#110;&#x61;&#x2e;&#98;&#x65;</a></li>
-</ul>
-<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul>
-<li>本文档没有描述看门狗设备或驱动。也不涉及那些在用户空间调用的API，对应在 Documentation/watchdog/watchdog-api.txt （也就是<a href="">上一篇</a>）</li>
-<li>本文档描述的是，利用看门狗子系统框架方式进行看门狗驱动编写时所使用到的API。看门狗子系统框架提供了所有与用户空间交互的接口，不需要每次编写重复的代码。这意味这驱动程序只需要提供几个不同的操作函数，就可以控制WDT了。</li>
-</ul>
-<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><ul>
-<li><p>每一个想要使用看门狗核心子系统的驱动程序都必须包含<code>#include&lt;linux/watchdog.h&gt;</code>(编写驱动程序是不得不做的工作)。<code>linux/watchdog.h</code>包含以下两个注册/卸载函数：</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">extern int watchdog_register_device(struct watchdog_device *);</div><div class="line">extern void watchdog_unregister_device(struct watchdog_device *);</div></pre></td></tr></table></figure>
-</li>
-<li><p>注册函数将wdt设备注册进wdt子系统，函数的参数是一个指向struct watchdog<em>device的结构体</em>。当注册成功时返回0.注册失败返回一个负值。</p>
-</li>
-<li>卸载函数是将wdt设备从wdt子系统卸载，函数参数是一个指向struct watchdog<em>device的结构体</em></li>
-<li>看门子系统包含了注册时间调整机制（原文是 an registration deferral mechanism 一种延期机制？上下文不太对啊），允许在开机阶段，你可以按照你设定的尽可早的注册一个看门狗设备。</li>
-</ul>
-<h3 id="struct-watchdogdevice"><a href="#struct-watchdogdevice" class="headerlink" title="struct watchdogdevice"></a>struct watchdog<em>device</em></h3><ul>
-<li>这里粘贴的是linux4.1里定义的watchdog_device，原文的watchdog_device更长但跟源码对不起来，所以这里就以内核4.1里定义的为准了😑：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"> struct watchdog_device &#123;</div><div class="line">int id;</div><div class="line">struct cdev cdev;</div><div class="line">struct device *dev;</div><div class="line">struct device *parent;</div><div class="line">const struct watchdog_info *info;</div><div class="line">const struct watchdog_ops *ops;</div><div class="line">unsigned int bootstatus;</div><div class="line">unsigned int timeout;</div><div class="line">unsigned int min_timeout;</div><div class="line">unsigned int max_timeout;</div><div class="line">void *driver_data;</div><div class="line">struct mutex lock;</div><div class="line">unsigned long status;</div><div class="line">/* Bit numbers for status flags */</div><div class="line">#define WDOG_ACTIVE		0	/* Is the watchdog running/active */</div><div class="line">#define WDOG_DEV_OPEN		1	/* Opened via /dev/watchdog ? */</div><div class="line">#define WDOG_ALLOW_RELEASE	2	/* Did we receive the magic char ? */</div><div class="line">#define WDOG_NO_WAY_OUT		3	/* Is &apos;nowayout&apos; feature set ? */</div><div class="line">#define WDOG_UNREGISTERED	4	/* Has the device been unregistered */</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>包含以下字段：<ul>
-<li>id：由watchdog_register_device函数注册。id 0是一个特殊的，id 0 有/dev/watchdog0 cdev（动态主设备号，次设备号0） 和 /dev/watchdog miscdev。id 在调用到watchdog_register_device时自动注册。<ul>
-<li><strong>NOTE</strong>看源码，wdt子系统是基于misc子系统的，注册wdt设备调用的是<code>misc_register(&amp;watchdog_miscdev);</code>而misc设备主设备号只能为10,这里结论有冲突，等待解决中。。。<ul>
-<li>parent：在调用watchdog_register_device函数前，设置父设备（或者设置为null）</li>
-<li>info：指向watchdog_info结构体的指针，watchdog_info提供了看门狗本身的一些附加信息（像是看门狗独有的名称之类的）</li>
-<li>ops：指向watchdog_ops结构体的指针，watchdog_ops是看门狗支持操作(函数)的集合。</li>
-<li>bootstatus:启动后设备状态(与看门狗WDIOF<em>* 标志位一同开启)</em></li>
-<li>timeout:看门狗超时的时间(秒为单位).如果设置了WDOG<em>ACTIVE </em>启用了看门狗,在这个时间长度后,用户空间还没有发送心跳包,看门狗会将系统复位重启.</li>
-<li>min<em>timeout:</em>可设置的看门狗最小超时时间</li>
-<li>max<em>timeout:</em>可设置的看门狗最大超时时间</li>
-<li>driver<em>data:</em>指向看门狗设备私有数据的指针,这个data只能由watchdog_set_drvdata 和 watchdog_get_drvdata routines函数访问.</li>
-<li>struct mutex lock; <strong>原文档没有🙄</strong></li>
-<li>status:这个字段包含了许多状态位,提供有关设备的额外信息(例如:看门狗的活动状态\限制,现在nowayout 位设置与否)(括号里翻译是否准确存疑)</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="struct-watchdog-ops"><a href="#struct-watchdog-ops" class="headerlink" title="struct watchdog_ops"></a>struct watchdog_ops</h3><ul>
-<li><p>watchdog<em>ops</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"> struct watchdog_ops &#123;</div><div class="line">struct module *owner;</div><div class="line">/* mandatory operations */</div><div class="line">int (*start)(struct watchdog_device *);</div><div class="line">int (*stop)(struct watchdog_device *);</div><div class="line">/* optional operations */</div><div class="line">int (*ping)(struct watchdog_device *);</div><div class="line">unsigned int (*status)(struct watchdog_device *);</div><div class="line">int (*set_timeout)(struct watchdog_device *, unsigned int);</div><div class="line">unsigned int (*get_timeleft)(struct watchdog_device *);</div><div class="line">void (*ref)(struct watchdog_device *);</div><div class="line">void (*unref)(struct watchdog_device *);</div><div class="line">long (*ioctl)(struct watchdog_device *, unsigned int, unsigned long);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-</li>
-<li><p>你一开始定义的看门狗的module owner是非常重要的,module owner 在使用看门狗时会同时锁定看门狗设备.(这样避免了在卸载模块时/dev/watchdog依然是打开状态引起的系统崩溃)</p>
-</li>
-<li><p>某些函数是必须实现的,其他是可选的,必须实现的函数如下:</p>
-<ul>
-<li><em>start  :</em>指向看门狗设备启动函数的指针.这个函数参数为一个 struct watchdog<em>device,</em>成功返回0,失败返回负数.</li>
-<li><em>stop :</em>通过这个函数关闭看门狗设备.这个函数参数为一个 struct watchdog<em>device,</em>成功返回0,失败返回负数.<ul>
-<li>一些硬件看门狗设备只能启动,没有关闭选项.对应这些设备的驱动,不用实现 <em>stop  ,</em>如果驱动程序没有关闭设备功能,看门狗核心层会在设备关闭后设置 WDOG_HW_RUNNING 并调用驱动程序的 keepalive pings功能.</li>
-<li>如果看门狗驱动没有实现<em>stop  </em>必须设置max_hw_heartbeat<em>ms</em></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>不是所有的硬件看门狗都有相同的功能,这就是为什么会有可选函数了,只有但这项功能被硬件看门🐶支持时,才编写对应函数.</p>
-<ul>
-<li>ping:这是看门狗驱动实现的喂狗函数,这个函数的参数时一个指向struct watchdog<em>device的指针</em>.函数执行成功返回0,失败返回负数.<ul>
-<li>大多数的硬件不支持直接喂狗的特殊功能,一般是直接重启硬件看门狗.</li>
-<li>看门狗子系统的核心层也是这样做的:但定期喂狗的操作转发到硬件看门狗时,核心层在 <em>ping 实现</em>时调用喂狗函数,但喂狗函数没有实现时,使用 start  对应函数</li>
-<li>( WDIOC_KEEPALIVE对应的 ioctl命令只有在i看门狗info里的WDIOF_KEEPALIVEPING被设置为1后才会生效 )</li>
-</ul>
-</li>
-<li>status: 这个函数用来检查看门狗设备的状态,通过看门狗的WDIOF<em>*</em>状态标志位报告.WDIOF_MAGICCLOSE and WDIOF_KEEPALIVEPING由看门狗核心层报告.没有必要在驱动程序中报告.此外如果驱动程序没有实现该函数,看门狗核心层会返回 struct watchdog<em>device</em>中的bootstatus状态位.</li>
-<li>set_timeout:这个函数设置和检查 超时时间的变化,返回0表示成功,返回-EINVAL表示超出范围,返回-EIO表示无法写入看门狗.设置成功后,函数应该将设定的超时时间写入看门狗.(或许与通过接口获取的超时时间不同,因为看门狗的分辨率不一定能到1s). <ul>
-<li>实现了max_hw_heartbeat_ms的驱动将硬件看门狗心跳值设置为超时时间和max_hw_heartbeat_ms之间的最小值.Those drivers set the timeout value of the watchdog_device either to the requested timeout value (if it is larger than max_hw_heartbeat_ms), or to the achieved timeout value.</li>
-<li>如果看门狗驱动程序没有执行任何操作,但设置了watchdog<em>device.timeout</em>,此回掉函数忽略.</li>
-<li>如果没有设置 set_timeout,但设置了WDIOF_SETTIMEOUT,看门狗架构会将 watchdog_device中timeout值更新为请求的值.</li>
-<li>如果使用了pretimeout feature (WDIOF_PRETIMEOUT),那么set_timeout 必须同时检查 pretimeout 是否有效 ,设置相应定时器. 这些操作在核心层没有races无法完成,所以必须在驱动中完成.</li>
-</ul>
-</li>
-<li>set<em>pretimeout</em>:这个函数支持检查/改变看门狗中pretimeout值(pretimeout详情见wdt用户层api翻译).这个函数是可选支持的,因为不是所有的看门狗都支持这个功能.pretimeout 不是绝对时间,其数值是在超时时间之前几秒发生.<ul>
-<li>返回0表示执行成功,返回-EINVAL,表示超出范围,返回-EIO表示未能成功向看门狗写入.</li>
-<li>设置pretimeou为0值,代表禁用pretimeout功能.(WDIOF<em>PRETIMEOUT</em>需要在看门狗的info 结构体中设置)</li>
-<li>如果驱动没有实现任何功能,但设定了 watchdog<em>device.pretimeout</em>,此回掉函数忽略.这意味这,如果没有提供set<em>pretimeout</em>函数,但设定了WDIOF<em>PRETIMEOUT</em>,看门狗架构会将pretimeout的值更新为请求值.</li>
-</ul>
-</li>
-<li>get<em>timeleft:</em>这个函数返回复位前剩余时间.</li>
-<li>restart:此函数重启看门狗硬件,返回0表示成功,失败返回对应错误码.</li>
-<li>ioctl:如果这个函数存在,在系统进行内部ioctl命令处理前,会首先调用此函数.如果不支持ioctrl命令,应该返回 -ENOIOCTLCMD .这个函数的参数为(watchdog<em>device, cmd and arg)</em></li>
-<li>ref和unref 已经不再被支持.</li>
-</ul>
-</li>
-<li><p>The status bits should (preferably) be set with the set_bit and clear_bit alike bit-operations. The status bits that are defined are:</p>
-<ul>
-<li>WDOG<em>ACTIVE:</em>这个状态位标识着从用户空间看一个看门狗设备是否被激活,如果被激活,用户空间需要执行喂狗动作</li>
-<li>WDOG_NO_WAY<em>OUT:</em>这个状态位标识这nowayout的设置,如果被激活,那看门狗启动后,无法被停止.</li>
-<li>WDOG_HW_RUNNING:如果硬件看门狗运行,此状态位被置1.<ul>
-<li>当硬件看门狗不能被停止时,这个状态位必须被置1.</li>
-<li>如果系统启动后自动启动看门狗,在看门狗打开前,必须设置此状态位.</li>
-<li>当此状态位被置1,即使WDOG<em>ACTIVE为0</em>.看门狗架构也会执行喂狗动作.</li>
-<li>(当你直接注册设置了 WDOG_HW_RUNNING位的看门狗设备时,执行open /dev/watchdog动作,系统会直接跳过启动操作,直接执行喂狗操作 )</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>要设置WDOG_NO_WAY<em>OUT</em>状态位(在注册看门狗设备前)你可以:</p>
-<ul>
-<li><p>在watchdog<em>device</em>的结构体中设置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.status = WATCHDOG_NOWAYOUT_INIT_STATUS,</div></pre></td></tr></table></figure>
-<p>这样等同于将WDOG_NO_WAY<em>OUT</em>值设置为CONFIG_WATCHDOG_NOWAYOUT</p>
-</li>
-<li>使用下面的函数<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">static inline void watchdog_set_nowayout(struct watchdog_device *wdd, int nowayout)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>(note:)   wdt驱动程序核心支持magic close和 nowayout功能.要使用magic close,需要在看门狗的 info中设置WDIOF<em>MAGICCLOSE </em>位.开启 nowayout 会覆盖magic close.</p>
-</li>
-<li><p>获取或设定驱动程序特殊数据,应该使用以下两个函数:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">static inline void watchdog_set_drvdata(struct watchdog_device *wdd, void *data)</div><div class="line">static inline void *watchdog_get_drvdata(struct watchdog_device *wdd)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>watchdog_set_drvdata函数允许你添加向驱动程序添加特殊数据,此函数的参数为指向看门狗设备的指针,和指向需要添加数据的指针.</li>
-<li>watchdog_get_drvdata函数运行你读取驱动程序中的特殊数据,此函数的参数为指向你想读取的看门狗设备的指针.</li>
-</ul>
-<ul>
-<li><p>初始化 timeout ,会用到下面的函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">  extern int watchdog_init_timeout(struct watchdog_device *wdd,unsigned int timeout_parm, struct device *dev);</div><div class="line">  ``` </div><div class="line">  </div><div class="line">  * watchdog_init_timeout允许使用模块的 timeout 字段初始化 timeout ,当模块的 timeout 字段无效时,设备树中的timeout-sec也可.最好的做法是将watchdog_device_中timeout的值,设置为初始默认值,然后使用到函数的用户可以分别设置自定义值.</div><div class="line"></div><div class="line">* 重启后禁用看门狗,需要使用以下函数:</div></pre></td></tr></table></figure>
-<p>static inline void watchdog_stop_on_reboot(struct watchdog_device *wdd);</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 卸载看门狗设备时禁用看门狗,必须调用此函数,如果 nowayout 没有设置,这个函数只会停止看门狗.</div></pre></td></tr></table></figure>
-<p>static inline void watchdog_stop_on_unregister(struct watchdog_device *wdd);</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">    </div><div class="line">* 更改重启处理程序的优先级,(猜测是不同看门狗的优先级)调用下面的函数:</div></pre></td></tr></table></figure>
-<p>oid watchdog_set_restart_priority(struct watchdog_device *wdd, int priority);</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">  * 设定优先级时,用户需要遵循以下规则</div><div class="line">    * 0:优先级最低,非常有限的重启能力</div><div class="line">    * 128:重启处理的默认选择,如果没有其他的重启处理程序可用,或者没有重启整个系统的重启处理程序可用.</div><div class="line">    * 255:最高优先级,会覆盖其他所有重启处理程序</div><div class="line"></div><div class="line">* 使用pretimeout 通知功能,需要利用以下函数:</div></pre></td></tr></table></figure>
-<p>void watchdog_notify_pretimeout(struct watchdog_device *wdd)<br>```</p>
-<ul>
-<li>这个函数可以在中断上下文中调用,如果启用了watchdog pretimeout governor 框架(kbuild CONFIG_WATCHDOG_PRETIMEOUT_GOV),就会采用进入驱动程序分配好的处理程序,如果没有启用watchdog pretimeout governor 框架,watchdog_notify_pretimeout()会将信息输出到内核日志缓存.</li>
-</ul>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;wdt第二弹，内核API，勉强翻译下来了，还需要进一步整理&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;看门狗定时器驱动内核API&quot;&gt;&lt;a href=&quot;#看门狗定时器驱动内核API&quot; class=&quot;headerlink&quot; title=&quot;看门狗定时器驱动内核A
-    
-    </summary>
-    
-      <category term="Linux笔记" scheme="http://yoursite.com/categories/Linux%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-      <category term="翻译" scheme="http://yoursite.com/tags/%E7%BF%BB%E8%AF%91/"/>
-    
-      <category term="wdt" scheme="http://yoursite.com/tags/wdt/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>linux笔记—看门狗API文档翻译</title>
-    <link href="http://yoursite.com/2017/08/22/linux%E7%AC%94%E8%AE%B0%E2%80%94%E7%9C%8B%E9%97%A8%E7%8B%97API%E6%96%87%E6%A1%A3%E7%BF%BB%E8%AF%91/"/>
-    <id>http://yoursite.com/2017/08/22/linux笔记—看门狗API文档翻译/</id>
-    <published>2017-08-22T09:52:16.000Z</published>
-    <updated>2017-09-10T01:35:42.263Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<ul>
-<li>随手翻译的文档，要看懂linux内核，内核附带的文档自然是逃不过😂，全英文配合Google翻译也得上。。。。</li>
-</ul>
-<hr>
-<ul>
-<li><p>最后更新时间 10/05/2007</p>
-</li>
-<li><p>linux看门狗设备API</p>
-</li>
-<li>Copyright 2002 Christer Weingel <a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#x77;&#105;&#x6e;&#x67;&#x65;&#x6c;&#64;&#110;&#x61;&#x6e;&#x6f;&#45;&#115;&#x79;&#x73;&#x74;&#101;&#109;&#46;&#x63;&#x6f;&#x6d;">&#x77;&#105;&#x6e;&#x67;&#x65;&#x6c;&#64;&#110;&#x61;&#x6e;&#x6f;&#45;&#115;&#x79;&#x73;&#x74;&#101;&#109;&#46;&#x63;&#x6f;&#x6d;</a></li>
-<li><p>本文档的一些内容来自 sbc60xxwdt ，版权属于 Copyright 2000 Jakob Oestergaard <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#111;&#58;&#x6a;&#97;&#x6b;&#111;&#x62;&#x40;&#111;&#x73;&#x74;&#101;&#110;&#x66;&#101;&#x6c;&#x64;&#x2e;&#100;&#107;">&#x6a;&#97;&#x6b;&#111;&#x62;&#x40;&#111;&#x73;&#x74;&#101;&#110;&#x66;&#101;&#x6c;&#x64;&#x2e;&#100;&#107;</a></p>
-</li>
-<li><p>本文档基于linux内核 2.4.18</p>
-</li>
-</ul>
-<hr>
-<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul>
-<li>你应该已经知道了，看门狗定时器（WDT）是一个硬件复位电路，在系统软件出现故障时复位系统。</li>
-<li>通常，用户空间的定期喂狗程序通过/dev/watchdog的设备文件通知内核看门狗驱动程序。驱动收到通知，会告知硬件看门狗一切正常，硬件看门狗需要等一会再复位系统。如果用户空间通知失败（RAM错误、内核漏洞等等），通知将停止。超时后，硬件看门狗将复位系统（重启）。</li>
-<li>linux看门狗的API是相当特殊的结构，不同的驱动程序对API的执行各不相同，有时会碰到不兼容的情况。本文档参数记录现有的情况，以供未来的驱动开发参考。<h3 id="最简单的API"><a href="#最简单的API" class="headerlink" title="最简单的API"></a>最简单的API</h3></li>
-<li>所有驱动都支持的基本操作模式。/dev/watchdog被打开后，看门狗被激活并复位系统，除非在一小段时间内被ping通？（喂狗），这段时间被称为超时时间或间断时间。简单的喂狗的方式是向驱动程序写入一些数据，一个非常简单的实例在<code>see samples/watchdog/watchdog-simple.c</code>下.</li>
-<li>更高级的驱动程序可以做到例如检查一个http服务器，在执行喂狗操作之前，做出回应。</li>
-<li>/dev/下设备节点被关闭后，看门狗也同时被禁用，除非支持“Magic Close”（见下文），这并不是个好办法。因为如果看看门狗demo有bug导致系统崩溃，但系统不会重启。因为这样一些驱动支持”Disable watchdog shutdown on close”, CONFIG_WATCHDOG_NOWAYOUT”这样的配置选项。一旦编译内核时候启用这些选项，一旦看门狗程序激活，就不可能禁用看门狗。如果看门狗demo崩溃，系统会在超时后自动重启。看门狗驱动通常也支持nowayout module parameter，以便在运行时控制nowayout module。</li>
-</ul>
-<h3 id="Magic-Close-feature"><a href="#Magic-Close-feature" class="headerlink" title="Magic Close feature"></a>Magic Close feature</h3><ul>
-<li>如果驱动程序支持<code>Magic Close</code>,那么设备将不支持禁用看门狗，除非在关闭设备文件前，向/dev/watchdog下设备文件写入特定的magic 字符 ‘V’。如果用户空间的 daemon关闭了看门的设备文件，但是没有发送那个特定的字符，驱动会认为daemon进程已经被杀，并且停止了定期喂狗行为。这样会导致超时后系统重启。<h3 id="ioctl-API"><a href="#ioctl-API" class="headerlink" title="ioctl API"></a>ioctl API</h3></li>
-<li>所有的驱动程序都支持ioctl API</li>
-<li><strong>喂狗操作使用ioctl完成</strong></li>
-<li>所有的驱动都要支持一个KEEPALIVE的ioctl命令，这个命令可以起到向驱动写入数据一样的作用。所以watchdog daemon的主函数循环可以这样实现<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> while (1) &#123;</div><div class="line">	ioctl(fd, WDIOC_KEEPALIVE, 0);</div><div class="line">	sleep(10);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="Setting-and-getting-the-timeout"><a href="#Setting-and-getting-the-timeout" class="headerlink" title="Setting and getting the timeout"></a>Setting and getting the timeout</h3><ul>
-<li>某些驱动支持运行时通过SETTIMEOUT ioctl命令修改超时时间，这些驱动都有WDIOF<em>SETTIMEOUT的标志位</em>。超时时间是一个单位为秒的整数，驱动程序会返回这个变量实际设置的数值，但是由于硬件限制，返回的数值可能与设置数值不同。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">int timeout = 45;</div><div class="line">ioctl(fd, WDIOC_SETTIMEOUT, &amp;timeout);</div><div class="line">printf(&quot;The timeout was set to %d seconds\n&quot;, timeout);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><p>这个实例或许会输出”The timeout was set to 60 seconds”，如果设备超时时间为分钟。</p>
-</li>
-<li><p>自从2.4.18内核开始，可以使用GETTIMEOUT ioctl命令，获取超时时间。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ioctl(fd, WDIOC_GETTIMEOUT, &amp;timeout);</div><div class="line"><span class="built_in">printf</span>(<span class="string">"The timeout was is %d seconds\n"</span>, timeout);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="Pretimeouts"><a href="#Pretimeouts" class="headerlink" title="Pretimeouts"></a>Pretimeouts</h3><ul>
-<li><p>一些看门狗定时器可以在系统重启前一段时间设置一个触发器。这样运行linux在系统从前记录一些重要的信息（像panic信息和kernel coredumps），具体可以通过NMT、中断等机制实现。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pretimeout = 10;</div><div class="line">ioctl(fd, WDIOC_SETPRETIMEOUT, &amp;pretimeout);</div></pre></td></tr></table></figure>
-</li>
-<li><p>请注意，pretimeout 时间是在 超时关闭系统 之前的秒数。不是直到发生pretimeout 事件的秒数。例如设定的超时时间是60s， pretimeout是10s。pretimeout事件会在50s时发生。pretimeout设置为0代表禁用pretimeout。</p>
-</li>
-<li><p>同样存在一个获取pretimeout的ioctl命令。</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ioctl(fd, WDIOC_GETPRETIMEOUT, &amp;timeout);</div><div class="line">printf(&quot;The pretimeout was is %d seconds\n&quot;, timeout);</div></pre></td></tr></table></figure>
-</li>
-<li><p>不是所有看门狗驱动都支持 pretimeout</p>
-</li>
-</ul>
-<h3 id="获取重启前秒数"><a href="#获取重启前秒数" class="headerlink" title="获取重启前秒数"></a>获取重启前秒数</h3><ul>
-<li>一些看门狗驱动支持获取系统重启前秒数。通过WDIOC<em>GETTIMELEFT  ioctl  </em>命令可以返回系统重启前秒数。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ioctl(fd, WDIOC_GETTIMELEFT, &amp;timeleft);</div><div class="line">printf(&quot;The timeout was is %d seconds\n&quot;, timeleft);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="环境监测"><a href="#环境监测" class="headerlink" title="环境监测"></a>环境监测</h3><ul>
-<li><p>所有的看门狗驱动都被要求返回更多关于系统最后一次重启的信息，像是温度、风扇转速、电源等。GETSUPPORT ioctl 的命令可以返回 设备可以支持的信息。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">struct watchdog_info ident;</div><div class="line">ioctl(fd, WDIOC_GETSUPPORT, &amp;ident);</div></pre></td></tr></table></figure>
-</li>
-<li><p>返回的结构ident中的字段如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">   identity		描述watchdog driver的字符串</div><div class="line">firmware_version	the firmware version of the card if available</div><div class="line">options			设备支持情况的标志位</div></pre></td></tr></table></figure>
-</li>
-<li><p>options描述了GET_STATUS 和GET_BOOT<em>STATUS ioctl命令</em>可以返回那些信息。并且可以设置。（）<strong>??无法理解什么意思??</strong></p>
-</li>
-</ul>
-<ul>
-<li>WDIOF<em>OVERHEAT     cpu过热复位</em><br>系统重启因为，超过了温度限制上限。</li>
-<li><p>WDIOF<em>FANFAULT        风扇失效复位</em></p>
-</li>
-<li><p>WDIOF<em>EXTERN1        External relay 1 </em><br>外部监控电源1被触发，？？？Controllers intended for real world applications include external monitoring pins that will trigger a reset.？？（不明白什么意思）</p>
-</li>
-<li><p>WDIOF_EXTERN2        External relay 2<br>外部监控电源2被触发</p>
-</li>
-<li><p>WDIOF_POWERUNDER    电源坏了，电源带不动了<br>机器显示欠压。</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li>后面一点不翻了，有时间再添坑</li>
-</ul>
-<hr>
-<ul>
-<li><p>WDIOF_CARDRESET        Card previously reset the CPU<br>The last reboot was caused by the watchdog card</p>
-</li>
-<li><p>WDIOF_POWEROVER        Power over voltage<br>The machine is showing an overvoltage status. Note that if one level is under and one over both bits will be set - this may seem odd but makes sense.</p>
-</li>
-<li><p>WDIOF_KEEPALIVEPING    Keep alive ping reply<br>The watchdog saw a keepalive ping since it was last queried.</p>
-</li>
-<li><p>WDIOF_SETTIMEOUT    Can set/get the timeout<br>The watchdog can do pretimeouts.</p>
-</li>
-<li><p>WDIOF_PRETIMEOUT    Pretimeout (in seconds), get/set<br>For those drivers that return any bits set in the option field, the GETSTATUS and GETBOOTSTATUS ioctls can be used to ask for the current status, and the status at the last reboot, respectively.  </p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">int flags;</div><div class="line">ioctl(fd, WDIOC_GETSTATUS, &amp;flags);</div></pre></td></tr></table></figure>
-<p>  or</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ioctl(fd, WDIOC_GETBOOTSTATUS, &amp;flags);</div></pre></td></tr></table></figure>
-</li>
-<li><p>Note that not all devices support these two calls, and some only support the GETBOOTSTATUS call.</p>
-</li>
-<li><p>Some drivers can measure the temperature using the GETTEMP ioctl.  The returned value is the temperature in degrees fahrenheit.</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">int temperature;</div><div class="line">ioctl(fd, WDIOC_GETTEMP, &amp;temperature);</div></pre></td></tr></table></figure>
-</li>
-<li><p>Finally the SETOPTIONS ioctl can be used to control some aspects of the cards operation.</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">int options = 0;</div><div class="line">ioctl(fd, WDIOC_SETOPTIONS, &amp;options);</div></pre></td></tr></table></figure>
-</li>
-<li><p>The following options are available:</p>
-<ul>
-<li>WDIOS_DISABLECARD    Turn off the watchdog timer</li>
-<li>WDIOS_ENABLECARD    Turn on the watchdog timer</li>
-<li>WDIOS_TEMPPANIC        Kernel panic on temperature trip</li>
-</ul>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;ul&gt;
-&lt;li&gt;随手翻译的文档，要看懂linux内核，内核附带的文档自然是逃不过😂，全英文配合Google翻译也得上。。。。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;最后更新时间 10/05/2007&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;linux看门
-    
-    </summary>
-    
-      <category term="Linux笔记" scheme="http://yoursite.com/categories/Linux%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-      <category term="翻译" scheme="http://yoursite.com/tags/%E7%BF%BB%E8%AF%91/"/>
-    
-      <category term="wdt" scheme="http://yoursite.com/tags/wdt/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>linux笔记—rtc子系统</title>
-    <link href="http://yoursite.com/2017/08/19/linux%E7%AC%94%E8%AE%B0%E2%80%94rtc%E5%AD%90%E7%B3%BB%E7%BB%9F/"/>
-    <id>http://yoursite.com/2017/08/19/linux笔记—rtc子系统/</id>
-    <published>2017-08-19T02:17:11.000Z</published>
-    <updated>2017-09-10T01:51:07.106Z</updated>
-    
-    <content type="html"><![CDATA[<ul>
-<li>正式开始让人崩溃的linux系列，希望自己能写完。<br>先拿rtc开刀。</li>
-<li><p>这里我尽可能记录下思维的细节，而不是仅局限于代码，希望自己能领会Linux内核开发者的想法。</p>
-</li>
-<li><p>内核版本：linux4.1</p>
-</li>
-<li>需要了解：简略了解字符驱动 和 Linux设备驱动模型</li>
-</ul>
-<hr>
-<h3 id="RTC"><a href="#RTC" class="headerlink" title="RTC"></a>RTC</h3><ul>
-<li>rtc即real time clock，实时时钟。</li>
-<li>rtc一般负责系统关机后计时，面对繁多的Linux RTC设备，内核干脆提供了一个rtc子系统，来支持所有的rtc设备。</li>
-<li>参考资料 </li>
-</ul>
-<h3 id="rtc子系统"><a href="#rtc子系统" class="headerlink" title="rtc子系统"></a>rtc子系统</h3><ul>
-<li>rtc设备本质上是一个字符设备，rtc子系统在字符设备的基础上抽象与硬件无关的部分，并在这个基础上拓展sysfs和proc文件系统下的访问。</li>
-<li>分析时候始终记住两点：<ul>
-<li>rtc子系统是为了让rtc设备驱动编写更为简单，与硬件无关部分已被抽离。</li>
-<li>rtc子系统是基于字符设备而来的。<h3 id="文件框架"><a href="#文件框架" class="headerlink" title="文件框架"></a>文件框架</h3></li>
-</ul>
-</li>
-<li><p>rtc子系统的源码在 /drivers/rtc<br><img src="https://my.mixtape.moe/anynhb.jpg" alt="1.jpg"><br>删减了很多rtc-xxx.c的驱动，只留下了ds1307作为示例，这里看到实际上代码并不多。</p>
-</li>
-<li><p>具体文件分析</p>
-<ul>
-<li><p>rtc.h：定义与RTC有关的数据结构。</p>
-</li>
-<li><p>class.c：向内核注册RTC类，为底层驱动提供rtc_device_register与rtc_device_unregister接口用于RTC设备的注册/注销。初始化RTC设备结构、sysfs、proc。</p>
-</li>
-<li>Interface.c：提供用户程序与RTC的接口函数，其中包括ioctl命令。</li>
-<li>rtc-dev.c：将RTC设备抽象为通用的字符设备，提供文件操作函数集。</li>
-<li>rtc-sysfs.c：管理RTC设备的sysfs属性，获取RTC设备名、日期、时间等。</li>
-<li>rtc-proc.c：管理RTC设备的procfs属性，提供中断状态和标志查询。</li>
-<li>rtc-lib.c：提供RTC、Data和Time之间的转换函数。</li>
-<li>rtc-xxx,c：RTC设备的实际驱动，此处以rtc-ds1307为例。</li>
-<li>hctosys.c：开机时获取RTC时间。</li>
-</ul>
-</li>
-<li><p>整个文件系统框架<br><img src="https://my.mixtape.moe/fdixml.jpg" alt=""></p>
-</li>
-<li><p>RTC子系统具体可分为3层：</p>
-<ul>
-<li>用户层：RTC子系统向上层提供了接口，用户通过虚拟文件系统，间接调用RTC设备，具体有3种方式。<ul>
-<li>/dev/rtc  RTC设备抽象而来的字符设备，常规文件操作集合。</li>
-<li>/sys/class/rtc/rtcx 通过sysfs文件系统进行RTC操作，也是最常用的方式。</li>
-<li>/proc/driver/rtc  通过proc文件系统获取RTC相关信息。</li>
-</ul>
-</li>
-<li>RTC核心层：与硬件无关，用于管理RTC设备注册/注销、提供上层文件操作的接口等。</li>
-<li>RTC驱动：特定RTC设备的驱动程序，实现RTC核心层的回掉函数。编写RTC驱动需要按照RTC子系统的接口填写对应函数并建立映射即可。RTC核心层函数实现的过程和数量与特定硬件紧密相关。</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>初看linux系统的人来说，这个图够头晕的了，但是呢，实际上没那么麻烦。由浅入深，一点一点来分析。</li>
-</ul>
-<h3 id="rtc子系统分析"><a href="#rtc子系统分析" class="headerlink" title="rtc子系统分析"></a>rtc子系统分析</h3><h4 id="rtc-dev"><a href="#rtc-dev" class="headerlink" title="rtc-dev"></a>rtc-dev</h4><ul>
-<li>rtc子系统基于字符设备，字符设备对应的肯定是rtc-dev.c了，我们的分析由rtc-dev起步。</li>
-<li><p>rtc-dev.c<br><img src="https://my.mixtape.moe/ukpdro.jpg" alt=""></p>
-</li>
-<li><p>典型的字符设备，模块的初始化/卸载自然是 rtc_dev_init(void) 和  rtc_dev_exit(void)。<br>设备接入，添加/删除设备 rtc_dev_add_device(struct rtc_device <em>rtc) 和  e)    void rtc_dev_del_device(struct rtc_device </em>rtc)<br>还有ioctl和open等函数，熟悉字符设备驱动的不用多说。</p>
-</li>
-<li><p>追踪一下这两组函数在哪里调用的。</p>
-<ul>
-<li>rtc_dev_init(void)对应在 class.c的rtc_init(void)函数</li>
-<li>rtc_dev_add_device对应在class.c的 rtc_device_register()函数。</li>
-</ul>
-</li>
-<li><p>rtc_dev_init(void)对应实在系统初始化时使用，对应rtc_init(void)也是在系统初始化之后调用。</p>
-</li>
-<li>rtc_dev_add_device()是在驱动匹配后调用，rtc_device_register()也是在驱动匹配后调用。打开rtc-ds1307.c&gt;-prob函数，能找到rtc_device_register()也就证实了这个思路。</li>
-<li>接下来转入class.c</li>
-</ul>
-<h4 id="class-c"><a href="#class-c" class="headerlink" title="class.c"></a>class.c</h4><ul>
-<li><p>linux驱动模型中class.c对应类的意思，是rtc类。<br>每个class对应都有自己核心数据结果，对应rtc类就是rtc-device</p>
-</li>
-<li><p>rtc_device<br> rtc_device代表 RTC设备基础的数据结构</p>
-<ul>
-<li>数据结构<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">rtc_device</span>  &#123;</span>  </div><div class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">device</span> <span class="title">dev</span>;</span>  </div><div class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">module</span> *<span class="title">owner</span>;</span>  </div><div class="line">   <span class="keyword">int</span> id;                                   <span class="comment">//RTC设备的次设备号  </span></div><div class="line">   <span class="keyword">char</span> name[RTC_DEVICE_NAME_SIZE];  </div><div class="line">   <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">rtc_class_ops</span> *<span class="title">ops</span>;</span>  </div><div class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">mutex</span> <span class="title">ops_lock</span>;</span>  </div><div class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">cdev</span> <span class="title">char_dev</span>;</span>  </div><div class="line">   <span class="keyword">unsigned</span> <span class="keyword">long</span> flags;  </div><div class="line">   <span class="keyword">unsigned</span> <span class="keyword">long</span> irq_data;  </div><div class="line">   <span class="keyword">spinlock_t</span> irq_lock;  </div><div class="line">   <span class="keyword">wait_queue_head_t</span> irq_queue;  </div><div class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">fasync_struct</span> *<span class="title">async_queue</span>;</span>  </div><div class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">rtc_task</span> *<span class="title">irq_task</span>;</span>  </div><div class="line">   <span class="keyword">spinlock_t</span> irq_task_lock;  </div><div class="line">   <span class="keyword">int</span> irq_freq;  </div><div class="line">   <span class="keyword">int</span> max_user_freq;  </div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> CONFIG_RTC_INTF_DEV_UIE_EMUL  </span></div><div class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">work_struct</span> <span class="title">uie_task</span>;</span>  </div><div class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">timer_list</span> <span class="title">uie_timer</span>;</span>  </div><div class="line">   <span class="comment">/* Those fields are protected by rtc-&gt;irq_lock */</span>  </div><div class="line">   <span class="keyword">unsigned</span> <span class="keyword">int</span> oldsecs;  </div><div class="line">   <span class="keyword">unsigned</span> <span class="keyword">int</span> uie_irq_active:<span class="number">1</span>;  </div><div class="line">   <span class="keyword">unsigned</span> <span class="keyword">int</span> stop_uie_polling:<span class="number">1</span>;  </div><div class="line">   <span class="keyword">unsigned</span> <span class="keyword">int</span> uie_task_active:<span class="number">1</span>;  </div><div class="line">   <span class="keyword">unsigned</span> <span class="keyword">int</span> uie_timer_active:<span class="number">1</span>;  </div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span>  </span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><p>很长？很😵对不对？只要关注一点就行_</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">int id;                                              //代表是那个rtc设备  </div><div class="line">char name[RTC_DEVICE_NAME_SIZE];                     //代表rtc设备的名称  </div><div class="line">const struct rtc_class_ops *ops;                     //rtc操作函数集，需要驱动实现  </div><div class="line">struct mutex ops_lock;                               //操作函数集的互斥锁  </div><div class="line">  </div><div class="line">struct cdev char_dev;                                //代表rtc字符设备，因为rtc就是个字符设备  </div><div class="line">unsigned long flags;                                 //rtc的状态标志，例如RTC_DEV_BUSY</div></pre></td></tr></table></figure>
-</li>
-<li><p>上文书说到，驱动程序的prob函数里面调用了rtc_device_register()这货的类型就是rtc_device。参加驱动程序怎样调用rtc_device<em>register(),</em>与其他核心的基本结构不同的是，驱动程序以不是以rtc-device为参数注册设备到子系统，而是注册函数会返回一个rtc<em>deivce的结构给驱动。</em></p>
-</li>
-</ul>
-</li>
-<li><p>rtc_class_ops<br>  这个是rtc<em>device的一部分。</em></p>
-<ul>
-<li><p>数据结构</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">   struct rtc_class_ops &#123;  </div><div class="line">   int (*open)(struct device *);     //打开设备时的回调函数，这个函数应该初始化硬件并申请资源  </div><div class="line">   void (*release)(struct device *); //这个函数是设备关闭时被调用的，应该注销申请的资源  </div><div class="line">   int (*ioctl)(struct device *, unsigned int, unsigned long); //ioctl函数，对想让RTC自己实现的命令应返回ENOIOCTLCMD  </div><div class="line">   int (*read_time)(struct device *, struct rtc_time *);       //读取时间  </div><div class="line">   int (*set_time)(struct device *, struct rtc_time *);        //设置时间  </div><div class="line">   int (*read_alarm)(struct device *, struct rtc_wkalrm *);    //读取下一次定时中断的时间  </div><div class="line">   int (*set_alarm)(struct device *, struct rtc_wkalrm *);     //设置下一次定时中断的时间  </div><div class="line">   int (*proc)(struct device *, struct seq_file *);            //procfs接口  </div><div class="line">   int (*set_mmss)(struct device *, unsigned long secs);       //将传入的参数secs转换为struct rtc_time然后调用set_time函数。程序员可以不实现这个函数，但  前提是定义好了read_time/set_time，因为RTC框架需要用这两个函数来实现这个功能。  </div><div class="line">   int (*irq_set_state)(struct device *, int enabled);         //周期采样中断的开关，根据enabled的值来设置  </div><div class="line">   int (*irq_set_freq)(struct device *, int freq);             //设置周期中断的频率  </div><div class="line">   int (*read_callback)(struct device *, int data);            ///用户空间获得数据后会传入读取的数据，并用这个函数返回的数据更新数据。  </div><div class="line">   int (*alarm_irq_enable)(struct device *, unsigned int enabled);  //alarm中断使能开关，根据enabled的值来设置  </div><div class="line">   int (*update_irq_enable)(struct device *, unsigned int enabled); //更新中断使能开关，根据enabled的值来设置  </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-</li>
-<li><p>该结构体中函数大多数都是和rtc芯片的操作有关，需要驱动程序实现。<br>所有RTC驱动都必须实现read_time、set_time函数，其他函数可选。</p>
-</li>
-</ul>
-</li>
-<li><p>参考其他的资料，class的分析如下<br><img src="https://my.mixtape.moe/xrsnkw.jpg" alt=""></p>
-</li>
-<li><p>static int __init rtc_init(void)</p>
-<ul>
-<li>调用class_create创建RTC类，创建/sys/class/rtc目录，初始化RTC类相关成员，向用户空间提供设备信息。</li>
-<li>调用rtc-dev.c实现的rtc_dev_init();动态分配RTC字符设备的设备号。</li>
-<li>调用rtc_sysfs_init(rtc<em>class)；创建/sys/class/rtc下属性文件</em></li>
-</ul>
-</li>
-<li><p>static void __exit rtc<em>exit(void)</em></p>
-<ul>
-<li>调用rtc-dev.c实现的rtc_dev_exit()；注销设备号。</li>
-<li>调用class_destroy(rtc_class)；注销/sys/class下的rtc目录</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>struct rtc_device <em>rtc_device_register(const char </em>name, struct device <em>dev,const struct rtc_class_ops </em>ops,struct module *owner）_<ul>
-<li>申请一个idr整数ID管理机制结构体，并且初始化相关成员</li>
-<li>将设备dev关联sysfs下的rtc类</li>
-<li>初始化rtc结构体的信号量</li>
-<li>初始化rtc结构体中的中断</li>
-<li>设置rtc的名字</li>
-<li>初始化rtc字符设备的设备号，然后注册rtc设备,自动创建/dev/rtc(n)设备节点文件</li>
-<li>注册字符设备</li>
-<li>在/sys/rtc/目录下创建一个闹钟属性文件</li>
-<li>创建/proc/driver/rtc目录</li>
-</ul>
-</li>
-<li>void rtc_device_unregister(struct rtc_device *rtc)<ul>
-<li>删除sysfs中的rtc设备,即删除/sys/class/rtc目录</li>
-<li>删除dev下的/dev/rtc(n)设备节点文件</li>
-<li>删除虚拟文件系统接口,即删除/proc/driver/rtc目录</li>
-<li>卸载字符设备</li>
-<li>清空rtc的操作函数指针rtc-&gt;ops</li>
-<li>释放rtc的device结构体_</li>
-</ul>
-</li>
-<li>static void rtc_device_release(struct device <em>dev)    </em><ul>
-<li>卸载idr数字管理机制结构体</li>
-<li>释放rtc结构体的内存</li>
-</ul>
-</li>
-</ul>
-<h4 id="Rtc子系统初始化"><a href="#Rtc子系统初始化" class="headerlink" title="Rtc子系统初始化"></a>Rtc子系统初始化</h4><ul>
-<li>上图<br><img src="https://my.mixtape.moe/driyxr.jpg" alt=""></li>
-</ul>
-<ul>
-<li>使用rtc子系统首先需要在内核编译选项中启用RTC子系统支持。<ul>
-<li>必须启用Real Time Clock</li>
-<li>使用/dev下的设备文件对应开启CONFIG_RTC_INTF_DEV</li>
-<li>使用/proc下的接口对应开启CONFIG_RTC_INTF_PROC</li>
-<li>使用/sysfs下的接口对应开启CONFIG_RTC_INTF_SYSFS</li>
-</ul>
-</li>
-<li>_系统启动后，如配置启用rtc子系统，则会首先执行rtc<em>init</em>函数，创建rtc类、初始化相关成员、分配设备号等</li>
-<li>创建rtc类后，之后调用rtc_dev_init()动态分配rtc字符设备的设备号。之后调用rtc_sysfs_init()初始化/sys/class/rtc目录中的属性文件</li>
-</ul>
-<h4 id="Rtc设备注册"><a href="#Rtc设备注册" class="headerlink" title="Rtc设备注册"></a>Rtc设备注册</h4><ul>
-<li>Rtc设备本质上属于字符设备，依附于系统内总线。一般来说cpu内部rtc依附于platform总线，外置rtc芯片则依附于通信方式对应总线。其过程与通用字符设备相似，rtc子系统在设备注册过程中附加了prob和sysfs相关的注册和初始化操作。</li>
-<li><p>上图<br><img src="https://my.mixtape.moe/urumgu.jpg" alt=""></p>
-<ul>
-<li>Rtc设备挂载后，相应总线会搜索匹配的驱动程序，驱动程序成功match后，进入驱动实现的probe函数，执行设备注册等操作。</li>
-</ul>
-</li>
-<li>完成总线设备注册后，probe会跳转到rtc_device_register()函数，将设备注册到rtc子系统。</li>
-<li>Rtc设备本质属于字符设备，会调用rtc_dev_prepare()函数，初始化字符设备，设置rtc相关的file operation函数集合。</li>
-<li>之后依次调用rtc_dev_add_device(rtc)、rtc_sysfs_add_device(rtc)、rtc_proc_add_device(rtc) ，进行注册字符设备、在/sys/rtc/目录下创建一个闹钟属性文件、创建/proc/driver/rtc目录等操作。</li>
-<li>rtc_device_register()会将驱动实现的rtc_class_ops结构体与具体设备联系起来。</li>
-</ul>
-<h4 id="interface-c"><a href="#interface-c" class="headerlink" title="interface.c"></a>interface.c</h4><ul>
-<li>在rtc-proc.c、rtc_sysfs和ioctl命令中，所有的操作调用的都是interface.c提供的接口，这里以ioctl的一个例子说明整个调用的过程</li>
-<li><p>上图<br><img src="https://my.mixtape.moe/bvtlqf.jpg" alt=""></p>
-</li>
-<li><p>以icotl命令RTC_RD_TIME为例，说明命令调用的流程。</p>
-<ul>
-<li>RTC_RD_TIME对应的是/dev下ioctl命令，调用被转发至/rtc-dev.c</li>
-<li>rtc-dev.c-&gt;rtc_dev_ioctl(struct file *file,unsigned int cmd, unsigned long arg)函数中。RTC_RD_TIME对应的代码为err = rtc_read_time(rtc, &amp;tm); rtc_read_time是interface.c文件提供的接口之一。</li>
-<li>interface.c-&gt;rtc_read_time(struct rtc_device <em>rtc, struct rtc_time </em>tm)函数中对应rtc_class_ops转发代码为err = rtc-&gt;ops-&gt;read_time(rtc-&gt;dev.parent, tm);将操作转发至匹配的rtc设备。</li>
-<li><p>设备驱动这里以rtc-ds1307为例，但设备注册时通过mcp794xx_rtc_ops结构体将rtc_class_ops对应函数与驱动程序实现的函数绑定</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">static const struct rtc_class_ops mcp794xx_rtc_ops = &#123;</div><div class="line">.read_time  = ds1307_get_time,</div><div class="line">.set_time   = ds1307_set_time,</div><div class="line">.read_alarm = mcp794xx_read_alarm,</div><div class="line">.set_alarm  = mcp794xx_set_alarm,</div><div class="line">.alarm_irq_enable = mcp794xx_alarm_irq_enable,</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-</li>
-<li><p>最终执行转入ds1307.c-&gt; ds1307_get_time函数，执行与硬件相关的操作。</p>
-<h4 id="rtc-sysfs-c"><a href="#rtc-sysfs-c" class="headerlink" title="rtc-sysfs.c"></a>rtc-sysfs.c</h4></li>
-</ul>
-</li>
-<li><p>由前半部分可知，/sys/class/rtc/是在rtc-init调用rtc_sysfs_init后生成。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">void __init rtc_sysfs_init(struct class *rtc_class) &#123;</div><div class="line">	rtc_class-&gt;dev_groups = rtc_groups;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>这里的rtc_groups是rtc-sysfs.c中定义了这样一个attribute函数指针数组：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">static struct attribute *rtc_attrs[] = &#123;</div><div class="line">&amp;dev_attr_name.attr,</div><div class="line">&amp;dev_attr_date.attr,</div><div class="line">&amp;dev_attr_time.attr,</div><div class="line">&amp;dev_attr_since_epoch.attr,</div><div class="line">&amp;dev_attr_max_user_freq.attr,</div><div class="line">&amp;dev_attr_hctosys.attr,</div><div class="line">NULL,</div><div class="line">&#125;;</div><div class="line">ATTRIBUTE_GROUPS(rtc);</div></pre></td></tr></table></figure>
-</li>
-<li><p>_在rtc_sysfs_init函数调用后绑定了sysfs节点操作函数的集合，使得设备匹配驱动程序后而生成对应的rtcn文件夹。</p>
-</li>
-<li><code>dev_attr_name和dev_attr_data</code>由宏<code>DEVICE_ATTR_RO</code>和DEVICE_ATTR_RW生成，他们分别定义了只读的和可读可写的attribute节点。每个属性函数下都有DEVICE_ATTR_XX()宏声明，绑定到对应attribute节点。</li>
-</ul>
-<h4 id="rtc-proc-c"><a href="#rtc-proc-c" class="headerlink" title="rtc-proc.c"></a>rtc-proc.c</h4><ul>
-<li>proc文件系统是软件创建的文件系统，内核通过他向外界导出信息，下面的每一个文件都绑定一个函数，当用户读取这个文件的时候，这个函数会向文件写入信息。</li>
-<li><p>rtc-proc.c中初始化了file_operations结构体：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">static const struct file_operations rtc_proc_fops = &#123;  </div><div class="line">  .open       = rtc_proc_open,  </div><div class="line">  .read       = seq_read,  </div><div class="line">  .llseek     = seq_lseek,  </div><div class="line">  .release    = rtc_proc_release,  </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-</li>
-<li><p>_RTC驱动在向RTC核心注册自己的时候，由注册函数rtc_device_resgister调用rtc_proc_add_device来实现proc接口的初始化，这个函数如下定义：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">void rtc_proc_add_device(struct rtc_device *rtc)  </div><div class="line">&#123;	  </div><div class="line">   	if (rtc-&gt;id == 0)  </div><div class="line">       	proc_create_data(&quot;driver/rtc&quot;, 0, NULL, &amp;rtc_proc_fops, rtc);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>主要是完成创建文件节点，并将文件的操作函数与节点联系起来。调用这个函数后，在/proc/driver目录下就会有一个文件rtc</p>
-</li>
-</ul>
-<h3 id="rtc设备访问"><a href="#rtc设备访问" class="headerlink" title="rtc设备访问"></a>rtc设备访问</h3><ul>
-<li>rtc子系统最多可以支持16个rtc设备，多个rtc设备会在/dev/和 /sys/class/rtc/下生成rtc0、rtc1…等不同节点(下文以rtcn代称)。而系统启动时会选择一个rtc设备读取计时，在/dev下有rtc文件，rtc文件指向系统选择的rtc设备对应的rtcn（一般为rtc0）。</li>
-<li>用户层访问rtc设备有3种途径：<ul>
-<li>/dev/rtcn open等字符设备操作和ioctl命令。</li>
-<li>/sys/class/rtc/rtcn   sysfs 属性，一些属性是只读。</li>
-<li>/proc/driver/rtc 第一个rtc会占用procfs接口，在procfs下暴露更多信息。</li>
-</ul>
-</li>
-</ul>
-<h4 id="dev"><a href="#dev" class="headerlink" title="/dev"></a>/dev</h4><ul>
-<li>在/dev下用户可以通过两种方式访问rtc设备，第一个是通过字符设备定义的open、read等函数（需要驱动程序实现）、另一个是通过定义的ioctl命令。第一种方式是直接打开rtc-dev.c定义的open等函数，在open等中直接调用驱动程序实现的函数。通过ioctl命令访问则是将操作转发到了interface.c定义的接口，间接调用驱动程序实现的函数。</li>
-<li><p>ioctl()函数访问/dev下的设备。以下是典型函数：_</p>
-<ul>
-<li><p>ioctl(fd,RTC_ALM_SET, &amp;rtc_tm);<br>设置alarm中断的触发时刻，不超过24小时。第三个参数为structrtc_time结构体，读取时会忽略年月日信息。alarm中断与wakeupalarm中断只能同时使用1个，以最后一次设定为准。</p>
-<ul>
-<li>ioctl(fd,RTC_ALM_READ, &amp;rtc_tm)<br>读取alarm中断的触发时刻。</li>
-</ul>
-</li>
-<li><p>ioctl(fd,RTC_WKALM_SET, &amp;alarm);<br>设置wakeupalarm中断的触发时刻， wakeupalarm中断的触发时刻可以在未来的任意时刻。alarm中断与wakeupalarm中断只能同时使用1个，以最后一次设定为准。</p>
-</li>
-<li><p>ioctl(fd,RTC_WKALM_RD, &amp;alarm);<br>读取wakeupalarm中断的触发时刻。</p>
-</li>
-<li><p>ioctl(fd,RTC_IRQP_SET, tmp);<br>设置周期中断的频率，tmp的值必须是2的幂，非Root用户无法使用64HZ以上的周期中断。</p>
-</li>
-<li><p>ioctl(fd,RTC_IRQP_READ, &amp;tmp);<br>读取周期中断的频率。</p>
-</li>
-<li><p>ioctl(fd,RTC_SET_TIME, &amp;rtc_tm)<br>更新RTC芯片的当前时间。</p>
-</li>
-<li><p>ioctl(fd,RTC_RD_TIME, &amp;rtc_tm);<br>读取RTC硬件中的当前时间。</p>
-</li>
-</ul>
-</li>
-<li><p>以open操作为例，在用户层对/dev下设备执行open会被转发至<code>rtc_dev_open(struct inode *inode, struct file *file)</code>函数，通过err<code>= ops-&gt;open ? ops-&gt;open(rtc-&gt;dev.parent) : 0;</code>判断驱动程序是否通过连接的rtc_class_ops结构体实现了open函数，驱动程序实现了open函数，则将open操作转发至驱动程序。</p>
-</li>
-</ul>
-<h4 id="sys"><a href="#sys" class="headerlink" title="/sys"></a>/sys</h4><ul>
-<li>/sys/class/rtc/rtcn下面的sysfs接口提供了操作rtc属性的方法，所有的日期时间都是墙上时间，而不是系统时间。<ul>
-<li>date:    RTC提供的日期</li>
-<li>hctosys:    如果在内核配置选项中配置了CONFIG_RTC_HCTOSYS，RTC会在系统启动的时候提供系统时间，这种情况下这个位就是1,否则为0</li>
-<li>max_user_freq:    非特权用户可以从RTC得到的最大中断频</li>
-<li>name:     RTC的名字，与sysfs目录相关</li>
-<li>since_epoch:    从纪元开始所经历的秒数</li>
-<li>time:    RTC提供的时间</li>
-<li>wakealarm:    唤醒时间的时间事件。 这是一种单次的唤醒事件，所以如果还需要唤醒，在唤醒发生后必须复位。这个域的数据结构或者是从纪元开始经历的妙数，或者是相对的秒数</li>
-</ul>
-</li>
-</ul>
-<h4 id="proc"><a href="#proc" class="headerlink" title="/proc"></a>/proc</h4><ul>
-<li>/proc/driver/rtc下只对应第一个rtc设备，与sysfs下相比，该设备暴露更多信息</li>
-<li>对应截图<br><img src="https://my.mixtape.moe/qbuavl.jpg" alt=""></li>
-</ul>
-<h3 id="RTC子系统测试"><a href="#RTC子系统测试" class="headerlink" title="RTC子系统测试"></a>RTC子系统测试</h3><p><strong>Hwclock命令或使用测试文件。</strong></p>
-<ul>
-<li>Hwclock命令可以执行最简单的RTC测试。常用命令示例如下<ul>
-<li>hwclock #查看RTC时间</li>
-<li>hwclock -set -date=”07/07/17 10:10” #设置硬件RTC时间（月/日/年 时:分:秒）</li>
-<li>hwclock -w #系统时间同步至RTC</li>
-<li>hwclock -s #同步RTC到系统时间</li>
-</ul>
-</li>
-<li>Linux内核提供了RTC子系统的测试示例文件，位于tools/testing/selftests/timers/rtctest.c，包含了基于ioctl命令的完整测试。</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;正式开始让人崩溃的linux系列，希望自己能写完。&lt;br&gt;先拿rtc开刀。&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;这里我尽可能记录下思维的细节，而不是仅局限于代码，希望自己能领会Linux内核开发者的想法。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;内核版本：linux4.1&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Linux笔记" scheme="http://yoursite.com/categories/Linux%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-      <category term="rtc" scheme="http://yoursite.com/tags/rtc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>linux笔记——时间子系统（一）</title>
-    <link href="http://yoursite.com/2017/08/15/linux%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%97%B6%E9%97%B4%E5%AD%90%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>http://yoursite.com/2017/08/15/linux笔记——时间子系统（一）/</id>
-    <published>2017-08-15T09:52:16.000Z</published>
-    <updated>2017-09-10T01:36:52.141Z</updated>
-    
-    <content type="html"><![CDATA[<ul>
-<li>ss</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;ss&lt;/li&gt;
-&lt;/ul&gt;
-
-    
-    </summary>
-    
-      <category term="Linux笔记" scheme="http://yoursite.com/categories/Linux%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-      <category term="timer" scheme="http://yoursite.com/tags/timer/"/>
     
   </entry>
   
