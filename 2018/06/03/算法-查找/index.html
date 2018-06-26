@@ -1,0 +1,1372 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="学习记录,算法," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="默" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="记录学习数据结构的总结,希望可以不拘泥于细节和语言,重视应用与推演.  资料来源如下  算法第四版   查找 基于符号表的抽象来组织查找有关内容.分为 key-value ,有时又称字典. 分别介绍 二叉查找树 红黑树 及 散列表 3种经典的实现.  符号表 定义: 存储键值对的数据结构,支持put插入 及 get查找操作. API: 1234567void put(Key key,Value">
+<meta name="keywords" content="学习记录,算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法—查找">
+<meta property="og:url" content="http://yoursite.com/2018/06/03/算法-查找/index.html">
+<meta property="og:site_name" content="默">
+<meta property="og:description" content="记录学习数据结构的总结,希望可以不拘泥于细节和语言,重视应用与推演.  资料来源如下  算法第四版   查找 基于符号表的抽象来组织查找有关内容.分为 key-value ,有时又称字典. 分别介绍 二叉查找树 红黑树 及 散列表 3种经典的实现.  符号表 定义: 存储键值对的数据结构,支持put插入 及 get查找操作. API: 1234567void put(Key key,Value">
+<meta property="og:updated_time" content="2018-06-04T12:12:21.913Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法—查找">
+<meta name="twitter:description" content="记录学习数据结构的总结,希望可以不拘泥于细节和语言,重视应用与推演.  资料来源如下  算法第四版   查找 基于符号表的抽象来组织查找有关内容.分为 key-value ,有时又称字典. 分别介绍 二叉查找树 红黑树 及 散列表 3种经典的实现.  符号表 定义: 存储键值对的数据结构,支持put插入 及 get查找操作. API: 1234567void put(Key key,Value">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/03/算法-查找/"/>
+
+
+
+
+
+  <title> 算法—查找 | 默 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-79641673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">默</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">为了生存，而一点点淡忘了最初的本意。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/03/算法-查找/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jasper">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="默">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                算法—查找
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-03T12:00:00+08:00">
+                2018-06-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/03/算法-查找/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/06/03/算法-查找/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/06/03/算法-查找/" class="leancloud_visitors" data-flag-title="算法—查找">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,651
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6m
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<ul>
+<li>记录学习数据结构的总结,希望可以不拘泥于细节和语言,重视应用与推演.</li>
+</ul>
+<p>资料来源如下</p>
+<ul>
+<li>算法第四版</li>
+</ul>
+<hr>
+<h1 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h1><ul>
+<li>基于符号表的抽象来组织查找有关内容.分为 key-value ,有时又称字典.</li>
+<li>分别介绍 二叉查找树 红黑树 及 散列表 3种经典的实现.</li>
+</ul>
+<h1 id="符号表"><a href="#符号表" class="headerlink" title="符号表"></a>符号表</h1><ul>
+<li>定义: 存储键值对的数据结构,支持<code>put</code>插入 及 <code>get</code>查找操作.</li>
+<li><p>API:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">put</span><span class="params">(Key key,Value val)</span></span></div><div class="line">Value <span class="title">get</span><span class="params">(Key key)</span></div><div class="line"><span class="keyword">void</span> <span class="title">delete</span><span class="params">(Key key)</span></div><div class="line"><span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Key key)</span></div><div class="line"><span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span></div><div class="line"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></div><div class="line">Iterable&lt;Key&gt; <span class="title">keys</span><span class="params">()</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>规则</p>
+<ul>
+<li>没有重复key</li>
+<li>key不能为空</li>
+<li>value不能为空</li>
+<li>删除操作即使实现.</li>
+<li>key为不可变类型数据.</li>
+</ul>
+</li>
+<li><p>成本</p>
+<ul>
+<li>使用比较次数来统计成本.</li>
+<li>内循环不进行比较时,统计数组访问次数.</li>
+</ul>
+</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li><p>有序符号表</p>
+<ul>
+<li>额外API</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">main()</div><div class="line">max()</div><div class="line">floor(Key key)</div><div class="line">select(<span class="keyword">int</span> k)</div></pre></td></tr></table></figure>
+</li>
+<li><p>无序符号表</p>
+<ul>
+<li>经典的基于链表实现.</li>
+</ul>
+</li>
+</ul>
+<h1 id="二叉查找树BST"><a href="#二叉查找树BST" class="headerlink" title="二叉查找树BST"></a>二叉查找树BST</h1><ul>
+<li><p>数据结构:结点</p>
+<ul>
+<li>一个唯一key</li>
+<li>对应value</li>
+<li>一条左链接</li>
+<li>一条右链接</li>
+<li>一个节点计数器(该节点的子节点总数)</li>
+</ul>
+</li>
+<li><p><code>get</code>方法<br>表中存在对应方法即返回对应值,否则返回空.<br>代码:递归实现</p>
+<ul>
+<li>实现<code>get(Node x,Key key)</code><ul>
+<li>查找Key 对应值,没有返回null</li>
+<li>对比 x 与 key 值.</li>
+<li>根据结果返回 <code>get(x.right,key)</code> or <code>get(x.left,key)</code></li>
+</ul>
+</li>
+<li>get由传入根节点调用 <code>get(Node x,Key key)</code></li>
+</ul>
+</li>
+<li><p><code>put</code>方法<br>存在则更新值,不存在则插入新值.<br>代码:递归实现</p>
+<ul>
+<li>实现<code>Node put(Node x,Key key,Value val)</code><ul>
+<li>x为空,则创建新节点并插入key val</li>
+<li>对比x key 值</li>
+<li>x = key,则更新值.</li>
+<li>根据结果返回 <code>put(x.right,key,val)</code> or <code>put(x.left,key,val)</code></li>
+<li>更新节点计数器</li>
+</ul>
+</li>
+<li>put传入根节点 调用<code>Node put(Node x,Key key,Value val)</code></li>
+</ul>
+</li>
+<li><p>分析</p>
+<ul>
+<li>如同<code>union-find</code>问题,二叉树生长的方式及平均深度对查找及插入的影响很大.<strong>二叉查找树性能非常依赖于 key分布足够随机.</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="有序符号表"><a href="#有序符号表" class="headerlink" title="有序符号表"></a>有序符号表</h2><ul>
+<li><p>最大最小</p>
+<ul>
+<li>传入节点左链接是否为空? 返回传入节点 : 递归调用min(x.left)</li>
+<li>传入节点左链接是否为空? 返回传入节点 : 递归调用mam(x.right)</li>
+</ul>
+</li>
+<li><p>向上/下取整</p>
+<ul>
+<li>递归<ul>
+<li>传入节点左链接 为空.返回 null</li>
+<li>传入节点左链接 = key-value 返回 传入节点</li>
+<li>传入节点左链接 &lt; key-value 返回 递归传入左链接</li>
+<li>传入节点左链接 &gt; key-value 递归传入右链接<ul>
+<li>判断返回值t 为空?<ul>
+<li>不为空返回 t</li>
+<li>为空返回传入节点.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>递归调用.</li>
+</ul>
+</li>
+<li><p>排名</p>
+<ul>
+<li>与节点计数器有关.</li>
+<li>key = 传入节点,返回左子树节点总数.</li>
+<li>key &lt; 传入节点,返回 递归左子树.</li>
+<li>key &gt; 传入节点,返回 递归右子树.</li>
+</ul>
+</li>
+<li><p>删除最大/最小键</p>
+<ul>
+<li>删除最大/最小值,因其子链接均为空,无妨.</li>
+</ul>
+</li>
+<li><p>删除 -二叉树中间呢?</p>
+<ul>
+<li>查找到要删除的节点</li>
+<li>保存 父链接 左右子链接.</li>
+<li>选择右子树,查找最小节点.(不断选择左子树,直到遇到左子链接为空元素)</li>
+<li>将 右子树最小元素 移植到 已删除元素位置.</li>
+<li>处理 右子树最小元素 右子链接(直接链接到父节点)</li>
+<li>可能存在性能问题.</li>
+</ul>
+</li>
+<li><p>范围查找</p>
+<ul>
+<li>首先遍历操作<ul>
+<li>递归要不要简单</li>
+<li>x为空? 返回</li>
+<li>过程处理.</li>
+<li>不为空, 递归左节点 递归右节点.</li>
+</ul>
+</li>
+<li>在过程处理中进行过滤操作.</li>
+<li>因二叉树数值相对有序,舍弃掉不存在想要值的子树.</li>
+</ul>
+</li>
+</ul>
+<h1 id="平衡查找树"><a href="#平衡查找树" class="headerlink" title="平衡查找树"></a>平衡查找树</h1><hr>
+<ul>
+<li>只使用二叉树而保持树生长的平衡,代价很高.</li>
+<li>so,对节点的基础数据结构动一些手脚,引入 2-3 树.</li>
+<li>最大的变化在于插入新元素.但随之带来的完美平衡的 2-3 树,让数据结构复杂度很值.</li>
+</ul>
+<hr>
+<ul>
+<li>节点可以保存2个key,3个子链接.代表 <a ,a<="" <b="" ,="">b 3种.</a></li>
+<li><p>随之带来的好处,树可以一直保持为 完美平衡.所有空链接,到根节点的距离相同.</p>
+</li>
+<li><p>查找</p>
+<ul>
+<li>相对二叉树变动不大.依旧是递归实现.</li>
+<li>在判断时加入了2 3节点的指向判断,难度不大,直到遇到空链接为止.</li>
+</ul>
+</li>
+<li><p><strong>插入</strong></p>
+<ul>
+<li>我们所设想的依旧是通过递归的方式实现.尽量统一实现方式.</li>
+<li><p>过程类似,查找插入位置-&gt;插入数据-&gt;恢复</p>
+<ul>
+<li>空节点<ul>
+<li>直接插入数据即可</li>
+</ul>
+</li>
+<li>2节点<ul>
+<li>将2节点,变更为3节点.</li>
+</ul>
+</li>
+<li><p>3节点(比较麻烦)</p>
+<ul>
+<li>父节点为空: 直接存入数据-&gt;节点变为4节点-&gt;4节点分解为3个 2节点,深度+1.</li>
+<li>父节点为2节点: 直接存入数据-&gt;节点变为4节点-&gt;将父节点变为3节点-&gt;4节点分解为两个 2节点.</li>
+<li>父节点为3节点: 直接存入数据-&gt;节点变为4节点-&gt;将父节点变为4节点-&gt;父节点向上反推过程,直到遇到2节点为止-&gt;4节点分解为两个2节点.</li>
+<li>整个过程: 存入变4节点,向上反推 直到遇到空节点/2节点为止.分解恢复2-3树.</li>
+</ul>
+</li>
+<li><p>性能</p>
+<ul>
+<li>即使最坏情况下,大小为N的 2-3 树,插入及查找操作访问节点必然不超过 lgN ,因为2-3树保持了完美的平衡.</li>
+<li>但额外的维护代码冗余,由此引出红黑树.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h1><ul>
+<li>将2-3树中 1个 3节点 拆分为 2个2节点,中间使用红色链接.</li>
+<li>插入/删除 相较于2-3树,复杂.但基础数据结构简单.</li>
+<li><p>牺牲一些平衡性,换来 程序设计的便利.</p>
+</li>
+<li><p>前置要求</p>
+<ul>
+<li>节点是红色或黑色。</li>
+<li>根是黑色。</li>
+<li>所有叶子都是黑色（叶子是NIL节点）。</li>
+<li>每个红色节点必须有两个黑色的子节点。（从每个叶子到根的所有路径上不能有两个连续的红色节点。）</li>
+<li>从任一节点到其每个叶子的所有简单路径都包含相同数目的黑色节点。</li>
+</ul>
+</li>
+<li><p>数据结构</p>
+<ul>
+<li>在二叉树基础上增加了节点颜色一项.其他不变.</li>
+</ul>
+</li>
+</ul>
+<h2 id="方法实现"><a href="#方法实现" class="headerlink" title="方法实现"></a>方法实现</h2><h3 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h3><ul>
+<li><p>右/左旋</p>
+</li>
+<li><p>颜色变化</p>
+</li>
+<li><p>查找</p>
+<ul>
+<li>与二叉树查找相同.</li>
+</ul>
+</li>
+<li><p>插入</p>
+<ul>
+<li>类比2-3树,更加复杂,但基本过程一致.</li>
+<li>查找位置-&gt;插入节点-&gt;修复红黑树.</li>
+<li>插入</li>
+</ul>
+</li>
+</ul>
+<h1 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h1>
+      
+    </div>
+
+	
+
+	
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="https://my.mixtape.moe/pkqlqc.png" alt="Jasper Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+	
+	
+	<div>
+	    <p id="div-border-left-blue">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    <span>
+	    <b>本文地址：</b><a href="/2018/06/03/算法-查找/" title="算法—查找">http://yoursite.com/2018/06/03/算法-查找/</a><br/><b>转载请注明出处，谢谢！</b>
+	    </span>
+	    </p>
+	</div>
+	
+
+	
+    <footer class="post-footer">
+	
+	
+	
+      
+        <div class="post-tags">
+          
+            <a href="/tags/学习记录/" rel="tag"># 学习记录</a>
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/02/算法-优先队列&堆排序/" rel="next" title="算法—优先队列&堆排序&排序应用">
+                <i class="fa fa-chevron-left"></i> 算法—优先队列&堆排序&排序应用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/26/初入树莓派4----自建无污染DNS/" rel="prev" title="初入树莓派4----自建无污染DNS">
+                初入树莓派4----自建无污染DNS <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/v.png"
+               alt="Jasper" />
+          <p class="site-author-name" itemprop="name">Jasper</p>
+           
+              <p class="site-description motion-element" itemprop="description">程序员 微尘 V</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">57</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jasper-1024" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#查找"><span class="nav-number">1.</span> <span class="nav-text">查找</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#符号表"><span class="nav-number">2.</span> <span class="nav-text">符号表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">2.1.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二叉查找树BST"><span class="nav-number">3.</span> <span class="nav-text">二叉查找树BST</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#有序符号表"><span class="nav-number">3.1.</span> <span class="nav-text">有序符号表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#平衡查找树"><span class="nav-number">4.</span> <span class="nav-text">平衡查找树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#红黑树"><span class="nav-number">5.</span> <span class="nav-text">红黑树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法实现"><span class="nav-number">5.1.</span> <span class="nav-text">方法实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础操作"><span class="nav-number">5.1.1.</span> <span class="nav-text">基础操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#散列表"><span class="nav-number">6.</span> <span class="nav-text">散列表</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016.6.2 - 
+  <span itemprop="copyrightYear">2018.6.26</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jasper</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://jasper1024.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/06/03/算法-查找/';
+          this.page.identifier = '2018/06/03/算法-查找/';
+          this.page.title = '算法—查找';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://jasper1024.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("8AEPwU1rVoSnwxtOrX35u23j-gzGzoHsz", "SBLr7EMdL83IXCfJSbydMdll");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
