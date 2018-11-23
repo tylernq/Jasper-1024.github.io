@@ -89,17 +89,17 @@
 
 
 
-<meta name="description" content="wdt第二弹，内核API，勉强翻译下来了，还需要进一步整理   看门狗定时器驱动内核API 最后更新时间 2013.2.12 Wim Van Sebroeck &amp;#x77;&amp;#105;&amp;#x6d;&amp;#x40;&amp;#105;&amp;#103;&amp;#117;&amp;#97;&amp;#x6e;&amp;#97;&amp;#x2e;&amp;#98;&amp;#x65;  介绍 本文档没有描述看门狗设备或驱动。也不涉及那些在用户空间调用的API，对应在 D">
+<meta name="description" content="wdt第二弹，内核API，勉强翻译下来了，还需要进一步整理   看门狗定时器驱动内核API 最后更新时间 2013.2.12 Wim Van Sebroeck &amp;#x77;&amp;#x69;&amp;#109;&amp;#x40;&amp;#105;&amp;#103;&amp;#x75;&amp;#97;&amp;#x6e;&amp;#x61;&amp;#x2e;&amp;#98;&amp;#101;  介绍 本文档没有描述看门狗设备或驱动。也不涉及那些在用户空间调用的API，对应在">
 <meta name="keywords" content="学习记录,Linux,翻译,wdt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux笔记——看门狗内核API文档翻译">
 <meta property="og:url" content="http://yoursite.com/2017/08/23/linux笔记—看门狗内核API文档翻译/index.html">
 <meta property="og:site_name" content="默">
-<meta property="og:description" content="wdt第二弹，内核API，勉强翻译下来了，还需要进一步整理   看门狗定时器驱动内核API 最后更新时间 2013.2.12 Wim Van Sebroeck &amp;#x77;&amp;#105;&amp;#x6d;&amp;#x40;&amp;#105;&amp;#103;&amp;#117;&amp;#97;&amp;#x6e;&amp;#97;&amp;#x2e;&amp;#98;&amp;#x65;  介绍 本文档没有描述看门狗设备或驱动。也不涉及那些在用户空间调用的API，对应在 D">
+<meta property="og:description" content="wdt第二弹，内核API，勉强翻译下来了，还需要进一步整理   看门狗定时器驱动内核API 最后更新时间 2013.2.12 Wim Van Sebroeck &amp;#x77;&amp;#x69;&amp;#109;&amp;#x40;&amp;#105;&amp;#103;&amp;#x75;&amp;#97;&amp;#x6e;&amp;#x61;&amp;#x2e;&amp;#98;&amp;#101;  介绍 本文档没有描述看门狗设备或驱动。也不涉及那些在用户空间调用的API，对应在">
 <meta property="og:updated_time" content="2017-09-10T01:35:25.037Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux笔记——看门狗内核API文档翻译">
-<meta name="twitter:description" content="wdt第二弹，内核API，勉强翻译下来了，还需要进一步整理   看门狗定时器驱动内核API 最后更新时间 2013.2.12 Wim Van Sebroeck &amp;#x77;&amp;#105;&amp;#x6d;&amp;#x40;&amp;#105;&amp;#103;&amp;#117;&amp;#97;&amp;#x6e;&amp;#97;&amp;#x2e;&amp;#98;&amp;#x65;  介绍 本文档没有描述看门狗设备或驱动。也不涉及那些在用户空间调用的API，对应在 D">
+<meta name="twitter:description" content="wdt第二弹，内核API，勉强翻译下来了，还需要进一步整理   看门狗定时器驱动内核API 最后更新时间 2013.2.12 Wim Van Sebroeck &amp;#x77;&amp;#x69;&amp;#109;&amp;#x40;&amp;#105;&amp;#103;&amp;#x75;&amp;#97;&amp;#x6e;&amp;#x61;&amp;#x2e;&amp;#98;&amp;#101;  介绍 本文档没有描述看门狗设备或驱动。也不涉及那些在用户空间调用的API，对应在">
 
 
 
@@ -477,7 +477,7 @@
 <hr>
 <h2 id="看门狗定时器驱动内核API"><a href="#看门狗定时器驱动内核API" class="headerlink" title="看门狗定时器驱动内核API"></a>看门狗定时器驱动内核API</h2><ul>
 <li>最后更新时间 2013.2.12</li>
-<li>Wim Van Sebroeck <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#x6f;&#58;&#x77;&#105;&#x6d;&#x40;&#105;&#103;&#117;&#97;&#x6e;&#97;&#x2e;&#98;&#x65;">&#x77;&#105;&#x6d;&#x40;&#105;&#103;&#117;&#97;&#x6e;&#97;&#x2e;&#98;&#x65;</a></li>
+<li>Wim Van Sebroeck <a href="&#109;&#97;&#x69;&#108;&#116;&#x6f;&#x3a;&#x77;&#x69;&#109;&#x40;&#105;&#103;&#x75;&#97;&#x6e;&#x61;&#x2e;&#98;&#101;">&#x77;&#x69;&#109;&#x40;&#105;&#103;&#x75;&#97;&#x6e;&#x61;&#x2e;&#98;&#101;</a></li>
 </ul>
 <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul>
 <li>本文档没有描述看门狗设备或驱动。也不涉及那些在用户空间调用的API，对应在 Documentation/watchdog/watchdog-api.txt （也就是<a href="">上一篇</a>）</li>
