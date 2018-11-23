@@ -410,9 +410,9 @@
       <category term="Android随手记" scheme="http://yoursite.com/categories/Android%E9%9A%8F%E6%89%8B%E8%AE%B0/"/>
     
     
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1523,9 +1523,9 @@
       <category term="Android随手记" scheme="http://yoursite.com/categories/Android%E9%9A%8F%E6%89%8B%E8%AE%B0/"/>
     
     
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -1782,9 +1782,9 @@
       <category term="Android随手记" scheme="http://yoursite.com/categories/Android%E9%9A%8F%E6%89%8B%E8%AE%B0/"/>
     
     
-      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://yoursite.com/tags/Android-Studio/"/>
     
       <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
@@ -2659,70 +2659,6 @@
   </entry>
   
   <entry>
-    <title>python—模块</title>
-    <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E6%A8%A1%E5%9D%97/"/>
-    <id>http://yoursite.com/2018/01/19/python—模块/</id>
-    <published>2018-01-19T02:17:11.000Z</published>
-    <updated>2018-01-19T15:01:52.735Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><ul>
-<li>模块是一组Python代码的集合，可以使用其他模块，也可以被其他模块使用。</li>
-<li><p>涉及到概念 包(Package) 和 模块(Module)</p>
-</li>
-<li><p>创建自己的模块时，要注意：</p>
-<ul>
-<li>模块名要遵循Python变量命名规范，不要使用中文、特殊字符；</li>
-<li>模块名不要和系统模块名冲突，最好先查看系统是否已存在该模块，检查方法是在Python交互环境执行import abc，若成功则说明系统存在此模块。</li>
-</ul>
-</li>
-</ul>
-<h3 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h3><ul>
-<li><p>示例</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">' a test module '</span></div><div class="line"></div><div class="line">__author__ = <span class="string">'Michael Liao'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> sys</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></div><div class="line">    args = sys.argv</div><div class="line">    <span class="keyword">if</span> len(args)==<span class="number">1</span>:</div><div class="line">        print(<span class="string">'Hello, world!'</span>)</div><div class="line">    <span class="keyword">elif</span> len(args)==<span class="number">2</span>:</div><div class="line">        print(<span class="string">'Hello, %s!'</span> % args[<span class="number">1</span>])</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        print(<span class="string">'Too many arguments!'</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</div><div class="line">    test()</div></pre></td></tr></table></figure>
-</li>
-<li><p>注释:</p>
-<ul>
-<li>第1行注释可以让这个hello.py文件直接在Unix/Linux/Mac上运行</li>
-<li>第2行注释表示.py文件本身使用标准UTF-8编码；</li>
-<li>第4行是一个字符串，表示模块的文档注释，任何模块代码的第一个字符串都被视为模块的文档注释</li>
-<li>第6行使用<strong>author</strong>变量把作者写进去</li>
-</ul>
-</li>
-<li><p>重点<code>if __name__==&#39;__main__&#39;:</code></p>
-</li>
-<li>Python解释器把一个特殊变量<strong>name</strong>置为<strong>main</strong>，而如果在其他地方导入该hello模块时，if判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试.</li>
-</ul>
-<h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><ul>
-<li>Python中，是通过<code>_</code>前缀 标记 private </li>
-<li>note: <strong>python中语法没有限制 <code>_</code>开头的变量/函数!</strong></li>
-</ul>
-<h3 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h3><ul>
-<li><p><code>pip</code>命令 </p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install xxx</div></pre></td></tr></table></figure>
-</li>
-<li><p>或者在文件中自定义路径.</p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;模块&quot;&gt;&lt;a href=&quot;#模块&quot; class=&quot;headerlink&quot; title=&quot;模块&quot;&gt;&lt;/a&gt;模块&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;模块是一组Python代码的集合，可以使用其他模块，也可以被其他模块使用。&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;涉及到概念 包(Packag
-    
-    </summary>
-    
-      <category term="python笔记" scheme="http://yoursite.com/categories/python%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
     <title>python—面向对象</title>
     <link href="http://yoursite.com/2018/01/19/python%E2%80%94%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     <id>http://yoursite.com/2018/01/19/python—面向对象/</id>
@@ -2848,6 +2784,108 @@
 &lt;li&gt;封装 继承 多态&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;类和实例&quot;&gt;&lt;a hr
+    
+    </summary>
+    
+      <category term="python笔记" scheme="http://yoursite.com/categories/python%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python—n函数</title>
+    <link href="http://yoursite.com/2018/01/19/python%E2%80%94n%E5%87%BD%E6%95%B0/"/>
+    <id>http://yoursite.com/2018/01/19/python—n函数/</id>
+    <published>2018-01-19T02:17:11.000Z</published>
+    <updated>2018-01-19T15:04:49.024Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h3><ul>
+<li>参数数量不对 TypeError错误</li>
+<li>参数类型错误，TypeError的错误，并且给出错误信息</li>
+<li>int()转换为int类型</li>
+<li>float()</li>
+<li>bool()</li>
+<li><p>str()</p>
+</li>
+<li><p>函数名为一指向函数对象的引用,可以将变量指向函数,再调用</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = abs <span class="comment"># 变量a指向abs函数</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a(<span class="number">-1</span>) <span class="comment"># 所以也可以通过a调用abs函数</span></div><div class="line"><span class="number">1</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h3><ul>
+<li><p>示例</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_abs</span><span class="params">(x)</span>:</span></div><div class="line">  <span class="keyword">if</span> x &gt;= <span class="number">0</span>:</div><div class="line">      <span class="keyword">return</span> x</div><div class="line">  <span class="keyword">else</span>:</div><div class="line">      <span class="keyword">return</span> -x</div></pre></td></tr></table></figure>
+<p>def 函数名(参数) :<br>  函数体<br>  return </p>
+</li>
+<li>没有return 则返回 None</li>
+<li><p>import 包含模块,java一样</p>
+</li>
+<li><p>空函数 pass 语句.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">nop</span><span class="params">()</span>:</span></div><div class="line">  <span class="keyword">pass</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>示例 返回多个参数</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> math</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">move</span><span class="params">(x, y, step, angle=<span class="number">0</span>)</span>:</span></div><div class="line">  nx = x + step * math.cos(angle)</div><div class="line">  ny = y - step * math.sin(angle)</div><div class="line">  <span class="keyword">return</span> nx, ny</div></pre></td></tr></table></figure>
+<p>返回的是一个tuple .. 按位置赋值给变量</p>
+</li>
+</ul>
+<h3 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h3><ul>
+<li><strong>参数定义的顺序必须是：必选参数、默认参数、可变参数、命名关键字参数和关键字参数</strong></li>
+</ul>
+<h4 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h4><ul>
+<li><p>示例:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">power</span><span class="params">(x, n=<span class="number">2</span>)</span>:</span></div><div class="line">...</div><div class="line"></div><div class="line">power(<span class="number">5</span>)   power(<span class="number">5</span>, <span class="number">2</span>)  power(n=<span class="number">3</span>,<span class="number">5</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>默认参数必须指向不变对象</p>
+</li>
+<li>多个参数时，变化大的参数在前，变化小的参数在后。变化小的参数就可以作为默认参数。</li>
+<li>多个默认参数，可以按顺序提供默认参数</li>
+<li><p>也可以不按顺序提供。当不按顺序提供部分默认参数时，需要把参数名写上 <code>enroll(&#39;Adam&#39;, &#39;M&#39;, city=&#39;Tianjin&#39;)</code></p>
+</li>
+<li><p><strong><code>坑</code></strong></p>
+<ul>
+<li>默认参数 不可变性 每次调用均会改变其值.</li>
+</ul>
+</li>
+</ul>
+<h4 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h4><ul>
+<li><p>示例:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc</span><span class="params">(*numbers)</span>:</span></div><div class="line">  sum = <span class="number">0</span></div><div class="line">  <span class="keyword">for</span> n <span class="keyword">in</span> numbers:</div><div class="line">      sum = sum + n * n</div><div class="line">  <span class="keyword">return</span> sum</div><div class="line"></div><div class="line">nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">calc(*nums)   <span class="comment">#相同</span></div><div class="line">calc(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>传入的参数个数可变,传入组装成了tuple</p>
+</li>
+<li>当作c语言指针吧😂 传入数组的地址</li>
+</ul>
+<h4 id="命名关键字参数"><a href="#命名关键字参数" class="headerlink" title="命名关键字参数"></a>命名关键字参数</h4><ul>
+<li><p>示例:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, age, *, city, job)</span>:</span></div><div class="line">  print(name, age, city, job)</div><div class="line"></div><div class="line">person(<span class="string">'Jack'</span>, <span class="number">24</span>, city=<span class="string">'Beijing'</span>, job=<span class="string">'Engineer'</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>命名关键字参数需要一个特殊分隔符<em>，</em>后面的参数被视为命名关键字参数</p>
+</li>
+<li><p>函数定义中已经有了一个可变参数，后面跟着的命名关键字参数就不再需要一个特殊分隔符*</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, age, *args, city, job)</span>:</span></div><div class="line">  print(name, age, args, city, job)</div></pre></td></tr></table></figure>
+</li>
+<li><p>如果没有可变参数，就必须加一个<em>作为特殊分隔符。如果缺少</em>，Python解释器将无法识别位置参数和命名关键字参数</p>
+<h4 id="关键字参数"><a href="#关键字参数" class="headerlink" title="关键字参数"></a>关键字参数</h4></li>
+<li><p>示例</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span><span class="params">(name, age, **kw)</span>:</span></div><div class="line">  print(<span class="string">'name:'</span>, name, <span class="string">'age:'</span>, age, <span class="string">'other:'</span>, kw)</div><div class="line"></div><div class="line">extra = &#123;<span class="string">'city'</span>: <span class="string">'Beijing'</span>, <span class="string">'job'</span>: <span class="string">'Engineer'</span>&#125;</div><div class="line">person(<span class="string">'Jack'</span>, <span class="number">24</span>, city=extra[<span class="string">'city'</span>], job=extra[<span class="string">'job'</span>])</div><div class="line"><span class="comment">#相同</span></div><div class="line">extra = &#123;<span class="string">'city'</span>: <span class="string">'Beijing'</span>, <span class="string">'job'</span>: <span class="string">'Engineer'</span>&#125;</div><div class="line">person(<span class="string">'Jack'</span>, <span class="number">24</span>, **extra)</div></pre></td></tr></table></figure>
+</li>
+<li><p>关键字参数在函数内部组装为一个dict</p>
+</li>
+<li>函数内部获得是 dict的拷贝,修改对原值无影响.</li>
+<li>可以传入任意不受限制的关键字参数</li>
+</ul>
+<h4 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h4><ul>
+<li>python 不含尾递归优化,注意层级,否则非常容易堆栈溢出.</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;函数&quot;&gt;&lt;a href=&quot;#函数&quot; class=&quot;headerlink&quot; title=&quot;函数&quot;&gt;&lt;/a&gt;函数&lt;/h2&gt;&lt;h3 id=&quot;常用&quot;&gt;&lt;a href=&quot;#常用&quot; class=&quot;headerlink&quot; title=&quot;常用&quot;&gt;&lt;/a&gt;常用&lt;/h3&gt;&lt;ul&gt;
+&lt;
     
     </summary>
     
